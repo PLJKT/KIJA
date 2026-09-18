@@ -9,7 +9,7 @@ PT Kawasan Industri Jababeka Tbk（印尼证券交易所代码：**KIJA**）财�
 | 文件 | 说明 |
 | --- | --- |
 | [`index.html`](index.html) | **财务与经营 Dashboard**：三语（EN 默认 / ID / 中文）切换；11 个视图：总览、2024 年报、2025 年报、2026 中报、**债务与偿债（Debt & Solvency）**、**土地储备（Land Bank）**、**估值分析（Valuation）**、**估值测算（Valuation Illustration）**、风险与方向、**股权结构（Holding Structure）**、**治理与组织（Organization）** |
-| [`data.json`](data.json) | **Dashboard 的在线数据层（自助更新入口）**：全部展示数据（年度序列、各页 KPI、债务、土地、估值、清算价值、关键参数、股权/组织、时间线等 25 个数据块）集中于此；在线打开 Dashboard 时页面自动拉取本文件并覆盖渲染 |
+| [`data.json`](data.json) | **Dashboard 的在线数据层（自助更新入口）**：全部展示数据（年度序列、各页 KPI、债务、土地、估值、清算价值、每股土地价值、关键参数、股权/组织、时间线等 26 个数据块）集中于此；在线打开 Dashboard 时页面自动拉取本文件并覆盖渲染 |
 
 **Dashboard 在线访问**：<https://PLJKT.github.io/KIJA/>（GitHub Pages，从 `index.html` 自动发布）。图表依赖 jsDelivr / cdnjs CDN，需联网加载。
 
@@ -40,8 +40,10 @@ PT Kawasan Industri Jababeka Tbk（印尼证券交易所代码：**KIJA**）财�
 **第 7 轮更新（Valuation Illustration 页扩展）**：- **清算价值（Liquidation value）**：以 2025-12-31 审计资产负债表为起点（总资产 15,056.2 / 总负债 6,911.9 / 少数股东权益 1,880.8 / 归母权益 6,263.6），开发土地（账面 5,783.5）按各项目市场挂牌要价重估（Cikarang 7.3–17.2x、Kendal 4.9–14.1x、Tanjung Lesung 2.4–22.4x，Morotai 维持账面），扣减全部负债与 NCI 后按 20.59B 加权股本折每股。五情景：账面 304.1 盾（+68.0%）、市场低位 1,612.7（+791.0%）、低位扣 20% 强制折价 1,351.0（+646.4%）、市场中位 3,344.6（+1,747.9%）、市场高位 5,076.5（+2,704.7%）。页面注明：挂牌价为第三方报价（2026-07–09）、非成交价；未对非土地资产打折；土地销售为持续经营核心业务，清算式速算方向性偏差已说明；非报价、非投资建议。
 - **关键参数（Key parameters，Bloomberg 标准字段）**：自 Yahoo Finance quoteSummary（经 crumb 认证，为 Bloomberg 标准公开镜像；Bloomberg 官网 quote 页受机器人防护，仅取得延迟价 185→186）取回 21 项：延迟价 185.0（+2.2%，昨收 181.0）、市值 3.85 万亿盾 @185、隐含股本 20.80B、Beta 0.25（Yahoo 与 S&P 一致）、TTM EPS -3.22（1H26 亏损拖累；FY25 审计 20.55）、前瞻 EPS 25.0 / P/E 7.4x、BVPS 291.1（审计归母 304.1 / 总权益 395.6）、P/B 0.64x（归母口径 0.60x）、P/S 0.79x、EV 7.13 万亿 / EV/EBITDA 5.9x（TTM；FY25 口径约 2.7x）、股息 2.03 盾 / 收益率 1.1% / 派息率 8.3%（除息 2026-06-17）、ROE 2.9% / ROA 4.3%、净利率 -1.4% / 毛利率 36.0%、52 周区间 105–364（历史最高 405.5）、52 周涨跌 -7.2% / YTD -11.9%、日均量 2.95 亿（10 日）/ 3.49 亿（3 月）[8.60 亿（20 日，S&P）]、流动比率 5.6 / 速动 2.0（2026-06-30）、现金 3.21 万亿 / 总债务 4.86 万亿、有息负债/权益 62.6%（总负债/权益 85% 审计）、FCF 570.7B / OCF 1.52 万亿（TTM）。月收盘序列（2025-09→2026-09：187/191/180/210/228/206/174/180/124/112/130/216/197）与 Digrin 完全一致，1 年高 354 / 低 111 与 S&P 盘中 105–364 口径互证。
 
+**第 9 轮更新（Land bank value per share）**：在 Valuation Illustration 页新增独立表格「Land bank value per share」——土地总账面价值 5,783.5 十亿盾（AR2025 附注 7，成本法）× 100% / 75% / 50% / 25% ÷ 20.59B 加权股本，得到每股 280.9 / 210.7 / 140.4 / 70.2 盾，附与现价对比、安全边际及数据来源说明；独立成表，未与其他估值方法合并。
+
 **第 8 轮更新（数据层迁移，自助更新）**：
-- **`data.json` 成为单一在线数据层**：把原先分散在构建源码里的全部 25 个数据块（KP / EV / RK / DIR / TL / OWN / SUBS / BIZ / VIA / PILLAR / PILLAR_MAP / ORG / DEBT / LAND / VAL / DTXT / LTXT / VTXT / NXT / VALI / LIQ / KEYP / AN / CHT / FY）集中到 `data.json`；`index.html` 的构建脚本改为从 `data.json` 生成内嵌离线副本。
+- **`data.json` 成为单一在线数据层**：把原先分散在构建源码里的全部 26 个数据块（KP / EV / RK / DIR / TL / OWN / SUBS / BIZ / VIA / PILLAR / PILLAR_MAP / ORG / DEBT / LAND / VAL / DTXT / LTXT / VTXT / NXT / VALI / LIQ / LBV / KEYP / AN / CHT / FY）集中到 `data.json`；`index.html` 的构建脚本改为从 `data.json` 生成内嵌离线副本。
 - **运行时拉取**：在线打开 Dashboard 时，页面先拉取同目录 `data.json`（GitHub Pages 同源，HTTP(S) 下启用）覆盖内嵌数据后再渲染；本地 file:// 打开自动回退内嵌副本（无网络也可看，数据为最近一次构建时的版本）。
 - **新增 `FY` 块**：各期间页图表专用数据（分部堆叠、营销销售、FY24 分部饼图、近三年净利、FY25 债务/现金/偿债/现金流、1H26 收入/目标/结构/一次性成本、5 年本金计划、债务页参考价与股价标注点、同业倍数等）全部数据化，用户改 `data.json` 即可联动图表。
 - **自助更新流程**：见上方「自助更新数据」小节——只需编辑 `data.json` 中对应数值并提交，无需改动任何结构。
