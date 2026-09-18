@@ -145,8 +145,9 @@ ul.events .d{flex:none;width:76px;color:var(--green);font-weight:600;font-varian
 .org-col{display:flex;flex-direction:column;align-items:center;flex:1 1 150px;max-width:230px}
 .org-col .vline{width:2px;height:14px;background:var(--line);flex:none}
 .g-table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden;font-size:12.5px;table-layout:fixed;margin-bottom:18px}
-.g-table th{background:var(--ink);color:#EDF2EC;padding:7px 9px;text-align:left;font-weight:600;font-size:12px}
-.g-table td{padding:6px 9px;border-top:1px solid var(--line);font-variant-numeric:tabular-nums;vertical-align:top}
+.g-table th{background:var(--ink);color:#EDF2EC;padding:7px 9px;text-align:left;font-weight:600;font-size:12px;overflow-wrap:break-word;word-break:break-word}
+.g-table td{padding:6px 9px;border-top:1px solid var(--line);font-variant-numeric:tabular-nums;vertical-align:top;overflow-wrap:break-word;word-break:break-word}
+.g-table .gterm{white-space:normal}
 .g-table tr:nth-child(even) td{background:#F7F9F5}
 .g-table td.b{font-weight:700}
 .g-table td.p{text-align:right;color:var(--green);font-weight:600}
@@ -1054,7 +1055,7 @@ function valPeersHtml(){
   return h;
 }
 function valAnalystsHtml(){
-  var t = VTXT[LANG], rows = t.analysts, h = '<table class="g-table"><colgroup><col style="width:22%"><col style="width:15%"><col style="width:11%"><col style="width:15%"><col style="width:37%"></colgroup><thead><tr>';
+  var t = VTXT[LANG], rows = t.analysts, h = '<table class="g-table"><colgroup><col style="width:20%"><col style="width:18%"><col style="width:10%"><col style="width:14%"><col style="width:38%"></colgroup><thead><tr>';
   for (var i = 0; i < t.analystsH.length; i++) { h += th(esc(t.analystsH[i])); }
   h += '</tr></thead><tbody>';
   for (var r = 0; r < rows.length; r++) {
