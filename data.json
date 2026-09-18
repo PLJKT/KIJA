@@ -6155,6 +6155,478 @@
    "note": "仅当每股数值高于市价时显示安全边际；'n/a' 表示土地托底价值低于股价。账面价值为成本口径而非市价：各项目市场挂牌价为账面 2.4x–22.4x（见 Land Bank 页）。75% / 50% / 25% 系数用于说明账面价值折价；实际可回收价值取决于出售时点、地块组合与强制出售折扣。"
   }
  },
+ "GLOS": {
+  "terms": [
+   {
+    "p": "EV/EBITDA",
+    "x": "Enterprise Value / EBITDA — a valuation multiple comparing the total value of a business (market cap + debt − cash) to its operating earnings; KIJA ~2.7x on FY25."
+   },
+   {
+    "p": "EBITDA",
+    "x": "Earnings Before Interest, Taxes, Depreciation and Amortisation — a measure of core operating profitability that strips out financing decisions, tax environments and non-cash depreciation/amortisation charges."
+   },
+   {
+    "p": "BVPS",
+    "x": "Book Value Per Share — shareholders' equity per share; here parent equity 6,263.6 bn ÷ 20.59 bn weighted shares = 304.1 IDR."
+   },
+   {
+    "p": "SOTP",
+    "x": "Sum-of-the-Parts — valuing a conglomerate by valuing each business segment separately and adding them up."
+   },
+   {
+    "p": "WACC",
+    "x": "Weighted Average Cost of Capital — the blended required return of a company's debt and equity holders, weighted by capital structure; used as the discount rate in DCF."
+   },
+   {
+    "p": "P/E",
+    "x": "Price-to-Earnings ratio — share price divided by earnings per share; how much the market pays per unit of earnings (8.8x at 181 IDR on FY25 EPS)."
+   },
+   {
+    "p": "P/B",
+    "x": "Price-to-Book ratio — share price divided by book value per share; below 1 means the stock trades below its accounting net asset value (0.60x at 181 IDR)."
+   },
+   {
+    "p": "P/S",
+    "x": "Price-to-Sales ratio — market capitalisation divided by annual revenue; a valuation tool that still works when a company has no earnings."
+   },
+   {
+    "p": "EPS",
+    "x": "Earnings Per Share — profit attributable to shareholders divided by the number of shares (FY25 audited: 20.55 IDR)."
+   },
+   {
+    "p": "ROE",
+    "x": "Return on Equity — net profit ÷ shareholders' equity; how effectively equity capital is converted into profit."
+   },
+   {
+    "p": "ROA",
+    "x": "Return on Assets — net profit ÷ total assets; how efficiently a company uses all of its resources."
+   },
+   {
+    "p": "NCI",
+    "x": "Non-Controlling Interest — the portion of a subsidiary's equity not owned by the parent (minority interest); deducted from consolidated equity to arrive at the parent's share."
+   },
+   {
+    "p": "DCF",
+    "x": "Discounted Cash Flow — a valuation method that forecasts future cash flows and discounts them to present value (usually at WACC) to estimate intrinsic value."
+   },
+   {
+    "p": "EV",
+    "x": "Enterprise Value — the theoretical price to buy the whole business: market capitalisation plus total debt minus cash."
+   },
+   {
+    "p": "ICR",
+    "x": "Interest Coverage Ratio — operating earnings (EBITDA or EBIT) ÷ interest expense; how many times operating profit covers interest (KIJA 4.4x FY25)."
+   },
+   {
+    "p": "OCF",
+    "x": "Operating Cash Flow — cash generated from a company's core business operations, before investing and financing activities."
+   },
+   {
+    "p": "FCF",
+    "x": "Free Cash Flow — operating cash flow minus capital expenditure; the cash available for dividends, debt repayment or reinvestment."
+   },
+   {
+    "p": "YoY",
+    "x": "Year over Year — comparing a figure with the same period one year earlier."
+   },
+   {
+    "p": "TTM",
+    "x": "Trailing Twelve Months — the latest rolling 12 months of data (here it includes unaudited 1H26, which drags down EPS)."
+   },
+   {
+    "p": "D/E",
+    "x": "Debt-to-Equity ratio — total debt ÷ shareholders' equity; how much the company borrows relative to owners' capital."
+   },
+   {
+    "p": "SEZ",
+    "x": "Special Economic Zone — a designated area with tax, customs and licensing incentives to attract investment (in Indonesia: Kawasan Ekonomi Khusus, KEK)."
+   },
+   {
+    "p": "JV",
+    "x": "Joint Venture — a business arrangement in which two or more parties combine resources for a shared project while remaining separate companies."
+   },
+   {
+    "p": "IDX",
+    "x": "Indonesia Stock Exchange (Bursa Efek Indonesia) — the sole stock exchange in Indonesia, where KIJA is listed."
+   },
+   {
+    "p": "PLN",
+    "x": "Perusahaan Listrik Negara — Indonesia's state-owned electricity utility, responsible for generation, transmission and distribution."
+   },
+   {
+    "p": "PP&E",
+    "x": "Property, Plant & Equipment — long-term tangible assets (land, buildings, machinery) used in operations."
+   },
+   {
+    "p": "LNG",
+    "x": "Liquefied Natural Gas — natural gas cooled to liquid form for easier storage and transport."
+   },
+   {
+    "p": "FX",
+    "x": "Foreign Exchange — currency conversion; an FX loss/gain arises from translating or settling foreign-currency assets and liabilities."
+   },
+   {
+    "p": "RSI",
+    "x": "Relative Strength Index — a momentum oscillator on a 0–100 scale; above 70 is considered overbought, below 30 oversold."
+   },
+   {
+    "p": "DPS",
+    "x": "Dividend Per Share — the dividend paid out per share (FY25: 2.03 IDR)."
+   },
+   {
+    "p": "SBLC",
+    "x": "Standby Letter of Credit — a bank guarantee to pay a beneficiary if the applicant fails to meet a contractual or financial obligation."
+   },
+   {
+    "p": "WWTP",
+    "x": "Wastewater Treatment Plant — a facility that treats industrial or municipal wastewater."
+   },
+   {
+    "p": "MRT",
+    "x": "Mass Rapid Transit — a high-capacity urban rail system (e.g., Jakarta MRT)."
+   },
+   {
+    "p": "MOU",
+    "x": "Memorandum of Understanding — a non-binding agreement outlining an intended partnership or cooperation."
+   },
+   {
+    "p": "FDI",
+    "x": "Foreign Direct Investment — cross-border investment that gives the investor control or significant influence (typically ≥10% ownership)."
+   },
+   {
+    "p": "AGM",
+    "x": "Annual General Meeting — the yearly shareholders' meeting where results are presented and resolutions are voted on."
+   },
+   {
+    "p": "GMS",
+    "x": "General Meeting of Shareholders — the shareholders' meeting (in Indonesia: Rapat Umum Pemegang Saham, RUPS)."
+   },
+   {
+    "p": "S&P",
+    "x": "Standard & Poor's — a credit-rating agency and index provider; KIJA's S&P rating is B- (speculative grade)."
+   },
+   {
+    "p": "B3",
+    "x": "Moody's credit rating B3 — speculative grade, subject to high credit risk (KIJA's Moody's rating)."
+   },
+   {
+    "p": "B-",
+    "x": "S&P credit rating B- — speculative grade, below investment grade."
+   },
+   {
+    "p": "KPI",
+    "x": "Key Performance Indicator — a metric used to measure and track business performance."
+   },
+   {
+    "p": "Beta",
+    "x": "Beta — a measure of a stock's volatility relative to the market; below 1 means less volatile than the market (KIJA 0.25)."
+   },
+   {
+    "p": "YTD",
+    "x": "Year to Date — the period from the start of the calendar (or fiscal) year to the current date."
+   },
+   {
+    "p": "PROPER",
+    "x": "PROPER — Indonesia's corporate environmental performance rating programme run by the Ministry of Environment (KLHK); 'green' is the second-highest level."
+   },
+   {
+    "p": "1H(?=\\d)\\d*",
+    "x": "First half of the fiscal year (January–June); 1H26 = the unaudited interim period ended 30 Jun 2026."
+   },
+   {
+    "p": "H1(?![A-Za-z])",
+    "x": "First half of the year (January–June)."
+   },
+   {
+    "p": "FY(?![a-z])\\d*",
+    "x": "Fiscal Year — the company's annual reporting period; FY2025 = year ended 31 Dec 2025 (KIJA reports on calendar years)."
+   },
+   {
+    "p": "AR(?=\\d)\\d*",
+    "x": "Annual Report — the company's audited annual disclosure to shareholders; e.g., AR2025 = the FY2025 annual report."
+   },
+   {
+    "p": "Q[1-4](?![A-Za-z])",
+    "x": "Quarter — a three-month reporting period (Q1 = Jan–Mar, Q2 = Apr–Jun, Q3 = Jul–Sep, Q4 = Oct–Dec)."
+   },
+   {
+    "p": "Liquidation value",
+    "x": "Liquidation value — what shareholders would receive per share if the company's assets were sold and liabilities settled today."
+   },
+   {
+    "p": "Safety margin",
+    "x": "Safety margin — (estimated value − market price) ÷ estimated value; the discount to intrinsic value, shown only when value exceeds price."
+   },
+   {
+    "p": "Fair value",
+    "x": "Fair value — an estimated intrinsic value of the company derived from valuation methods such as DCF or multiples."
+   },
+   {
+    "p": "fair value",
+    "x": "Fair value — an estimated intrinsic value of the company derived from valuation methods such as DCF or multiples."
+   },
+   {
+    "p": "Current / quick ratio",
+    "x": "Liquidity ratios: current ratio = current assets ÷ current liabilities (KIJA 5.6); quick ratio = (current assets − inventory) ÷ current liabilities (KIJA 2.0)."
+   },
+   {
+    "p": "current ratio",
+    "x": "Current Ratio — current assets ÷ current liabilities; a company's ability to cover short-term obligations (KIJA 5.6 at 30 Jun 2026)."
+   },
+   {
+    "p": "quick ratio",
+    "x": "Quick Ratio (acid-test) — (current assets − inventory) ÷ current liabilities; a stricter short-term liquidity test (KIJA 2.0)."
+   },
+   {
+    "p": "Dividend yield",
+    "x": "Dividend Yield — annual dividend per share ÷ share price; the income return from dividends (1.1% at 181 IDR)."
+   },
+   {
+    "p": "dividend yield",
+    "x": "Dividend Yield — annual dividend per share ÷ share price; the income return from dividends (1.1% at 181 IDR)."
+   },
+   {
+    "p": "net debt",
+    "x": "Net Debt — total interest-bearing debt minus cash and equivalents; the debt remaining after using available cash (1H26: 4,863 − 3,200 = 1,663 bn)."
+   },
+   {
+    "p": "Net debt",
+    "x": "Net Debt — total interest-bearing debt minus cash and equivalents; the debt remaining after using available cash (1H26: 4,863 − 3,200 = 1,663 bn)."
+   },
+   {
+    "p": "Gross margin",
+    "x": "Gross Margin — (revenue − cost of goods sold) ÷ revenue; the share of sales left after direct production costs (FY25: 39%)."
+   },
+   {
+    "p": "gross margin",
+    "x": "Gross Margin — (revenue − cost of goods sold) ÷ revenue; the share of sales left after direct production costs (FY25: 39%)."
+   },
+   {
+    "p": "Net margin",
+    "x": "Net Margin — net profit ÷ revenue; the share of each rupiah of sales that ends up as bottom-line profit."
+   },
+   {
+    "p": "net margin",
+    "x": "Net Margin — net profit ÷ revenue; the share of each rupiah of sales that ends up as bottom-line profit."
+   },
+   {
+    "p": "Market capitalization",
+    "x": "Market Capitalisation — share price × number of shares; the total market value of a company's equity."
+   },
+   {
+    "p": "market capitalization",
+    "x": "Market Capitalisation — share price × number of shares; the total market value of a company's equity."
+   },
+   {
+    "p": "Market cap(?![a-z])",
+    "x": "Market Capitalisation — share price × number of shares; the total market value of a company's equity."
+   },
+   {
+    "p": "market cap(?![a-z])",
+    "x": "Market Capitalisation — share price × number of shares; the total market value of a company's equity."
+   },
+   {
+    "p": "Land bank",
+    "x": "Land bank — the inventory of developable land held by a property or industrial-estate developer for future sale and development."
+   },
+   {
+    "p": "land bank",
+    "x": "Land bank — the inventory of developable land held by a property or industrial-estate developer for future sale and development."
+   },
+   {
+    "p": "Land Bank",
+    "x": "Land bank — the inventory of developable land held by a property or industrial-estate developer for future sale and development."
+   },
+   {
+    "p": "refinancing",
+    "x": "Refinancing — replacing existing debt with new borrowing, usually on better terms, lower cost or longer maturity."
+   },
+   {
+    "p": "Refinancing",
+    "x": "Refinancing — replacing existing debt with new borrowing, usually on better terms, lower cost or longer maturity."
+   },
+   {
+    "p": "leverage",
+    "x": "Leverage — the use of borrowed funds (debt) to finance assets; higher leverage amplifies both returns and risk."
+   },
+   {
+    "p": "Debt/Equity",
+    "x": "Debt-to-Equity ratio — total debt ÷ shareholders' equity; the company's financial gearing."
+   },
+   {
+    "p": "Liab/Equity",
+    "x": "Liabilities-to-Equity ratio — total liabilities ÷ shareholders' equity (85% at FY25)."
+   },
+   {
+    "p": "senior notes",
+    "x": "Senior notes — unsecured bonds that rank ahead of subordinated debt in repayment priority."
+   },
+   {
+    "p": "Term loan",
+    "x": "Term loan — a bank loan repaid in fixed instalments over a set maturity."
+   },
+   {
+    "p": "term loan",
+    "x": "Term loan — a bank loan repaid in fixed instalments over a set maturity."
+   },
+   {
+    "p": "Finance lease",
+    "x": "Finance lease — a lease that transfers substantially all risks and rewards of ownership; the asset and liability are recorded on the balance sheet."
+   },
+   {
+    "p": "finance lease",
+    "x": "Finance lease — a lease that transfers substantially all risks and rewards of ownership; the asset and liability are recorded on the balance sheet."
+   },
+   {
+    "p": "dry port",
+    "x": "Dry port — an inland intermodal terminal where cargo is handled away from the seaport (Cikarang Inland Port)."
+   },
+   {
+    "p": "PT(?![A-Za-z])",
+    "x": "Perseroan Terbatas — Indonesian limited liability company; 'Tbk' after the name means it is publicly listed on the IDX."
+   },
+   {
+    "p": "Tbk",
+    "x": "Terbuka — Indonesian designation for a company whose shares are publicly listed and traded on the stock exchange."
+   },
+   {
+    "p": "KEK",
+    "x": "Kawasan Ekonomi Khusus — kawasan khusus dengan insentif pajak, bea cukai, dan perizinan untuk menarik investasi (special economic zone, SEZ)."
+   },
+   {
+    "p": "KNP",
+    "x": "Kepentingan Non-Pengendali — bagian ekuitas anak perusahaan yang tidak dimiliki oleh induk (hak minoritas); dikurangkan dari ekuitas konsolidasi untuk memperoleh bagian induk."
+   },
+   {
+    "p": "RUPS",
+    "x": "Rapat Umum Pemegang Saham — rapat tahunan pemegang saham untuk menyetujui laporan keuangan, dividen, dan keputusan penting perusahaan."
+   },
+   {
+    "p": "SHGB",
+    "x": "Sertifikat Hak Guna Bangunan — hak untuk mendirikan dan memiliki bangunan di atas tanah milik orang lain/negara, umumnya berjangka 30 tahun dan dapat diperpanjang."
+   },
+   {
+    "p": "Margin kotor",
+    "x": "Margin kotor = (pendapatan − beban pokok penjualan) ÷ pendapatan; bagian penjualan yang tersisa setelah biaya produksi langsung (FY2025: 39%)."
+   },
+   {
+    "p": "Margin bersih",
+    "x": "Margin bersih = laba bersih ÷ pendapatan; porsi setiap rupiah penjualan yang menjadi laba akhir."
+   },
+   {
+    "p": "Margin aman",
+    "x": "Margin aman = (nilai estimasi − harga pasar) ÷ nilai estimasi; diskon terhadap nilai intrinsik, hanya ditampilkan bila nilai melebihi harga."
+   },
+   {
+    "p": "Utang bersih",
+    "x": "Utang bersih = total utang berbunga − kas dan setara kas; utang yang tersisa setelah memakai kas yang tersedia (1H26: 4.863 − 3.200 = 1.663 miliar)."
+   },
+   {
+    "p": "Kapitalisasi pasar",
+    "x": "Kapitalisasi pasar = harga saham × jumlah saham; total nilai pasar ekuitas perusahaan."
+   },
+   {
+    "p": "kepentingan non-pengendali",
+    "x": "Kepentingan non-pengendali (minoritas) — bagian ekuitas anak perusahaan yang tidak dimiliki induk; dikurangkan dari ekuitas konsolidasi untuk memperoleh bagian induk."
+   },
+   {
+    "p": "Laba bersih",
+    "x": "Laba bersih = laba setelah seluruh beban, bunga, dan pajak; laba akhir perusahaan."
+   },
+   {
+    "p": "Nilai buku",
+    "x": "Nilai buku (BVPS) = ekuitas per saham menurut pembukuan; aset bersih per saham berdasarkan laporan keuangan."
+   },
+   {
+    "p": "Nilai likuidasi",
+    "x": "Nilai likuidasi — nilai per saham yang akan diterima pemegang saham bila aset perusahaan dijual dan liabilitas dilunasi saat ini."
+   },
+   {
+    "p": "Imbal hasil dividen",
+    "x": "Imbal hasil dividen = dividen per saham ÷ harga saham; imbal hasil dari dividen (1,1% pada 181 IDR)."
+   },
+   {
+    "p": "Dewan Komisaris",
+    "x": "Dewan Komisaris (board of commissioners) — organ pengawas yang mengawasi direksi atas nama pemegang saham."
+   },
+   {
+    "p": "Direksi",
+    "x": "Direksi (board of directors) — pengelola harian perusahaan yang bertanggung jawab atas operasi dan strategi."
+   },
+   {
+    "p": "Rapat Umum Pemegang Saham",
+    "x": "Rapat Umum Pemegang Saham (RUPS) — rapat tahunan pemegang saham untuk menyetujui laporan, dividen, dan keputusan penting."
+   },
+   {
+    "p": "Sewa pembiayaan",
+    "x": "Sewa pembiayaan (finance lease) — sewa yang mengalihkan hampir seluruh risiko dan manfaat kepemilikan; aset dan liabilitas dicatat di neraca."
+   },
+   {
+    "p": "归母净利",
+    "x": "归母净利 = 归属于母公司股东的净利润；从合并净利润中扣除少数股东损益后的部分（FY2025：423.2 十亿盾）。"
+   },
+   {
+    "p": "少数股东权益",
+    "x": "少数股东权益（NCI）= 子公司权益中母公司未持有的部分；从合并权益中扣除以得出母公司股东权益。"
+   },
+   {
+    "p": "毛利率",
+    "x": "毛利率 =（营业收入 − 营业成本）÷ 营业收入；扣除直接生产成本后剩余的销售占比（FY2025：39%）。"
+   },
+   {
+    "p": "净利率",
+    "x": "净利率 = 净利润 ÷ 营业收入；每单位收入中最终成为净利润的比例。"
+   },
+   {
+    "p": "净债务",
+    "x": "净债务 = 有息负债总额 − 现金及等价物；动用现有现金偿还后剩余的债务（1H26：4,863 − 3,200 = 1,663 十亿盾）。"
+   },
+   {
+    "p": "市值",
+    "x": "市值 = 股价 × 总股本；公司股权的市场总价值。"
+   },
+   {
+    "p": "土地储备",
+    "x": "土地储备（Land bank）= 开发商持有、备用于未来销售与开发的可开发土地库存。"
+   },
+   {
+    "p": "清算价值",
+    "x": "清算价值 = 假设公司立即清算，资产变现扣除负债后可供股东分配的每股价值。"
+   },
+   {
+    "p": "安全边际",
+    "x": "安全边际 =（估算价值 − 现价）÷ 估算价值；衡量现价相对内在价值的折让空间，仅当价值高于价格时显示。"
+   },
+   {
+    "p": "股东大会",
+    "x": "股东大会（GMS / RUPS）= 公司最高权力机构，股东年度会议审议报告、分红与重大决议。"
+   },
+   {
+    "p": "监事会",
+    "x": "监事会（Dewan Komisaris）= 代表股东监督董事会（管理层）的监督机构。"
+   },
+   {
+    "p": "董事会",
+    "x": "董事会（Direksi）= 负责公司日常经营管理与战略执行的机构。"
+   },
+   {
+    "p": "加权股本",
+    "x": "加权股本 = 按期间内流通时间加权平均的股本数，用于计算每股收益（EPS）等指标。"
+   },
+   {
+    "p": "股息率",
+    "x": "股息率 = 每股股息 ÷ 股价；来自分红的收益回报（1.1%@181 盾）。"
+   },
+   {
+    "p": "归母",
+    "x": "归母 = 归属于母公司股东（的口径）；用于区分合并口径与母公司股东口径。"
+   },
+   {
+    "p": "少数股东",
+    "x": "少数股东 = 持有子公司少数股权的非控股股东。"
+   }
+  ]
+ },
  "meta": {
   "company": "PT Kawasan Industri Jababeka Tbk",
   "ticker": "IDX: KIJA",

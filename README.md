@@ -9,7 +9,7 @@ PT Kawasan Industri Jababeka Tbk（印尼证券交易所代码：**KIJA**）财�
 | 文件 | 说明 |
 | --- | --- |
 | [`index.html`](index.html) | **财务与经营 Dashboard**：三语（EN 默认 / ID / 中文）切换；11 个视图：总览、2024 年报、2025 年报、2026 中报、**债务与偿债（Debt & Solvency）**、**土地储备（Land Bank）**、**估值分析（Valuation）**、**估值测算（Valuation Illustration）**、风险与方向、**股权结构（Holding Structure）**、**治理与组织（Organization）** |
-| [`data.json`](data.json) | **Dashboard 的在线数据层（自助更新入口）**：全部展示数据（年度序列、各页 KPI、债务、土地、估值、清算价值、每股土地价值、关键参数、股权/组织、时间线等 26 个数据块）集中于此；在线打开 Dashboard 时页面自动拉取本文件并覆盖渲染 |
+| [`data.json`](data.json) | **Dashboard 的在线数据层（自助更新入口）**：全部展示数据（年度序列、各页 KPI、债务、土地、估值、清算价值、每股土地价值、关键参数、股权/组织、时间线、术语词汇表等 27 个数据块）集中于此；在线打开 Dashboard 时页面自动拉取本文件并覆盖渲染 |
 
 **Dashboard 在线访问**：<https://PLJKT.github.io/KIJA/>（GitHub Pages，从 `index.html` 自动发布）。图表依赖 jsDelivr / cdnjs CDN，需联网加载。
 
@@ -43,10 +43,15 @@ PT Kawasan Industri Jababeka Tbk（印尼证券交易所代码：**KIJA**）财�
 **第 9 轮更新（Land bank value per share）**：在 Valuation Illustration 页新增独立表格「Land bank value per share」——土地总账面价值 5,783.5 十亿盾（AR2025 附注 7，成本法）× 100% / 75% / 50% / 25% ÷ 20.59B 加权股本，得到每股 280.9 / 210.7 / 140.4 / 70.2 盾，附与现价对比、安全边际及数据来源说明；独立成表，未与其他估值方法合并。
 
 **第 8 轮更新（数据层迁移，自助更新）**：
-- **`data.json` 成为单一在线数据层**：把原先分散在构建源码里的全部 26 个数据块（KP / EV / RK / DIR / TL / OWN / SUBS / BIZ / VIA / PILLAR / PILLAR_MAP / ORG / DEBT / LAND / VAL / DTXT / LTXT / VTXT / NXT / VALI / LIQ / LBV / KEYP / AN / CHT / FY）集中到 `data.json`；`index.html` 的构建脚本改为从 `data.json` 生成内嵌离线副本。
+- **`data.json` 成为单一在线数据层**：把原先分散在构建源码里的全部 27 个数据块（KP / EV / RK / DIR / TL / OWN / SUBS / BIZ / VIA / PILLAR / PILLAR_MAP / ORG / DEBT / LAND / VAL / DTXT / LTXT / VTXT / NXT / VALI / LIQ / LBV / KEYP / AN / CHT / FY / GLOS）集中到 `data.json`；`index.html` 的构建脚本改为从 `data.json` 生成内嵌离线副本。
 - **运行时拉取**：在线打开 Dashboard 时，页面先拉取同目录 `data.json`（GitHub Pages 同源，HTTP(S) 下启用）覆盖内嵌数据后再渲染；本地 file:// 打开自动回退内嵌副本（无网络也可看，数据为最近一次构建时的版本）。
 - **新增 `FY` 块**：各期间页图表专用数据（分部堆叠、营销销售、FY24 分部饼图、近三年净利、FY25 债务/现金/偿债/现金流、1H26 收入/目标/结构/一次性成本、5 年本金计划、债务页参考价与股价标注点、同业倍数等）全部数据化，用户改 `data.json` 即可联动图表。
 - **自助更新流程**：见上方「自助更新数据」小节——只需编辑 `data.json` 中对应数值并提交，无需改动任何结构。
+
+**第 10 轮更新（术语悬停解释 / 词汇表）**：
+- 全站关键专业名词与字母缩写（EBITDA、EPS、BVPS、P/E、P/B、P/S、EV、EV/EBITDA、DCF、WACC、SOTP、ROE、ROA、NCI、TTM、YoY、D/E、ICR、OCF、FCF、SEZ、JV、KEK、RUPS、SHGB、SBLC、PROPER、PLN、IDX、PP&E、LNG、FX、RSI、DPS、MOU、FDI、AGM、GMS、Beta、YTD、B3/B-、PT/Tbk、FY/AR/1H/Q/KPI 及净债务、毛利率、市值、土地储备、归母、少数股东、清算价值、安全边际、加权股本等约 117 条）添加「?」悬停提示：鼠标移到问号上即弹出解释（长词条自动换行；点击可固定/取消，移动端点击切换）。
+- 解释内容以联网查证的英文专业定义为准（Fidelity / CFA Institute / Wall Street Prep / NYU Stern / Moody's / NISM / GuruFocus / CFI 等），**解释语言与被解释词完全一致**：英文缩写→英文释义、印尼文词（Margin kotor、Utang bersih、RUPS 等）→印尼文释义、中文词（毛利率、净利率等）→中文释义，三语界面互不混排。
+- 词表集中在 `data.json` 的 `GLOS` 数据块（第 27 个数据块），更新解释只改该块即可，无需动页面结构。
 
 ## 核心结论速览
 
