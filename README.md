@@ -8,8 +8,12 @@ PT Kawasan Industri Jababeka Tbk（印尼证券交易所代码：**KIJA**）财�
 
 | 文件 | 说明 |
 | --- | --- |
+| [`index.html`](index.html) | **财务与经营 Dashboard**（总览 + 2024/2025 年报 + 2026 中报 + 风险与方向，5 个视图） |
+| [`data.json`](data.json) | Dashboard 的数据记录层（可编辑后刷新同步） |
 | [`KIJA_财务分析报告_2015-2025.md`](KIJA_财务分析报告_2015-2025.md) | 十年财务与经营分析报告（含风险与机会） |
 | [`KIJA_financial_data_2015-2025.csv`](KIJA_financial_data_2015-2025.csv) | 2015–2025 关键财务指标数据集 |
+
+**Dashboard 在线访问**：<https://PLJKT.github.io/KIJA/>（GitHub Pages，从 `index.html` 自动发布）。图表依赖 jsDelivr / cdnjs CDN，需联网加载。
 
 ## 核心结论速览
 

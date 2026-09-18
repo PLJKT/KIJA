@@ -1,0 +1,90 @@
+{
+  "meta": {
+    "company": "PT Kawasan Industri Jababeka Tbk",
+    "ticker": "IDX: KIJA",
+    "business": "工业园区开发商（Cikarang / Kendal 经济特区），兼营电力、水务、干港等基建",
+    "currency": "IDR billion",
+    "updated": "2026-09-18",
+    "disclaimer": "2026 年为 1H26 未经审计数据；部分历史数字随年报追溯调整。本数据仅作记录与参考，不构成投资建议。"
+  },
+  "annual": {
+    "years": ["2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025"],
+    "revenue": [3140,2931,2995,2712,2254,2396,2490,2747,3300,4603,5149],
+    "gross_profit": [1380,1225,1132,1168,828,1024,1102,1419,1524,1967,2033],
+    "net_income_consolidated": [331,427,150,67,141,45,88,41,529,770,857],
+    "net_income_parent": [null,null,null,null,null,null,-5,-64,306,363,423],
+    "total_assets": [7980,10709,10967,10840,10704,10849,11313,12687,12947,14017,15056],
+    "total_loans": [2692,3024,3167,3373,3503,3570,3660,4242,4419,4498,4607],
+    "total_liabilities": [3924,5198,5263,5083,5026,5051,5363,6200,6016,6478,6912],
+    "total_equity": [4056,5511,5704,5757,5678,5798,5950,6487,6931,7539,8144],
+    "parent_equity": [null,null,null,null,null,null,5257,5192,5467,5832,6264],
+    "gross_margin_pct": [44,42,38,43,37,43,44,52,46,43,39],
+    "net_margin_pct": [11,15,5,2,6,2,4,1,16,17,17],
+    "roe_pct": [8,8,3,1,2,1,1,1,8,10,11],
+    "roa_pct": [4,4,1,1,1,0,1,0,4,5,6],
+    "debt_to_equity_pct": [97,94,92,88,89,87,90,96,87,86,85],
+    "loans_to_equity_pct": [66,55,56,59,62,62,62,65,64,60,57],
+    "ebitda": [null,null,null,null,657,789,817,1087,1253,1617,1736],
+    "ebitda_margin_pct": [null,null,null,null,29,33,33,40,38,35,34],
+    "marketing_sales": [null,null,null,null,null,null,null,1717,2213,3188,3601],
+    "segment_realestate": [null,null,null,null,null,null,1367,1501,1839,2694,2583],
+    "segment_infrastructure": [null,null,null,null,null,null,1123,1246,1461,1909,2567]
+  },
+  "years_detail": {
+    "2024": {
+      "kpis": {"revenue": 4603, "net_income_consolidated": 770, "net_income_parent": 363, "marketing_sales": 3188, "gross_margin_pct": 43, "roe_pct": 10},
+      "segments_pct": {"realestate": 58.5, "power": 25.5, "water_services": 10.3, "dry_port": 5.6},
+      "fx_loss": 205.7,
+      "cash_end": 2016,
+      "key_events": [
+        ["2024", "营销销售 3,188B 创纪录（+44%，超目标 28%）"],
+        ["2024H1", "创始人 SD Darmono 重新执掌公司"],
+        ["2024", "Kendal JV（KIK）派息 322.9B"],
+        ["2024", "汇兑损失 205.7B"],
+        ["2024-12", "股价 186 盾，市值约 3.9T"]
+      ]
+    },
+    "2025": {
+      "kpis": {"revenue": 5149, "net_income_consolidated": 857, "net_income_parent": 423, "ebitda": 1736, "cash_end": 3586, "debt_to_equity_pct": 85},
+      "segments": {"realestate": 2583, "infrastructure": 2567},
+      "debt_structure_2025_12_31": {"senior_notes_usdm": 185.9, "mandiri_idrb": 1339, "ccb_idrb": 145, "ocbc_idrb": 35},
+      "fx_loss": 120.9,
+      "ebitda_interest_x": 4.43,
+      "net_debt_ebitda_x": 0.57,
+      "cash_flow_surplus": {"consolidated": 1570, "jv": 932, "kija_own": 639},
+      "key_events": [
+        ["2025-02", "营销销售 3,601B 再创纪录（达标 103%）"],
+        ["2025-05", "Jababeka Bizpark 动工"],
+        ["2025-08", "PT Sitoy 于 Kendal 开厂（投资 US$50M）"],
+        ["2025-10", "Fitch 确认 B-（稳定）"],
+        ["2025-12", "股价 210 盾，市值约 4.37T"]
+      ]
+    },
+    "2026_H1": {
+      "kpis": {"revenue": 2437, "gross_margin_pct": 34, "operating_profit": 524, "net_income": -6.4, "ebitda": 748, "marketing_sales": 1188, "cash": 3200},
+      "targets_2026": {"marketing_sales": 3750, "cikarang": 1250, "kendal": 2500},
+      "one_off_costs": {"fx": 281, "derivatives": 155, "accelerated_amortization": 25},
+      "infrastructure_share_pct": 57,
+      "balance_2026_06_30": {"assets": 14911, "liabilities": 7146, "equity": 7765},
+      "key_events": [
+        ["2026-02", "PIER Mini LNG 工厂启用"],
+        ["2026-06-05", "FY2025 派息每股 2.03 盾（合计 42.3B），7-09 支付"],
+        ["2026-07", "15 年期 IDR 3.4T 贷款清偿 2027 美元票据，完成再融资"],
+        ["2026-01-12", "Moody's 首予 B3（稳定）；S&P 于 2026-01-22 应公司要求撤销"],
+        ["2026-08", "Kendal JV 宣布派息 615B（51% 归 KIJA）"]
+      ]
+    }
+  },
+  "risk_indicators": {
+    "high": ["毛利率趋势（39% → 1H26 34%）", "少数股东稀释（归母占比 ~49%）", "收入确认节奏波动（1H26 -11%）"],
+    "medium": ["非经营损益扰动", "信用评级 B-/B3（投机级）", "Kendal 集中度（营销销售 ~70%）", "电力业务毛利", "宏观与 FDI 周期"],
+    "low": ["净负债/EBITDA 0.57x", "现金缓冲 3.2–3.6T", "EBITDA/利息 4.43x"]
+  },
+  "sources": [
+    "https://www.jababeka.com/wp-content/uploads/2026/05/KIJA-AR-2025.pdf",
+    "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202607/20260731205845-62989-0/FinancialStatement-2026-II-KIJA.pdf",
+    "https://www.jababeka.com/wp-content/uploads/2023/05/KIJA-ASR-2022.pdf",
+    "https://www.jababeka.com/wp-content/uploads/2025/02/KIJA-Presentation-Material-Augustus-2026-Final.pdf",
+    "https://www.idx.co.id"
+  ]
+}

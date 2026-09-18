@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KIJA 财务与经营 Dashboard · Jababeka（IDX: KIJA）</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231F5E40'/%3E%3Ctext x='32' y='46' font-size='38' text-anchor='middle' fill='%23F1F4EE' font-family='Arial' font-weight='700'%3EK%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --ink:#16241C; --paper:#EFF2EC; --card:#FFFFFF; --line:#DCE3D9;
+  --green:#1F5E40; --green2:#4A8B66; --teal:#3E7D6B; --amber:#C07A2D; --clay:#B04A2E;
+  --muted:#5C6B61; --ok:#2E7D4F; --warn:#C07A2D; --high:#B04A2E; --soft:#E4E9E0;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:auto}
+body{font-family:"Segoe UI","Microsoft YaHei",system-ui,-apple-system,sans-serif;background:var(--paper);color:var(--ink);line-height:1.55;font-size:14px}
+header{background:var(--ink);color:#EDF2EC;padding:16px 22px 14px}
+.hd-inner{max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
+.hd-title{display:flex;align-items:center;gap:12px}
+.logo{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:9px;background:var(--green);color:#EDF2EC;font-size:22px;font-weight:800}
+.hd-title h1{font-size:20px;font-weight:700;letter-spacing:.3px}
+.hd-title p{font-size:12px;color:#AFC2B4;margin-top:1px}
+.hd-meta{font-size:11px;color:#AFC2B4;text-align:right;line-height:1.6}
+nav.tabs{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line)}
+.tabs-inner{max-width:1180px;margin:0 auto;display:flex;gap:2px;overflow-x:auto;padding:0 12px}
+a.tab{display:inline-block;padding:11px 16px;font-size:14px;color:var(--muted);text-decoration:none;border-bottom:2px solid transparent;white-space:nowrap}
+a.tab:hover{color:var(--green)}
+a.tab.active{color:var(--green);border-bottom-color:var(--green);font-weight:600}
+main{max-width:1180px;margin:0 auto;padding:18px 22px 34px}
+.page{display:none}
+.page.active{display:block}
+.phase{display:flex;gap:8px;flex-wrap:wrap;margin:2px 0 16px}
+.chip{font-size:12px;color:var(--muted);border:1px solid var(--line);background:#fff;border-radius:14px;padding:3px 12px}
+.chip b{color:var(--green)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:11px;margin-bottom:18px}
+.kpis:has(> :nth-child(6):last-child){grid-template-columns:repeat(6,minmax(0,1fr))}
+.kpis:has(> :nth-child(8):last-child){grid-template-columns:repeat(8,minmax(0,1fr))}
+@media(max-width:1199px){
+  .kpis:has(> :nth-child(6):last-child){grid-template-columns:repeat(3,minmax(0,1fr))}
+  .kpis:has(> :nth-child(8):last-child){grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+@media(max-width:699px){
+  .kpis:has(> :nth-child(6):last-child){grid-template-columns:repeat(2,minmax(0,1fr))}
+  .kpis:has(> :nth-child(8):last-child){grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:11px 13px}
+.kpi .lbl{font-size:12px;color:var(--muted)}
+.kpi .val{font-size:23px;font-weight:700;font-variant-numeric:tabular-nums;margin:2px 0 1px;line-height:1.2}
+.kpi .val small{font-size:12px;font-weight:500;color:var(--muted)}
+.kpi .del{font-size:12px;font-variant-numeric:tabular-nums}
+.up{color:var(--ok)}.dn{color:var(--high)}.flat{color:var(--muted)}
+.charts{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-bottom:18px}
+.chart-card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 14px 8px}
+.chart-card h3{font-size:14px;font-weight:600;margin-bottom:2px}
+.chart-card .sub{font-size:11px;color:var(--muted);margin-bottom:6px}
+.chart{width:100%;height:300px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-bottom:18px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:13px 15px}
+.panel h3{font-size:14px;font-weight:600;margin-bottom:8px}
+.panel h3 .hint{font-weight:400;font-size:11px;color:var(--muted)}
+ul.events{list-style:none}
+ul.events li{display:flex;gap:10px;padding:6px 0;border-bottom:1px dashed var(--line);font-size:13px}
+ul.events li:last-child{border-bottom:none}
+ul.events .d{flex:none;width:74px;color:var(--green);font-weight:600;font-variant-numeric:tabular-nums;font-size:12px;padding-top:1px}
+.risk-row{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px dashed var(--line);font-size:13px}
+.risk-row:last-child{border-bottom:none}
+.risk-row .nm{flex:1 1 34%;min-width:120px}
+.risk-row .vv{flex:1 1 22%;font-weight:600;font-variant-numeric:tabular-nums;min-width:90px}
+.risk-row .bar{flex:1 1 22%;height:7px;background:var(--soft);border-radius:4px;overflow:hidden;min-width:60px}
+.risk-row .bar i{display:block;height:100%}
+.badge{flex:none;font-size:11px;font-weight:600;border-radius:10px;padding:1px 9px;min-width:44px;text-align:center}
+.lv-low{background:#DDEBDD;color:#1F5E40}
+.lv-mid{background:#F3E3C8;color:#8A5A14}
+.lv-high{background:#F0D5CC;color:#8F3520}
+.risk-note{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5}
+.dir-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:11px;margin-bottom:18px}
+.dir{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.dir .n{font-size:11px;font-weight:700;color:var(--green);letter-spacing:.5px}
+.dir h4{font-size:14px;margin:3px 0 4px}
+.dir p{font-size:12.5px;color:var(--muted)}
+.tl{--date:66px;--axis:26px;--gap:12px;display:grid;grid-template-columns:var(--date) var(--axis) 1fr;column-gap:var(--gap);position:relative}
+.tl::before{content:"";position:absolute;left:calc(var(--date) + var(--gap) + var(--axis)/2 - 1px);top:8px;bottom:8px;width:2px;background:var(--line)}
+.tl .yr{font-weight:700;color:var(--green);text-align:right;padding-top:2px;font-size:15px}
+.tl .dot{width:13px;height:13px;border-radius:50%;background:var(--green);justify-self:center;margin-top:5px;position:relative;z-index:1}
+.tl .ev{margin-bottom:13px;background:#fff;border:1px solid var(--line);border-radius:8px;padding:8px 12px;font-size:13px}
+.tl .ev b{color:var(--green)}
+.tl .ev .m{color:var(--muted);font-size:12px;margin-top:2px}
+footer{max-width:1180px;margin:0 auto;padding:6px 22px 30px;font-size:11px;color:var(--muted);line-height:1.7}
+footer a{color:var(--green)}
+@media(max-width:900px){
+  .charts,.two-col{grid-template-columns:1fr}
+  .chart{height:280px}
+  .hd-meta{text-align:left}
+  main{padding:14px 14px 30px}
+}
+</style>
+</head>
+
+<body>
+<header>
+  <div class="hd-inner">
+    <div class="hd-title">
+      <span class="logo">K</span>
+      <div><h1>KIJA 财务与经营 Dashboard</h1><p>PT Kawasan Industri Jababeka Tbk（IDX: KIJA）· 工业园区开发 · 财务与运营监控</p></div>
+    </div>
+    <div class="hd-meta">数据来源：2019 / 2022 / 2025 年报、1H26 中报、公司演示与 IDX 公告<br>数据截止：2026-09-18 · 单位：十亿印尼盾（IDR bn），另有注明除外</div>
+  </div>
+</header>
+<nav class="tabs" id="tabs">
+  <div class="tabs-inner">
+    <a class="tab active" href="#overview" data-page="overview">总览</a>
+    <a class="tab" href="#fy2024" data-page="fy2024">2024 年报</a>
+    <a class="tab" href="#fy2025" data-page="fy2025">2025 年报</a>
+    <a class="tab" href="#fy2026" data-page="fy2026">2026 中报</a>
+    <a class="tab" href="#risk" data-page="risk">风险与方向</a>
+  </div>
+</nav>
+<main>
+
+<!-- ===== 视图：总览 ===== -->
+<section class="page active" id="overview">
+  <div class="phase">
+    <span class="chip">阶段 <b>2016 高点</b>：净利 427B</span>
+    <span class="chip">阶段 <b>2017–2022 低谷</b>：地产下行 + 疫情 + 汇兑损失</span>
+    <span class="chip">阶段 <b>2023–2025 爆发</b>：Kendal 售地 + 基建收入双轮驱动</span>
+    <span class="chip">阶段 <b>2026 换挡</b>：美元债出清、经常性收入占比 57%</span>
+  </div>
+  <div class="kpis" id="ov-kpis"></div>
+  <div class="charts">
+    <div class="chart-card"><h3>营收（2015–2025）</h3><div class="sub">合并收入，十亿盾</div><div class="chart" id="o1"></div></div>
+    <div class="chart-card"><h3>净利润：合并 vs 归母</h3><div class="sub">合并净利（实线）与归母净利（虚线）；2021 年前归母未单独披露</div><div class="chart" id="o2"></div></div>
+    <div class="chart-card"><h3>利润率与杠杆趋势</h3><div class="sub">毛利率 / 净利率 / ROE / 负债÷权益</div><div class="chart" id="o3"></div></div>
+    <div class="chart-card"><h3>分部收入：地产 vs 基建</h3><div class="sub">2021–2025，十亿盾；基建含电力、水务与干港</div><div class="chart" id="o4"></div></div>
+    <div class="chart-card"><h3>营销销售（Marketing Sales）</h3><div class="sub">土地与物业预售合同额，领先指标</div><div class="chart" id="o5"></div></div>
+    <div class="chart-card"><h3>EBITDA（2019–2025）</h3><div class="sub">调整后 EBITDA 及 EBITDA 利润率</div><div class="chart" id="o6"></div></div>
+  </div>
+</section>
+
+<!-- ===== 视图：2024 年报 ===== -->
+<section class="page" id="fy2024">
+  <div class="kpis" id="k24"></div>
+  <div class="charts">
+    <div class="chart-card"><h3>2024 收入构成</h3><div class="sub">地产及其他 58.5% · 电力 25.5% · 水务/园区 10.3% · 干港 5.6%</div><div class="chart" id="f24-1"></div></div>
+    <div class="chart-card"><h3>盈利质量：合并 vs 归母</h3><div class="sub">2023–2025；少数股东（主要为 Kendal JV 伙伴）分走约一半利润</div><div class="chart" id="f24-2"></div></div>
+    <div class="chart-card"><h3>毛利率 / 净利率（2015–2025）</h3><div class="sub">毛利率自 2021 年高点 52% 回落，2024 年 43%</div><div class="chart" id="f24-3"></div></div>
+    <div class="chart-card"><h3>资产负债表规模（2021–2025）</h3><div class="sub">资产 / 负债 / 权益，十亿盾</div><div class="chart" id="f24-4"></div></div>
+  </div>
+  <div class="two-col">
+    <div class="panel"><h3>2024 年大事记</h3><ul class="events" id="ev24"></ul></div>
+    <div class="panel"><h3>2024 风险指示</h3><div id="rk24"></div><div class="risk-note">总体判断：营销销售强劲、资产负债表改善，但毛利率下行与少数股东稀释是主要观察点。</div></div>
+  </div>
+</section>
+
+<!-- ===== 视图：2025 年报 ===== -->
+<section class="page" id="fy2025">
+  <div class="kpis" id="k25"></div>
+  <div class="charts">
+    <div class="chart-card"><h3>债务结构（2025-12-31）</h3><div class="sub">合计 4,607B；Senior Notes 按 16,782 折算；2026Q2 已全部提前偿还</div><div class="chart" id="f25-1"></div></div>
+    <div class="chart-card"><h3>资产构成：现金 vs 其他</h3><div class="sub">2023–2025；现金及等价物 1,362 → 2,416 → 3,831B</div><div class="chart" id="f25-2"></div></div>
+    <div class="chart-card"><h3>偿债能力</h3><div class="sub">EBITDA/利息 4.43x；净负债/EBITDA 0.57x（2023: 2.68x → 2025: 0.57x）</div><div class="chart" id="f25-3"></div></div>
+    <div class="chart-card"><h3>现金桥（2025）</h3><div class="sub">期初 2,016B + 合并盈余 1,570B（JV 932 + 自有 639）= 期末 3,586B</div><div class="chart" id="f25-4"></div></div>
+  </div>
+  <div class="two-col">
+    <div class="panel"><h3>2025 年大事记</h3><ul class="events" id="ev25"></ul></div>
+    <div class="panel"><h3>2025 风险指示</h3><div id="rk25"></div><div class="risk-note">总体判断：规模与现金创纪录、杠杆持续下降；毛利率续降至 39% 与 Kendal 收入依赖是主要观察点。</div></div>
+  </div>
+</section>
+
+<!-- ===== 视图：2026 中报 ===== -->
+<section class="page" id="fy2026">
+  <div class="kpis" id="k26"></div>
+  <div class="charts">
+    <div class="chart-card"><h3>1H26 vs 1H25 收入对比</h3><div class="sub">总收入 -11%；基建 +15%，土地 -32%（Kendal 收入确认时点差异）</div><div class="chart" id="f26-1"></div></div>
+    <div class="chart-card"><h3>营销销售进度（1H26）</h3><div class="sub">1,188B / 全年目标 3,750B（Cikarang 1,250 + Kendal 2,500），达标 32%</div><div class="chart" id="f26-2"></div></div>
+    <div class="chart-card"><h3>收入结构变化：基建占比</h3><div class="sub">经常性收入占比 45% → 57%，反映业务向基建倾斜</div><div class="chart" id="f26-3"></div></div>
+    <div class="chart-card"><h3>净亏损构成（一次性）</h3><div class="sub">2026 上半年净亏 6.4B，源于再融资一次性成本约 460B</div><div class="chart" id="f26-4"></div></div>
+  </div>
+  <div class="two-col">
+    <div class="panel"><h3>2026 年大事记（至 9 月）</h3><ul class="events" id="ev26"></ul></div>
+    <div class="panel"><h3>2026 风险指示</h3><div id="rk26"></div><div class="risk-note">总体判断：一次性成本导致账面亏损，但经营层面仍盈利；收入节奏与毛利率是 2026 下半年重点观察指标。</div></div>
+  </div>
+</section>
+
+<!-- ===== 视图：风险与方向 ===== -->
+<section class="page" id="risk">
+  <h2 style="font-size:17px;margin-bottom:4px">风险指示器总览</h2>
+  <p style="font-size:12.5px;color:var(--muted);margin-bottom:12px">综合 2024 年报、2025 年报与 2026 中报数据；等级为相对判断，条长表示当前水平。</p>
+  <div class="panel" style="margin-bottom:20px" id="rk-all"></div>
+
+  <h2 style="font-size:17px;margin-bottom:12px">发展方向</h2>
+  <div class="dir-grid">
+    <div class="dir"><div class="n">01</div><h4>经常性收入占比提升</h4><p>基建收入占比 45% → 50% → 57%（电力、水务、干港），收入稳定性与现金可见度增强。</p></div>
+    <div class="dir"><div class="n">02</div><h4>Kendal 为主增长引擎</h4><p>经济特区园区营销销售约占 70%；2026 年 Kendal 目标 2,500B，JV 派息 615B（51% 归 KIJA）。</p></div>
+    <div class="dir"><div class="n">03</div><h4>美元债出清、本币化融资</h4><p>2026Q2 以 15 年期 IDR 3.4T 贷款清偿 2027 美元票据，汇兑风险基本消除、久期显著拉长。</p></div>
+    <div class="dir"><div class="n">04</div><h4>净杠杆大幅下降</h4><p>净负债/EBITDA 自 2.68x（2023）降至 0.57x（2025）；现金 3.6T，接近净现金状态。</p></div>
+    <div class="dir"><div class="n">05</div><h4>新增长点布局</h4><p>PIER Mini LNG 工厂投运；干港吞吐 +13%；Jababeka Bizpark 动工；土地储备 5,089 公顷。</p></div>
+    <div class="dir"><div class="n">06</div><h4>股东回报恢复</h4><p>FY2025 恢复派息每股 2.03 盾（合计 42.3B，政策为净利 25–35%），KIK/Kendal 持续派息。</p></div>
+  </div>
+
+  <h2 style="font-size:17px;margin-bottom:12px">十年里程碑（2016–2026）</h2>
+  <div class="tl" id="tl"></div>
+</section>
+
+</main>
+<footer>
+  <div>数据来源：<a href="https://www.jababeka.com/wp-content/uploads/2026/05/KIJA-AR-2025.pdf" target="_blank" rel="noopener">KIJA 2025 年报</a> · <a href="https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202607/20260731205845-62989-0/FinancialStatement-2026-II-KIJA.pdf" target="_blank" rel="noopener">1H26 中报</a> · <a href="https://www.jababeka.com/wp-content/uploads/2023/05/KIJA-ASR-2022.pdf" target="_blank" rel="noopener">2022 年报</a> · <a href="https://www.jababeka.com/wp-content/uploads/2025/02/KIJA-Presentation-Material-Augustus-2026-Final.pdf" target="_blank" rel="noopener">2026-08 投资者演示</a> · <a href="https://www.idx.co.id" target="_blank" rel="noopener">IDX 公告</a>；数据口径与完整分析见<a href="KIJA_财务分析报告_2015-2025.md" target="_blank" rel="noopener">分析报告</a>。</div>
+  <div>本 Dashboard 仅供信息参考，不构成投资建议。2026 年为上半年未经审计数据；因年报追溯调整，个别历史数字可能与旧版披露略有差异。</div>
+</footer>
+
+<script>
+/* ===== 数据层（与 data.json 同步；本地 file:// 打开时无需 fetch） ===== */
+var DATA = {
+  years: ['2015','2016','2017','2018','2019','2020','2021','2022','2023','2024','2025'],
+  revenue: [3140,2931,2995,2712,2254,2396,2490,2747,3300,4603,5149],
+  gp:      [1380,1225,1132,1168,828,1024,1102,1419,1524,1967,2033],
+  niCons:  [331,427,150,67,141,45,88,41,529,770,857],
+  niParent:[null,null,null,null,null,null,-5,-64,306,363,423],
+  assets:  [7980,10709,10967,10840,10704,10849,11313,12687,12947,14017,15056],
+  loans:   [2692,3024,3167,3373,3503,3570,3660,4242,4419,4498,4607],
+  liab:    [3924,5198,5263,5083,5026,5051,5363,6200,6016,6478,6912],
+  equity:  [4056,5511,5704,5757,5678,5798,5950,6487,6931,7539,8144],
+  peq:     [null,null,null,null,null,null,5257,5192,5467,5832,6264],
+  gpm:     [44,42,38,43,37,43,44,52,46,43,39],
+  npm:     [11,15,5,2,6,2,4,1,16,17,17],
+  roe:     [8,8,3,1,2,1,1,1,8,10,11],
+  roa:     [4,4,1,1,1,0,1,0,4,5,6],
+  de:      [97,94,92,88,89,87,90,96,87,86,85],
+  le:      [66,55,56,59,62,62,62,65,64,60,57],
+  ebitda:  [null,null,null,null,657,789,817,1087,1253,1617,1736],
+  ebitdaM: [null,null,null,null,29,33,33,40,38,35,34],
+  msales:  [null,null,null,null,null,null,null,1717,2213,3188,3601],
+  segRe:   [null,null,null,null,null,null,1367,1501,1839,2694,2583],
+  segInfra:[null,null,null,null,null,null,1123,1246,1461,1909,2567]
+};
+
+/* ===== 工具 ===== */
+function fmt(v){return String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g, ',');}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+var C = {green:'#1F5E40', green2:'#4A8B66', teal:'#3E7D6B', amber:'#C07A2D', clay:'#B04A2E', soft:'#C7D0C8'};
+var AX = {color:'#5C6B61', fontSize:11};
+var SPLIT = {lineStyle:{color:'#E3E8E1'}};
+
+/* ===== 动态内容：KPI / 事件 / 风险 / 时间线 ===== */
+function kpiRow(elId, items){
+  var html='';
+  for(var i=0;i<items.length;i++){
+    var it=items[i];
+    html+='<div class="kpi"><div class="lbl">'+esc(it.l)+'</div><div class="val">'+esc(it.v)+'<small> '+esc(it.u)+'</small></div><div class="del '+it.c+'">'+esc(it.d)+'</div></div>';
+  }
+  document.getElementById(elId).innerHTML=html;
+}
+function eventsHtml(list){
+  var html='';
+  for(var i=0;i<list.length;i++){
+    html+='<li><span class="d">'+esc(list[i][0])+'</span><span>'+esc(list[i][1])+'</span></li>';
+  }
+  return html;
+}
+var LV = ['lv-low','lv-mid','lv-high'];
+var LVTXT = ['低','中','高'];
+function riskHtml(rows){
+  var html='';
+  for(var i=0;i<rows.length;i++){
+    var r=rows[i];
+    var w=Math.max(4,Math.min(100,r[3]));
+    var col = r[2]===0?C.green2:(r[2]===1?C.amber:C.clay);
+    html+='<div class="risk-row"><span class="nm">'+esc(r[0])+'</span><span class="vv">'+esc(r[1])+'</span><span class="bar"><i style="width:'+w+'%;background:'+col+'"></i></span><span class="badge '+LV[r[2]]+'">'+LVTXT[r[2]]+'</span></div>';
+  }
+  return html;
+}
+function riskRowBlock(elId, rows){
+  document.getElementById(elId).innerHTML=riskHtml(rows);
+}
+
+/* KPI 数据 */
+var KP = {
+  ov: [
+    {l:'2025 营收',v:'5,149',u:'十亿盾',d:'+12% 同比',c:'up'},
+    {l:'合并净利',v:'857',u:'十亿盾',d:'+11% 同比',c:'up'},
+    {l:'归母净利',v:'423',u:'十亿盾',d:'+17% 同比',c:'up'},
+    {l:'EBITDA',v:'1,736',u:'十亿盾',d:'+7% 同比',c:'up'},
+    {l:'营销销售',v:'3,601',u:'十亿盾',d:'+13% 同比',c:'up'},
+    {l:'现金及等价物',v:'3,586',u:'十亿盾',d:'+78% 同比',c:'up'},
+    {l:'毛利率',v:'39',u:'%',d:'-4pct（2021 峰值 52%）',c:'dn'},
+    {l:'负债/权益',v:'85',u:'%',d:'-1pct',c:'dn'}
+  ],
+  k24: [
+    {l:'2024 营收',v:'4,603',u:'十亿盾',d:'+39% 同比',c:'up'},
+    {l:'合并净利',v:'770',u:'十亿盾',d:'+46% 同比',c:'up'},
+    {l:'归母净利',v:'363',u:'十亿盾',d:'+19% 同比',c:'up'},
+    {l:'营销销售',v:'3,188',u:'十亿盾',d:'+44%，超目标 28%',c:'up'},
+    {l:'毛利率',v:'43',u:'%',d:'-4pct（2021 峰值 52%）',c:'dn'},
+    {l:'ROE',v:'10',u:'%',d:'+2pct',c:'up'}
+  ],
+  k25: [
+    {l:'2025 营收',v:'5,149',u:'十亿盾',d:'+12% 同比',c:'up'},
+    {l:'合并净利',v:'857',u:'十亿盾',d:'+11% 同比',c:'up'},
+    {l:'归母净利',v:'423',u:'十亿盾',d:'+17% 同比',c:'up'},
+    {l:'EBITDA',v:'1,736',u:'十亿盾',d:'+7% 同比',c:'up'},
+    {l:'现金及等价物',v:'3,586',u:'十亿盾',d:'+78%，含 JV',c:'up'},
+    {l:'负债/权益',v:'85',u:'%',d:'-1pct，净债/EBITDA 0.57x',c:'dn'}
+  ],
+  k26: [
+    {l:'收入（1H26）',v:'2,437',u:'十亿盾',d:'-11% 同比',c:'dn'},
+    {l:'经营利润',v:'524',u:'十亿盾',d:'H1 经营层面仍盈利',c:'up'},
+    {l:'净利润',v:'-6.4',u:'十亿盾',d:'一次性再融资成本',c:'dn'},
+    {l:'EBITDA',v:'748',u:'十亿盾',d:'-25% 同比',c:'dn'},
+    {l:'营销销售',v:'1,188',u:'十亿盾',d:'全年目标 3,750 的 32%',c:'flat'},
+    {l:'现金',v:'~3,200',u:'十亿盾',d:'2026-06-30',c:'up'}
+  ]
+};
+
+/* 事件数据 */
+var EV = {
+  ev24: [
+    ['2024 全年','营销销售 3,188B 创纪录（+44%，超原目标 28%）；Cikarang 33% / Kendal 67%'],
+    ['2024 上半年','创始人 SD Darmono 重新执掌公司，重振战略方向'],
+    ['2024','Kendal 合资公司 KIK 派息 322.9B（KIJA 持股 51%）'],
+    ['2024 全年','汇兑损失 205.7B 拖累净利（2025 年降至 120.9B）'],
+    ['2024-12','股价收于 186 盾，市值约 3.9T；FY24 P/E 约 11x']
+  ],
+  ev25: [
+    ['2025-02','营销销售 3,601B 再创纪录（+13%，达标 103%）；Kendal 约 70%'],
+    ['2025-05','Jababeka Bizpark 智慧工业园区动工'],
+    ['2025-08','PT Sitoy Group（投资 5,000 万美元）在 Kendal 开厂'],
+    ['2025-10/2026-01','Fitch 确认 B-（稳定）；Moody’s 首予 B3（稳定）；S&P 应公司要求撤销评级'],
+    ['2025 全年','汇兑损失降至 120.9B；EBITDA/利息 4.43x、净负债/EBITDA 0.57x；合并现金盈余 1,570B'],
+    ['2025-12','股价收于 210 盾，市值约 4.37T']
+  ],
+  ev26: [
+    ['2026-02','PIER（Pasuruan）Mini LNG 工厂启用，服务东部工业能源转型'],
+    ['2026-04','1Q26 营销销售 518B（Cikarang 139 / Kendal 379）'],
+    ['2026-06-05','股东大会通过 FY2025 派息每股 2.03 盾（合计 42.3B），7 月 9 日支付'],
+    ['2026-07','以 15 年期 IDR 3.4T Mandiri 贷款清偿 2027 美元票据（185.9M）并终止对冲，完成再融资'],
+    ['2026-08','1H26 中报：净亏 6.4B（一次性成本约 460B）；基建收入占比升至 57%'],
+    ['2026-08','Kendal JV 宣布派息 615B（51% 归 KIJA）']
+  ]
+};
+
+/* 风险指示器 */
+var RK = {
+  rk24: [
+    ['毛利率','43%（峰值 52%）',1,82,'2021 年以来持续下滑'],
+    ['归母净利占比','47%',2,53,'少数股东分走约 53%'],
+    ['汇兑损失','205.7B',1,60,'美元债敞口拖累净利'],
+    ['负债/权益','86%',1,86,'连续两年改善'],
+    ['营销销售达标','128%',0,28,'领先指标强劲'],
+    ['收入增长','+39%',0,39,'增长动能强']
+  ],
+  rk25: [
+    ['毛利率','39%（-4pct）',2,75,'土地毛利下滑 + 基建占比上升'],
+    ['归母净利占比','49%',2,51,'NCI 分走约一半利润'],
+    ['Kendal 依赖','营销销售 70%',1,70,'园区销售集中于 Kendal'],
+    ['净负债/EBITDA','0.57x',0,21,'大幅去杠杆'],
+    ['现金 / 总资产','24%',0,24,'缓冲充足'],
+    ['汇兑损失','120.9B（-41%）',1,45,'敞口缩小，2026 出清']
+  ],
+  rk26: [
+    ['收入增速','-11%（H1）',2,75,'土地确认时点主导波动'],
+    ['毛利率','34%（H1）',2,65,'基建占比上升的结构性压低'],
+    ['一次性再融资成本','约 460B',1,60,'一次性，出清后不再有'],
+    ['营销销售进度','32%（时过半）',1,60,'Kendal 2H 为关键'],
+    ['现金缓冲','~3.2T',0,21,'覆盖短期负债与派息'],
+    ['利息负担','本币置换后上升',1,45,'长期看汇兑风险下降']
+  ],
+  'rk-all': [
+    ['毛利率水平与趋势','39%（1H26 34%）',2,75,'土地毛利率下滑叠加电力/水务占比上升'],
+    ['少数股东稀释','归母占比 ~49%',2,51,'Kendal JV 51% 权益，利润约一半归 NCI'],
+    ['收入确认节奏','1H26 -11%',2,70,'土地销售时点主导季度波动'],
+    ['非经营损益扰动','汇兑/衍生品',1,60,'2024 205.7B → 2025 120.9B → 2026H1 出清'],
+    ['杠杆与偿债','D/E 85%',1,35,'净负债/EBITDA 0.57x、EBITDA/利息 4.43x'],
+    ['现金缓冲','3.2–3.6T',0,24,'覆盖短期借款与分红'],
+    ['信用评级','B- / B3',1,50,'投机级，融资成本偏高'],
+    ['电力业务盈利','毛利偏低',1,50,'气价与 PLN 调度影响'],
+    ['Kendal 集中度','营销销售 ~70%',1,70,'依赖单一 SEZ 园区'],
+    ['宏观与 FDI 周期','中',1,45,'关税与外资建厂节奏影响土地需求']
+  ]
+};
+
+/* 时间线 2016–2026 */
+var TL = [
+  ['2016','Kendal 工业园动工（与 Sembcorp 合资「Park by the Bay」），获经济特区地位；United Power 投运','盈利高点：净利 427B'],
+  ['2017','Grahabuana Cikarang 品牌重塑为「Jababeka Residence」','营收 2,995B，盈利拐点向下'],
+  ['2018','Kawana Golf Residence 获奖；Bekasi Power 遭 PLN Reserve Shutdown','营收 2,712B，净利 67B'],
+  ['2019','获 Golden Property Award；大选后地产需求疲软','营收 2,254B（十年低点）'],
+  ['2020','COVID-19 冲击；获 PropertyGuru 亚洲最佳工业开发商；Kendal 售地逆势放量','营收 2,396B，净利 45B'],
+  ['2021','疫后复苏，营销销售翻倍（1H21 526B）','营收 2,490B，归母 -5B'],
+  ['2022','债务重组：2027 高级票据（7–9%）+ Mandiri 美元贷款；与 MRT Jakarta 签 MOU','汇兑损失 404B，归母 -64B'],
+  ['2023','盈利爆发：净利 +10 倍；Kendal 售地翻倍至 1,113B；营销销售 2,213B（+29%）','营收 3,300B，归母 306B'],
+  ['2024','营销销售 3,188B 创纪录（+44%）；KIK 派息 322.9B；创始人重新执掌','营收 4,603B，归母 363B'],
+  ['2025','营销销售 3,601B 再创纪录；Bizpark 动工；Sitoy 开厂；PROPER 连庄','营收 5,149B，现金 3.6T'],
+  ['2026（H1）','再融资出清美元债（15 年 IDR 3.4T）；PIER Mini LNG 启用；Moody’s 首评 B3；恢复派息 2.03 盾/股','净亏 6.4B（一次性）；基建占比 57%']
+];
+
+/* ===== 渲染：KPI / 事件 / 风险 / 时间线 ===== */
+function renderStatics(){
+  kpiRow('ov-kpis', KP.ov);
+  kpiRow('k24', KP.k24);
+  kpiRow('k25', KP.k25);
+  kpiRow('k26', KP.k26);
+  document.getElementById('ev24').innerHTML=eventsHtml(EV.ev24);
+  document.getElementById('ev25').innerHTML=eventsHtml(EV.ev25);
+  document.getElementById('ev26').innerHTML=eventsHtml(EV.ev26);
+  riskRowBlock('rk24', RK.rk24);
+  riskRowBlock('rk25', RK.rk25);
+  riskRowBlock('rk26', RK.rk26);
+  riskRowBlock('rk-all', RK['rk-all']);
+  var th='';
+  for(var i=0;i<TL.length;i++){
+    th+='<div class="yr">'+esc(TL[i][0])+'</div><div class="dot"></div><div class="ev"><b>'+esc(TL[i][1])+'</b><div class="m">'+esc(TL[i][2])+'</div></div>';
+  }
+  document.getElementById('tl').innerHTML=th;
+}
+
+/* ===== ECharts 图表 ===== */
+var CH = {};
+function baseTooltip(){return {trigger:'axis', confine:true};}
+function baseGrid(){return {left:48,right:18,top:34,bottom:30,containLabel:false};}
+function baseX(cats){return {type:'category',data:cats,axisLabel:{color:AX.color,fontSize:11},axisLine:{lineStyle:{color:'#B9C4BB'}}};}
+function baseY(name){return {type:'value',name:name,nameTextStyle:{color:AX.color,fontSize:11},axisLabel:{color:AX.color,fontSize:11},splitLine:SPLIT};}
+
+function optO1(){
+  var d=DATA.revenue, labels=[];
+  for(var i=0;i<d.length;i++){labels.push(fmt(d[i]));}
+  return {
+    tooltip:baseTooltip(),
+    grid:baseGrid(),
+    xAxis:baseX(DATA.years),
+    yAxis:baseY('十亿盾'),
+    series:[{type:'bar',data:d,itemStyle:{color:C.green,borderRadius:[3,3,0,0]},label:{show:true,position:'top',fontSize:10,color:'#5C6B61',formatter:function(p){return fmt(p.value);}},barMaxWidth:26}]
+  };
+}
+function optO2(){
+  return {
+    tooltip:baseTooltip(),
+    legend:{top:2,right:6,textStyle:{color:AX.color,fontSize:11},itemWidth:14},
+    grid:baseGrid(),
+    xAxis:baseX(DATA.years),
+    yAxis:baseY('十亿盾'),
+    series:[
+      {name:'合并净利',type:'line',data:DATA.niCons,smooth:true,symbolSize:6,lineStyle:{width:2.5,color:C.green},itemStyle:{color:C.green}},
+      {name:'归母净利',type:'line',data:DATA.niParent,smooth:true,symbolSize:6,lineStyle:{width:2,color:C.amber,type:'dashed'},itemStyle:{color:C.amber}}
+    ]
+  };
+}
+function optO3(){
+  return {
+    tooltip:baseTooltip(),
+    legend:{top:2,right:6,textStyle:{color:AX.color,fontSize:11},itemWidth:14},
+    grid:baseGrid(),
+    xAxis:baseX(DATA.years),
+    yAxis:baseY('%'),
+    series:[
+      {name:'毛利率',type:'line',data:DATA.gpm,smooth:true,symbolSize:5,lineStyle:{width:2,color:C.green},itemStyle:{color:C.green}},
+      {name:'净利率',type:'line',data:DATA.npm,smooth:true,symbolSize:5,lineStyle:{width:2,color:C.teal},itemStyle:{color:C.teal}},
+      {name:'ROE',type:'line',data:DATA.roe,smooth:true,symbolSize:5,lineStyle:{width:2,color:C.green2},itemStyle:{color:C.green2}},
+      {name:'负债/权益',type:'line',data:DATA.de,smooth:true,symbolSize:5,lineStyle:{width:2,color:C.amber},itemStyle:{color:C.amber}}
+    ]
+  };
+}
+function optO4(){
+  return {
+    tooltip:baseTooltip(),
+    legend:{top:2,right:6,textStyle:{color:AX.color,fontSize:11},itemWidth:14},
+    grid:baseGrid(),
+    xAxis:baseX(['2021','2022','2023','2024','2025']),
+    yAxis:baseY('十亿盾'),
+    series:[
+      {name:'基建（电力/水务/干港）',type:'bar',stack:'s',data:[1123,1246,1461,1909,2567],itemStyle:{color:C.teal},barMaxWidth:40},
+      {name:'地产与物业',type:'bar',stack:'s',data:[1367,1501,1839,2694,2583],itemStyle:{color:C.green},barMaxWidth:40}
+    ]
+  };
+}
+function optO5(){
+  var d=[1717,2213,3188,3601], labels=[];
+  for(var i=0;i<d.length;i++){labels.push(fmt(d[i]));}
+  return {
+    tooltip:baseTooltip(),
+    grid:baseGrid(),
+    xAxis:baseX(['2022','2023','2024','2025']),
+    yAxis:baseY('十亿盾'),
+    series:[{type:'bar',data:d,itemStyle:{color:C.green,borderRadius:[3,3,0,0]},label:{show:true,position:'top',fontSize:11,color:'#1F5E40',fontWeight:600,formatter:function(p){return fmt(p.value);}},barMaxWidth:52}]
+  };
+}
+function optO6(){
+  var d=DATA.ebitda, cats=[], vals=[];
+  for(var i=0;i<d.length;i++){if(d[i]!==null){cats.push(DATA.years[i]);vals.push(d[i]);}}
+  var labels=[];
+  for(var j=0;j<vals.length;j++){labels.push(fmt(vals[j]));}
+  return {
+    tooltip:baseTooltip(),
+    grid:baseGrid(),
+    xAxis:baseX(cats),
+    yAxis:baseY('十亿盾'),
+    series:[{type:'bar',data:vals,itemStyle:{color:C.green2,borderRadius:[3,3,0,0]},label:{show:true,position:'top',fontSize:10,color:'#5C6B61',formatter:function(p){return fmt(p.value);}},barMaxWidth:40}]
+  };
+}
+function optPie(titleData){
+  var data=titleData, total=0;
+  for(var i=0;i<data.length;i++){total+=data[i][1];}
+  var ser=[];
+  for(var j=0;j<data.length;j++){ser.push({name:data[j][0],value:data[j][1]});}
+  return {
+    tooltip:{trigger:'item',confine:true,formatter:function(p){return p.name+'：'+fmt(p.value)+'B（'+p.percent+'%）';}},
+    legend:{bottom:2,textStyle:{color:AX.color,fontSize:11},itemWidth:12},
+    series:[{type:'pie',radius:['34%','66%'],center:['50%','45%'],data:ser,itemStyle:{borderColor:'#fff',borderWidth:1},label:{show:true,fontSize:11,color:'#16241C',formatter:function(p){return p.name+'\n'+p.percent+'%';}},labelLine:{length:10,length2:8},color:[C.green,C.teal,C.green2,C.amber]}]
+  };
+}
+function optGrouped(cats, series, maxW){
+  var out={tooltip:baseTooltip(),legend:{top:2,right:6,textStyle:{color:AX.color,fontSize:11},itemWidth:14},grid:baseGrid(),xAxis:baseX(cats),yAxis:baseY('十亿盾'),series:[]};
+  for(var i=0;i<series.length;i++){
+    out.series.push({name:series[i][0],type:'bar',data:series[i][1],itemStyle:{color:series[i][2]},barMaxWidth:maxW||34});
+  }
+  return out;
+}
+function optLines(cats, series, yName){
+  var out={tooltip:baseTooltip(),legend:{top:2,right:6,textStyle:{color:AX.color,fontSize:11},itemWidth:14},grid:baseGrid(),xAxis:baseX(cats),yAxis:baseY(yName),series:[]};
+  for(var i=0;i<series.length;i++){
+    out.series.push({name:series[i][0],type:'line',data:series[i][1],smooth:true,symbolSize:6,lineStyle:{width:2,color:series[i][2],type:series[i][3]||'solid'},itemStyle:{color:series[i][2]}});
+  }
+  return out;
+}
+
+var OPTS = {
+  o1:optO1(), o2:optO2(), o3:optO3(), o4:optO4(), o5:optO5(), o6:optO6(),
+  'f24-1':optPie([['地产及其他',2694],['电力',1175],['水务/园区',476],['干港',258]]),
+  'f24-2':optGrouped(['2023','2024','2025'],[['合并净利',[529,770,857],C.green],['归母净利',[306,363,423],C.amber]]),
+  'f24-3':optLines(DATA.years,[['毛利率',DATA.gpm,C.green],['净利率',DATA.npm,C.teal]],'%'),
+  'f24-4':optGrouped(['2021','2022','2023','2024','2025'],[['总资产',[11313,12687,12947,14017,15056],C.green],['总负债',[5363,6200,6016,6478,6912],C.amber],['总权益',[5950,6487,6931,7539,8144],C.teal]],22),
+  'f25-1':(function(){
+    return {
+      tooltip:baseTooltip(),
+      grid:{left:120,right:60,top:10,bottom:26},
+      xAxis:{type:'value',axisLabel:{color:AX.color,fontSize:11},splitLine:SPLIT},
+      yAxis:{type:'category',data:['2027 高级票据','Bank Mandiri','中国建设银行','OCBC NISP'],axisLabel:{color:'#16241C',fontSize:11}},
+      series:[{type:'bar',data:[
+        {value:3120,itemStyle:{color:C.amber}},
+        {value:1339,itemStyle:{color:C.green}},
+        {value:145,itemStyle:{color:C.teal}},
+        {value:35,itemStyle:{color:C.green2}}
+      ],label:{show:true,position:'right',fontSize:11,color:'#16241C',formatter:function(p){return fmt(p.value)+'B';}},barMaxWidth:24}]
+    };
+  })(),
+  'f25-2':{
+    tooltip:baseTooltip(),legend:{top:2,right:6,textStyle:{color:AX.color,fontSize:11},itemWidth:14},
+    grid:baseGrid(),xAxis:baseX(['2023','2024','2025']),yAxis:baseY('十亿盾'),
+    series:[
+      {name:'现金及等价物',type:'bar',stack:'a',data:[1362,2416,3831],itemStyle:{color:C.green},barMaxWidth:46},
+      {name:'其他资产',type:'bar',stack:'a',data:[11586,11601,11225],itemStyle:{color:C.soft},barMaxWidth:46}
+    ]
+  },
+  'f25-3':optLines(['2023','2024','2025'],[['EBITDA / 利息',[3.40,4.47,4.43],C.green],['净负债 / EBITDA',[2.68,1.52,0.57],C.clay]],'x'),
+  'f25-4':(function(){
+    return {
+      tooltip:baseTooltip(),
+      grid:baseGrid(),
+      xAxis:baseX(['期初现金（2024末）','合并盈余（2025）','期末现金（2025末）']),
+      yAxis:baseY('十亿盾'),
+      series:[{type:'bar',data:[
+        {value:2016,itemStyle:{color:C.green2}},
+        {value:1570,itemStyle:{color:C.amber}},
+        {value:3586,itemStyle:{color:C.green}}
+      ],label:{show:true,position:'top',fontSize:11,color:'#16241C',formatter:function(p){return fmt(p.value);}},barMaxWidth:56}]
+    };
+  })(),
+  'f26-1':optGrouped(['总收入','基建','土地与物业','休闲酒店'],[['1H25',[2726,1221,1443,62],C.soft],['1H26',[2437,1398,975,63],C.green]]),
+  'f26-2':(function(){
+    return {
+      tooltip:baseTooltip(),
+      grid:baseGrid(),
+      xAxis:baseX(['1H26 已实现']),
+      yAxis:{type:'value',max:4200,name:'十亿盾',nameTextStyle:{color:AX.color,fontSize:11},axisLabel:{color:AX.color,fontSize:11},splitLine:SPLIT},
+      series:[{type:'bar',data:[1188],itemStyle:{color:C.green,borderRadius:[3,3,0,0]},label:{show:true,position:'top',fontSize:12,fontWeight:600,color:'#1F5E40',formatter:'1,188B'},barMaxWidth:64,
+        markLine:{silent:true,symbol:'none',lineStyle:{color:C.clay,type:'dashed',width:1.5},data:[{yAxis:3750,label:{formatter:'2026 目标 3,750B',fontSize:11,color:C.clay,position:'insideEndTop'}}]}}]
+    };
+  })(),
+  'f26-3':{
+    tooltip:{trigger:'axis',confine:true,valueFormatter:function(v){return v+'%';}},
+    legend:{top:2,right:6,textStyle:{color:AX.color,fontSize:11},itemWidth:14},
+    grid:baseGrid(),xAxis:baseX(['1H25','1H26']),
+    yAxis:{type:'value',max:100,axisLabel:{color:AX.color,fontSize:11,formatter:'{value}%'},splitLine:SPLIT},
+    series:[
+      {name:'基建（经常性收入）',type:'bar',stack:'p',data:[45,57],itemStyle:{color:C.teal},barMaxWidth:56},
+      {name:'土地与物业',type:'bar',stack:'p',data:[55,43],itemStyle:{color:C.green},barMaxWidth:56}
+    ]
+  },
+  'f26-4':(function(){
+    return {
+      tooltip:baseTooltip(),
+      grid:{left:120,right:60,top:10,bottom:26},
+      xAxis:{type:'value',axisLabel:{color:AX.color,fontSize:11},splitLine:SPLIT},
+      yAxis:{type:'category',data:['汇兑损失','衍生品终止','加速摊销'],axisLabel:{color:'#16241C',fontSize:11}},
+      series:[{type:'bar',data:[
+        {value:281,itemStyle:{color:C.clay}},
+        {value:155,itemStyle:{color:C.amber}},
+        {value:25,itemStyle:{color:C.green2}}
+      ],label:{show:true,position:'right',fontSize:11,color:'#16241C',formatter:function(p){return fmt(p.value)+'B';}},barMaxWidth:22}]
+    };
+  })()
+};
+
+var PAGE_CHARTS = {
+  overview:['o1','o2','o3','o4','o5','o6'],
+  fy2024:['f24-1','f24-2','f24-3','f24-4'],
+  fy2025:['f25-1','f25-2','f25-3','f25-4'],
+  fy2026:['f26-1','f26-2','f26-3','f26-4'],
+  risk:[]
+};
+
+/* ===== 路由与图表生命周期 ===== */
+function renderPage(id){
+  if(!window.echarts){return;}
+  var ids=PAGE_CHARTS[id]||[];
+  for(var i=0;i<ids.length;i++){
+    if(CH[ids[i]]){continue;}
+    var el=document.getElementById(ids[i]);
+    if(!el){continue;}
+    var c=echarts.init(el);
+    c.setOption(OPTS[ids[i]]);
+    CH[ids[i]]=c;
+  }
+  for(var k in CH){
+    if(CH.hasOwnProperty(k)){CH[k].resize();}
+  }
+}
+function showPage(id){
+  var pages=document.querySelectorAll('.page'), i;
+  for(i=0;i<pages.length;i++){pages[i].classList.toggle('active',pages[i].id===id);}
+  var tabs=document.querySelectorAll('.tab');
+  for(i=0;i<tabs.length;i++){tabs[i].classList.toggle('active',tabs[i].getAttribute('data-page')===id);}
+  renderPage(id);
+}
+function currentPage(){
+  var h=location.hash.replace('#','');
+  var pages=document.querySelectorAll('.page');
+  for(var i=0;i<pages.length;i++){if(pages[i].id===h){return h;}}
+  return 'overview';
+}
+window.addEventListener('hashchange',function(){showPage(currentPage());});
+window.addEventListener('resize',function(){
+  for(var k in CH){if(CH.hasOwnProperty(k)){CH[k].resize();}}
+});
+
+/* ===== 启动 ===== */
+function loadECharts(cb){
+  if(window.echarts){cb();return;}
+  var s=document.createElement('script');
+  s.src='https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js';
+  s.onload=cb;
+  s.onerror=function(){
+    var s2=document.createElement('script');
+    s2.src='https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js';
+    s2.onload=cb;
+    s2.onerror=function(){
+      var charts=document.querySelectorAll('.chart');
+      for(var i=0;i<charts.length;i++){charts[i].innerHTML='<div style="padding:20px;color:#8F3520;font-size:13px">图表库加载失败：请联网后刷新（需访问 jsDelivr / cdnjs）。</div>';}
+    };
+    document.head.appendChild(s2);
+  };
+  document.head.appendChild(s);
+}
+renderStatics();
+showPage(currentPage());
+loadECharts(function(){renderPage(currentPage());});
+</script>
+</body>
+</html>
