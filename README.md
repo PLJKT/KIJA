@@ -8,12 +8,14 @@ PT Kawasan Industri Jababeka Tbk（印尼证券交易所代码：**KIJA**）财�
 
 | 文件 | 说明 |
 | --- | --- |
-| [`index.html`](index.html) | **财务与经营 Dashboard**（总览 + 2024/2025 年报 + 2026 中报 + 风险与方向，5 个视图） |
+| [`index.html`](index.html) | **财务与经营 Dashboard**：三语（EN 默认 / ID / 中文）切换；7 个视图：总览、2024 年报、2025 年报、2026 中报、风险与方向、**股权结构（Holding Structure）**、**治理与组织（Organization）** |
 | [`data.json`](data.json) | Dashboard 的数据记录层（可编辑后刷新同步） |
 | [`KIJA_财务分析报告_2015-2025.md`](KIJA_财务分析报告_2015-2025.md) | 十年财务与经营分析报告（含风险与机会） |
 | [`KIJA_financial_data_2015-2025.csv`](KIJA_financial_data_2015-2025.csv) | 2015–2025 关键财务指标数据集 |
 
 **Dashboard 在线访问**：<https://PLJKT.github.io/KIJA/>（GitHub Pages，从 `index.html` 自动发布）。图表依赖 jsDelivr / cdnjs CDN，需联网加载。
+
+**语言与数据口径**：页面右上角可切换 English（默认）/ Bahasa Indonesia / 中文，切换后全部内容（含图表标题、图例、tooltip、KPI 增量、脚注）严格使用所选语言；数字统一最多保留 1 位小数（四舍五入）。股权结构与治理/组织页依据 FY2025 年报（AR2025）：38 家子公司/合资公司（持股、主营业务、2025 合并资产）、股东结构（Mu'min Ali Gunawan 21.1% / IsDB 11.5% / 库存股 0.1% / 公众 67.3%）、监事/董事/审计委员会与组织结构。
 
 ## 核心结论速览
 

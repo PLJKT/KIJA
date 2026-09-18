@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>KIJA 财务与经营 Dashboard · Jababeka（IDX: KIJA）</title>
+<title>KIJA Financial & Operations Dashboard · Jababeka (IDX: KIJA)</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231F5E40'/%3E%3Ctext x='32' y='46' font-size='38' text-anchor='middle' fill='%23F1F4EE' font-family='Arial' font-weight='700'%3EK%3C/text%3E%3C/svg%3E">
 <style>
 :root{
@@ -20,15 +20,23 @@ header{background:var(--ink);color:#EDF2EC;padding:16px 22px 14px}
 .logo{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:9px;background:var(--green);color:#EDF2EC;font-size:22px;font-weight:800}
 .hd-title h1{font-size:20px;font-weight:700;letter-spacing:.3px}
 .hd-title p{font-size:12px;color:#AFC2B4;margin-top:1px}
+.hd-right{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
 .hd-meta{font-size:11px;color:#AFC2B4;text-align:right;line-height:1.6}
+.langs{display:inline-flex;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);border-radius:8px;overflow:hidden}
+.langs button{border:none;background:transparent;color:#C9D8CE;font-size:12px;padding:5px 13px;cursor:pointer;font-family:inherit}
+.langs button+button{border-left:1px solid rgba(255,255,255,.22)}
+.langs button.active{background:var(--green);color:#fff;font-weight:600}
 nav.tabs{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line)}
 .tabs-inner{max-width:1180px;margin:0 auto;display:flex;gap:2px;overflow-x:auto;padding:0 12px}
-a.tab{display:inline-block;padding:11px 16px;font-size:14px;color:var(--muted);text-decoration:none;border-bottom:2px solid transparent;white-space:nowrap}
+a.tab{display:inline-block;padding:11px 15px;font-size:13.5px;color:var(--muted);text-decoration:none;border-bottom:2px solid transparent;white-space:nowrap}
 a.tab:hover{color:var(--green)}
 a.tab.active{color:var(--green);border-bottom-color:var(--green);font-weight:600}
 main{max-width:1180px;margin:0 auto;padding:18px 22px 34px}
 .page{display:none}
 .page.active{display:block}
+.page-h{font-size:17px;font-weight:700;margin-bottom:4px}
+.page-d{font-size:12.5px;color:var(--muted);margin-bottom:14px}
+.block-h{font-size:15px;font-weight:600;margin:6px 0 10px}
 .phase{display:flex;gap:8px;flex-wrap:wrap;margin:2px 0 16px}
 .chip{font-size:12px;color:var(--muted);border:1px solid var(--line);background:#fff;border-radius:14px;padding:3px 12px}
 .chip b{color:var(--green)}
@@ -61,7 +69,7 @@ main{max-width:1180px;margin:0 auto;padding:18px 22px 34px}
 ul.events{list-style:none}
 ul.events li{display:flex;gap:10px;padding:6px 0;border-bottom:1px dashed var(--line);font-size:13px}
 ul.events li:last-child{border-bottom:none}
-ul.events .d{flex:none;width:74px;color:var(--green);font-weight:600;font-variant-numeric:tabular-nums;font-size:12px;padding-top:1px}
+ul.events .d{flex:none;width:76px;color:var(--green);font-weight:600;font-variant-numeric:tabular-nums;font-size:12px;padding-top:1px}
 .risk-row{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px dashed var(--line);font-size:13px}
 .risk-row:last-child{border-bottom:none}
 .risk-row .nm{flex:1 1 34%;min-width:120px}
@@ -85,13 +93,74 @@ ul.events .d{flex:none;width:74px;color:var(--green);font-weight:600;font-varian
 .tl .ev{margin-bottom:13px;background:#fff;border:1px solid var(--line);border-radius:8px;padding:8px 12px;font-size:13px}
 .tl .ev b{color:var(--green)}
 .tl .ev .m{color:var(--muted);font-size:12px;margin-top:2px}
+/* ===== 股权结构页 ===== */
+.own-bars{display:flex;flex-direction:column;gap:9px;margin-bottom:18px}
+.own-row{display:flex;align-items:center;gap:12px;font-size:13px}
+.own-row .nm{flex:0 0 240px;color:var(--muted)}
+.own-row .bar{flex:1;height:14px;background:var(--soft);border-radius:7px;overflow:hidden}
+.own-row .bar i{display:block;height:100%;background:var(--green)}
+.own-row .bar i.hl{background:var(--teal)}
+.own-row .bar i.hl2{background:var(--green2)}
+.own-row .vv{flex:0 0 90px;font-weight:700;font-variant-numeric:tabular-nums;text-align:right}
+.hld{display:flex;flex-direction:column;align-items:center;margin-bottom:18px}
+.hld-top{border:1px solid var(--ink);background:var(--ink);color:#EDF2EC;border-radius:9px;padding:9px 22px;text-align:center;min-width:260px}
+.hld-top b{font-size:15px;display:block}
+.hld-top span{font-size:11.5px;color:#AFC2B4}
+.hld-line{width:2px;height:20px;background:var(--line)}
+.hld-pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;width:100%;position:relative}
+.hld-pillars::before{content:"";position:absolute;top:-20px;left:16%;right:16%;height:2px;background:var(--line)}
+.hld-pillar{border:1px solid var(--line);border-radius:8px;background:#fff;padding:10px 10px 8px}
+.hld-pillar h4{font-size:13px;margin-bottom:2px}
+.hld-pillar .hld-kind{font-size:11px;color:var(--muted);margin-bottom:8px}
+.hld-ents{display:flex;flex-direction:column;gap:6px}
+.hld-ent{display:flex;justify-content:space-between;align-items:baseline;gap:6px;font-size:12.5px;padding:5px 8px;border:1px solid #E6EBE4;border-radius:6px;background:#FAFBF8;line-height:1.3}
+.hld-ent .nm{font-weight:600}
+.hld-ent .sub{font-size:11px;color:var(--muted);display:block}
+.hld-ent .p{flex:none;font-weight:700;color:var(--green);font-variant-numeric:tabular-nums}
+.hld-ent.jv{border-color:#EAD9BC}
+.hld-ent.jv .p{color:var(--amber)}
+.hld-more{font-size:11.5px;color:var(--muted);margin-top:7px}
+/* ===== 公司治理/组织页 ===== */
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:11px;margin-bottom:18px}
+.fact{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:11px 13px}
+.fact .lbl{font-size:11.5px;color:var(--muted)}
+.fact .val{font-size:19px;font-weight:700;font-variant-numeric:tabular-nums;margin-top:2px;line-height:1.25}
+.fact .val small{font-size:11.5px;font-weight:500;color:var(--muted)}
+.org{display:flex;flex-direction:column;align-items:center}
+.org-box{border:1px solid var(--line);background:#fff;border-radius:8px;padding:8px 18px;text-align:center;min-width:230px}
+.org-box b{display:block;font-size:13.5px;line-height:1.35}
+.org-box span{font-size:11.5px;color:var(--muted)}
+.org-box.dark{background:var(--ink);border-color:var(--ink)}
+.org-box.dark b{color:#EDF2EC}
+.org-box.dark span{color:#AFC2B4}
+.org-box.green{background:var(--green);border-color:var(--green)}
+.org-box.green b{color:#fff}
+.org-box.green span{color:#D6E4DA}
+.org-line{width:2px;height:16px;background:var(--line);flex:none}
+.org-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;width:100%;position:relative;padding-top:16px}
+.org-row::before{content:"";position:absolute;top:0;left:12%;right:12%;height:2px;background:var(--line)}
+.org-col{display:flex;flex-direction:column;align-items:center;flex:1 1 150px;max-width:230px}
+.org-col .vline{width:2px;height:14px;background:var(--line);flex:none}
+.g-table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden;font-size:12.5px;table-layout:fixed;margin-bottom:18px}
+.g-table th{background:var(--ink);color:#EDF2EC;padding:7px 9px;text-align:left;font-weight:600;font-size:12px}
+.g-table td{padding:6px 9px;border-top:1px solid var(--line);font-variant-numeric:tabular-nums;vertical-align:top}
+.g-table tr:nth-child(even) td{background:#F7F9F5}
+.g-table td.b{font-weight:700}
+.g-table td.p{text-align:right;color:var(--green);font-weight:600}
+.g-table td.amber{color:var(--amber);font-weight:600}
+.g-table .gname{color:var(--muted);font-size:11.5px;font-weight:600;background:#EFF2EC}
+.g-table-wrap{width:100%;overflow-x:auto;margin-bottom:18px}
+.g-table-wrap .g-table{margin-bottom:0;min-width:640px}
 footer{max-width:1180px;margin:0 auto;padding:6px 22px 30px;font-size:11px;color:var(--muted);line-height:1.7}
 footer a{color:var(--green)}
 @media(max-width:900px){
   .charts,.two-col{grid-template-columns:1fr}
   .chart{height:280px}
-  .hd-meta{text-align:left}
+  .hd-right,.hd-meta{text-align:left;align-items:flex-start}
   main{padding:14px 14px 30px}
+  .hld-pillars{grid-template-columns:1fr}
+  .hld-pillars::before{display:none}
+  .own-row .nm{flex-basis:150px}
 }
 </style>
 </head>
@@ -101,38 +170,42 @@ footer a{color:var(--green)}
   <div class="hd-inner">
     <div class="hd-title">
       <span class="logo">K</span>
-      <div><h1>KIJA 财务与经营 Dashboard</h1><p>PT Kawasan Industri Jababeka Tbk（IDX: KIJA）· 工业园区开发 · 财务与运营监控</p></div>
+      <div><h1 data-i18n="app_title"></h1><p data-i18n="app_sub"></p></div>
     </div>
-    <div class="hd-meta">数据来源：2019 / 2022 / 2025 年报、1H26 中报、公司演示与 IDX 公告<br>数据截止：2026-09-18 · 单位：十亿印尼盾（IDR bn），另有注明除外</div>
+    <div class="hd-right">
+      <div class="hd-meta"><span data-i18n="meta_src"></span><br><span data-i18n="meta_asof"></span></div>
+      <div class="langs">
+        <button type="button" data-lang="en">EN</button>
+        <button type="button" data-lang="id">ID</button>
+        <button type="button" data-lang="zh">中文</button>
+      </div>
+    </div>
   </div>
 </header>
 <nav class="tabs" id="tabs">
   <div class="tabs-inner">
-    <a class="tab active" href="#overview" data-page="overview">总览</a>
-    <a class="tab" href="#fy2024" data-page="fy2024">2024 年报</a>
-    <a class="tab" href="#fy2025" data-page="fy2025">2025 年报</a>
-    <a class="tab" href="#fy2026" data-page="fy2026">2026 中报</a>
-    <a class="tab" href="#risk" data-page="risk">风险与方向</a>
+    <a class="tab active" href="#overview" data-page="overview" data-i18n="t_overview"></a>
+    <a class="tab" href="#fy2024" data-page="fy2024" data-i18n="t_fy2024"></a>
+    <a class="tab" href="#fy2025" data-page="fy2025" data-i18n="t_fy2025"></a>
+    <a class="tab" href="#fy2026" data-page="fy2026" data-i18n="t_fy2026"></a>
+    <a class="tab" href="#risk" data-page="risk" data-i18n="t_risk"></a>
+    <a class="tab" href="#holding" data-page="holding" data-i18n="t_holding"></a>
+    <a class="tab" href="#org" data-page="org" data-i18n="t_org"></a>
   </div>
 </nav>
 <main>
 
 <!-- ===== 视图：总览 ===== -->
 <section class="page active" id="overview">
-  <div class="phase">
-    <span class="chip">阶段 <b>2016 高点</b>：净利 427B</span>
-    <span class="chip">阶段 <b>2017–2022 低谷</b>：地产下行 + 疫情 + 汇兑损失</span>
-    <span class="chip">阶段 <b>2023–2025 爆发</b>：Kendal 售地 + 基建收入双轮驱动</span>
-    <span class="chip">阶段 <b>2026 换挡</b>：美元债出清、经常性收入占比 57%</span>
-  </div>
+  <div class="phase" id="phases"></div>
   <div class="kpis" id="ov-kpis"></div>
   <div class="charts">
-    <div class="chart-card"><h3>营收（2015–2025）</h3><div class="sub">合并收入，十亿盾</div><div class="chart" id="o1"></div></div>
-    <div class="chart-card"><h3>净利润：合并 vs 归母</h3><div class="sub">合并净利（实线）与归母净利（虚线）；2021 年前归母未单独披露</div><div class="chart" id="o2"></div></div>
-    <div class="chart-card"><h3>利润率与杠杆趋势</h3><div class="sub">毛利率 / 净利率 / ROE / 负债÷权益</div><div class="chart" id="o3"></div></div>
-    <div class="chart-card"><h3>分部收入：地产 vs 基建</h3><div class="sub">2021–2025，十亿盾；基建含电力、水务与干港</div><div class="chart" id="o4"></div></div>
-    <div class="chart-card"><h3>营销销售（Marketing Sales）</h3><div class="sub">土地与物业预售合同额，领先指标</div><div class="chart" id="o5"></div></div>
-    <div class="chart-card"><h3>EBITDA（2019–2025）</h3><div class="sub">调整后 EBITDA 及 EBITDA 利润率</div><div class="chart" id="o6"></div></div>
+    <div class="chart-card"><h3 data-i18n="c_o1_t"></h3><div class="sub" data-i18n="c_o1_s"></div><div class="chart" id="o1"></div></div>
+    <div class="chart-card"><h3 data-i18n="c_o2_t"></h3><div class="sub" data-i18n="c_o2_s"></div><div class="chart" id="o2"></div></div>
+    <div class="chart-card"><h3 data-i18n="c_o3_t"></h3><div class="sub" data-i18n="c_o3_s"></div><div class="chart" id="o3"></div></div>
+    <div class="chart-card"><h3 data-i18n="c_o4_t"></h3><div class="sub" data-i18n="c_o4_s"></div><div class="chart" id="o4"></div></div>
+    <div class="chart-card"><h3 data-i18n="c_o5_t"></h3><div class="sub" data-i18n="c_o5_s"></div><div class="chart" id="o5"></div></div>
+    <div class="chart-card"><h3 data-i18n="c_o6_t"></h3><div class="sub" data-i18n="c_o6_s"></div><div class="chart" id="o6"></div></div>
   </div>
 </section>
 
@@ -140,14 +213,14 @@ footer a{color:var(--green)}
 <section class="page" id="fy2024">
   <div class="kpis" id="k24"></div>
   <div class="charts">
-    <div class="chart-card"><h3>2024 收入构成</h3><div class="sub">地产及其他 58.5% · 电力 25.5% · 水务/园区 10.3% · 干港 5.6%</div><div class="chart" id="f24-1"></div></div>
-    <div class="chart-card"><h3>盈利质量：合并 vs 归母</h3><div class="sub">2023–2025；少数股东（主要为 Kendal JV 伙伴）分走约一半利润</div><div class="chart" id="f24-2"></div></div>
-    <div class="chart-card"><h3>毛利率 / 净利率（2015–2025）</h3><div class="sub">毛利率自 2021 年高点 52% 回落，2024 年 43%</div><div class="chart" id="f24-3"></div></div>
-    <div class="chart-card"><h3>资产负债表规模（2021–2025）</h3><div class="sub">资产 / 负债 / 权益，十亿盾</div><div class="chart" id="f24-4"></div></div>
+    <div class="chart-card"><h3 data-i18n="c_f24_1_t"></h3><div class="sub" data-i18n="c_f24_1_s"></div><div class="chart" id="f24-1"></div></div>
+    <div class="chart-card"><h3 data-i18n="c_f24_2_t"></h3><div class="sub" data-i18n="c_f24_2_s"></div><div class="chart" id="f24-2"></div></div>
+    <div class="chart-card"><h3 data-i18n="c_f24_3_t"></h3><div class="sub" data-i18n="c_f24_3_s"></div><div class="chart" id="f24-3"></div></div>
+    <div class="chart-card"><h3 data-i18n="c_f24_4_t"></h3><div class="sub" data-i18n="c_f24_4_s"></div><div class="chart" id="f24-4"></div></div>
   </div>
   <div class="two-col">
-    <div class="panel"><h3>2024 年大事记</h3><ul class="events" id="ev24"></ul></div>
-    <div class="panel"><h3>2024 风险指示</h3><div id="rk24"></div><div class="risk-note">总体判断：营销销售强劲、资产负债表改善，但毛利率下行与少数股东稀释是主要观察点。</div></div>
+    <div class="panel"><h3 data-i18n="ev24_t"></h3><ul class="events" id="ev24"></ul></div>
+    <div class="panel"><h3 data-i18n="rk24_t"></h3><div id="rk24"></div><div class="risk-note" data-i18n="note24"></div></div>
   </div>
 </section>
 
@@ -155,14 +228,14 @@ footer a{color:var(--green)}
 <section class="page" id="fy2025">
   <div class="kpis" id="k25"></div>
   <div class="charts">
-    <div class="chart-card"><h3>债务结构（2025-12-31）</h3><div class="sub">合计 4,607B；Senior Notes 按 16,782 折算；2026Q2 已全部提前偿还</div><div class="chart" id="f25-1"></div></div>
-    <div class="chart-card"><h3>资产构成：现金 vs 其他</h3><div class="sub">2023–2025；现金及等价物 1,362 → 2,416 → 3,831B</div><div class="chart" id="f25-2"></div></div>
-    <div class="chart-card"><h3>偿债能力</h3><div class="sub">EBITDA/利息 4.43x；净负债/EBITDA 0.57x（2023: 2.68x → 2025: 0.57x）</div><div class="chart" id="f25-3"></div></div>
-    <div class="chart-card"><h3>现金桥（2025）</h3><div class="sub">期初 2,016B + 合并盈余 1,570B（JV 932 + 自有 639）= 期末 3,586B</div><div class="chart" id="f25-4"></div></div>
+    <div class="chart-card"><h3 data-i18n="c_f25_1_t"></h3><div class="sub" data-i18n="c_f25_1_s"></div><div class="chart" id="f25-1"></div></div>
+    <div class="chart-card"><h3 data-i18n="c_f25_2_t"></h3><div class="sub" data-i18n="c_f25_2_s"></div><div class="chart" id="f25-2"></div></div>
+    <div class="chart-card"><h3 data-i18n="c_f25_3_t"></h3><div class="sub" data-i18n="c_f25_3_s"></div><div class="chart" id="f25-3"></div></div>
+    <div class="chart-card"><h3 data-i18n="c_f25_4_t"></h3><div class="sub" data-i18n="c_f25_4_s"></div><div class="chart" id="f25-4"></div></div>
   </div>
   <div class="two-col">
-    <div class="panel"><h3>2025 年大事记</h3><ul class="events" id="ev25"></ul></div>
-    <div class="panel"><h3>2025 风险指示</h3><div id="rk25"></div><div class="risk-note">总体判断：规模与现金创纪录、杠杆持续下降；毛利率续降至 39% 与 Kendal 收入依赖是主要观察点。</div></div>
+    <div class="panel"><h3 data-i18n="ev25_t"></h3><ul class="events" id="ev25"></ul></div>
+    <div class="panel"><h3 data-i18n="rk25_t"></h3><div id="rk25"></div><div class="risk-note" data-i18n="note25"></div></div>
   </div>
 </section>
 
@@ -170,216 +243,563 @@ footer a{color:var(--green)}
 <section class="page" id="fy2026">
   <div class="kpis" id="k26"></div>
   <div class="charts">
-    <div class="chart-card"><h3>1H26 vs 1H25 收入对比</h3><div class="sub">总收入 -11%；基建 +15%，土地 -32%（Kendal 收入确认时点差异）</div><div class="chart" id="f26-1"></div></div>
-    <div class="chart-card"><h3>营销销售进度（1H26）</h3><div class="sub">1,188B / 全年目标 3,750B（Cikarang 1,250 + Kendal 2,500），达标 32%</div><div class="chart" id="f26-2"></div></div>
-    <div class="chart-card"><h3>收入结构变化：基建占比</h3><div class="sub">经常性收入占比 45% → 57%，反映业务向基建倾斜</div><div class="chart" id="f26-3"></div></div>
-    <div class="chart-card"><h3>净亏损构成（一次性）</h3><div class="sub">2026 上半年净亏 6.4B，源于再融资一次性成本约 460B</div><div class="chart" id="f26-4"></div></div>
+    <div class="chart-card"><h3 data-i18n="c_f26_1_t"></h3><div class="sub" data-i18n="c_f26_1_s"></div><div class="chart" id="f26-1"></div></div>
+    <div class="chart-card"><h3 data-i18n="c_f26_2_t"></h3><div class="sub" data-i18n="c_f26_2_s"></div><div class="chart" id="f26-2"></div></div>
+    <div class="chart-card"><h3 data-i18n="c_f26_3_t"></h3><div class="sub" data-i18n="c_f26_3_s"></div><div class="chart" id="f26-3"></div></div>
+    <div class="chart-card"><h3 data-i18n="c_f26_4_t"></h3><div class="sub" data-i18n="c_f26_4_s"></div><div class="chart" id="f26-4"></div></div>
   </div>
   <div class="two-col">
-    <div class="panel"><h3>2026 年大事记（至 9 月）</h3><ul class="events" id="ev26"></ul></div>
-    <div class="panel"><h3>2026 风险指示</h3><div id="rk26"></div><div class="risk-note">总体判断：一次性成本导致账面亏损，但经营层面仍盈利；收入节奏与毛利率是 2026 下半年重点观察指标。</div></div>
+    <div class="panel"><h3 data-i18n="ev26_t"></h3><ul class="events" id="ev26"></ul></div>
+    <div class="panel"><h3 data-i18n="rk26_t"></h3><div id="rk26"></div><div class="risk-note" data-i18n="note26"></div></div>
   </div>
 </section>
 
 <!-- ===== 视图：风险与方向 ===== -->
 <section class="page" id="risk">
-  <h2 style="font-size:17px;margin-bottom:4px">风险指示器总览</h2>
-  <p style="font-size:12.5px;color:var(--muted);margin-bottom:12px">综合 2024 年报、2025 年报与 2026 中报数据；等级为相对判断，条长表示当前水平。</p>
+  <h2 class="page-h" data-i18n="rkall_h"></h2>
+  <p class="page-d" data-i18n="rkall_d"></p>
   <div class="panel" style="margin-bottom:20px" id="rk-all"></div>
-
-  <h2 style="font-size:17px;margin-bottom:12px">发展方向</h2>
-  <div class="dir-grid">
-    <div class="dir"><div class="n">01</div><h4>经常性收入占比提升</h4><p>基建收入占比 45% → 50% → 57%（电力、水务、干港），收入稳定性与现金可见度增强。</p></div>
-    <div class="dir"><div class="n">02</div><h4>Kendal 为主增长引擎</h4><p>经济特区园区营销销售约占 70%；2026 年 Kendal 目标 2,500B，JV 派息 615B（51% 归 KIJA）。</p></div>
-    <div class="dir"><div class="n">03</div><h4>美元债出清、本币化融资</h4><p>2026Q2 以 15 年期 IDR 3.4T 贷款清偿 2027 美元票据，汇兑风险基本消除、久期显著拉长。</p></div>
-    <div class="dir"><div class="n">04</div><h4>净杠杆大幅下降</h4><p>净负债/EBITDA 自 2.68x（2023）降至 0.57x（2025）；现金 3.6T，接近净现金状态。</p></div>
-    <div class="dir"><div class="n">05</div><h4>新增长点布局</h4><p>PIER Mini LNG 工厂投运；干港吞吐 +13%；Jababeka Bizpark 动工；土地储备 5,089 公顷。</p></div>
-    <div class="dir"><div class="n">06</div><h4>股东回报恢复</h4><p>FY2025 恢复派息每股 2.03 盾（合计 42.3B，政策为净利 25–35%），KIK/Kendal 持续派息。</p></div>
-  </div>
-
-  <h2 style="font-size:17px;margin-bottom:12px">十年里程碑（2016–2026）</h2>
+  <h2 class="page-h" data-i18n="dir_h"></h2>
+  <div class="dir-grid" id="dirs"></div>
+  <h2 class="page-h" data-i18n="tl_h"></h2>
   <div class="tl" id="tl"></div>
+</section>
+
+<!-- ===== 视图：股权结构 ===== -->
+<section class="page" id="holding">
+  <h2 class="page-h" data-i18n="hld_h"></h2>
+  <p class="page-d" data-i18n="hld_d"></p>
+  <h3 class="block-h" data-i18n="hld_own_h"></h3>
+  <div class="own-bars" id="own-bars"></div>
+  <h3 class="block-h" data-i18n="hld_group_h"></h3>
+  <div class="hld" id="hld"></div>
+  <h3 class="block-h" data-i18n="hld_table_h"></h3>
+  <div id="hld-table"></div>
+</section>
+
+<!-- ===== 视图：公司治理与组织 ===== -->
+<section class="page" id="org">
+  <h2 class="page-h" data-i18n="org_h"></h2>
+  <p class="page-d" data-i18n="org_d"></p>
+  <h3 class="block-h" data-i18n="org_facts_h"></h3>
+  <div class="facts" id="org-facts"></div>
+  <h3 class="block-h" data-i18n="org_gov_h"></h3>
+  <div class="org" id="org-gov"></div>
+  <h3 class="block-h" data-i18n="org_chart_h"></h3>
+  <div class="org" id="org-chart"></div>
+  <h3 class="block-h" data-i18n="org_mgmt_h"></h3>
+  <div id="org-mgmt"></div>
 </section>
 
 </main>
 <footer>
-  <div>数据来源：<a href="https://www.jababeka.com/wp-content/uploads/2026/05/KIJA-AR-2025.pdf" target="_blank" rel="noopener">KIJA 2025 年报</a> · <a href="https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202607/20260731205845-62989-0/FinancialStatement-2026-II-KIJA.pdf" target="_blank" rel="noopener">1H26 中报</a> · <a href="https://www.jababeka.com/wp-content/uploads/2023/05/KIJA-ASR-2022.pdf" target="_blank" rel="noopener">2022 年报</a> · <a href="https://www.jababeka.com/wp-content/uploads/2025/02/KIJA-Presentation-Material-Augustus-2026-Final.pdf" target="_blank" rel="noopener">2026-08 投资者演示</a> · <a href="https://www.idx.co.id" target="_blank" rel="noopener">IDX 公告</a>；数据口径与完整分析见<a href="KIJA_财务分析报告_2015-2025.md" target="_blank" rel="noopener">分析报告</a>。</div>
-  <div>本 Dashboard 仅供信息参考，不构成投资建议。2026 年为上半年未经审计数据；因年报追溯调整，个别历史数字可能与旧版披露略有差异。</div>
+  <div data-i18n="ft_src"></div>
+  <div data-i18n="ft_note"></div>
 </footer>
 
 <script>
-/* ===== 数据层（与 data.json 同步；本地 file:// 打开时无需 fetch） ===== */
-var DATA = {
-  years: ['2015','2016','2017','2018','2019','2020','2021','2022','2023','2024','2025'],
-  revenue: [3140,2931,2995,2712,2254,2396,2490,2747,3300,4603,5149],
-  gp:      [1380,1225,1132,1168,828,1024,1102,1419,1524,1967,2033],
-  niCons:  [331,427,150,67,141,45,88,41,529,770,857],
-  niParent:[null,null,null,null,null,null,-5,-64,306,363,423],
-  assets:  [7980,10709,10967,10840,10704,10849,11313,12687,12947,14017,15056],
-  loans:   [2692,3024,3167,3373,3503,3570,3660,4242,4419,4498,4607],
-  liab:    [3924,5198,5263,5083,5026,5051,5363,6200,6016,6478,6912],
-  equity:  [4056,5511,5704,5757,5678,5798,5950,6487,6931,7539,8144],
-  peq:     [null,null,null,null,null,null,5257,5192,5467,5832,6264],
-  gpm:     [44,42,38,43,37,43,44,52,46,43,39],
-  npm:     [11,15,5,2,6,2,4,1,16,17,17],
-  roe:     [8,8,3,1,2,1,1,1,8,10,11],
-  roa:     [4,4,1,1,1,0,1,0,4,5,6],
-  de:      [97,94,92,88,89,87,90,96,87,86,85],
-  le:      [66,55,56,59,62,62,62,65,64,60,57],
-  ebitda:  [null,null,null,null,657,789,817,1087,1253,1617,1736],
-  ebitdaM: [null,null,null,null,29,33,33,40,38,35,34],
-  msales:  [null,null,null,null,null,null,null,1717,2213,3188,3601],
-  segRe:   [null,null,null,null,null,null,1367,1501,1839,2694,2583],
-  segInfra:[null,null,null,null,null,null,1123,1246,1461,1909,2567]
+/* ================================================================
+   数据与多语言文案层（EN 默认 / ID 印尼文 / ZH 中文）
+   单位：十亿印尼盾（IDR bn / Rp miliar / 十亿盾），数字最多保留 1 位小数
+   ================================================================ */
+var I18N = {
+en: {
+  app_title:'KIJA Financial & Operations Dashboard',
+  app_sub:'PT Kawasan Industri Jababeka Tbk (IDX: KIJA) · Industrial Estate Developer · Financial & Operations Monitor',
+  meta_src:'Sources: FY2019 / FY2022 / FY2025 Annual Reports, 1H26 Interim Report, investor presentations & IDX announcements',
+  meta_asof:'Data as of 2026-09-18 · Unit: IDR billion unless otherwise stated',
+  t_overview:'Overview', t_fy2024:'FY2024 Report', t_fy2025:'FY2025 Report', t_fy2026:'2026 Interim', t_risk:'Risk & Direction', t_holding:'Holding Structure', t_org:'Organization',
+  ph1:'Phase <b>2016 peak</b>: net profit IDR427bn',
+  ph2:'Phase <b>2017–2022 trough</b>: property downturn + pandemic + FX losses',
+  ph3:'Phase <b>2023–2025 surge</b>: Kendal land sales + infrastructure double engine',
+  ph4:'Phase <b>2026 shift</b>: USD debt cleared, recurring revenue 57%',
+  c_o1_t:'Revenue (2015–2025)', c_o1_s:'Consolidated revenue, IDR bn',
+  c_o2_t:'Net profit: consolidated vs parent', c_o2_s:'Consolidated (solid) vs attributable to parent (dashed); parent not separately disclosed before 2021',
+  c_o3_t:'Margins & leverage trend', c_o3_s:'Gross margin / net margin / ROE / Debt-to-equity',
+  c_o4_t:'Segment revenue: Real Estate vs Infrastructure', c_o4_s:'2021–2025, IDR bn; infrastructure includes power, water & dry port',
+  c_o5_t:'Marketing Sales', c_o5_s:'Land & property pre-sales contracts, a leading indicator',
+  c_o6_t:'EBITDA (2019–2025)', c_o6_s:'Adjusted EBITDA; EBITDA margin 29% → 34% (2019–2025)',
+  c_f24_1_t:'2024 revenue mix', c_f24_1_s:'Real Estate & others 58.5% · Power 25.5% · Water/Estate 10.3% · Dry port 5.6%',
+  c_f24_2_t:'Earnings quality: consolidated vs parent', c_f24_2_s:'2023–2025; minorities (mainly Kendal JV partner) take about half of profit',
+  c_f24_3_t:'Gross / net margin (2015–2025)', c_f24_3_s:'Gross margin fell from 52% peak (2021) to 43% (2024)',
+  c_f24_4_t:'Balance sheet size (2021–2025)', c_f24_4_s:'Assets / liabilities / equity, IDR bn',
+  c_f25_1_t:'Debt structure (31 Dec 2025)', c_f25_1_s:'Total debt IDR4,606.5bn; Senior Notes USD185.9m (7–9% coupon, principal 3,119.0); fully repaid in Q2 2026',
+  c_f25_2_t:'Asset mix: cash vs other', c_f25_2_s:'2023–2025; cash & equivalents 1,362 → 2,016 → 3,586',
+  c_f25_3_t:'Debt servicing capacity', c_f25_3_s:'EBITDA/interest 4.4x; net debt/EBITDA 0.6x (2023: 2.7x → 2025: 0.6x)',
+  c_f25_4_t:'Cash bridge (2025)', c_f25_4_s:'Opening 2,016 + consolidated surplus 1,570 (JV 932 + own 639) = closing 3,586',
+  c_f26_1_t:'1H26 vs 1H25 revenue', c_f26_1_s:'Total -11%; infrastructure +15%, land -32% (Kendal recognition timing)',
+  c_f26_2_t:'Marketing sales progress (1H26)', c_f26_2_s:'1,187.6 / FY2026 target 3,750 (Cikarang 1,250 + Kendal 2,500); 32% achieved',
+  c_f26_3_t:'Revenue mix shift: infrastructure share', c_f26_3_s:'Recurring revenue share 45% → 57%, business tilting toward infrastructure',
+  c_f26_4_t:'Net loss drivers (one-off)', c_f26_4_s:'1H26 net loss 6.4, driven by ~460 one-off refinancing costs',
+  ev24_t:'2024 key events', rk24_t:'2024 risk indicators',
+  note24:'Overall: strong marketing sales and improving balance sheet; gross-margin decline and minority dilution are the main watch points.',
+  ev25_t:'2025 key events', rk25_t:'2025 risk indicators',
+  note25:'Overall: record scale and cash, leverage steadily declining; gross margin at 39% and reliance on Kendal are the main watch points.',
+  ev26_t:'2026 key events (to Sep)', rk26_t:'2026 risk indicators',
+  note26:'Overall: one-off costs caused a book loss while operating level stayed profitable; revenue timing and gross margin are the key H2 indicators.',
+  rkall_h:'Risk indicator overview', rkall_d:'Based on FY2024 / FY2025 annual reports and 1H26 interim data; levels are relative judgments, bar length shows the current level.',
+  dir_h:'Development direction', tl_h:'Decade milestones (2016–2026)',
+  hld_h:'Holding Structure', hld_d:'Group structure and subsidiaries per the FY2025 Annual Report (as of 31 Dec 2025); assets are consolidated 2025 totals in IDR bn.',
+  hld_own_h:'Shareholders (31 Dec 2025)', hld_group_h:'Group structure by business pillar', hld_table_h:'Consolidated subsidiaries & joint ventures',
+  hld_note:'JV = joint venture with non-controlling interest (consolidated). * non-operating entity. n/a = not separately disclosed.',
+  org_h:'Organization & Governance', org_d:'Governance and organization per the FY2025 Annual Report (AR2025).',
+  org_facts_h:'Corporate facts', org_gov_h:'Boards & committees', org_chart_h:'Organization structure', org_mgmt_h:'Key people named in the AR2025 organization chart',
+  org_mgmt_note:'Division-level assignments are not disclosed in AR2025; functions shown are as published in the organization chart.',
+  tbl_entity:'Entity', tbl_biz:'Principal activity', tbl_via:'Via', tbl_own:'Ownership', tbl_assets:'Assets 2025 (IDR bn)', tbl_status:'Status', tbl_name:'Name', tbl_func:'Function (as published)',
+  ft_src:'Sources: <a href="https://www.jababeka.com/wp-content/uploads/2026/05/KIJA-AR-2025.pdf" target="_blank" rel="noopener">KIJA AR2025</a> · <a href="https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202607/20260731205845-62989-0/FinancialStatement-2026-II-KIJA.pdf" target="_blank" rel="noopener">1H26 Interim</a> · <a href="https://www.jababeka.com/wp-content/uploads/2023/05/KIJA-ASR-2022.pdf" target="_blank" rel="noopener">AR2022</a> · <a href="https://www.jababeka.com/wp-content/uploads/2025/02/KIJA-Presentation-Material-Augustus-2026-Final.pdf" target="_blank" rel="noopener">Aug-2026 presentation</a> · <a href="https://www.idx.co.id" target="_blank" rel="noopener">IDX announcements</a>. Full analysis: <a href="KIJA_财务分析报告_2015-2025.md" target="_blank" rel="noopener">analysis report</a>.',
+  ft_note:'This dashboard is for information only and does not constitute investment advice. 2026 figures are unaudited 1H26 data; historical figures may differ slightly from older disclosures due to annual-report restatements.'
+},
+id: {
+  app_title:'Dasbor Keuangan & Operasional KIJA',
+  app_sub:'PT Kawasan Industri Jababeka Tbk (IDX: KIJA) · Pengembang Kawasan Industri · Pemantauan Keuangan & Operasional',
+  meta_src:'Sumber: Laporan Tahunan FY2019 / FY2022 / FY2025, Laporan Keuangan 1H26, presentasi investor & pengumuman IDX',
+  meta_asof:'Data per 2026-09-18 · Satuan: miliar rupiah (IDR bn), kecuali dinyatakan lain',
+  t_overview:'Ringkasan', t_fy2024:'Laporan 2024', t_fy2025:'Laporan 2025', t_fy2026:'Laporan 2026 (1H)', t_risk:'Risiko & Arah', t_holding:'Struktur Kepemilikan', t_org:'Organisasi',
+  ph1:'Fase <b>puncak 2016</b>: laba bersih Rp427 miliar',
+  ph2:'Fase <b>palung 2017–2022</b>: penurunan properti + pandemi + rugi selisih kurs',
+  ph3:'Fase <b>lonjakan 2023–2025</b>: penjualan lahan Kendal + infrastruktur',
+  ph4:'Fase <b>transisi 2026</b>: utang USD dilunasi, pendapatan berulang 57%',
+  c_o1_t:'Pendapatan (2015–2025)', c_o1_s:'Pendapatan konsolidasi, Rp miliar',
+  c_o2_t:'Laba bersih: konsolidasi vs entitas induk', c_o2_s:'Konsolidasi (garis penuh) vs entitas induk (putus-putus); sebelum 2021 tidak diungkapkan terpisah',
+  c_o3_t:'Tren margin & leverage', c_o3_s:'Margin kotor / margin bersih / ROE / Utang÷Ekuitas',
+  c_o4_t:'Pendapatan segmen: Properti vs Infrastruktur', c_o4_s:'2021–2025, Rp miliar; infrastruktur mencakup listrik, air & pelabuhan darat',
+  c_o5_t:'Penjualan Pemasaran', c_o5_s:'Kontrak pra-penjualan lahan & properti, indikator utama',
+  c_o6_t:'EBITDA (2019–2025)', c_o6_s:'EBITDA disesuaikan; margin EBITDA 29% → 34% (2019–2025)',
+  c_f24_1_t:'Komposisi pendapatan 2024', c_f24_1_s:'Properti & lainnya 58.5% · Kelistrikan 25.5% · Air/Layanan kawasan 10.3% · Pelabuhan darat 5.6%',
+  c_f24_2_t:'Kualitas laba: konsolidasi vs entitas induk', c_f24_2_s:'2023–2025; kepentingan non-pengendali (terutama mitra JV Kendal) mengambil sekitar separuh laba',
+  c_f24_3_t:'Margin kotor / bersih (2015–2025)', c_f24_3_s:'Margin kotor turun dari puncak 52% (2021) menjadi 43% (2024)',
+  c_f24_4_t:'Skala neraca (2021–2025)', c_f24_4_s:'Aset / liabilitas / ekuitas, Rp miliar',
+  c_f25_1_t:'Struktur utang (31 Des 2025)', c_f25_1_s:'Total utang Rp4,606.5 miliar; Senior Notes USD185.9 juta (kupon 7–9%, pokok 3,119.0); lunas penuh pada Q2 2026',
+  c_f25_2_t:'Komposisi aset: kas vs lainnya', c_f25_2_s:'2023–2025; kas & setara kas 1,362 → 2,016 → 3,586',
+  c_f25_3_t:'Kapasitas pelayanan utang', c_f25_3_s:'EBITDA/beban bunga 4.4x; utang bersih/EBITDA 0.6x (2023: 2.7x → 2025: 0.6x)',
+  c_f25_4_t:'Rekonsiliasi kas (2025)', c_f25_4_s:'Kas awal 2,016 + surplus konsolidasi 1,570 (JV 932 + sendiri 639) = kas akhir 3,586',
+  c_f26_1_t:'Pendapatan 1H26 vs 1H25', c_f26_1_s:'Total -11%; infrastruktur +15%, tanah -32% (perbedaan waktu pengakuan Kendal)',
+  c_f26_2_t:'Progres penjualan pemasaran (1H26)', c_f26_2_s:'1,187.6 / target FY2026 3,750 (Cikarang 1,250 + Kendal 2,500); tercapai 32%',
+  c_f26_3_t:'Pergeseran komposisi: porsi infrastruktur', c_f26_3_s:'Porsi pendapatan berulang 45% → 57%, bisnis makin bertumpu pada infrastruktur',
+  c_f26_4_t:'Penyebab rugi bersih (satu kali)', c_f26_4_s:'Rugi bersih 1H26 6.4, didorong biaya refinancing satu kali sekitar 460',
+  ev24_t:'Peristiwa penting 2024', rk24_t:'Indikator risiko 2024',
+  note24:'Penilaian: penjualan pemasaran kuat dan neraca membaik; penurunan margin kotor serta dilusi minoritas menjadi titik perhatian utama.',
+  ev25_t:'Peristiwa penting 2025', rk25_t:'Indikator risiko 2025',
+  note25:'Penilaian: skala dan kas rekor, leverage terus menurun; margin kotor 39% dan ketergantungan pada Kendal menjadi titik perhatian utama.',
+  ev26_t:'Peristiwa penting 2026 (s/d Sep)', rk26_t:'Indikator risiko 2026',
+  note26:'Penilaian: biaya satu kali menyebabkan rugi akuntansi, tetapi level operasional tetap laba; timing pendapatan dan margin kotor menjadi indikator utama 2H26.',
+  rkall_h:'Ringkasan indikator risiko', rkall_d:'Berdasarkan laporan tahunan FY2024 / FY2025 dan laporan 1H26; tingkat bersifat penilaian relatif, panjang bar menunjukkan level saat ini.',
+  dir_h:'Arah pengembangan', tl_h:'Tonggak sejarah 10 tahun (2016–2026)',
+  hld_h:'Struktur Kepemilikan', hld_d:'Struktur grup dan entitas anak berdasarkan Laporan Tahunan FY2025 (per 31 Des 2025); aset adalah total konsolidasi 2025 dalam Rp miliar.',
+  hld_own_h:'Pemegang saham (31 Des 2025)', hld_group_h:'Struktur grup menurut pilar bisnis', hld_table_h:'Entitas anak & ventura bersama konsolidasian',
+  hld_note:'JV = ventura bersama dengan kepentingan non-pengendali (dikonsolidasi). * entitas belum beroperasi. n/a = tidak diungkapkan terpisah.',
+  org_h:'Organisasi & Tata Kelola', org_d:'Tata kelola dan organisasi berdasarkan Laporan Tahunan FY2025 (AR2025).',
+  org_facts_h:'Fakta korporasi', org_gov_h:'Dewan & komite', org_chart_h:'Struktur organisasi', org_mgmt_h:'Nama-nama kunci dalam bagan organisasi AR2025',
+  org_mgmt_note:'Penugasan per divisi tidak diungkapkan dalam AR2025; fungsi ditampilkan sebagaimana dipublikasikan pada bagan organisasi.',
+  tbl_entity:'Entitas', tbl_biz:'Kegiatan utama', tbl_via:'Melalui', tbl_own:'Kepemilikan', tbl_assets:'Aset 2025 (Rp miliar)', tbl_status:'Status', tbl_name:'Nama', tbl_func:'Fungsi (sesuai publikasi)',
+  ft_src:'Sumber: <a href="https://www.jababeka.com/wp-content/uploads/2026/05/KIJA-AR-2025.pdf" target="_blank" rel="noopener">AR2025 KIJA</a> · <a href="https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202607/20260731205845-62989-0/FinancialStatement-2026-II-KIJA.pdf" target="_blank" rel="noopener">Laporan 1H26</a> · <a href="https://www.jababeka.com/wp-content/uploads/2023/05/KIJA-ASR-2022.pdf" target="_blank" rel="noopener">AR2022</a> · <a href="https://www.jababeka.com/wp-content/uploads/2025/02/KIJA-Presentation-Material-Augustus-2026-Final.pdf" target="_blank" rel="noopener">Presentasi Agu-2026</a> · <a href="https://www.idx.co.id" target="_blank" rel="noopener">Pengumuman IDX</a>. Analisis lengkap: <a href="KIJA_财务分析报告_2015-2025.md" target="_blank" rel="noopener">laporan analisis</a>.',
+  ft_note:'Dasbor ini hanya untuk informasi dan bukan merupakan saran investasi. Angka 2026 adalah data 1H26 belum diaudit; angka historis dapat berbeda sedikit dari laporan lama akibat penyesuaian laporan tahunan.'
+},
+zh: {
+  app_title:'KIJA 财务与经营 Dashboard',
+  app_sub:'PT Kawasan Industri Jababeka Tbk（IDX: KIJA）· 工业园区开发 · 财务与运营监控',
+  meta_src:'数据来源：FY2019 / FY2022 / FY2025 年报、1H26 中报、公司演示与 IDX 公告',
+  meta_asof:'数据截止：2026-09-18 · 单位：十亿印尼盾（另有注明除外）',
+  t_overview:'总览', t_fy2024:'2024 年报', t_fy2025:'2025 年报', t_fy2026:'2026 中报', t_risk:'风险与方向', t_holding:'股权结构', t_org:'治理与组织',
+  ph1:'阶段 <b>2016 高点</b>：净利 427B',
+  ph2:'阶段 <b>2017–2022 低谷</b>：地产下行 + 疫情 + 汇兑损失',
+  ph3:'阶段 <b>2023–2025 爆发</b>：Kendal 售地 + 基建收入双轮驱动',
+  ph4:'阶段 <b>2026 换挡</b>：美元债出清、经常性收入占比 57%',
+  c_o1_t:'营收（2015–2025）', c_o1_s:'合并收入，十亿盾',
+  c_o2_t:'净利润：合并 vs 归母', c_o2_s:'合并净利（实线）与归母净利（虚线）；2021 年前归母未单独披露',
+  c_o3_t:'利润率与杠杆趋势', c_o3_s:'毛利率 / 净利率 / ROE / 负债÷权益',
+  c_o4_t:'分部收入：地产 vs 基建', c_o4_s:'2021–2025，十亿盾；基建含电力、水务与干港',
+  c_o5_t:'营销销售（Marketing Sales）', c_o5_s:'土地与物业预售合同额，领先指标',
+  c_o6_t:'EBITDA（2019–2025）', c_o6_s:'调整后 EBITDA；EBITDA 利润率 29% → 34%（2019–2025）',
+  c_f24_1_t:'2024 收入构成', c_f24_1_s:'地产及其他 58.5% · 电力 25.5% · 水务/园区 10.3% · 干港 5.6%',
+  c_f24_2_t:'盈利质量：合并 vs 归母', c_f24_2_s:'2023–2025；少数股东（主要为 Kendal JV 伙伴）分走约一半利润',
+  c_f24_3_t:'毛利率 / 净利率（2015–2025）', c_f24_3_s:'毛利率自 2021 年高点 52% 回落，2024 年 43%',
+  c_f24_4_t:'资产负债表规模（2021–2025）', c_f24_4_s:'资产 / 负债 / 权益，十亿盾',
+  c_f25_1_t:'债务结构（2025-12-31）', c_f25_1_s:'总债务 4,606.5B；2027 高级票据 1.859 亿美元（票息 7–9%，本金 3,119.0）；2026Q2 已全部提前偿还',
+  c_f25_2_t:'资产构成：现金 vs 其他', c_f25_2_s:'2023–2025；现金及等价物 1,362 → 2,016 → 3,586',
+  c_f25_3_t:'偿债能力', c_f25_3_s:'EBITDA/利息 4.4x；净负债/EBITDA 0.6x（2023: 2.7x → 2025: 0.6x）',
+  c_f25_4_t:'现金桥（2025）', c_f25_4_s:'期初 2,016 + 合并盈余 1,570（JV 932 + 自有 639）= 期末 3,586',
+  c_f26_1_t:'1H26 vs 1H25 收入对比', c_f26_1_s:'总收入 -11%；基建 +15%，土地 -32%（Kendal 收入确认时点差异）',
+  c_f26_2_t:'营销销售进度（1H26）', c_f26_2_s:'1,187.6 / 2026 全年目标 3,750（Cikarang 1,250 + Kendal 2,500），达标 32%',
+  c_f26_3_t:'收入结构变化：基建占比', c_f26_3_s:'经常性收入占比 45% → 57%，业务向基建倾斜',
+  c_f26_4_t:'净亏损构成（一次性）', c_f26_4_s:'2026 上半年净亏 6.4，源于再融资一次性成本约 460',
+  ev24_t:'2024 年大事记', rk24_t:'2024 风险指示',
+  note24:'总体判断：营销销售强劲、资产负债表改善，但毛利率下行与少数股东稀释是主要观察点。',
+  ev25_t:'2025 年大事记', rk25_t:'2025 风险指示',
+  note25:'总体判断：规模与现金创纪录、杠杆持续下降；毛利率 39% 与 Kendal 依赖是主要观察点。',
+  ev26_t:'2026 年大事记（至 9 月）', rk26_t:'2026 风险指示',
+  note26:'总体判断：一次性成本致账面亏损，经营层面仍盈利；收入节奏与毛利率是下半年重点观察指标。',
+  rkall_h:'风险指示器总览', rkall_d:'综合 FY2024 / FY2025 年报与 1H26 中报数据；等级为相对判断，条长表示当前水平。',
+  dir_h:'发展方向', tl_h:'十年里程碑（2016–2026）',
+  hld_h:'股权结构（Holding Structure）', hld_d:'集团结构与子公司依据 FY2025 年报（截至 2025-12-31）；资产为 2025 年合并口径，十亿盾。',
+  hld_own_h:'股东结构（2025-12-31）', hld_group_h:'按业务板块的集团结构', hld_table_h:'合并子公司与合资公司明细',
+  hld_note:'JV = 含少数股东权益的合资公司（合并口径）。* 尚未运营。n/a = 未单独披露。',
+  org_h:'治理与组织结构', org_d:'治理层与组织依据 FY2025 年报（AR2025）。',
+  org_facts_h:'公司概况', org_gov_h:'董事会与委员会', org_chart_h:'组织结构图', org_mgmt_h:'AR2025 组织结构图中列示的关键人员',
+  org_mgmt_note:'年报未披露各人具体分管部门，职能以组织结构图公布口径为准。',
+  tbl_entity:'主体', tbl_biz:'主营业务', tbl_via:'持股路径', tbl_own:'持股', tbl_assets:'2025 资产（十亿盾）', tbl_status:'状态', tbl_name:'姓名', tbl_func:'职能（按年报公布口径）',
+  ft_src:'数据来源：<a href="https://www.jababeka.com/wp-content/uploads/2026/05/KIJA-AR-2025.pdf" target="_blank" rel="noopener">KIJA 2025 年报</a> · <a href="https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202607/20260731205845-62989-0/FinancialStatement-2026-II-KIJA.pdf" target="_blank" rel="noopener">1H26 中报</a> · <a href="https://www.jababeka.com/wp-content/uploads/2023/05/KIJA-ASR-2022.pdf" target="_blank" rel="noopener">2022 年报</a> · <a href="https://www.jababeka.com/wp-content/uploads/2025/02/KIJA-Presentation-Material-Augustus-2026-Final.pdf" target="_blank" rel="noopener">2026-08 演示</a> · <a href="https://www.idx.co.id" target="_blank" rel="noopener">IDX 公告</a>；完整分析见<a href="KIJA_财务分析报告_2015-2025.md" target="_blank" rel="noopener">分析报告</a>。',
+  ft_note:'本 Dashboard 仅供信息参考，不构成投资建议。2026 年为上半年未经审计数据；因年报追溯调整，个别历史数字可能与旧版披露略有差异。'
+}
 };
+</script>
 
-/* ===== 工具 ===== */
-function fmt(v){return String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g, ',');}
-function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
-
-var C = {green:'#1F5E40', green2:'#4A8B66', teal:'#3E7D6B', amber:'#C07A2D', clay:'#B04A2E', soft:'#C7D0C8'};
-var AX = {color:'#5C6B61', fontSize:11};
-var SPLIT = {lineStyle:{color:'#E3E8E1'}};
-
-/* ===== 动态内容：KPI / 事件 / 风险 / 时间线 ===== */
-function kpiRow(elId, items){
-  var html='';
-  for(var i=0;i<items.length;i++){
-    var it=items[i];
-    html+='<div class="kpi"><div class="lbl">'+esc(it.l)+'</div><div class="val">'+esc(it.v)+'<small> '+esc(it.u)+'</small></div><div class="del '+it.c+'">'+esc(it.d)+'</div></div>';
-  }
-  document.getElementById(elId).innerHTML=html;
-}
-function eventsHtml(list){
-  var html='';
-  for(var i=0;i<list.length;i++){
-    html+='<li><span class="d">'+esc(list[i][0])+'</span><span>'+esc(list[i][1])+'</span></li>';
-  }
-  return html;
-}
-var LV = ['lv-low','lv-mid','lv-high'];
-var LVTXT = ['低','中','高'];
-function riskHtml(rows){
-  var html='';
-  for(var i=0;i<rows.length;i++){
-    var r=rows[i];
-    var w=Math.max(4,Math.min(100,r[3]));
-    var col = r[2]===0?C.green2:(r[2]===1?C.amber:C.clay);
-    html+='<div class="risk-row"><span class="nm">'+esc(r[0])+'</span><span class="vv">'+esc(r[1])+'</span><span class="bar"><i style="width:'+w+'%;background:'+col+'"></i></span><span class="badge '+LV[r[2]]+'">'+LVTXT[r[2]]+'</span></div>';
-  }
-  return html;
-}
-function riskRowBlock(elId, rows){
-  document.getElementById(elId).innerHTML=riskHtml(rows);
-}
-
-/* KPI 数据 */
+<script>
+/* ================= 内容数据（按语言） ================= */
 var KP = {
-  ov: [
-    {l:'2025 营收',v:'5,149',u:'十亿盾',d:'+12% 同比',c:'up'},
-    {l:'合并净利',v:'857',u:'十亿盾',d:'+11% 同比',c:'up'},
-    {l:'归母净利',v:'423',u:'十亿盾',d:'+17% 同比',c:'up'},
-    {l:'EBITDA',v:'1,736',u:'十亿盾',d:'+7% 同比',c:'up'},
-    {l:'营销销售',v:'3,601',u:'十亿盾',d:'+13% 同比',c:'up'},
-    {l:'现金及等价物',v:'3,586',u:'十亿盾',d:'+78% 同比',c:'up'},
-    {l:'毛利率',v:'39',u:'%',d:'-4pct（2021 峰值 52%）',c:'dn'},
-    {l:'负债/权益',v:'85',u:'%',d:'-1pct',c:'dn'}
-  ],
-  k24: [
-    {l:'2024 营收',v:'4,603',u:'十亿盾',d:'+39% 同比',c:'up'},
-    {l:'合并净利',v:'770',u:'十亿盾',d:'+46% 同比',c:'up'},
-    {l:'归母净利',v:'363',u:'十亿盾',d:'+19% 同比',c:'up'},
-    {l:'营销销售',v:'3,188',u:'十亿盾',d:'+44%，超目标 28%',c:'up'},
-    {l:'毛利率',v:'43',u:'%',d:'-4pct（2021 峰值 52%）',c:'dn'},
-    {l:'ROE',v:'10',u:'%',d:'+2pct',c:'up'}
-  ],
-  k25: [
-    {l:'2025 营收',v:'5,149',u:'十亿盾',d:'+12% 同比',c:'up'},
-    {l:'合并净利',v:'857',u:'十亿盾',d:'+11% 同比',c:'up'},
-    {l:'归母净利',v:'423',u:'十亿盾',d:'+17% 同比',c:'up'},
-    {l:'EBITDA',v:'1,736',u:'十亿盾',d:'+7% 同比',c:'up'},
-    {l:'现金及等价物',v:'3,586',u:'十亿盾',d:'+78%，含 JV',c:'up'},
-    {l:'负债/权益',v:'85',u:'%',d:'-1pct，净债/EBITDA 0.57x',c:'dn'}
-  ],
-  k26: [
-    {l:'收入（1H26）',v:'2,437',u:'十亿盾',d:'-11% 同比',c:'dn'},
-    {l:'经营利润',v:'524',u:'十亿盾',d:'H1 经营层面仍盈利',c:'up'},
-    {l:'净利润',v:'-6.4',u:'十亿盾',d:'一次性再融资成本',c:'dn'},
-    {l:'EBITDA',v:'748',u:'十亿盾',d:'-25% 同比',c:'dn'},
-    {l:'营销销售',v:'1,188',u:'十亿盾',d:'全年目标 3,750 的 32%',c:'flat'},
-    {l:'现金',v:'~3,200',u:'十亿盾',d:'2026-06-30',c:'up'}
-  ]
+ov: {
+en: [
+  {l:'FY2025 Revenue',v:5149.4,u:'IDR bn',d:'+12% YoY',c:'up'},
+  {l:'Consolidated net profit',v:857.1,u:'IDR bn',d:'+11% YoY',c:'up'},
+  {l:'Attributable to parent',v:423.2,u:'IDR bn',d:'+17% YoY',c:'up'},
+  {l:'EBITDA',v:1735.5,u:'IDR bn',d:'+7% YoY',c:'up'},
+  {l:'Marketing sales',v:3601,u:'IDR bn',d:'+13% YoY',c:'up'},
+  {l:'Cash & equivalents',v:3586,u:'IDR bn',d:'+78% YoY',c:'up'},
+  {l:'Gross margin',v:39,u:'%',d:'-4pct (peak 52% in 2021)',c:'dn'},
+  {l:'Debt/Equity',v:85,u:'%',d:'-1pct',c:'dn'}
+],
+id: [
+  {l:'Pendapatan FY2025',v:5149.4,u:'Rp miliar',d:'+12% YoY',c:'up'},
+  {l:'Laba bersih konsolidasi',v:857.1,u:'Rp miliar',d:'+11% YoY',c:'up'},
+  {l:'Laba entitas induk',v:423.2,u:'Rp miliar',d:'+17% YoY',c:'up'},
+  {l:'EBITDA',v:1735.5,u:'Rp miliar',d:'+7% YoY',c:'up'},
+  {l:'Penjualan pemasaran',v:3601,u:'Rp miliar',d:'+13% YoY',c:'up'},
+  {l:'Kas & setara kas',v:3586,u:'Rp miliar',d:'+78% YoY',c:'up'},
+  {l:'Margin kotor',v:39,u:'%',d:'-4pct (puncak 52% tahun 2021)',c:'dn'},
+  {l:'Utang/Ekuitas',v:85,u:'%',d:'-1pct',c:'dn'}
+],
+zh: [
+  {l:'2025 营收',v:5149.4,u:'十亿盾',d:'+12% 同比',c:'up'},
+  {l:'合并净利',v:857.1,u:'十亿盾',d:'+11% 同比',c:'up'},
+  {l:'归母净利',v:423.2,u:'十亿盾',d:'+17% 同比',c:'up'},
+  {l:'EBITDA',v:1735.5,u:'十亿盾',d:'+7% 同比',c:'up'},
+  {l:'营销销售',v:3601,u:'十亿盾',d:'+13% 同比',c:'up'},
+  {l:'现金及等价物',v:3586,u:'十亿盾',d:'+78% 同比',c:'up'},
+  {l:'毛利率',v:39,u:'%',d:'-4pct（2021 峰值 52%）',c:'dn'},
+  {l:'负债/权益',v:85,u:'%',d:'-1pct',c:'dn'}
+]},
+k24: {
+en: [
+  {l:'FY2024 Revenue',v:4602.6,u:'IDR bn',d:'+39% YoY',c:'up'},
+  {l:'Consolidated net profit',v:770.1,u:'IDR bn',d:'+46% YoY',c:'up'},
+  {l:'Attributable to parent',v:363.3,u:'IDR bn',d:'+19% YoY',c:'up'},
+  {l:'Marketing sales',v:3188,u:'IDR bn',d:'+44%, 28% above target',c:'up'},
+  {l:'Gross margin',v:43,u:'%',d:'-4pct (peak 52% in 2021)',c:'dn'},
+  {l:'ROE',v:10,u:'%',d:'+2pct',c:'up'}
+],
+id: [
+  {l:'Pendapatan FY2024',v:4602.6,u:'Rp miliar',d:'+39% YoY',c:'up'},
+  {l:'Laba bersih konsolidasi',v:770.1,u:'Rp miliar',d:'+46% YoY',c:'up'},
+  {l:'Laba entitas induk',v:363.3,u:'Rp miliar',d:'+19% YoY',c:'up'},
+  {l:'Penjualan pemasaran',v:3188,u:'Rp miliar',d:'+44%, 28% di atas target',c:'up'},
+  {l:'Margin kotor',v:43,u:'%',d:'-4pct (puncak 52% tahun 2021)',c:'dn'},
+  {l:'ROE',v:10,u:'%',d:'+2pct',c:'up'}
+],
+zh: [
+  {l:'2024 营收',v:4602.6,u:'十亿盾',d:'+39% 同比',c:'up'},
+  {l:'合并净利',v:770.1,u:'十亿盾',d:'+46% 同比',c:'up'},
+  {l:'归母净利',v:363.3,u:'十亿盾',d:'+19% 同比',c:'up'},
+  {l:'营销销售',v:3188,u:'十亿盾',d:'+44%，超目标 28%',c:'up'},
+  {l:'毛利率',v:43,u:'%',d:'-4pct（2021 峰值 52%）',c:'dn'},
+  {l:'ROE',v:10,u:'%',d:'+2pct',c:'up'}
+]},
+k25: {
+en: [
+  {l:'FY2025 Revenue',v:5149.4,u:'IDR bn',d:'+12% YoY',c:'up'},
+  {l:'Consolidated net profit',v:857.1,u:'IDR bn',d:'+11% YoY',c:'up'},
+  {l:'Attributable to parent',v:423.2,u:'IDR bn',d:'+17% YoY',c:'up'},
+  {l:'EBITDA',v:1735.5,u:'IDR bn',d:'+7% YoY',c:'up'},
+  {l:'Cash & equivalents',v:3586,u:'IDR bn',d:'+78%, incl. JVs',c:'up'},
+  {l:'Debt/Equity',v:85,u:'%',d:'-1pct, net debt/EBITDA 0.6x',c:'dn'}
+],
+id: [
+  {l:'Pendapatan FY2025',v:5149.4,u:'Rp miliar',d:'+12% YoY',c:'up'},
+  {l:'Laba bersih konsolidasi',v:857.1,u:'Rp miliar',d:'+11% YoY',c:'up'},
+  {l:'Laba entitas induk',v:423.2,u:'Rp miliar',d:'+17% YoY',c:'up'},
+  {l:'EBITDA',v:1735.5,u:'Rp miliar',d:'+7% YoY',c:'up'},
+  {l:'Kas & setara kas',v:3586,u:'Rp miliar',d:'+78%, termasuk JV',c:'up'},
+  {l:'Utang/Ekuitas',v:85,u:'%',d:'-1pct, utang bersih/EBITDA 0.6x',c:'dn'}
+],
+zh: [
+  {l:'2025 营收',v:5149.4,u:'十亿盾',d:'+12% 同比',c:'up'},
+  {l:'合并净利',v:857.1,u:'十亿盾',d:'+11% 同比',c:'up'},
+  {l:'归母净利',v:423.2,u:'十亿盾',d:'+17% 同比',c:'up'},
+  {l:'EBITDA',v:1735.5,u:'十亿盾',d:'+7% 同比',c:'up'},
+  {l:'现金及等价物',v:3586,u:'十亿盾',d:'+78%，含 JV',c:'up'},
+  {l:'负债/权益',v:85,u:'%',d:'-1pct，净债/EBITDA 0.6x',c:'dn'}
+]},
+k26: {
+en: [
+  {l:'Revenue (1H26)',v:2436.5,u:'IDR bn',d:'-11% YoY',c:'dn'},
+  {l:'Operating profit',v:524,u:'IDR bn',d:'still profitable at operating level',c:'up'},
+  {l:'Net profit',v:-6.4,u:'IDR bn',d:'one-off refinancing cost',c:'dn'},
+  {l:'EBITDA',v:747.7,u:'IDR bn',d:'-25% YoY',c:'dn'},
+  {l:'Marketing sales',v:1187.6,u:'IDR bn',d:'32% of 3,750 target',c:'flat'},
+  {l:'Cash',v:3200,u:'IDR bn',p:'~',d:'as of 30 Jun 2026',c:'up'}
+],
+id: [
+  {l:'Pendapatan (1H26)',v:2436.5,u:'Rp miliar',d:'-11% YoY',c:'dn'},
+  {l:'Laba usaha',v:524,u:'Rp miliar',d:'tetap laba di level operasional',c:'up'},
+  {l:'Laba bersih',v:-6.4,u:'Rp miliar',d:'biaya refinancing satu kali',c:'dn'},
+  {l:'EBITDA',v:747.7,u:'Rp miliar',d:'-25% YoY',c:'dn'},
+  {l:'Penjualan pemasaran',v:1187.6,u:'Rp miliar',d:'32% dari target 3,750',c:'flat'},
+  {l:'Kas',v:3200,u:'Rp miliar',p:'~',d:'per 30 Jun 2026',c:'up'}
+],
+zh: [
+  {l:'收入（1H26）',v:2436.5,u:'十亿盾',d:'-11% 同比',c:'dn'},
+  {l:'经营利润',v:524,u:'十亿盾',d:'经营层面仍盈利',c:'up'},
+  {l:'净利润',v:-6.4,u:'十亿盾',d:'一次性再融资成本',c:'dn'},
+  {l:'EBITDA',v:747.7,u:'十亿盾',d:'-25% 同比',c:'dn'},
+  {l:'营销销售',v:1187.6,u:'十亿盾',d:'全年目标 3,750 的 32%',c:'flat'},
+  {l:'现金',v:3200,u:'十亿盾',p:'~',d:'2026-06-30',c:'up'}
+]}
 };
 
-/* 事件数据 */
 var EV = {
-  ev24: [
-    ['2024 全年','营销销售 3,188B 创纪录（+44%，超原目标 28%）；Cikarang 33% / Kendal 67%'],
-    ['2024 上半年','创始人 SD Darmono 重新执掌公司，重振战略方向'],
-    ['2024','Kendal 合资公司 KIK 派息 322.9B（KIJA 持股 51%）'],
-    ['2024 全年','汇兑损失 205.7B 拖累净利（2025 年降至 120.9B）'],
-    ['2024-12','股价收于 186 盾，市值约 3.9T；FY24 P/E 约 11x']
-  ],
-  ev25: [
-    ['2025-02','营销销售 3,601B 再创纪录（+13%，达标 103%）；Kendal 约 70%'],
-    ['2025-05','Jababeka Bizpark 智慧工业园区动工'],
-    ['2025-08','PT Sitoy Group（投资 5,000 万美元）在 Kendal 开厂'],
-    ['2025-10/2026-01','Fitch 确认 B-（稳定）；Moody’s 首予 B3（稳定）；S&P 应公司要求撤销评级'],
-    ['2025 全年','汇兑损失降至 120.9B；EBITDA/利息 4.43x、净负债/EBITDA 0.57x；合并现金盈余 1,570B'],
-    ['2025-12','股价收于 210 盾，市值约 4.37T']
-  ],
-  ev26: [
-    ['2026-02','PIER（Pasuruan）Mini LNG 工厂启用，服务东部工业能源转型'],
-    ['2026-04','1Q26 营销销售 518B（Cikarang 139 / Kendal 379）'],
-    ['2026-06-05','股东大会通过 FY2025 派息每股 2.03 盾（合计 42.3B），7 月 9 日支付'],
-    ['2026-07','以 15 年期 IDR 3.4T Mandiri 贷款清偿 2027 美元票据（185.9M）并终止对冲，完成再融资'],
-    ['2026-08','1H26 中报：净亏 6.4B（一次性成本约 460B）；基建收入占比升至 57%'],
-    ['2026-08','Kendal JV 宣布派息 615B（51% 归 KIJA）']
-  ]
+ev24: {
+en: [
+  ['2024','Marketing sales hit a record 3,188 (+44%, 28% above target); Cikarang 33% / Kendal 67%'],
+  ['2024 H1','Founder SD Darmono retook the helm and reset strategy'],
+  ['2024','Kendal JV (KIK) paid dividends of 322.9 (KIJA holds 51%)'],
+  ['FY2024','FX loss of 205.7 weighed on net profit (down to 120.9 in 2025)'],
+  ['Dec 2024','Share price closed at 186 IDR; market cap ~3.9tn; FY24 P/E ~11x']
+],
+id: [
+  ['2024','Penjualan pemasaran mencetak rekor 3,188 (+44%, 28% di atas target); Cikarang 33% / Kendal 67%'],
+  ['2024 H1','Pendiri SD Darmono kembali memimpin dan menyusun ulang strategi'],
+  ['2024','JV Kendal (KIK) membagikan dividen 322.9 (KIJA memegang 51%)'],
+  ['FY2024','Rugi selisih kurs 205.7 menekan laba bersih (turun ke 120.9 pada 2025)'],
+  ['Des 2024','Harga saham ditutup 186 IDR; kapitalisasi pasar sekitar 3.9tn; P/E FY24 sekitar 11x']
+],
+zh: [
+  ['2024 全年','营销销售 3,188B 创纪录（+44%，超原目标 28%）；Cikarang 33% / Kendal 67%'],
+  ['2024 上半年','创始人 SD Darmono 重新执掌公司，重振战略方向'],
+  ['2024','Kendal 合资公司 KIK 派息 322.9B（KIJA 持股 51%）'],
+  ['2024 全年','汇兑损失 205.7B 拖累净利（2025 年降至 120.9B）'],
+  ['2024-12','股价收于 186 盾，市值约 3.9T；FY24 P/E 约 11x']
+]},
+ev25: {
+en: [
+  ['Feb 2025','Marketing sales 3,601, record again (+13%, 103% of target); Kendal ~70%'],
+  ['May 2025','Jababeka Bizpark smart industrial estate broke ground'],
+  ['Aug 2025','PT Sitoy Group (US$50m investment) opened its plant in Kendal'],
+  ['Oct 2025 / Jan 2026','Fitch affirmed B- (stable); Moody’s initiated B3 (stable); S&P withdrew at company request'],
+  ['FY2025','FX loss down to 120.9; EBITDA/interest 4.4x, net debt/EBITDA 0.6x; consolidated cash surplus 1,570'],
+  ['Dec 2025','Share price closed at 210 IDR; market cap ~4.37tn']
+],
+id: [
+  ['Feb 2025','Penjualan pemasaran 3,601, rekor lagi (+13%, 103% target); Kendal sekitar 70%'],
+  ['Mei 2025','Jababeka Bizpark kawasan industri pintar mulai dibangun'],
+  ['Agu 2025','PT Sitoy Group (investasi US$50 juta) membuka pabrik di Kendal'],
+  ['Okt 2025 / Jan 2026','Fitch menegaskan B- (stabil); Moody’s memberi peringkat awal B3 (stabil); S&P mencabut atas permintaan perusahaan'],
+  ['FY2025','Rugi kurs turun ke 120.9; EBITDA/bunga 4.4x, utang bersih/EBITDA 0.6x; surplus kas konsolidasi 1,570'],
+  ['Des 2025','Harga saham ditutup 210 IDR; kapitalisasi pasar sekitar 4.37tn']
+],
+zh: [
+  ['2025-02','营销销售 3,601B 再创纪录（+13%，达标 103%）；Kendal 约 70%'],
+  ['2025-05','Jababeka Bizpark 智慧工业园区动工'],
+  ['2025-08','PT Sitoy Group（投资 5,000 万美元）在 Kendal 开厂'],
+  ['2025-10 / 2026-01','Fitch 确认 B-（稳定）；Moody’s 首予 B3（稳定）；S&P 应公司要求撤销评级'],
+  ['2025 全年','汇兑损失降至 120.9B；EBITDA/利息 4.4x、净负债/EBITDA 0.6x；合并现金盈余 1,570B'],
+  ['2025-12','股价收于 210 盾，市值约 4.37T']
+]},
+ev26: {
+en: [
+  ['Feb 2026','PIER (Pasuruan) Mini LNG plant commissioned to serve eastern industrial energy transition'],
+  ['Apr 2026','1Q26 marketing sales 518 (Cikarang 139 / Kendal 379)'],
+  ['5 Jun 2026','AGM approved FY2025 dividend of IDR2.03/share (42.3 total), paid 9 Jul'],
+  ['Jul 2026','Refinancing completed: 15-year IDR3.4tn Mandiri loan repaid the 2027 USD notes (185.9m) and hedges were terminated'],
+  ['Aug 2026','1H26 results: net loss 6.4 (one-off ~460); infrastructure share of revenue rose to 57%'],
+  ['Aug 2026','Kendal JV declared a dividend of 615 (51% attributable to KIJA)']
+],
+id: [
+  ['Feb 2026','Pabrik Mini LNG PIER (Pasuruan) diresmikan untuk transisi energi industri di timur'],
+  ['Apr 2026','Penjualan pemasaran 1Q26 518 (Cikarang 139 / Kendal 379)'],
+  ['5 Jun 2026','RUPS menyetujui dividen FY2025 Rp2.03/saham (total 42.3), dibayar 9 Jul'],
+  ['Jul 2026','Refinancing selesai: pinjaman Mandiri 15 tahun Rp3.4tn melunasi notes USD 2027 (185.9 juta) dan lindung nilai dihentikan'],
+  ['Agu 2026','Hasil 1H26: rugi bersih 6.4 (satu kali sekitar 460); porsi infrastruktur pendapatan naik ke 57%'],
+  ['Agu 2026','JV Kendal mengumumkan dividen 615 (51% diatribusikan ke KIJA)']
+],
+zh: [
+  ['2026-02','PIER（Pasuruan）Mini LNG 工厂启用，服务东部工业能源转型'],
+  ['2026-04','1Q26 营销销售 518B（Cikarang 139 / Kendal 379）'],
+  ['2026-06-05','股东大会通过 FY2025 派息每股 2.03 盾（合计 42.3B），7 月 9 日支付'],
+  ['2026-07','以 15 年期 IDR 3.4T Mandiri 贷款清偿 2027 美元票据（185.9M）并终止对冲，完成再融资'],
+  ['2026-08','1H26 中报：净亏 6.4B（一次性成本约 460B）；基建收入占比升至 57%'],
+  ['2026-08','Kendal JV 宣布派息 615B（51% 归 KIJA）']
+]}
 };
 
-/* 风险指示器 */
 var RK = {
-  rk24: [
-    ['毛利率','43%（峰值 52%）',1,82,'2021 年以来持续下滑'],
-    ['归母净利占比','47%',2,53,'少数股东分走约 53%'],
-    ['汇兑损失','205.7B',1,60,'美元债敞口拖累净利'],
-    ['负债/权益','86%',1,86,'连续两年改善'],
-    ['营销销售达标','128%',0,28,'领先指标强劲'],
-    ['收入增长','+39%',0,39,'增长动能强']
-  ],
-  rk25: [
-    ['毛利率','39%（-4pct）',2,75,'土地毛利下滑 + 基建占比上升'],
-    ['归母净利占比','49%',2,51,'NCI 分走约一半利润'],
-    ['Kendal 依赖','营销销售 70%',1,70,'园区销售集中于 Kendal'],
-    ['净负债/EBITDA','0.57x',0,21,'大幅去杠杆'],
-    ['现金 / 总资产','24%',0,24,'缓冲充足'],
-    ['汇兑损失','120.9B（-41%）',1,45,'敞口缩小，2026 出清']
-  ],
-  rk26: [
-    ['收入增速','-11%（H1）',2,75,'土地确认时点主导波动'],
-    ['毛利率','34%（H1）',2,65,'基建占比上升的结构性压低'],
-    ['一次性再融资成本','约 460B',1,60,'一次性，出清后不再有'],
-    ['营销销售进度','32%（时过半）',1,60,'Kendal 2H 为关键'],
-    ['现金缓冲','~3.2T',0,21,'覆盖短期负债与派息'],
-    ['利息负担','本币置换后上升',1,45,'长期看汇兑风险下降']
-  ],
-  'rk-all': [
-    ['毛利率水平与趋势','39%（1H26 34%）',2,75,'土地毛利率下滑叠加电力/水务占比上升'],
-    ['少数股东稀释','归母占比 ~49%',2,51,'Kendal JV 51% 权益，利润约一半归 NCI'],
-    ['收入确认节奏','1H26 -11%',2,70,'土地销售时点主导季度波动'],
-    ['非经营损益扰动','汇兑/衍生品',1,60,'2024 205.7B → 2025 120.9B → 2026H1 出清'],
-    ['杠杆与偿债','D/E 85%',1,35,'净负债/EBITDA 0.57x、EBITDA/利息 4.43x'],
-    ['现金缓冲','3.2–3.6T',0,24,'覆盖短期借款与分红'],
-    ['信用评级','B- / B3',1,50,'投机级，融资成本偏高'],
-    ['电力业务盈利','毛利偏低',1,50,'气价与 PLN 调度影响'],
-    ['Kendal 集中度','营销销售 ~70%',1,70,'依赖单一 SEZ 园区'],
-    ['宏观与 FDI 周期','中',1,45,'关税与外资建厂节奏影响土地需求']
-  ]
+rk24: {
+en: [
+  ['Gross margin','43% (peak 52%)',1,82,'declining since 2021'],
+  ['Parent share of net profit','47%',2,53,'minorities take ~53%'],
+  ['FX loss','205.7',1,60,'USD debt exposure weighed on profit'],
+  ['Debt/Equity','86%',1,86,'improving for two years'],
+  ['Marketing sales achievement','128%',0,28,'strong leading indicator'],
+  ['Revenue growth','+39%',0,39,'strong momentum']
+],
+id: [
+  ['Margin kotor','43% (puncak 52%)',1,82,'menurun sejak 2021'],
+  ['Porsi laba entitas induk','47%',2,53,'minoritas mengambil sekitar 53%'],
+  ['Rugi selisih kurs','205.7',1,60,'eksposur utang USD menekan laba'],
+  ['Utang/Ekuitas','86%',1,86,'membaik dua tahun berturut-turut'],
+  ['Capaian penjualan pemasaran','128%',0,28,'indikator utama kuat'],
+  ['Pertumbuhan pendapatan','+39%',0,39,'momentum kuat']
+],
+zh: [
+  ['毛利率','43%（峰值 52%）',1,82,'2021 年以来持续下滑'],
+  ['归母净利占比','47%',2,53,'少数股东分走约 53%'],
+  ['汇兑损失','205.7B',1,60,'美元债敞口拖累净利'],
+  ['负债/权益','86%',1,86,'连续两年改善'],
+  ['营销销售达标','128%',0,28,'领先指标强劲'],
+  ['收入增长','+39%',0,39,'增长动能强']
+]},
+rk25: {
+en: [
+  ['Gross margin','39% (-4pct)',2,75,'land margin down + infrastructure mix up'],
+  ['Parent share of net profit','49%',2,51,'NCI takes about half of profit'],
+  ['Kendal reliance','70% of marketing sales',1,70,'sales concentrated in Kendal'],
+  ['Net debt/EBITDA','0.6x',0,21,'significant deleveraging'],
+  ['Cash / total assets','24%',0,24,'ample buffer'],
+  ['FX loss','120.9 (-41%)',1,45,'exposure shrinking, cleared in 2026']
+],
+id: [
+  ['Margin kotor','39% (-4pct)',2,75,'margin lahan turun + komposisi infrastruktur naik'],
+  ['Porsi laba entitas induk','49%',2,51,'NCI mengambil sekitar separuh laba'],
+  ['Ketergantungan Kendal','70% penjualan pemasaran',1,70,'penjualan terkonsentrasi di Kendal'],
+  ['Utang bersih/EBITDA','0.6x',0,21,'deleveraging signifikan'],
+  ['Kas / total aset','24%',0,24,'bantalan memadai'],
+  ['Rugi selisih kurs','120.9 (-41%)',1,45,'eksposur menyusut, bersih pada 2026']
+],
+zh: [
+  ['毛利率','39%（-4pct）',2,75,'土地毛利下滑 + 基建占比上升'],
+  ['归母净利占比','49%',2,51,'NCI 分走约一半利润'],
+  ['Kendal 依赖','营销销售 70%',1,70,'园区销售集中于 Kendal'],
+  ['净负债/EBITDA','0.6x',0,21,'大幅去杠杆'],
+  ['现金 / 总资产','24%',0,24,'缓冲充足'],
+  ['汇兑损失','120.9B（-41%）',1,45,'敞口缩小，2026 出清']
+]},
+rk26: {
+en: [
+  ['Revenue growth','-11% (1H)',2,75,'land recognition timing drives swings'],
+  ['Gross margin','34% (1H)',2,65,'structural compression from infrastructure mix'],
+  ['One-off refinancing cost','~460',1,60,'one-off, will not recur'],
+  ['Marketing sales progress','32% (half-year elapsed)',1,60,'2H Kendal is key'],
+  ['Cash buffer','~3.2tn',0,21,'covers short-term debt & dividends'],
+  ['Interest burden','higher after IDR swap',1,45,'FX risk lower in the long run']
+],
+id: [
+  ['Pertumbuhan pendapatan','-11% (1H)',2,75,'timing pengakuan lahan menyebabkan fluktuasi'],
+  ['Margin kotor','34% (1H)',2,65,'kompresi struktural dari komposisi infrastruktur'],
+  ['Biaya refinancing satu kali','sekitar 460',1,60,'satu kali, tidak berulang'],
+  ['Progres penjualan pemasaran','32% (waktu setengah jalan)',1,60,'Kendal 2H menjadi kunci'],
+  ['Bantalan kas','sekitar 3.2tn',0,21,'menutup utang jangka pendek & dividen'],
+  ['Beban bunga','naik setelah konversi IDR',1,45,'risiko kurs lebih rendah jangka panjang']
+],
+zh: [
+  ['收入增速','-11%（H1）',2,75,'土地确认时点主导波动'],
+  ['毛利率','34%（H1）',2,65,'基建占比上升的结构性压低'],
+  ['一次性再融资成本','约 460B',1,60,'一次性，出清后不再有'],
+  ['营销销售进度','32%（时过半）',1,60,'Kendal 2H 为关键'],
+  ['现金缓冲','~3.2T',0,21,'覆盖短期负债与派息'],
+  ['利息负担','本币置换后上升',1,45,'长期看汇兑风险下降']
+]},
+'rk-all': {
+en: [
+  ['Gross margin trend','39% (1H26 34%)',2,75,'land margin down plus higher power/water share'],
+  ['Minority dilution','parent share ~49%',2,51,'Kendal JV 51% interest: about half of profit to NCI'],
+  ['Revenue recognition timing','1H26 -11%',2,70,'land sale timing drives quarterly swings'],
+  ['Non-operating FX/derivative','FX & derivatives',1,60,'205.7 (2024) → 120.9 (2025) → cleared 1H26'],
+  ['Leverage & debt service','D/E 85%',1,35,'net debt/EBITDA 0.6x, EBITDA/interest 4.4x'],
+  ['Cash buffer','3.2–3.6tn',0,24,'covers short-term debt & dividends'],
+  ['Credit rating','B- / B3',1,50,'speculative grade, higher funding cost'],
+  ['Power profitability','low gross margin',1,50,'gas price & PLN dispatch'],
+  ['Kendal concentration','~70% of marketing sales',1,70,'dependent on a single SEZ'],
+  ['Macro & FDI cycle','medium',1,45,'tariffs & factory investment pace']
+],
+id: [
+  ['Tren margin kotor','39% (1H26 34%)',2,75,'margin lahan turun + porsi listrik/air naik'],
+  ['Dilusi minoritas','porsi induk ~49%',2,51,'JV Kendal 51%: sekitar separuh laba ke NCI'],
+  ['Timing pengakuan pendapatan','1H26 -11%',2,70,'timing penjualan lahan menggerakkan fluktuasi kuartalan'],
+  ['Rugi kurs/derivatif non-operasional','Kurs & derivatif',1,60,'205.7 (2024) → 120.9 (2025) → bersih 1H26'],
+  ['Leverage & pelayanan utang','U/E 85%',1,35,'utang bersih/EBITDA 0.6x, EBITDA/bunga 4.4x'],
+  ['Bantalan kas','3.2–3.6tn',0,24,'menutup utang jangka pendek & dividen'],
+  ['Peringkat kredit','B- / B3',1,50,'grade spekulatif, biaya dana lebih tinggi'],
+  ['Profitabilitas kelistrikan','margin kotor rendah',1,50,'harga gas & dispatch PLN'],
+  ['Konsentrasi Kendal','~70% penjualan pemasaran',1,70,'bergantung pada satu KEK'],
+  ['Siklus makro & FDI','sedang',1,45,'tarif & laju investasi pabrik']
+],
+zh: [
+  ['毛利率水平与趋势','39%（1H26 34%）',2,75,'土地毛利率下滑叠加电力/水务占比上升'],
+  ['少数股东稀释','归母占比 ~49%',2,51,'Kendal JV 51% 权益，利润约一半归 NCI'],
+  ['收入确认节奏','1H26 -11%',2,70,'土地销售时点主导季度波动'],
+  ['非经营损益扰动','汇兑/衍生品',1,60,'2024 205.7B → 2025 120.9B → 2026H1 出清'],
+  ['杠杆与偿债','D/E 85%',1,35,'净负债/EBITDA 0.6x、EBITDA/利息 4.4x'],
+  ['现金缓冲','3.2–3.6T',0,24,'覆盖短期借款与分红'],
+  ['信用评级','B- / B3',1,50,'投机级，融资成本偏高'],
+  ['电力业务盈利','毛利偏低',1,50,'气价与 PLN 调度影响'],
+  ['Kendal 集中度','营销销售 ~70%',1,70,'依赖单一 SEZ 园区'],
+  ['宏观与 FDI 周期','中',1,45,'关税与外资建厂节奏影响土地需求']
+]}
 };
 
-/* 时间线 2016–2026 */
-var TL = [
+var DIR = {
+en: [
+  ['01','Recurring revenue share rising','Infrastructure revenue share 45% → 50% → 57% (power, water, dry port), improving revenue stability and cash-flow visibility.'],
+  ['02','Kendal as the main growth engine','SEZ estate contributes ~70% of marketing sales; 2026 Kendal target 2,500; JV dividend 615 (51% to KIJA).'],
+  ['03','USD debt cleared, rupiah funding','Q2 2026: 15-year IDR3.4tn loan repaid the 2027 USD notes; FX risk largely eliminated, maturity much longer.'],
+  ['04','Net leverage down sharply','Net debt/EBITDA 2.7x (2023) → 0.6x (2025); cash 3.6tn, near net-cash position.'],
+  ['05','New growth initiatives','PIER Mini LNG operating; dry port throughput +13%; Jababeka Bizpark under construction; land bank 5,089 ha.'],
+  ['06','Shareholder returns restored','FY2025 dividend IDR2.03/share (42.3; policy 25–35% of net profit); KIK/Kendal continue to pay dividends.']
+],
+id: [
+  ['01','Porsi pendapatan berulang naik','Porsi pendapatan infrastruktur 45% → 50% → 57% (listrik, air, pelabuhan darat), meningkatkan stabilitas pendapatan dan visibilitas arus kas.'],
+  ['02','Kendal sebagai mesin pertumbuhan utama','Kawasan KEK menyumbang sekitar 70% penjualan pemasaran; target Kendal 2026 2,500; dividen JV 615 (51% ke KIJA).'],
+  ['03','Utang USD dilunasi, pendanaan rupiah','Q2 2026: pinjaman 15 tahun Rp3.4tn melunasi notes USD 2027; risiko kurs hampir hilang, jatuh tempo lebih panjang.'],
+  ['04','Leverage bersih turun tajam','Utang bersih/EBITDA 2.7x (2023) → 0.6x (2025); kas 3.6tn, mendekati posisi net cash.'],
+  ['05','Inisiatif pertumbuhan baru','Mini LNG PIER beroperasi; throughput pelabuhan darat +13%; Jababeka Bizpark dibangun; cadangan lahan 5,089 ha.'],
+  ['06','Imbal hasil pemegang saham pulih','Dividen FY2025 Rp2.03/saham (42.3; kebijakan 25–35% laba bersih); KIK/Kendal terus membagikan dividen.']
+],
+zh: [
+  ['01','经常性收入占比提升','基建收入占比 45% → 50% → 57%（电力、水务、干港），收入稳定性与现金可见度增强。'],
+  ['02','Kendal 为主增长引擎','经济特区园区营销销售约占 70%；2026 年 Kendal 目标 2,500；JV 派息 615（51% 归 KIJA）。'],
+  ['03','美元债出清、本币化融资','2026Q2 以 15 年期 IDR 3.4T 贷款清偿 2027 美元票据，汇兑风险基本消除、久期显著拉长。'],
+  ['04','净杠杆大幅下降','净负债/EBITDA 自 2.7x（2023）降至 0.6x（2025）；现金 3.6T，接近净现金状态。'],
+  ['05','新增长点布局','PIER Mini LNG 工厂投运；干港吞吐 +13%；Jababeka Bizpark 动工；土地储备 5,089 公顷。'],
+  ['06','股东回报恢复','FY2025 恢复派息每股 2.03 盾（合计 42.3B，政策为净利 25–35%）；KIK/Kendal 持续派息。']
+]
+};
+
+var TL = {
+en: [
+  ['2016','Kendal Industrial Park broke ground (JV with Sembcorp, "Park by the Bay") and gained SEZ status; United Power started up','Profit peak: net profit 427'],
+  ['2017','Grahabuana Cikarang rebranded as Jababeka Residence','Revenue 2,995; profit trend turned down'],
+  ['2018','Kawana Golf Residence won an award; Bekasi Power under PLN Reserve Shutdown','Revenue 2,712; net profit 67'],
+  ['2019','Won the Golden Property Award; post-election property demand was weak','Revenue 2,254 (decade low)'],
+  ['2020','COVID-19 shock; PropertyGuru Asia\u2019s Best Industrial Developer; Kendal land sales defied the downturn','Revenue 2,396; net profit 45'],
+  ['2021','Post-pandemic recovery; marketing sales doubled (1H21: 526)','Revenue 2,490; parent -5'],
+  ['2022','Debt restructuring: 2027 senior notes (7–9%) + Mandiri USD loan; MOU with MRT Jakarta','FX loss 404; parent -64'],
+  ['2023','Profit surge: net profit +10x; Kendal land sales doubled to 1,113; marketing sales 2,213 (+29%)','Revenue 3,300; parent 306'],
+  ['2024','Marketing sales record 3,188 (+44%); KIK dividend 322.9; founder retook the helm','Revenue 4,602.6; parent 363.3'],
+  ['2025','Marketing sales record 3,601; Bizpark broke ground; Sitoy opened; PROPER green rating maintained','Revenue 5,149.4; cash 3,586'],
+  ['2026 (1H)','Refinancing cleared USD debt (15-yr IDR3.4tn); PIER Mini LNG; Moody\u2019s initiated B3; dividend 2.03/share resumed','Net loss 6.4 (one-off); infra share 57%']
+],
+id: [
+  ['2016','Kawasan Industri Kendal mulai dibangun (JV dengan Sembcorp, "Park by the Bay") dan mendapat status KEK; United Power beroperasi','Puncak laba: laba bersih 427'],
+  ['2017','Grahabuana Cikarang di-rebranding menjadi Jababeka Residence','Pendapatan 2,995; tren laba menurun'],
+  ['2018','Kawana Golf Residence meraih penghargaan; Bekasi Power terkena Reserve Shutdown PLN','Pendapatan 2,712; laba bersih 67'],
+  ['2019','Meraih Golden Property Award; permintaan properti pasca-pemilu lemah','Pendapatan 2,254 (terendah dekade)'],
+  ['2020','Guncangan COVID-19; PropertyGuru Asia\u2019s Best Industrial Developer; penjualan lahan Kendal tumbuh di tengah penurunan','Pendapatan 2,396; laba bersih 45'],
+  ['2021','Pemulihan pasca-pandemi; penjualan pemasaran berlipat ganda (1H21: 526)','Pendapatan 2,490; entitas induk -5'],
+  ['2022','Restrukturisasi utang: senior notes 2027 (7–9%) + pinjaman USD Mandiri; MOU dengan MRT Jakarta','Rugi kurs 404; entitas induk -64'],
+  ['2023','Lonjakan laba: laba bersih +10x; penjualan lahan Kendal berlipat menjadi 1,113; penjualan pemasaran 2,213 (+29%)','Pendapatan 3,300; entitas induk 306'],
+  ['2024','Penjualan pemasaran rekor 3,188 (+44%); dividen KIK 322.9; pendiri kembali memimpin','Pendapatan 4,602.6; entitas induk 363.3'],
+  ['2025','Penjualan pemasaran rekor 3,601; Bizpark dibangun; Sitoy beroperasi; peringkat hijau PROPER dipertahankan','Pendapatan 5,149.4; kas 3,586'],
+  ['2026 (1H)','Refinancing melunasi utang USD (Rp3.4tn 15 tahun); Mini LNG PIER; Moody\u2019s memberi B3; dividen 2.03/saham dilanjutkan','Rugi bersih 6.4 (satu kali); porsi infrastruktur 57%']
+],
+zh: [
   ['2016','Kendal 工业园动工（与 Sembcorp 合资「Park by the Bay」），获经济特区地位；United Power 投运','盈利高点：净利 427B'],
   ['2017','Grahabuana Cikarang 品牌重塑为「Jababeka Residence」','营收 2,995B，盈利拐点向下'],
   ['2018','Kawana Golf Residence 获奖；Bekasi Power 遭 PLN Reserve Shutdown','营收 2,712B，净利 67B'],
@@ -388,273 +808,526 @@ var TL = [
   ['2021','疫后复苏，营销销售翻倍（1H21 526B）','营收 2,490B，归母 -5B'],
   ['2022','债务重组：2027 高级票据（7–9%）+ Mandiri 美元贷款；与 MRT Jakarta 签 MOU','汇兑损失 404B，归母 -64B'],
   ['2023','盈利爆发：净利 +10 倍；Kendal 售地翻倍至 1,113B；营销销售 2,213B（+29%）','营收 3,300B，归母 306B'],
-  ['2024','营销销售 3,188B 创纪录（+44%）；KIK 派息 322.9B；创始人重新执掌','营收 4,603B，归母 363B'],
-  ['2025','营销销售 3,601B 再创纪录；Bizpark 动工；Sitoy 开厂；PROPER 连庄','营收 5,149B，现金 3.6T'],
-  ['2026（H1）','再融资出清美元债（15 年 IDR 3.4T）；PIER Mini LNG 启用；Moody’s 首评 B3；恢复派息 2.03 盾/股','净亏 6.4B（一次性）；基建占比 57%']
+  ['2024','营销销售 3,188B 创纪录（+44%）；KIK 派息 322.9B；创始人重新执掌','营收 4,602.6B，归母 363.3B'],
+  ['2025','营销销售 3,601B 再创纪录；Bizpark 动工；Sitoy 开厂；PROPER 连庄','营收 5,149.4B，现金 3,586B'],
+  ['2026（H1）','再融资出清美元债（15 年 IDR 3.4T）；PIER Mini LNG 启用；Moody\u2019s 首评 B3；恢复派息 2.03 盾/股','净亏 6.4B（一次性）；基建占比 57%']
+]
+};
+
+/* ================= 股权与组织数据 ================= */
+var OWN = {
+en:[['Mu\u2019min Ali Gunawan',21.1,0],['Islamic Development Bank',11.5,1],['Treasury shares',0.1,2],['Public',67.3,0]],
+id:[['Mu\u2019min Ali Gunawan',21.1,0],['Islamic Development Bank',11.5,1],['Saham treasuri',0.1,2],['Masyarakat',67.3,0]],
+zh:[['Mu\u2019min Ali Gunawan',21.1,0],['Islamic Development Bank',11.5,1],['库存股',0.1,2],['公众',67.3,0]]
+};
+
+var SUBS = [
+ ['GBC','PT Grahabuana Cikarang','d',100,7012.3,'res',1,0],
+ ['IP','PT Indocargomas Persada','d',100,782.0,'ind',1,0],
+ ['SPPK','PT Saranapratama Pengembangan Kota','d',100,10.9,'maint',1,0],
+ ['MGR','PT Mercuagung Graha Realty','d',100,48.6,'res',1,0],
+ ['PMJ','PT Patriamanunggal Jaya','GBC',100,51.3,'dev',1,0],
+ ['PGC','PT Padang Golf Cikarang','GBC',100,118.8,'golf',1,0],
+ ['SIPR','PT Sarana Indah Permai Residen','PGC',100,15.7,'apt',1,0],
+ ['MCI','PT Metropark Condominium Indah','IP',100,18.1,'cond',1,0],
+ ['JLC','PT Jababeka Longlife City','GBC',100,0.1,'hosp',1,0],
+ ['MPK','PT Mitra Pengembang Kawasan','IP',100,16.9,'agr',1,0],
+ ['MMN','PT Media Membangun Negeri','MPK',51,1.0,'media',1,1],
+ ['RMS','PT Ritel Maju Sejahtera','PGC',100,0.8,'retail',1,0],
+ ['KGU','PT Karyamas Griya Utama','GBC',100,0.1,'res',0,0],
+ ['JPI','PT Jababeka Plaza Indonesia','GBC',70,52.8,'dev',0,1],
+ ['RPS','PT Rumah Prima Sehat','GBC',90,4.1,'health',0,1],
+ ['KIK','PT Kawasan Industri Kendal','GBC',51,3626.0,'ind',1,1],
+ ['JMR','PT Jababeka Mitrafamili Residen','GBC',51,279.2,'redev',1,1],
+ ['JKR','PT Jababeka Keihan Residence','GBC',52,194.2,'redev',1,1],
+ ['JCR','PT Jababeka Creed Residence','GBC',60,85.2,'redev',1,1],
+ ['JPP','PT Jababeka PP Properti','d',63,119.1,'redev',1,1],
+ ['JI','PT Jababeka Infrastruktur','d',100,1684.8,'infra',1,0],
+ ['GTC','PT Gerbang Teknologi Cikarang','JI',100,730.4,'ind',1,0],
+ ['BP','PT Bekasi Power','JI',100,1598.6,'elec',1,0],
+ ['CIP','PT Cikarang Inland Port','JI',100,305.0,'dry',1,0],
+ ['ICT','PT Infrastruktur Cakrawala Telekomunikasi','JI',100,45.0,'telco',1,0],
+ ['NGE','PT Nusantara Gas Energi','JI',51,31.5,'gas',1,1],
+ ['JNL','PT Jamaggo Nusantara Lestari','JI',100,4.5,'water',1,0],
+ ['LNG','PT Likuid Nusantara Gas','JI',60,244.3,'gas',1,1],
+ ['UP','PT United Power','BP',100,462.5,'elec',1,0],
+ ['TSP','PT Tanjung Sari Power','BP',100,0.7,'elec',1,0],
+ ['TLP','PT Tanjung Lesung Power','JI',100,0.1,'elec',0,0],
+ ['PUI','PT Proteksi Usaha Indonesia','CIP',70,5.0,'gen',1,1],
+ ['CGS','PT Cikarang Gerbang Solusi','CIP',100,49.1,'ware',1,0],
+ ['BWJ','PT Banten West Java Tourism Development','d',100,914.3,'tour',1,0],
+ ['TLLI','PT Tanjung Lesung Leisure Industry','BWJ',100,47.8,'tour',1,0],
+ ['DBB','PT Duta Bandara Banten','BWJ',99,1.1,'dev',0,1],
+ ['FTL','PT Faunaland Tanjung Lesung','BWJ',51,0.3,'tour',1,1],
+ ['JM','PT Jababeka Morotai','IP',100,153.6,'dev',1,0]
 ];
 
-/* ===== 渲染：KPI / 事件 / 风险 / 时间线 ===== */
+var BIZ = {
+en:{res:'Residential estate',ind:'Industrial estate',maint:'Estate maintenance',dev:'Industrial estate development',golf:'Golf course',apt:'Apartment hotel',cond:'Condominium',hosp:'Hospitality',agr:'Construction & agribusiness',media:'Media & advertising',retail:'Retail & office rental',health:'Healthcare',redev:'Real estate development (JV)',infra:'Infrastructure & estate services',elec:'Electricity generation & distribution',dry:'Dry port services',telco:'Telecom services & construction',gas:'Gas trading & distribution',water:'Water & wastewater treatment',gen:'General trading',ware:'Warehousing & logistics',tour:'Tourism estate'},
+id:{res:'Kawasan perumahan',ind:'Kawasan industri',maint:'Pemeliharaan kawasan',dev:'Pengembangan kawasan industri',golf:'Pengelolaan lapangan golf',apt:'Apartemen hotel',cond:'Kondominium',hosp:'Perhotelan',agr:'Konstruksi & agribisnis',media:'Media & periklanan',retail:'Ritel & sewa kantor',health:'Kesehatan',redev:'Pengembangan properti (JV)',infra:'Infrastruktur & layanan kawasan',elec:'Pembangkit & distributor listrik',dry:'Jasa pelabuhan darat',telco:'Jasa & konstruksi telekomunikasi',gas:'Perdagangan & distribusi gas',water:'Pengolahan air & air limbah',gen:'Perdagangan umum',ware:'Pergudangan & logistik',tour:'Kawasan wisata'},
+zh:{res:'住宅园区',ind:'工业园区',maint:'园区维护',dev:'工业园区开发',golf:'高尔夫球场',apt:'公寓酒店',cond:'公寓',hosp:'酒店服务',agr:'建筑与农业综合',media:'媒体与广告',retail:'零售与办公租赁',health:'医疗健康',redev:'房地产开发（JV）',infra:'基建与园区服务',elec:'发电与配电',dry:'干港服务',telco:'电信服务与建设',gas:'燃气贸易与分销',water:'水与污水处理',gen:'一般贸易',ware:'仓储与物流',tour:'旅游园区'}
+};
+var VIA = {
+en:{d:'direct',GBC:'via GBC',JI:'via JI',IP:'via IP',BWJ:'via BWJ',BP:'via BP',CIP:'via CIP',PGC:'via PGC',MPK:'via MPK'},
+id:{d:'langsung',GBC:'melalui GBC',JI:'melalui JI',IP:'melalui IP',BWJ:'melalui BWJ',BP:'melalui BP',CIP:'melalui CIP',PGC:'melalui PGC',MPK:'melalui MPK'},
+zh:{d:'直接持股',GBC:'经 GBC',JI:'经 JI',IP:'经 IP',BWJ:'经 BWJ',BP:'经 BP',CIP:'经 CIP',PGC:'经 PGC',MPK:'经 MPK'}
+};
+var PILLAR = {
+en:[['RE & Property','re',1],['Infrastructure','infra',2],['Tourism & SEZ','tour',3]],
+id:[['Properti','re',1],['Infrastruktur','infra',2],['Pariwisata & KEK','tour',3]],
+zh:[['地产与物业','re',1],['基建','infra',2],['旅游与经济特区','tour',3]]
+};
+var PILLAR_MAP = {re:['GBC','IP','SPPK','MGR','PMJ','PGC','SIPR','MCI','JLC','MPK','MMN','RMS','KGU','JPI','RPS','KIK','JMR','JKR','JCR','JPP'],
+infra:['JI','GTC','BP','CIP','ICT','NGE','JNL','LNG','UP','TSP','TLP','PUI','CGS'],
+tour:['BWJ','TLLI','DBB','FTL','JM']};
+
+var ORG = {
+facts: {
+en:[['Established','1989','12 Jan'],['Listed (IDX)','1995','10 Jan'],['Employees','1,271','people'],['Land bank','5,089','ha'],['Market cap (FY25)','4.37','IDR tn'],['Shares outstanding','20.8','bn']],
+id:[['Didirikan','1989','12 Jan'],['Tercatat (IDX)','1995','10 Jan'],['Karyawan','1,271','orang'],['Cadangan lahan','5,089','ha'],['Kapitalisasi pasar (FY25)','4.37','Rp tn'],['Saham beredar','20.8','miliar']],
+zh:[['成立日期','1989','1 月 12 日'],['上市（IDX）','1995','1 月 10 日'],['员工','1,271','人'],['土地储备','5,089','公顷'],['市值（FY25）','4.37','万亿盾'],['总股本','20.8','亿股']]
+},
+boc: {
+en:['Board of Commissioners','President Commissioner / Independent','Commissioner','Independent Commissioner'],
+id:['Dewan Komisaris','Komisaris Utama / Independen','Komisaris','Komisaris Independen'],
+zh:['监事会（Dewan Komisaris）','监事长 / 独立监事','监事','独立监事']
+},
+bod: {
+en:['Board of Directors','President Director (Founder)','Vice President Director','Director'],
+id:['Direksi','Direktur Utama (Pendiri)','Wakil Direktur Utama','Direktur'],
+zh:['董事会（Direksi）','董事长（创始人）','副董事长','董事']
+},
+aud: {
+en:['Audit Committee','Chairman','Member'],
+id:['Komite Audit','Ketua','Anggota'],
+zh:['审计委员会','主席','成员']
+},
+roles:null,
+bocm:[['Suhardi Alius',0],['Gan Michael',1],['Basuri Tjahaja Purnama',2]],
+bodm:[['Setyono Djuandi Darmono',0],['Tedjo Budianto Liman',1],['Hyanto Wihadhi',2],['Tjahjadi Rahardja',2]],
+audm:[['Suhardi Alius',0],['Chandra Setiawan',1],['Dudi Hadi Santoso',1]],
+chart: {
+en:['General Meeting of Shareholders','Board of Commissioners','Board of Directors','Audit Committee','Corporate Secretary','Internal Audit','Business divisions','Real Estate & Property','Infrastructure','Tourism & SEZ','Support functions','Corporate Legal','Investor Relations & Corporate Finance','Management Information System','Senior management (division heads)'],
+id:['RUPS (Rapat Umum Pemegang Saham)','Dewan Komisaris','Direksi','Komite Audit','Sekretaris Perusahaan','Audit Internal','Divisi bisnis','Properti','Infrastruktur','Pariwisata & KEK','Fungsi pendukung','Corporate Legal','Investor Relations & Corporate Finance','Management Information System','Manajemen senior (kepala divisi)'],
+zh:['股东大会（GMS）','监事会（Dewan Komisaris）','董事会（Direksi）','审计委员会','公司秘书','内部审计','业务部门','地产与物业','基建','旅游与经济特区','支持职能','法务','投资者关系与企业财务','管理信息系统','高级管理层（部门负责人）']
+},
+mgmt: {
+en:[['Heronimus Hendricus Harlan','Internal Audit'],['Muljadi Suganda','Senior management (division head)'],['Afini Suri','Senior management (division head)'],['Tim Beekelaar','Senior management (division head)']],
+id:[['Heronimus Hendricus Harlan','Audit Internal'],['Muljadi Suganda','Manajemen senior (kepala divisi)'],['Afini Suri','Manajemen senior (kepala divisi)'],['Tim Beekelaar','Manajemen senior (kepala divisi)']],
+zh:[['Heronimus Hendricus Harlan','内部审计'],['Muljadi Suganda','高级管理层（部门负责人）'],['Afini Suri','高级管理层（部门负责人）'],['Tim Beekelaar','高级管理层（部门负责人）']]
+}
+};
+</script>
+
+<script>
+/* ================= 工具 ================= */
+var LANG = 'en';
+try { var _s = localStorage.getItem('kija_lang'); if (_s === 'en' || _s === 'id' || _s === 'zh') { LANG = _s; } } catch (e) {}
+function T(k){ return (I18N[LANG] && I18N[LANG][k]) || k; }
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function fmtN(v){
+  if (v === null || v === undefined || v === '') { return ''; }
+  var n = Number(v);
+  if (isNaN(n)) { return String(v); }
+  var s = n.toFixed(1);
+  if (s.charAt(s.length - 2) === '.' && s.charAt(s.length - 1) === '0') { s = s.slice(0, -2); }
+  var parts = s.split('.');
+  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  return parts.join('.');
+}
+var C = {green:'#1F5E40', green2:'#4A8B66', teal:'#3E7D6B', amber:'#C07A2D', clay:'#B04A2E', soft:'#C7D0C8'};
+var AX = {color:'#5C6B61', fontSize:11};
+var SPLIT = {lineStyle:{color:'#E3E8E1'}};
+
+/* ================= 年度数据（单位：十亿盾，最多 1 位小数） ================= */
+var AN = {
+  years:['2015','2016','2017','2018','2019','2020','2021','2022','2023','2024','2025'],
+  revenue:[3140,2931,2995,2712,2254,2396,2490,2747,3300,4602.6,5149.4],
+  niCons:[331,427,150,67,141,45,88,41,529,770.1,857.1],
+  niParent:[null,null,null,null,null,null,-5,-64,306,363.3,423.2],
+  assets:[7980,10709,10967,10840,10704,10849,11313,12687,12947,14017.4,15056.2],
+  liab:[3924,5198,5263,5083,5026,5051,5363,6200,6016,6478.4,6911.9],
+  equity:[4056,5511,5704,5757,5678,5798,5950,6487,6931,7539,8144.4],
+  gpm:[44,42,38,43,37,43,44,52,46,43,39],
+  npm:[11,15,5,2,6,2,4,1,16,17,17],
+  roe:[8,8,3,1,2,1,1,1,8,10,11],
+  de:[97,94,92,88,89,87,90,96,87,86,85],
+  ebitda:[null,null,null,null,657,789,817,1087,1253,1616.8,1735.5],
+  msales:[null,null,null,null,null,null,null,1717,2213,3188,3601],
+  segRe:[null,null,null,null,null,null,1367,1501,1839,2694,2583],
+  segInfra:[null,null,null,null,null,null,1123,1246,1461,1909,2567]
+};
+
+/* ================= 图表文案（按语言） ================= */
+var CHT = {
+en:{unit:'IDR bn',cons:'Consolidated net profit',parent:'Attributable to parent',gM:'Gross margin',nM:'Net margin',roe:'ROE',de:'Debt/Equity',infSeg:'Infrastructure (power/water/dry port)',reSeg:'Real estate & property',cash:'Cash & equivalents',other:'Other assets',ebitdaI:'EBITDA / interest',nd:'Net debt / EBITDA',openC:'Opening cash (end-2024)',consS:'Consolidated surplus (2025)',closeC:'Closing cash (end-2025)',totR:'Total revenue',infra:'Infrastructure',land:'Land & property',leis:'Leisure & hotel',done:'1H26 achieved',target:'FY2026 target 3,750',recurr:'Recurring (infrastructure)',fx:'FX loss',deriv:'Derivative termination',amort:'Accelerated amortization',sn:'Senior Notes 2027',rePie:'Real estate & others',powPie:'Power',watPie:'Water/Estate',dryPie:'Dry port',ta:'Total assets',tl:'Total liabilities',te:'Total equity',op:'Operating',no:'Non-operating'},
+id:{unit:'Rp miliar',cons:'Laba bersih konsolidasi',parent:'Diatribusikan ke pemilik',gM:'Margin kotor',nM:'Margin bersih',roe:'ROE',de:'Utang/Ekuitas',infSeg:'Infrastruktur (listrik/air/pelabuhan darat)',reSeg:'Properti',cash:'Kas & setara kas',other:'Aset lainnya',ebitdaI:'EBITDA / bunga',nd:'Utang bersih / EBITDA',openC:'Kas awal (akhir 2024)',consS:'Surplus konsolidasi (2025)',closeC:'Kas akhir (akhir 2025)',totR:'Total pendapatan',infra:'Infrastruktur',land:'Tanah & properti',leis:'Rekreasi & hotel',done:'1H26 terealisasi',target:'Target FY2026 3,750',recurr:'Pendapatan berulang (infrastruktur)',fx:'Rugi selisih kurs',deriv:'Penghentian derivatif',amort:'Amortisasi dipercepat',sn:'Senior Notes 2027',rePie:'Properti & lainnya',powPie:'Kelistrikan',watPie:'Air/Layanan kawasan',dryPie:'Pelabuhan darat',ta:'Total aset',tl:'Total liabilitas',te:'Total ekuitas',op:'Beroperasi',no:'Belum beroperasi'},
+zh:{unit:'十亿盾',cons:'合并净利',parent:'归母净利',gM:'毛利率',nM:'净利率',roe:'ROE',de:'负债/权益',infSeg:'基建（电力/水务/干港）',reSeg:'地产与物业',cash:'现金及等价物',other:'其他资产',ebitdaI:'EBITDA / 利息',nd:'净负债 / EBITDA',openC:'期初现金（2024 末）',consS:'合并盈余（2025）',closeC:'期末现金（2025 末）',totR:'总收入',infra:'基建',land:'土地与物业',leis:'休闲酒店',done:'1H26 已实现',target:'2026 目标 3,750',recurr:'基建（经常性收入）',fx:'汇兑损失',deriv:'衍生品终止',amort:'加速摊销',sn:'2027 高级票据',rePie:'地产及其他',powPie:'电力',watPie:'水务/园区',dryPie:'干港',ta:'总资产',tl:'总负债',te:'总权益',op:'运营中',no:'未运营'}
+};
+function CT(k){ return CHT[LANG][k] || k; }
+
+/* ================= 图表构建（按当前语言） ================= */
+function baseTooltip(){ return {trigger:'axis', confine:true}; }
+function baseGrid(){ return {left:48, right:18, top:34, bottom:30}; }
+function baseX(cats){ return {type:'category', data:cats, axisLabel:{color:AX.color, fontSize:11}, axisLine:{lineStyle:{color:'#B9C4BB'}}}; }
+function baseY(name){ return {type:'value', name:name, nameTextStyle:{color:AX.color, fontSize:11}, axisLabel:{color:AX.color, fontSize:11}, splitLine:SPLIT}; }
+function lblFmt(){ return function(p){ return fmtN(p.value); }; }
+function legendT(){ return {top:2, right:6, textStyle:{color:AX.color, fontSize:11}, itemWidth:14}; }
+
+function buildOpt(id){
+  var U = CT('unit');
+  if (id === 'o1') {
+    var d = AN.revenue, lb = [];
+    for (var i = 0; i < d.length; i++) { lb.push(fmtN(d[i])); }
+    return {tooltip:baseTooltip(), grid:baseGrid(), xAxis:baseX(AN.years), yAxis:baseY(U),
+      series:[{type:'bar', data:d, itemStyle:{color:C.green, borderRadius:[3,3,0,0]}, label:{show:true, position:'top', fontSize:10, color:'#5C6B61', formatter:lblFmt()}, barMaxWidth:26}]};
+  }
+  if (id === 'o2') {
+    return {tooltip:baseTooltip(), legend:legendT(), grid:baseGrid(), xAxis:baseX(AN.years), yAxis:baseY(U),
+      series:[
+        {name:CT('cons'), type:'line', data:AN.niCons, smooth:true, symbolSize:6, lineStyle:{width:2.5, color:C.green}, itemStyle:{color:C.green}},
+        {name:CT('parent'), type:'line', data:AN.niParent, smooth:true, symbolSize:6, lineStyle:{width:2, color:C.amber, type:'dashed'}, itemStyle:{color:C.amber}}]};
+  }
+  if (id === 'o3') {
+    return {tooltip:baseTooltip(), legend:legendT(), grid:baseGrid(), xAxis:baseX(AN.years), yAxis:baseY('%'),
+      series:[
+        {name:CT('gM'), type:'line', data:AN.gpm, smooth:true, symbolSize:5, lineStyle:{width:2, color:C.green}, itemStyle:{color:C.green}},
+        {name:CT('nM'), type:'line', data:AN.npm, smooth:true, symbolSize:5, lineStyle:{width:2, color:C.teal}, itemStyle:{color:C.teal}},
+        {name:CT('roe'), type:'line', data:AN.roe, smooth:true, symbolSize:5, lineStyle:{width:2, color:C.green2}, itemStyle:{color:C.green2}},
+        {name:CT('de'), type:'line', data:AN.de, smooth:true, symbolSize:5, lineStyle:{width:2, color:C.amber}, itemStyle:{color:C.amber}}]};
+  }
+  if (id === 'o4') {
+    return {tooltip:baseTooltip(), legend:legendT(), grid:baseGrid(), xAxis:baseX(['2021','2022','2023','2024','2025']), yAxis:baseY(U),
+      series:[
+        {name:CT('infSeg'), type:'bar', stack:'s', data:[1123,1246,1461,1909,2567], itemStyle:{color:C.teal}, barMaxWidth:40},
+        {name:CT('reSeg'), type:'bar', stack:'s', data:[1367,1501,1839,2694,2583], itemStyle:{color:C.green}, barMaxWidth:40}]};
+  }
+  if (id === 'o5') {
+    var d2 = [1717,2213,3188,3601], lb2 = [];
+    for (var j = 0; j < d2.length; j++) { lb2.push(fmtN(d2[j])); }
+    return {tooltip:baseTooltip(), grid:baseGrid(), xAxis:baseX(['2022','2023','2024','2025']), yAxis:baseY(U),
+      series:[{type:'bar', data:d2, itemStyle:{color:C.green, borderRadius:[3,3,0,0]}, label:{show:true, position:'top', fontSize:11, color:'#1F5E40', fontWeight:600, formatter:lblFmt()}, barMaxWidth:52}]};
+  }
+  if (id === 'o6') {
+    var cats = [], vals = [], d3 = AN.ebitda;
+    for (var k = 0; k < d3.length; k++) { if (d3[k] !== null) { cats.push(AN.years[k]); vals.push(d3[k]); } }
+    return {tooltip:baseTooltip(), grid:baseGrid(), xAxis:baseX(cats), yAxis:baseY(U),
+      series:[{type:'bar', data:vals, itemStyle:{color:C.green2, borderRadius:[3,3,0,0]}, label:{show:true, position:'top', fontSize:10, color:'#5C6B61', formatter:lblFmt()}, barMaxWidth:40}]};
+  }
+  if (id === 'f24-1') {
+    var data = [[CT('rePie'),2694],[CT('powPie'),1175],[CT('watPie'),476],[CT('dryPie'),258]];
+    var ser = [], tot = 0;
+    for (var m = 0; m < data.length; m++) { tot += data[m][1]; ser.push({name:data[m][0], value:data[m][1]}); }
+    return {tooltip:{trigger:'item', confine:true, formatter:function(p){ return p.name + ': ' + fmtN(p.value) + ' ' + U + ' (' + p.percent + '%)'; }},
+      legend:{bottom:2, textStyle:{color:AX.color, fontSize:11}, itemWidth:12},
+      series:[{type:'pie', radius:['34%','66%'], center:['50%','45%'], data:ser, itemStyle:{borderColor:'#fff', borderWidth:1},
+        label:{show:true, fontSize:11, color:'#16241C', formatter:function(p){ return p.name + '\n' + p.percent + '%'; }},
+        labelLine:{length:10, length2:8}, color:[C.green, C.teal, C.green2, C.amber]}]};
+  }
+  if (id === 'f24-2') {
+    return {tooltip:baseTooltip(), legend:legendT(), grid:baseGrid(), xAxis:baseX(['2023','2024','2025']), yAxis:baseY(U),
+      series:[
+        {name:CT('cons'), type:'bar', data:[529,770.1,857.1], itemStyle:{color:C.green}, barMaxWidth:34},
+        {name:CT('parent'), type:'bar', data:[306,363.3,423.2], itemStyle:{color:C.amber}, barMaxWidth:34}]};
+  }
+  if (id === 'f24-3') {
+    return {tooltip:baseTooltip(), legend:legendT(), grid:baseGrid(), xAxis:baseX(AN.years), yAxis:baseY('%'),
+      series:[
+        {name:CT('gM'), type:'line', data:AN.gpm, smooth:true, symbolSize:6, lineStyle:{width:2, color:C.green}, itemStyle:{color:C.green}},
+        {name:CT('nM'), type:'line', data:AN.npm, smooth:true, symbolSize:6, lineStyle:{width:2, color:C.teal}, itemStyle:{color:C.teal}}]};
+  }
+  if (id === 'f24-4') {
+    return {tooltip:baseTooltip(), legend:legendT(), grid:baseGrid(), xAxis:baseX(['2021','2022','2023','2024','2025']), yAxis:baseY(U),
+      series:[
+        {name:CT('ta'), type:'bar', data:[11313,12687,12947,14017.4,15056.2], itemStyle:{color:C.green}, barMaxWidth:22},
+        {name:CT('tl'), type:'bar', data:[5363,6200,6016,6478.4,6911.9], itemStyle:{color:C.amber}, barMaxWidth:22},
+        {name:CT('te'), type:'bar', data:[5950,6487,6931,7539,8144.4], itemStyle:{color:C.teal}, barMaxWidth:22}]};
+  }
+  if (id === 'f25-1') {
+    return {tooltip:baseTooltip(), grid:{left:150, right:56, top:10, bottom:26},
+      xAxis:{type:'value', axisLabel:{color:AX.color, fontSize:11}, splitLine:SPLIT},
+      yAxis:{type:'category', data:[CT('sn'),'Bank Mandiri','China Construction Bank','OCBC NISP'], axisLabel:{color:'#16241C', fontSize:11}},
+      series:[{type:'bar', data:[
+        {value:3119.0, itemStyle:{color:C.amber}},
+        {value:1335.5, itemStyle:{color:C.green}},
+        {value:143.5, itemStyle:{color:C.teal}},
+        {value:35.4, itemStyle:{color:C.green2}}
+      ], label:{show:true, position:'right', fontSize:11, color:'#16241C', formatter:lblFmt()}, barMaxWidth:24}]};
+  }
+  if (id === 'f25-2') {
+    return {tooltip:baseTooltip(), legend:legendT(), grid:baseGrid(), xAxis:baseX(['2023','2024','2025']), yAxis:baseY(U),
+      series:[
+        {name:CT('cash'), type:'bar', stack:'a', data:[1362,2016,3586], itemStyle:{color:C.green}, barMaxWidth:46},
+        {name:CT('other'), type:'bar', stack:'a', data:[11585,12001,11470], itemStyle:{color:C.soft}, barMaxWidth:46}]};
+  }
+  if (id === 'f25-3') {
+    return {tooltip:baseTooltip(), legend:legendT(), grid:baseGrid(), xAxis:baseX(['2023','2024','2025']), yAxis:baseY('x'),
+      series:[
+        {name:CT('ebitdaI'), type:'line', data:[3.4,4.5,4.4], smooth:true, symbolSize:6, lineStyle:{width:2, color:C.green}, itemStyle:{color:C.green}},
+        {name:CT('nd'), type:'line', data:[2.7,1.5,0.6], smooth:true, symbolSize:6, lineStyle:{width:2, color:C.clay}, itemStyle:{color:C.clay}}]};
+  }
+  if (id === 'f25-4') {
+    return {tooltip:baseTooltip(), grid:baseGrid(), xAxis:baseX([CT('openC'), CT('consS'), CT('closeC')]), yAxis:baseY(U),
+      series:[{type:'bar', data:[
+        {value:2016, itemStyle:{color:C.green2}},
+        {value:1570, itemStyle:{color:C.amber}},
+        {value:3586, itemStyle:{color:C.green}}
+      ], label:{show:true, position:'top', fontSize:11, color:'#16241C', formatter:lblFmt()}, barMaxWidth:56}]};
+  }
+  if (id === 'f26-1') {
+    return {tooltip:baseTooltip(), legend:legendT(), grid:baseGrid(), xAxis:baseX([CT('totR'), CT('infra'), CT('land'), CT('leis')]), yAxis:baseY(U),
+      series:[
+        {name:'1H25', type:'bar', data:[2726,1221,1443,62], itemStyle:{color:C.soft}, barMaxWidth:30},
+        {name:'1H26', type:'bar', data:[2436.5,1398.2,974.9,63], itemStyle:{color:C.green}, barMaxWidth:30}]};
+  }
+  if (id === 'f26-2') {
+    return {tooltip:baseTooltip(), grid:baseGrid(), xAxis:baseX([CT('done')]),
+      yAxis:{type:'value', max:4200, name:U, nameTextStyle:{color:AX.color, fontSize:11}, axisLabel:{color:AX.color, fontSize:11}, splitLine:SPLIT},
+      series:[{type:'bar', data:[1187.6], itemStyle:{color:C.green, borderRadius:[3,3,0,0]}, label:{show:true, position:'top', fontSize:12, fontWeight:600, color:'#1F5E40', formatter:function(){ return fmtN(1187.6); }}, barMaxWidth:64,
+        markLine:{silent:true, symbol:'none', lineStyle:{color:C.clay, type:'dashed', width:1.5}, data:[{yAxis:3750, label:{formatter:CT('target'), fontSize:11, color:C.clay, position:'insideEndTop'}}]}}]};
+  }
+  if (id === 'f26-3') {
+    return {tooltip:{trigger:'axis', confine:true, valueFormatter:function(v){ return v + '%'; }}, legend:legendT(), grid:baseGrid(),
+      xAxis:baseX(['1H25','1H26']),
+      yAxis:{type:'value', max:100, axisLabel:{color:AX.color, fontSize:11, formatter:'{value}%'}, splitLine:SPLIT},
+      series:[
+        {name:CT('recurr'), type:'bar', stack:'p', data:[45,57], itemStyle:{color:C.teal}, barMaxWidth:56},
+        {name:CT('land'), type:'bar', stack:'p', data:[55,43], itemStyle:{color:C.green}, barMaxWidth:56}]};
+  }
+  if (id === 'f26-4') {
+    return {tooltip:baseTooltip(), grid:{left:150, right:56, top:10, bottom:26},
+      xAxis:{type:'value', axisLabel:{color:AX.color, fontSize:11}, splitLine:SPLIT},
+      yAxis:{type:'category', data:[CT('fx'), CT('deriv'), CT('amort')], axisLabel:{color:'#16241C', fontSize:11}},
+      series:[{type:'bar', data:[
+        {value:280.7, itemStyle:{color:C.clay}},
+        {value:154.6, itemStyle:{color:C.amber}},
+        {value:24.9, itemStyle:{color:C.green2}}
+      ], label:{show:true, position:'right', fontSize:11, color:'#16241C', formatter:lblFmt()}, barMaxWidth:22}]};
+  }
+  return {};
+}
+
+/* ================= 渲染：静态文案 + 动态内容 ================= */
+function renderPhases(){
+  var arr = ['ph1','ph2','ph3','ph4'], h = '';
+  for (var i = 0; i < arr.length; i++) { h += '<span class="chip">' + T(arr[i]) + '</span>'; }
+  document.getElementById('phases').innerHTML = h;
+}
+function kpiHtml(items){
+  var h = '';
+  for (var i = 0; i < items.length; i++) {
+    var it = items[i];
+    h += '<div class="kpi"><div class="lbl">' + esc(it.l) + '</div><div class="val">' + (it.p || '') + fmtN(it.v) + '<small> ' + esc(it.u) + '</small></div><div class="del ' + it.c + '">' + esc(it.d) + '</div></div>';
+  }
+  return h;
+}
+function eventsHtml(list){
+  var h = '';
+  for (var i = 0; i < list.length; i++) { h += '<li><span class="d">' + esc(list[i][0]) + '</span><span>' + esc(list[i][1]) + '</span></li>'; }
+  return h;
+}
+var LV = ['lv-low','lv-mid','lv-high'];
+var LVTXT = {en:['Low','Medium','High'], id:['Rendah','Sedang','Tinggi'], zh:['低','中','高']};
+function riskHtml(rows){
+  var h = '';
+  for (var i = 0; i < rows.length; i++) {
+    var r = rows[i], w = Math.max(4, Math.min(100, r[3]));
+    var col = r[2] === 0 ? C.green2 : (r[2] === 1 ? C.amber : C.clay);
+    h += '<div class="risk-row"><span class="nm">' + esc(r[0]) + '</span><span class="vv">' + esc(r[1]) + '</span><span class="bar"><i style="width:' + w + '%;background:' + col + '"></i></span><span class="badge ' + LV[r[2]] + '">' + LVTXT[LANG][r[2]] + '</span></div>';
+  }
+  return h;
+}
+function dirsHtml(){
+  var rows = DIR[LANG], h = '';
+  for (var i = 0; i < rows.length; i++) {
+    h += '<div class="dir"><div class="n">' + esc(rows[i][0]) + '</div><h4>' + esc(rows[i][1]) + '</h4><p>' + esc(rows[i][2]) + '</p></div>';
+  }
+  return h;
+}
+function tlHtml(){
+  var rows = TL[LANG], h = '';
+  for (var i = 0; i < rows.length; i++) {
+    h += '<div class="yr">' + esc(rows[i][0]) + '</div><div class="dot"></div><div class="ev"><b>' + esc(rows[i][1]) + '</b><div class="m">' + esc(rows[i][2]) + '</div></div>';
+  }
+  return h;
+}
+function ownHtml(){
+  var rows = OWN[LANG], h = '', max = 67.3, cols = ['', 'hl', 'hl2'];
+  for (var i = 0; i < rows.length; i++) {
+    var w = Math.round(rows[i][1] / max * 100);
+    h += '<div class="own-row"><span class="nm">' + esc(rows[i][0]) + '</span><span class="bar"><i class="' + cols[rows[i][2]] + '" style="width:' + w + '%"></i></span><span class="vv">' + fmtN(rows[i][1]) + '%</span></div>';
+  }
+  return h;
+}
+function hldEntityHtml(s, full){
+  var via = VIA[LANG][s[2]] || '', biz = BIZ[LANG][s[5]] || '';
+  var cls = s[7] === 1 ? 'hld-ent jv' : 'hld-ent';
+  return '<div class="' + cls + '"><div><span class="nm">' + esc(s[0]) + '</span>' + (full ? '<span class="sub">' + esc(s[1]) + '</span>' : '') + '<span class="sub">' + esc(biz) + (via ? ' · ' + esc(via) : '') + '</span></div><span class="p">' + fmtN(s[3]) + '%</span></div>';
+}
+function hldDiagramHtml(){
+  var h = '<div class="hld-top"><b>PT Jababeka Tbk</b><span>KIJA · IDX</span></div><div class="hld-line"></div><div class="hld-pillars">';
+  var pillars = PILLAR[LANG];
+  for (var p = 0; p < pillars.length; p++) {
+    var codes = PILLAR_MAP[pillars[p][1]], ents = [];
+    for (var i = 0; i < codes.length; i++) {
+      for (var j = 0; j < SUBS.length; j++) { if (SUBS[j][0] === codes[i]) { ents.push(SUBS[j]); } }
+    }
+    ents.sort(function(a, b){ return b[4] - a[4]; });
+    h += '<div class="hld-pillar"><h4>' + esc(pillars[p][0]) + '</h4><div class="hld-ents">';
+    var show = ents.length > 4 ? 4 : ents.length;
+    for (var k = 0; k < show; k++) { h += hldEntityHtml(ents[k], false); }
+    if (ents.length > show) { h += '<div class="hld-more">+ ' + (ents.length - show) + ' more</div>'; }
+    h += '</div></div>';
+  }
+  h += '</div>';
+  return h;
+}
+function hldTableHtml(){
+  var h = '<div class="g-table-wrap"><table class="g-table"><colgroup><col style="width:26%"><col style="width:27%"><col style="width:13%"><col style="width:9%"><col style="width:14%"><col style="width:11%"></colgroup><thead><tr><th>' + esc(T('tbl_entity')) + '</th><th>' + esc(T('tbl_biz')) + '</th><th>' + esc(T('tbl_via')) + '</th><th>' + esc(T('tbl_own')) + '</th><th>' + esc(T('tbl_assets')) + '</th><th>' + esc(T('tbl_status')) + '</th></tr></thead><tbody>';
+  var pillars = PILLAR[LANG], first = true;
+  for (var p = 0; p < pillars.length; p++) {
+    var codes = PILLAR_MAP[pillars[p][1]];
+    h += '<tr><td colspan="6" class="gname">' + esc(pillars[p][0]) + '</td></tr>';
+    for (var i = 0; i < codes.length; i++) {
+      for (var j = 0; j < SUBS.length; j++) {
+        if (SUBS[j][0] !== codes[i]) { continue; }
+        var s = SUBS[j];
+        h += '<tr><td class="b">' + esc(s[0]) + '<br><span style="font-weight:400;color:#5C6B61">' + esc(s[1]) + '</span></td><td>' + esc(BIZ[LANG][s[5]]) + '</td><td>' + esc(VIA[LANG][s[2]]) + '</td><td class="' + (s[7] === 1 ? 'amber' : 'p') + '">' + fmtN(s[3]) + '%</td><td class="p">' + fmtN(s[4]) + '</td><td>' + (s[6] === 1 ? esc(CT('op')) : esc(CT('no'))) + '</td></tr>';
+      }
+    }
+  }
+  h += '</tbody></table></div><div class="risk-note">' + esc(T('hld_note')) + '</div>';
+  return h;
+}
+function memberLines(members, roles){
+  var h = '';
+  for (var i = 0; i < members.length; i++) {
+    h += '<span style="display:block;margin-top:3px;font-size:11.5px;line-height:1.35">' + esc(members[i][0]) + ' · ' + esc(roles[members[i][1] + 1]) + '</span>';
+  }
+  return h;
+}
+function memberNames(members){
+  var a = [];
+  for (var i = 0; i < members.length; i++) { a.push(members[i][0]); }
+  return a.join(', ');
+}
+function orgGovHtml(){
+  var o = ORG;
+  return '<div class="org">'
+    + '<div class="org-box dark"><b>' + esc(o.chart[LANG][0]) + '</b><span>GMS · RUPS</span></div>'
+    + '<div class="org-line"></div>'
+    + '<div class="org-row">'
+    + '<div class="org-col">'
+    + '<div class="org-box green"><b>' + esc(o.boc[LANG][0]) + '</b>' + memberLines(o.bocm, o.boc[LANG]) + '</div>'
+    + '<div class="vline"></div>'
+    + '<div class="org-box"><b>' + esc(o.aud[LANG][0]) + '</b>' + memberLines(o.audm, o.aud[LANG]) + '</div>'
+    + '</div>'
+    + '<div class="org-col"><div class="org-box green"><b>' + esc(o.bod[LANG][0]) + '</b>' + memberLines(o.bodm, o.bod[LANG]) + '</div></div>'
+    + '</div></div>';
+}
+function orgChartHtml(){
+  var o = ORG, ch = o.chart[LANG];
+  return '<div class="org">'
+    + '<div class="org-box green"><b>' + esc(ch[2]) + '</b><span>' + esc(memberNames(o.bodm)) + '</span></div>'
+    + '<div class="org-line"></div>'
+    + '<div class="org-row">'
+    + '<div class="org-box"><b>' + esc(ch[4]) + '</b></div>'
+    + '<div class="org-box"><b>' + esc(ch[5]) + '</b><span>Heronimus Hendricus Harlan</span></div>'
+    + '<div class="org-box"><b>' + esc(ch[6]) + '</b><span>' + esc(ch[7]) + ' · ' + esc(ch[8]) + ' · ' + esc(ch[9]) + '</span></div>'
+    + '<div class="org-box"><b>' + esc(ch[10]) + '</b><span>' + esc(ch[11]) + ' · ' + esc(ch[12]) + ' · ' + esc(ch[13]) + '</span></div>'
+    + '</div></div>';
+}
+function orgFactsHtml(){
+  var rows = ORG.facts[LANG], h = '';
+  for (var i = 0; i < rows.length; i++) {
+    h += '<div class="fact"><div class="lbl">' + esc(rows[i][0]) + '</div><div class="val">' + esc(rows[i][1]) + '<small> ' + esc(rows[i][2]) + '</small></div></div>';
+  }
+  return h;
+}
 function renderStatics(){
-  kpiRow('ov-kpis', KP.ov);
-  kpiRow('k24', KP.k24);
-  kpiRow('k25', KP.k25);
-  kpiRow('k26', KP.k26);
-  document.getElementById('ev24').innerHTML=eventsHtml(EV.ev24);
-  document.getElementById('ev25').innerHTML=eventsHtml(EV.ev25);
-  document.getElementById('ev26').innerHTML=eventsHtml(EV.ev26);
-  riskRowBlock('rk24', RK.rk24);
-  riskRowBlock('rk25', RK.rk25);
-  riskRowBlock('rk26', RK.rk26);
-  riskRowBlock('rk-all', RK['rk-all']);
-  var th='';
-  for(var i=0;i<TL.length;i++){
-    th+='<div class="yr">'+esc(TL[i][0])+'</div><div class="dot"></div><div class="ev"><b>'+esc(TL[i][1])+'</b><div class="m">'+esc(TL[i][2])+'</div></div>';
-  }
-  document.getElementById('tl').innerHTML=th;
+  var els = document.querySelectorAll('[data-i18n]');
+  for (var i = 0; i < els.length; i++) { els[i].innerHTML = T(els[i].getAttribute('data-i18n')); }
+  renderPhases();
+  document.getElementById('ov-kpis').innerHTML = kpiHtml(KP.ov[LANG]);
+  document.getElementById('k24').innerHTML = kpiHtml(KP.k24[LANG]);
+  document.getElementById('k25').innerHTML = kpiHtml(KP.k25[LANG]);
+  document.getElementById('k26').innerHTML = kpiHtml(KP.k26[LANG]);
+  document.getElementById('ev24').innerHTML = eventsHtml(EV.ev24[LANG]);
+  document.getElementById('ev25').innerHTML = eventsHtml(EV.ev25[LANG]);
+  document.getElementById('ev26').innerHTML = eventsHtml(EV.ev26[LANG]);
+  document.getElementById('rk24').innerHTML = riskHtml(RK.rk24[LANG]);
+  document.getElementById('rk25').innerHTML = riskHtml(RK.rk25[LANG]);
+  document.getElementById('rk26').innerHTML = riskHtml(RK.rk26[LANG]);
+  document.getElementById('rk-all').innerHTML = riskHtml(RK['rk-all'][LANG]);
+  document.getElementById('dirs').innerHTML = dirsHtml();
+  document.getElementById('tl').innerHTML = tlHtml();
+  document.getElementById('own-bars').innerHTML = ownHtml();
+  document.getElementById('hld').innerHTML = hldDiagramHtml();
+  document.getElementById('hld-table').innerHTML = hldTableHtml();
+  document.getElementById('org-facts').innerHTML = orgFactsHtml();
+  document.getElementById('org-gov').innerHTML = orgGovHtml();
+  document.getElementById('org-chart').innerHTML = orgChartHtml();
+  var mgmt = ORG.mgmt[LANG], mh = '<table class="g-table"><colgroup><col style="width:40%"><col style="width:60%"></colgroup><thead><tr><th>' + esc(T('tbl_name')) + '</th><th>' + esc(T('tbl_func')) + '</th></tr></thead><tbody>';
+  for (var m = 0; m < mgmt.length; m++) { mh += '<tr><td class="b">' + esc(mgmt[m][0]) + '</td><td>' + esc(mgmt[m][1]) + '</td></tr>'; }
+  mh += '</tbody></table><div class="risk-note">' + esc(T('org_mgmt_note')) + '</div>';
+  document.getElementById('org-mgmt').innerHTML = mh;
+  var btns = document.querySelectorAll('.langs button');
+  for (var x = 0; x < btns.length; x++) { btns[x].classList.toggle('active', btns[x].getAttribute('data-lang') === LANG); }
+  for (var k in CH) { if (CH.hasOwnProperty(k)) { CH[k].setOption(buildOpt(k), true); } }
 }
 
-/* ===== ECharts 图表 ===== */
+/* ================= 路由与图表生命周期 ================= */
 var CH = {};
-function baseTooltip(){return {trigger:'axis', confine:true};}
-function baseGrid(){return {left:48,right:18,top:34,bottom:30,containLabel:false};}
-function baseX(cats){return {type:'category',data:cats,axisLabel:{color:AX.color,fontSize:11},axisLine:{lineStyle:{color:'#B9C4BB'}}};}
-function baseY(name){return {type:'value',name:name,nameTextStyle:{color:AX.color,fontSize:11},axisLabel:{color:AX.color,fontSize:11},splitLine:SPLIT};}
-
-function optO1(){
-  var d=DATA.revenue, labels=[];
-  for(var i=0;i<d.length;i++){labels.push(fmt(d[i]));}
-  return {
-    tooltip:baseTooltip(),
-    grid:baseGrid(),
-    xAxis:baseX(DATA.years),
-    yAxis:baseY('十亿盾'),
-    series:[{type:'bar',data:d,itemStyle:{color:C.green,borderRadius:[3,3,0,0]},label:{show:true,position:'top',fontSize:10,color:'#5C6B61',formatter:function(p){return fmt(p.value);}},barMaxWidth:26}]
-  };
-}
-function optO2(){
-  return {
-    tooltip:baseTooltip(),
-    legend:{top:2,right:6,textStyle:{color:AX.color,fontSize:11},itemWidth:14},
-    grid:baseGrid(),
-    xAxis:baseX(DATA.years),
-    yAxis:baseY('十亿盾'),
-    series:[
-      {name:'合并净利',type:'line',data:DATA.niCons,smooth:true,symbolSize:6,lineStyle:{width:2.5,color:C.green},itemStyle:{color:C.green}},
-      {name:'归母净利',type:'line',data:DATA.niParent,smooth:true,symbolSize:6,lineStyle:{width:2,color:C.amber,type:'dashed'},itemStyle:{color:C.amber}}
-    ]
-  };
-}
-function optO3(){
-  return {
-    tooltip:baseTooltip(),
-    legend:{top:2,right:6,textStyle:{color:AX.color,fontSize:11},itemWidth:14},
-    grid:baseGrid(),
-    xAxis:baseX(DATA.years),
-    yAxis:baseY('%'),
-    series:[
-      {name:'毛利率',type:'line',data:DATA.gpm,smooth:true,symbolSize:5,lineStyle:{width:2,color:C.green},itemStyle:{color:C.green}},
-      {name:'净利率',type:'line',data:DATA.npm,smooth:true,symbolSize:5,lineStyle:{width:2,color:C.teal},itemStyle:{color:C.teal}},
-      {name:'ROE',type:'line',data:DATA.roe,smooth:true,symbolSize:5,lineStyle:{width:2,color:C.green2},itemStyle:{color:C.green2}},
-      {name:'负债/权益',type:'line',data:DATA.de,smooth:true,symbolSize:5,lineStyle:{width:2,color:C.amber},itemStyle:{color:C.amber}}
-    ]
-  };
-}
-function optO4(){
-  return {
-    tooltip:baseTooltip(),
-    legend:{top:2,right:6,textStyle:{color:AX.color,fontSize:11},itemWidth:14},
-    grid:baseGrid(),
-    xAxis:baseX(['2021','2022','2023','2024','2025']),
-    yAxis:baseY('十亿盾'),
-    series:[
-      {name:'基建（电力/水务/干港）',type:'bar',stack:'s',data:[1123,1246,1461,1909,2567],itemStyle:{color:C.teal},barMaxWidth:40},
-      {name:'地产与物业',type:'bar',stack:'s',data:[1367,1501,1839,2694,2583],itemStyle:{color:C.green},barMaxWidth:40}
-    ]
-  };
-}
-function optO5(){
-  var d=[1717,2213,3188,3601], labels=[];
-  for(var i=0;i<d.length;i++){labels.push(fmt(d[i]));}
-  return {
-    tooltip:baseTooltip(),
-    grid:baseGrid(),
-    xAxis:baseX(['2022','2023','2024','2025']),
-    yAxis:baseY('十亿盾'),
-    series:[{type:'bar',data:d,itemStyle:{color:C.green,borderRadius:[3,3,0,0]},label:{show:true,position:'top',fontSize:11,color:'#1F5E40',fontWeight:600,formatter:function(p){return fmt(p.value);}},barMaxWidth:52}]
-  };
-}
-function optO6(){
-  var d=DATA.ebitda, cats=[], vals=[];
-  for(var i=0;i<d.length;i++){if(d[i]!==null){cats.push(DATA.years[i]);vals.push(d[i]);}}
-  var labels=[];
-  for(var j=0;j<vals.length;j++){labels.push(fmt(vals[j]));}
-  return {
-    tooltip:baseTooltip(),
-    grid:baseGrid(),
-    xAxis:baseX(cats),
-    yAxis:baseY('十亿盾'),
-    series:[{type:'bar',data:vals,itemStyle:{color:C.green2,borderRadius:[3,3,0,0]},label:{show:true,position:'top',fontSize:10,color:'#5C6B61',formatter:function(p){return fmt(p.value);}},barMaxWidth:40}]
-  };
-}
-function optPie(titleData){
-  var data=titleData, total=0;
-  for(var i=0;i<data.length;i++){total+=data[i][1];}
-  var ser=[];
-  for(var j=0;j<data.length;j++){ser.push({name:data[j][0],value:data[j][1]});}
-  return {
-    tooltip:{trigger:'item',confine:true,formatter:function(p){return p.name+'：'+fmt(p.value)+'B（'+p.percent+'%）';}},
-    legend:{bottom:2,textStyle:{color:AX.color,fontSize:11},itemWidth:12},
-    series:[{type:'pie',radius:['34%','66%'],center:['50%','45%'],data:ser,itemStyle:{borderColor:'#fff',borderWidth:1},label:{show:true,fontSize:11,color:'#16241C',formatter:function(p){return p.name+'\n'+p.percent+'%';}},labelLine:{length:10,length2:8},color:[C.green,C.teal,C.green2,C.amber]}]
-  };
-}
-function optGrouped(cats, series, maxW){
-  var out={tooltip:baseTooltip(),legend:{top:2,right:6,textStyle:{color:AX.color,fontSize:11},itemWidth:14},grid:baseGrid(),xAxis:baseX(cats),yAxis:baseY('十亿盾'),series:[]};
-  for(var i=0;i<series.length;i++){
-    out.series.push({name:series[i][0],type:'bar',data:series[i][1],itemStyle:{color:series[i][2]},barMaxWidth:maxW||34});
-  }
-  return out;
-}
-function optLines(cats, series, yName){
-  var out={tooltip:baseTooltip(),legend:{top:2,right:6,textStyle:{color:AX.color,fontSize:11},itemWidth:14},grid:baseGrid(),xAxis:baseX(cats),yAxis:baseY(yName),series:[]};
-  for(var i=0;i<series.length;i++){
-    out.series.push({name:series[i][0],type:'line',data:series[i][1],smooth:true,symbolSize:6,lineStyle:{width:2,color:series[i][2],type:series[i][3]||'solid'},itemStyle:{color:series[i][2]}});
-  }
-  return out;
-}
-
-var OPTS = {
-  o1:optO1(), o2:optO2(), o3:optO3(), o4:optO4(), o5:optO5(), o6:optO6(),
-  'f24-1':optPie([['地产及其他',2694],['电力',1175],['水务/园区',476],['干港',258]]),
-  'f24-2':optGrouped(['2023','2024','2025'],[['合并净利',[529,770,857],C.green],['归母净利',[306,363,423],C.amber]]),
-  'f24-3':optLines(DATA.years,[['毛利率',DATA.gpm,C.green],['净利率',DATA.npm,C.teal]],'%'),
-  'f24-4':optGrouped(['2021','2022','2023','2024','2025'],[['总资产',[11313,12687,12947,14017,15056],C.green],['总负债',[5363,6200,6016,6478,6912],C.amber],['总权益',[5950,6487,6931,7539,8144],C.teal]],22),
-  'f25-1':(function(){
-    return {
-      tooltip:baseTooltip(),
-      grid:{left:120,right:60,top:10,bottom:26},
-      xAxis:{type:'value',axisLabel:{color:AX.color,fontSize:11},splitLine:SPLIT},
-      yAxis:{type:'category',data:['2027 高级票据','Bank Mandiri','中国建设银行','OCBC NISP'],axisLabel:{color:'#16241C',fontSize:11}},
-      series:[{type:'bar',data:[
-        {value:3120,itemStyle:{color:C.amber}},
-        {value:1339,itemStyle:{color:C.green}},
-        {value:145,itemStyle:{color:C.teal}},
-        {value:35,itemStyle:{color:C.green2}}
-      ],label:{show:true,position:'right',fontSize:11,color:'#16241C',formatter:function(p){return fmt(p.value)+'B';}},barMaxWidth:24}]
-    };
-  })(),
-  'f25-2':{
-    tooltip:baseTooltip(),legend:{top:2,right:6,textStyle:{color:AX.color,fontSize:11},itemWidth:14},
-    grid:baseGrid(),xAxis:baseX(['2023','2024','2025']),yAxis:baseY('十亿盾'),
-    series:[
-      {name:'现金及等价物',type:'bar',stack:'a',data:[1362,2416,3831],itemStyle:{color:C.green},barMaxWidth:46},
-      {name:'其他资产',type:'bar',stack:'a',data:[11586,11601,11225],itemStyle:{color:C.soft},barMaxWidth:46}
-    ]
-  },
-  'f25-3':optLines(['2023','2024','2025'],[['EBITDA / 利息',[3.40,4.47,4.43],C.green],['净负债 / EBITDA',[2.68,1.52,0.57],C.clay]],'x'),
-  'f25-4':(function(){
-    return {
-      tooltip:baseTooltip(),
-      grid:baseGrid(),
-      xAxis:baseX(['期初现金（2024末）','合并盈余（2025）','期末现金（2025末）']),
-      yAxis:baseY('十亿盾'),
-      series:[{type:'bar',data:[
-        {value:2016,itemStyle:{color:C.green2}},
-        {value:1570,itemStyle:{color:C.amber}},
-        {value:3586,itemStyle:{color:C.green}}
-      ],label:{show:true,position:'top',fontSize:11,color:'#16241C',formatter:function(p){return fmt(p.value);}},barMaxWidth:56}]
-    };
-  })(),
-  'f26-1':optGrouped(['总收入','基建','土地与物业','休闲酒店'],[['1H25',[2726,1221,1443,62],C.soft],['1H26',[2437,1398,975,63],C.green]]),
-  'f26-2':(function(){
-    return {
-      tooltip:baseTooltip(),
-      grid:baseGrid(),
-      xAxis:baseX(['1H26 已实现']),
-      yAxis:{type:'value',max:4200,name:'十亿盾',nameTextStyle:{color:AX.color,fontSize:11},axisLabel:{color:AX.color,fontSize:11},splitLine:SPLIT},
-      series:[{type:'bar',data:[1188],itemStyle:{color:C.green,borderRadius:[3,3,0,0]},label:{show:true,position:'top',fontSize:12,fontWeight:600,color:'#1F5E40',formatter:'1,188B'},barMaxWidth:64,
-        markLine:{silent:true,symbol:'none',lineStyle:{color:C.clay,type:'dashed',width:1.5},data:[{yAxis:3750,label:{formatter:'2026 目标 3,750B',fontSize:11,color:C.clay,position:'insideEndTop'}}]}}]
-    };
-  })(),
-  'f26-3':{
-    tooltip:{trigger:'axis',confine:true,valueFormatter:function(v){return v+'%';}},
-    legend:{top:2,right:6,textStyle:{color:AX.color,fontSize:11},itemWidth:14},
-    grid:baseGrid(),xAxis:baseX(['1H25','1H26']),
-    yAxis:{type:'value',max:100,axisLabel:{color:AX.color,fontSize:11,formatter:'{value}%'},splitLine:SPLIT},
-    series:[
-      {name:'基建（经常性收入）',type:'bar',stack:'p',data:[45,57],itemStyle:{color:C.teal},barMaxWidth:56},
-      {name:'土地与物业',type:'bar',stack:'p',data:[55,43],itemStyle:{color:C.green},barMaxWidth:56}
-    ]
-  },
-  'f26-4':(function(){
-    return {
-      tooltip:baseTooltip(),
-      grid:{left:120,right:60,top:10,bottom:26},
-      xAxis:{type:'value',axisLabel:{color:AX.color,fontSize:11},splitLine:SPLIT},
-      yAxis:{type:'category',data:['汇兑损失','衍生品终止','加速摊销'],axisLabel:{color:'#16241C',fontSize:11}},
-      series:[{type:'bar',data:[
-        {value:281,itemStyle:{color:C.clay}},
-        {value:155,itemStyle:{color:C.amber}},
-        {value:25,itemStyle:{color:C.green2}}
-      ],label:{show:true,position:'right',fontSize:11,color:'#16241C',formatter:function(p){return fmt(p.value)+'B';}},barMaxWidth:22}]
-    };
-  })()
-};
-
-var PAGE_CHARTS = {
-  overview:['o1','o2','o3','o4','o5','o6'],
-  fy2024:['f24-1','f24-2','f24-3','f24-4'],
-  fy2025:['f25-1','f25-2','f25-3','f25-4'],
-  fy2026:['f26-1','f26-2','f26-3','f26-4'],
-  risk:[]
-};
-
-/* ===== 路由与图表生命周期 ===== */
+var PAGE_CHARTS = {overview:['o1','o2','o3','o4','o5','o6'], fy2024:['f24-1','f24-2','f24-3','f24-4'], fy2025:['f25-1','f25-2','f25-3','f25-4'], fy2026:['f26-1','f26-2','f26-3','f26-4'], risk:[], holding:[], org:[]};
 function renderPage(id){
-  if(!window.echarts){return;}
-  var ids=PAGE_CHARTS[id]||[];
-  for(var i=0;i<ids.length;i++){
-    if(CH[ids[i]]){continue;}
-    var el=document.getElementById(ids[i]);
-    if(!el){continue;}
-    var c=echarts.init(el);
-    c.setOption(OPTS[ids[i]]);
-    CH[ids[i]]=c;
+  if (!window.echarts) { return; }
+  var ids = PAGE_CHARTS[id] || [];
+  for (var i = 0; i < ids.length; i++) {
+    if (CH[ids[i]]) { continue; }
+    var el = document.getElementById(ids[i]);
+    if (!el) { continue; }
+    var c = echarts.init(el);
+    c.setOption(buildOpt(ids[i]));
+    CH[ids[i]] = c;
   }
-  for(var k in CH){
-    if(CH.hasOwnProperty(k)){CH[k].resize();}
-  }
+  for (var k in CH) { if (CH.hasOwnProperty(k)) { CH[k].resize(); } }
 }
 function showPage(id){
-  var pages=document.querySelectorAll('.page'), i;
-  for(i=0;i<pages.length;i++){pages[i].classList.toggle('active',pages[i].id===id);}
-  var tabs=document.querySelectorAll('.tab');
-  for(i=0;i<tabs.length;i++){tabs[i].classList.toggle('active',tabs[i].getAttribute('data-page')===id);}
+  var pages = document.querySelectorAll('.page'), i;
+  for (i = 0; i < pages.length; i++) { pages[i].classList.toggle('active', pages[i].id === id); }
+  var tabs = document.querySelectorAll('.tab');
+  for (i = 0; i < tabs.length; i++) { tabs[i].classList.toggle('active', tabs[i].getAttribute('data-page') === id); }
   renderPage(id);
 }
 function currentPage(){
-  var h=location.hash.replace('#','');
-  var pages=document.querySelectorAll('.page');
-  for(var i=0;i<pages.length;i++){if(pages[i].id===h){return h;}}
+  var h = location.hash.replace('#', ''), pages = document.querySelectorAll('.page');
+  for (var i = 0; i < pages.length; i++) { if (pages[i].id === h) { return h; } }
   return 'overview';
 }
-window.addEventListener('hashchange',function(){showPage(currentPage());});
-window.addEventListener('resize',function(){
-  for(var k in CH){if(CH.hasOwnProperty(k)){CH[k].resize();}}
-});
-
-/* ===== 启动 ===== */
+window.addEventListener('hashchange', function(){ showPage(currentPage()); });
+window.addEventListener('resize', function(){ for (var k in CH) { if (CH.hasOwnProperty(k)) { CH[k].resize(); } } });
+var langBtns = document.querySelectorAll('.langs button');
+for (var lb = 0; lb < langBtns.length; lb++) {
+  (function(btn){
+    btn.addEventListener('click', function(){
+      LANG = btn.getAttribute('data-lang');
+      try { localStorage.setItem('kija_lang', LANG); } catch (e) {}
+      renderStatics();
+    });
+  })(langBtns[lb]);
+}
 function loadECharts(cb){
-  if(window.echarts){cb();return;}
-  var s=document.createElement('script');
-  s.src='https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js';
-  s.onload=cb;
-  s.onerror=function(){
-    var s2=document.createElement('script');
-    s2.src='https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js';
-    s2.onload=cb;
-    s2.onerror=function(){
-      var charts=document.querySelectorAll('.chart');
-      for(var i=0;i<charts.length;i++){charts[i].innerHTML='<div style="padding:20px;color:#8F3520;font-size:13px">图表库加载失败：请联网后刷新（需访问 jsDelivr / cdnjs）。</div>';}
+  if (window.echarts) { cb(); return; }
+  var s = document.createElement('script');
+  s.src = 'https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js';
+  s.onload = cb;
+  s.onerror = function(){
+    var s2 = document.createElement('script');
+    s2.src = 'https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js';
+    s2.onload = cb;
+    s2.onerror = function(){
+      var charts = document.querySelectorAll('.chart');
+      for (var i = 0; i < charts.length; i++) { charts[i].innerHTML = '<div style="padding:20px;color:#8F3520;font-size:13px">Chart library failed to load: please go online and refresh (jsDelivr / cdnjs required).</div>'; }
     };
     document.head.appendChild(s2);
   };
@@ -662,7 +1335,7 @@ function loadECharts(cb){
 }
 renderStatics();
 showPage(currentPage());
-loadECharts(function(){renderPage(currentPage());});
+loadECharts(function(){ renderPage(currentPage()); });
 </script>
 </body>
 </html>
