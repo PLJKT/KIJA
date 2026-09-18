@@ -8,7 +8,7 @@ PT Kawasan Industri Jababeka Tbk（印尼证券交易所代码：**KIJA**）财�
 
 | 文件 | 说明 |
 | --- | --- |
-| [`index.html`](index.html) | **财务与经营 Dashboard**：三语（EN 默认 / ID / 中文）切换；7 个视图：总览、2024 年报、2025 年报、2026 中报、风险与方向、**股权结构（Holding Structure）**、**治理与组织（Organization）** |
+| [`index.html`](index.html) | **财务与经营 Dashboard**：三语（EN 默认 / ID / 中文）切换；10 个视图：总览、2024 年报、2025 年报、2026 中报、**债务与偿债（Debt & Solvency）**、**土地储备（Land Bank）**、**估值分析（Valuation）**、风险与方向、**股权结构（Holding Structure）**、**治理与组织（Organization）** |
 | [`data.json`](data.json) | Dashboard 的数据记录层（可编辑后刷新同步） |
 | [`KIJA_财务分析报告_2015-2025.md`](KIJA_财务分析报告_2015-2025.md) | 十年财务与经营分析报告（含风险与机会） |
 | [`KIJA_financial_data_2015-2025.csv`](KIJA_financial_data_2015-2025.csv) | 2015–2025 关键财务指标数据集 |
@@ -16,6 +16,11 @@ PT Kawasan Industri Jababeka Tbk（印尼证券交易所代码：**KIJA**）财�
 **Dashboard 在线访问**：<https://PLJKT.github.io/KIJA/>（GitHub Pages，从 `index.html` 自动发布）。图表依赖 jsDelivr / cdnjs CDN，需联网加载。
 
 **语言与数据口径**：页面右上角可切换 English（默认）/ Bahasa Indonesia / 中文，切换后全部内容（含图表标题、图例、tooltip、KPI 增量、脚注）严格使用所选语言；数字统一最多保留 1 位小数（四舍五入）。股权结构与治理/组织页依据 FY2025 年报（AR2025）：38 家子公司/合资公司（持股、主营业务、2025 合并资产）、股东结构（Mu'min Ali Gunawan 21.1% / IsDB 11.5% / 库存股 0.1% / 公众 67.3%）、监事/董事/审计委员会与组织结构。
+
+**第 5 轮新增三页**：
+- **债务与偿债（Debt & Solvency）**：按债权人（高级票据 / Bank Mandiri / Bank INA Perdana / CCB / OCBC / 租赁）与期限结构的债务明细（2025-12-31 vs 2026-06-30）、2026 再融资回顾（1.859 亿美元票据提前 18 个月清偿、转 100% 印尼盾融资、一次性成本约 460）、偿债指标（EBITDA/利息 4.4x、净负债/EBITDA 0.6x）与信用评级（Fitch B- / Moody's B3）。数据：AR2025 财务报表与 2026-08 投资者演示。
+- **土地储备（Land Bank）**：4 个项目（Cikarang / Kendal / Tanjung Lesung / Morotai）土地储备（2026-06-30 合计 5,089 ha）、AR2025 附注 7 账面价值与单价，并与第三方市场挂牌要价对比（Cikarang 约 2,200–5,200 千盾/m²、Kendal 900–2,600、Tanjung Lesung 250–2,300；Morotai 无可靠公开市场价）。市场价为挂牌要价（非官方评估、非成交价）。
+- **估值分析（Valuation）**：截至 2026-09 的估值与交易快照（市值约 3.7 万亿盾、P/B 0.47x、P/S 0.75x、20 日均量 8.6 亿股、股息率约 1%），过去 12 个月股价走势（月收盘 111–364，现价 181）与交易大事记，同业对比（DMAS）与分析师观点（Sucor Sekuritas 目标 250，买入）。
 
 ## 核心结论速览
 
