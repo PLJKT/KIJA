@@ -810,11 +810,11 @@
   "val": {
    "en": [
     {
-     "l": "Price (17 Sep 2026)",
-     "v": 181,
+     "l": "Price (18 Sep 2026)",
+     "v": 180,
      "u": "IDR",
-     "d": "+5.0 (+2.8%) on day",
-     "c": "up"
+     "d": "-1.0 (-0.6%) on day",
+     "c": "dn"
     },
     {
      "l": "52-week range",
@@ -827,14 +827,14 @@
      "l": "Market cap",
      "v": 3.7,
      "u": "IDR tn",
-     "d": "3.66T at 176 (S&P)",
+     "d": "3.76T at 180 (S&P)",
      "c": "flat"
     },
     {
      "l": "P/B",
      "v": 0.5,
      "u": "x",
-     "d": "0.46x total equity (audited); 0.60x parent",
+     "d": "0.46x total equity (audited); 0.59x parent",
      "c": "flat"
     },
     {
@@ -854,11 +854,11 @@
    ],
    "id": [
     {
-     "l": "Harga (17 Sep 2026)",
-     "v": 181,
+     "l": "Harga (18 Sep 2026)",
+     "v": 180,
      "u": "IDR",
-     "d": "+5.0 (+2.8%) harian",
-     "c": "up"
+     "d": "-1,0 (-0,6%) harian",
+     "c": "dn"
     },
     {
      "l": "Kisaran 52 minggu",
@@ -871,14 +871,14 @@
      "l": "Kapitalisasi pasar",
      "v": 3.7,
      "u": "Rp tn",
-     "d": "3.66T di 176 (S&P)",
+     "d": "3,76T di 180 (S&P)",
      "c": "flat"
     },
     {
      "l": "P/B",
      "v": 0.5,
      "u": "x",
-     "d": "0.46x ekuitas total (audit); 0.60x induk",
+     "d": "0,46x ekuitas total (audit); 0,59x induk",
      "c": "flat"
     },
     {
@@ -898,11 +898,11 @@
    ],
    "zh": [
     {
-     "l": "股价（2026-09-17）",
-     "v": 181,
+     "l": "股价（2026-09-18）",
+     "v": 180,
      "u": "盾",
-     "d": "单日 +5.0（+2.8%）",
-     "c": "up"
+     "d": "-1.0（-0.6%）",
+     "c": "dn"
     },
     {
      "l": "52 周区间",
@@ -915,14 +915,14 @@
      "l": "市值",
      "v": 3.7,
      "u": "万亿盾",
-     "d": "176 时 3.66T（S&P）",
+     "d": "3.76T @180（S&P）",
      "c": "flat"
     },
     {
      "l": "市净率",
      "v": 0.5,
      "u": "x",
-     "d": "0.46x 总权益（审计）；0.60x 母公司",
+     "d": "0.46x 总权益（审计）；0.59x 母公司",
      "c": "flat"
     },
     {
@@ -3390,11 +3390,11 @@
  "VAL": {
   "kpi": [
    {
-    "l": "Price (17 Sep 2026)",
-    "v": 181,
+    "l": "Price (18 Sep 2026)",
+    "v": 180,
     "u": "IDR",
-    "d": "+5.0 (+2.8%) on day",
-    "c": "up"
+    "d": "-1.0 (-0.6%) on day",
+    "c": "dn"
    },
    {
     "l": "52-week range",
@@ -3407,14 +3407,14 @@
     "l": "Market cap",
     "v": 3.7,
     "u": "IDR tn",
-    "d": "3.66T at 176 (S&P)",
+    "d": "3.76T at 180 (S&P)",
     "c": "flat"
    },
    {
     "l": "P/B",
     "v": 0.5,
     "u": "x",
-    "d": "0.46x total equity (audited); 0.60x parent",
+    "d": "0.46x total equity (audited); 0.59x parent",
     "c": "flat"
    },
    {
@@ -3481,7 +3481,7 @@
    ],
    [
     "Jul–Sep 2026",
-    "Rebound: 130 → 216 (Aug) → 197 monthly; current 181; avg volume (20d) 859.5M shares"
+    "Rebound: 130 → 216 (Aug) → 197 monthly; current 180; avg volume (20d) 859.5M shares"
    ],
    [
     "17 Sep 2026",
@@ -3491,7 +3491,7 @@
   "stats": [
    [
     "Price / date",
-    "181.0 IDR · 17 Sep 2026 (stockanalysis)"
+    "180.0 IDR · 18 Sep 2026 (stockanalysis)"
    ],
    [
     "Shares outstanding",
@@ -3563,7 +3563,7 @@
     ],
     [
      "YTD 2026 price",
-     "-14% (210 → 181)",
+     "-14% (210 → 180)",
      "+56.6%"
     ]
    ]
@@ -3574,7 +3574,7 @@
     "Buy",
     "250",
     "18 Aug 2026",
-    "SOTP; +38% vs 181"
+    "SOTP; +39% vs 180"
    ],
    [
     "Sucor Sekuritas (earlier)",
@@ -4143,7 +4143,7 @@
    "stats": [
     [
      "Price / date",
-     "181.0 IDR · 17 Sep 2026 (stockanalysis)"
+     "180.0 IDR · 18 Sep 2026 (stockanalysis)"
     ],
     [
      "Shares outstanding",
@@ -4219,7 +4219,7 @@
     ],
     [
      "YTD 2026 price",
-     "-14% (210 → 181)",
+     "-14% (210 → 180)",
      "+56.6%"
     ]
    ],
@@ -4236,7 +4236,7 @@
      "Buy",
      "250",
      "18 Aug 2026",
-     "SOTP; +38% vs 181"
+     "SOTP; +39% vs 180"
     ],
     [
      "Sucor Sekuritas (earlier)",
@@ -4279,7 +4279,7 @@
     ],
     [
      "Jul–Sep 2026",
-     "Rebound: 130 → 216 (Aug) → 197 monthly; current 181; avg volume (20d) 859.5M shares"
+     "Rebound: 130 → 216 (Aug) → 197 monthly; current 180; avg volume (20d) 859.5M shares"
     ],
     [
      "17 Sep 2026",
@@ -4295,7 +4295,7 @@
    "stats": [
     [
      "Harga / tanggal",
-     "181,0 IDR · 17 Sep 2026 (stockanalysis)"
+     "180,0 IDR · 18 Sep 2026 (stockanalysis)"
     ],
     [
      "Saham beredar",
@@ -4371,7 +4371,7 @@
     ],
     [
      "Perubahan harga YTD 2026",
-     "-14% (210 → 181)",
+     "-14% (210 → 180)",
      "+56,6%"
     ]
    ],
@@ -4388,7 +4388,7 @@
      "Buy",
      "250",
      "18 Agu 2026",
-     "SOTP; +38% vs 181"
+     "SOTP; +39% vs 180"
     ],
     [
      "Sucor Sekuritas (lebih awal)",
@@ -4431,7 +4431,7 @@
     ],
     [
      "Jul–Sep 2026",
-     "Pemulihan: 130 → 216 (Agu) → 197 bulanan; harga kini 181; volume rata-rata (20d) 859,5 juta saham"
+     "Pemulihan: 130 → 216 (Agu) → 197 bulanan; harga kini 180; volume rata-rata (20d) 859,5 juta saham"
     ],
     [
      "17 Sep 2026",
@@ -4447,7 +4447,7 @@
    "stats": [
     [
      "股价 / 日期",
-     "181.0 盾 · 2026-09-17（stockanalysis）"
+     "180.0 盾 · 2026-09-18（stockanalysis）"
     ],
     [
      "总股本",
@@ -4523,7 +4523,7 @@
     ],
     [
      "2026 年至今股价",
-     "-14%（210 → 181）",
+     "-14%（210 → 180）",
      "+56.6%"
     ]
    ],
@@ -4540,7 +4540,7 @@
      "买入",
      "250",
      "2026-08-18",
-     "SOTP；较 181 有 +38% 空间"
+     "SOTP；较 180 有 +39% 空间"
     ],
     [
      "Sucor Sekuritas（早期）",
@@ -4583,7 +4583,7 @@
     ],
     [
      "2026-07 至 09 月",
-     "反弹：130 → 216（8 月）→ 197（月度）；现价 181；20 日均量 8.595 亿股"
+     "反弹：130 → 216（8 月）→ 197（月度）；现价 180；20 日均量 8.595 亿股"
     ],
     [
      "2026-09-17",
@@ -4637,12 +4637,12 @@
   "en": {
    "h": "Valuation Illustration",
    "sub": "DCF · P/E · P/B · SOTP vs. market price — illustrative only, not investment advice",
-   "disc": "Based on audited FY2025 results and the 17 Sep 2026 close of 181.0 IDR. Weighted shares 20.59 bn; parent BVPS 304.1; EPS 20.55; EBITDA 1,735.5 bn; net debt (1H26) 1,663 bn (debt 4,863 − cash 3,200). DCF net-debt basis is the more conservative 1H26 figure.",
+   "disc": "Based on audited FY2025 results and the 18 Sep 2026 close of 180.0 IDR. Weighted shares 20.59 bn; parent BVPS 304.1; EPS 20.55; EBITDA 1,735.5 bn; net debt (1H26) 1,663 bn (debt 4,863 − cash 3,200). DCF net-debt basis is the more conservative 1H26 figure.",
    "inputsH": "Inputs (audited FY2025 unless noted)",
    "inputs": [
     [
-     "Price (17 Sep 2026)",
-     "181.0 IDR"
+     "Price (18 Sep 2026)",
+     "180.0 IDR"
     ],
     [
      "Shares (weighted avg)",
@@ -4665,8 +4665,8 @@
      "1,663 bn"
     ],
     [
-     "Market cap @ 181",
-     "~3,727 bn"
+     "Market cap @ 180",
+     "≈ 3,706B"
     ]
    ],
    "methodH": "Methods & assumptions (low / base / high)",
@@ -4701,45 +4701,45 @@
     ]
    ],
    "weightNote": "Weighted fair value = 35% P/E + 25% P/B + 30% DCF + 10% SOTP. Liquidation value is shown separately as an asset-backing reference.",
-   "compH": "Comparison with market price (181.0)",
+   "compH": "Comparison with market price (180.0)",
    "comp": [
     [
      "P/E (base 8x)",
      "164.4",
-     "-9.2%",
-     "-10.1%",
+     "-8.7%",
+     "-9.5%",
      "Market slightly above multiple"
     ],
     [
      "P/B (base 0.6x)",
      "182.5",
-     "+0.8%",
-     "+0.8%",
+     "+1.4%",
+     "1.4%",
      "Trades near book value"
     ],
     [
      "DCF (base)",
      "452.4",
-     "+150.0%",
-     "+60.0%",
+     "+151.3%",
+     "60.2%",
      "Land bank upside largely unpriced"
     ],
     [
      "SOTP (Sucor)",
      "250.0",
-     "+38.1%",
-     "+27.6%",
+     "+38.9%",
+     "28.0%",
      "Broker buy target"
     ],
     [
      "Weighted (base)",
      "263.9",
-     "+45.8%",
-     "+31.4%",
+     "+46.6%",
+     "31.8%",
      "Illustrative fair value"
     ]
    ],
-   "impliedH": "Implied multiples at 181.0",
+   "impliedH": "Implied multiples at 180.0",
    "implied": [
     [
      "Implied P/E (FY25 EPS 20.55)",
@@ -4747,14 +4747,14 @@
     ],
     [
      "Implied P/B (parent BVPS 304.1)",
-     "0.60x"
+     "0.59x"
     ],
     [
      "Implied P/B (total equity BVPS 395.6)",
      "0.46x"
     ],
     [
-     "EV/EBITDA (FY25): (3,727 + 988) / 1,735.5",
+     "EV/EBITDA (FY25): (3,706 + 988) / 1,735.5",
      "~2.7x"
     ]
    ],
@@ -4769,12 +4769,12 @@
   "id": {
    "h": "Ilustrasi Valuasi",
    "sub": "DCF · P/E · P/B · SOTP dibanding harga pasar — hanya ilustrasi, bukan saran investasi",
-   "disc": "Berdasarkan hasil audit FY2025 dan harga penutupan 17 Sep 2026 sebesar 181,0 IDR. Saham tertimbang 20,59 miliar; BVPS induk 304,1; EPS 20,55; EBITDA 1.735,5 miliar; utang bersih (1H26) 1.663 miliar (utang 4.863 − kas 3.200). Basis utang bersih DCF memakai angka 1H26 yang lebih konservatif.",
+   "disc": "Berdasarkan hasil audit FY2025 dan harga penutupan 18 Sep 2026 sebesar 180,0 IDR. Saham tertimbang 20,59 miliar; BVPS induk 304,1; EPS 20,55; EBITDA 1.735,5 miliar; utang bersih (1H26) 1.663 miliar (utang 4.863 − kas 3.200). Basis utang bersih DCF memakai angka 1H26 yang lebih konservatif.",
    "inputsH": "Masukan (audit FY2025 kecuali disebut)",
    "inputs": [
     [
-     "Harga (17 Sep 2026)",
-     "181,0 IDR"
+     "Harga (18 Sep 2026)",
+     "180,0 IDR"
     ],
     [
      "Saham (rata-rata tertimbang)",
@@ -4797,8 +4797,8 @@
      "1.663 miliar"
     ],
     [
-     "Kapitalisasi pasar @ 181",
-     "sekitar 3.727 miliar"
+     "Kapitalisasi pasar @ 180",
+     "≈ 3.706 miliar"
     ]
    ],
    "methodH": "Metode & asumsi (rendah / dasar / tinggi)",
@@ -4833,45 +4833,45 @@
     ]
    ],
    "weightNote": "Nilai wajar tertimbang = 35% P/E + 25% P/B + 30% DCF + 10% SOTP. Nilai likuidasi ditampilkan terpisah sebagai referensi aset-penopang.",
-   "compH": "Perbandingan dengan harga pasar (181,0)",
+   "compH": "Perbandingan dengan harga pasar (180,0)",
    "comp": [
     [
-     "P/E (dasar 8x)",
-     "164,4",
-     "-9,2%",
-     "-10,1%",
-     "Pasar sedikit di atas kelipatan"
+     "P/E (base 8x)",
+     "164.4",
+     "-8.7%",
+     "-9.5%",
+     "Market slightly above multiple"
     ],
     [
-     "P/B (dasar 0,6x)",
-     "182,5",
-     "+0,8%",
-     "+0,8%",
-     "Diperdagangkan dekat nilai buku"
+     "P/B (base 0.6x)",
+     "182.5",
+     "+1.4%",
+     "1.4%",
+     "Trades near book value"
     ],
     [
-     "DCF (dasar)",
-     "452,4",
-     "+150,0%",
-     "+60,0%",
-     "Potensi lahan sebagian besar belum dihargai"
+     "DCF (base)",
+     "452.4",
+     "+151.3%",
+     "60.2%",
+     "Land bank upside largely unpriced"
     ],
     [
      "SOTP (Sucor)",
-     "250,0",
-     "+38,1%",
-     "+27,6%",
-     "Target beli broker"
+     "250.0",
+     "+38.9%",
+     "28.0%",
+     "Broker buy target"
     ],
     [
-     "Tertimbang (dasar)",
-     "263,9",
-     "+45,8%",
-     "+31,4%",
-     "Nilai wajar ilustratif"
+     "Weighted (base)",
+     "263.9",
+     "+46.6%",
+     "31.8%",
+     "Illustrative fair value"
     ]
    ],
-   "impliedH": "Kelipatan tersirat pada 181,0",
+   "impliedH": "Kelipatan tersirat pada 180,0",
    "implied": [
     [
      "P/E tersirat (EPS FY25 20,55)",
@@ -4901,12 +4901,12 @@
   "zh": {
    "h": "估值测算",
    "sub": "DCF · P/E · P/B · SOTP 与现价对比 —— 仅作说明性估算，不构成投资建议",
-   "disc": "基于 FY2025 审计业绩与 2026-09-17 收盘价 181.0 盾。加权股本 20.59B；母公司每股净资产 304.1；EPS 20.55；EBITDA 1,735.5B；净负债（1H26）1,663B（债务 4,863 − 现金 3,200）。DCF 采用更保守的 1H26 净负债口径。",
+   "disc": "基于 FY2025 审计业绩与 2026-09-18 收盘价 180.0 盾。加权股本 20.59B；母公司每股净资产 304.1；EPS 20.55；EBITDA 1,735.5B；净负债（1H26）1,663B（债务 4,863 − 现金 3,200）。DCF 采用更保守的 1H26 净负债口径。",
    "inputsH": "输入（FY2025 审计口径，另有注明除外）",
    "inputs": [
     [
-     "现价（2026-09-17）",
-     "181.0 盾"
+     "现价（2026-09-18）",
+     "180.0 盾"
     ],
     [
      "加权股本",
@@ -4929,8 +4929,8 @@
      "1,663B"
     ],
     [
-     "市值 @181",
-     "约 3,727B"
+     "市值 @180",
+     "≈ 3,706B"
     ]
    ],
    "methodH": "方法与假设（低 / 基准 / 高）",
@@ -4965,45 +4965,45 @@
     ]
    ],
    "weightNote": "加权公允价值 = 35% P/E + 25% P/B + 30% DCF + 10% SOTP。清算价值单列，作为资产托底参照。",
-   "compH": "与现价（181.0）对比",
+   "compH": "与现价（180.0）对比",
    "comp": [
     [
-     "P/E（基准 8x）",
+     "P/E (base 8x)",
      "164.4",
-     "-9.2%",
-     "-10.1%",
-     "现价略高于倍数"
+     "-8.7%",
+     "-9.5%",
+     "Market slightly above multiple"
     ],
     [
-     "P/B（基准 0.6x）",
+     "P/B (base 0.6x)",
      "182.5",
-     "+0.8%",
-     "+0.8%",
-     "接近每股净资产交易"
+     "+1.4%",
+     "1.4%",
+     "Trades near book value"
     ],
     [
-     "DCF（基准）",
+     "DCF (base)",
      "452.4",
-     "+150.0%",
-     "+60.0%",
-     "土地储备价值基本未被定价"
+     "+151.3%",
+     "60.2%",
+     "Land bank upside largely unpriced"
     ],
     [
-     "SOTP（Sucor）",
+     "SOTP (Sucor)",
      "250.0",
-     "+38.1%",
-     "+27.6%",
-     "券商买入目标"
+     "+38.9%",
+     "28.0%",
+     "Broker buy target"
     ],
     [
-     "加权（基准）",
+     "Weighted (base)",
      "263.9",
-     "+45.8%",
-     "+31.4%",
-     "说明性公允价值"
+     "+46.6%",
+     "31.8%",
+     "Illustrative fair value"
     ]
    ],
-   "impliedH": "181.0 处隐含倍数",
+   "impliedH": "180.0 处隐含倍数",
    "implied": [
     [
      "隐含市盈率（FY25 EPS 20.55）",
@@ -5042,7 +5042,7 @@
     "Liabilities (bn)",
     "Parent liq. value (bn)",
     "Per share (IDR)",
-    "vs 181.0",
+    "vs 180.0",
     "Safety margin"
    ],
    "rows": [
@@ -5052,8 +5052,8 @@
      "6,911.9",
      "6,263.6",
      "304.1",
-     "+68.0%",
-     "40.5%"
+     "+68.9%",
+     "40.8%"
     ],
     [
      "Land @ market — low asking",
@@ -5061,7 +5061,7 @@
      "6,911.9",
      "33,211.4",
      "1,612.7",
-     "+791.0%",
+     "+795.9%",
      "88.8%"
     ],
     [
@@ -5070,8 +5070,8 @@
      "6,911.9",
      "27,821.8",
      "1,351.0",
-     "+646.4%",
-     "86.6%"
+     "+650.6%",
+     "86.7%"
     ],
     [
      "Land @ market — mid asking",
@@ -5079,7 +5079,7 @@
      "6,911.9",
      "68,878.7",
      "3,344.6",
-     "+1,747.9%",
+     "+1758.1%",
      "94.6%"
     ],
     [
@@ -5088,11 +5088,11 @@
      "6,911.9",
      "104,545.9",
      "5,076.5",
-     "+2,704.7%",
-     "96.4%"
+     "+2720.3%",
+     "96.5%"
     ]
    ],
-   "note": "Caveats: asking prices are third-party listings (Jul–Sep 2026), not transactions; no haircut on receivables, PP&E or other assets; land sales are the core going-concern business, so a liquidation shortcut understates (or, at high asking prices, overstates) the operating franchise; comparison uses the 17-Sep close of 181.0."
+   "note": "Caveats: asking prices are third-party listings (Jul–Sep 2026), not transactions; no haircut on receivables, PP&E or other assets; land sales are the core going-concern business, so a liquidation shortcut understates (or, at high asking prices, overstates) the operating franchise; comparison uses the 17-Sep close of 180.0."
   },
   "id": {
    "h": "Nilai Likuidasi (pemeriksaan aset-penopang)",
@@ -5104,7 +5104,7 @@
     "Liabilitas (miliar)",
     "Nilai likuidasi induk (miliar)",
     "Per saham (IDR)",
-    "vs 181,0",
+    "vs 180,0",
     "Margin aman"
    ],
    "rows": [
@@ -5154,7 +5154,7 @@
      "96,4%"
     ]
    ],
-   "note": "Catatan: harga penawaran adalah listing pihak ketiga (Jul–Sep 2026), bukan transaksi; tanpa pemangkasan pada piutang, aset tetap, atau aset lain; penjualan lahan adalah bisnis inti going-concern, sehingga pintasan likuidasi meremehkan (atau, pada penawaran tinggi, melebih-lebihkan) waralaba operasional; perbandingan memakai penutupan 17 Sep sebesar 181,0."
+   "note": "Catatan: harga penawaran adalah listing pihak ketiga (Jul–Sep 2026), bukan transaksi; tanpa pemangkasan pada piutang, aset tetap, atau aset lain; penjualan lahan adalah bisnis inti going-concern, sehingga pintasan likuidasi meremehkan (atau, pada penawaran tinggi, melebih-lebihkan) waralaba operasional; perbandingan memakai penutupan 18 Sep sebesar 180,0."
   },
   "zh": {
    "h": "清算价值（资产托底视角）",
@@ -5166,7 +5166,7 @@
     "负债（十亿盾）",
     "母公司清算价值（十亿盾）",
     "每股（盾）",
-    "较 181.0",
+    "较 180.0",
     "安全边际"
    ],
    "rows": [
@@ -5216,7 +5216,7 @@
      "96.4%"
     ]
    ],
-   "note": "提示：挂牌价为第三方报价（2026-07 至 09），非成交价；未对应收、厂房设备及其他资产打折；土地销售是持续经营核心业务，清算式速算会低估（高位挂牌情形下高估）经营价值；对比基准为 9 月 17 日收盘 181.0。"
+   "note": "提示：挂牌价为第三方报价（2026-07 至 09），非成交价；未对应收、厂房设备及其他资产打折；土地销售是持续经营核心业务，清算式速算会低估（高位挂牌情形下高估）经营价值；对比基准为 9 月 18 日收盘 180.0。"
   }
  },
  "KEYP": {
@@ -5231,13 +5231,13 @@
    "rows": [
     [
      "Delayed price",
-     "185.0 IDR (+2.2%); prev close 181.0",
-     "Yahoo delayed; Bloomberg 186.0 (+2.8%)"
+     "180.0 IDR (-0.5%); prev close 181.0",
+     "IDX close 18 Sep; stockanalysis"
     ],
     [
      "Market capitalization",
-     "3.85 tn IDR @ 185",
-     "Yahoo; 3.66 tn @ 176 (S&P)"
+     "3.71 tn IDR @ 180",
+     "stockanalysis; 3.76 tn @ 180 (S&P)"
     ],
     [
      "Shares outstanding",
@@ -5267,12 +5267,12 @@
     [
      "P/E (FY25 audited)",
      "8.8x",
-     "181 / 20.55; TTM n/a (loss)"
+     "180 / 20.55; TTM n/a (loss)"
     ],
     [
      "Price / book",
      "0.64x",
-     "Yahoo @291.1; 0.60x parent (audited)"
+     "Yahoo @291.1; 0.59x parent (audited)"
     ],
     [
      "Price / sales (TTM)",
@@ -5306,8 +5306,8 @@
     ],
     [
      "52-week change / YTD 2026",
-     "-7.2% / -11.9%",
-     "Yahoo; S&P 500 +13.9% ref."
+     "n/a / -14.3%",
+     "Yahoo; YTD = 210 → 180"
     ],
     [
      "Avg daily volume",
@@ -5347,13 +5347,13 @@
    "rows": [
     [
      "Harga tertunda",
-     "185,0 IDR (+2,2%); penutupan sebelumnya 181,0",
-     "Yahoo tertunda; Bloomberg 186,0 (+2,8%)"
+     "180,0 IDR (-0,5%); penutupan sebelumnya 181,0",
+     "IDX tutup 18 Sep; stockanalysis"
     ],
     [
      "Kapitalisasi pasar",
-     "3,85 triliun IDR @ 185",
-     "Yahoo; 3,66 triliun @ 176 (S&P)"
+     "3,71 tn Rp @ 180",
+     "stockanalysis; 3,76 tn @ 180 (S&P)"
     ],
     [
      "Saham beredar",
@@ -5383,12 +5383,12 @@
     [
      "P/E (FY25 audit)",
      "8,8x",
-     "181 / 20,55; TTM n/a (rugi)"
+     "180 / 20,55; TTM n/a (rugi)"
     ],
     [
      "Harga / buku",
      "0,64x",
-     "Yahoo @291,1; 0,60x induk (audit)"
+     "Yahoo @291,1; 0,59x induk (audit)"
     ],
     [
      "Harga / penjualan (TTM)",
@@ -5421,9 +5421,9 @@
      "Yahoo & S&P; tertinggi sepanjang masa 405,5"
     ],
     [
-     "Perubahan 52 minggu / YTD 2026",
-     "-7,2% / -11,9%",
-     "Yahoo; referensi S&P 500 +13,9%"
+     "Perubahan 52-minggu / YTD 2026",
+     "n/a / -14,3%",
+     "Yahoo; YTD = 210 → 180"
     ],
     [
      "Volume harian rata-rata",
@@ -5462,14 +5462,14 @@
    ],
    "rows": [
     [
-     "延迟股价",
-     "185.0 盾（+2.2%）；昨收 181.0",
-     "Yahoo 延迟；Bloomberg 186.0（+2.8%）"
+     "延迟价",
+     "180.0 盾（-0.5%）；昨收 181.0",
+     "IDX 9月18日收盘；stockanalysis"
     ],
     [
      "市值",
-     "3.85 万亿盾 @185",
-     "Yahoo；176 时 3.66 万亿（S&P）"
+     "3.71 万亿盾 @180",
+     "stockanalysis；3.76 万亿 @180（S&P）"
     ],
     [
      "流通股本",
@@ -5499,12 +5499,12 @@
     [
      "市盈率（FY25 审计）",
      "8.8x",
-     "181 / 20.55；TTM 因亏损不适用"
+     "180 / 20.55；TTM 因亏损不适用"
     ],
     [
      "市净率",
      "0.64x",
-     "Yahoo @291.1；母公司 0.60x（审计）"
+     "Yahoo @291.1；0.59x 母公司（审计）"
     ],
     [
      "市销率（TTM）",
@@ -5537,9 +5537,9 @@
      "Yahoo 与 S&P；历史最高 405.5"
     ],
     [
-     "52 周涨跌 / 2026 年内",
-     "-7.2% / -11.9%",
-     "Yahoo；参考 S&P 500 +13.9%"
+     "52周涨跌 / 2026 年内",
+     "n/a / -14.3%",
+     "Yahoo；YTD = 210 → 180"
     ],
     [
      "日均成交量",
@@ -6004,7 +6004,7 @@
   "sched5y": 1013.5,
   "totD26": 4863.0,
   "cash26": 3200,
-  "refPrice": 181,
+  "refPrice": 180,
   "vjan": {
    "m": "Jan-26",
    "c": 228,
@@ -6032,7 +6032,7 @@
     "Value factor",
     "Land value (IDR bn)",
     "Per share (IDR)",
-    "vs 181.0",
+    "vs 180.0",
     "Safety margin"
    ],
    "rows": [
@@ -6040,32 +6040,32 @@
      "100%",
      "5,783.5",
      "280.9",
-     "+55.2%",
-     "35.6%"
+     "+56.1%",
+     "35.9%"
     ],
     [
      "75%",
      "4,337.6",
      "210.7",
-     "+16.4%",
-     "14.1%"
+     "+17.1%",
+     "14.6%"
     ],
     [
      "50%",
      "2,891.8",
      "140.4",
-     "-22.4%",
+     "-22.0%",
      "n/a"
     ],
     [
      "25%",
      "1,445.9",
      "70.2",
-     "-61.2%",
+     "-61.0%",
      "n/a"
     ]
    ],
-   "disc": "Method & data source: total land bank book value = 5,783.5 IDR bn, the audited 31-Dec-2025 carrying value (at cost) of land for development (AR2025 note 7: Cikarang 3,482.0 + Kendal 746.6 + Tanjung Lesung 1,499.7 + Morotai 55.2). Per share = book value × factor ÷ 20.59 bn weighted shares (AR2025); comparison price = 181.0 IDR (17-Sep-2026 close). Gross asset view: liabilities and net debt are NOT deducted here (total liabilities 6,911.9; 1H26 net debt 1,663.0), so per-share figures are land value only, not an equity value.",
+   "disc": "Method & data source: total land bank book value = 5,783.5 IDR bn, the audited 31-Dec-2025 carrying value (at cost) of land for development (AR2025 note 7: Cikarang 3,482.0 + Kendal 746.6 + Tanjung Lesung 1,499.7 + Morotai 55.2). Per share = book value × factor ÷ 20.59 bn weighted shares (AR2025); comparison price = 180.0 IDR (18-Sep-2026 close). Gross asset view: liabilities and net debt are NOT deducted here (total liabilities 6,911.9; 1H26 net debt 1,663.0), so per-share figures are land value only, not an equity value.",
    "note": "Safety margin is shown only when the per-share figure exceeds the market price; 'n/a' means the land-backed value sits below the price. Book value is at cost, not market: market asking prices per project range from 2.4x to 22.4x of book (Land Bank page). The 75% / 50% / 25% factors illustrate book-value haircuts; actual recoverable value depends on sale timing, parcel mix and compulsory-sale discounts."
   },
   "id": {
@@ -6075,7 +6075,7 @@
     "Faktor nilai",
     "Nilai lahan (Rp miliar)",
     "Per saham (IDR)",
-    "vs 181,0",
+    "vs 180,0",
     "Margin aman"
    ],
    "rows": [
@@ -6108,7 +6108,7 @@
      "n/a"
     ]
    ],
-   "disc": "Metode & sumber data: total nilai buku lahan = 5.783,5 Rp miliar, nilai tercatat (biaya perolehan) audit 31 Des 2025 untuk lahan pengembangan (catatan 7 AR2025: Cikarang 3.482,0 + Kendal 746,6 + Tanjung Lesung 1.499,7 + Morotai 55,2). Per saham = nilai buku × faktor ÷ 20,59 miliar saham tertimbang (AR2025); harga pembanding = 181,0 IDR (penutupan 17 Sep 2026). Pandangan aset bruto: liabilitas dan utang bersih TIDAK dikurangkan di sini (total liabilitas 6.911,9; utang bersih 1H26 1.663,0), sehingga angka per saham hanyalah nilai lahan, bukan nilai ekuitas.",
+   "disc": "Metode & sumber data: total nilai buku lahan = 5.783,5 Rp miliar, nilai tercatat (biaya perolehan) audit 31 Des 2025 untuk lahan pengembangan (catatan 7 AR2025: Cikarang 3.482,0 + Kendal 746,6 + Tanjung Lesung 1.499,7 + Morotai 55,2). Per saham = nilai buku × faktor ÷ 20,59 miliar saham tertimbang (AR2025); harga pembanding = 180,0 IDR (penutupan 18 Sep 2026). Pandangan aset bruto: liabilitas dan utang bersih TIDAK dikurangkan di sini (total liabilitas 6.911,9; utang bersih 1H26 1.663,0), sehingga angka per saham hanyalah nilai lahan, bukan nilai ekuitas.",
    "note": "Margin aman hanya ditampilkan bila angka per saham melebihi harga pasar; 'n/a' berarti nilai berpenopang lahan berada di bawah harga. Nilai buku adalah biaya perolehan, bukan pasar: harga penawaran per proyek berkisar 2,4x-22,4x dari buku (halaman Land Bank). Faktor 75% / 50% / 25% mengilustrasikan pemangkasan nilai buku; nilai yang dapat dipulihkan aktual bergantung pada waktu penjualan, campuran bidang tanah, dan diskon jual paksa."
   },
   "zh": {
@@ -6118,7 +6118,7 @@
     "价值系数",
     "土地价值（十亿盾）",
     "每股（盾）",
-    "对比 181.0",
+    "对比 180.0",
     "安全边际"
    ],
    "rows": [
@@ -6151,7 +6151,7 @@
      "n/a"
     ]
    ],
-   "disc": "方法与数据来源：土地总账面价值 = 5,783.5 十亿盾，为 2025-12-31 审计的（成本法）开发土地账面价值（AR2025 附注 7：Cikarang 3,482.0 + Kendal 746.6 + Tanjung Lesung 1,499.7 + Morotai 55.2）。每股 = 账面价值 × 系数 ÷ 205.9 亿加权股本（AR2025）；对比价为 181.0 盾（2026-09-17 收盘）。此为总资产视角：此处未扣除负债与净债务（总负债 6,911.9；1H26 净债务 1,663.0），故每股数值仅为土地价值，并非股权价值。",
+   "disc": "方法与数据来源：土地总账面价值 = 5,783.5 十亿盾，为 2025-12-31 审计的（成本法）开发土地账面价值（AR2025 附注 7：Cikarang 3,482.0 + Kendal 746.6 + Tanjung Lesung 1,499.7 + Morotai 55.2）。每股 = 账面价值 × 系数 ÷ 205.9 亿加权股本（AR2025）；对比价为 180.0 盾（2026-09-18 收盘）。此为总资产视角：此处未扣除负债与净债务（总负债 6,911.9；1H26 净债务 1,663.0），故每股数值仅为土地价值，并非股权价值。",
    "note": "仅当每股数值高于市价时显示安全边际；'n/a' 表示土地托底价值低于股价。账面价值为成本口径而非市价：各项目市场挂牌价为账面 2.4x–22.4x（见 Land Bank 页）。75% / 50% / 25% 系数用于说明账面价值折价；实际可回收价值取决于出售时点、地块组合与强制出售折扣。"
   }
  },
@@ -6179,11 +6179,11 @@
    },
    {
     "p": "P/E",
-    "x": "Price-to-Earnings ratio — share price divided by earnings per share; how much the market pays per unit of earnings (8.8x at 181 IDR on FY25 EPS)."
+    "x": "Price-to-Earnings ratio — share price divided by earnings per share; how much the market pays per unit of earnings (8.8x at 180 IDR on FY25 EPS)."
    },
    {
     "p": "P/B",
-    "x": "Price-to-Book ratio — share price divided by book value per share; below 1 means the stock trades below its accounting net asset value (0.60x at 181 IDR)."
+    "x": "Price-to-Book ratio — share price divided by book value per share; below 1 means the stock trades below its accounting net asset value (0.59x at 180 IDR)."
    },
    {
     "p": "P/S",
@@ -6379,11 +6379,11 @@
    },
    {
     "p": "Dividend yield",
-    "x": "Dividend Yield — annual dividend per share ÷ share price; the income return from dividends (1.1% at 181 IDR)."
+    "x": "Dividend Yield — annual dividend per share ÷ share price; the income return from dividends (1.1% at 180 IDR)."
    },
    {
     "p": "dividend yield",
-    "x": "Dividend Yield — annual dividend per share ÷ share price; the income return from dividends (1.1% at 181 IDR)."
+    "x": "Dividend Yield — annual dividend per share ÷ share price; the income return from dividends (1.1% at 180 IDR)."
    },
    {
     "p": "net debt",
@@ -6543,7 +6543,7 @@
    },
    {
     "p": "Imbal hasil dividen",
-    "x": "Imbal hasil dividen = dividen per saham ÷ harga saham; imbal hasil dari dividen (1,1% pada 181 IDR)."
+    "x": "Imbal hasil dividen = dividen per saham ÷ harga saham; imbal hasil dari dividen (1,1% pada 180 IDR)."
    },
    {
     "p": "Dewan Komisaris",
@@ -6615,7 +6615,7 @@
    },
    {
     "p": "股息率",
-    "x": "股息率 = 每股股息 ÷ 股价；来自分红的收益回报（1.1%@181 盾）。"
+    "x": "股息率 = 每股股息 ÷ 股价；来自分红的收益回报（1.1%@180 盾）。"
    },
    {
     "p": "归母",
