@@ -191,6 +191,7 @@ footer a{color:var(--green)}
     <a class="tab" href="#debt" data-page="debt" data-i18n="t_debt"></a>
     <a class="tab" href="#landbank" data-page="landbank" data-i18n="t_landbank"></a>
     <a class="tab" href="#valuation" data-page="valuation" data-i18n="t_valuation"></a>
+    <a class="tab" href="#vali" data-page="vali" data-i18n="t_vali"></a>
     <a class="tab" href="#risk" data-page="risk" data-i18n="t_risk"></a>
     <a class="tab" href="#holding" data-page="holding" data-i18n="t_holding"></a>
     <a class="tab" href="#org" data-page="org" data-i18n="t_org"></a>
@@ -310,6 +311,21 @@ footer a{color:var(--green)}
   </div>
 </section>
 
+<!-- ===== 视图：估值测算 ===== -->
+<section class="page" id="vali">
+  <h2 class="page-h" data-i18n="t_vali"></h2>
+  <p class="page-d" id="vali-sub"></p>
+  <div class="risk-note" id="vali-disc"></div>
+  <div class="charts">
+    <div class="chart-card"><h3 id="vali-chart-h"></h3><div class="sub" id="vali-chart-s"></div><div class="chart" id="vi-1"></div></div>
+  </div>
+  <div id="vali-inputs"></div>
+  <div id="vali-methods"></div>
+  <div id="vali-comp"></div>
+  <div id="vali-implied"></div>
+  <div id="vali-key"></div>
+</section>
+
 <!-- ===== 视图：风险与方向 ===== -->
 <section class="page" id="risk">
   <h2 class="page-h" data-i18n="rkall_h"></h2>
@@ -364,7 +380,7 @@ en: {
   app_sub:'PT Kawasan Industri Jababeka Tbk (IDX: KIJA) · Industrial Estate Developer · Financial & Operations Monitor',
   meta_src:'Sources: FY2019 / FY2022 / FY2025 Annual Reports, 1H26 Interim Report, investor presentations & IDX announcements',
   meta_asof:'Data as of 2026-09-18 · Unit: IDR billion unless otherwise stated',
-  t_overview:'Overview', t_fy2024:'FY2024 Report', t_fy2025:'FY2025 Report', t_fy2026:'2026 Interim', t_debt:'Debt & Solvency', t_landbank:'Land Bank', t_valuation:'Valuation', t_risk:'Risk & Direction', t_holding:'Holding Structure', t_org:'Organization',
+  t_overview:'Overview', t_fy2024:'FY2024 Report', t_fy2025:'FY2025 Report', t_fy2026:'2026 Interim', t_debt:'Debt & Solvency', t_landbank:'Land Bank', t_valuation:'Valuation', t_vali:'Valuation Illustration', t_risk:'Risk & Direction', t_holding:'Holding Structure', t_org:'Organization',
   ph1:'Phase <b>2016 peak</b>: net profit IDR427bn',
   ph2:'Phase <b>2017–2022 trough</b>: property downturn + pandemic + FX losses',
   ph3:'Phase <b>2023–2025 surge</b>: Kendal land sales + infrastructure double engine',
@@ -380,9 +396,9 @@ en: {
   c_f24_3_t:'Gross / net margin (2015–2025)', c_f24_3_s:'Gross margin fell from 52% peak (2021) to 43% (2024)',
   c_f24_4_t:'Balance sheet size (2021–2025)', c_f24_4_s:'Assets / liabilities / equity, IDR bn',
   c_f25_1_t:'Debt structure (31 Dec 2025)', c_f25_1_s:'Total debt IDR4,606.5bn; Senior Notes USD185.9m (7–9% coupon, principal 3,119.0); fully repaid in Q2 2026',
-  c_f25_2_t:'Asset mix: cash vs other', c_f25_2_s:'2023–2025; cash & equivalents 1,362 → 2,016 → 3,586',
+  c_f25_2_t:'Asset mix: cash vs other', c_f25_2_s:'2023–2025; cash & equivalents 1,094.7 → 2,048.5 → 3,618.8',
   c_f25_3_t:'Debt servicing capacity', c_f25_3_s:'EBITDA/interest 4.4x; net debt/EBITDA 0.6x (2023: 2.7x → 2025: 0.6x)',
-  c_f25_4_t:'Cash bridge (2025)', c_f25_4_s:'Opening 2,016 + consolidated surplus 1,570 (JV 932 + own 639) = closing 3,586',
+  c_f25_4_t:'Cash bridge (2025)', c_f25_4_s:'Opening 2,048.5 + consolidated surplus 1,570 (JV 932 + own 639) = closing 3,618.8',
   c_f26_1_t:'1H26 vs 1H25 revenue', c_f26_1_s:'Total -11%; infrastructure +15%, land -32% (Kendal recognition timing)',
   c_f26_2_t:'Marketing sales progress (1H26)', c_f26_2_s:'1,187.6 / FY2026 target 3,750 (Cikarang 1,250 + Kendal 2,500); 32% achieved',
   c_f26_3_t:'Revenue mix shift: infrastructure share', c_f26_3_s:'Recurring revenue share 45% → 57%, business tilting toward infrastructure',
@@ -414,8 +430,8 @@ en: {
   c_lb2_t:'Book value vs market asking price (000 IDR/m²)', c_lb2_s:'Log scale; book = land for development at cost (AR2025); market = third-party asking prices (Rumah123 / 99.co / Brighton / CBRE / MM2100 listings)',
   lb_table_h:'Land bank detail & price comparison', lb_note_h:'Notes & sources', lb_note:'Book value is cost (lower of cost/NRV) of land for development per AR2025 note 7 — not a per-project appraisal; the company discloses no official land appraisal. Market figures are asking prices from third-party listings (Jul–Sep 2026: Rumah123, 99.co, Brighton, CBRE Q1-2026 Greater Jakarta Industrial Outlook, MM2100 BFIE); asking prices are not transactions. Implied uplift = market mid/low ÷ book, illustrative only. Morotai: no reliable public market price found (book cost only ~3.9 thousand IDR/m²).',
   val_h:'Valuation & share price', val_d:'Valuation metrics as of 17–18 Sep 2026 (S&P Global MI via StockAnalysis, Digrin, Pluang, IDX); share price history: monthly closes (Digrin). Market data delayed.',
-  c_v1_t:'Share price — last 12 months (IDR)', c_v1_s:'Monthly close Sep-2025 → Sep-2026; 52-week range 111–364; current 181 (17 Sep 2026); spikes: Jan-2026 (+62% in a week) and 18 Aug 2026 (+35% to 166)',
-  c_v2_t:'Price-to-book & price-to-sales: KIJA vs DMAS', c_v2_s:'KIJA 0.47x / 0.75x vs Cikarang peer DMAS 1.35x / 3.78x (Morningstar, Sep 2026)',
+  c_v1_t:'Share price — last 12 months (IDR)', c_v1_s:'Monthly close Sep-2025 → Sep-2026; 52-week range 105–364 (intraday, S&P); current 181 (17 Sep 2026); spikes: Jan-2026 (+62% in a week) and 18 Aug 2026 (+35% to 166)',
+  c_v2_t:'Price-to-book & price-to-sales: KIJA vs DMAS', c_v2_s:'KIJA 0.46x / 0.75x vs Cikarang peer DMAS 1.35x / 3.78x (Morningstar, Sep 2026)',
   val_stats_t:'Valuation & trading snapshot', val_peers_t:'Peer comparison: DMAS (Kota Deltamas)', val_peers_note:'DMAS: Sinar Mas Land + Sojitz Cikarang industrial developer; 1H26 net profit +175% to 1.19T on data-center land sales; +56.6% YTD-2026. KIJA 1H26 net loss reflects ~460 one-off refinancing costs.',
   val_analysts_t:'Analyst views & ratings', val_events_t:'Price & trading milestones (12 months)',
   ft_src:'Sources: <a href="https://www.jababeka.com/wp-content/uploads/2026/05/KIJA-AR-2025.pdf" target="_blank" rel="noopener">KIJA AR2025</a> · <a href="https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202607/20260731205845-62989-0/FinancialStatement-2026-II-KIJA.pdf" target="_blank" rel="noopener">1H26 Interim</a> · <a href="https://www.jababeka.com/wp-content/uploads/2023/05/KIJA-ASR-2022.pdf" target="_blank" rel="noopener">AR2022</a> · <a href="https://www.jababeka.com/wp-content/uploads/2025/02/KIJA-Presentation-Material-Augustus-2026-Final.pdf" target="_blank" rel="noopener">Aug-2026 presentation</a> · <a href="https://www.idx.co.id" target="_blank" rel="noopener">IDX announcements</a>. Full analysis: <a href="KIJA_财务分析报告_2015-2025.md" target="_blank" rel="noopener">analysis report</a>.',
@@ -426,7 +442,7 @@ id: {
   app_sub:'PT Kawasan Industri Jababeka Tbk (IDX: KIJA) · Pengembang Kawasan Industri · Pemantauan Keuangan & Operasional',
   meta_src:'Sumber: Laporan Tahunan FY2019 / FY2022 / FY2025, Laporan Keuangan 1H26, presentasi investor & pengumuman IDX',
   meta_asof:'Data per 2026-09-18 · Satuan: miliar rupiah (IDR bn), kecuali dinyatakan lain',
-  t_overview:'Ringkasan', t_fy2024:'Laporan 2024', t_fy2025:'Laporan 2025', t_fy2026:'Laporan 2026 (1H)', t_debt:'Utang & Solvabilitas', t_landbank:'Land Bank', t_valuation:'Valuasi', t_risk:'Risiko & Arah', t_holding:'Struktur Kepemilikan', t_org:'Organisasi',
+  t_overview:'Ringkasan', t_fy2024:'Laporan 2024', t_fy2025:'Laporan 2025', t_fy2026:'Laporan 2026 (1H)', t_debt:'Utang & Solvabilitas', t_landbank:'Land Bank', t_valuation:'Valuasi', t_vali:'Ilustrasi Valuasi', t_risk:'Risiko & Arah', t_holding:'Struktur Kepemilikan', t_org:'Organisasi',
   ph1:'Fase <b>puncak 2016</b>: laba bersih Rp427 miliar',
   ph2:'Fase <b>palung 2017–2022</b>: penurunan properti + pandemi + rugi selisih kurs',
   ph3:'Fase <b>lonjakan 2023–2025</b>: penjualan lahan Kendal + infrastruktur',
@@ -442,9 +458,9 @@ id: {
   c_f24_3_t:'Margin kotor / bersih (2015–2025)', c_f24_3_s:'Margin kotor turun dari puncak 52% (2021) menjadi 43% (2024)',
   c_f24_4_t:'Skala neraca (2021–2025)', c_f24_4_s:'Aset / liabilitas / ekuitas, Rp miliar',
   c_f25_1_t:'Struktur utang (31 Des 2025)', c_f25_1_s:'Total utang Rp4,606.5 miliar; Senior Notes USD185.9 juta (kupon 7–9%, pokok 3,119.0); lunas penuh pada Q2 2026',
-  c_f25_2_t:'Komposisi aset: kas vs lainnya', c_f25_2_s:'2023–2025; kas & setara kas 1,362 → 2,016 → 3,586',
+  c_f25_2_t:'Komposisi aset: kas vs lainnya', c_f25_2_s:'2023–2025; kas & setara kas 1.094,7 → 2.048,5 → 3.618,8',
   c_f25_3_t:'Kapasitas pelayanan utang', c_f25_3_s:'EBITDA/beban bunga 4.4x; utang bersih/EBITDA 0.6x (2023: 2.7x → 2025: 0.6x)',
-  c_f25_4_t:'Rekonsiliasi kas (2025)', c_f25_4_s:'Kas awal 2,016 + surplus konsolidasi 1,570 (JV 932 + sendiri 639) = kas akhir 3,586',
+  c_f25_4_t:'Rekonsiliasi kas (2025)', c_f25_4_s:'Kas awal 2.048,5 + surplus konsolidasi 1.570 (JV 932 + sendiri 639) = kas akhir 3.618,8',
   c_f26_1_t:'Pendapatan 1H26 vs 1H25', c_f26_1_s:'Total -11%; infrastruktur +15%, tanah -32% (perbedaan waktu pengakuan Kendal)',
   c_f26_2_t:'Progres penjualan pemasaran (1H26)', c_f26_2_s:'1,187.6 / target FY2026 3,750 (Cikarang 1,250 + Kendal 2,500); tercapai 32%',
   c_f26_3_t:'Pergeseran komposisi: porsi infrastruktur', c_f26_3_s:'Porsi pendapatan berulang 45% → 57%, bisnis makin bertumpu pada infrastruktur',
@@ -476,8 +492,8 @@ id: {
   c_lb2_t:'Nilai buku vs harga penawaran pasar (ribu IDR/m²)', c_lb2_s:'Skala log; buku = tanah untuk pengembangan pada biaya perolehan (AR2025); pasar = harga penawaran pihak ketiga (listing Rumah123 / 99.co / Brighton / CBRE / MM2100)',
   lb_table_h:'Rincian land bank & perbandingan harga', lb_note_h:'Catatan & sumber', lb_note:'Nilai buku adalah biaya perolehan (lebih rendah dari biaya atau nilai realisasi neto) tanah untuk pengembangan per catatan 7 AR2025 — bukan penilaian per proyek; perusahaan tidak mengungkapkan penilaian resmi lahan. Angka pasar adalah harga penawaran listing pihak ketiga (Jul–Sep 2026: Rumah123, 99.co, Brighton, CBRE Q1-2026 Greater Jakarta Industrial Outlook, MM2100 BFIE); harga penawaran bukan transaksi. Potensi apresiasi = tengah/rendah pasar ÷ buku, hanya ilustrasi. Morotai: tidak ditemukan harga pasar publik yang andal (nilai buku hanya sekitar 3.9 ribu IDR/m²).',
   val_h:'Valuasi & harga saham', val_d:'Metrik valuasi per 17–18 Sep 2026 (S&P Global MI via StockAnalysis, Digrin, Pluang, IDX); riwayat harga: penutupan bulanan (Digrin). Data pasar tertunda.',
-  c_v1_t:'Harga saham — 12 bulan terakhir (IDR)', c_v1_s:'Penutupan bulanan Sep-2025 → Sep-2026; kisaran 52 minggu 111–364; harga kini 181 (17 Sep 2026); lonjakan: Jan-2026 (+62% sepekan) dan 18 Agu 2026 (+35% ke 166)',
-  c_v2_t:'Price-to-book & price-to-sales: KIJA vs DMAS', c_v2_s:'KIJA 0.47x / 0.75x vs peer Cikarang DMAS 1.35x / 3.78x (Morningstar, Sep 2026)',
+  c_v1_t:'Harga saham — 12 bulan terakhir (IDR)', c_v1_s:'Penutupan bulanan Sep-2025 → Sep-2026; kisaran 52 minggu 105–364 (intraday, S&P); harga kini 181 (17 Sep 2026); lonjakan: Jan-2026 (+62% sepekan) dan 18 Agu 2026 (+35% ke 166)',
+  c_v2_t:'Price-to-book & price-to-sales: KIJA vs DMAS', c_v2_s:'KIJA 0.46x / 0.75x vs peer Cikarang DMAS 1.35x / 3.78x (Morningstar, Sep 2026)',
   val_stats_t:'Ringkasan valuasi & perdagangan', val_peers_t:'Perbandingan peer: DMAS (Kota Deltamas)', val_peers_note:'DMAS: pengembang kawasan industri Cikarang milik Sinar Mas Land + Sojitz; laba bersih 1H26 +175% menjadi 1.19T dari penjualan lahan data center; +56.6% YTD-2026. Rugi bersih 1H26 KIJA mencerminkan biaya refinancing satu kali sekitar 460.',
   val_analysts_t:'Pandangan analis & peringkat', val_events_t:'Tonggak harga & perdagangan (12 bulan)',
   ft_src:'Sumber: <a href="https://www.jababeka.com/wp-content/uploads/2026/05/KIJA-AR-2025.pdf" target="_blank" rel="noopener">AR2025 KIJA</a> · <a href="https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202607/20260731205845-62989-0/FinancialStatement-2026-II-KIJA.pdf" target="_blank" rel="noopener">Laporan 1H26</a> · <a href="https://www.jababeka.com/wp-content/uploads/2023/05/KIJA-ASR-2022.pdf" target="_blank" rel="noopener">AR2022</a> · <a href="https://www.jababeka.com/wp-content/uploads/2025/02/KIJA-Presentation-Material-Augustus-2026-Final.pdf" target="_blank" rel="noopener">Presentasi Agu-2026</a> · <a href="https://www.idx.co.id" target="_blank" rel="noopener">Pengumuman IDX</a>. Analisis lengkap: <a href="KIJA_财务分析报告_2015-2025.md" target="_blank" rel="noopener">laporan analisis</a>.',
@@ -488,7 +504,7 @@ zh: {
   app_sub:'PT Kawasan Industri Jababeka Tbk（IDX: KIJA）· 工业园区开发 · 财务与运营监控',
   meta_src:'数据来源：FY2019 / FY2022 / FY2025 年报、1H26 中报、公司演示与 IDX 公告',
   meta_asof:'数据截止：2026-09-18 · 单位：十亿印尼盾（另有注明除外）',
-  t_overview:'总览', t_fy2024:'2024 年报', t_fy2025:'2025 年报', t_fy2026:'2026 中报', t_debt:'债务与偿债', t_landbank:'土地储备', t_valuation:'估值分析', t_risk:'风险与方向', t_holding:'股权结构', t_org:'治理与组织',
+  t_overview:'总览', t_fy2024:'2024 年报', t_fy2025:'2025 年报', t_fy2026:'2026 中报', t_debt:'债务与偿债', t_landbank:'土地储备', t_valuation:'估值分析', t_vali:'估值测算', t_risk:'风险与方向', t_holding:'股权结构', t_org:'治理与组织',
   ph1:'阶段 <b>2016 高点</b>：净利 427B',
   ph2:'阶段 <b>2017–2022 低谷</b>：地产下行 + 疫情 + 汇兑损失',
   ph3:'阶段 <b>2023–2025 爆发</b>：Kendal 售地 + 基建收入双轮驱动',
@@ -504,9 +520,9 @@ zh: {
   c_f24_3_t:'毛利率 / 净利率（2015–2025）', c_f24_3_s:'毛利率自 2021 年高点 52% 回落，2024 年 43%',
   c_f24_4_t:'资产负债表规模（2021–2025）', c_f24_4_s:'资产 / 负债 / 权益，十亿盾',
   c_f25_1_t:'债务结构（2025-12-31）', c_f25_1_s:'总债务 4,606.5B；2027 高级票据 1.859 亿美元（票息 7–9%，本金 3,119.0）；2026Q2 已全部提前偿还',
-  c_f25_2_t:'资产构成：现金 vs 其他', c_f25_2_s:'2023–2025；现金及等价物 1,362 → 2,016 → 3,586',
+  c_f25_2_t:'资产构成：现金 vs 其他', c_f25_2_s:'2023–2025；现金及等价物 1,094.7 → 2,048.5 → 3,618.8',
   c_f25_3_t:'偿债能力', c_f25_3_s:'EBITDA/利息 4.4x；净负债/EBITDA 0.6x（2023: 2.7x → 2025: 0.6x）',
-  c_f25_4_t:'现金桥（2025）', c_f25_4_s:'期初 2,016 + 合并盈余 1,570（JV 932 + 自有 639）= 期末 3,586',
+  c_f25_4_t:'现金桥（2025）', c_f25_4_s:'期初 2,048.5 + 合并盈余 1,570（JV 932 + 自有 639）= 期末 3,618.8',
   c_f26_1_t:'1H26 vs 1H25 收入对比', c_f26_1_s:'总收入 -11%；基建 +15%，土地 -32%（Kendal 收入确认时点差异）',
   c_f26_2_t:'营销销售进度（1H26）', c_f26_2_s:'1,187.6 / 2026 全年目标 3,750（Cikarang 1,250 + Kendal 2,500），达标 32%',
   c_f26_3_t:'收入结构变化：基建占比', c_f26_3_s:'经常性收入占比 45% → 57%，业务向基建倾斜',
@@ -538,8 +554,8 @@ zh: {
   c_lb2_t:'账面价值 vs 市场挂牌价（千盾/m²）', c_lb2_s:'对数刻度；账面=土地开发成本（2025 年报）；市场=第三方挂牌价（Rumah123 / 99.co / Brighton / CBRE / MM2100 挂牌）',
   lb_table_h:'土地储备明细与价格对比', lb_note_h:'口径说明与来源', lb_note:'账面价值为土地开发成本（成本与可变现净值孰低，2025 年报附注 7）——非逐项目评估值，公司未披露官方土地评估；市场价为第三方挂牌要价（2026 年 7–9 月：Rumah123、99.co、Brighton、CBRE 2026Q1 雅加达工业市场展望、MM2100 BFIE），挂牌价不等于成交价。隐含增值 = 市场价中/低位 ÷ 账面价，仅作示意。Morotai：未找到可靠公开市场价（账面仅约 3.9 千盾/m²）。',
   val_h:'估值分析与股价', val_d:'估值指标截至 2026-09-17/18（S&P Global MI via StockAnalysis、Digrin、Pluang、IDX）；股价为月收盘价（Digrin）。市场数据延迟。',
-  c_v1_t:'股价——过去 12 个月（盾）', c_v1_s:'2025-09 至 2026-09 月收盘；52 周区间 111–364；现价 181（2026-09-17）；异动：2026-01（单周 +62%）与 2026-08-18（+35% 至 166）',
-  c_v2_t:'市净率与市销率：KIJA vs DMAS', c_v2_s:'KIJA 0.47x / 0.75x，对比 Cikarang 同业 DMAS 1.35x / 3.78x（Morningstar，2026-09）',
+  c_v1_t:'股价——过去 12 个月（盾）', c_v1_s:'2025-09 至 2026-09 月收盘；52 周区间 105–364（盘中，S&P）；现价 181（2026-09-17）；异动：2026-01（单周 +62%）与 2026-08-18（+35% 至 166）',
+  c_v2_t:'市净率与市销率：KIJA vs DMAS', c_v2_s:'KIJA 0.46x / 0.75x，对比 Cikarang 同业 DMAS 1.35x / 3.78x（Morningstar，2026-09）',
   val_stats_t:'估值与交易快照', val_peers_t:'同业对比：DMAS（Kota Deltamas）', val_peers_note:'DMAS：Sinar Mas Land + Sojitz 旗下 Cikarang 工业园开发商；1H26 净利 +175% 至 1.19T（数据中心售地）；2026 年 YTD +56.6%。KIJA 1H26 净亏主要反映约 460 的一次性再融资成本。',
   val_analysts_t:'分析师观点与评级', val_events_t:'股价与交易大事记（12 个月）',
   ft_src:'数据来源：<a href="https://www.jababeka.com/wp-content/uploads/2026/05/KIJA-AR-2025.pdf" target="_blank" rel="noopener">KIJA 2025 年报</a> · <a href="https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202607/20260731205845-62989-0/FinancialStatement-2026-II-KIJA.pdf" target="_blank" rel="noopener">1H26 中报</a> · <a href="https://www.jababeka.com/wp-content/uploads/2023/05/KIJA-ASR-2022.pdf" target="_blank" rel="noopener">2022 年报</a> · <a href="https://www.jababeka.com/wp-content/uploads/2025/02/KIJA-Presentation-Material-Augustus-2026-Final.pdf" target="_blank" rel="noopener">2026-08 演示</a> · <a href="https://www.idx.co.id" target="_blank" rel="noopener">IDX 公告</a>；完整分析见<a href="KIJA_财务分析报告_2015-2025.md" target="_blank" rel="noopener">分析报告</a>。',
@@ -555,32 +571,32 @@ ov: {
 en: [
   {l:'FY2025 Revenue',v:5149.4,u:'IDR bn',d:'+12% YoY',c:'up'},
   {l:'Consolidated net profit',v:857.1,u:'IDR bn',d:'+11% YoY',c:'up'},
-  {l:'Attributable to parent',v:423.2,u:'IDR bn',d:'+17% YoY',c:'up'},
+  {l:'Attributable to parent',v:423.2,u:'IDR bn',d:'+16% YoY',c:'up'},
   {l:'EBITDA',v:1735.5,u:'IDR bn',d:'+7% YoY',c:'up'},
   {l:'Marketing sales',v:3601,u:'IDR bn',d:'+13% YoY',c:'up'},
-  {l:'Cash & equivalents',v:3586,u:'IDR bn',d:'+78% YoY',c:'up'},
-  {l:'Gross margin',v:39,u:'%',d:'-4pct (peak 52% in 2021)',c:'dn'},
-  {l:'Debt/Equity',v:85,u:'%',d:'-1pct',c:'dn'}
+  {l:'Cash & equivalents',v:3618.8,u:'IDR bn',d:'+77% YoY',c:'up'},
+  {l:'Gross margin',v:39,u:'%',d:'-3pct (peak 52% in 2021)',c:'dn'},
+  {l:'Liab/Equity',v:85,u:'%',d:'-1pct',c:'dn'}
 ],
 id: [
   {l:'Pendapatan FY2025',v:5149.4,u:'Rp miliar',d:'+12% YoY',c:'up'},
   {l:'Laba bersih konsolidasi',v:857.1,u:'Rp miliar',d:'+11% YoY',c:'up'},
-  {l:'Laba entitas induk',v:423.2,u:'Rp miliar',d:'+17% YoY',c:'up'},
+  {l:'Laba entitas induk',v:423.2,u:'Rp miliar',d:'+16% YoY',c:'up'},
   {l:'EBITDA',v:1735.5,u:'Rp miliar',d:'+7% YoY',c:'up'},
   {l:'Penjualan pemasaran',v:3601,u:'Rp miliar',d:'+13% YoY',c:'up'},
-  {l:'Kas & setara kas',v:3586,u:'Rp miliar',d:'+78% YoY',c:'up'},
-  {l:'Margin kotor',v:39,u:'%',d:'-4pct (puncak 52% tahun 2021)',c:'dn'},
-  {l:'Utang/Ekuitas',v:85,u:'%',d:'-1pct',c:'dn'}
+  {l:'Kas & setara kas',v:3618.8,u:'Rp miliar',d:'+77% YoY',c:'up'},
+  {l:'Margin kotor',v:39,u:'%',d:'-3pct (puncak 52% tahun 2021)',c:'dn'},
+  {l:'Kewajiban/Ekuitas',v:85,u:'%',d:'-1pct',c:'dn'}
 ],
 zh: [
   {l:'2025 营收',v:5149.4,u:'十亿盾',d:'+12% 同比',c:'up'},
   {l:'合并净利',v:857.1,u:'十亿盾',d:'+11% 同比',c:'up'},
-  {l:'归母净利',v:423.2,u:'十亿盾',d:'+17% 同比',c:'up'},
+  {l:'归母净利',v:423.2,u:'十亿盾',d:'+16% 同比',c:'up'},
   {l:'EBITDA',v:1735.5,u:'十亿盾',d:'+7% 同比',c:'up'},
   {l:'营销销售',v:3601,u:'十亿盾',d:'+13% 同比',c:'up'},
-  {l:'现金及等价物',v:3586,u:'十亿盾',d:'+78% 同比',c:'up'},
-  {l:'毛利率',v:39,u:'%',d:'-4pct（2021 峰值 52%）',c:'dn'},
-  {l:'负债/权益',v:85,u:'%',d:'-1pct',c:'dn'}
+  {l:'现金及等价物',v:3618.8,u:'十亿盾',d:'+77% 同比',c:'up'},
+  {l:'毛利率',v:39,u:'%',d:'-3pct（2021 峰值 52%）',c:'dn'},
+  {l:'总负债/权益',v:85,u:'%',d:'-1pct',c:'dn'}
 ]},
 k24: {
 en: [
@@ -588,7 +604,7 @@ en: [
   {l:'Consolidated net profit',v:770.1,u:'IDR bn',d:'+46% YoY',c:'up'},
   {l:'Attributable to parent',v:363.3,u:'IDR bn',d:'+19% YoY',c:'up'},
   {l:'Marketing sales',v:3188,u:'IDR bn',d:'+44%, 28% above target',c:'up'},
-  {l:'Gross margin',v:43,u:'%',d:'-4pct (peak 52% in 2021)',c:'dn'},
+  {l:'Gross margin',v:43,u:'%',d:'-3pct (peak 52% in 2021)',c:'dn'},
   {l:'ROE',v:10,u:'%',d:'+2pct',c:'up'}
 ],
 id: [
@@ -596,7 +612,7 @@ id: [
   {l:'Laba bersih konsolidasi',v:770.1,u:'Rp miliar',d:'+46% YoY',c:'up'},
   {l:'Laba entitas induk',v:363.3,u:'Rp miliar',d:'+19% YoY',c:'up'},
   {l:'Penjualan pemasaran',v:3188,u:'Rp miliar',d:'+44%, 28% di atas target',c:'up'},
-  {l:'Margin kotor',v:43,u:'%',d:'-4pct (puncak 52% tahun 2021)',c:'dn'},
+  {l:'Margin kotor',v:43,u:'%',d:'-3pct (puncak 52% tahun 2021)',c:'dn'},
   {l:'ROE',v:10,u:'%',d:'+2pct',c:'up'}
 ],
 zh: [
@@ -604,33 +620,33 @@ zh: [
   {l:'合并净利',v:770.1,u:'十亿盾',d:'+46% 同比',c:'up'},
   {l:'归母净利',v:363.3,u:'十亿盾',d:'+19% 同比',c:'up'},
   {l:'营销销售',v:3188,u:'十亿盾',d:'+44%，超目标 28%',c:'up'},
-  {l:'毛利率',v:43,u:'%',d:'-4pct（2021 峰值 52%）',c:'dn'},
+  {l:'毛利率',v:43,u:'%',d:'-3pct（2021 峰值 52%）',c:'dn'},
   {l:'ROE',v:10,u:'%',d:'+2pct',c:'up'}
 ]},
 k25: {
 en: [
   {l:'FY2025 Revenue',v:5149.4,u:'IDR bn',d:'+12% YoY',c:'up'},
   {l:'Consolidated net profit',v:857.1,u:'IDR bn',d:'+11% YoY',c:'up'},
-  {l:'Attributable to parent',v:423.2,u:'IDR bn',d:'+17% YoY',c:'up'},
+  {l:'Attributable to parent',v:423.2,u:'IDR bn',d:'+16% YoY',c:'up'},
   {l:'EBITDA',v:1735.5,u:'IDR bn',d:'+7% YoY',c:'up'},
-  {l:'Cash & equivalents',v:3586,u:'IDR bn',d:'+78%, incl. JVs',c:'up'},
-  {l:'Debt/Equity',v:85,u:'%',d:'-1pct, net debt/EBITDA 0.6x',c:'dn'}
+  {l:'Cash & equivalents',v:3618.8,u:'IDR bn',d:'+77%, incl. JVs',c:'up'},
+  {l:'Liab/Equity',v:85,u:'%',d:'-1pct, net debt/EBITDA 0.6x',c:'dn'}
 ],
 id: [
   {l:'Pendapatan FY2025',v:5149.4,u:'Rp miliar',d:'+12% YoY',c:'up'},
   {l:'Laba bersih konsolidasi',v:857.1,u:'Rp miliar',d:'+11% YoY',c:'up'},
-  {l:'Laba entitas induk',v:423.2,u:'Rp miliar',d:'+17% YoY',c:'up'},
+  {l:'Laba entitas induk',v:423.2,u:'Rp miliar',d:'+16% YoY',c:'up'},
   {l:'EBITDA',v:1735.5,u:'Rp miliar',d:'+7% YoY',c:'up'},
-  {l:'Kas & setara kas',v:3586,u:'Rp miliar',d:'+78%, termasuk JV',c:'up'},
-  {l:'Utang/Ekuitas',v:85,u:'%',d:'-1pct, utang bersih/EBITDA 0.6x',c:'dn'}
+  {l:'Kas & setara kas',v:3618.8,u:'Rp miliar',d:'+77%, termasuk JV',c:'up'},
+  {l:'Kewajiban/Ekuitas',v:85,u:'%',d:'-1pct, utang bersih/EBITDA 0.6x',c:'dn'}
 ],
 zh: [
   {l:'2025 营收',v:5149.4,u:'十亿盾',d:'+12% 同比',c:'up'},
   {l:'合并净利',v:857.1,u:'十亿盾',d:'+11% 同比',c:'up'},
-  {l:'归母净利',v:423.2,u:'十亿盾',d:'+17% 同比',c:'up'},
+  {l:'归母净利',v:423.2,u:'十亿盾',d:'+16% 同比',c:'up'},
   {l:'EBITDA',v:1735.5,u:'十亿盾',d:'+7% 同比',c:'up'},
-  {l:'现金及等价物',v:3586,u:'十亿盾',d:'+78%，含 JV',c:'up'},
-  {l:'负债/权益',v:85,u:'%',d:'-1pct，净债/EBITDA 0.6x',c:'dn'}
+  {l:'现金及等价物',v:3618.8,u:'十亿盾',d:'+77%，含 JV',c:'up'},
+  {l:'总负债/权益',v:85,u:'%',d:'-1pct，净债/EBITDA 0.6x',c:'dn'}
 ]},
 k26: {
 en: [
@@ -712,7 +728,7 @@ en: [
   ['Feb 2026','PIER (Pasuruan) Mini LNG plant commissioned to serve eastern industrial energy transition'],
   ['Apr 2026','1Q26 marketing sales 518 (Cikarang 139 / Kendal 379)'],
   ['5 Jun 2026','AGM approved FY2025 dividend of IDR2.03/share (42.3 total), paid 9 Jul'],
-  ['Jul 2026','Refinancing completed: 15-year IDR3.4tn Mandiri loan repaid the 2027 USD notes (185.9m) and hedges were terminated'],
+  ['Jul 2026','Refinancing completed: 15-year IDR4.6tn Mandiri facility repaid the 2027 USD notes (185.9m) and hedges were terminated'],
   ['Aug 2026','1H26 results: net loss 6.4 (one-off ~460); infrastructure share of revenue rose to 57%'],
   ['Aug 2026','Kendal JV declared a dividend of 615 (51% attributable to KIJA)']
 ],
@@ -720,7 +736,7 @@ id: [
   ['Feb 2026','Pabrik Mini LNG PIER (Pasuruan) diresmikan untuk transisi energi industri di timur'],
   ['Apr 2026','Penjualan pemasaran 1Q26 518 (Cikarang 139 / Kendal 379)'],
   ['5 Jun 2026','RUPS menyetujui dividen FY2025 Rp2.03/saham (total 42.3), dibayar 9 Jul'],
-  ['Jul 2026','Refinancing selesai: pinjaman Mandiri 15 tahun Rp3.4tn melunasi notes USD 2027 (185.9 juta) dan lindung nilai dihentikan'],
+  ['Jul 2026','Refinancing selesai: fasilitas Mandiri 15 tahun Rp4.6tn melunasi notes USD 2027 (185.9 juta) dan lindung nilai dihentikan'],
   ['Agu 2026','Hasil 1H26: rugi bersih 6.4 (satu kali sekitar 460); porsi infrastruktur pendapatan naik ke 57%'],
   ['Agu 2026','JV Kendal mengumumkan dividen 615 (51% diatribusikan ke KIJA)']
 ],
@@ -728,7 +744,7 @@ zh: [
   ['2026-02','PIER（Pasuruan）Mini LNG 工厂启用，服务东部工业能源转型'],
   ['2026-04','1Q26 营销销售 518B（Cikarang 139 / Kendal 379）'],
   ['2026-06-05','股东大会通过 FY2025 派息每股 2.03 盾（合计 42.3B），7 月 9 日支付'],
-  ['2026-07','以 15 年期 IDR 3.4T Mandiri 贷款清偿 2027 美元票据（185.9M）并终止对冲，完成再融资'],
+  ['2026-07','以 15 年期 IDR 4.6T Mandiri 贷款清偿 2027 美元票据（185.9M）并终止对冲，完成再融资'],
   ['2026-08','1H26 中报：净亏 6.4B（一次性成本约 460B）；基建收入占比升至 57%'],
   ['2026-08','Kendal JV 宣布派息 615B（51% 归 KIJA）']
 ]}
@@ -748,7 +764,7 @@ id: [
   ['Margin kotor','43% (puncak 52%)',1,82,'menurun sejak 2021'],
   ['Porsi laba entitas induk','47%',2,53,'minoritas mengambil sekitar 53%'],
   ['Rugi selisih kurs','205.7',1,60,'eksposur utang USD menekan laba'],
-  ['Utang/Ekuitas','86%',1,86,'membaik dua tahun berturut-turut'],
+  ['Kewajiban/Ekuitas','86%',1,86,'membaik dua tahun berturut-turut'],
   ['Capaian penjualan pemasaran','128%',0,28,'indikator utama kuat'],
   ['Pertumbuhan pendapatan','+39%',0,39,'momentum kuat']
 ],
@@ -756,13 +772,13 @@ zh: [
   ['毛利率','43%（峰值 52%）',1,82,'2021 年以来持续下滑'],
   ['归母净利占比','47%',2,53,'少数股东分走约 53%'],
   ['汇兑损失','205.7B',1,60,'美元债敞口拖累净利'],
-  ['负债/权益','86%',1,86,'连续两年改善'],
+  ['总负债/权益','86%',1,86,'连续两年改善'],
   ['营销销售达标','128%',0,28,'领先指标强劲'],
   ['收入增长','+39%',0,39,'增长动能强']
 ]},
 rk25: {
 en: [
-  ['Gross margin','39% (-4pct)',2,75,'land margin down + infrastructure mix up'],
+  ['Gross margin','39% (-3pct)',2,75,'land margin down + infrastructure mix up'],
   ['Parent share of net profit','49%',2,51,'NCI takes about half of profit'],
   ['Kendal reliance','70% of marketing sales',1,70,'sales concentrated in Kendal'],
   ['Net debt/EBITDA','0.6x',0,21,'significant deleveraging'],
@@ -770,7 +786,7 @@ en: [
   ['FX loss','120.9 (-41%)',1,45,'exposure shrinking, cleared in 2026']
 ],
 id: [
-  ['Margin kotor','39% (-4pct)',2,75,'margin lahan turun + komposisi infrastruktur naik'],
+  ['Margin kotor','39% (-3pct)',2,75,'margin lahan turun + komposisi infrastruktur naik'],
   ['Porsi laba entitas induk','49%',2,51,'NCI mengambil sekitar separuh laba'],
   ['Ketergantungan Kendal','70% penjualan pemasaran',1,70,'penjualan terkonsentrasi di Kendal'],
   ['Utang bersih/EBITDA','0.6x',0,21,'deleveraging signifikan'],
@@ -778,7 +794,7 @@ id: [
   ['Rugi selisih kurs','120.9 (-41%)',1,45,'eksposur menyusut, bersih pada 2026']
 ],
 zh: [
-  ['毛利率','39%（-4pct）',2,75,'土地毛利下滑 + 基建占比上升'],
+  ['毛利率','39%（-3pct）',2,75,'土地毛利下滑 + 基建占比上升'],
   ['归母净利占比','49%',2,51,'NCI 分走约一半利润'],
   ['Kendal 依赖','营销销售 70%',1,70,'园区销售集中于 Kendal'],
   ['净负债/EBITDA','0.6x',0,21,'大幅去杠杆'],
@@ -816,7 +832,7 @@ en: [
   ['Minority dilution','parent share ~49%',2,51,'Kendal JV 51% interest: about half of profit to NCI'],
   ['Revenue recognition timing','1H26 -11%',2,70,'land sale timing drives quarterly swings'],
   ['Non-operating FX/derivative','FX & derivatives',1,60,'205.7 (2024) → 120.9 (2025) → cleared 1H26'],
-  ['Leverage & debt service','D/E 85%',1,35,'net debt/EBITDA 0.6x, EBITDA/interest 4.4x'],
+  ['Leverage & debt service','Liab/Equity 85%',1,35,'net debt/EBITDA 0.6x, EBITDA/interest 4.4x'],
   ['Cash buffer','3.2–3.6tn',0,24,'covers short-term debt & dividends'],
   ['Credit rating','B- / B3',1,50,'speculative grade, higher funding cost'],
   ['Power profitability','low gross margin',1,50,'gas price & PLN dispatch'],
@@ -828,7 +844,7 @@ id: [
   ['Dilusi minoritas','porsi induk ~49%',2,51,'JV Kendal 51%: sekitar separuh laba ke NCI'],
   ['Timing pengakuan pendapatan','1H26 -11%',2,70,'timing penjualan lahan menggerakkan fluktuasi kuartalan'],
   ['Rugi kurs/derivatif non-operasional','Kurs & derivatif',1,60,'205.7 (2024) → 120.9 (2025) → bersih 1H26'],
-  ['Leverage & pelayanan utang','U/E 85%',1,35,'utang bersih/EBITDA 0.6x, EBITDA/bunga 4.4x'],
+  ['Leverage & pelayanan utang','Kewajiban/Ekuitas 85%',1,35,'utang bersih/EBITDA 0.6x, EBITDA/bunga 4.4x'],
   ['Bantalan kas','3.2–3.6tn',0,24,'menutup utang jangka pendek & dividen'],
   ['Peringkat kredit','B- / B3',1,50,'grade spekulatif, biaya dana lebih tinggi'],
   ['Profitabilitas kelistrikan','margin kotor rendah',1,50,'harga gas & dispatch PLN'],
@@ -840,7 +856,7 @@ zh: [
   ['少数股东稀释','归母占比 ~49%',2,51,'Kendal JV 51% 权益，利润约一半归 NCI'],
   ['收入确认节奏','1H26 -11%',2,70,'土地销售时点主导季度波动'],
   ['非经营损益扰动','汇兑/衍生品',1,60,'2024 205.7B → 2025 120.9B → 2026H1 出清'],
-  ['杠杆与偿债','D/E 85%',1,35,'净负债/EBITDA 0.6x、EBITDA/利息 4.4x'],
+  ['杠杆与偿债','总负债/权益 85%',1,35,'净负债/EBITDA 0.6x、EBITDA/利息 4.4x'],
   ['现金缓冲','3.2–3.6T',0,24,'覆盖短期借款与分红'],
   ['信用评级','B- / B3',1,50,'投机级，融资成本偏高'],
   ['电力业务盈利','毛利偏低',1,50,'气价与 PLN 调度影响'],
@@ -853,7 +869,7 @@ var DIR = {
 en: [
   ['01','Recurring revenue share rising','Infrastructure revenue share 45% → 50% → 57% (power, water, dry port), improving revenue stability and cash-flow visibility.'],
   ['02','Kendal as the main growth engine','SEZ estate contributes ~70% of marketing sales; 2026 Kendal target 2,500; JV dividend 615 (51% to KIJA).'],
-  ['03','USD debt cleared, rupiah funding','Q2 2026: 15-year IDR3.4tn loan repaid the 2027 USD notes; FX risk largely eliminated, maturity much longer.'],
+  ['03','USD debt cleared, rupiah funding','Q2 2026: 15-year IDR4.6tn facility repaid the 2027 USD notes; FX risk largely eliminated, maturity much longer.'],
   ['04','Net leverage down sharply','Net debt/EBITDA 2.7x (2023) → 0.6x (2025); cash 3.6tn, near net-cash position.'],
   ['05','New growth initiatives','PIER Mini LNG operating; dry port throughput +13%; Jababeka Bizpark under construction; land bank 5,089 ha.'],
   ['06','Shareholder returns restored','FY2025 dividend IDR2.03/share (42.3; policy 25–35% of net profit); KIK/Kendal continue to pay dividends.']
@@ -861,7 +877,7 @@ en: [
 id: [
   ['01','Porsi pendapatan berulang naik','Porsi pendapatan infrastruktur 45% → 50% → 57% (listrik, air, pelabuhan darat), meningkatkan stabilitas pendapatan dan visibilitas arus kas.'],
   ['02','Kendal sebagai mesin pertumbuhan utama','Kawasan KEK menyumbang sekitar 70% penjualan pemasaran; target Kendal 2026 2,500; dividen JV 615 (51% ke KIJA).'],
-  ['03','Utang USD dilunasi, pendanaan rupiah','Q2 2026: pinjaman 15 tahun Rp3.4tn melunasi notes USD 2027; risiko kurs hampir hilang, jatuh tempo lebih panjang.'],
+  ['03','Utang USD dilunasi, pendanaan rupiah','Q2 2026: fasilitas 15 tahun Rp4.6tn melunasi notes USD 2027; risiko kurs hampir hilang, jatuh tempo lebih panjang.'],
   ['04','Leverage bersih turun tajam','Utang bersih/EBITDA 2.7x (2023) → 0.6x (2025); kas 3.6tn, mendekati posisi net cash.'],
   ['05','Inisiatif pertumbuhan baru','Mini LNG PIER beroperasi; throughput pelabuhan darat +13%; Jababeka Bizpark dibangun; cadangan lahan 5,089 ha.'],
   ['06','Imbal hasil pemegang saham pulih','Dividen FY2025 Rp2.03/saham (42.3; kebijakan 25–35% laba bersih); KIK/Kendal terus membagikan dividen.']
@@ -869,7 +885,7 @@ id: [
 zh: [
   ['01','经常性收入占比提升','基建收入占比 45% → 50% → 57%（电力、水务、干港），收入稳定性与现金可见度增强。'],
   ['02','Kendal 为主增长引擎','经济特区园区营销销售约占 70%；2026 年 Kendal 目标 2,500；JV 派息 615（51% 归 KIJA）。'],
-  ['03','美元债出清、本币化融资','2026Q2 以 15 年期 IDR 3.4T 贷款清偿 2027 美元票据，汇兑风险基本消除、久期显著拉长。'],
+  ['03','美元债出清、本币化融资','2026Q2 以 15 年期 IDR 4.6T 贷款清偿 2027 美元票据，汇兑风险基本消除、久期显著拉长。'],
   ['04','净杠杆大幅下降','净负债/EBITDA 自 2.7x（2023）降至 0.6x（2025）；现金 3.6T，接近净现金状态。'],
   ['05','新增长点布局','PIER Mini LNG 工厂投运；干港吞吐 +13%；Jababeka Bizpark 动工；土地储备 5,089 公顷。'],
   ['06','股东回报恢复','FY2025 恢复派息每股 2.03 盾（合计 42.3B，政策为净利 25–35%）；KIK/Kendal 持续派息。']
@@ -887,8 +903,8 @@ en: [
   ['2022','Debt restructuring: 2027 senior notes (7–9%) + Mandiri USD loan; MOU with MRT Jakarta','FX loss 404; parent -64'],
   ['2023','Profit surge: net profit +10x; Kendal land sales doubled to 1,113; marketing sales 2,213 (+29%)','Revenue 3,300; parent 306'],
   ['2024','Marketing sales record 3,188 (+44%); KIK dividend 322.9; founder retook the helm','Revenue 4,602.6; parent 363.3'],
-  ['2025','Marketing sales record 3,601; Bizpark broke ground; Sitoy opened; PROPER green rating maintained','Revenue 5,149.4; cash 3,586'],
-  ['2026 (1H)','Refinancing cleared USD debt (15-yr IDR3.4tn); PIER Mini LNG; Moody\u2019s initiated B3; dividend 2.03/share resumed','Net loss 6.4 (one-off); infra share 57%']
+  ['2025','Marketing sales record 3,601; Bizpark broke ground; Sitoy opened; PROPER green rating maintained','Revenue 5,149.4; cash 3,618.8'],
+  ['2026 (1H)','Refinancing cleared USD debt (15-yr IDR4.6tn); PIER Mini LNG; Moody\u2019s initiated B3; dividend 2.03/share resumed','Net loss 6.4 (one-off); infra share 57%']
 ],
 id: [
   ['2016','Kawasan Industri Kendal mulai dibangun (JV dengan Sembcorp, "Park by the Bay") dan mendapat status KEK; United Power beroperasi','Puncak laba: laba bersih 427'],
@@ -900,8 +916,8 @@ id: [
   ['2022','Restrukturisasi utang: senior notes 2027 (7–9%) + pinjaman USD Mandiri; MOU dengan MRT Jakarta','Rugi kurs 404; entitas induk -64'],
   ['2023','Lonjakan laba: laba bersih +10x; penjualan lahan Kendal berlipat menjadi 1,113; penjualan pemasaran 2,213 (+29%)','Pendapatan 3,300; entitas induk 306'],
   ['2024','Penjualan pemasaran rekor 3,188 (+44%); dividen KIK 322.9; pendiri kembali memimpin','Pendapatan 4,602.6; entitas induk 363.3'],
-  ['2025','Penjualan pemasaran rekor 3,601; Bizpark dibangun; Sitoy beroperasi; peringkat hijau PROPER dipertahankan','Pendapatan 5,149.4; kas 3,586'],
-  ['2026 (1H)','Refinancing melunasi utang USD (Rp3.4tn 15 tahun); Mini LNG PIER; Moody\u2019s memberi B3; dividen 2.03/saham dilanjutkan','Rugi bersih 6.4 (satu kali); porsi infrastruktur 57%']
+  ['2025','Penjualan pemasaran rekor 3,601; Bizpark dibangun; Sitoy beroperasi; peringkat hijau PROPER dipertahankan','Pendapatan 5,149.4; kas 3,618.8'],
+  ['2026 (1H)','Refinancing melunasi utang USD (Rp4.6tn 15 tahun); Mini LNG PIER; Moody\u2019s memberi B3; dividen 2.03/saham dilanjutkan','Rugi bersih 6.4 (satu kali); porsi infrastruktur 57%']
 ],
 zh: [
   ['2016','Kendal 工业园动工（与 Sembcorp 合资「Park by the Bay」），获经济特区地位；United Power 投运','盈利高点：净利 427B'],
@@ -913,8 +929,8 @@ zh: [
   ['2022','债务重组：2027 高级票据（7–9%）+ Mandiri 美元贷款；与 MRT Jakarta 签 MOU','汇兑损失 404B，归母 -64B'],
   ['2023','盈利爆发：净利 +10 倍；Kendal 售地翻倍至 1,113B；营销销售 2,213B（+29%）','营收 3,300B，归母 306B'],
   ['2024','营销销售 3,188B 创纪录（+44%）；KIK 派息 322.9B；创始人重新执掌','营收 4,602.6B，归母 363.3B'],
-  ['2025','营销销售 3,601B 再创纪录；Bizpark 动工；Sitoy 开厂；PROPER 连庄','营收 5,149.4B，现金 3,586B'],
-  ['2026（H1）','再融资出清美元债（15 年 IDR 3.4T）；PIER Mini LNG 启用；Moody\u2019s 首评 B3；恢复派息 2.03 盾/股','净亏 6.4B（一次性）；基建占比 57%']
+  ['2025','营销销售 3,601B 再创纪录；Bizpark 动工；Sitoy 开厂；PROPER 连庄','营收 5,149.4B，现金 3,618.8B'],
+  ['2026（H1）','再融资出清美元债（15 年 IDR 4.6T）；PIER Mini LNG 启用；Moody\u2019s 首评 B3；恢复派息 2.03 盾/股','净亏 6.4B（一次性）；基建占比 57%']
 ]
 };
 
@@ -1046,7 +1062,7 @@ var DEBT = {
   maturityINA: [2.4, 55.5, 13.9, 29.8, 36.1],
   maturityOCBC: [2.1, 5.1, 5.1, 5.1, 5.1],
   maturityTot: [84.2, 251.9, 211.1, 227.9, 238.4],
-  cashDebt: {years:['FY2023','FY2024','FY2025','1H26'], cash:[1362, 2016, 3586, 3200], debt:[3317, 3812, 4606.5, 4863]},
+  cashDebt: {years:['FY2023','FY2024','FY2025','1H26'], cash:[1094.7, 2048.5, 3618.8, 3200], debt:[4477.7, 4498.2, 4606.5, 4863]},
   table: [
     {n:'Guaranteed Senior Notes 2027', d25:3119.0, d26:0, r:'7.0\u20139.0% fixed', m:'Dec 2027 \u00b7 prepaid 2Q26', c:'6 SHGB BWJ Pandeglang (301.7 ha) + Cikarang land; repaid with IDR Mandiri loan', st:'repaid'},
     {n:'Bank Mandiri (IDR term loans)', d25:1335.5, d26:4634.0, r:'7.0\u20137.5%', m:'15-yr \u00b7 to ~2041', c:'Cikarang & Pandeglang land for development + land inventories', st:'current'},
@@ -1101,10 +1117,10 @@ var LAND = {
 var VAL = {
   kpi: [
     {l:'Price (17 Sep 2026)', v:181.0, u:'IDR', d:'+5.0 (+2.8%) on day', c:'up'},
-    {l:'52-week range', v:111.0, u:'\u2014 364 IDR', d:'52-wk change -12%', c:'dn'},
+    {l:'52-week range', v:105.0, u:'\u2014 364 IDR', d:'intraday (S&P); monthly low 111 (Digrin)', c:'dn'},
     {l:'Market cap', v:3.7, u:'IDR tn', d:'3.66T at 176 (S&P)', c:'flat'},
-    {l:'P/B', v:0.5, u:'x', d:'0.47x (S&P); 0.6x parent equity', c:'flat'},
-    {l:'P/E (FY25 EPS 7.4)', v:24.4, u:'x', d:'TTM n/a (1H26 loss)', c:'flat'},
+    {l:'P/B', v:0.5, u:'x', d:'0.46x total equity (audited); 0.60x parent', c:'flat'},
+    {l:'P/E (FY25 EPS 20.55)', v:8.8, u:'x', d:'audited EPS; TTM n/a (1H26 loss)', c:'flat'},
     {l:'Dividend yield', v:1.1, u:'%', d:'DPS 2.03 (FY25)', c:'flat'}
   ],
   months: ['Sep-25','Oct-25','Nov-25','Dec-25','Jan-26','Feb-26','Mar-26','Apr-26','May-26','Jun-26','Jul-26','Aug-26','Sep-26'],
@@ -1119,7 +1135,9 @@ var VAL = {
   ],
   stats: [
     ['Price / date', '181.0 IDR \u00b7 17 Sep 2026 (stockanalysis)'],
-    ['Shares outstanding', '20.82 bn (20.80 bn per S&P)'],
+    ['Shares outstanding', '20.59 bn weighted avg (audited) \u00b7 20.80 bn (S&P)'],
+    ['FY25 EPS (audited)', '20.55 IDR \u00b7 diluted = basic'],
+    ['FY25 BVPS', '304.1 IDR parent \u00b7 395.6 total equity'],
     ['Free float', '67.3% (public)'],
     ['Beta (5Y) / RSI', '0.25 / 47.4'],
     ['50-DMA / 200-DMA', '157.0 / 180.9'],
@@ -1130,8 +1148,8 @@ var VAL = {
   ],
   peers: {
     rows: [
-      ['P/B (x)', '0.5 (0.47)', '1.35'],
-      ['P/E (normalized)', '~24 (FY25 EPS 7.4)', '6.06'],
+      ['P/B (x)', '0.46\u20130.60', '1.35'],
+      ['P/E (FY25 EPS 20.55)', '8.8', '6.06'],
       ['P/S (x)', '0.75', '3.78'],
       ['Dividend yield', '~1.1%', '8.42%'],
       ['1H26 net profit', '-6.4 (one-off 460)', '+175% \u2192 1.19T'],
@@ -1194,26 +1212,26 @@ zh: [
 KP.val = {
 en: [
   {l:'Price (17 Sep 2026)', v:181.0, u:'IDR', d:'+5.0 (+2.8%) on day', c:'up'},
-  {l:'52-week range', v:111.0, u:'\u2014 364 IDR', d:'52-wk change -12%', c:'dn'},
+  {l:'52-week range', v:105.0, u:'\u2014 364 IDR', d:'intraday (S&P); monthly low 111 (Digrin)', c:'dn'},
   {l:'Market cap', v:3.7, u:'IDR tn', d:'3.66T at 176 (S&P)', c:'flat'},
-  {l:'P/B', v:0.5, u:'x', d:'0.47x (S&P); 0.6x parent equity', c:'flat'},
-  {l:'P/E (FY25 EPS 7.4)', v:24.4, u:'x', d:'TTM n/a (1H26 loss)', c:'flat'},
+  {l:'P/B', v:0.5, u:'x', d:'0.46x total equity (audited); 0.60x parent', c:'flat'},
+  {l:'P/E (FY25 EPS 20.55)', v:8.8, u:'x', d:'audited EPS; TTM n/a (1H26 loss)', c:'flat'},
   {l:'Dividend yield', v:1.1, u:'%', d:'DPS 2.03 (FY25)', c:'flat'}
 ],
 id: [
   {l:'Harga (17 Sep 2026)', v:181.0, u:'IDR', d:'+5.0 (+2.8%) harian', c:'up'},
-  {l:'Kisaran 52 minggu', v:111.0, u:'\u2014 364 IDR', d:'perubahan 52 minggu -12%', c:'dn'},
+  {l:'Kisaran 52 minggu', v:105.0, u:'\u2014 364 IDR', d:'intraday (S&P); terendah bulanan 111 (Digrin)', c:'dn'},
   {l:'Kapitalisasi pasar', v:3.7, u:'Rp tn', d:'3.66T di 176 (S&P)', c:'flat'},
-  {l:'P/B', v:0.5, u:'x', d:'0.47x (S&P); 0.6x ekuitas induk', c:'flat'},
-  {l:'P/E (EPS FY25 7.4)', v:24.4, u:'x', d:'TTM n/a (rugi 1H26)', c:'flat'},
+  {l:'P/B', v:0.5, u:'x', d:'0.46x ekuitas total (audit); 0.60x induk', c:'flat'},
+  {l:'P/E (EPS FY25 20.55)', v:8.8, u:'x', d:'EPS audit; TTM n/a (rugi 1H26)', c:'flat'},
   {l:'Imbal hasil dividen', v:1.1, u:'%', d:'DPS 2.03 (FY25)', c:'flat'}
 ],
 zh: [
   {l:'股价（2026-09-17）', v:181.0, u:'盾', d:'单日 +5.0（+2.8%）', c:'up'},
-  {l:'52 周区间', v:111.0, u:'— 364 盾', d:'52 周涨跌 -12%', c:'dn'},
+  {l:'52 周区间', v:105.0, u:'— 364 盾', d:'盘中（S&P）；月收盘低点 111（Digrin）', c:'dn'},
   {l:'市值', v:3.7, u:'万亿盾', d:'176 时 3.66T（S&P）', c:'flat'},
-  {l:'市净率', v:0.5, u:'x', d:'0.47x（S&P）；0.6x 母公司权益', c:'flat'},
-  {l:'市盈率（FY25 EPS 7.4）', v:24.4, u:'x', d:'TTM 不可比（1H26 亏损）', c:'flat'},
+  {l:'市净率', v:0.5, u:'x', d:'0.46x 总权益（审计）；0.60x 母公司', c:'flat'},
+  {l:'市盈率（FY25 EPS 20.55）', v:8.8, u:'x', d:'审计 EPS；TTM 不可比（1H26 亏损）', c:'flat'},
   {l:'股息率', v:1.1, u:'%', d:'每股 2.03 盾（FY25）', c:'flat'}
 ]};
 
@@ -1352,7 +1370,9 @@ en: {
   statsH: ['Metric','Value'],
   stats: [
     ['Price / date', '181.0 IDR \u00b7 17 Sep 2026 (stockanalysis)'],
-    ['Shares outstanding', '20.82 bn (20.80 bn per S&P)'],
+    ['Shares outstanding', '20.59 bn weighted avg (audited) \u00b7 20.80 bn (S&P)'],
+    ['FY25 EPS (audited)', '20.55 IDR \u00b7 diluted = basic'],
+    ['FY25 BVPS', '304.1 IDR parent \u00b7 395.6 total equity'],
     ['Free float', '67.3% (public)'],
     ['Beta (5Y) / RSI', '0.25 / 47.4'],
     ['50-DMA / 200-DMA', '157.0 / 180.9'],
@@ -1363,8 +1383,8 @@ en: {
   ],
   peersH: ['Metric','KIJA','DMAS (Kota Deltamas)'],
   peers: [
-    ['P/B (x)', '0.5 (0.47)', '1.35'],
-    ['P/E (normalized)', '~24 (FY25 EPS 7.4)', '6.06'],
+    ['P/B (x)', '0.46\u20130.60', '1.35'],
+    ['P/E (FY25 EPS 20.55)', '8.8', '6.06'],
     ['P/S (x)', '0.75', '3.78'],
     ['Dividend yield', '~1.1%', '8.42%'],
     ['1H26 net profit', '-6.4 (one-off 460)', '+175% \u2192 1.19T'],
@@ -1390,7 +1410,9 @@ id: {
   statsH: ['Metrik','Nilai'],
   stats: [
     ['Harga / tanggal', '181,0 IDR \u00b7 17 Sep 2026 (stockanalysis)'],
-    ['Saham beredar', '20,82 miliar (20,80 miliar per S&P)'],
+    ['Saham beredar', '20,59 miliar rata-rata tertimbang (audit) \u00b7 20,80 miliar (S&P)'],
+    ['EPS FY25 (audit)', '20,55 IDR \u00b7 diluted = basic'],
+    ['BVPS FY25', '304,1 IDR induk \u00b7 395,6 ekuitas total'],
     ['Free float', '67,3% (publik)'],
     ['Beta (5Y) / RSI', '0,25 / 47,4'],
     ['50-DMA / 200-DMA', '157,0 / 180,9'],
@@ -1401,8 +1423,8 @@ id: {
   ],
   peersH: ['Metrik','KIJA','DMAS (Kota Deltamas)'],
   peers: [
-    ['P/B (x)', '0,5 (0,47)', '1,35'],
-    ['P/E (normalisasi)', '~24 (EPS FY25 7,4)', '6,06'],
+    ['P/B (x)', '0,46\u20130,60', '1,35'],
+    ['P/E (EPS FY25 20,55)', '8,8', '6,06'],
     ['P/S (x)', '0,75', '3,78'],
     ['Imbal hasil dividen', '~1,1%', '8,42%'],
     ['Laba bersih 1H26', '-6,4 (satu kali 460)', '+175% \u2192 1,19T'],
@@ -1428,7 +1450,9 @@ zh: {
   statsH: ['指标','数值'],
   stats: [
     ['股价 / 日期', '181.0 盾 · 2026-09-17（stockanalysis）'],
-    ['总股本', '20.82B（S&P 口径 20.80B）'],
+    ['总股本', '20.59B 加权平均（审计）· 20.80B（S&P）'],
+    ['FY25 EPS（审计）', '20.55 盾 · 稀释=基本'],
+    ['FY25 每股净资产', '304.1 盾（母公司）· 395.6 盾（总权益）'],
     ['流通比例', '67.3%（公众）'],
     ['Beta（5Y）/ RSI', '0.25 / 47.4'],
     ['50 日均线 / 200 日均线', '157.0 / 180.9'],
@@ -1439,8 +1463,8 @@ zh: {
   ],
   peersH: ['指标','KIJA','DMAS（Kota Deltamas）'],
   peers: [
-    ['市净率（x）', '0.5（0.47）', '1.35'],
-    ['市盈率（正常化）', '约 24（FY25 EPS 7.4）', '6.06'],
+    ['市净率（x）', '0.46–0.60', '1.35'],
+    ['市盈率（FY25 EPS 20.55）', '8.8', '6.06'],
     ['市销率（x）', '0.75', '3.78'],
     ['股息率', '约 1.1%', '8.42%'],
     ['1H26 净利润', '-6.4（一次性 460）', '+175% → 1.19T'],
@@ -1468,6 +1492,147 @@ var NXT = {
 en:{book:'Book value', mlo:'Market low', mhi:'Market high', cash:'Cash & equivalents', totD:'Total debt', sched:'Scheduled principal 2H26\u201330', kija:'KIJA', dmas:'DMAS (peer)', mandiri:'Bank Mandiri', ina:'Bank INA Perdana', ocbc:'Bank OCBC NISP'},
 id:{book:'Nilai buku', mlo:'Pasar rendah', mhi:'Pasar tinggi', cash:'Kas & setara kas', totD:'Total utang', sched:'Pokok terjadwal 2H26\u201330', kija:'KIJA', dmas:'DMAS (peer)', mandiri:'Bank Mandiri', ina:'Bank INA Perdana', ocbc:'Bank OCBC NISP'},
 zh:{book:'账面价值', mlo:'市场低位', mhi:'市场高位', cash:'现金及等价物', totD:'总债务', sched:'2026H2–2030 计划本金', kija:'KIJA', dmas:'DMAS（同业）', mandiri:'Bank Mandiri', ina:'Bank INA Perdana', ocbc:'Bank OCBC NISP'}
+};
+
+/* ================================================================
+   第 6 轮新增数据层：估值测算（说明性估算，非投资建议）
+   ================================================================ */
+var VALI = {
+en: {
+  h: 'Valuation Illustration',
+  sub: 'DCF \u00b7 P/E \u00b7 P/B \u00b7 SOTP vs. market price \u2014 illustrative only, not investment advice',
+  disc: 'Based on audited FY2025 results and the 17 Sep 2026 close of 181.0 IDR. Weighted shares 20.59 bn; parent BVPS 304.1; EPS 20.55; EBITDA 1,735.5 bn; net debt (1H26) 1,663 bn (debt 4,863 \u2212 cash 3,200). DCF net-debt basis is the more conservative 1H26 figure.',
+  inputsH: 'Inputs (audited FY2025 unless noted)',
+  inputs: [
+    ['Price (17 Sep 2026)', '181.0 IDR'],
+    ['Shares (weighted avg)', '20.59 bn'],
+    ['FY25 EPS', '20.55 IDR'],
+    ['FY25 BVPS (parent equity 6,263.6)', '304.1 IDR'],
+    ['FY25 EBITDA', '1,735.5 bn'],
+    ['Net debt (1H26)', '1,663 bn'],
+    ['Market cap @ 181', '~3,727 bn']
+  ],
+  methodH: 'Methods & assumptions (low / base / high)',
+  methods: [
+    ['P/E (6x / 8x / 10x)', 'FY25 EPS 20.55 \u00d7 sector-consistent multiples; base 8x', '123.3', '164.4', '205.5'],
+    ['P/B (0.5x / 0.6x / 0.8x)', 'Audited parent BVPS 304.1; 0.6x matches current level', '152.1', '182.5', '243.3'],
+    ['DCF (two-stage)', 'EBITDA 1,735.5; 6% growth; WACC 10%; 55% parent share; net debt 1,663', '277.2', '452.4', '799.5'],
+    ['SOTP', 'Sum-of-the-parts (Sucor Sekuritas, Aug 2026)', '250.0', '250.0', '250.0']
+  ],
+  weightNote: 'Weighted fair value = 35% P/E + 25% P/B + 30% DCF + 10% SOTP.',
+  compH: 'Comparison with market price (181.0)',
+  comp: [
+    ['P/E (base 8x)', '164.4', '-9.2%', '-10.1%', 'Market slightly above multiple'],
+    ['P/B (base 0.6x)', '182.5', '+0.8%', '+0.8%', 'Trades near book value'],
+    ['DCF (base)', '452.4', '+150.0%', '+60.0%', 'Land bank upside largely unpriced'],
+    ['SOTP (Sucor)', '250.0', '+38.1%', '+27.6%', 'Broker buy target'],
+    ['Weighted (base)', '263.9', '+45.8%', '+31.4%', 'Illustrative fair value']
+  ],
+  impliedH: 'Implied multiples at 181.0',
+  implied: [
+    ['Implied P/E (FY25 EPS 20.55)', '8.8x'],
+    ['Implied P/B (parent BVPS 304.1)', '0.60x'],
+    ['Implied P/B (total equity BVPS 395.6)', '0.46x'],
+    ['EV/EBITDA (FY25): (3,727 + 988) / 1,735.5', '~2.7x']
+  ],
+  keyH: 'Key sensitivities & caveats',
+  key: [
+    'Land sale timing drives revenue recognition and EPS volatility (1H26 -11%).',
+    'Infrastructure mix compresses gross margin; power profitability depends on gas price and PLN dispatch.',
+    'After refinancing, interest cost rose to ~7.2%; DCF uses a 10% WACC and 55% parent share of FCF.',
+    'Fair-value range is an illustration, not a recommendation; credit rating remains speculative grade (B- / B3).'
+  ]
+},
+id: {
+  h: 'Ilustrasi Valuasi',
+  sub: 'DCF \u00b7 P/E \u00b7 P/B \u00b7 SOTP dibanding harga pasar \u2014 hanya ilustrasi, bukan saran investasi',
+  disc: 'Berdasarkan hasil audit FY2025 dan harga penutupan 17 Sep 2026 sebesar 181,0 IDR. Saham tertimbang 20,59 miliar; BVPS induk 304,1; EPS 20,55; EBITDA 1.735,5 miliar; utang bersih (1H26) 1.663 miliar (utang 4.863 \u2212 kas 3.200). Basis utang bersih DCF memakai angka 1H26 yang lebih konservatif.',
+  inputsH: 'Masukan (audit FY2025 kecuali disebut)',
+  inputs: [
+    ['Harga (17 Sep 2026)', '181,0 IDR'],
+    ['Saham (rata-rata tertimbang)', '20,59 miliar'],
+    ['EPS FY25', '20,55 IDR'],
+    ['BVPS FY25 (ekuitas induk 6.263,6)', '304,1 IDR'],
+    ['EBITDA FY25', '1.735,5 miliar'],
+    ['Utang bersih (1H26)', '1.663 miliar'],
+    ['Kapitalisasi pasar @ 181', 'sekitar 3.727 miliar']
+  ],
+  methodH: 'Metode & asumsi (rendah / dasar / tinggi)',
+  methods: [
+    ['P/E (6x / 8x / 10x)', 'EPS FY25 20,55 \u00d7 kelipatan sektor; dasar 8x', '123,3', '164,4', '205,5'],
+    ['P/B (0,5x / 0,6x / 0,8x)', 'BVPS induk audit 304,1; 0,6x sesuai level saat ini', '152,1', '182,5', '243,3'],
+    ['DCF (dua tahap)', 'EBITDA 1.735,5; pertumbuhan 6%; WACC 10%; porsi induk 55%; utang bersih 1.663', '277,2', '452,4', '799,5'],
+    ['SOTP', 'Penjumlahan nilai bagian (Sucor Sekuritas, Agu 2026)', '250,0', '250,0', '250,0']
+  ],
+  weightNote: 'Nilai wajar tertimbang = 35% P/E + 25% P/B + 30% DCF + 10% SOTP.',
+  compH: 'Perbandingan dengan harga pasar (181,0)',
+  comp: [
+    ['P/E (dasar 8x)', '164,4', '-9,2%', '-10,1%', 'Pasar sedikit di atas kelipatan'],
+    ['P/B (dasar 0,6x)', '182,5', '+0,8%', '+0,8%', 'Diperdagangkan dekat nilai buku'],
+    ['DCF (dasar)', '452,4', '+150,0%', '+60,0%', 'Potensi lahan sebagian besar belum dihargai'],
+    ['SOTP (Sucor)', '250,0', '+38,1%', '+27,6%', 'Target beli broker'],
+    ['Tertimbang (dasar)', '263,9', '+45,8%', '+31,4%', 'Nilai wajar ilustratif']
+  ],
+  impliedH: 'Kelipatan tersirat pada 181,0',
+  implied: [
+    ['P/E tersirat (EPS FY25 20,55)', '8,8x'],
+    ['P/B tersirat (BVPS induk 304,1)', '0,60x'],
+    ['P/B tersirat (BVPS ekuitas total 395,6)', '0,46x'],
+    ['EV/EBITDA (FY25): (3.727 + 988) / 1.735,5', 'sekitar 2,7x']
+  ],
+  keyH: 'Sensitivitas & catatan utama',
+  key: [
+    'Timing penjualan lahan menggerakkan pengakuan pendapatan dan volatilitas EPS (1H26 -11%).',
+    'Komposisi infrastruktur menekan margin kotor; profitabilitas listrik bergantung pada harga gas dan dispatch PLN.',
+    'Setelah refinancing, beban bunga naik ke sekitar 7,2%; DCF memakai WACC 10% dan porsi induk 55% dari FCF.',
+    'Rentang nilai wajar adalah ilustrasi, bukan rekomendasi; peringkat kredit tetap grade spekulatif (B- / B3).'
+  ]
+},
+zh: {
+  h: '估值测算',
+  sub: 'DCF · P/E · P/B · SOTP 与现价对比 —— 仅作说明性估算，不构成投资建议',
+  disc: '基于 FY2025 审计业绩与 2026-09-17 收盘价 181.0 盾。加权股本 20.59B；母公司每股净资产 304.1；EPS 20.55；EBITDA 1,735.5B；净负债（1H26）1,663B（债务 4,863 − 现金 3,200）。DCF 采用更保守的 1H26 净负债口径。',
+  inputsH: '输入（FY2025 审计口径，另有注明除外）',
+  inputs: [
+    ['现价（2026-09-17）', '181.0 盾'],
+    ['加权股本', '20.59B'],
+    ['FY25 EPS', '20.55 盾'],
+    ['FY25 每股净资产（母公司权益 6,263.6）', '304.1 盾'],
+    ['FY25 EBITDA', '1,735.5B'],
+    ['净负债（1H26）', '1,663B'],
+    ['市值 @181', '约 3,727B']
+  ],
+  methodH: '方法与假设（低 / 基准 / 高）',
+  methods: [
+    ['P/E（6x / 8x / 10x）', 'FY25 EPS 20.55 × 行业一致倍数；基准 8x', '123.3', '164.4', '205.5'],
+    ['P/B（0.5x / 0.6x / 0.8x）', '审计母公司每股净资产 304.1；0.6x 与现水平一致', '152.1', '182.5', '243.3'],
+    ['DCF（两阶段）', 'EBITDA 1,735.5；增速 6%；WACC 10%；归母 55%；净负债 1,663', '277.2', '452.4', '799.5'],
+    ['SOTP', '分部加总（Sucor Sekuritas，2026-08）', '250.0', '250.0', '250.0']
+  ],
+  weightNote: '加权公允价值 = 35% P/E + 25% P/B + 30% DCF + 10% SOTP。',
+  compH: '与现价（181.0）对比',
+  comp: [
+    ['P/E（基准 8x）', '164.4', '-9.2%', '-10.1%', '现价略高于倍数'],
+    ['P/B（基准 0.6x）', '182.5', '+0.8%', '+0.8%', '接近每股净资产交易'],
+    ['DCF（基准）', '452.4', '+150.0%', '+60.0%', '土地储备价值基本未被定价'],
+    ['SOTP（Sucor）', '250.0', '+38.1%', '+27.6%', '券商买入目标'],
+    ['加权（基准）', '263.9', '+45.8%', '+31.4%', '说明性公允价值']
+  ],
+  impliedH: '181.0 处隐含倍数',
+  implied: [
+    ['隐含市盈率（FY25 EPS 20.55）', '8.8x'],
+    ['隐含市净率（母公司 304.1）', '0.60x'],
+    ['隐含市净率（总权益 395.6）', '0.46x'],
+    ['EV/EBITDA（FY25）：（3,727 + 988）/ 1,735.5', '约 2.7x']
+  ],
+  keyH: '关键敏感性与提示',
+  key: [
+    '土地销售时点主导收入确认与 EPS 波动（1H26 -11%）。',
+    '基建占比上升压缩毛利率；电力盈利取决于气价与 PLN 调度。',
+    '再融资后利息成本升至约 7.2%；DCF 采用 10% WACC、归母自由现金流占比 55%。',
+    '公允价值区间仅为示意、非推荐；信用评级仍为投机级（B- / B3）。'
+  ]
+}
 };
 
 </script>
@@ -1500,7 +1665,7 @@ var AN = {
   niParent:[null,null,null,null,null,null,-5,-64,306,363.3,423.2],
   assets:[7980,10709,10967,10840,10704,10849,11313,12687,12947,14017.4,15056.2],
   liab:[3924,5198,5263,5083,5026,5051,5363,6200,6016,6478.4,6911.9],
-  equity:[4056,5511,5704,5757,5678,5798,5950,6487,6931,7539,8144.4],
+  equity:[4056,5511,5704,5757,5678,5798,5950,6487,6931,7538.9,8144.4],
   gpm:[44,42,38,43,37,43,44,52,46,43,39],
   npm:[11,15,5,2,6,2,4,1,16,17,17],
   roe:[8,8,3,1,2,1,1,1,8,10,11],
@@ -1595,7 +1760,7 @@ function buildOpt(id){
       series:[
         {name:CT('ta'), type:'bar', data:[11313,12687,12947,14017.4,15056.2], itemStyle:{color:C.green}, barMaxWidth:22},
         {name:CT('tl'), type:'bar', data:[5363,6200,6016,6478.4,6911.9], itemStyle:{color:C.amber}, barMaxWidth:22},
-        {name:CT('te'), type:'bar', data:[5950,6487,6931,7539,8144.4], itemStyle:{color:C.teal}, barMaxWidth:22}]};
+        {name:CT('te'), type:'bar', data:[5950,6487,6931,7538.9,8144.4], itemStyle:{color:C.teal}, barMaxWidth:22}]};
   }
   if (id === 'f25-1') {
     return {tooltip:baseTooltip(), grid:{left:150, right:56, top:10, bottom:26},
@@ -1611,8 +1776,8 @@ function buildOpt(id){
   if (id === 'f25-2') {
     return {tooltip:baseTooltip(), legend:legendT(), grid:baseGrid(), xAxis:baseX(['2023','2024','2025']), yAxis:baseY(U),
       series:[
-        {name:CT('cash'), type:'bar', stack:'a', data:[1362,2016,3586], itemStyle:{color:C.green}, barMaxWidth:46},
-        {name:CT('other'), type:'bar', stack:'a', data:[11585,12001,11470], itemStyle:{color:C.soft}, barMaxWidth:46}]};
+        {name:CT('cash'), type:'bar', stack:'a', data:[1094.7,2048.5,3618.8], itemStyle:{color:C.green}, barMaxWidth:46},
+        {name:CT('other'), type:'bar', stack:'a', data:[11852.3,11968.9,11437.4], itemStyle:{color:C.soft}, barMaxWidth:46}]};
   }
   if (id === 'f25-3') {
     return {tooltip:baseTooltip(), legend:legendT(), grid:baseGrid(), xAxis:baseX(['2023','2024','2025']), yAxis:baseY('x'),
@@ -1623,9 +1788,9 @@ function buildOpt(id){
   if (id === 'f25-4') {
     return {tooltip:baseTooltip(), grid:baseGrid(), xAxis:baseX([CT('openC'), CT('consS'), CT('closeC')]), yAxis:baseY(U),
       series:[{type:'bar', data:[
-        {value:2016, itemStyle:{color:C.green2}},
+        {value:2048.5, itemStyle:{color:C.green2}},
         {value:1570, itemStyle:{color:C.amber}},
-        {value:3586, itemStyle:{color:C.green}}
+        {value:3618.8, itemStyle:{color:C.green}}
       ], label:{show:true, position:'top', fontSize:11, color:'#16241C', formatter:lblFmt()}, barMaxWidth:56}]};
   }
   if (id === 'f26-1') {
@@ -1722,8 +1887,23 @@ function buildOpt(id){
   if (id === 'v-2') {
     return {tooltip:baseTooltip(), legend:legendT(), grid:baseGrid(), xAxis:baseX(['P/B (x)','P/S (x)']), yAxis:baseY('x'),
       series:[
-        {name:N('kija'), type:'bar', data:[0.47, 0.75], itemStyle:{color:C.green}, barMaxWidth:30, label:{show:true, position:'top', fontSize:11, color:'#1F5E40', formatter:lblFmt()}},
+        {name:N('kija'), type:'bar', data:[0.46, 0.75], itemStyle:{color:C.green}, barMaxWidth:30, label:{show:true, position:'top', fontSize:11, color:'#1F5E40', formatter:lblFmt()}},
         {name:N('dmas'), type:'bar', data:[1.35, 3.78], itemStyle:{color:C.teal}, barMaxWidth:30, label:{show:true, position:'top', fontSize:11, color:'#3E7D6B', formatter:lblFmt()}}]};
+  }
+  /* ---- 估值测算页 ---- */
+  if (id === 'vi-1') {
+    var vm = VALI[LANG].methods, cat = ['P/E','P/B','DCF','SOTP'];
+    var lo = [], ba = [], hi = [];
+    for (var vj = 0; vj < vm.length; vj++) { lo.push(Number(vm[vj][2])); ba.push(Number(vm[vj][3])); hi.push(Number(vm[vj][4])); }
+    return {tooltip:baseTooltip(), legend:legendT(), grid:{left:64, right:70, top:34, bottom:26},
+      xAxis:{type:'value', axisLabel:{color:AX.color, fontSize:11}, splitLine:SPLIT},
+      yAxis:{type:'category', data:cat, axisLabel:{color:'#16241C', fontSize:11}},
+      series:[
+        {name:VLL[LANG][0], type:'bar', data:lo, itemStyle:{color:C.soft}, barMaxWidth:13},
+        {name:VLL[LANG][1], type:'bar', data:ba, itemStyle:{color:C.green}, barMaxWidth:13},
+        {name:VLL[LANG][2], type:'bar', data:hi, itemStyle:{color:C.teal}, barMaxWidth:13,
+          label:{show:true, position:'right', fontSize:10, color:'#5C6B61', formatter:lblFmt()}},
+        {name:VLL[LANG][6], type:'line', data:[181,181,181,181], symbol:'none', lineStyle:{width:2, color:C.clay, type:'dashed'}, tooltip:{show:false}, label:{show:false}}]};
   }
   return {};
 }
@@ -1749,6 +1929,9 @@ function eventsHtml(list){
 }
 var LV = ['lv-low','lv-mid','lv-high'];
 var LVTXT = {en:['Low','Medium','High'], id:['Rendah','Sedang','Tinggi'], zh:['低','中','高']};
+var VLL = {en:['Low','Base','High',['Method','Assumptions','Low','Base','High'],['Approach','Base value','vs price 181','Safety margin','Reading'],['Metric','Value'],'Price 181'],
+  id:['Rendah','Dasar','Tinggi',['Metode','Asumsi','Rendah','Dasar','Tinggi'],['Pendekatan','Nilai dasar','vs harga 181','Margin keamanan','Makna'],['Metrik','Nilai'],'Harga 181'],
+  zh:['低位','基准','高位',['方法','假设','低','基准','高'],['方法','基准值','较 181','安全边际','含义'],['指标','数值'],'现价 181']};
 function riskHtml(rows){
   var h = '';
   for (var i = 0; i < rows.length; i++) {
@@ -1936,6 +2119,20 @@ function valAnalystsHtml(){
   h += '</tbody></table>';
   return h;
 }
+function kvTable(title, rows, widths, headers){
+  var h = '<h3 class="block-h">' + esc(title) + '</h3><div class="g-table-wrap"><table class="g-table"><colgroup>';
+  for (var i = 0; i < widths.length; i++) { h += '<col style="width:' + widths[i] + '">'; }
+  h += '</colgroup><thead><tr>';
+  for (var j = 0; j < headers.length; j++) { h += th(esc(headers[j])); }
+  h += '</tr></thead><tbody>';
+  for (var r = 0; r < rows.length; r++) {
+    h += '<tr>';
+    for (var c = 0; c < rows[r].length; c++) { h += td(esc(rows[r][c]), c === 0 ? 'b' : ''); }
+    h += '</tr>';
+  }
+  h += '</tbody></table></div>';
+  return h;
+}
 function renderStatics(){
   var els = document.querySelectorAll('[data-i18n]');
   for (var i = 0; i < els.length; i++) { els[i].innerHTML = T(els[i].getAttribute('data-i18n')); }
@@ -1975,6 +2172,19 @@ function renderStatics(){
   document.getElementById('val-peers').innerHTML = valPeersHtml();
   document.getElementById('val-analysts').innerHTML = valAnalystsHtml();
   document.getElementById('val-events').innerHTML = eventsHtml(VTXT[LANG].events);
+  var VI = VALI[LANG];
+  document.getElementById('vali-sub').innerHTML = esc(VI.sub);
+  document.getElementById('vali-disc').innerHTML = esc(VI.disc);
+  document.getElementById('vali-chart-h').innerHTML = esc(VI.methodH);
+  document.getElementById('vali-chart-s').innerHTML = esc(VI.weightNote);
+  document.getElementById('vali-inputs').innerHTML = kvTable(VI.inputsH, VI.inputs, ['42%','58%'], VLL[LANG][5]);
+  document.getElementById('vali-methods').innerHTML = kvTable(VI.methodH, VI.methods, ['21%','30%','15%','16%','18%'], VLL[LANG][3]);
+  document.getElementById('vali-comp').innerHTML = kvTable(VI.compH, VI.comp, ['17%','15%','14%','15%','39%'], VLL[LANG][4]);
+  document.getElementById('vali-implied').innerHTML = kvTable(VI.impliedH, VI.implied, ['56%','44%'], VLL[LANG][5]);
+  var vk = '<ul class="events">';
+  for (var vki = 0; vki < VI.key.length; vki++) { vk += '<li>' + esc(VI.key[vki]) + '</li>'; }
+  vk += '</ul>';
+  document.getElementById('vali-key').innerHTML = '<h3 class="block-h">' + esc(VI.keyH) + '</h3>' + vk;
   var btns = document.querySelectorAll('.langs button');
   for (var x = 0; x < btns.length; x++) { btns[x].classList.toggle('active', btns[x].getAttribute('data-lang') === LANG); }
   for (var k in CH) { if (CH.hasOwnProperty(k)) { CH[k].setOption(buildOpt(k), true); } }
@@ -1982,7 +2192,7 @@ function renderStatics(){
 
 /* ================= 路由与图表生命周期 ================= */
 var CH = {};
-var PAGE_CHARTS = {overview:['o1','o2','o3','o4','o5','o6'], fy2024:['f24-1','f24-2','f24-3','f24-4'], fy2025:['f25-1','f25-2','f25-3','f25-4'], fy2026:['f26-1','f26-2','f26-3','f26-4'], debt:['d-1','d-2','d-3','d-4'], landbank:['lb-1','lb-2'], valuation:['v-1','v-2'], risk:[], holding:[], org:[]};
+var PAGE_CHARTS = {overview:['o1','o2','o3','o4','o5','o6'], fy2024:['f24-1','f24-2','f24-3','f24-4'], fy2025:['f25-1','f25-2','f25-3','f25-4'], fy2026:['f26-1','f26-2','f26-3','f26-4'], debt:['d-1','d-2','d-3','d-4'], landbank:['lb-1','lb-2'], valuation:['v-1','v-2'], vali:['vi-1'], risk:[], holding:[], org:[]};
 function renderPage(id){
   if (!window.echarts) { return; }
   var ids = PAGE_CHARTS[id] || [];
