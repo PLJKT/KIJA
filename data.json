@@ -940,6 +940,140 @@
      "c": "flat"
     }
    ]
+  },
+  "prof": {
+   "en": [
+    {
+     "l": "Gross margin (FY25)",
+     "v": 39,
+     "u": "%",
+     "d": "down from 43% peak (2022); land-mix pressure",
+     "c": "dn"
+    },
+    {
+     "l": "EBITDA margin (FY25)",
+     "v": 33.7,
+     "u": "%",
+     "d": "EBITDA 1,735.5bn / revenue 5,149bn",
+     "c": "flat"
+    },
+    {
+     "l": "Net margin (FY25)",
+     "v": 16.6,
+     "u": "%",
+     "d": "consolidated net profit / revenue",
+     "c": "up"
+    },
+    {
+     "l": "ROE (FY25)",
+     "v": 11,
+     "u": "%",
+     "d": "avg ~1% in 2018-22 trough; recovering",
+     "c": "up"
+    },
+    {
+     "l": "ROA (FY25)",
+     "v": 5.7,
+     "u": "%",
+     "d": "net profit / total assets",
+     "c": "up"
+    },
+    {
+     "l": "FCF margin (FY25)",
+     "v": 30.5,
+     "u": "%",
+     "d": "net cash generated 1,570bn / revenue",
+     "c": "up"
+    }
+   ],
+   "id": [
+    {
+     "l": "Margin kotor (FY25)",
+     "v": 39,
+     "u": "%",
+     "d": "turun dari puncak 43% (2022)",
+     "c": "dn"
+    },
+    {
+     "l": "Margin EBITDA (FY25)",
+     "v": 33.7,
+     "u": "%",
+     "d": "EBITDA 1.735,5miliar / pendapatan 5.149miliar",
+     "c": "flat"
+    },
+    {
+     "l": "Margin bersih (FY25)",
+     "v": 16.6,
+     "u": "%",
+     "d": "laba bersih konsolidasi / pendapatan",
+     "c": "up"
+    },
+    {
+     "l": "ROE (FY25)",
+     "v": 11,
+     "u": "%",
+     "d": "rata-rata ~1% saat trough 2018-22",
+     "c": "up"
+    },
+    {
+     "l": "ROA (FY25)",
+     "v": 5.7,
+     "u": "%",
+     "d": "laba bersih / total aset",
+     "c": "up"
+    },
+    {
+     "l": "Margin FCF (FY25)",
+     "v": 30.5,
+     "u": "%",
+     "d": "kas bersih 1.570miliar / pendapatan",
+     "c": "up"
+    }
+   ],
+   "zh": [
+    {
+     "l": "毛利率 (FY25)",
+     "v": 39,
+     "u": "%",
+     "d": "较 2022 峰值 43% 回落；土地结构压力",
+     "c": "dn"
+    },
+    {
+     "l": "EBITDA 率 (FY25)",
+     "v": 33.7,
+     "u": "%",
+     "d": "EBITDA 1,735.5 亿 / 营收 5,149 亿",
+     "c": "flat"
+    },
+    {
+     "l": "净利率 (FY25)",
+     "v": 16.6,
+     "u": "%",
+     "d": "合并净利润 / 营收",
+     "c": "up"
+    },
+    {
+     "l": "ROE (FY25)",
+     "v": 11,
+     "u": "%",
+     "d": "2018-22 低谷约 1%，持续回升",
+     "c": "up"
+    },
+    {
+     "l": "ROA (FY25)",
+     "v": 5.7,
+     "u": "%",
+     "d": "净利润 / 总资产",
+     "c": "up"
+    },
+    {
+     "l": "FCF 率 (FY25)",
+     "v": 30.5,
+     "u": "%",
+     "d": "净现金流入 1,570 亿 / 营收",
+     "c": "up"
+    }
+   ]
   }
  },
  "EV": {
@@ -5833,6 +5967,32 @@
    1461,
    1909,
    2567
+  ],
+  "ebitdaMargin": [
+   null,
+   null,
+   null,
+   null,
+   29.1,
+   32.9,
+   32.8,
+   39.6,
+   38.0,
+   35.1,
+   33.7
+  ],
+  "roa": [
+   4.1,
+   4.0,
+   1.4,
+   0.6,
+   1.3,
+   0.4,
+   0.8,
+   0.3,
+   4.1,
+   5.5,
+   5.7
   ]
  },
  "CHT": {
