@@ -567,7 +567,7 @@ zh: {
   c_lb2_t:'账面价值 vs 市场挂牌价（千盾/m²）', c_lb2_s:'对数刻度；账面=土地开发成本（2025 年报）；市场=第三方挂牌价（Rumah123 / 99.co / Brighton / CBRE / MM2100 挂牌）',
   lb_table_h:'土地储备明细与价格对比', lb_note_h:'口径说明与来源', lb_note:'账面价值为土地开发成本（成本与可变现净值孰低，2025 年报附注 7）——非逐项目评估值，公司未披露官方土地评估；市场价为第三方挂牌要价（2026 年 7–9 月：Rumah123、99.co、Brighton、CBRE 2026Q1 雅加达工业市场展望、MM2100 BFIE），挂牌价不等于成交价。隐含增值 = 市场价中/低位 ÷ 账面价，仅作示意。Morotai：未找到可靠公开市场价（账面仅约 3.9 千盾/m²）。',
   val_h:'估值分析与股价', val_d:'估值指标截至 2026-09-17/18（S&P Global MI via StockAnalysis、Digrin、Pluang、IDX）；股价为月收盘价（Digrin）。市场数据延迟。',
-  c_v1_t:'股价——过去 12 个月（盾）', c_v1_s:'2025-09 至 2026-09 月收盘；52 周区间 105–364（盘中，S&P）；现价 181（2026-09-17）；异动：2026-01（单周 +62%）与 2026-08-18（+35% 至 166）',
+  c_v1_t:'股价——过去 12 个月（盾）', c_v1_s:'2025-09 至 2026-09 月收盘；52 周区间 105–364（盘中，S&P）；现价 180（2026-09-18）；异动：2026-01（单周 +62%）与 2026-08-18（+35% 至 166）',
   c_v2_t:'市净率与市销率：KIJA vs DMAS', c_v2_s:'KIJA 0.46x / 0.75x，对比 Cikarang 同业 DMAS 1.35x / 3.78x（Morningstar，2026-09）',
   val_stats_t:'估值与交易快照', val_peers_t:'同业对比：DMAS（Kota Deltamas）', val_peers_note:'DMAS：Sinar Mas Land + Sojitz 旗下 Cikarang 工业园开发商；1H26 净利 +175% 至 1.19T（数据中心售地）；2026 年 YTD +56.6%。KIJA 1H26 净亏主要反映约 460 的一次性再融资成本。',
   val_analysts_t:'分析师观点与评级', val_events_t:'股价与交易大事记（12 个月）',
@@ -623,7 +623,7 @@ function fmtN(v){
   parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   return parts.join('.');
 }
-var C = {green:'#1F5E40', green2:'#4A8B66', teal:'#3E7D6B', amber:'#C07A2D', clay:'#B04A2E', soft:'#C7D0C8'};
+var C = {green:'#1F5E40', green2:'#4A8B66', teal:'#3E7D6B', amber:'#C07A2D', clay:'#B04A2E', soft:'#C7D0C8', blue:'#2E6FB0', purple:'#7A5BA6', red:'#C0392B', gold:'#D9A53A'};
 var AX = {color:'#5C6B61', fontSize:11};
 var SPLIT = {lineStyle:{color:'#E3E8E1'}};
 
@@ -658,14 +658,14 @@ function buildOpt(id){
     return {tooltip:baseTooltip(), legend:legendT(), grid:baseGrid(), xAxis:baseX(AN.years), yAxis:baseY('%'),
       series:[
         {name:CT('gM'), type:'line', data:AN.gpm, smooth:true, symbolSize:5, lineStyle:{width:2, color:C.green}, itemStyle:{color:C.green}},
-        {name:CT('nM'), type:'line', data:AN.npm, smooth:true, symbolSize:5, lineStyle:{width:2, color:C.teal}, itemStyle:{color:C.teal}},
-        {name:CT('roe'), type:'line', data:AN.roe, smooth:true, symbolSize:5, lineStyle:{width:2, color:C.green2}, itemStyle:{color:C.green2}},
-        {name:CT('de'), type:'line', data:AN.de, smooth:true, symbolSize:5, lineStyle:{width:2, color:C.amber}, itemStyle:{color:C.amber}}]};
+        {name:CT('nM'), type:'line', data:AN.npm, smooth:true, symbolSize:5, lineStyle:{width:2, color:C.blue}, itemStyle:{color:C.blue}},
+        {name:CT('roe'), type:'line', data:AN.roe, smooth:true, symbolSize:5, lineStyle:{width:2, color:C.amber}, itemStyle:{color:C.amber}},
+        {name:CT('de'), type:'line', data:AN.de, smooth:true, symbolSize:5, lineStyle:{width:2, color:C.red}, itemStyle:{color:C.red}}]};
   }
   if (id === 'o4') {
     return {tooltip:baseTooltip(), legend:legendT(), grid:baseGrid(), xAxis:baseX(AN.years.slice(-5)), yAxis:baseY(U),
       series:[
-        {name:CT('infSeg'), type:'bar', stack:'s', data:FY.segStack.infra, itemStyle:{color:C.teal}, barMaxWidth:40},
+        {name:CT('infSeg'), type:'bar', stack:'s', data:FY.segStack.infra, itemStyle:{color:C.blue}, barMaxWidth:40},
         {name:CT('reSeg'), type:'bar', stack:'s', data:FY.segStack.re, itemStyle:{color:C.green}, barMaxWidth:40}]};
   }
   if (id === 'o5') {
@@ -689,7 +689,7 @@ function buildOpt(id){
       legend:{bottom:2, textStyle:{color:AX.color, fontSize:11}, itemWidth:12},
       series:[{type:'pie', radius:['34%','66%'], center:['50%','45%'], data:ser, itemStyle:{borderColor:'#fff', borderWidth:1},
         label:{show:true, fontSize:11, color:'#16241C', formatter:function(p){ return p.name + '\n' + p.percent + '%'; }},
-        labelLine:{length:10, length2:8}, color:[C.green, C.teal, C.green2, C.amber]}]};
+        labelLine:{length:10, length2:8}, color:[C.green, C.blue, C.amber, C.purple]}]};
   }
   if (id === 'f24-2') {
     return {tooltip:baseTooltip(), legend:legendT(), grid:baseGrid(), xAxis:baseX(['2023','2024','2025']), yAxis:baseY(U),
@@ -701,17 +701,17 @@ function buildOpt(id){
     return {tooltip:baseTooltip(), legend:legendT(), grid:baseGrid(), xAxis:baseX(AN.years), yAxis:baseY('%'),
       series:[
         {name:CT('gM'), type:'line', data:AN.gpm, smooth:true, symbolSize:6, lineStyle:{width:2, color:C.green}, itemStyle:{color:C.green}},
-        {name:CT('nM'), type:'line', data:AN.npm, smooth:true, symbolSize:6, lineStyle:{width:2, color:C.teal}, itemStyle:{color:C.teal}}]};
+        {name:CT('nM'), type:'line', data:AN.npm, smooth:true, symbolSize:6, lineStyle:{width:2, color:C.blue}, itemStyle:{color:C.blue}}]};
   }
   if (id === 'f24-4') {
     return {tooltip:baseTooltip(), legend:legendT(), grid:baseGrid(), xAxis:baseX(AN.years.slice(-5)), yAxis:baseY(U),
       series:[
         {name:CT('ta'), type:'bar', data:AN.assets.slice(-5), itemStyle:{color:C.green}, barMaxWidth:22},
-        {name:CT('tl'), type:'bar', data:AN.liab.slice(-5), itemStyle:{color:C.amber}, barMaxWidth:22},
-        {name:CT('te'), type:'bar', data:AN.equity.slice(-5), itemStyle:{color:C.teal}, barMaxWidth:22}]};
+        {name:CT('tl'), type:'bar', data:AN.liab.slice(-5), itemStyle:{color:C.red}, barMaxWidth:22},
+        {name:CT('te'), type:'bar', data:AN.equity.slice(-5), itemStyle:{color:C.blue}, barMaxWidth:22}]};
   }
   if (id === 'f25-1') {
-    var d25 = [FY.debt25.sn, FY.debt25.mandiri, FY.debt25.ccb, FY.debt25.ocbc], dcols = [C.amber, C.green, C.teal, C.green2], ser25 = [];
+    var d25 = [FY.debt25.sn, FY.debt25.mandiri, FY.debt25.ccb, FY.debt25.ocbc], dcols = [C.amber, C.green, C.blue, C.purple], ser25 = [];
     for (var m25 = 0; m25 < d25.length; m25++) { ser25.push({value: d25[m25], itemStyle:{color: dcols[m25]}}); }
     return {tooltip:baseTooltip(), grid:{left:150, right:56, top:10, bottom:26},
       xAxis:{type:'value', axisLabel:{color:AX.color, fontSize:11}, splitLine:SPLIT},
@@ -728,7 +728,7 @@ function buildOpt(id){
     return {tooltip:baseTooltip(), legend:legendT(), grid:baseGrid(), xAxis:baseX(['2023','2024','2025']), yAxis:baseY('x'),
       series:[
         {name:CT('ebitdaI'), type:'line', data:FY.cov.icr, smooth:true, symbolSize:6, lineStyle:{width:2, color:C.green}, itemStyle:{color:C.green}},
-        {name:CT('nd'), type:'line', data:FY.cov.nd, smooth:true, symbolSize:6, lineStyle:{width:2, color:C.clay}, itemStyle:{color:C.clay}}]};
+        {name:CT('nd'), type:'line', data:FY.cov.nd, smooth:true, symbolSize:6, lineStyle:{width:2, color:C.red}, itemStyle:{color:C.red}}]};
   }
   if (id === 'f25-4') {
     return {tooltip:baseTooltip(), grid:baseGrid(), xAxis:baseX([CT('openC'), CT('consS'), CT('closeC')]), yAxis:baseY(U),
@@ -755,7 +755,7 @@ function buildOpt(id){
       xAxis:baseX(['1H25','1H26']),
       yAxis:{type:'value', max:100, axisLabel:{color:AX.color, fontSize:11, formatter:'{value}%'}, splitLine:SPLIT},
       series:[
-        {name:CT('recurr'), type:'bar', stack:'p', data:[FY.mix.h25[0], FY.mix.h26[0]], itemStyle:{color:C.teal}, barMaxWidth:56},
+        {name:CT('recurr'), type:'bar', stack:'p', data:[FY.mix.h25[0], FY.mix.h26[0]], itemStyle:{color:C.blue}, barMaxWidth:56},
         {name:CT('land'), type:'bar', stack:'p', data:[FY.mix.h25[1], FY.mix.h26[1]], itemStyle:{color:C.green}, barMaxWidth:56}]};
   }
   if (id === 'f26-4') {
@@ -770,7 +770,7 @@ function buildOpt(id){
   }
   /* ---- 债务页 ---- */
   if (id === 'd-1') {
-    var dl = DEBT.lenders26, dc = [], dv = [], dcol = [C.green, C.amber, C.teal, C.soft];
+    var dl = DEBT.lenders26, dc = [], dv = [], dcol = [C.green, C.amber, C.blue, C.purple, C.soft];
     for (var di = 0; di < dl.length; di++) { dc.push(N(dl[di].n)); dv.push({value:dl[di].v, itemStyle:{color:dcol[dl[di].c - 1]}}); }
     return {tooltip:baseTooltip(), grid:{left:132, right:70, top:8, bottom:24},
       xAxis:{type:'value', axisLabel:{color:AX.color, fontSize:11}, splitLine:SPLIT},
@@ -782,14 +782,14 @@ function buildOpt(id){
       series:[
         {name:N('mandiri'), type:'bar', stack:'m', data:DEBT.maturityMandiri, itemStyle:{color:C.green}, barMaxWidth:34},
         {name:N('ina'), type:'bar', stack:'m', data:DEBT.maturityINA, itemStyle:{color:C.amber}, barMaxWidth:34},
-        {name:N('ocbc'), type:'bar', stack:'m', data:DEBT.maturityOCBC, itemStyle:{color:C.teal}, barMaxWidth:34,
+        {name:N('ocbc'), type:'bar', stack:'m', data:DEBT.maturityOCBC, itemStyle:{color:C.blue}, barMaxWidth:34,
           label:{show:true, position:'top', fontSize:10, color:'#5C6B61', formatter:function(p){ return fmtN(DEBT.maturityTot[p.dataIndex]); }}}]};
   }
   if (id === 'd-3') {
     return {tooltip:baseTooltip(), legend:legendT(), grid:baseGrid(), xAxis:baseX(['2023','2024','2025']), yAxis:baseY('x'),
       series:[
         {name:CT('ebitdaI'), type:'line', data:FY.cov.icr, smooth:true, symbolSize:6, lineStyle:{width:2, color:C.green}, itemStyle:{color:C.green}},
-        {name:CT('nd'), type:'line', data:FY.cov.nd, smooth:true, symbolSize:6, lineStyle:{width:2, color:C.clay}, itemStyle:{color:C.clay}}]};
+        {name:CT('nd'), type:'line', data:FY.cov.nd, smooth:true, symbolSize:6, lineStyle:{width:2, color:C.red}, itemStyle:{color:C.red}}]};
   }
   if (id === 'd-4') {
     return {tooltip:baseTooltip(), grid:baseGrid(), xAxis:baseX([N('sched'), N('totD')]), yAxis:baseY(U),
@@ -801,7 +801,7 @@ function buildOpt(id){
   }
   /* ---- 土地页 ---- */
   if (id === 'lb-1') {
-    var lr = LAND.rows, lc = [], lv = [], lcol = [C.green, C.teal, C.green2, C.amber];
+    var lr = LAND.rows, lc = [], lv = [], lcol = [C.green, C.blue, C.amber, C.purple];
     for (var li = 0; li < lr.length; li++) { lc.push(lr[li].p); lv.push({value:lr[li].ha, itemStyle:{color:lcol[li]}}); }
     return {tooltip:baseTooltip(), grid:{left:168, right:72, top:10, bottom:26},
       xAxis:{type:'value', axisLabel:{color:AX.color, fontSize:11}, splitLine:SPLIT, axisLine:{show:false}, axisTick:{show:false}},
@@ -823,7 +823,7 @@ function buildOpt(id){
   if (id === 'v-1') {
     return {tooltip:baseTooltip(), grid:{left:48, right:18, top:34, bottom:30}, xAxis:baseX(VAL.months), yAxis:baseY('IDR'),
       series:[{name:'KIJA', type:'line', data:VAL.close, smooth:true, symbolSize:6, lineStyle:{width:2, color:C.green}, itemStyle:{color:C.green},
-        markLine:{silent:true, symbol:'none', lineStyle:{color:C.clay, type:'dashed', width:1.5}, data:[{yAxis:FY.refPrice, label:{formatter:fmtN(FY.refPrice) + ' (18 Sep)', fontSize:10, color:C.clay, position:'insideEndTop'}}]},
+        markLine:{silent:true, symbol:'none', lineStyle:{color:C.red, type:'dashed', width:1.5}, data:[{yAxis:FY.refPrice, label:{formatter:fmtN(FY.refPrice) + ' (18 Sep)', fontSize:10, color:C.red, position:'insideEndTop'}}]},
         markPoint:{symbol:'circle', symbolSize:9, label:{fontSize:10, color:'#fff', position:'top'}, data:[
           {coord:[FY.vjan.m, FY.vjan.c], value:String(FY.vjan.hi), itemStyle:{color:C.amber}},
           {coord:[FY.vjun.m, FY.vjun.c], value:String(FY.vjun.hi), itemStyle:{color:C.clay}}
@@ -833,7 +833,7 @@ function buildOpt(id){
     return {tooltip:baseTooltip(), legend:legendT(), grid:baseGrid(), xAxis:baseX(['P/B (x)','P/S (x)']), yAxis:baseY('x'),
       series:[
         {name:N('kija'), type:'bar', data:FY.kijaPBPS, itemStyle:{color:C.green}, barMaxWidth:30, label:{show:true, position:'top', fontSize:11, color:'#1F5E40', formatter:lblFmt()}},
-        {name:N('dmas'), type:'bar', data:FY.dmasPBPS, itemStyle:{color:C.teal}, barMaxWidth:30, label:{show:true, position:'top', fontSize:11, color:'#3E7D6B', formatter:lblFmt()}}]};
+        {name:N('dmas'), type:'bar', data:FY.dmasPBPS, itemStyle:{color:C.blue}, barMaxWidth:30, label:{show:true, position:'top', fontSize:11, color:'#2E6FB0', formatter:lblFmt()}}]};
   }
   /* ---- 估值测算页 ---- */
   if (id === 'vi-1') {
@@ -846,9 +846,9 @@ function buildOpt(id){
       series:[
         {name:VLL[LANG][0], type:'bar', data:lo, itemStyle:{color:C.soft}, barMaxWidth:13},
         {name:VLL[LANG][1], type:'bar', data:ba, itemStyle:{color:C.green}, barMaxWidth:13},
-        {name:VLL[LANG][2], type:'bar', data:hi, itemStyle:{color:C.teal}, barMaxWidth:13,
+        {name:VLL[LANG][2], type:'bar', data:hi, itemStyle:{color:C.blue}, barMaxWidth:13,
           label:{show:true, position:'right', fontSize:10, color:'#5C6B61', formatter:lblFmt()}},
-        {name:VLL[LANG][6], type:'line', data:[181,181,181,181], symbol:'none', lineStyle:{width:2, color:C.clay, type:'dashed'}, tooltip:{show:false}, label:{show:false}}]};
+        {name:VLL[LANG][6], type:'line', data:[FY.refPrice,FY.refPrice,FY.refPrice,FY.refPrice], symbol:'none', lineStyle:{width:2, color:C.red, type:'dashed'}, tooltip:{show:false}, label:{show:false}}]};
   }
   return {};
 }
@@ -874,9 +874,9 @@ function eventsHtml(list){
 }
 var LV = ['lv-low','lv-mid','lv-high'];
 var LVTXT = {en:['Low','Medium','High'], id:['Rendah','Sedang','Tinggi'], zh:['低','中','高']};
-var VLL = {en:['Low','Base','High',['Method','Assumptions','Low','Base','High'],['Approach','Base value','vs price 181','Safety margin','Reading'],['Metric','Value'],'Price 181'],
-  id:['Rendah','Dasar','Tinggi',['Metode','Asumsi','Rendah','Dasar','Tinggi'],['Pendekatan','Nilai dasar','vs harga 181','Margin keamanan','Makna'],['Metrik','Nilai'],'Harga 181'],
-  zh:['低位','基准','高位',['方法','假设','低','基准','高'],['方法','基准值','较 181','安全边际','含义'],['指标','数值'],'现价 181']};
+var VLL = {en:['Low','Base','High',['Method','Assumptions','Low','Base','High'],['Approach','Base value','vs price 180','Safety margin','Reading'],['Metric','Value'],'Price 180'],
+  id:['Rendah','Dasar','Tinggi',['Metode','Asumsi','Rendah','Dasar','Tinggi'],['Pendekatan','Nilai dasar','vs harga 180','Margin keamanan','Makna'],['Metrik','Nilai'],'Harga 180'],
+  zh:['低位','基准','高位',['方法','假设','低','基准','高'],['方法','基准值','较 180','安全边际','含义'],['指标','数值'],'现价 180']};
 function riskHtml(rows){
   var h = '';
   for (var i = 0; i < rows.length; i++) {
@@ -1220,6 +1220,7 @@ function annotateTerms(root){
   var nodes = [];
   while (walker.nextNode()) { nodes.push(walker.currentNode); }
   var wrapped = 0;
+  var seen = {};
   for (var n = 0; n < nodes.length; n++) {
     var node = nodes[n];
     if (!node.nodeValue) { continue; }
@@ -1241,7 +1242,13 @@ function annotateTerms(root){
       while (gidx < mm.length && mm[gidx] === undefined) { gidx++; }
       var full = mm[0];
       var entry = G.list[gidx - 1];
-      parts.push('<span class="gterm' + (full.length > 10 ? ' gterm-long' : '') + '" data-gterm="1" data-tip="' + esc(entry.x) + '">' + esc(full) + '<sup class="gterm-q">?</sup></span>');
+      var key = (entry.p || full).toLowerCase();
+      if (seen[key]) {
+        parts.push(esc(full));
+      } else {
+        seen[key] = 1;
+        parts.push('<span class="gterm' + (full.length > 10 ? ' gterm-long' : '') + '" data-gterm="1" data-tip="' + esc(entry.x) + '">' + esc(full) + '<sup class="gterm-q">?</sup></span>');
+      }
       last = mm.index + full.length;
       if (G.re.lastIndex === mm.index) { G.re.lastIndex = mm.index + full.length; }
     }
