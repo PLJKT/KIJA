@@ -179,7 +179,7 @@
   "k24": {
    "en": [
     {
-     "l": "FY2024 Revenue",
+     "l": "Revenue",
      "v": 4602.6,
      "u": "IDR bn",
      "d": "+39% YoY",
@@ -200,6 +200,13 @@
      "c": "up"
     },
     {
+     "l": "EBITDA",
+     "v": 1616.8,
+     "u": "IDR bn",
+     "d": "+29% YoY",
+     "c": "up"
+    },
+    {
      "l": "Marketing sales",
      "v": 3188,
      "u": "IDR bn",
@@ -207,23 +214,16 @@
      "c": "up"
     },
     {
-     "l": "Gross margin",
-     "v": 43,
-     "u": "%",
-     "d": "-3pct (peak 52% in 2022)",
-     "c": "dn"
-    },
-    {
-     "l": "ROE",
-     "v": 10,
-     "u": "%",
-     "d": "+2pct",
+     "l": "Cash & equivalents",
+     "v": 2048.5,
+     "u": "IDR bn",
+     "d": "+87% YoY",
      "c": "up"
     }
    ],
    "id": [
     {
-     "l": "Pendapatan FY2024",
+     "l": "Pendapatan",
      "v": 4602.6,
      "u": "Rp miliar",
      "d": "+39% YoY",
@@ -244,6 +244,13 @@
      "c": "up"
     },
     {
+     "l": "EBITDA",
+     "v": 1616.8,
+     "u": "Rp miliar",
+     "d": "+29% YoY",
+     "c": "up"
+    },
+    {
      "l": "Penjualan pemasaran",
      "v": 3188,
      "u": "Rp miliar",
@@ -251,23 +258,16 @@
      "c": "up"
     },
     {
-     "l": "Margin kotor",
-     "v": 43,
-     "u": "%",
-     "d": "-3pct (puncak 52% tahun 2022)",
-     "c": "dn"
-    },
-    {
-     "l": "ROE",
-     "v": 10,
-     "u": "%",
-     "d": "+2pct",
+     "l": "Kas & setara kas",
+     "v": 2048.5,
+     "u": "Rp miliar",
+     "d": "+87% YoY",
      "c": "up"
     }
    ],
    "zh": [
     {
-     "l": "2024 营收",
+     "l": "营业收入",
      "v": 4602.6,
      "u": "十亿盾",
      "d": "+39% 同比",
@@ -288,6 +288,13 @@
      "c": "up"
     },
     {
+     "l": "EBITDA",
+     "v": 1616.8,
+     "u": "十亿盾",
+     "d": "+29% 同比",
+     "c": "up"
+    },
+    {
      "l": "营销销售",
      "v": 3188,
      "u": "十亿盾",
@@ -295,17 +302,10 @@
      "c": "up"
     },
     {
-     "l": "毛利率",
-     "v": 43,
-     "u": "%",
-     "d": "-3pct（2022 峰值 52%）",
-     "c": "dn"
-    },
-    {
-     "l": "ROE",
-     "v": 10,
-     "u": "%",
-     "d": "+2pct",
+     "l": "现金及等价物",
+     "v": 2048.5,
+     "u": "十亿盾",
+     "d": "+87% 同比",
      "c": "up"
     }
    ]
@@ -313,7 +313,7 @@
   "k25": {
    "en": [
     {
-     "l": "FY2025 Revenue",
+     "l": "Revenue",
      "v": 5149.4,
      "u": "IDR bn",
      "d": "+12% YoY",
@@ -341,23 +341,23 @@
      "c": "up"
     },
     {
+     "l": "Marketing sales",
+     "v": 3601,
+     "u": "IDR bn",
+     "d": "+13% YoY",
+     "c": "up"
+    },
+    {
      "l": "Cash & equivalents",
      "v": 3618.8,
      "u": "IDR bn",
      "d": "+77%, incl. JVs",
      "c": "up"
-    },
-    {
-     "l": "Liab/Equity",
-     "v": 85,
-     "u": "%",
-     "d": "-1pct, net debt/EBITDA 0.6x",
-     "c": "dn"
     }
    ],
    "id": [
     {
-     "l": "Pendapatan FY2025",
+     "l": "Pendapatan",
      "v": 5149.4,
      "u": "Rp miliar",
      "d": "+12% YoY",
@@ -385,23 +385,23 @@
      "c": "up"
     },
     {
+     "l": "Penjualan pemasaran",
+     "v": 3601,
+     "u": "Rp miliar",
+     "d": "+13% YoY",
+     "c": "up"
+    },
+    {
      "l": "Kas & setara kas",
      "v": 3618.8,
      "u": "Rp miliar",
      "d": "+77%, termasuk JV",
      "c": "up"
-    },
-    {
-     "l": "Kewajiban/Ekuitas",
-     "v": 85,
-     "u": "%",
-     "d": "-1pct, utang bersih/EBITDA 0.6x",
-     "c": "dn"
     }
    ],
    "zh": [
     {
-     "l": "2025 营收",
+     "l": "营业收入",
      "v": 5149.4,
      "u": "十亿盾",
      "d": "+12% 同比",
@@ -429,42 +429,42 @@
      "c": "up"
     },
     {
+     "l": "营销销售",
+     "v": 3601,
+     "u": "十亿盾",
+     "d": "+13% 同比",
+     "c": "up"
+    },
+    {
      "l": "现金及等价物",
      "v": 3618.8,
      "u": "十亿盾",
      "d": "+77%，含 JV",
      "c": "up"
-    },
-    {
-     "l": "总负债/权益",
-     "v": 85,
-     "u": "%",
-     "d": "-1pct，净债/EBITDA 0.6x",
-     "c": "dn"
     }
    ]
   },
   "k26": {
    "en": [
     {
-     "l": "Revenue (1H26)",
+     "l": "Revenue",
      "v": 2436.5,
      "u": "IDR bn",
-     "d": "-11% YoY",
+     "d": "1H26 · -11% YoY",
      "c": "dn"
     },
     {
-     "l": "Operating profit",
-     "v": 524,
-     "u": "IDR bn",
-     "d": "still profitable at operating level",
-     "c": "up"
-    },
-    {
-     "l": "Net profit",
+     "l": "Consolidated net profit",
      "v": -6.4,
      "u": "IDR bn",
-     "d": "one-off refinancing cost",
+     "d": "1H26; one-off refi cost",
+     "c": "dn"
+    },
+    {
+     "l": "Attributable to parent",
+     "v": -177.9,
+     "u": "IDR bn",
+     "d": "parent bears one-off; NCI +171.4",
      "c": "dn"
     },
     {
@@ -482,34 +482,34 @@
      "c": "flat"
     },
     {
-     "l": "Cash",
+     "l": "Cash & equivalents",
      "v": 3200,
      "u": "IDR bn",
-     "p": "~",
      "d": "as of 30 Jun 2026",
-     "c": "up"
+     "c": "up",
+     "p": "~"
     }
    ],
    "id": [
     {
-     "l": "Pendapatan (1H26)",
+     "l": "Pendapatan",
      "v": 2436.5,
      "u": "Rp miliar",
-     "d": "-11% YoY",
+     "d": "1H26 · -11% YoY",
      "c": "dn"
     },
     {
-     "l": "Laba usaha",
-     "v": 524,
-     "u": "Rp miliar",
-     "d": "tetap laba di level operasional",
-     "c": "up"
-    },
-    {
-     "l": "Laba bersih",
+     "l": "Laba bersih konsolidasi",
      "v": -6.4,
      "u": "Rp miliar",
-     "d": "biaya refinancing satu kali",
+     "d": "1H26; biaya refi satu kali",
+     "c": "dn"
+    },
+    {
+     "l": "Laba entitas induk",
+     "v": -177.9,
+     "u": "Rp miliar",
+     "d": "induk menanggung one-off; NCI +171.4",
      "c": "dn"
     },
     {
@@ -527,34 +527,34 @@
      "c": "flat"
     },
     {
-     "l": "Kas",
+     "l": "Kas & setara kas",
      "v": 3200,
      "u": "Rp miliar",
-     "p": "~",
      "d": "per 30 Jun 2026",
-     "c": "up"
+     "c": "up",
+     "p": "~"
     }
    ],
    "zh": [
     {
-     "l": "收入（1H26）",
+     "l": "营业收入",
      "v": 2436.5,
      "u": "十亿盾",
-     "d": "-11% 同比",
+     "d": "1H26 · -11% 同比",
      "c": "dn"
     },
     {
-     "l": "经营利润",
-     "v": 524,
-     "u": "十亿盾",
-     "d": "经营层面仍盈利",
-     "c": "up"
-    },
-    {
-     "l": "净利润",
+     "l": "合并净利",
      "v": -6.4,
      "u": "十亿盾",
-     "d": "一次性再融资成本",
+     "d": "1H26；一次性再融资成本",
+     "c": "dn"
+    },
+    {
+     "l": "归母净利",
+     "v": -177.9,
+     "u": "十亿盾",
+     "d": "母公司承担一次性；少数股东 +171.4",
      "c": "dn"
     },
     {
@@ -572,12 +572,12 @@
      "c": "flat"
     },
     {
-     "l": "现金",
+     "l": "现金及等价物",
      "v": 3200,
      "u": "十亿盾",
-     "p": "~",
      "d": "2026-06-30",
-     "c": "up"
+     "c": "up",
+     "p": "~"
     }
    ]
   },
@@ -810,6 +810,13 @@
   "val": {
    "en": [
     {
+     "l": "Market cap",
+     "v": 3.7,
+     "u": "IDR tn",
+     "d": "3.76T at 180 (S&P)",
+     "c": "flat"
+    },
+    {
      "l": "Price (18 Sep 2026)",
      "v": 180,
      "u": "IDR",
@@ -822,13 +829,6 @@
      "u": "— 364 IDR",
      "d": "intraday (S&P); monthly low 111 (Digrin)",
      "c": "dn"
-    },
-    {
-     "l": "Market cap",
-     "v": 3.7,
-     "u": "IDR tn",
-     "d": "3.76T at 180 (S&P)",
-     "c": "flat"
     },
     {
      "l": "P/B",
@@ -854,6 +854,13 @@
    ],
    "id": [
     {
+     "l": "Kapitalisasi pasar",
+     "v": 3.7,
+     "u": "Rp tn",
+     "d": "3,76T di 180 (S&P)",
+     "c": "flat"
+    },
+    {
      "l": "Harga (18 Sep 2026)",
      "v": 180,
      "u": "IDR",
@@ -866,13 +873,6 @@
      "u": "— 364 IDR",
      "d": "intraday (S&P); terendah bulanan 111 (Digrin)",
      "c": "dn"
-    },
-    {
-     "l": "Kapitalisasi pasar",
-     "v": 3.7,
-     "u": "Rp tn",
-     "d": "3,76T di 180 (S&P)",
-     "c": "flat"
     },
     {
      "l": "P/B",
@@ -898,6 +898,13 @@
    ],
    "zh": [
     {
+     "l": "市值",
+     "v": 3.7,
+     "u": "万亿盾",
+     "d": "3.76T @180（S&P）",
+     "c": "flat"
+    },
+    {
      "l": "股价（2026-09-18）",
      "v": 180,
      "u": "盾",
@@ -910,13 +917,6 @@
      "u": "— 364 盾",
      "d": "盘中（S&P）；月收盘低点 111（Digrin）",
      "c": "dn"
-    },
-    {
-     "l": "市值",
-     "v": 3.7,
-     "u": "万亿盾",
-     "d": "3.76T @180（S&P）",
-     "c": "flat"
     },
     {
      "l": "市净率",
