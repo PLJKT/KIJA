@@ -1276,7 +1276,7 @@ function renderPage(id){
     if (!el) { continue; }
     var c = echarts.init(el);
     c.setOption(buildOpt(ids[i]));
-    c.setOption({toolbox:{right:8,top:8,feature:{saveAsImage:{title:'PNG',background:'#ffffff',pixelRatio:2}}}});
+    c.setOption({toolbox:{right:6,top:6,iconSize:12,feature:{saveAsImage:{title:'PNG',background:'#ffffff',pixelRatio:2}}}});
     CH[ids[i]] = c;
   }
   for (var k in CH) { if (CH.hasOwnProperty(k)) { CH[k].resize(); } }
