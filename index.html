@@ -158,6 +158,15 @@ ul.events .d{flex:none;width:76px;color:var(--green);font-weight:600;font-varian
 .g-table-wrap .g-table{margin-bottom:0;min-width:640px}
 footer{max-width:1180px;margin:0 auto;padding:6px 22px 30px;font-size:11px;color:var(--muted);line-height:1.7}
 footer a{color:var(--green)}
+.ft-ver{margin-top:8px;font-weight:600;color:var(--ink)}
+.ft-log{margin-top:4px;font-weight:400}
+.ft-log summary{cursor:pointer;color:var(--green);display:inline}
+.ft-log ul{margin:6px 0 0 18px;padding:0}
+.ft-log li{margin:2px 0}
+.hl-driver{border-left:3px solid var(--green);margin-top:14px}
+.hl-driver p{margin:6px 0 0}
+#csvBtn{position:fixed;right:16px;bottom:16px;z-index:99;background:var(--ink);color:#EDF2EC;border:none;border-radius:20px;padding:8px 14px;font-size:12px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+#csvBtn:hover{background:var(--green)}
 @media(max-width:900px){
   .charts,.two-col{grid-template-columns:1fr}
   .chart{height:280px}
@@ -185,15 +194,15 @@ footer a{color:var(--green)}
     </div>
     <div class="hd-right">
       <div class="hd-meta"><span data-i18n="meta_src"></span><br><span data-i18n="meta_asof"></span></div>
-      <div class="langs">
-        <button type="button" data-lang="en">EN</button>
-        <button type="button" data-lang="id">ID</button>
-        <button type="button" data-lang="zh">中文</button>
+      <div class="langs" role="group" aria-label="Language">
+        <button type="button" data-lang="en" aria-label="English">EN</button>
+        <button type="button" data-lang="id" aria-label="Bahasa Indonesia">ID</button>
+        <button type="button" data-lang="zh" aria-label="中文">中文</button>
       </div>
     </div>
   </div>
 </header>
-<nav class="tabs" id="tabs">
+<nav class="tabs" id="tabs" role="navigation" aria-label="Sections">
   <div class="tabs-inner">
     <a class="tab active" href="#overview" data-page="overview" data-i18n="t_overview"></a>
     <a class="tab" href="#fy2024" data-page="fy2024" data-i18n="t_fy2024"></a>
@@ -237,6 +246,7 @@ footer a{color:var(--green)}
     <div class="panel"><h3 data-i18n="ev24_t"></h3><ul class="events" id="ev24"></ul></div>
     <div class="panel"><h3 data-i18n="rk24_t"></h3><div id="rk24"></div><div class="risk-note" data-i18n="note24"></div></div>
   </div>
+  <div class="panel hl-driver"><h3 data-i18n="g24_t"></h3><p class="page-d" data-i18n="g24"></p></div>
 </section>
 
 <!-- ===== 视图：2025 年报 ===== -->
@@ -252,6 +262,7 @@ footer a{color:var(--green)}
     <div class="panel"><h3 data-i18n="ev25_t"></h3><ul class="events" id="ev25"></ul></div>
     <div class="panel"><h3 data-i18n="rk25_t"></h3><div id="rk25"></div><div class="risk-note" data-i18n="note25"></div></div>
   </div>
+  <div class="panel hl-driver"><h3 data-i18n="g25_t"></h3><p class="page-d" data-i18n="g25"></p></div>
 </section>
 
 <!-- ===== 视图：2026 中报 ===== -->
@@ -267,6 +278,7 @@ footer a{color:var(--green)}
     <div class="panel"><h3 data-i18n="ev26_t"></h3><ul class="events" id="ev26"></ul></div>
     <div class="panel"><h3 data-i18n="rk26_t"></h3><div id="rk26"></div><div class="risk-note" data-i18n="note26"></div></div>
   </div>
+  <div class="panel hl-driver"><h3 data-i18n="g26_t"></h3><p class="page-d" data-i18n="g26"></p></div>
 </section>
 
 <!-- ===== 视图：债务与偿债能力 ===== -->
@@ -381,6 +393,15 @@ footer a{color:var(--green)}
 <footer>
   <div data-i18n="ft_src"></div>
   <div data-i18n="ft_note"></div>
+  <div class="ft-ver">v1.9.0 &ndash; 2026-09-19
+    <details class="ft-log"><summary data-i18n="ft_log_t"></summary>
+      <ul>
+        <li data-i18n="ft_log_1"></li>
+        <li data-i18n="ft_log_2"></li>
+        <li data-i18n="ft_log_3"></li>
+      </ul>
+    </details>
+  </div>
 </footer>
 
 <script>
@@ -449,7 +470,17 @@ en: {
   val_stats_t:'Valuation & trading snapshot', val_peers_t:'Peer comparison: DMAS (Kota Deltamas)', val_peers_note:'DMAS: Sinar Mas Land + Sojitz Cikarang industrial developer; 1H26 net profit +175% to 1.19T on data-center land sales; +56.6% YTD-2026. KIJA 1H26 net loss reflects ~460 one-off refinancing costs.',
   val_analysts_t:'Analyst views & ratings', val_events_t:'Price & trading milestones (12 months)',
   ft_src:'Sources: <a href="https://www.jababeka.com/wp-content/uploads/2026/05/KIJA-AR-2025.pdf" target="_blank" rel="noopener">KIJA AR2025</a> · <a href="https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202607/20260731205845-62989-0/FinancialStatement-2026-II-KIJA.pdf" target="_blank" rel="noopener">1H26 Interim</a> · <a href="https://www.jababeka.com/wp-content/uploads/2023/05/KIJA-ASR-2022.pdf" target="_blank" rel="noopener">AR2022</a> · <a href="https://www.jababeka.com/wp-content/uploads/2025/02/KIJA-Presentation-Material-Augustus-2026-Final.pdf" target="_blank" rel="noopener">Aug-2026 presentation</a> · <a href="https://www.idx.co.id" target="_blank" rel="noopener">IDX announcements</a>. Full analysis: <a href="KIJA_财务分析报告_2015-2025.md" target="_blank" rel="noopener">analysis report</a>.',
-  ft_note:'This dashboard is for information only and does not constitute investment advice. 2026 figures are unaudited 1H26 data; historical figures may differ slightly from older disclosures due to annual-report restatements.'
+  ft_note:'This dashboard is for information only and does not constitute investment advice. 2026 figures are unaudited 1H26 data; historical figures may differ slightly from older disclosures due to annual-report restatements.',
+  g24_t:'FY2024 growth drivers & highlights',
+  g24:'Revenue rose 39% to IDR 4,602.6bn on a 44% jump in marketing sales (IDR 3,188bn), led by new Kendal land; net profit reached IDR 770.1bn despite a IDR 205.7bn FX loss. Recurring infrastructure (power, water, dry port) became a larger, more stable earnings base while land sales remained the main swing factor.',
+  g25_t:'FY2025 growth drivers & highlights',
+  g25:'Revenue grew 12% to a record IDR 5,149.4bn and net profit 11% to IDR 857.1bn; recurring infrastructure mix rose to about 57% of revenue. Cash and equivalents jumped 77% to IDR 3,618.8bn (including JV dividends), and net debt fell to IDR 3,285bn (gross IDR 6,904bn). Gross margin held at 39% despite land-mix pressure.',
+  g26_t:'1H2026 drivers & highlights',
+  g26:'Revenue fell 11% to IDR 2,436.5bn on softer Kendal land recognition, but operating profit held at IDR 524bn and infrastructure mix rose to 57%. The IDR 6.4bn net loss was driven by ~IDR 460bn one-off refinancing costs (FX 280.7, derivative 154.6, amortisation 24.9). Key H2 indicators: land sales timing and gross margin recovery.',
+  ft_log_t:'Changelog',
+  ft_log_1:'v1.9.0: version badge & changelog, chart PNG export & table CSV export, growth-driver summaries, YoY in core chart tooltips.',
+  ft_log_2:'v1.8.0: price chart dual-pane (price + volume), turnover & turnover-rate, monthly price range.',
+  ft_log_3:'v1.7.0: corrected monthly traded volume; market cap card & SOTP illustration.'
 },
 id: {
   app_title:'Dasbor Keuangan & Operasional KIJA',
@@ -511,7 +542,17 @@ id: {
   val_stats_t:'Ringkasan valuasi & perdagangan', val_peers_t:'Perbandingan peer: DMAS (Kota Deltamas)', val_peers_note:'DMAS: pengembang kawasan industri Cikarang milik Sinar Mas Land + Sojitz; laba bersih 1H26 +175% menjadi 1.19T dari penjualan lahan data center; +56.6% YTD-2026. Rugi bersih 1H26 KIJA mencerminkan biaya refinancing satu kali sekitar 460.',
   val_analysts_t:'Pandangan analis & peringkat', val_events_t:'Tonggak harga & perdagangan (12 bulan)',
   ft_src:'Sumber: <a href="https://www.jababeka.com/wp-content/uploads/2026/05/KIJA-AR-2025.pdf" target="_blank" rel="noopener">AR2025 KIJA</a> · <a href="https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202607/20260731205845-62989-0/FinancialStatement-2026-II-KIJA.pdf" target="_blank" rel="noopener">Laporan 1H26</a> · <a href="https://www.jababeka.com/wp-content/uploads/2023/05/KIJA-ASR-2022.pdf" target="_blank" rel="noopener">AR2022</a> · <a href="https://www.jababeka.com/wp-content/uploads/2025/02/KIJA-Presentation-Material-Augustus-2026-Final.pdf" target="_blank" rel="noopener">Presentasi Agu-2026</a> · <a href="https://www.idx.co.id" target="_blank" rel="noopener">Pengumuman IDX</a>. Analisis lengkap: <a href="KIJA_财务分析报告_2015-2025.md" target="_blank" rel="noopener">laporan analisis</a>.',
-  ft_note:'Dasbor ini hanya untuk informasi dan bukan merupakan saran investasi. Angka 2026 adalah data 1H26 belum diaudit; angka historis dapat berbeda sedikit dari laporan lama akibat penyesuaian laporan tahunan.'
+  ft_note:'Dasbor ini hanya untuk informasi dan bukan merupakan saran investasi. Angka 2026 adalah data 1H26 belum diaudit; angka historis dapat berbeda sedikit dari laporan lama akibat penyesuaian laporan tahunan.',
+  g24_t:'Pendorong pertumbuhan & sorotan FY2024',
+  g24:'Pendapatan naik 39% menjadi Rp4.602,6 miliar didorong penjualan pemasaran +44% (Rp3.188 miliar), terutama lahan baru Kendal; laba bersih mencapai Rp770,1 miliar meski ada rugi selisih kurs Rp205,7 miliar. Infrastruktur berulang (listrik, air, dry port) menjadi basis laba yang lebih stabil, sementara penjualan lahan tetap faktor utama.',
+  g25_t:'Pendorong pertumbuhan & sorotan FY2025',
+  g25:'Pendapatan tumbuh 12% ke rekor Rp5.149,4 miliar dan laba bersih +11% ke Rp857,1 miliar; porsi infrastruktur berulang naik ke sekitar 57% pendapatan. Kas naik 77% ke Rp3.618,8 miliar (termasuk dividen venture patungan), utang bersih turun ke Rp3.285 miliar. Margin kotor bertahan 39% meski tekanan bauran lahan.',
+  g26_t:'Pendorong & sorotan 1H2026',
+  g26:'Pendapatan turun 11% ke Rp2.436,5 miliar karena pengakuan lahan Kendal lebih lambat, tetapi laba operasional tetap Rp524 miliar dan porsi infrastruktur naik ke 57%. Rugi bersih Rp6,4 miliar terutama dari biaya refinancing satu kali ~Rp460 miliar (kurs 280,7, derivatif 154,6, amortisasi 24,9). Indikator utama 2H26: timing penjualan lahan dan pemulihan margin kotor.',
+  ft_log_t:'Riwayat perubahan',
+  ft_log_1:'v1.9.0: lencana versi & riwayat, ekspor PNG grafik & CSV tabel, ringkasan pendorong, YoY tooltip.',
+  ft_log_2:'v1.8.0: grafik harga dua-panel (harga + volume), omset & rasio omset, rentang bulanan.',
+  ft_log_3:'v1.7.0: koreksi volume bulanan; kartu market cap & ilustrasi SOTP.'
 },
 zh: {
   app_title:'KIJA 财务与经营 Dashboard',
@@ -573,7 +614,17 @@ zh: {
   val_stats_t:'估值与交易快照', val_peers_t:'同业对比：DMAS（Kota Deltamas）', val_peers_note:'DMAS：Sinar Mas Land + Sojitz 旗下 Cikarang 工业园开发商；1H26 净利 +175% 至 1.19T（数据中心售地）；2026 年 YTD +56.6%。KIJA 1H26 净亏主要反映约 460 的一次性再融资成本。',
   val_analysts_t:'分析师观点与评级', val_events_t:'股价与交易大事记（12 个月）',
   ft_src:'数据来源：<a href="https://www.jababeka.com/wp-content/uploads/2026/05/KIJA-AR-2025.pdf" target="_blank" rel="noopener">KIJA 2025 年报</a> · <a href="https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202607/20260731205845-62989-0/FinancialStatement-2026-II-KIJA.pdf" target="_blank" rel="noopener">1H26 中报</a> · <a href="https://www.jababeka.com/wp-content/uploads/2023/05/KIJA-ASR-2022.pdf" target="_blank" rel="noopener">2022 年报</a> · <a href="https://www.jababeka.com/wp-content/uploads/2025/02/KIJA-Presentation-Material-Augustus-2026-Final.pdf" target="_blank" rel="noopener">2026-08 演示</a> · <a href="https://www.idx.co.id" target="_blank" rel="noopener">IDX 公告</a>；完整分析见<a href="KIJA_财务分析报告_2015-2025.md" target="_blank" rel="noopener">分析报告</a>。',
-  ft_note:'本 Dashboard 仅供信息参考，不构成投资建议。2026 年为上半年未经审计数据；因年报追溯调整，个别历史数字可能与旧版披露略有差异。'
+  ft_note:'本 Dashboard 仅供信息参考，不构成投资建议。2026 年为上半年未经审计数据；因年报追溯调整，个别历史数字可能与旧版披露略有差异。',
+  g24_t:'FY2024 增长驱动与亮点',
+  g24:'营收增长 39% 至 4,602.6 万亿印尼盾，营销销售大增 44%（3,188 万亿），主要来自 Kendal 新地块；即便产生 205.7 亿汇兑损失，净利润仍达 770.1 亿。经常性基础设施（电力、水务、干港）成为更稳定的利润基础，土地销售仍是主要波动项。',
+  g25_t:'FY2025 增长驱动与亮点',
+  g25:'营收增 12% 至创纪录的 5,149.4 亿，净利润增 11% 至 857.1 亿；经常性基础设施占比升至约 57%。现金及等价物大增 77% 至 3,618.8 亿（含合资分红），净债务降至 3,285 亿。尽管土地结构承压，毛利率维持 39%。',
+  g26_t:'1H2026 驱动与亮点',
+  g26:'营收因 Kendal 土地确认放缓下降 11% 至 2,436.5 亿，但经营利润保持 524 亿，基础设施占比升至 57%。6.4 亿净亏损主要来自约 460 亿一次性再融资成本（汇兑 280.7、衍生品 154.6、摊销 24.9）。下半年关键指标：土地销售节奏与毛利率回升。',
+  ft_log_t:'更新日志',
+  ft_log_1:'v1.9.0：版本徽标与更新日志、图表 PNG 与表格 CSV 导出、增长驱动小结、核心图同比。',
+  ft_log_2:'v1.8.0：股价图双区（价格+成交量）、成交额与换手率、月内价格区间。',
+  ft_log_3:'v1.7.0：修正月成交量；新增市值卡与 SOTP 测算。'
 }
 };
 </script>
@@ -644,16 +695,31 @@ function num(s){ var n = Number(String(s).replace(/,/g, '.')); return isNaN(n) ?
 function buildOpt(id){
   var U = CT('unit');
   if (id === 'o1') {
-    var d = AN.revenue, lb = [];
-    for (var i = 0; i < d.length; i++) { lb.push(fmtN(d[i])); }
-    return {tooltip:baseTooltip(), grid:baseGrid(), xAxis:baseX(AN.years), yAxis:baseY(U),
+    var d = AN.revenue;
+    var tt = {trigger:'axis', confine:true, formatter:function(ps){
+      var i = ps[0].dataIndex, s = '<b>' + AN.years[i] + '</b><br/>';
+      s += CT('rev') + ': ' + fmtN(d[i]) + ' ' + U;
+      if (i > 0 && d[i-1]) { var y = (d[i]/d[i-1]-1)*100; s += '<br/>YoY: ' + (y>=0?'+':'') + y.toFixed(1) + '%'; }
+      return s;
+    }};
+    return {tooltip:tt, grid:baseGrid(), xAxis:baseX(AN.years), yAxis:baseY(U),
       series:[{type:'bar', data:d, itemStyle:{color:C.green, borderRadius:[3,3,0,0]}, label:{show:true, position:'top', fontSize:10, color:'#5C6B61', formatter:lblFmt()}, barMaxWidth:26}]};
   }
   if (id === 'o2') {
-    return {tooltip:baseTooltip(), legend:legendT(), grid:baseGrid(), xAxis:baseX(AN.years), yAxis:baseY(U),
+    var nc = AN.niCons, np = AN.niParent;
+    var tt2 = {trigger:'axis', confine:true, formatter:function(ps){
+      var i = ps[0].dataIndex, s = '<b>' + AN.years[i] + '</b>';
+      for (var q=0; q<ps.length; q++){
+        var ser = ps[q].seriesIndex === 0 ? nc : np, prev = ser[i-1];
+        s += '<br/>' + ps[q].marker + ps[q].seriesName + ': ' + fmtN(ps[q].value) + ' ' + U;
+        if (i>0 && prev) { var y2 = (ser[i]/prev-1)*100; s += ' (' + (y2>=0?'+':'') + y2.toFixed(1) + '%)'; }
+      }
+      return s;
+    }};
+    return {tooltip:tt2, legend:legendT(), grid:baseGrid(), xAxis:baseX(AN.years), yAxis:baseY(U),
       series:[
-        {name:CT('cons'), type:'line', data:AN.niCons, smooth:true, symbolSize:6, lineStyle:{width:2.5, color:C.green}, itemStyle:{color:C.green}},
-        {name:CT('parent'), type:'line', data:AN.niParent, smooth:true, symbolSize:6, lineStyle:{width:2, color:C.amber, type:'dashed'}, itemStyle:{color:C.amber}}]};
+        {name:CT('cons'), type:'line', data:nc, smooth:true, symbolSize:6, lineStyle:{width:2.5, color:C.green}, itemStyle:{color:C.green}},
+        {name:CT('parent'), type:'line', data:np, smooth:true, symbolSize:6, lineStyle:{width:2, color:C.amber, type:'dashed'}, itemStyle:{color:C.amber}}]};
   }
   if (id === 'o3') {
     return {tooltip:baseTooltip(), legend:legendT(), grid:baseGrid(), xAxis:baseX(AN.years), yAxis:baseY('%'),
@@ -1170,6 +1236,37 @@ function renderStatics(){
 /* ================= 路由与图表生命周期 ================= */
 var CH = {};
 var PAGE_CHARTS = {overview:['o1','o2','o3','o4','o5','o6'], fy2024:['f24-1','f24-2','f24-3','f24-4'], fy2025:['f25-1','f25-2','f25-3','f25-4'], fy2026:['f26-1','f26-2','f26-3','f26-4'], debt:['d-1','d-2','d-3','d-4'], landbank:['lb-1','lb-2'], valuation:['v-1','v-2'], vali:['vi-1'], risk:[], holding:[], org:[]};
+
+function exportCSV(){
+  var page = document.querySelector('.page.active');
+  if(!page){ return; }
+  var tables = page.querySelectorAll('table');
+  var rows = [], title = '';
+  for(var t=0; t<tables.length; t++){
+    var trs = tables[t].querySelectorAll('tr');
+    if(t>0){ rows.push([]); }
+    for(var r=0; r<trs.length; r++){
+      var cells = trs[r].querySelectorAll('th,td');
+      var line = [];
+      for(var c=0; c<cells.length; c++){ line.push('"'+(cells[c].innerText||'').replace(/"/g,'""')+'"'); }
+      rows.push(line);
+    }
+  }
+  var csv = rows.map(function(r){return r.join(',');}).join('\r\n');
+  var blob = new Blob(["\uFEFF"+csv], {type:'text/csv;charset=utf-8;'});
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'KIJA_'+(currentPage())+'_'+new Date().toISOString().slice(0,10)+'.csv';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+}
+function initCSVButton(){
+  if(document.getElementById('csvBtn')){ return; }
+  var btn = document.createElement('button');
+  btn.id = 'csvBtn'; btn.textContent = 'CSV'; btn.title = 'Download tables on this page as CSV';
+  btn.setAttribute('aria-label','Download tables as CSV');
+  btn.addEventListener('click', exportCSV);
+  document.body.appendChild(btn);
+}
 function renderPage(id){
   if (!window.echarts) { return; }
   var ids = PAGE_CHARTS[id] || [];
@@ -1179,6 +1276,7 @@ function renderPage(id){
     if (!el) { continue; }
     var c = echarts.init(el);
     c.setOption(buildOpt(ids[i]));
+    c.setOption({toolbox:{right:8,top:8,feature:{saveAsImage:{title:'PNG',background:'#ffffff',pixelRatio:2}}}});
     CH[ids[i]] = c;
   }
   for (var k in CH) { if (CH.hasOwnProperty(k)) { CH[k].resize(); } }
@@ -1207,6 +1305,7 @@ for (var lb = 0; lb < langBtns.length; lb++) {
     });
   })(langBtns[lb]);
 }
+initCSVButton();
 function loadECharts(cb){
   if (window.echarts) { cb(); return; }
   var s = document.createElement('script');
