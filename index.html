@@ -1461,17 +1461,21 @@ function renderStatics(){
     ho += '</div>';
     document.getElementById('opp').innerHTML = ho;
 
-  (function(){
-    var D = DEC[LANG]||DEC.en;
-    var h = '<table class="g-table"><colgroup>'
-      + '<col style="width:24%"><col style="width:13%"><col style="width:13%"><col style="width:13%"><col style="width:37%"></colgroup>'
-      + '<thead><tr><th>'+esc(D.hd[0])+'</th><th>'+esc(D.hd[1])+'</th><th>'+esc(D.hd[2])+'</th><th>'+esc(D.hd[3])+'</th><th>'+esc(D.hd[4])+'</th></tr></thead><tbody>';
-    D.rows.forEach(function(r){
-      h += '<tr><td class="b">'+esc(r[0])+'</td><td class="p">'+esc(r[1])+'</td><td class="p">'+esc(r[2])+'</td><td class="p">'+esc(r[3])+'</td><td>'+esc(r[4])+'</td></tr>';
-    });
-    h += '</tbody></table>';
-    document.getElementById('dec-tbl').innerHTML = h;
-  })();
+  try {
+    var D = (typeof DEC !== 'undefined') ? (DEC[LANG]||DEC.en) : null;
+    if (D && D.hd && D.rows) {
+      var h = '<table class="g-table"><colgroup>'
+        + '<col style="width:24%"><col style="width:13%"><col style="width:13%"><col style="width:13%"><col style="width:37%"></colgroup>'
+        + '<thead><tr>';
+      for (var di=0; di<D.hd.length; di++) h += '<th>'+esc(D.hd[di])+'</th>';
+      h += '</tr></thead><tbody>';
+      D.rows.forEach(function(r){
+        h += '<tr><td class="b">'+esc(r[0])+'</td><td class="p">'+esc(r[1])+'</td><td class="p">'+esc(r[2])+'</td><td class="p">'+esc(r[3])+'</td><td>'+esc(r[4])+'</td></tr>';
+      });
+      h += '</tbody></table>';
+      document.getElementById('dec-tbl').innerHTML = h;
+    }
+  } catch(e) { if (window.console) console.warn('dec-tbl skipped', e); }
 
   })();
   document.getElementById('dirs').innerHTML = dirsHtml();
