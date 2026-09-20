@@ -1602,7 +1602,7 @@ window.addEventListener('scroll', hideTip, true);
 window.addEventListener('resize', hideTip);
 
 /* ================= 数据加载：优先在线拉取 data.json，失败回退内嵌副本 ================= */
-var DATA_KEYS = ["KP","EV","RK","DIR","TL","OWN","SUBS","BIZ","VIA","PILLAR","PILLAR_MAP","ORG","DEBT","LAND","VAL","DTXT","LTXT","VTXT","NXT","VALI","LIQ","KEYP","AN","CHT","FY","LBV","GLOS"];
+var DATA_KEYS = ["KP","EV","RK","DIR","TL","OWN","SUBS","BIZ","VIA","PILLAR","PILLAR_MAP","ORG","DEBT","LAND","VAL","DTXT","LTXT","VTXT","NXT","VALI","LIQ","KEYP","AN","CHT","FY","LBV","GLOS","TOP3","OPP"];
 function applyData(d){
   if (!d) { return; }
   for (var i = 0; i < DATA_KEYS.length; i++) {
@@ -1616,7 +1616,7 @@ function loadData(cb){
   if (location.protocol !== 'http:' && location.protocol !== 'https:') { fin(); return; }
   try {
     var r = new XMLHttpRequest();
-    r.open('GET', 'data.json', true);
+    r.open('GET', 'data.json?v=' + Date.now(), true);
     r.onreadystatechange = function(){
       if (r.readyState === 4) {
         if (r.status === 200) {
