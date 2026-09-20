@@ -1375,34 +1375,34 @@ function decTableHtml(){
 function fmtInt(x){ return Math.round(x).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); }
 function fmtInt(x){ return Math.round(x).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); }
 function fmtInt(x){ return Math.round(x).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); }
+function fmtInt(x){ return Math.round(x).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); }
 function segTableHtml(){
   if (typeof SEG === 'undefined' || !SEG) return '';
   var lbl = SEG.labels[LANG];
-  var h = '<div class="g-table-wrap"><table class="g-table"><colgroup><col style="width:30%"><col style="width:8%"><col style="width:13%"><col style="width:13%"><col style="width:11%"><col style="width:13%"><col style="width:12%"></colgroup>';
-  h += '<thead><tr><th>Segment</th><th>Own %</th><th>Revenue 2024 (IDR bn)</th><th>Revenue 2025 (IDR bn)</th><th>GPM 2025 *</th><th>Net 2024 (IDR bn)</th><th>Net 2025 (IDR bn)</th></tr></thead><tbody>';
+  var h = '<div class="g-table-wrap"><table class="g-table"><colgroup><col style="width:26%"><col style="width:7%"><col style="width:11%"><col style="width:11%"><col style="width:9%"><col style="width:11%"><col style="width:11%"><col style="width:9%"></colgroup>';
+  h += '<thead><tr><th>Segment</th><th>Own %</th>'
+     + '<th>Net Profit 2025 (IDR bn)</th><th>Revenue 2025 (IDR bn)</th><th>GPM 2025 *</th>'
+     + '<th>Net Profit 2024 (IDR bn)</th><th>Revenue 2024 (IDR bn)</th><th>GPM 2024</th></tr></thead><tbody>';
   for (var i=0;i<SEG.rows.length;i++){
     var r = SEG.rows[i];
     var nc = r.net[1] < 0 ? ' style="color:var(--clay);font-weight:600"' : '';
     h += '<tr><td class="b">' + (lbl[r.key]||r.key) + '</td>'
        + '<td class="p">' + r.ownpct + '%</td>'
-       + '<td class="p">' + fmtInt(r.rev[0]) + '</td>'
+       + '<td class="p"' + nc + '>' + (r.net[1]>=0?'+':'') + fmtInt(r.net[1]) + '</td>'
        + '<td class="p">' + fmtInt(r.rev[1]) + '</td>'
        + '<td class="p">' + r.gpm[1].toFixed(1) + '%</td>'
        + '<td class="p">' + (r.net[0]>=0?'+':'') + fmtInt(r.net[0]) + '</td>'
-       + '<td class="p"' + nc + '>' + (r.net[1]>=0?'+':'') + fmtInt(r.net[1]) + '</td></tr>';
+       + '<td class="p">' + fmtInt(r.rev[0]) + '</td>'
+       + '<td class="p">' + r.gpm[0].toFixed(1) + '%</td></tr>';
   }
   if (SEG.total){
     var t = SEG.total;
     h += '<tr style="background:#F4F6F2"><td>Segment total <span class="glos" data-term="preelim">*</span></td><td></td>'
-       + '<td class="p">' + fmtInt(t.rev[0]) + '</td>'
-       + '<td class="p">' + fmtInt(t.rev[1]) + '</td>'
-       + '<td class="p">' + t.gpm[1].toFixed(1) + '%</td>'
-       + '<td class="p">+' + fmtInt(t.net[0]) + '</td>'
-       + '<td class="p">+' + fmtInt(t.net[1]) + '</td></tr>';
-    // Consolidated (post-elimination) to match dashboard / AR
+       + '<td class="p">+' + fmtInt(t.net[1]) + '</td><td class="p">' + fmtInt(t.rev[1]) + '</td><td class="p">' + t.gpm[1].toFixed(1) + '%</td>'
+       + '<td class="p">+' + fmtInt(t.net[0]) + '</td><td class="p">' + fmtInt(t.rev[0]) + '</td><td class="p">' + t.gpm[0].toFixed(1) + '%</td></tr>';
     h += '<tr style="background:#EFF2EC;font-weight:700"><td>Consolidated (matches dashboard)</td><td></td>'
-       + '<td class="p">4,603</td><td class="p">5,149</td><td class="p">39.5%</td>'
-       + '<td class="p">+770</td><td class="p">+857</td></tr>';
+       + '<td class="p">+857</td><td class="p">5,149</td><td class="p">39.5%</td>'
+       + '<td class="p">+770</td><td class="p">4,603</td><td class="p">42.7%</td></tr>';
   }
   h += '</tbody></table></div>';
   return h;
