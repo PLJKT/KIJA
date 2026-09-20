@@ -247,10 +247,8 @@ footer a{color:var(--green)}
   </div>
   <div class="panel">
     <h3 data-i18n="seg_h"></h3>
-    <div class="sub" data-i18n="seg_s"></div>
     <div class="table-wrap" id="seg-tbl"></div>
   </div>
-  <div class="panel"><h3 data-i18n="prof_note_h"></h3><div class="risk-note" data-i18n="prof_note"></div></div>
 </section>
 
 <!-- ===== 视图：2024 年报 ===== -->
@@ -463,7 +461,7 @@ en: {
   c_p4_s:'Revenue bars with gross-margin overlay (dual axis).',
   prof_note_h:'How to read this page',
   seg_h:'Segment P&L by business (FY2024 vs FY2025)',
-  seg_s:'Source: AR2025 Note 34. IDR bn. Net is pre-elimination.',
+  seg_s:'',
 prof_note:'<ul style="margin:0;padding-left:18px;line-height:1.7">'
   +'<li><b>Gross margin *</b> 39% (FY25), down from ~52% peak (2015-17 land-sale era) as recurring-infrastructure mix grows.</li>'
   +'<li><b>EBITDA margin</b> ~34% — recurring-infrastructure earnings are stable.</li>'
@@ -567,7 +565,7 @@ id: {
   c_p4_s:'Batang pendapatan dengan overlay margin kotor (sumbu ganda).',
   prof_note_h:'Cara membaca halaman ini',
   seg_h:'Laba-rugi per segmen usaha (FY2024 vs FY2025)',
-  seg_s:'Sumber: Catatan 34 AR2025. Rp miliar. Laba sebelum eliminasi.',
+  seg_s:'',
 prof_note:'<ul style="margin:0;padding-left:18px;line-height:1.7">'
   +'<li><b>Margin kotor *</b> 39% (FY25), turun dari puncak ~52% (era penjualan tanah 2015-17) seiring bauran infrastruktur berulang.</li>'
   +'<li><b>Margin EBITDA</b> ~34% — laba infrastruktur berulang stabil.</li>'
@@ -671,7 +669,7 @@ zh: {
   c_p4_s:'营收柱叠加毛利率（双轴）。',
   prof_note_h:'如何阅读本页',
   seg_h:'分业务板块损益 (FY2024 vs FY2025)',
-  seg_s:'来源：AR2025 附注 34。IDR bn。净利润为抵销前口径。',
+  seg_s:'',,
 prof_note:'<ul style="margin:0;padding-left:18px;line-height:1.7">'
   +'<li><b>毛利率 *</b> 39%（FY25），较 2015-17 售地时代 ~52% 高点回落（经常性基建占比上升）。</li>'
   +'<li><b>EBITDA 率</b> ~34% — 经常性基建盈利稳定。</li>'
@@ -1376,6 +1374,7 @@ function fmtInt(x){ return Math.round(x).toString().replace(/\B(?=(\d{3})+(?!\d)
 function fmtInt(x){ return Math.round(x).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); }
 function fmtInt(x){ return Math.round(x).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); }
 function fmtInt(x){ return Math.round(x).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); }
+function fmtInt(x){ return Math.round(x).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); }
 function segTableHtml(){
   if (typeof SEG === 'undefined' || !SEG) return '';
   var lbl = SEG.labels[LANG];
@@ -1388,21 +1387,18 @@ function segTableHtml(){
     var nc = r.net[1] < 0 ? ' style="color:var(--clay);font-weight:600"' : '';
     h += '<tr><td class="b">' + (lbl[r.key]||r.key) + '</td>'
        + '<td class="p">' + r.ownpct + '%</td>'
-       + '<td class="p"' + nc + '>' + (r.net[1]>=0?'+':'') + fmtInt(r.net[1]) + '</td>'
+       + '<td class="p"' + nc + '>' + fmtInt(r.net[1]) + '</td>'
        + '<td class="p">' + fmtInt(r.rev[1]) + '</td>'
        + '<td class="p">' + r.gpm[1].toFixed(1) + '%</td>'
-       + '<td class="p">' + (r.net[0]>=0?'+':'') + fmtInt(r.net[0]) + '</td>'
+       + '<td class="p">' + fmtInt(r.net[0]) + '</td>'
        + '<td class="p">' + fmtInt(r.rev[0]) + '</td>'
        + '<td class="p">' + r.gpm[0].toFixed(1) + '%</td></tr>';
   }
   if (SEG.total){
     var t = SEG.total;
-    h += '<tr style="background:#F4F6F2"><td>Segment total <span class="glos" data-term="preelim">*</span></td><td></td>'
-       + '<td class="p">+' + fmtInt(t.net[1]) + '</td><td class="p">' + fmtInt(t.rev[1]) + '</td><td class="p">' + t.gpm[1].toFixed(1) + '%</td>'
-       + '<td class="p">+' + fmtInt(t.net[0]) + '</td><td class="p">' + fmtInt(t.rev[0]) + '</td><td class="p">' + t.gpm[0].toFixed(1) + '%</td></tr>';
-    h += '<tr style="background:#EFF2EC;font-weight:700"><td>Consolidated (matches dashboard)</td><td></td>'
-       + '<td class="p">+857</td><td class="p">5,149</td><td class="p">39.5%</td>'
-       + '<td class="p">+770</td><td class="p">4,603</td><td class="p">42.7%</td></tr>';
+    h += '<tr style="background:#EFF2EC;font-weight:700"><td>Segment total (<span class="glos" data-term="preelim">pre-elimination</span>)</td><td></td>'
+       + '<td class="p">' + fmtInt(t.net[1]) + '</td><td class="p">' + fmtInt(t.rev[1]) + '</td><td class="p">' + t.gpm[1].toFixed(1) + '%</td>'
+       + '<td class="p">' + fmtInt(t.net[0]) + '</td><td class="p">' + fmtInt(t.rev[0]) + '</td><td class="p">' + t.gpm[0].toFixed(1) + '%</td></tr>';
   }
   h += '</tbody></table></div>';
   return h;
