@@ -1740,7 +1740,7 @@ function loadData(cb){
 function fetchLivePrice(cb){
   try {
     var x = new XMLHttpRequest();
-    x.open('GET', 'https://query1.finance.yahoo.com/v8/finance/chart/KIJA.JK?range=5d&interval=1d', true);
+    x.open('GET', 'https://api.allorigins.win/raw?url=' + encodeURIComponent('https://query1.finance.yahoo.com/v8/finance/chart/KIJA.JK?range=5d&interval=1d'), true);
     x.onreadystatechange = function(){
       if (x.readyState === 4 && x.status === 200) {
         try {
