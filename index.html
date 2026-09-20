@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -297,7 +297,6 @@ footer a{color:var(--green)}
     <div class="chart-card"><h3 data-i18n="c_f26_1_t"></h3><div class="sub" data-i18n="c_f26_1_s"></div><div class="chart" id="f26-1"></div></div>
     <div class="chart-card"><h3 data-i18n="c_f26_2_t"></h3><div class="sub" data-i18n="c_f26_2_s"></div><div class="chart" id="f26-2"></div></div>
     <div class="chart-card"><h3 data-i18n="c_f26_3_t"></h3><div class="sub" data-i18n="c_f26_3_s"></div><div class="chart" id="f26-3"></div></div>
-    <div class="chart-card"><h3 data-i18n="c_f26_4_t"></h3><div class="sub" data-i18n="c_f26_4_s"></div><div class="chart" id="f26-4"></div></div>
   </div>
   <div class="two-col">
     <div class="panel"><h3 data-i18n="ev26_t"></h3><ul class="events" id="ev26"></ul></div>
@@ -487,7 +486,6 @@ en: {
   c_f26_1_t:'1H26 vs 1H25 revenue', c_f26_1_s:'Total -11%; infrastructure +15%, land -32% (Kendal recognition timing)',
   c_f26_2_t:'Marketing sales progress (1H26)', c_f26_2_s:'1,187.6 / FY2026 target 3,750 (Cikarang 1,250 + Kendal 2,500); 32% achieved',
   c_f26_3_t:'Net debt position (30 Jun 2026)', c_f26_3_s:'Cash 3,200 · Total debt 4,863 · Net debt 1,663 (IDR bn)',
-  c_f26_4_t:'Net loss drivers (one-off)', c_f26_4_s:'1H26 net loss 6.4, driven by ~460 one-off refinancing costs',
   ev24_t:'2024 key events', rk24_t:'2024 risk indicators',
   note24:'Overall: strong marketing sales and improving balance sheet; gross-margin decline and minority dilution are the main watch points.',
   ev25_t:'2025 key events', rk25_t:'2025 risk indicators',
@@ -584,7 +582,6 @@ id: {
   c_f26_1_t:'Pendapatan 1H26 vs 1H25', c_f26_1_s:'Total -11%; infrastruktur +15%, tanah -32% (perbedaan waktu pengakuan Kendal)',
   c_f26_2_t:'Progres penjualan pemasaran (1H26)', c_f26_2_s:'1,187.6 / target FY2026 3,750 (Cikarang 1,250 + Kendal 2,500); tercapai 32%',
   c_f26_3_t:'Posisi utang bersih (30 Jun 2026)', c_f26_3_s:'Kas 3.200 · Total utang 4.863 · Utang bersih 1.663 (Rp miliar)',
-  c_f26_4_t:'Penyebab rugi bersih (satu kali)', c_f26_4_s:'Rugi bersih 1H26 6.4, didorong biaya refinancing satu kali sekitar 460',
   ev24_t:'Peristiwa penting 2024', rk24_t:'Indikator risiko 2024',
   note24:'Penilaian: penjualan pemasaran kuat dan neraca membaik; penurunan margin kotor serta dilusi minoritas menjadi titik perhatian utama.',
   ev25_t:'Peristiwa penting 2025', rk25_t:'Indikator risiko 2025',
@@ -681,7 +678,6 @@ zh: {
   c_f26_1_t:'1H26 vs 1H25 收入对比', c_f26_1_s:'总收入 -11%；基建 +15%，土地 -32%（Kendal 收入确认时点差异）',
   c_f26_2_t:'营销销售进度（1H26）', c_f26_2_s:'1,187.6 / 2026 全年目标 3,750（Cikarang 1,250 + Kendal 2,500），达标 32%',
   c_f26_3_t:'净债务头寸（2026-06-30）', c_f26_3_s:'现金 3,200 · 总有息债 4,863 · 净债务 1,663（十亿盾）',
-  c_f26_4_t:'净亏损构成（一次性）', c_f26_4_s:'2026 上半年净亏 6.4，源于再融资一次性成本约 460',
   ev24_t:'2024 年大事记', rk24_t:'2024 风险指示',
   note24:'总体判断：营销销售强劲、资产负债表改善，但毛利率下行与少数股东稀释是主要观察点。',
   ev25_t:'2025 年大事记', rk25_t:'2025 风险指示',
@@ -1521,7 +1517,7 @@ function renderStatics(){
 
 /* ================= 路由与图表生命周期 ================= */
 var CH = {};
-var PAGE_CHARTS = {overview:['o1','o2','o3','o4','o5','o6'], fy2024:['f24-1','f24-2','f24-3','f24-4'], fy2025:['f25-1','f25-2','f25-3','f25-4'], fy2026:['f26-1','f26-2','f26-3','f26-4'], debt:['d-1','d-2','d-3','d-4','d-5'], landbank:['lb-1','lb-2'], valuation:['v-1','v-2'], profit:['p-1','p-2','p-3','p-4'], vali:['vi-1'], risk:[], holding:[], org:[]};
+var PAGE_CHARTS = {overview:['o1','o2','o3','o4','o5','o6'], fy2024:['f24-1','f24-2','f24-3','f24-4'], fy2025:['f25-1','f25-2','f25-3','f25-4'], fy2026:['f26-1','f26-2','f26-3'], debt:['d-1','d-2','d-3','d-4','d-5'], landbank:['lb-1','lb-2'], valuation:['v-1','v-2'], profit:['p-1','p-2','p-3','p-4'], vali:['vi-1'], risk:[], holding:[], org:[]};
 
 function exportCSV(){
   var page = document.querySelector('.page.active');
