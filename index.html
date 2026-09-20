@@ -233,7 +233,6 @@ footer a{color:var(--green)}
   <h3 data-i18n="c_o2_t"></h3>
   <div class="sub" data-i18n="c_o2_s"></div>
   <div class="chart" id="o2"></div>
-  <div id="o2-table" style="margin-top:8px;font-size:11px;color:#5C6B61;overflow-x:auto"></div>
 </div>
     <div class="chart-card"><h3 data-i18n="c_o3_t"></h3><div class="sub" data-i18n="c_o3_s"></div><div class="chart" id="o3"></div></div>
     <div class="chart-card"><h3 data-i18n="c_o4_t"></h3><div class="sub" data-i18n="c_o4_s"></div><div class="chart" id="o4"></div></div>
@@ -473,7 +472,7 @@ en: {
   ph3:'Phase <b>2023–2025 surge</b>: Kendal land sales + infrastructure double engine',
   ph4:'Phase <b>2026 shift</b>: USD debt cleared, recurring revenue 57%',
   c_o1_t:'Revenue (2015–2025)', c_o1_s:'Consolidated revenue, IDR bn',
-  c_o2_t:'Net profit: consolidated vs parent', c_o2_s:'Consolidated (solid) vs attributable to parent (dashed); parent 2015-2025 from audited equity statements (v2)',
+  c_o2_t:'Net profit: consolidated vs parent', c_o2_s:'',
   c_o3_t:'Margins & leverage trend', c_o3_s:'Gross margin / net margin / ROE / Debt-to-equity',
   c_o4_t:'Segment revenue: Real Estate vs Infrastructure', c_o4_s:'2021–2025, IDR bn; infrastructure includes power, water & dry port',
   c_o5_t:'Marketing Sales', c_o5_s:'Land & property pre-sales contracts, a leading indicator',
@@ -570,7 +569,7 @@ id: {
   ph3:'Fase <b>lonjakan 2023–2025</b>: penjualan lahan Kendal + infrastruktur',
   ph4:'Fase <b>transisi 2026</b>: utang USD dilunasi, pendapatan berulang 57%',
   c_o1_t:'Pendapatan (2015–2025)', c_o1_s:'Pendapatan konsolidasi, Rp miliar',
-  c_o2_t:'Laba bersih: konsolidasi vs entitas induk', c_o2_s:'Konsolidasi (garis penuh) vs entitas induk (putus-putus); entitas induk dari laporan ekuitas audited 2015-2020',
+  c_o2_t:'Laba bersih: konsolidasi vs entitas induk', c_o2_s:'',
   c_o3_t:'Tren margin & leverage', c_o3_s:'Margin kotor / margin bersih / ROE / Utang÷Ekuitas',
   c_o4_t:'Pendapatan segmen: Properti vs Infrastruktur', c_o4_s:'2021–2025, Rp miliar; infrastruktur mencakup listrik, air & pelabuhan darat',
   c_o5_t:'Penjualan Pemasaran', c_o5_s:'Kontrak pra-penjualan lahan & properti, indikator utama',
@@ -667,7 +666,7 @@ zh: {
   ph3:'阶段 <b>2023–2025 爆发</b>：Kendal 售地 + 基建收入双轮驱动',
   ph4:'阶段 <b>2026 换挡</b>：美元债出清、经常性收入占比 57%',
   c_o1_t:'营收（2015–2025）', c_o1_s:'合并收入，十亿盾',
-  c_o2_t:'净利润：合并 vs 归母', c_o2_s:'合并净利（实线）与归母净利（虚线）；2015-2020 归母数据来自审计权益变动表',
+  c_o2_t:'净利润：合并 vs 归母', c_o2_s:'',
   c_o3_t:'利润率与杠杆趋势', c_o3_s:'毛利率 / 净利率 / ROE / 负债÷权益',
   c_o4_t:'分部收入：地产 vs 基建', c_o4_s:'2021–2025，十亿盾；基建含电力、水务与干港',
   c_o5_t:'营销销售（Marketing Sales）', c_o5_s:'土地与物业预售合同额，领先指标',
@@ -816,13 +815,11 @@ function buildOpt(id){
   }
   if (id === 'o2') {
     var nc = AN.niCons, np = AN.niParent;
-    console.log('o2 chart data:', JSON.stringify(np));
     var tt2 = {trigger:'axis', confine:true, formatter:function(ps){
       var i = ps[0].dataIndex, s = '<b>' + AN.years[i] + '</b>';
       for (var q=0; q<ps.length; q++){
         var ser = ps[q].seriesIndex === 0 ? nc : np, prev = ser[i-1];
         s += '<br/>' + ps[q].marker + ps[q].seriesName + ': ' + fmtN(ps[q].value) + ' ' + U;
-        if (i>0 && prev) { var y2 = (ser[i]/prev-1)*100; s += ' (' + (y2>=0?'+':'') + y2.toFixed(1) + '%)'; }
       }
       return s;
     }};
@@ -1556,7 +1553,6 @@ function renderPage(id){
     CH[ids[i]] = c;
   }
   for (var k in CH) { if (CH.hasOwnProperty(k)) { CH[k].resize(); } }
-  buildO2Table();
 }
 function showPage(id){
   var pages = document.querySelectorAll('.page'), i;
@@ -1565,20 +1561,7 @@ function showPage(id){
   for (i = 0; i < tabs.length; i++) { tabs[i].classList.toggle('active', tabs[i].getAttribute('data-page') === id); }
   renderPage(id);
 }
-function buildO2Table(){
-  var el = document.getElementById('o2-table');
-  if (!el || el.dataset.done) return;
-  var y = AN.years, nc = AN.niCons, np = AN.niParent;
-  var h = '<table style="width:100%;border-collapse:collapse;font-size:11px;text-align:right"><tr style="border-bottom:1px solid #ddd"><th style="text-align:left">Year</th>';
-  for (var i=0;i<y.length;i++) h += '<th>'+y[i]+'</th>';
-  h += '</tr><tr style="border-bottom:1px solid #eee"><td style="text-align:left">Consolidated</td>';
-  for (var i=0;i<nc.length;i++) h += '<td>'+nc[i]+'</td>';
-  h += '</tr><tr><td style="text-align:left;color:#B8860B"><b>Attributable to parent</b></td>';
-  for (var i=0;i<np.length;i++) h += '<td style="color:#B8860B"><b>'+np[i]+'</b></td>';
-  h += '</tr></table>';
-  el.innerHTML = h;
-  el.dataset.done = '1';
-}
+
 function currentPage(){
   var h = location.hash.replace('#', ''), pages = document.querySelectorAll('.page');
   for (var i = 0; i < pages.length; i++) { if (pages[i].id === h) { return h; } }
