@@ -1,0 +1,39 @@
+{
+  "meta": {
+    "company": "Company Name (TICKER)",
+    "exchange": "IDX",
+    "as_of": "2026-09-20",
+    "unit": "IDR bn",
+    "tagline": "Sector · Listed on exchange"
+  },
+  "KP": {
+    "overview": {
+      "en": [{"l":"Revenue","v":0,"u":"bn","d":"YoY","c":"flat"}],
+      "id": [{"l":"Pendapatan","v":0,"u":"miliar","d":"YoY","c":"flat"}],
+      "zh": [{"l":"营收","v":0,"u":"十亿","d":"同比","c":"flat"}]
+    }
+  },
+  "EV": {}, "RK": [], "DIR": {}, "TL": {"en":[], "id":[], "zh":[]},
+  "OWN": [], "SUBS": [], "BIZ": [], "VIA": [],
+  "PILLAR": [], "PILLAR_MAP": {}, "ORG": {},
+  "DEBT": {"kpi":[], "lenders":[], "maturityYears":[], "maturityTot":[], "cashDebt":{"years":[],"cash":[],"debt":[]}, "table":[], "ratings": [], "refi": [], "riskRows": []},
+  "WC": {}, "LAND": [], "VAL": {}, "VALI": [], "LIQ": [], "KEYP": {},
+  "DTXT": {"en":"", "id":"", "zh":""},
+  "LTXT": {"en":"", "id":"", "zh":""},
+  "VTXT": {"en":"", "id":"", "zh":""},
+  "NXT": {"en":"", "id":"", "zh":""},
+  "AN": {
+    "years": [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025],
+    "revenue":      [0,0,0,0,0,0,0,0,0,0,0],
+    "niCons":       [0,0,0,0,0,0,0,0,0,0,0],
+    "niParent":     [0,0,0,0,0,0,0,0,0,0,0],
+    "ebitda":       [0,0,0,0,0,0,0,0,0,0,0],
+    "cfo":          [0,0,0,0,0,0,0,0,0,0,0],
+    "capex":        [0,0,0,0,0,0,0,0,0,0,0],
+    "landAcq":      [0,0,0,0,0,0,0,0,0,0,0],
+    "fcfCons":      [0,0,0,0,0,0,0,0,0,0,0]
+  },
+  "CHT": {}, "FY": {}, "LBV": [], "GLOS": {},
+  "TOP3": {"en": [], "id": [], "zh": []},
+  "OPP": {"en": [], "id": [], "zh": []}
+}

@@ -235,3 +235,86 @@ Start with these; adapt names to the company:
 - Always verify visually (shot.py) before saying done.
 - If a request is ambiguous, ask one clarifying question before coding.
 - Keep responses short; the dashboard is the deliverable, not the chat.
+
+---
+
+## 14. Annual-report extraction checklist
+
+For each year (2015 through latest), pull these line items from the audited financial statements. Units: IDR billion (or local currency bn). Use the **5-year comparative summary table** in the latest annual report for years N-4..N, and earlier annual reports for older years. Cross-check every number across the three statements.
+
+### Income statement
+- Revenue / sales (`revenue`)
+- Cost of revenue -> gross profit (`grossProfit`, derive gross margin)
+- Operating profit / EBIT
+- Interest expense (`interest`)
+- Income tax expense (`tax`)
+- Net profit (consolidated) (`niCons`)
+- Net profit attributable to parent (`niParent`)
+- Non-controlling interest (NCI)
+- Depreciation & amortization (`da`) -- often in cash flow statement
+- **EBITDA** = niCons + tax + interest + D&A (or operating profit + D&A). If D&A not disclosed for early years, estimate conservatively and note it.
+
+### Balance sheet (year-end)
+- Cash & equivalents (`cash`)
+- Total debt (short-term + long-term borrowings, net of unamortized issuance cost) (`debt`)
+- Accounts receivable, net (`ar`)
+- Inventory / land held for development / land bank (`landBank`)
+- Total assets (`assets`)
+- Total equity (consolidated) and equity attributable to parent (`equity`, `equityParent`)
+- Accounts payable (`ap`)
+- Customer deposits / advances (`custDep`)
+
+### Cash flow statement
+- Cash flow from operations (`cfo`)
+- Capital expenditures / purchase of PP&E (`capex`)
+- Purchase of land / land acquisition (`landAcq`)
+- Free cash flow (conservative) = `cfo - capex - landAcq` (`fcfCons`)
+
+### Operating metrics (from MD&A / operating review)
+- Segment revenue (real estate, infrastructure, hospitality etc.) -- split per pillar
+- Marketing sales / pre-sales (for property developers)
+- Land bank in ha by project
+- Employees count (for per-capita metrics)
+
+### Ratios to compute
+- Gross margin = grossProfit / revenue
+- EBITDA margin = EBITDA / revenue
+- Net margin = niCons / revenue
+- ROE = niCons / avg total equity
+- ROA = niCons / avg total assets
+- FCF margin = fcfCons / revenue
+- DSO = AR / revenue x 365
+- DPO = AP / COGS x 365
+- Net debt / EBITDA = (debt - cash) / EBITDA
+- EBITDA / interest coverage = EBITDA / interest expense
+- Liabilities / equity
+
+### Market data (latest)
+- Share price, market cap, 52-week range
+- P/E, P/B, dividend yield
+- 12-month daily close price + volume (for price chart)
+- Credit ratings (Fitch / Moody's / S&P)
+
+### Debt details (latest balance sheet date)
+- Each lender / bond: principal, rate, maturity, collateral, status (current / repaid)
+- Maturity ladder by year
+- Refinancing events (one-off costs, FX losses, derivative termination)
+- Average cost of debt
+
+### Holding structure & org (latest AR)
+- List of subsidiaries: name, activity, ownership %, via (intermediate holding), assets, status
+- Board of commissioners / directors / audit committee names
+- Employees count, year founded, listed date
+
+### Sources to cite (footer)
+- Every annual report PDF (2015-latest) by name, linked
+- Latest interim report (Q2 / 1H)
+- Latest investor presentation
+- Exchange announcements page
+- 1-3 third-party references (rating agency, market research)
+
+---
+
+## 15. Template location
+
+A stripped copy of the build pipeline lives in `_template/` next to this file. Copy it as `_build/` for a new project; see `_template/README.md` for bootstrap steps.

@@ -1,0 +1,235 @@
+<body>
+<header>
+  <div class="hd-inner">
+    <div class="hd-title">
+      <span class="logo">K</span>
+      <div><h1 data-i18n="app_title"></h1><p data-i18n="app_sub"></p></div>
+    </div>
+    <div class="hd-right">
+      <div class="hd-meta"><span data-i18n="meta_src"></span><br><span data-i18n="meta_asof"></span></div>
+      <div class="langs" role="group" aria-label="Language">
+        <button type="button" data-lang="en" aria-label="English">EN</button>
+        <button type="button" data-lang="id" aria-label="Bahasa Indonesia">ID</button>
+        <button type="button" data-lang="zh" aria-label="中文">中文</button>
+      </div>
+    </div>
+  </div>
+</header>
+<nav class="tabs" id="tabs" role="navigation" aria-label="Sections">
+  <div class="tabs-inner">
+    <a class="tab active" href="#overview" data-page="overview" data-i18n="t_overview"></a>
+    <a class="tab" href="#profit" data-page="profit" data-i18n="t_prof"></a>
+    <a class="tab" href="#debt" data-page="debt" data-i18n="t_debt"></a>
+    <a class="tab" href="#landbank" data-page="landbank" data-i18n="t_landbank"></a>
+    <a class="tab" href="#valuation" data-page="valuation" data-i18n="t_valuation"></a>
+    <a class="tab" href="#vali" data-page="vali" data-i18n="t_vali"></a>
+    <a class="tab" href="#risk" data-page="risk" data-i18n="t_risk"></a>
+    <a class="tab" href="#holding" data-page="holding" data-i18n="t_holding"></a>
+    <a class="tab" href="#org" data-page="org" data-i18n="t_org"></a>
+    <a class="tab" href="#fy2026" data-page="fy2026" data-i18n="t_fy2026"></a>
+    <a class="tab" href="#fy2025" data-page="fy2025" data-i18n="t_fy2025"></a>
+    <a class="tab" href="#fy2024" data-page="fy2024" data-i18n="t_fy2024"></a>
+  </div>
+</nav>
+<main>
+
+<!-- ===== 视图：总览 ===== -->
+<section class="page active" id="overview">
+  <div class="phase" id="phases"></div>
+  <div class="kpis" id="ov-kpis"></div>
+  <div class="charts">
+    <div class="chart-card"><h3 data-i18n="c_o1_t"></h3><div class="sub" data-i18n="c_o1_s"></div><div class="chart" id="o1"></div></div>
+    <div class="chart-card"><h3 data-i18n="c_o2_t"></h3><div class="sub" data-i18n="c_o2_s"></div><div class="chart" id="o2"></div></div>
+    <div class="chart-card"><h3 data-i18n="c_o3_t"></h3><div class="sub" data-i18n="c_o3_s"></div><div class="chart" id="o3"></div></div>
+    <div class="chart-card"><h3 data-i18n="c_o4_t"></h3><div class="sub" data-i18n="c_o4_s"></div><div class="chart" id="o4"></div></div>
+    <div class="chart-card"><h3 data-i18n="c_o5_t"></h3><div class="sub" data-i18n="c_o5_s"></div><div class="chart" id="o5"></div></div>
+    <div class="chart-card"><h3 data-i18n="c_o6_t"></h3><div class="sub" data-i18n="c_o6_s"></div><div class="chart" id="o6"></div></div>
+  </div>
+</section>
+
+<!-- ===== 视图：盈利能力 ===== -->
+<section class="page" id="profit">
+  <h2 class="page-h" data-i18n="prof_h"></h2>
+  <p class="page-d" data-i18n="prof_d"></p>
+  <div class="kpis" id="k-prof"></div>
+  <div class="charts">
+    <div class="chart-card"><h3 data-i18n="c_p1_t"></h3><div class="sub" data-i18n="c_p1_s"></div><div class="chart" id="p-1"></div></div>
+    <div class="chart-card"><h3 data-i18n="c_p2_t"></h3><div class="sub" data-i18n="c_p2_s"></div><div class="chart" id="p-2"></div></div>
+    <div class="chart-card"><h3 data-i18n="c_p3_t"></h3><div class="sub" data-i18n="c_p3_s"></div><div class="chart" id="p-3"></div></div>
+    <div class="chart-card"><h3 data-i18n="c_p4_t"></h3><div class="sub" data-i18n="c_p4_s"></div><div class="chart" id="p-4"></div></div>
+  </div>
+  <div class="panel"><h3 data-i18n="prof_note_h"></h3><div class="risk-note" data-i18n="prof_note"></div></div>
+</section>
+
+<!-- ===== 视图：2024 年报 ===== -->
+<section class="page" id="fy2024">
+  <div class="kpis" id="k24"></div>
+  <div class="charts">
+    <div class="chart-card"><h3 data-i18n="c_f24_1_t"></h3><div class="sub" data-i18n="c_f24_1_s"></div><div class="chart" id="f24-1"></div></div>
+    <div class="chart-card"><h3 data-i18n="c_f24_2_t"></h3><div class="sub" data-i18n="c_f24_2_s"></div><div class="chart" id="f24-2"></div></div>
+    <div class="chart-card"><h3 data-i18n="c_f24_3_t"></h3><div class="sub" data-i18n="c_f24_3_s"></div><div class="chart" id="f24-3"></div></div>
+    <div class="chart-card"><h3 data-i18n="c_f24_4_t"></h3><div class="sub" data-i18n="c_f24_4_s"></div><div class="chart" id="f24-4"></div></div>
+  </div>
+  <div class="two-col">
+    <div class="panel"><h3 data-i18n="ev24_t"></h3><ul class="events" id="ev24"></ul></div>
+    <div class="panel"><h3 data-i18n="rk24_t"></h3><div id="rk24"></div><div class="risk-note" data-i18n="note24"></div></div>
+  </div>
+  <div class="panel hl-driver"><h3 data-i18n="g24_t"></h3><p class="page-d" data-i18n="g24"></p></div>
+</section>
+
+<!-- ===== 视图：2025 年报 ===== -->
+<section class="page" id="fy2025">
+  <div class="kpis" id="k25"></div>
+  <div class="charts">
+    <div class="chart-card"><h3 data-i18n="c_f25_1_t"></h3><div class="sub" data-i18n="c_f25_1_s"></div><div class="chart" id="f25-1"></div></div>
+    <div class="chart-card"><h3 data-i18n="c_f25_2_t"></h3><div class="sub" data-i18n="c_f25_2_s"></div><div class="chart" id="f25-2"></div></div>
+    <div class="chart-card"><h3 data-i18n="c_f25_3_t"></h3><div class="sub" data-i18n="c_f25_3_s"></div><div class="chart" id="f25-3"></div></div>
+    <div class="chart-card"><h3 data-i18n="c_f25_4_t"></h3><div class="sub" data-i18n="c_f25_4_s"></div><div class="chart" id="f25-4"></div></div>
+  </div>
+  <div class="two-col">
+    <div class="panel"><h3 data-i18n="ev25_t"></h3><ul class="events" id="ev25"></ul></div>
+    <div class="panel"><h3 data-i18n="rk25_t"></h3><div id="rk25"></div><div class="risk-note" data-i18n="note25"></div></div>
+  </div>
+  <div class="panel hl-driver"><h3 data-i18n="g25_t"></h3><p class="page-d" data-i18n="g25"></p></div>
+</section>
+
+<!-- ===== 视图：2026 中报 ===== -->
+<section class="page" id="fy2026">
+  <div class="kpis" id="k26"></div>
+  <div class="charts">
+    <div class="chart-card"><h3 data-i18n="c_f26_1_t"></h3><div class="sub" data-i18n="c_f26_1_s"></div><div class="chart" id="f26-1"></div></div>
+    <div class="chart-card"><h3 data-i18n="c_f26_2_t"></h3><div class="sub" data-i18n="c_f26_2_s"></div><div class="chart" id="f26-2"></div></div>
+    <div class="chart-card"><h3 data-i18n="c_f26_3_t"></h3><div class="sub" data-i18n="c_f26_3_s"></div><div class="chart" id="f26-3"></div></div>
+    <div class="chart-card"><h3 data-i18n="c_f26_4_t"></h3><div class="sub" data-i18n="c_f26_4_s"></div><div class="chart" id="f26-4"></div></div>
+  </div>
+  <div class="two-col">
+    <div class="panel"><h3 data-i18n="ev26_t"></h3><ul class="events" id="ev26"></ul></div>
+    <div class="panel"><h3 data-i18n="rk26_t"></h3><div id="rk26"></div><div class="risk-note" data-i18n="note26"></div></div>
+  </div>
+  <div class="panel hl-driver"><h3 data-i18n="g26_t"></h3><p class="page-d" data-i18n="g26"></p></div>
+</section>
+
+<!-- ===== 视图：债务与偿债能力 ===== -->
+<section class="page" id="debt">
+  <h2 class="page-h" data-i18n="debt_h"></h2>
+  <p class="page-d" data-i18n="debt_d"></p>
+  <div class="kpis" id="k-debt"></div>
+  <div class="charts">
+    <div class="chart-card"><h3 data-i18n="c_d1_t"></h3><div class="sub" data-i18n="c_d1_s"></div><div class="chart" id="d-1"></div></div>
+    <div class="chart-card"><h3 data-i18n="c_d2_t"></h3><div class="sub" data-i18n="c_d2_s"></div><div class="chart" id="d-2"></div></div>
+    <div class="chart-card"><h3 data-i18n="c_d3_t"></h3><div class="sub" data-i18n="c_d3_s"></div><div class="chart" id="d-3"></div></div>
+    <div class="chart-card"><h3 data-i18n="c_d4_t"></h3><div class="sub" data-i18n="c_d4_s"></div><div class="chart" id="d-4"></div></div>
+  </div>
+  <h3 class="block-h" data-i18n="wc_h"></h3>
+  <div class="charts">
+    <div class="chart-card"><h3 data-i18n="c_wc1_t"></h3><div class="sub" data-i18n="c_wc1_s"></div><div class="chart" id="d-5"></div></div>
+  </div>
+  <div id="wc-table"></div>
+  <h3 class="block-h" data-i18n="debt_table_h"></h3>
+  <div id="debt-table"></div>
+  <div class="two-col">
+    <div class="panel"><h3 data-i18n="debt_rate_h"></h3><div id="debt-rate"></div></div>
+    <div class="panel"><h3 data-i18n="debt_refi_h"></h3><ul class="events" id="debt-refi"></ul><div class="risk-note" data-i18n="debt_refi_note"></div></div>
+  </div>
+  <div class="panel" style="margin-top:2px"><h3 data-i18n="debt_risk_t"></h3><div id="debt-risk"></div><div class="risk-note" data-i18n="debt_note"></div></div>
+</section>
+
+<!-- ===== 视图：土地储备 ===== -->
+<section class="page" id="landbank">
+  <h2 class="page-h" data-i18n="lb_h"></h2>
+  <p class="page-d" data-i18n="lb_d"></p>
+  <div class="kpis" id="k-lb"></div>
+  <div class="charts">
+    <div class="chart-card"><h3 data-i18n="c_lb1_t"></h3><div class="sub" data-i18n="c_lb1_s"></div><div class="chart" id="lb-1"></div></div>
+    <div class="chart-card"><h3 data-i18n="c_lb2_t"></h3><div class="sub" data-i18n="c_lb2_s"></div><div class="chart" id="lb-2"></div></div>
+  </div>
+  <h3 class="block-h" data-i18n="lb_table_h"></h3>
+  <div id="lb-table"></div>
+  <div class="panel"><h3 data-i18n="lb_note_h"></h3><div class="risk-note" data-i18n="lb_note"></div></div>
+</section>
+
+<!-- ===== 视图：估值与股价 ===== -->
+<section class="page" id="valuation">
+  <h2 class="page-h" data-i18n="val_h"></h2>
+  <p class="page-d" data-i18n="val_d"></p>
+  <div class="kpis" id="k-val"></div>
+  <div class="charts">
+    <div class="chart-card"><h3 data-i18n="c_v1_t"></h3><div class="sub" data-i18n="c_v1_s"></div><div class="chart" id="v-1"></div></div>
+    <div class="chart-card"><h3 data-i18n="c_v2_t"></h3><div class="sub" data-i18n="c_v2_s"></div><div class="chart" id="v-2"></div></div>
+  </div>
+  <div class="two-col">
+    <div class="panel"><h3 data-i18n="val_stats_t"></h3><div id="val-stats"></div></div>
+    <div class="panel"><h3 data-i18n="val_peers_t"></h3><div id="val-peers"></div><div class="risk-note" data-i18n="val_peers_note"></div></div>
+  </div>
+  <div class="two-col">
+    <div class="panel"><h3 data-i18n="val_analysts_t"></h3><div id="val-analysts"></div></div>
+    <div class="panel"><h3 data-i18n="val_events_t"></h3><ul class="events" id="val-events"></ul></div>
+  </div>
+</section>
+
+<!-- ===== 视图：估值测算 ===== -->
+<section class="page" id="vali">
+  <h2 class="page-h" data-i18n="t_vali"></h2>
+  <p class="page-d" id="vali-sub"></p>
+  <div class="risk-note" id="vali-disc"></div>
+  <div class="charts">
+    <div class="chart-card"><h3 id="vali-chart-h"></h3><div class="sub" id="vali-chart-s"></div><div class="chart" id="vi-1"></div></div>
+  </div>
+  <div id="vali-inputs"></div>
+  <div id="vali-methods"></div>
+  <div id="vali-comp"></div>
+  <div id="vali-implied"></div>
+  <div id="vali-liq"></div>
+  <div id="vali-lbv"></div>
+  <div id="vali-keyp"></div>
+  <div id="vali-key"></div>
+</section>
+
+<!-- ===== 视图：风险与方向 ===== -->
+<section class="page" id="risk">
+  <h2 class="page-h" data-i18n="rkall_h"></h2>
+  <p class="page-d" data-i18n="rkall_d"></p>
+  <div class="panel" style="margin-bottom:20px" id="rk-all"></div>
+  <h2 class="page-h" id="top3-h"></h2>
+  <p class="page-d" id="top3-sub"></p>
+  <div class="panel" style="margin-bottom:20px" id="top3"></div>
+  <h2 class="page-h" id="opp-h"></h2>
+  <p class="page-d" id="opp-sub"></p>
+  <div class="panel" style="margin-bottom:20px" id="opp"></div>
+  <h2 class="page-h" data-i18n="dir_h"></h2>
+  <div class="dir-grid" id="dirs"></div>
+  <h2 class="page-h" data-i18n="tl_h"></h2>
+  <div class="tl" id="tl"></div>
+</section>
+
+<!-- ===== 视图：股权结构 ===== -->
+<section class="page" id="holding">
+  <h2 class="page-h" data-i18n="hld_h"></h2>
+  <p class="page-d" data-i18n="hld_d"></p>
+  <h3 class="block-h" data-i18n="hld_own_h"></h3>
+  <div class="own-bars" id="own-bars"></div>
+  <h3 class="block-h" data-i18n="hld_group_h"></h3>
+  <div class="hld" id="hld"></div>
+  <h3 class="block-h" data-i18n="hld_table_h"></h3>
+  <div id="hld-table"></div>
+</section>
+
+<!-- ===== 视图：公司治理与组织 ===== -->
+<section class="page" id="org">
+  <h2 class="page-h" data-i18n="org_h"></h2>
+  <p class="page-d" data-i18n="org_d"></p>
+  <h3 class="block-h" data-i18n="org_facts_h"></h3>
+  <div class="facts" id="org-facts"></div>
+  <h3 class="block-h" data-i18n="org_gov_h"></h3>
+  <div class="org" id="org-gov"></div>
+  <h3 class="block-h" data-i18n="org_chart_h"></h3>
+  <div class="org" id="org-chart"></div>
+  <h3 class="block-h" data-i18n="org_mgmt_h"></h3>
+  <div id="org-mgmt"></div>
+</section>
+
+</main>
+<footer>
+  <div data-i18n="ft_src"></div>
+  <div data-i18n="ft_note"></div>
+</footer>

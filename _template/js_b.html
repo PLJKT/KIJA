@@ -1,0 +1,894 @@
+<script>
+/* ================= 工具 ================= */
+var LANG = 'en';
+try { var _s = localStorage.getItem('kija_lang'); if (_s === 'en' || _s === 'id' || _s === 'zh') { LANG = _s; } } catch (e) {}
+function T(k){ return (I18N[LANG] && I18N[LANG][k]) || k; }
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function fmtN(v){
+  if (v === null || v === undefined || v === '') { return ''; }
+  var n = Number(v);
+  if (isNaN(n)) { return String(v); }
+  var s = n.toFixed(1);
+  if (s.charAt(s.length - 2) === '.' && s.charAt(s.length - 1) === '0') { s = s.slice(0, -2); }
+  var parts = s.split('.');
+  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  return parts.join('.');
+}
+var C = {green:'#1F5E40', green2:'#4A8B66', teal:'#3E7D6B', amber:'#C07A2D', clay:'#B04A2E', soft:'#C7D0C8', blue:'#2E6FB0', purple:'#7A5BA6', red:'#C0392B', gold:'#D9A53A'};
+var AX = {color:'#5C6B61', fontSize:11};
+var SPLIT = {lineStyle:{color:'#E3E8E1'}};
+
+/* ================= 年度数据与图表文案（AN / CHT / FY 由 data.json 注入；在线时运行时拉取覆盖） ================= */
+function CT(k){ return CHT[LANG][k] || k; }
+function N(k){ return NXT[LANG][k] || k; }
+
+/* ================= 图表构建（按当前语言） ================= */
+function baseTooltip(){ return {trigger:'axis', confine:true}; }
+function baseGrid(){ return {left:48, right:18, top:34, bottom:30}; }
+function baseX(cats){ return {type:'category', data:cats, axisLabel:{color:AX.color, fontSize:11}, axisLine:{lineStyle:{color:'#B9C4BB'}}}; }
+function baseY(name){ return {type:'value', name:name, nameTextStyle:{color:AX.color, fontSize:11}, axisLabel:{color:AX.color, fontSize:11}, splitLine:SPLIT}; }
+function lblFmt(){ return function(p){ return fmtN(p.value); }; }
+function legendT(){ return {top:2, right:6, textStyle:{color:AX.color, fontSize:11}, itemWidth:14}; }
+
+function num(s){ var n = Number(String(s).replace(/,/g, '.')); return isNaN(n) ? 0 : n; }
+function buildOpt(id){
+  var U = CT('unit');
+  if (id === 'o1') {
+    var d = AN.revenue;
+    var tt = {trigger:'axis', confine:true, formatter:function(ps){
+      var i = ps[0].dataIndex, s = '<b>' + AN.years[i] + '</b><br/>';
+      s += CT('rev') + ': ' + fmtN(d[i]) + ' ' + U;
+      if (i > 0 && d[i-1]) { var y = (d[i]/d[i-1]-1)*100; s += '<br/>YoY: ' + (y>=0?'+':'') + y.toFixed(1) + '%'; }
+      return s;
+    }};
+    return {tooltip:tt, grid:baseGrid(), xAxis:baseX(AN.years), yAxis:baseY(U),
+      series:[{type:'bar', data:d, itemStyle:{color:C.green, borderRadius:[3,3,0,0]}, label:{show:true, position:'top', fontSize:10, color:'#5C6B61', formatter:lblFmt()}, barMaxWidth:26}]};
+  }
+  if (id === 'o2') {
+    var nc = AN.niCons, np = AN.niParent;
+    var tt2 = {trigger:'axis', confine:true, formatter:function(ps){
+      var i = ps[0].dataIndex, s = '<b>' + AN.years[i] + '</b>';
+      for (var q=0; q<ps.length; q++){
+        var ser = ps[q].seriesIndex === 0 ? nc : np, prev = ser[i-1];
+        s += '<br/>' + ps[q].marker + ps[q].seriesName + ': ' + fmtN(ps[q].value) + ' ' + U;
+        if (i>0 && prev) { var y2 = (ser[i]/prev-1)*100; s += ' (' + (y2>=0?'+':'') + y2.toFixed(1) + '%)'; }
+      }
+      return s;
+    }};
+    return {tooltip:tt2, legend:legendT(), grid:baseGrid(), xAxis:baseX(AN.years), yAxis:baseY(U),
+      series:[
+        {name:CT('cons'), type:'line', data:nc, smooth:true, symbolSize:6, lineStyle:{width:2.5, color:C.green}, itemStyle:{color:C.green}},
+        {name:CT('parent'), type:'line', data:np, smooth:true, symbolSize:6, lineStyle:{width:2, color:C.amber, type:'dashed'}, itemStyle:{color:C.amber}}]};
+  }
+  if (id === 'o3') {
+    return {tooltip:baseTooltip(), legend:legendT(), grid:baseGrid(), xAxis:baseX(AN.years), yAxis:baseY('%'),
+      series:[
+        {name:CT('gM'), type:'line', data:AN.gpm, smooth:true, symbolSize:5, lineStyle:{width:2, color:C.green}, itemStyle:{color:C.green}},
+        {name:CT('nM'), type:'line', data:AN.npm, smooth:true, symbolSize:5, lineStyle:{width:2, color:C.blue}, itemStyle:{color:C.blue}},
+        {name:CT('roe'), type:'line', data:AN.roe, smooth:true, symbolSize:5, lineStyle:{width:2, color:C.amber}, itemStyle:{color:C.amber}},
+        {name:CT('de'), type:'line', data:AN.de, smooth:true, symbolSize:5, lineStyle:{width:2, color:C.red}, itemStyle:{color:C.red}}]};
+  }
+  if (id === 'o4') {
+    return {tooltip:baseTooltip(), legend:legendT(), grid:baseGrid(), xAxis:baseX(AN.years.slice(-5)), yAxis:baseY(U),
+      series:[
+        {name:CT('infSeg'), type:'bar', stack:'s', data:FY.segStack.infra, itemStyle:{color:C.blue}, barMaxWidth:40},
+        {name:CT('reSeg'), type:'bar', stack:'s', data:FY.segStack.re, itemStyle:{color:C.green}, barMaxWidth:40}]};
+  }
+  if (id === 'o5') {
+    var d2 = FY.msales, lb2 = [];
+    for (var j = 0; j < d2.length; j++) { lb2.push(fmtN(d2[j])); }
+    return {tooltip:baseTooltip(), grid:baseGrid(), xAxis:baseX(['2022','2023','2024','2025']), yAxis:baseY(U),
+      series:[{type:'bar', data:d2, itemStyle:{color:C.green, borderRadius:[3,3,0,0]}, label:{show:true, position:'top', fontSize:11, color:'#1F5E40', fontWeight:600, formatter:lblFmt()}, barMaxWidth:52}]};
+  }
+  if (id === 'o6') {
+    var cats = [], vals = [], d3 = AN.ebitda;
+    for (var k = 0; k < d3.length; k++) { if (d3[k] !== null) { cats.push(AN.years[k]); vals.push(d3[k]); } }
+    return {tooltip:baseTooltip(), grid:baseGrid(), xAxis:baseX(cats), yAxis:baseY(U),
+      series:[{type:'bar', data:vals, itemStyle:{color:C.green2, borderRadius:[3,3,0,0]}, label:{show:true, position:'top', fontSize:10, color:'#5C6B61', formatter:lblFmt()}, barMaxWidth:40}]};
+  }
+  if (id === 'p-1') {
+    return {tooltip:baseTooltip(), legend:legendT(), grid:baseGrid(), xAxis:baseX(AN.years), yAxis:baseY('%'),
+      series:[
+        {name:CT('gM'), type:'line', data:AN.gpm, smooth:true, symbolSize:5, lineStyle:{width:2.5,color:C.green}, itemStyle:{color:C.green}},
+        {name:'EBITDA margin', type:'line', data:AN.ebitdaMargin, smooth:true, symbolSize:5, lineStyle:{width:2,color:C.blue}, itemStyle:{color:C.blue}},
+        {name:CT('nM'), type:'line', data:AN.npm, smooth:true, symbolSize:5, lineStyle:{width:2,color:C.amber}, itemStyle:{color:C.amber}}]};
+  }
+  if (id === 'p-2') {
+    return {tooltip:baseTooltip(), legend:legendT(), grid:baseGrid(), xAxis:baseX(AN.years), yAxis:baseY('%'),
+      series:[
+        {name:'ROE', type:'line', data:AN.roe, smooth:true, symbolSize:6, lineStyle:{width:2.5,color:C.green}, itemStyle:{color:C.green}},
+        {name:'ROA', type:'line', data:AN.roa, smooth:true, symbolSize:6, lineStyle:{width:2,color:C.blue}, type2:'x', itemStyle:{color:C.blue}}]};
+  }
+  if (id === 'p-3') {
+    return {tooltip:baseTooltip(), legend:legendT(), grid:baseGrid(), xAxis:baseX(AN.years), yAxis:baseY(U),
+      series:[
+        {name:'EBITDA', type:'bar', data:AN.ebitda, itemStyle:{color:C.green2,barMaxWidth:24}, barMaxWidth:24},
+        {name:CT('cons'), type:'line', data:AN.niCons, smooth:true, symbolSize:5, lineStyle:{width:2.5,color:C.clay}, itemStyle:{color:C.clay}}]};
+  }
+  if (id === 'p-4') {
+    var yr=[], rev=[], gpmL=[];
+    for(var pi=0; pi<AN.years.length; pi++){ yr.push(AN.years[pi]); }
+    return {tooltip:baseTooltip(), legend:legendT(), grid:baseGrid(), xAxis:baseX(AN.years), yAxis:[baseY(U), baseY('%')],
+      series:[
+        {name:'Revenue', type:'bar', data:AN.revenue, itemStyle:{color:C.soft}, barMaxWidth:26},
+        {name:CT('gM'), type:'line', yAxisIndex:1, data:AN.gpm, smooth:true, symbolSize:5, lineStyle:{width:2.5,color:C.green}, itemStyle:{color:C.green}}]};
+  }
+  if (id === 'd-5') {
+    var ar=WC.ar, rev=WC.revenue, dso=[];
+    for(var wi=0; wi<ar.length; wi++){ dso.push(ar[wi]/rev[wi]*365); }
+    return {tooltip:baseTooltip(),
+      legend:{bottom:0, textStyle:{color:AX.color, fontSize:11}, itemWidth:12},
+      grid:{left:48, right:48, top:30, bottom:44}, xAxis:baseX(WC.years),
+      yAxis:[baseY(U), baseY('days')],
+      series:[
+        {name:'Trade receivables (net)', type:'bar', data:ar, itemStyle:{color:C.blue}, barMaxWidth:34},
+        {name:'DSO', type:'line', yAxisIndex:1, data:dso.map(function(x){return Math.round(x);}), smooth:true, symbolSize:6, lineStyle:{width:2.5,color:C.amber}, itemStyle:{color:C.amber}}]};
+  }
+  if (id === 'f24-1') {
+    var f24s = FY.seg24, data = [];
+    for (var m0 = 0; m0 < f24s.length; m0++) { data.push([CT(f24s[m0][0]), f24s[m0][1]]); }
+    var ser = [], tot = 0;
+    for (var m = 0; m < data.length; m++) { tot += data[m][1]; ser.push({name:data[m][0], value:data[m][1]}); }
+    return {tooltip:{trigger:'item', confine:true, formatter:function(p){ return p.name + ': ' + fmtN(p.value) + ' ' + U + ' (' + p.percent + '%)'; }},
+      legend:{bottom:2, textStyle:{color:AX.color, fontSize:11}, itemWidth:12},
+      series:[{type:'pie', radius:['34%','66%'], center:['50%','45%'], data:ser, itemStyle:{borderColor:'#fff', borderWidth:1},
+        label:{show:true, fontSize:11, color:'#16241C', formatter:function(p){ return p.name + '\n' + p.percent + '%'; }},
+        labelLine:{length:10, length2:8}, color:[C.green, C.blue, C.amber, C.purple]}]};
+  }
+  if (id === 'f24-2') {
+    return {tooltip:baseTooltip(), legend:legendT(), grid:baseGrid(), xAxis:baseX(['2023','2024','2025']), yAxis:baseY(U),
+      series:[
+        {name:CT('cons'), type:'bar', data:FY.ni3.cons, itemStyle:{color:C.green}, barMaxWidth:34},
+        {name:CT('parent'), type:'bar', data:FY.ni3.parent, itemStyle:{color:C.amber}, barMaxWidth:34}]};
+  }
+  if (id === 'f24-3') {
+    return {tooltip:baseTooltip(), legend:legendT(), grid:baseGrid(), xAxis:baseX(AN.years), yAxis:baseY('%'),
+      series:[
+        {name:CT('gM'), type:'line', data:AN.gpm, smooth:true, symbolSize:6, lineStyle:{width:2, color:C.green}, itemStyle:{color:C.green}},
+        {name:CT('nM'), type:'line', data:AN.npm, smooth:true, symbolSize:6, lineStyle:{width:2, color:C.blue}, itemStyle:{color:C.blue}}]};
+  }
+  if (id === 'f24-4') {
+    return {tooltip:baseTooltip(), legend:legendT(), grid:baseGrid(), xAxis:baseX(AN.years.slice(-5)), yAxis:baseY(U),
+      series:[
+        {name:CT('ta'), type:'bar', data:AN.assets.slice(-5), itemStyle:{color:C.green}, barMaxWidth:22},
+        {name:CT('tl'), type:'bar', data:AN.liab.slice(-5), itemStyle:{color:C.red}, barMaxWidth:22},
+        {name:CT('te'), type:'bar', data:AN.equity.slice(-5), itemStyle:{color:C.blue}, barMaxWidth:22}]};
+  }
+  if (id === 'f25-1') {
+    var d25 = [FY.debt25.sn, FY.debt25.mandiri, FY.debt25.ccb, FY.debt25.ocbc], dcols = [C.amber, C.green, C.blue, C.purple], ser25 = [];
+    for (var m25 = 0; m25 < d25.length; m25++) { ser25.push({value: d25[m25], itemStyle:{color: dcols[m25]}}); }
+    return {tooltip:baseTooltip(), grid:{left:150, right:56, top:10, bottom:26},
+      xAxis:{type:'value', axisLabel:{color:AX.color, fontSize:11}, splitLine:SPLIT},
+      yAxis:{type:'category', data:[CT('sn'),'Bank Mandiri','China Construction Bank','OCBC NISP'], axisLabel:{color:'#16241C', fontSize:11}},
+      series:[{type:'bar', data:ser25, label:{show:true, position:'right', fontSize:11, color:'#16241C', formatter:lblFmt()}, barMaxWidth:24}]};
+  }
+  if (id === 'f25-2') {
+    return {tooltip:baseTooltip(), legend:legendT(), grid:baseGrid(), xAxis:baseX(['2023','2024','2025']), yAxis:baseY(U),
+      series:[
+        {name:CT('cash'), type:'bar', stack:'a', data:FY.cashStack.cash, itemStyle:{color:C.green}, barMaxWidth:46},
+        {name:CT('other'), type:'bar', stack:'a', data:FY.cashStack.other, itemStyle:{color:C.soft}, barMaxWidth:46}]};
+  }
+  if (id === 'f25-3') {
+    return {tooltip:baseTooltip(), legend:legendT(), grid:baseGrid(), xAxis:baseX(['2023','2024','2025']), yAxis:baseY('x'),
+      series:[
+        {name:CT('ebitdaI'), type:'line', data:FY.cov.icr, smooth:true, symbolSize:6, lineStyle:{width:2, color:C.green}, itemStyle:{color:C.green}},
+        {name:CT('nd'), type:'line', data:FY.cov.nd, smooth:true, symbolSize:6, lineStyle:{width:2, color:C.red}, itemStyle:{color:C.red}}]};
+  }
+  if (id === 'f25-4') {
+    return {tooltip:baseTooltip(), grid:baseGrid(), xAxis:baseX([CT('openC'), CT('consS'), CT('closeC')]), yAxis:baseY(U),
+      series:[{type:'bar', data:[
+        {value:FY.cf.open, itemStyle:{color:C.green2}},
+        {value:FY.cf.surplus, itemStyle:{color:C.amber}},
+        {value:FY.cf.close, itemStyle:{color:C.green}}
+      ], label:{show:true, position:'top', fontSize:11, color:'#16241C', formatter:lblFmt()}, barMaxWidth:56}]};
+  }
+  if (id === 'f26-1') {
+    return {tooltip:baseTooltip(), legend:legendT(), grid:baseGrid(), xAxis:baseX([CT('totR'), CT('infra'), CT('land'), CT('leis')]), yAxis:baseY(U),
+      series:[
+        {name:'1H25', type:'bar', data:FY.h26rev.h25, itemStyle:{color:C.soft}, barMaxWidth:30},
+        {name:'1H26', type:'bar', data:FY.h26rev.h26, itemStyle:{color:C.green}, barMaxWidth:30}]};
+  }
+  if (id === 'f26-2') {
+    return {tooltip:baseTooltip(), grid:baseGrid(), xAxis:baseX([CT('done')]),
+      yAxis:{type:'value', max:4200, name:U, nameTextStyle:{color:AX.color, fontSize:11}, axisLabel:{color:AX.color, fontSize:11}, splitLine:SPLIT},
+      series:[{type:'bar', data:[FY.msDone], itemStyle:{color:C.green, borderRadius:[3,3,0,0]}, label:{show:true, position:'top', fontSize:12, fontWeight:600, color:'#1F5E40', formatter:function(){ return fmtN(FY.msDone); }}, barMaxWidth:64,
+        markLine:{silent:true, symbol:'none', lineStyle:{color:C.clay, type:'dashed', width:1.5}, data:[{yAxis:FY.msTarget, label:{formatter:CT('target'), fontSize:11, color:C.clay, position:'insideEndTop'}}]}}]};
+  }
+  if (id === 'f26-3') {
+    return {tooltip:{trigger:'axis', confine:true, valueFormatter:function(v){ return v + '%'; }}, legend:legendT(), grid:baseGrid(),
+      xAxis:baseX(['1H25','1H26']),
+      yAxis:{type:'value', max:100, axisLabel:{color:AX.color, fontSize:11, formatter:'{value}%'}, splitLine:SPLIT},
+      series:[
+        {name:CT('recurr'), type:'bar', stack:'p', data:[FY.mix.h25[0], FY.mix.h26[0]], itemStyle:{color:C.blue}, barMaxWidth:56},
+        {name:CT('land'), type:'bar', stack:'p', data:[FY.mix.h25[1], FY.mix.h26[1]], itemStyle:{color:C.green}, barMaxWidth:56}]};
+  }
+  if (id === 'f26-4') {
+    return {tooltip:baseTooltip(), grid:{left:150, right:56, top:10, bottom:26},
+      xAxis:{type:'value', axisLabel:{color:AX.color, fontSize:11}, splitLine:SPLIT},
+      yAxis:{type:'category', data:[CT('fx'), CT('deriv'), CT('amort')], axisLabel:{color:'#16241C', fontSize:11}},
+      series:[{type:'bar', data:[
+        {value:FY.oneoff[0], itemStyle:{color:C.clay}},
+        {value:FY.oneoff[1], itemStyle:{color:C.amber}},
+        {value:FY.oneoff[2], itemStyle:{color:C.green2}}
+      ], label:{show:true, position:'right', fontSize:11, color:'#16241C', formatter:lblFmt()}, barMaxWidth:22}]};
+  }
+  /* ---- 债务页 ---- */
+  if (id === 'd-1') {
+    var dl = DEBT.lenders26, dc = [], dv = [], dcol = [C.green, C.amber, C.blue, C.purple, C.soft];
+    for (var di = 0; di < dl.length; di++) { dc.push(N(dl[di].n)); dv.push({value:dl[di].v, itemStyle:{color:dcol[dl[di].c - 1]}}); }
+    return {tooltip:baseTooltip(), grid:{left:132, right:70, top:8, bottom:24},
+      xAxis:{type:'value', axisLabel:{color:AX.color, fontSize:11}, splitLine:SPLIT},
+      yAxis:{type:'category', data:dc, axisLabel:{color:'#16241C', fontSize:11}},
+      series:[{type:'bar', data:dv, label:{show:true, position:'right', fontSize:11, color:'#16241C', formatter:lblFmt()}, barMaxWidth:22}]};
+  }
+  if (id === 'd-2') {
+    return {tooltip:baseTooltip(), legend:legendT(), grid:baseGrid(), xAxis:baseX(DEBT.maturityYears), yAxis:baseY(U),
+      series:[
+        {name:N('mandiri'), type:'bar', stack:'m', data:DEBT.maturityMandiri, itemStyle:{color:C.green}, barMaxWidth:34},
+        {name:N('ina'), type:'bar', stack:'m', data:DEBT.maturityINA, itemStyle:{color:C.amber}, barMaxWidth:34},
+        {name:N('ocbc'), type:'bar', stack:'m', data:DEBT.maturityOCBC, itemStyle:{color:C.blue}, barMaxWidth:34,
+          label:{show:true, position:'top', fontSize:10, color:'#5C6B61', formatter:function(p){ return fmtN(DEBT.maturityTot[p.dataIndex]); }}}]};
+  }
+  if (id === 'd-3') {
+    return {tooltip:baseTooltip(), legend:legendT(), grid:baseGrid(), xAxis:baseX(['2023','2024','2025']), yAxis:baseY('x'),
+      series:[
+        {name:CT('ebitdaI'), type:'line', data:FY.cov.icr, smooth:true, symbolSize:6, lineStyle:{width:2, color:C.green}, itemStyle:{color:C.green}},
+        {name:CT('nd'), type:'line', data:FY.cov.nd, smooth:true, symbolSize:6, lineStyle:{width:2, color:C.red}, itemStyle:{color:C.red}}]};
+  }
+  if (id === 'd-4') {
+    return {tooltip:baseTooltip(), grid:baseGrid(), xAxis:baseX([N('sched'), N('totD')]), yAxis:baseY(U),
+      series:[{type:'bar', data:[
+        {value:FY.sched5y, itemStyle:{color:C.teal}},
+        {value:FY.totD26, itemStyle:{color:C.amber}}
+      ], label:{show:true, position:'top', fontSize:11, color:'#16241C', formatter:lblFmt()}, barMaxWidth:64,
+        markLine:{silent:true, symbol:'none', lineStyle:{color:C.green, width:2}, data:[{yAxis:FY.cash26, label:{formatter:N('cash') + ' ' + fmtN(FY.cash26), fontSize:11, color:C.green, position:'insideEndTop'}}]}}]};
+  }
+  /* ---- 土地页 ---- */
+  if (id === 'lb-1') {
+    var lr = LAND.rows, lc = [], lv = [], lcol = [C.green, C.blue, C.amber, C.purple];
+    for (var li = 0; li < lr.length; li++) { lc.push(lr[li].p); lv.push({value:lr[li].ha, itemStyle:{color:lcol[li]}}); }
+    return {tooltip:baseTooltip(), grid:{left:168, right:72, top:10, bottom:26},
+      xAxis:{type:'value', axisLabel:{color:AX.color, fontSize:11}, splitLine:SPLIT, axisLine:{show:false}, axisTick:{show:false}},
+      yAxis:{type:'category', data:lc, axisLabel:{color:'#16241C', fontSize:11, margin:12}, axisLine:{show:false}, axisTick:{show:false}},
+      series:[{type:'bar', data:lv, label:{show:true, position:'right', fontSize:11, color:'#16241C', formatter:lblFmt()}, barMaxWidth:22}]};
+  }
+  if (id === 'lb-2') {
+    var lr2 = LAND.rows, n1 = [], n2 = [], n3 = [];
+    for (var lj = 0; lj < lr2.length; lj++) { n1.push(lr2[lj].m2); n2.push(lr2[lj].mLo); n3.push(lr2[lj].mHi); }
+    return {tooltip:baseTooltip(), legend:legendT(), grid:{left:108, right:86, top:30, bottom:26},
+      xAxis:{type:'log', axisLabel:{color:AX.color, fontSize:11, formatter:function(v){ return v >= 1000 ? (v / 1000) + 'k' : v; }}, splitLine:SPLIT, axisLine:{show:false}, axisTick:{show:false}},
+      yAxis:{type:'category', data:['Cikarang','Kendal','Tanjung Lesung','Morotai'], axisLabel:{color:'#16241C', fontSize:11, margin:10}, axisLine:{show:false}, axisTick:{show:false}},
+      series:[
+        {name:N('book'), type:'bar', data:n1, itemStyle:{color:C.green}, barMaxWidth:11, label:{show:true, position:'right', fontSize:10, color:'#5C6B61', formatter:lblFmt()}},
+        {name:N('mlo'), type:'bar', data:n2, itemStyle:{color:C.soft}, barMaxWidth:11},
+        {name:N('mhi'), type:'bar', data:n3, itemStyle:{color:C.amber}, barMaxWidth:11}]};
+  }
+  /* ---- 估值页 ---- */
+  if (id === 'v-1') {
+    var volArr = VAL.vol || [];
+    return {
+      tooltip:{trigger:'axis', confine:true,
+        formatter:function(params){
+          var i = params[0].dataIndex;
+          var m = VAL.months[i], c = VAL.close[i], v = volArr[i] || 0;
+          var rg = (VAL.range && VAL.range[i]) ? VAL.range[i] : null;
+          var to = v * c / 1000;
+          var s = '<b>' + m + '</b><br/>';
+          if (rg) { s += 'Price range: ' + fmtN(rg[0]) + '–' + fmtN(rg[1]) + ' IDR<br/>'; }
+          s += 'Volume: ' + fmtN(v) + 'M shares<br/>';
+          s += 'Turnover: ~' + fmtN(to) + ' IDR bn<br/>';
+          s += 'Turnover rate: ~' + (v / 20800 * 100).toFixed(1) + '%';
+          return s;
+        }},
+      grid:[{left:48, right:18, top:36, height:'56%'},
+            {left:48, right:18, top:'74%', height:'16%'}],
+      xAxis:[{type:'category', data:VAL.months, gridIndex:0, axisLabel:{show:false}, axisLine:{lineStyle:{color:'#B9C4BB'}}},
+             {type:'category', data:VAL.months, gridIndex:1, axisLabel:{color:AX.color, fontSize:11}, axisLine:{lineStyle:{color:'#B9C4BB'}}}],
+      yAxis:[{type:'value', gridIndex:0, name:'IDR', nameTextStyle:{color:AX.color, fontSize:11}, axisLabel:{color:AX.color, fontSize:11}, splitLine:SPLIT},
+             {type:'value', gridIndex:1, name:'M sh', nameTextStyle:{color:AX.color, fontSize:10}, axisLabel:{color:AX.color, fontSize:10}, splitLine:{show:false}}],
+      series:[
+        {name:'KIJA', type:'line', xAxisIndex:0, yAxisIndex:0, data:VAL.close, smooth:true, symbolSize:6, lineStyle:{width:2, color:C.green}, itemStyle:{color:C.green},
+          markLine:{silent:true, symbol:'none', lineStyle:{color:C.red, type:'dashed', width:1.5}, data:[{yAxis:FY.refPrice, label:{formatter:fmtN(FY.refPrice) + ' (18 Sep)', fontSize:10, color:C.red, position:'insideEndTop'}}]},
+          markPoint:{symbol:'circle', symbolSize:9, label:{fontSize:10, color:'#fff', position:'top'}, data:[
+            {coord:[FY.vjan.m, FY.vjan.c], value:String(FY.vjan.hi), itemStyle:{color:C.amber}},
+            {coord:[FY.vjun.m, FY.vjun.c], value:String(FY.vjun.hi), itemStyle:{color:C.clay}}
+          ]}},
+        {name:'Volume', type:'bar', xAxisIndex:1, yAxisIndex:1, data:volArr, barMaxWidth:18, itemStyle:{color:C.blue, opacity:0.55}}
+      ]
+    };
+  }
+  if (id === 'v-2') {
+    return {tooltip:baseTooltip(), legend:legendT(), grid:baseGrid(), xAxis:baseX(['P/B (x)','P/S (x)']), yAxis:baseY('x'),
+      series:[
+        {name:N('kija'), type:'bar', data:FY.kijaPBPS, itemStyle:{color:C.green}, barMaxWidth:30, label:{show:true, position:'top', fontSize:11, color:'#1F5E40', formatter:lblFmt()}},
+        {name:N('dmas'), type:'bar', data:FY.dmasPBPS, itemStyle:{color:C.blue}, barMaxWidth:30, label:{show:true, position:'top', fontSize:11, color:'#2E6FB0', formatter:lblFmt()}}]};
+  }
+  /* ---- 估值测算页 ---- */
+  if (id === 'vi-1') {
+    var vm = VALI[LANG].methods, cat = ['P/E','P/B','DCF','SOTP'];
+    var lo = [], ba = [], hi = [];
+    for (var vj = 0; vj < vm.length; vj++) { lo.push(num(vm[vj][2])); ba.push(num(vm[vj][3])); hi.push(num(vm[vj][4])); }
+    return {tooltip:baseTooltip(), legend:legendT(), grid:{left:64, right:70, top:34, bottom:26},
+      xAxis:{type:'value', axisLabel:{color:AX.color, fontSize:11}, splitLine:SPLIT},
+      yAxis:{type:'category', data:cat, axisLabel:{color:'#16241C', fontSize:11}},
+      series:[
+        {name:VLL[LANG][0], type:'bar', data:lo, itemStyle:{color:C.soft}, barMaxWidth:13},
+        {name:VLL[LANG][1], type:'bar', data:ba, itemStyle:{color:C.green}, barMaxWidth:13},
+        {name:VLL[LANG][2], type:'bar', data:hi, itemStyle:{color:C.blue}, barMaxWidth:13,
+          label:{show:true, position:'right', fontSize:10, color:'#5C6B61', formatter:lblFmt()}},
+        {name:VLL[LANG][6], type:'line', data:[FY.refPrice,FY.refPrice,FY.refPrice,FY.refPrice], symbol:'none', lineStyle:{width:2, color:C.red, type:'dashed'}, tooltip:{show:false}, label:{show:false}}]};
+  }
+  return {};
+}
+
+/* ================= 渲染：静态文案 + 动态内容 ================= */
+function renderPhases(){
+  var arr = ['ph1','ph2','ph3','ph4'], h = '';
+  for (var i = 0; i < arr.length; i++) { h += '<span class="chip">' + T(arr[i]) + '</span>'; }
+  document.getElementById('phases').innerHTML = h;
+}
+function kpiHtml(items){
+  var h = '';
+  for (var i = 0; i < items.length; i++) {
+    var it = items[i];
+    h += '<div class="kpi"><div class="lbl">' + esc(it.l) + '</div><div class="val">' + (it.p || '') + fmtN(it.v) + '<small> ' + esc(it.u) + '</small></div><div class="del ' + it.c + '">' + esc(it.d) + '</div></div>';
+  }
+  return h;
+}
+function eventsHtml(list){
+  var h = '';
+  for (var i = 0; i < list.length; i++) { h += '<li><span class="d">' + esc(list[i][0]) + '</span><span>' + esc(list[i][1]) + '</span></li>'; }
+  return h;
+}
+var LV = ['lv-low','lv-mid','lv-high'];
+var LVTXT = {en:['Low','Medium','High'], id:['Rendah','Sedang','Tinggi'], zh:['低','中','高']};
+var VLL = {en:['Low','Base','High',['Method','Assumptions','Low','Base','High'],['Approach','Base value','vs price 180','Safety margin','Reading'],['Metric','Value'],'Price 180'],
+  id:['Rendah','Dasar','Tinggi',['Metode','Asumsi','Rendah','Dasar','Tinggi'],['Pendekatan','Nilai dasar','vs harga 180','Margin keamanan','Makna'],['Metrik','Nilai'],'Harga 180'],
+  zh:['低位','基准','高位',['方法','假设','低','基准','高'],['方法','基准值','较 180','安全边际','含义'],['指标','数值'],'现价 180']};
+function riskHtml(rows){
+  var h = '';
+  for (var i = 0; i < rows.length; i++) {
+    var r = rows[i], w = Math.max(4, Math.min(100, r[3]));
+    var col = r[2] === 0 ? C.green2 : (r[2] === 1 ? C.amber : C.clay);
+    h += '<div class="risk-row"><span class="nm">' + esc(r[0]) + '</span><span class="vv">' + esc(r[1]) + '</span><span class="bar"><i style="width:' + w + '%;background:' + col + '"></i></span><span class="badge ' + LV[r[2]] + '">' + LVTXT[LANG][r[2]] + '</span></div>';
+  }
+  return h;
+}
+function dirsHtml(){
+  var rows = DIR[LANG], h = '';
+  for (var i = 0; i < rows.length; i++) {
+    h += '<div class="dir"><div class="n">' + esc(rows[i][0]) + '</div><h4>' + esc(rows[i][1]) + '</h4><p>' + esc(rows[i][2]) + '</p></div>';
+  }
+  return h;
+}
+function tlHtml(){
+  var rows = TL[LANG], h = '';
+  for (var i = 0; i < rows.length; i++) {
+    h += '<div class="yr">' + esc(rows[i][0]) + '</div><div class="dot"></div><div class="ev"><b>' + esc(rows[i][1]) + '</b><div class="m">' + esc(rows[i][2]) + '</div></div>';
+  }
+  return h;
+}
+function ownHtml(){
+  var rows = OWN[LANG], h = '', max = 67.3, cols = ['', 'hl', 'hl2'];
+  for (var i = 0; i < rows.length; i++) {
+    var w = Math.round(rows[i][1] / max * 100);
+    h += '<div class="own-row"><span class="nm">' + esc(rows[i][0]) + '</span><span class="bar"><i class="' + cols[rows[i][2]] + '" style="width:' + w + '%"></i></span><span class="vv">' + fmtN(rows[i][1]) + '%</span></div>';
+  }
+  return h;
+}
+function hldEntityHtml(s, full){
+  var via = VIA[LANG][s[2]] || '', biz = BIZ[LANG][s[5]] || '';
+  var cls = s[7] === 1 ? 'hld-ent jv' : 'hld-ent';
+  return '<div class="' + cls + '"><div><span class="nm">' + esc(s[0]) + '</span>' + (full ? '<span class="sub">' + esc(s[1]) + '</span>' : '') + '<span class="sub">' + esc(biz) + (via ? ' · ' + esc(via) : '') + '</span></div><span class="p">' + fmtN(s[3]) + '%</span></div>';
+}
+function hldDiagramHtml(){
+  var h = '<div class="hld-top"><b>PT Jababeka Tbk</b><span>KIJA · IDX</span></div><div class="hld-line"></div><div class="hld-pillars">';
+  var pillars = PILLAR[LANG];
+  for (var p = 0; p < pillars.length; p++) {
+    var codes = PILLAR_MAP[pillars[p][1]], ents = [];
+    for (var i = 0; i < codes.length; i++) {
+      for (var j = 0; j < SUBS.length; j++) { if (SUBS[j][0] === codes[i]) { ents.push(SUBS[j]); } }
+    }
+    ents.sort(function(a, b){ return b[4] - a[4]; });
+    h += '<div class="hld-pillar"><h4>' + esc(pillars[p][0]) + '</h4><div class="hld-ents">';
+    var show = ents.length > 4 ? 4 : ents.length;
+    for (var k = 0; k < show; k++) { h += hldEntityHtml(ents[k], false); }
+    if (ents.length > show) { h += '<div class="hld-more">+ ' + (ents.length - show) + ' more</div>'; }
+    h += '</div></div>';
+  }
+  h += '</div>';
+  return h;
+}
+function hldTableHtml(){
+  var h = '<div class="g-table-wrap"><table class="g-table"><colgroup><col style="width:26%"><col style="width:27%"><col style="width:13%"><col style="width:9%"><col style="width:14%"><col style="width:11%"></colgroup><thead><tr><th>' + esc(T('tbl_entity')) + '</th><th>' + esc(T('tbl_biz')) + '</th><th>' + esc(T('tbl_via')) + '</th><th>' + esc(T('tbl_own')) + '</th><th>' + esc(T('tbl_assets')) + '</th><th>' + esc(T('tbl_status')) + '</th></tr></thead><tbody>';
+  var pillars = PILLAR[LANG], first = true;
+  for (var p = 0; p < pillars.length; p++) {
+    var codes = PILLAR_MAP[pillars[p][1]];
+    h += '<tr><td colspan="6" class="gname">' + esc(pillars[p][0]) + '</td></tr>';
+    for (var i = 0; i < codes.length; i++) {
+      for (var j = 0; j < SUBS.length; j++) {
+        if (SUBS[j][0] !== codes[i]) { continue; }
+        var s = SUBS[j];
+        h += '<tr><td class="b">' + esc(s[0]) + '<br><span style="font-weight:400;color:#5C6B61">' + esc(s[1]) + '</span></td><td>' + esc(BIZ[LANG][s[5]]) + '</td><td>' + esc(VIA[LANG][s[2]]) + '</td><td class="' + (s[7] === 1 ? 'amber' : 'p') + '">' + fmtN(s[3]) + '%</td><td class="p">' + fmtN(s[4]) + '</td><td>' + (s[6] === 1 ? esc(CT('op')) : esc(CT('no'))) + '</td></tr>';
+      }
+    }
+  }
+  h += '</tbody></table></div><div class="risk-note">' + esc(T('hld_note')) + '</div>';
+  return h;
+}
+function memberLines(members, roles){
+  var h = '';
+  for (var i = 0; i < members.length; i++) {
+    h += '<span style="display:block;margin-top:3px;font-size:11.5px;line-height:1.35">' + esc(members[i][0]) + ' · ' + esc(roles[members[i][1] + 1]) + '</span>';
+  }
+  return h;
+}
+function memberNames(members){
+  var a = [];
+  for (var i = 0; i < members.length; i++) { a.push(members[i][0]); }
+  return a.join(', ');
+}
+function orgGovHtml(){
+  var o = ORG;
+  return '<div class="org">'
+    + '<div class="org-box dark"><b>' + esc(o.chart[LANG][0]) + '</b><span>GMS · RUPS</span></div>'
+    + '<div class="org-line"></div>'
+    + '<div class="org-row">'
+    + '<div class="org-col">'
+    + '<div class="org-box green"><b>' + esc(o.boc[LANG][0]) + '</b>' + memberLines(o.bocm, o.boc[LANG]) + '</div>'
+    + '<div class="vline"></div>'
+    + '<div class="org-box"><b>' + esc(o.aud[LANG][0]) + '</b>' + memberLines(o.audm, o.aud[LANG]) + '</div>'
+    + '</div>'
+    + '<div class="org-col"><div class="org-box green"><b>' + esc(o.bod[LANG][0]) + '</b>' + memberLines(o.bodm, o.bod[LANG]) + '</div></div>'
+    + '</div></div>';
+}
+function orgChartHtml(){
+  var o = ORG, ch = o.chart[LANG];
+  return '<div class="org">'
+    + '<div class="org-box green"><b>' + esc(ch[2]) + '</b><span>' + esc(memberNames(o.bodm)) + '</span></div>'
+    + '<div class="org-line"></div>'
+    + '<div class="org-row">'
+    + '<div class="org-box"><b>' + esc(ch[4]) + '</b></div>'
+    + '<div class="org-box"><b>' + esc(ch[5]) + '</b><span>Heronimus Hendricus Harlan</span></div>'
+    + '<div class="org-box"><b>' + esc(ch[6]) + '</b><span>' + esc(ch[7]) + ' · ' + esc(ch[8]) + ' · ' + esc(ch[9]) + '</span></div>'
+    + '<div class="org-box"><b>' + esc(ch[10]) + '</b><span>' + esc(ch[11]) + ' · ' + esc(ch[12]) + ' · ' + esc(ch[13]) + '</span></div>'
+    + '</div></div>';
+}
+function orgFactsHtml(){
+  var rows = ORG.facts[LANG], h = '';
+  for (var i = 0; i < rows.length; i++) {
+    h += '<div class="fact"><div class="lbl">' + esc(rows[i][0]) + '</div><div class="val">' + esc(rows[i][1]) + '<small> ' + esc(rows[i][2]) + '</small></div></div>';
+  }
+  return h;
+}
+/* ---- 第 5 轮：债务 / 土地 / 估值 渲染 ---- */
+function th(c){ return '<th>' + c + '</th>'; }
+function td(c, cls){ return '<td class="' + (cls || '') + '">' + c + '</td>'; }
+function debtTableHtml(){
+  var t = DTXT[LANG], rows = DEBT.table;
+  var h = '<div class="g-table-wrap"><table class="g-table"><colgroup><col style="width:17%"><col style="width:12%"><col style="width:12%"><col style="width:10%"><col style="width:12%"><col style="width:29%"><col style="width:8%"></colgroup><thead><tr>';
+  for (var i = 0; i < t.h.length; i++) { h += th(esc(t.h[i])); }
+  h += '</tr></thead><tbody>';
+  for (var r = 0; r < rows.length; r++) {
+    var row = rows[r], tt = t.tbl[r];
+    var st = row.st === 'repaid' ? '<span class="badge lv-low">' + esc(tt[3]) + '</span>' : '<span class="badge lv-mid">' + esc(tt[3]) + '</span>';
+    h += '<tr>' + td(esc(tt[0]), 'b') + td(row.d25 === null ? 'n/a' : fmtN(row.d25), 'p') + td(row.d26 === null ? '\u2014' : fmtN(row.d26), 'p')
+      + td(esc(row.r)) + td(esc(tt[1])) + td(esc(tt[2])) + td(st) + '</tr>';
+  }
+  h += '<tr class="trow">' + td(esc(t.total[0]), 'b') + td(esc(t.total[1]), 'p') + td(esc(t.total[2]), 'p') + td(esc(t.total[3])) + td(esc(t.total[4])) + td(esc(t.total[5])) + td(esc(t.total[6])) + '</tr>';
+  h += '</tbody></table></div><div class="risk-note">' + esc(t.note) + '</div>';
+  return h;
+}
+function debtRateHtml(){
+  var rows = DTXT[LANG].ratings, h = '<table class="g-table"><colgroup><col style="width:26%"><col style="width:18%"><col style="width:16%"><col style="width:40%"></colgroup><thead><tr>';
+  for (var i = 0; i < rows[0].length; i++) { h += th(esc(rows[0][i])); }
+  h += '</tr></thead><tbody>';
+  for (var r = 1; r < rows.length; r++) { h += '<tr>' + td(esc(rows[r][0]), 'b') + td(esc(rows[r][1])) + td(esc(rows[r][2])) + td(esc(rows[r][3])) + '</tr>'; }
+  h += '</tbody></table>';
+  return h;
+}
+function debtRiskHtml(){
+  var rows = DTXT[LANG].risk, arr = [], w = [25, 55, 80];
+  for (var i = 0; i < rows.length; i++) { arr.push([rows[i][0], rows[i][1], rows[i][2], w[rows[i][2]]]); }
+  return riskHtml(arr);
+}
+function lbTableHtml(){
+  var t = LTXT[LANG], rows = LAND.rows;
+  var h = '<div class="g-table-wrap"><table class="g-table"><colgroup><col style="width:16%"><col style="width:22%"><col style="width:9%"><col style="width:9%"><col style="width:11%"><col style="width:9%"><col style="width:13%"><col style="width:11%"></colgroup><thead><tr>';
+  for (var i = 0; i < t.h.length; i++) { h += th(esc(t.h[i])); }
+  h += '</tr></thead><tbody>';
+  for (var r = 0; r < rows.length; r++) {
+    var row = rows[r];
+    var mkt = (row.mLo === null) ? 'n/a' : fmtN(row.mLo) + '\u2013' + fmtN(row.mHi);
+    h += '<tr>' + td(esc(row.p), 'b') + td(esc(t.loc[r])) + td(fmtN(row.ha), 'p') + td(fmtN(row.dev), 'p')
+      + td(fmtN(row.book), 'p') + td(fmtN(row.m2), 'p') + td(esc(mkt)) + td(esc(row.uplift)) + '</tr>';
+  }
+  h += '<tr class="trow">';
+  for (var c = 0; c < t.total.length; c++) { h += td(esc(t.total[c]), c === 0 ? 'b' : 'p'); }
+  h += '</tr></tbody></table></div>';
+  return h;
+}
+function valStatsHtml(){
+  var t = VTXT[LANG], rows = t.stats, h = '<table class="g-table"><colgroup><col style="width:42%"><col style="width:58%"></colgroup><thead><tr><th>' + esc(t.statsH[0]) + '</th><th>' + esc(t.statsH[1]) + '</th></tr></thead><tbody>';
+  for (var i = 0; i < rows.length; i++) { h += '<tr>' + td(esc(rows[i][0]), 'b') + td(esc(rows[i][1])) + '</tr>'; }
+  h += '</tbody></table>';
+  return h;
+}
+function valPeersHtml(){
+  var t = VTXT[LANG], rows = t.peers, h = '<table class="g-table"><colgroup><col style="width:34%"><col style="width:33%"><col style="width:33%"></colgroup><thead><tr>';
+  for (var i = 0; i < t.peersH.length; i++) { h += th(esc(t.peersH[i])); }
+  h += '</tr></thead><tbody>';
+  for (var r = 0; r < rows.length; r++) { h += '<tr>' + td(esc(rows[r][0]), 'b') + td(esc(rows[r][1])) + td(esc(rows[r][2])) + '</tr>'; }
+  h += '</tbody></table>';
+  return h;
+}
+function valAnalystsHtml(){
+  var t = VTXT[LANG], rows = t.analysts, h = '<table class="g-table"><colgroup><col style="width:20%"><col style="width:18%"><col style="width:10%"><col style="width:14%"><col style="width:38%"></colgroup><thead><tr>';
+  for (var i = 0; i < t.analystsH.length; i++) { h += th(esc(t.analystsH[i])); }
+  h += '</tr></thead><tbody>';
+  for (var r = 0; r < rows.length; r++) {
+    h += '<tr>' + td(esc(rows[r][0]), 'b') + td(esc(rows[r][1])) + td(esc(rows[r][2])) + td(esc(rows[r][3])) + td(esc(rows[r][4])) + '</tr>';
+  }
+  h += '</tbody></table>';
+  return h;
+}
+function kvTable(title, rows, widths, headers){
+  var h = '<h3 class="block-h">' + esc(title) + '</h3><div class="g-table-wrap"><table class="g-table"><colgroup>';
+  for (var i = 0; i < widths.length; i++) { h += '<col style="width:' + widths[i] + '">'; }
+  h += '</colgroup><thead><tr>';
+  for (var j = 0; j < headers.length; j++) { h += th(esc(headers[j])); }
+  h += '</tr></thead><tbody>';
+  for (var r = 0; r < rows.length; r++) {
+    h += '<tr>';
+    for (var c = 0; c < rows[r].length; c++) { h += td(esc(rows[r][c]), c === 0 ? 'b' : ''); }
+    h += '</tr>';
+  }
+  h += '</tbody></table></div>';
+  return h;
+}
+function wcTableHtml(){
+  var rows = [
+    [T('wcr_gross'), '746.6', '548.8'],
+    [T('wcr_net'), '721.7', '521.2'],
+    [T('wcr_allow'), '16.3', '16.3'],
+    [T('wcr_duen'), 'n/a', '468.5'],
+    [T('wcr_over6'), '28.9', '20.9'],
+    [T('wcr_dso'), '54 d', '37 d'],
+    [T('wcr_ap'), '133.0', '151.7'],
+    [T('wcr_dep'), '317.0', '316.2'],
+    [T('wcr_woff'), '0.0', '0.0']
+  ];
+  var h = '<div class="g-table-wrap"><table class="g-table"><colgroup><col style="width:52%"><col style="width:24%"><col style="width:24%"></colgroup><thead><tr><th>'+T('wch_item')+'</th><th>'+T('wch_26')+'</th><th>'+T('wch_25')+'</th></tr></thead><tbody>';
+  for(var i=0;i<rows.length;i++){ h += '<tr><td class="b">'+rows[i][0]+'</td><td>'+rows[i][1]+'</td><td>'+rows[i][2]+'</td></tr>'; }
+  h += '</tbody></table></div><div class="risk-note">'+T('wc_note')+'</div>';
+  return h;
+}
+function renderStatics(){
+  var els = document.querySelectorAll('[data-i18n]');
+  for (var i = 0; i < els.length; i++) { els[i].innerHTML = T(els[i].getAttribute('data-i18n')); }
+  renderPhases();
+  document.getElementById('ov-kpis').innerHTML = kpiHtml(KP.ov[LANG]);
+  document.getElementById('k24').innerHTML = kpiHtml(KP.k24[LANG]);
+  document.getElementById('k25').innerHTML = kpiHtml(KP.k25[LANG]);
+  document.getElementById('k26').innerHTML = kpiHtml(KP.k26[LANG]);
+  document.getElementById('k-prof').innerHTML = kpiHtml(KP.prof[LANG]);
+  document.getElementById('ev24').innerHTML = eventsHtml(EV.ev24[LANG]);
+  document.getElementById('ev25').innerHTML = eventsHtml(EV.ev25[LANG]);
+  document.getElementById('ev26').innerHTML = eventsHtml(EV.ev26[LANG]);
+  document.getElementById('rk24').innerHTML = riskHtml(RK.rk24[LANG]);
+  document.getElementById('rk25').innerHTML = riskHtml(RK.rk25[LANG]);
+  document.getElementById('rk26').innerHTML = riskHtml(RK.rk26[LANG]);
+  document.getElementById('rk-all').innerHTML = riskHtml(RK['rk-all'][LANG]);
+  (function(){
+    var t3 = TOP3[LANG]||TOP3.en, op = OPP[LANG]||OPP.en;
+    document.getElementById('top3-h').textContent = t3.h;
+    document.getElementById('top3-sub').textContent = t3.sub;
+    document.getElementById('opp-h').textContent = op.h;
+    document.getElementById('opp-sub').textContent = op.sub;
+    var h3 = '';
+    t3.items.forEach(function(it){
+      h3 += '<div class="risk-row" style="align-items:flex-start;gap:12px">'
+        + '<span class="nm" style="min-width:230px;font-weight:600;color:var(--ink)">'+esc(it[0])+'</span>'
+        + '<span style="flex:1"><div style="color:var(--ink);margin-bottom:4px">'+esc(it[1])+'</div>'
+        + '<div style="color:var(--muted);font-size:12px">'+esc(it[2])+'</div></span></div>';
+    });
+    document.getElementById('top3').innerHTML = h3;
+    var ho = '<div class="kv-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px">';
+    op.items.forEach(function(it){
+      ho += '<div style="background:var(--bg2);border:1px solid var(--line);border-radius:8px;padding:12px">'
+        + '<div style="font-weight:600;color:var(--green);margin-bottom:6px">'+esc(it[0])+'</div>'
+        + '<div style="color:var(--muted);font-size:12px;line-height:1.5">'+esc(it[1])+'</div></div>';
+    });
+    ho += '</div>';
+    document.getElementById('opp').innerHTML = ho;
+  })();
+  document.getElementById('dirs').innerHTML = dirsHtml();
+  document.getElementById('tl').innerHTML = tlHtml();
+  document.getElementById('own-bars').innerHTML = ownHtml();
+  document.getElementById('hld').innerHTML = hldDiagramHtml();
+  document.getElementById('hld-table').innerHTML = hldTableHtml();
+  document.getElementById('org-facts').innerHTML = orgFactsHtml();
+  document.getElementById('org-gov').innerHTML = orgGovHtml();
+  document.getElementById('org-chart').innerHTML = orgChartHtml();
+  var mgmt = ORG.mgmt[LANG], mh = '<table class="g-table"><colgroup><col style="width:40%"><col style="width:60%"></colgroup><thead><tr><th>' + esc(T('tbl_name')) + '</th><th>' + esc(T('tbl_func')) + '</th></tr></thead><tbody>';
+  for (var m = 0; m < mgmt.length; m++) { mh += '<tr><td class="b">' + esc(mgmt[m][0]) + '</td><td>' + esc(mgmt[m][1]) + '</td></tr>'; }
+  mh += '</tbody></table><div class="risk-note">' + esc(T('org_mgmt_note')) + '</div>';
+  document.getElementById('org-mgmt').innerHTML = mh;
+  document.getElementById('k-debt').innerHTML = kpiHtml(KP.debt[LANG]);
+  document.getElementById('debt-table').innerHTML = debtTableHtml();
+  document.getElementById('wc-table').innerHTML = wcTableHtml();
+  document.getElementById('debt-rate').innerHTML = debtRateHtml();
+  document.getElementById('debt-refi').innerHTML = eventsHtml(DTXT[LANG].refi);
+  document.getElementById('debt-risk').innerHTML = debtRiskHtml();
+  document.getElementById('k-lb').innerHTML = kpiHtml(KP.lb[LANG]);
+  document.getElementById('lb-table').innerHTML = lbTableHtml();
+  document.getElementById('k-val').innerHTML = kpiHtml(KP.val[LANG]);
+  document.getElementById('val-stats').innerHTML = valStatsHtml();
+  document.getElementById('val-peers').innerHTML = valPeersHtml();
+  document.getElementById('val-analysts').innerHTML = valAnalystsHtml();
+  document.getElementById('val-events').innerHTML = eventsHtml(VTXT[LANG].events);
+  var VI = VALI[LANG];
+  document.getElementById('vali-sub').innerHTML = esc(VI.sub);
+  document.getElementById('vali-disc').innerHTML = esc(VI.disc);
+  document.getElementById('vali-chart-h').innerHTML = esc(VI.methodH);
+  document.getElementById('vali-chart-s').innerHTML = esc(VI.weightNote);
+  document.getElementById('vali-inputs').innerHTML = kvTable(VI.inputsH, VI.inputs, ['42%','58%'], VLL[LANG][5]);
+  document.getElementById('vali-methods').innerHTML = kvTable(VI.methodH, VI.methods, ['21%','30%','15%','16%','18%'], VLL[LANG][3]);
+  document.getElementById('vali-comp').innerHTML = kvTable(VI.compH, VI.comp, ['17%','15%','14%','15%','39%'], VLL[LANG][4]);
+  document.getElementById('vali-implied').innerHTML = kvTable(VI.impliedH, VI.implied, ['56%','44%'], VLL[LANG][5]);
+  var VLQ = LIQ[LANG];
+  document.getElementById('vali-liq').innerHTML = '<p class="page-d">' + esc(VLQ.sub) + '</p>' + kvTable(VLQ.h, VLQ.rows, ['22%','14%','12%','16%','11%','9%','16%'], VLQ.hd) + '<div class="risk-note">' + esc(VLQ.disc) + '</div><div class="risk-note">' + esc(VLQ.note) + '</div>';
+  var VLB = LBV[LANG];
+  document.getElementById('vali-lbv').innerHTML = '<p class="page-d">' + esc(VLB.sub) + '</p>' + kvTable(VLB.h, VLB.rows, ['16%','22%','18%','22%','22%'], VLB.hd) + '<div class="risk-note">' + esc(VLB.disc) + '</div><div class="risk-note">' + esc(VLB.note) + '</div>';
+  var VKP = KEYP[LANG];
+  document.getElementById('vali-keyp').innerHTML = '<p class="page-d">' + esc(VKP.sub) + '</p>' + kvTable(VKP.h, VKP.rows, ['26%','38%','36%'], VKP.hd);
+  var vk = '<ul class="events">';
+  for (var vki = 0; vki < VI.key.length; vki++) { vk += '<li>' + esc(VI.key[vki]) + '</li>'; }
+  vk += '</ul>';
+  document.getElementById('vali-key').innerHTML = '<h3 class="block-h">' + esc(VI.keyH) + '</h3>' + vk;
+  var btns = document.querySelectorAll('.langs button');
+  for (var x = 0; x < btns.length; x++) { btns[x].classList.toggle('active', btns[x].getAttribute('data-lang') === LANG); }
+  for (var k in CH) { if (CH.hasOwnProperty(k)) { CH[k].setOption(buildOpt(k), true); } }
+  annotateTerms();
+}
+
+/* ================= 路由与图表生命周期 ================= */
+var CH = {};
+var PAGE_CHARTS = {overview:['o1','o2','o3','o4','o5','o6'], fy2024:['f24-1','f24-2','f24-3','f24-4'], fy2025:['f25-1','f25-2','f25-3','f25-4'], fy2026:['f26-1','f26-2','f26-3','f26-4'], debt:['d-1','d-2','d-3','d-4','d-5'], landbank:['lb-1','lb-2'], valuation:['v-1','v-2'], profit:['p-1','p-2','p-3','p-4'], vali:['vi-1'], risk:[], holding:[], org:[]};
+
+function exportCSV(){
+  var page = document.querySelector('.page.active');
+  if(!page){ return; }
+  var tables = page.querySelectorAll('table');
+  var rows = [], title = '';
+  for(var t=0; t<tables.length; t++){
+    var trs = tables[t].querySelectorAll('tr');
+    if(t>0){ rows.push([]); }
+    for(var r=0; r<trs.length; r++){
+      var cells = trs[r].querySelectorAll('th,td');
+      var line = [];
+      for(var c=0; c<cells.length; c++){ line.push('"'+(cells[c].innerText||'').replace(/"/g,'""')+'"'); }
+      rows.push(line);
+    }
+  }
+  var csv = rows.map(function(r){return r.join(',');}).join('\r\n');
+  var blob = new Blob(["\uFEFF"+csv], {type:'text/csv;charset=utf-8;'});
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'KIJA_'+(currentPage())+'_'+new Date().toISOString().slice(0,10)+'.csv';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+}
+function initCSVButton(){
+  if(document.getElementById('csvBtn')){ return; }
+  var btn = document.createElement('button');
+  btn.id = 'csvBtn'; btn.textContent = 'CSV'; btn.title = 'Download tables on this page as CSV';
+  btn.setAttribute('aria-label','Download tables as CSV');
+  btn.addEventListener('click', exportCSV);
+  document.body.appendChild(btn);
+}
+function renderPage(id){
+  if (!window.echarts) { return; }
+  var ids = PAGE_CHARTS[id] || [];
+  for (var i = 0; i < ids.length; i++) {
+    if (CH[ids[i]]) { continue; }
+    var el = document.getElementById(ids[i]);
+    if (!el) { continue; }
+    var c = echarts.init(el);
+    c.setOption(buildOpt(ids[i]));
+    c.setOption({toolbox:{right:4,bottom:2,iconSize:9,feature:{saveAsImage:{title:'PNG',background:'#ffffff',pixelRatio:2, iconSize:9}}}});
+    CH[ids[i]] = c;
+  }
+  for (var k in CH) { if (CH.hasOwnProperty(k)) { CH[k].resize(); } }
+}
+function showPage(id){
+  var pages = document.querySelectorAll('.page'), i;
+  for (i = 0; i < pages.length; i++) { pages[i].classList.toggle('active', pages[i].id === id); }
+  var tabs = document.querySelectorAll('.tab');
+  for (i = 0; i < tabs.length; i++) { tabs[i].classList.toggle('active', tabs[i].getAttribute('data-page') === id); }
+  renderPage(id);
+}
+function currentPage(){
+  var h = location.hash.replace('#', ''), pages = document.querySelectorAll('.page');
+  for (var i = 0; i < pages.length; i++) { if (pages[i].id === h) { return h; } }
+  return 'overview';
+}
+window.addEventListener('hashchange', function(){ showPage(currentPage()); });
+window.addEventListener('resize', function(){ for (var k in CH) { if (CH.hasOwnProperty(k)) { CH[k].resize(); } } });
+var langBtns = document.querySelectorAll('.langs button');
+for (var lb = 0; lb < langBtns.length; lb++) {
+  (function(btn){
+    btn.addEventListener('click', function(){
+      LANG = btn.getAttribute('data-lang');
+      try { localStorage.setItem('kija_lang', LANG); } catch (e) {}
+      renderStatics();
+    });
+  })(langBtns[lb]);
+}
+initCSVButton();
+function loadECharts(cb){
+  if (window.echarts) { cb(); return; }
+  var s = document.createElement('script');
+  s.src = 'https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js';
+  s.onload = cb;
+  s.onerror = function(){
+    var s2 = document.createElement('script');
+    s2.src = 'https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js';
+    s2.onload = cb;
+    s2.onerror = function(){
+      var charts = document.querySelectorAll('.chart');
+      for (var i = 0; i < charts.length; i++) { charts[i].innerHTML = '<div style="padding:20px;color:#8F3520;font-size:13px">Chart library failed to load: please go online and refresh (jsDelivr / cdnjs required).</div>'; }
+    };
+    document.head.appendChild(s2);
+  };
+  document.head.appendChild(s);
+}
+/* ================= 术语悬停解释（GLOS）================= */
+var GTERM_OB = null;
+function buildGtermRegex(){
+  if (GTERM_OB) { return GTERM_OB; }
+  var list = [];
+  for (var gi = 0; gi < GLOS.terms.length; gi++) {
+    list.push({p: GLOS.terms[gi].p, x: GLOS.terms[gi].x, r: GLOS.terms[gi].p.length});
+  }
+  list.sort(function(a, b){ return b.r - a.r; });
+  var src = [];
+  for (var j = 0; j < list.length; j++) { src.push('(' + list[j].p + ')'); }
+  GTERM_OB = {re: new RegExp(src.join('|'), 'g'), list: list};
+  return GTERM_OB;
+}
+function annotateTerms(root){
+  var G = buildGtermRegex();
+  var rootEl = root || document.body;
+  var walker = document.createTreeWalker(rootEl, NodeFilter.SHOW_TEXT, null, false);
+  var nodes = [];
+  while (walker.nextNode()) { nodes.push(walker.currentNode); }
+  var wrapped = 0;
+  var seen = {};
+  for (var n = 0; n < nodes.length; n++) {
+    var node = nodes[n];
+    if (!node.nodeValue) { continue; }
+    var p = node.parentNode;
+    if (!p || p.nodeType !== 1) { continue; }
+    if (p.getAttribute('data-gterm')) { continue; }
+    if (p.closest && p.closest('.gterm')) { continue; }
+    var t = node.nodeValue;
+    G.re.lastIndex = 0;
+    var m = G.re.exec(t);
+    if (!m) { continue; }
+    G.re.lastIndex = 0;
+    var parts = [];
+    var last = 0;
+    var mm;
+    while ((mm = G.re.exec(t)) !== null) {
+      if (mm.index > last) { parts.push(t.slice(last, mm.index)); }
+      var gidx = 1;
+      while (gidx < mm.length && mm[gidx] === undefined) { gidx++; }
+      var full = mm[0];
+      var entry = G.list[gidx - 1];
+      var key = (entry.p || full).toLowerCase();
+      if (seen[key]) {
+        parts.push(esc(full));
+      } else {
+        seen[key] = 1;
+        parts.push('<span class="gterm' + (full.length > 10 ? ' gterm-long' : '') + '" data-gterm="1" data-tip="' + esc(entry.x) + '">' + esc(full) + '<sup class="gterm-q">?</sup></span>');
+      }
+      last = mm.index + full.length;
+      if (G.re.lastIndex === mm.index) { G.re.lastIndex = mm.index + full.length; }
+    }
+    if (last < t.length) { parts.push(t.slice(last)); }
+    if (parts.length > 1) {
+      var span = document.createElement('span');
+      span.className = 'gterm-rt';
+      span.innerHTML = parts.join('');
+      p.replaceChild(span, node);
+      wrapped++;
+    }
+  }
+  return wrapped;
+}
+function gtermTarget(node){
+  while (node && node.nodeType === 1) {
+    if (node.getAttribute && node.getAttribute('data-gterm')) { return node; }
+    node = node.parentNode;
+  }
+  return null;
+}
+function showTip(term){
+  var tip = document.getElementById('gterm-tip');
+  if (!tip) {
+    tip = document.createElement('div');
+    tip.id = 'gterm-tip';
+    tip.className = 'gterm-tip';
+    tip.setAttribute('role', 'tooltip');
+    document.body.appendChild(tip);
+  }
+  tip.innerHTML = esc(term.getAttribute('data-tip') || '');
+  tip.style.display = 'block';
+  var r = term.getBoundingClientRect();
+  var tw = tip.offsetWidth;
+  var th = tip.offsetHeight;
+  var x = r.left + r.width / 2 - tw / 2;
+  if (x < 8) { x = 8; }
+  if (x + tw > window.innerWidth - 8) { x = window.innerWidth - tw - 8; }
+  var y = r.top - th - 10;
+  if (y < 8) { y = r.bottom + 10; }
+  tip.style.left = x + 'px';
+  tip.style.top = y + 'px';
+  tip._t = term;
+}
+function hideTip(){ var tip = document.getElementById('gterm-tip'); if (tip) { tip.style.display = 'none'; } }
+document.addEventListener('mouseover', function(ev){
+  var target = gtermTarget(ev.target);
+  if (target) { showTip(target); } else { hideTip(); }
+});
+document.addEventListener('mouseout', function(ev){
+  var t = gtermTarget(ev.target);
+  if (t) { var rel = ev.relatedTarget; if (!rel || !gtermTarget(rel)) { hideTip(); } }
+});
+document.addEventListener('click', function(ev){
+  var t = gtermTarget(ev.target);
+  if (!t) { return; }
+  var tip = document.getElementById('gterm-tip');
+  if (tip && tip.style.display === 'block' && tip._t === t) { hideTip(); } else { showTip(t); }
+});
+window.addEventListener('scroll', hideTip, true);
+window.addEventListener('resize', hideTip);
+
+/* ================= 数据加载：优先在线拉取 data.json，失败回退内嵌副本 ================= */
+var DATA_KEYS = ["KP","EV","RK","DIR","TL","OWN","SUBS","BIZ","VIA","PILLAR","PILLAR_MAP","ORG","DEBT","LAND","VAL","DTXT","LTXT","VTXT","NXT","VALI","LIQ","KEYP","AN","CHT","FY","LBV","GLOS"];
+function applyData(d){
+  if (!d) { return; }
+  for (var i = 0; i < DATA_KEYS.length; i++) {
+    var k = DATA_KEYS[i];
+    if (d[k] !== undefined) { window[k] = d[k]; }
+  }
+}
+function loadData(cb){
+  var done = false;
+  function fin(){ if (!done) { done = true; cb(); } }
+  if (location.protocol !== 'http:' && location.protocol !== 'https:') { fin(); return; }
+  try {
+    var r = new XMLHttpRequest();
+    r.open('GET', 'data.json', true);
+    r.onreadystatechange = function(){
+      if (r.readyState === 4) {
+        if (r.status === 200) {
+          try { applyData(JSON.parse(r.responseText)); } catch (e) {}
+        }
+        fin();
+      }
+    };
+    r.onerror = fin;
+    r.send(null);
+    setTimeout(fin, 5000);
+  } catch (e) { fin(); }
+}
+function boot(){
+  renderStatics();
+  showPage(currentPage());
+  loadECharts(function(){ renderPage(currentPage()); });
+}
+loadData(boot);
+</script>
+</body>
+</html>
