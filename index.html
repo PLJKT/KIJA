@@ -1374,6 +1374,7 @@ function decTableHtml(){
 
 function fmtInt(x){ return Math.round(x).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); }
 function fmtInt(x){ return Math.round(x).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); }
+function fmtInt(x){ return Math.round(x).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); }
 function segTableHtml(){
   if (typeof SEG === 'undefined' || !SEG) return '';
   var lbl = SEG.labels[LANG];
@@ -1392,12 +1393,16 @@ function segTableHtml(){
   }
   if (SEG.total){
     var t = SEG.total;
-    h += '<tr style="background:#EFF2EC;font-weight:700"><td>Total <span class="glos" data-term="preelim">*</span></td><td></td>'
+    h += '<tr style="background:#F4F6F2"><td>Segment total <span class="glos" data-term="preelim">*</span></td><td></td>'
        + '<td class="p">' + fmtInt(t.rev[0]) + '</td>'
        + '<td class="p">' + fmtInt(t.rev[1]) + '</td>'
        + '<td class="p">' + t.gpm[1].toFixed(1) + '%</td>'
        + '<td class="p">+' + fmtInt(t.net[0]) + '</td>'
        + '<td class="p">+' + fmtInt(t.net[1]) + '</td></tr>';
+    // Consolidated (post-elimination) to match dashboard / AR
+    h += '<tr style="background:#EFF2EC;font-weight:700"><td>Consolidated (matches dashboard)</td><td></td>'
+       + '<td class="p">4,603</td><td class="p">5,149</td><td class="p">39.5%</td>'
+       + '<td class="p">+770</td><td class="p">+857</td></tr>';
   }
   h += '</tbody></table></div>';
   return h;
