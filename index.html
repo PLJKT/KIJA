@@ -468,7 +468,7 @@ en: {
   ph3:'Phase <b>2023–2025 surge</b>: Kendal land sales + infrastructure double engine',
   ph4:'Phase <b>2026 shift</b>: USD debt cleared, recurring revenue 57%',
   c_o1_t:'Revenue (2015–2025)', c_o1_s:'Consolidated revenue, IDR bn',
-  c_o2_t:'Net profit: consolidated vs parent', c_o2_s:'Consolidated (solid) vs attributable to parent (dashed); parent from audited equity statements 2015-2020',
+  c_o2_t:'Net profit: consolidated vs parent', c_o2_s:'Consolidated (solid) vs attributable to parent (dashed); parent 2015-2025 from audited equity statements (v2)',
   c_o3_t:'Margins & leverage trend', c_o3_s:'Gross margin / net margin / ROE / Debt-to-equity',
   c_o4_t:'Segment revenue: Real Estate vs Infrastructure', c_o4_s:'2021–2025, IDR bn; infrastructure includes power, water & dry port',
   c_o5_t:'Marketing Sales', c_o5_s:'Land & property pre-sales contracts, a leading indicator',
@@ -811,6 +811,7 @@ function buildOpt(id){
   }
   if (id === 'o2') {
     var nc = AN.niCons, np = AN.niParent;
+    console.log('o2 chart data:', JSON.stringify(np));
     var tt2 = {trigger:'axis', confine:true, formatter:function(ps){
       var i = ps[0].dataIndex, s = '<b>' + AN.years[i] + '</b>';
       for (var q=0; q<ps.length; q++){
@@ -820,10 +821,28 @@ function buildOpt(id){
       }
       return s;
     }};
-    return {tooltip:tt2, legend:legendT(), grid:baseGrid(), xAxis:baseX(AN.years), yAxis:baseY(U),
-      series:[
-        {name:CT('cons'), type:'line', data:nc, smooth:true, symbolSize:6, lineStyle:{width:2.5, color:C.green}, itemStyle:{color:C.green}},
-        {name:CT('parent'), type:'line', data:np, smooth:true, symbolSize:10, lineStyle:{width:3.5, color:C.amber, type:'dashed'}, itemStyle:{color:C.amber}}]};
+    return {
+      tooltip: tt2,
+      legend: legendT(),
+      grid: baseGrid(),
+      xAxis: baseX(AN.years),
+      yAxis: baseY(U),
+      series: [
+        {
+          name: CT('cons'), type: 'line', data: nc,
+          smooth: true, symbolSize: 7,
+          lineStyle: { width: 2.5, color: C.green },
+          itemStyle: { color: C.green }
+        },
+        {
+          name: CT('parent'), type: 'line', data: np,
+          smooth: false, symbolSize: 10,
+          lineStyle: { width: 3.5, color: '#D9A53A', type: 'dashed' },
+          itemStyle: { color: '#D9A53A', borderColor: '#fff', borderWidth: 1.5 },
+          label: { show: true, position: 'top', fontSize: 9, color: '#B8860B', formatter: function(p){ return p.value; } }
+        }
+      ]
+    };
   }
   if (id === 'o3') {
     return {tooltip:baseTooltip(), legend:legendT(), grid:baseGrid(), xAxis:baseX(AN.years), yAxis:baseY('%'),
