@@ -6870,5 +6870,49 @@
   "https://www.jababeka.com/wp-content/uploads/2023/05/KIJA-ASR-2022.pdf",
   "https://www.jababeka.com/wp-content/uploads/2025/02/KIJA-Presentation-Material-Augustus-2026-Final.pdf",
   "https://www.idx.co.id"
- ]
+ ],
+ "WC": {
+  "years": [
+   "2021",
+   "2022",
+   "2023",
+   "2024",
+   "2025"
+  ],
+  "ar": [
+   415.5,
+   400.1,
+   566.3,
+   775.1,
+   521.2
+  ],
+  "arLT": [
+   null,
+   113.2,
+   111.1,
+   93.5,
+   11.3
+  ],
+  "ap": [
+   149.9,
+   191.9,
+   169.5,
+   143.4,
+   151.7
+  ],
+  "deposits": [
+   null,
+   null,
+   null,
+   230.0,
+   316.2
+  ],
+  "revenue": [
+   2490,
+   2747,
+   3300,
+   4602.6,
+   5149.4
+  ]
+ }
 }
