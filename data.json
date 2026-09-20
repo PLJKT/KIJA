@@ -3524,10 +3524,10 @@
  "VAL": {
   "kpi": [
    {
-    "l": "Price (18 Sep 2026)",
+    "l": "Price (2026-09-18)",
     "v": 180,
     "u": "IDR",
-    "d": "-1.0 (-0.6%) on day",
+    "d": "-1 (-0.6%) on day",
     "c": "dn"
    },
    {
@@ -3541,28 +3541,28 @@
     "l": "Market cap",
     "v": 3.7,
     "u": "IDR tn",
-    "d": "3.76T at 180 (S&P)",
+    "d": "3.71T at 180",
     "c": "flat"
    },
    {
     "l": "P/B",
-    "v": 0.5,
+    "v": 0.6,
     "u": "x",
-    "d": "0.46x total equity (audited); 0.59x parent",
+    "d": "0.59x parent BVPS 304.1",
     "c": "flat"
    },
    {
     "l": "P/E (FY25 EPS 20.55)",
     "v": 8.8,
     "u": "x",
-    "d": "audited EPS; TTM n/a (1H26 loss)",
+    "d": "8.8x on FY25 EPS 20.55",
     "c": "flat"
    },
    {
     "l": "Dividend yield",
     "v": 1.1,
     "u": "%",
-    "d": "DPS 2.03 (FY25)",
+    "d": "2.03 DPS / 180",
     "c": "flat"
    }
   ],
@@ -3594,7 +3594,7 @@
    112,
    130,
    216,
-   197
+   180
   ],
   "events": [
    [
@@ -3625,7 +3625,7 @@
   "stats": [
    [
     "Price / date",
-    "180.0 IDR · 18 Sep 2026 (stockanalysis)"
+    "180.0 IDR · 2026-09-18 (Yahoo Finance)"
    ],
    [
     "Shares outstanding",
