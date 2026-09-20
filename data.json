@@ -7487,7 +7487,24 @@
   ],
   "rows": [
    {
-    "key": "pow",
+    "key": "real",
+    "ownpct": "",
+    "rev": [
+     2573.4,
+     2469.4
+    ],
+    "gpm": [
+     52.2,
+     52.1
+    ],
+    "net": [
+     1858.8,
+     2000.7
+    ]
+   },
+   {
+    "key": "power",
+    "ownpct": "100",
     "rev": [
      1182.4,
      1818.1
@@ -7499,29 +7516,11 @@
     "net": [
      56.0,
      315.6
-    ],
-    "own": "100%",
-    "ownpct": 100
-   },
-   {
-    "key": "kendal",
-    "rev": [
-     1801.4,
-     1728.6
-    ],
-    "gpm": [
-     52.2,
-     52.1
-    ],
-    "net": [
-     831.1,
-     888.1
-    ],
-    "own": "51% (JV)",
-    "ownpct": 51
+    ]
    },
    {
     "key": "svc",
+    "ownpct": "100",
     "rev": [
      779.8,
      797.6
@@ -7533,29 +7532,11 @@
     "net": [
      341.1,
      458.0
-    ],
-    "own": "100%",
-    "ownpct": 100
-   },
-   {
-    "key": "cikarang",
-    "rev": [
-     772.0,
-     740.8
-    ],
-    "gpm": [
-     52.2,
-     52.1
-    ],
-    "net": [
-     1027.7,
-     1112.6
-    ],
-    "own": "100%",
-    "ownpct": 100
+    ]
    },
    {
     "key": "golf",
+    "ownpct": "100",
     "rev": [
      85.0,
      82.5
@@ -7567,12 +7548,11 @@
     "net": [
      6.7,
      6.6
-    ],
-    "own": "100%",
-    "ownpct": 100
+    ]
    },
    {
     "key": "tour",
+    "ownpct": "100",
     "rev": [
      69.5,
      57.2
@@ -7584,53 +7564,29 @@
     "net": [
      -35.1,
      -30.4
-    ],
-    "own": "100%",
-    "ownpct": 100
+    ]
    }
   ],
   "labels": {
-   "en": {
-    "real": "Real estate (Cikarang + Kendal land)",
-    "pow": "Power generation",
-    "svc": "Estate services & maintenance",
-    "golf": "Golf course",
-    "tour": "Tourism (Tanjung Lesung)",
-    "cikarang": "Real estate — Cikarang (100%)",
-    "kendal": "Real estate — Kendal (JV)"
-   },
-   "id": {
-    "real": "Real estat (Cikarang + Kendal)",
-    "pow": "Pembangkit listrik",
-    "svc": "Jasa & pemeliharaan kawasan",
-    "golf": "Lapangan golf",
-    "tour": "Pariwisata (Tanjung Lesung)",
-    "cikarang": "Real estat — Cikarang (100%)",
-    "kendal": "Real estat — Kendal (JV)"
-   },
-   "zh": {
-    "real": "房地产（Cikarang + Kendal 土地）",
-    "pow": "发电",
-    "svc": "园区服务与维护",
-    "golf": "高尔夫球场",
-    "tour": "旅游（Tanjung Lesung）",
-    "cikarang": "房地产 — Cikarang（100%）",
-    "kendal": "房地产 — Kendal（JV）"
-   }
+   "real": "Real estate (Cikarang + Kendal)",
+   "power": "Power (Bekasi/United Power)",
+   "svc": "Estate services & maintenance",
+   "golf": "Golf",
+   "tour": "Tourism (Tanjung Lesung)"
   },
   "note25": "Cikarang/Kendal split: net split derived from NCI attribution (Kendal 49% NCI); revenue split estimated ~70/30 (marketing sales mix). GPM assumed similar.",
   "total": {
    "rev": [
-    4690,
-    5225
+    4690.1,
+    5224.8
    ],
    "gpm": [
     41.9,
     38.9
    ],
    "net": [
-    2228,
-    2750
+    2227.5,
+    2750.5
    ]
   }
  },

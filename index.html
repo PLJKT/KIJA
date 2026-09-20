@@ -248,6 +248,7 @@ footer a{color:var(--green)}
   <div class="panel">
     <h3 data-i18n="seg_h"></h3>
     <div class="table-wrap" id="seg-tbl"></div>
+    <div data-i18n-html="seg_note" style="margin-top:8px"></div>
   </div>
 </section>
 
@@ -460,6 +461,7 @@ en: {
   c_p4_t:'Revenue vs gross margin',
   c_p4_s:'Revenue bars with gross-margin overlay (dual axis).',
   seg_h:'Segment P&L by business (FY2024 vs FY2025)',
+  seg_note:'<span style="color:#666;font-size:12px">Note: Real estate net profit includes large non-operating other income (~IDR 1.4tn in 2025, ~1.2tn in 2024, mainly investment-property revaluation gains); operating net is materially lower. Ownership: real estate includes the 51%-owned Kendal JV with Sembcorp; other segments are wholly owned.</span>',
   seg_s:'',
   ph1:'Phase <b>2016 peak</b>: net profit IDR427bn',
   ph2:'Phase <b>2017–2022 trough</b>: property downturn + pandemic + FX losses',
@@ -556,6 +558,7 @@ id: {
   c_p4_t:'Pendapatan vs margin kotor',
   c_p4_s:'Batang pendapatan dengan overlay margin kotor (sumbu ganda).',
   seg_h:'Laba-rugi per segmen usaha (FY2024 vs FY2025)',
+  seg_note:'<span style="color:#666;font-size:12px">Catatan: Laba bersih real estat mencakup pendapatan lain non-operasional yang besar (~Rp 1,4 triliun di 2025, ~1,2 triliun di 2024, terutama kenaikan nilai properti investasi); laba operasional bersih jauh lebih rendah. Kepemilikan: real estat mencakup JV Kendal 51% dengan Sembcorp; segmen lain dimiliki penuh.</span>',
   seg_s:'',
   ph1:'Fase <b>puncak 2016</b>: laba bersih Rp427 miliar',
   ph2:'Fase <b>palung 2017–2022</b>: penurunan properti + pandemi + rugi selisih kurs',
@@ -652,6 +655,7 @@ zh: {
   c_p4_t:'营收与毛利率',
   c_p4_s:'营收柱叠加毛利率（双轴）。',
   seg_h:'分业务板块损益 (FY2024 vs FY2025)',
+  seg_note:'<span style="color:#666;font-size:12px">注：房地产板块净利润含大额非经营性其他收益（2025 约 1.4 万亿、2024 约 1.2 万亿印尼盾，主要为投资性房地产重估收益）；经营性净利润显著更低。持股：房地产含与 Sembcorp 合资的 Kendal 51%；其余板块均为全资。</span>',
   seg_s:'',
   ph1:'阶段 <b>2016 高点</b>：净利 427B',
   ph2:'阶段 <b>2017–2022 低谷</b>：地产下行 + 疫情 + 汇兑损失',
@@ -1383,6 +1387,8 @@ function segTableHtml(){
 function renderStatics(){
   var els = document.querySelectorAll('[data-i18n]');
   for (var i = 0; i < els.length; i++) { els[i].innerHTML = T(els[i].getAttribute('data-i18n')); }
+  var els2 = document.querySelectorAll('[data-i18n-html]');
+  for (var j = 0; j < els2.length; j++) { els2[j].innerHTML = T(els2[j].getAttribute('data-i18n-html')); }
   renderPhases();
   document.getElementById('ov-kpis').innerHTML = kpiHtml(KP.ov[LANG]);
   document.getElementById('k24').innerHTML = kpiHtml(KP.k24[LANG]);
