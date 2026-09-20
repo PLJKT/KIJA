@@ -7586,5 +7586,244 @@
     "tour": "旅游（Tanjung Lesung）"
    }
   }
+ },
+ "DEC": {
+  "en": [
+   [
+    "Revenue (IDR bn)",
+    "2,436.5",
+    "5,149.4",
+    "4,602.6",
+    "FY25 record; 1H26 -11% on land timing (not demand collapse)"
+   ],
+   [
+    "Gross margin",
+    "34%",
+    "39%",
+    "43%",
+    "Compressing: recurring-infra mix grows"
+   ],
+   [
+    "Net profit (IDR bn)",
+    "-6.4",
+    "857.1",
+    "770.1",
+    "1H26 loss is one-off ~460 refi cost; operating profit still +524"
+   ],
+   [
+    "EBITDA (IDR bn)",
+    "n/a",
+    "1,735.5",
+    "1,616.8",
+    "Steady; ~34% margin"
+   ],
+   [
+    "Cash from ops (IDR bn)",
+    "n/a",
+    "2,402.4",
+    "1,870.0",
+    "Strong cash conversion"
+   ],
+   [
+    "Cash (IDR bn)",
+    "3,205",
+    "3,618.8",
+    "2,048.5",
+    "Near net-cash"
+   ],
+   [
+    "Total debt (IDR bn)",
+    "4,863",
+    "4,606.5",
+    "6,904.0",
+    "USD notes repaid 2Q26; now all IDR"
+   ],
+   [
+    "Net debt / EBITDA",
+    "n/a",
+    "0.6x",
+    "2.7x",
+    "Deleveraged sharply"
+   ],
+   [
+    "Marketing sales (IDR bn)",
+    "1,187.6",
+    "~3,750 tgt",
+    "3,188",
+    "1H26 = 32% of full-year target"
+   ],
+   [
+    "Receivables days (DSO)",
+    "n/a",
+    "37d",
+    "61d",
+    "Collection improved"
+   ],
+   [
+    "What to watch in 2H26",
+    "land recognition + GPM",
+    "recurring infra mix",
+    "—",
+    "H2 Kendal sales pace and margin recovery decide FY26"
+   ]
+  ],
+  "id": [
+   [
+    "Pendapatan (Rp miliar)",
+    "2.436,5",
+    "5.149,4",
+    "4.602,6",
+    "FY25 rekor; 1H26 -11% karena timing lahan (bukan permintaan jatuh)"
+   ],
+   [
+    "Margin kotor",
+    "34%",
+    "39%",
+    "43%",
+    "Memadat: porsi infrastruktur berulang naik"
+   ],
+   [
+    "Laba bersih (Rp miliar)",
+    "-6,4",
+    "857,1",
+    "770,1",
+    "Rugi 1H26 dari biaya refi sekali jalan ~460; laba operasi tetap +524"
+   ],
+   [
+    "EBITDA (Rp miliar)",
+    "n/a",
+    "1.735,5",
+    "1.616,8",
+    "Stabil; margin ~34%"
+   ],
+   [
+    "Arus kas operasi (Rp miliar)",
+    "n/a",
+    "2.402,4",
+    "1.870,0",
+    "Konversi kas kuat"
+   ],
+   [
+    "Kas (Rp miliar)",
+    "3.205",
+    "3.618,8",
+    "2.048,5",
+    "Hampir net-cash"
+   ],
+   [
+    "Total utang (Rp miliar)",
+    "4.863",
+    "4.606,5",
+    "6.904,0",
+    "Notes USD dilunasi 2Q26; kini seluruhnya IDR"
+   ],
+   [
+    "Utang bersih / EBITDA",
+    "n/a",
+    "0,6x",
+    "2,7x",
+    "Deleverage tajam"
+   ],
+   [
+    "Penjualan pemasaran (Rp miliar)",
+    "1.187,6",
+    "target ~3.750",
+    "3.188",
+    "1H26 = 32% dari target setahun"
+   ],
+   [
+    "Hari piutang (DSO)",
+    "n/a",
+    "37 hari",
+    "61 hari",
+    "Penagihan membaik"
+   ],
+   [
+    "Yang ditonton di 2H26",
+    "timing lahan + GPM",
+    "bauran infra berulang",
+    "—",
+    "Kecepatan penjualan Kendal & pemulihan margin menentukan FY26"
+   ]
+  ],
+  "zh": [
+   [
+    "营业收入（十亿盾）",
+    "2,436.5",
+    "5,149.4",
+    "4,602.6",
+    "FY25 创纪录；1H26 -11% 系土地确认时点（非需求崩塌）"
+   ],
+   [
+    "毛利率",
+    "34%",
+    "39%",
+    "43%",
+    "持续压缩：经常性基建占比上升"
+   ],
+   [
+    "净利润（十亿盾）",
+    "-6.4",
+    "857.1",
+    "770.1",
+    "1H26 亏损系 ~460 一次性再融资成本；经营利润仍 +524"
+   ],
+   [
+    "EBITDA（十亿盾）",
+    "n/a",
+    "1,735.5",
+    "1,616.8",
+    "稳定；约 34%"
+   ],
+   [
+    "经营现金流（十亿盾）",
+    "n/a",
+    "2,402.4",
+    "1,870.0",
+    "现金转化强"
+   ],
+   [
+    "现金（十亿盾）",
+    "3,205",
+    "3,618.8",
+    "2,048.5",
+    "近净现金"
+   ],
+   [
+    "总债务（十亿盾）",
+    "4,863",
+    "4,606.5",
+    "6,904.0",
+    "美元票据 2Q26 已清偿；现全为印尼盾"
+   ],
+   [
+    "净负债/EBITDA",
+    "n/a",
+    "0.6x",
+    "2.7x",
+    "大幅去杠杆"
+   ],
+   [
+    "营销销售（十亿盾）",
+    "1,187.6",
+    "目标 ~3,750",
+    "3,188",
+    "1H26 完成全年目标 32%"
+   ],
+   [
+    "应收周转天数 DSO",
+    "n/a",
+    "37 天",
+    "61 天",
+    "回款改善"
+   ],
+   [
+    "2H26 关注点",
+    "土地确认 + 毛利率",
+    "经常性基建占比",
+    "—",
+    "下半年 Kendal 销售节奏与毛利率回升决定全年"
+   ]
+  ]
  }
 }

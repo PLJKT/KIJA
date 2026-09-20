@@ -388,6 +388,9 @@ footer a{color:var(--green)}
   <h2 class="page-h" id="opp-h"></h2>
   <p class="page-d" id="opp-sub"></p>
   <div class="panel" style="margin-bottom:20px" id="opp"></div>
+  <h2 class="page-h" data-i18n="dec_h"></h2>
+  <p class="page-d" data-i18n="dec_d"></p>
+  <div class="panel" style="margin-bottom:20px" id="dec-tbl"></div>
   <h2 class="page-h" data-i18n="dir_h"></h2>
   <div class="dir-grid" id="dirs"></div>
   <h2 class="page-h" data-i18n="tl_h"></h2>
@@ -491,6 +494,8 @@ en: {
   ev26_t:'2026 key events (to Sep)', rk26_t:'2026 risk indicators',
   note26:'Overall: one-off costs caused a book loss while operating level stayed profitable; revenue timing and gross margin are the key H2 indicators.',
   rkall_h:'Risk indicator overview', rkall_d:'Based on FY2024 / FY2025 annual reports and 1H26 interim data; levels are relative judgments, bar length shows the current level.',
+  dec_h:'Decision metrics: 1H2026 vs FY2025 vs FY2024',
+  dec_d:'Plain-language comparison of the numbers that matter, to help decide what to watch next.',
   dir_h:'Development direction', tl_h:'Decade milestones (2016–2026)',
   hld_h:'Holding Structure', hld_d:'Group structure and subsidiaries per the FY2025 Annual Report (as of 31 Dec 2025); assets are consolidated 2025 totals in IDR bn.',
   hld_own_h:'Shareholders (31 Dec 2025)', hld_group_h:'Group structure by business pillar', hld_table_h:'Consolidated subsidiaries & joint ventures',
@@ -587,6 +592,8 @@ id: {
   ev26_t:'Peristiwa penting 2026 (s/d Sep)', rk26_t:'Indikator risiko 2026',
   note26:'Penilaian: biaya satu kali menyebabkan rugi akuntansi, tetapi level operasional tetap laba; timing pendapatan dan margin kotor menjadi indikator utama 2H26.',
   rkall_h:'Ringkasan indikator risiko', rkall_d:'Berdasarkan laporan tahunan FY2024 / FY2025 dan laporan 1H26; tingkat bersifat penilaian relatif, panjang bar menunjukkan level saat ini.',
+  dec_h:'Metrik keputusan: 1H2026 vs FY2025 vs FY2024',
+  dec_d:'Perbandingan angka-angka kunci dalam bahasa sederhana, untuk membantu memutuskan apa yang perlu diperhatikan berikutnya.',
   dir_h:'Arah pengembangan', tl_h:'Tonggak sejarah 10 tahun (2016–2026)',
   hld_h:'Struktur Kepemilikan', hld_d:'Struktur grup dan entitas anak berdasarkan Laporan Tahunan FY2025 (per 31 Des 2025); aset adalah total konsolidasi 2025 dalam Rp miliar.',
   hld_own_h:'Pemegang saham (31 Des 2025)', hld_group_h:'Struktur grup menurut pilar bisnis', hld_table_h:'Entitas anak & ventura bersama konsolidasian',
@@ -683,6 +690,8 @@ zh: {
   ev26_t:'2026 年大事记（至 9 月）', rk26_t:'2026 风险指示',
   note26:'总体判断：一次性成本致账面亏损，经营层面仍盈利；收入节奏与毛利率是下半年重点观察指标。',
   rkall_h:'风险指示器总览', rkall_d:'综合 FY2024 / FY2025 年报与 1H26 中报数据；等级为相对判断，条长表示当前水平。',
+  dec_h:'决策指标：1H2026 vs FY2025 vs FY2024',
+  dec_d:'用通俗语言对比关键数字，帮助判断下一步该关注什么。',
   dir_h:'发展方向', tl_h:'十年里程碑（2016–2026）',
   hld_h:'股权结构（Holding Structure）', hld_d:'集团结构与子公司依据 FY2025 年报（截至 2025-12-31）；资产为 2025 年合并口径，十亿盾。',
   hld_own_h:'股东结构（2025-12-31）', hld_group_h:'按业务板块的集团结构', hld_table_h:'合并子公司与合资公司明细',
@@ -1321,6 +1330,18 @@ function wcTableHtml(){
   h += '</tbody></table></div><div class="risk-note">'+T('wc_note')+'</div>';
   return h;
 }
+function decTableHtml(){
+  if (typeof DEC === 'undefined' || !DEC) return '';
+  var rows = DEC[LANG];
+  var h = '<table class="dt"><colgroup><col style="width:22%"><col style="width:12%"><col style="width:12%"><col style="width:12%"><col style="width:42%"></colgroup>';
+  h += '<thead><tr><th>Metric</th><th>1H2026</th><th>FY2025</th><th>FY2024</th><th>What it tells you</th></tr></thead><tbody>';
+  for (var i=0;i<rows.length;i++){
+    h += '<tr><td>' + rows[i][0] + '</td><td>' + rows[i][1] + '</td><td>' + rows[i][2] + '</td><td>' + rows[i][3] + '</td><td>' + rows[i][4] + '</td></tr>';
+  }
+  h += '</tbody></table>';
+  return h;
+}
+
 function segTableHtml(){
   if (typeof SEG === 'undefined' || !SEG) return '';
   var L = LANG;
@@ -1635,7 +1656,7 @@ window.addEventListener('scroll', hideTip, true);
 window.addEventListener('resize', hideTip);
 
 /* ================= 数据加载：优先在线拉取 data.json，失败回退内嵌副本 ================= */
-var DATA_KEYS = ["KP","EV","RK","DIR","TL","OWN","SUBS","BIZ","VIA","PILLAR","PILLAR_MAP","ORG","DEBT","LAND","VAL","DTXT","LTXT","VTXT","NXT","VALI","LIQ","KEYP","AN","CHT","FY","LBV","GLOS","TOP3","OPP"];
+var DATA_KEYS = ["KP","EV","RK","DIR","TL","OWN","SUBS","BIZ","VIA","PILLAR","PILLAR_MAP","ORG","DEBT","LAND","VAL","DTXT","LTXT","VTXT","NXT","VALI","LIQ","KEYP","AN","CHT","FY","LBV","GLOS","TOP3","OPP","DEC","SEG"];
 function applyData(d){
   if (!d) { return; }
   for (var i = 0; i < DATA_KEYS.length; i++) {
