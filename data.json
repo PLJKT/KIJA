@@ -1317,11 +1317,11 @@
      "declining since 2022"
     ],
     [
-     "Wholly-owned subs profit contribution",
-     "~breakeven",
+     "Tourism drag (100%-owned)",
+     "-35.1bn",
      2,
      53,
-     "100%-owned ops barely profitable; Kendal JV drives profit"
+     "Tanjung Lesung loss; Power only 56bn"
     ],
     [
      "FX loss",
@@ -1361,11 +1361,11 @@
      "menurun sejak 2022"
     ],
     [
-     "Kontribusi laba anak usaha penuh",
-     "~impas",
+     "Beban Pariwisata (100% milik)",
+     "-35,1 miliar",
      2,
      53,
-     "anak usaha 100% milik hampir impas; Kendal JV yang utama"
+     "Rugi Tanjung Lesung; listrik hanya 56 miliar"
     ],
     [
      "Rugi selisih kurs",
@@ -1405,11 +1405,11 @@
      "2022 年见顶后回落"
     ],
     [
-     "全资子公司利润贡献",
-     "约盈亏平衡",
+     "旅游拖累（全资）",
+     "-35.1bn",
      2,
      53,
-     "全资子公司几乎不赚钱；Kendal 合营为利润主力"
+     "Tanjung Lesung 亏损；电力仅 56bn"
     ],
     [
      "汇兑损失",
@@ -1451,11 +1451,11 @@
      "land margin down + infrastructure mix up"
     ],
     [
-     "Wholly-owned subs profit contribution",
-     "~breakeven",
+     "Tourism still loss / Power margin thin",
+     "-30.4bn / 18%",
      2,
      51,
-     "100%-owned ops combined ~breakeven; Kendal JV drives profit"
+     "Tourism -30bn; Power GPM only 18% despite +54% revenue"
     ],
     [
      "Kendal reliance",
@@ -1495,11 +1495,11 @@
      "margin lahan turun + komposisi infrastruktur naik"
     ],
     [
-     "Kontribusi laba anak usaha penuh",
-     "~impas",
+     "Pariwisata masih rugi / margin listrik tipis",
+     "-30,4 miliar / 18%",
      2,
      51,
-     "anak usaha 100% milik digabung impas; Kendal JV yang utama"
+     "Pariwisata -30bn; GPM listrik hanya 18% walau pendapatan +54%"
     ],
     [
      "Ketergantungan Kendal",
@@ -1539,11 +1539,11 @@
      "土地毛利下滑 + 基建占比上升"
     ],
     [
-     "全资子公司利润贡献",
-     "约盈亏平衡",
+     "旅游仍亏 / 电力毛利薄",
+     "-30.4bn / 18%",
      2,
      51,
-     "全资子公司合计约盈亏平衡；Kendal 合营为利润主力"
+     "旅游 -30bn；电力收入 +54% 但毛利率仅 18%"
     ],
     [
      "Kendal 依赖",
@@ -1719,11 +1719,11 @@
      "land margin down plus higher power/water share"
     ],
     [
-     "Wholly-owned subs profit contribution",
-     "~breakeven",
+     "Tourism & low-margin Power drag",
+     "Tourism -30bn / Power GPM 18%",
      2,
      51,
-     "100%-owned ops combined ~breakeven; Kendal JV drives profit"
+     "Wholly-owned segments contribute 751bn; Tourism still loss-making"
     ],
     [
      "Revenue recognition timing",
@@ -1791,11 +1791,11 @@
      "margin lahan turun + porsi listrik/air naik"
     ],
     [
-     "Kontribusi laba anak usaha penuh",
-     "~impas",
+     "Pariwisata & listrik margin rendah",
+     "Pariwisata -30bn / GPM listrik 18%",
      2,
      51,
-     "anak usaha 100% milik digabung impas; Kendal JV yang utama"
+     "Segmen milik penuh menyumbang 751bn; Pariwisata masih rugi"
     ],
     [
      "Timing pengakuan pendapatan",
@@ -1863,11 +1863,11 @@
      "土地毛利率下滑叠加电力/水务占比上升"
     ],
     [
-     "全资子公司利润贡献",
-     "约盈亏平衡",
+     "旅游亏损与电力低毛利",
+     "旅游 -30bn / 电力毛利率 18%",
      2,
      51,
-     "全资子公司合计约盈亏平衡；Kendal 合营为利润主力"
+     "全资板块贡献 751bn；旅游仍亏损"
     ],
     [
      "收入确认节奏",
@@ -7056,9 +7056,9 @@
    "sub": "Each tied to a measurable gap in the 2015-25 record and a plausible efficiency lever.",
    "items": [
     [
-     "1. Scale profit at 100%-owned operating companies",
-     "Kendal JV (51% KIJA / 49% Sembcorp) drives most consolidated profit, so ~51% of it leaks to NCI. The 100%-owned group (JIPT infrastructure, UPPT power, JNLPT water, CGSPT logistics, TLLIPT leisure, Morotai) combined was roughly breakeven to slightly negative in 2025.",
-     "Every IDR 1bn of profit grown in these wholly-owned subs flows 100% to parent, vs only ~51% from Kendal. Levers: UPPT power already +54% in 2025; push JIPT water/wastewater and dry-port utilization; lift CGSPT warehousing occupancy; turn TLLIPT leisure around. A +50bn improvement at wholly-owned subs would raise FY25 attributable profit from 423 to ~473 (+12%) with no NCI leakage and no need to renegotiate the JV."
+     "1. Scale profit at wholly-owned infra & service segments",
+     "From Note 34: wholly-owned segments (Power, Estate services, Golf, Tourism) contributed IDR 751bn to parent in 2025 vs 369bn in 2024. Power swung from 56 to 316bn (+460bn); Services grew 341 to 458bn (+117bn); Tourism still loses 30bn.",
+     "Top 3 levers: (a) keep Power utilization high — Bekasi Power/United Power now 100% of KIJA, every rupiah flows to parent; (b) grow estate-services revenue (water, dry port, warehousing) where GPM holds ~46%; (c) turn Tourism around — Tanjung Lesung lost 30bn in both 2024 and 2025. A +50bn improvement at wholly-owned segments (e.g. Tourism breakeven + higher Power dispatch) would lift FY25 attributable profit from 423 to ~473 (+12%) with no NCI leakage."
     ],
     [
      "2. Shift mix to recurring infrastructure",
@@ -7077,9 +7077,9 @@
    "sub": "Tiap poin terkait gap terukur di data 2015-25 dan tuas efisiensi yang realistis.",
    "items": [
     [
-     "1. Tingkatkan laba di anak usaha 100% milik",
-     "Kendal JV (51% KIJA / 49% Sembcorp) menyumbang sebagian besar laba konsolidasi, sehingga ~51% bocor ke NCI. Grup anak usaha 100% milik (JIPT infrastruktur, UPPT listrik, JNLPT air, CGSPT logistik, TLLIPT rekreasi, Morotai) secara agregat sekitar impas hingga sedikit rugi di 2025.",
-     "Setiap Rp 1 triliun laba yang tumbuh di anak usaha sepenuhnya milik mengalir 100% ke induk, vs hanya ~51% dari Kendal. Tuas: UPPT listrik sudah +54% di 2025; dorong utilisasi air/air limbah dan dry-port JIPT; tingkatkan okupansi pergudangan CGSPT; pulihkan TLLIPT. Peningkatan +50 miliar di anak usaha sepenuhnya milik akan menaikkan laba induk FY25 dari 423 ke ~473 (+12%) tanpa kebocoran NCI dan tanpa perlu menegosiasi ulang JV."
+     "1. Tingkatkan laba segmen infrastruktur & layanan milik penuh",
+     "Dari Catatan 34: segmen milik penuh (Listrik, Jasa kawasan, Golf, Pariwisata) menyumbang Rp751 miliar ke induk di 2025 vs Rp369 miliar di 2024. Listrik naik dari 56 ke 316 miliar (+460 miliar); Jasa tumbuh 341 ke 458 miliar (+117 miliar); Pariwisata masih rugi 30 miliar.",
+     "Tiga tuas utama: (a) jaga utilisasi listrik — Bekasi Power/United Power kini 100% milik KIJA, setiap rupiah mengalir ke induk; (b) tumbuhkan pendapatan jasa kawasan (air, dry port, pergudangan) dengan GPM ~46%; (c) pulihkan Pariwisata — Tanjung Lesung rugi 30 miliar di 2024 dan 2025. Peningkatan +50 miliar di segmen milik penuh (impas Pariwisata + dispatch listrik lebih tinggi) akan menaikkan laba induk FY25 dari 423 ke ~473 (+12%) tanpa kebocoran NCI."
     ],
     [
      "2. Geser bursa ke infrastruktur rutin",
@@ -7098,9 +7098,9 @@
    "sub": "每项对应 2015–25 数据中的可量化差距与可行效率杠杆。",
    "items": [
     [
-     "1. 扩大全资运营子公司的利润规模",
-     "Kendal 合营（KIJA 51% / Sembcorp 49%）贡献了合并利润的大头，因此约 51% 流向少数股东。全资集团（JIPT 基础设施、UPPT 电力、JNLPT 水务、CGSPT 物流、TLLIPT 休闲、Morotai）2025 年合计基本盈亏平衡或小幅亏损。",
-     "全资子公司每多赚 10 亿盾，100% 归母公司；而 Kendal 每多赚 10 亿盾只有 ~51% 归母公司。抓手：UPPT 电力 2025 已 +54%；继续推 JIPT 水务/干港利用率、CGSPT 仓储出租率、TLLIPT 休闲业务扭亏。全资子公司利润提升 50bn，FY25 归母净利即可从 423 升至 ~473（+12%），且不产生 NCI 分流、无需重谈合营。"
+     "1. 扩大全资基建与服务板块利润",
+     "据附注 34：全资板块（电力、园区服务、高尔夫、旅游）2025 年对母公司贡献 751bn（2024 年 369bn）。电力从 56bn 跃升至 316bn（+460bn）；园区服务从 341 增至 458bn（+117bn）；旅游仍亏 30bn。",
+     "三大抓手：(a) 保持电力高利用——Bekasi Power/United Power 已 100% 归 KIJA，每一元利润都归母公司；(b) 做大园区服务收入（水务、干港、仓储），毛利率稳定在 ~46%；(c) 旅游扭亏——Tanjung Lesung 2024 和 2025 均亏 30bn。全资板块利润提升 50bn（旅游扭亏 + 电力增发），FY25 归母即可从 423 升至 ~473（+12%），且无 NCI 分流。"
     ],
     [
      "2. 结构转向经常性基建",
@@ -7474,6 +7474,117 @@
      ]
     ]
    ]
+  }
+ },
+ "SEG": {
+  "years": [
+   "2024",
+   "2025"
+  ],
+  "rows": [
+   {
+    "key": "real",
+    "rev": [
+     2573.4,
+     2469.4
+    ],
+    "gpm": [
+     52.2,
+     52.1
+    ],
+    "net": [
+     1858.8,
+     2000.7
+    ],
+    "own": "Cikarang 100% + Kendal 51% (JV)"
+   },
+   {
+    "key": "pow",
+    "rev": [
+     1182.4,
+     1818.1
+    ],
+    "gpm": [
+     17.2,
+     17.9
+    ],
+    "net": [
+     56.0,
+     315.6
+    ],
+    "own": "Bekasi Power / United Power (100%)"
+   },
+   {
+    "key": "svc",
+    "rev": [
+     779.8,
+     797.6
+    ],
+    "gpm": [
+     47.0,
+     46.1
+    ],
+    "net": [
+     341.1,
+     458.0
+    ],
+    "own": "Estate maintenance & services (100%)"
+   },
+   {
+    "key": "golf",
+    "rev": [
+     85.0,
+     82.5
+    ],
+    "gpm": [
+     41.6,
+     47.7
+    ],
+    "net": [
+     6.7,
+     6.6
+    ],
+    "own": "Padang Golf Cikarang (100%)"
+   },
+   {
+    "key": "tour",
+    "rev": [
+     69.5,
+     57.2
+    ],
+    "gpm": [
+     26.2,
+     24.6
+    ],
+    "net": [
+     -35.1,
+     -30.4
+    ],
+    "own": "Tanjung Lesung (100%)"
+   }
+  ],
+  "labels": {
+   "en": {
+    "real": "Real estate (Cikarang + Kendal land)",
+    "pow": "Power generation",
+    "svc": "Estate services & maintenance",
+    "golf": "Golf course",
+    "tour": "Tourism (Tanjung Lesung)"
+   },
+   "id": {
+    "real": "Real estat (Cikarang + Kendal)",
+    "pow": "Pembangkit listrik",
+    "svc": "Jasa & pemeliharaan kawasan",
+    "golf": "Lapangan golf",
+    "tour": "Pariwisata (Tanjung Lesung)"
+   },
+   "zh": {
+    "real": "房地产（Cikarang + Kendal 土地）",
+    "pow": "发电",
+    "svc": "园区服务与维护",
+    "golf": "高尔夫球场",
+    "tour": "旅游（Tanjung Lesung）"
+   }
   }
  }
 }
