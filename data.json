@@ -6135,7 +6135,13 @@
    "debtL": "Total borrowings",
    "netDebtL": "Net debt",
    "msalesL": "Marketing sales",
-   "infraPie": "Infrastructure"
+   "infraPie": "Infrastructure",
+   "openC24": "Opening cash (end-2023)",
+   "consS24": "Consolidated surplus 2024",
+   "closeC24": "Closing cash (end-2024)",
+   "openC25": "Opening cash (end-2024)",
+   "consS25": "Consolidated surplus 2025",
+   "closeC25": "Closing cash (end-2025)"
   },
   "id": {
    "unit": "Rp miliar",
@@ -6185,7 +6191,13 @@
    "debtL": "Total pinjaman",
    "netDebtL": "Utang bersih",
    "msalesL": "Penjualan pemasaran",
-   "infraPie": "Infrastruktur"
+   "infraPie": "Infrastruktur",
+   "openC24": "Kas awal (akhir 2023)",
+   "consS24": "Surplus konsolidasi 2024",
+   "closeC24": "Kas akhir (akhir 2024)",
+   "openC25": "Kas awal (akhir 2024)",
+   "consS25": "Surplus konsolidasi 2025",
+   "closeC25": "Kas akhir (akhir 2025)"
   },
   "zh": {
    "unit": "十亿盾",
@@ -6235,7 +6247,13 @@
    "debtL": "总有息借款",
    "netDebtL": "净负债",
    "msalesL": "营销销售",
-   "infraPie": "基建"
+   "infraPie": "基建",
+   "openC24": "期初现金（2023 末）",
+   "consS24": "合并盈余 2024",
+   "closeC24": "期末现金（2024 末）",
+   "openC25": "期初现金（2024 末）",
+   "consS25": "合并盈余 2025",
+   "closeC25": "期末现金（2025 末）"
   }
  },
  "FY": {
