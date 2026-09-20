@@ -229,7 +229,12 @@ footer a{color:var(--green)}
   <div class="kpis" id="ov-kpis"></div>
   <div class="charts">
     <div class="chart-card"><h3 data-i18n="c_o1_t"></h3><div class="sub" data-i18n="c_o1_s"></div><div class="chart" id="o1"></div></div>
-    <div class="chart-card"><h3 data-i18n="c_o2_t"></h3><div class="sub" data-i18n="c_o2_s"></div><div class="chart" id="o2"></div></div>
+    <div class="chart-card">
+  <h3 data-i18n="c_o2_t"></h3>
+  <div class="sub" data-i18n="c_o2_s"></div>
+  <div class="chart" id="o2"></div>
+  <div id="o2-table" style="margin-top:8px;font-size:11px;color:#5C6B61;overflow-x:auto"></div>
+</div>
     <div class="chart-card"><h3 data-i18n="c_o3_t"></h3><div class="sub" data-i18n="c_o3_s"></div><div class="chart" id="o3"></div></div>
     <div class="chart-card"><h3 data-i18n="c_o4_t"></h3><div class="sub" data-i18n="c_o4_s"></div><div class="chart" id="o4"></div></div>
     <div class="chart-card"><h3 data-i18n="c_o5_t"></h3><div class="sub" data-i18n="c_o5_s"></div><div class="chart" id="o5"></div></div>
@@ -1551,6 +1556,7 @@ function renderPage(id){
     CH[ids[i]] = c;
   }
   for (var k in CH) { if (CH.hasOwnProperty(k)) { CH[k].resize(); } }
+  buildO2Table();
 }
 function showPage(id){
   var pages = document.querySelectorAll('.page'), i;
@@ -1558,6 +1564,20 @@ function showPage(id){
   var tabs = document.querySelectorAll('.tab');
   for (i = 0; i < tabs.length; i++) { tabs[i].classList.toggle('active', tabs[i].getAttribute('data-page') === id); }
   renderPage(id);
+}
+function buildO2Table(){
+  var el = document.getElementById('o2-table');
+  if (!el || el.dataset.done) return;
+  var y = AN.years, nc = AN.niCons, np = AN.niParent;
+  var h = '<table style="width:100%;border-collapse:collapse;font-size:11px;text-align:right"><tr style="border-bottom:1px solid #ddd"><th style="text-align:left">Year</th>';
+  for (var i=0;i<y.length;i++) h += '<th>'+y[i]+'</th>';
+  h += '</tr><tr style="border-bottom:1px solid #eee"><td style="text-align:left">Consolidated</td>';
+  for (var i=0;i<nc.length;i++) h += '<td>'+nc[i]+'</td>';
+  h += '</tr><tr><td style="text-align:left;color:#B8860B"><b>Attributable to parent</b></td>';
+  for (var i=0;i<np.length;i++) h += '<td style="color:#B8860B"><b>'+np[i]+'</b></td>';
+  h += '</tr></table>';
+  el.innerHTML = h;
+  el.dataset.done = '1';
 }
 function currentPage(){
   var h = location.hash.replace('#', ''), pages = document.querySelectorAll('.page');
