@@ -465,7 +465,7 @@ en: {
   seg_h:'Segment P&L by business (FY2024 vs FY2025)',
   seg_s:'Source: AR2025 Note 34. IDR bn. Net is pre-elimination.',
 prof_note:'<ul style="margin:0;padding-left:18px;line-height:1.7">'
-  +'<li><b>Gross margin</b> 39% (FY25), down from ~52% peak (2015-17 land-sale era) as recurring-infrastructure mix grows.</li>'
+  +'<li><b>Gross margin *</b> 39% (FY25), down from ~52% peak (2015-17 land-sale era) as recurring-infrastructure mix grows.</li>'
   +'<li><b>EBITDA margin</b> ~34% — recurring-infrastructure earnings are stable.</li>'
   +'<li><b>Net margin</b> 16.6% and <b>ROE</b> 11% recovered from the 2018-22 trough (~1%); <b>ROA</b> still ~5.7% (asset-heavy land banking).</li>'
   +'<li><b>FCF</b> strong: CFO 2,402 − capex 169 ≈ 2,233bn (~43% of revenue).</li>'
@@ -569,7 +569,7 @@ id: {
   seg_h:'Laba-rugi per segmen usaha (FY2024 vs FY2025)',
   seg_s:'Sumber: Catatan 34 AR2025. Rp miliar. Laba sebelum eliminasi.',
 prof_note:'<ul style="margin:0;padding-left:18px;line-height:1.7">'
-  +'<li><b>Margin kotor</b> 39% (FY25), turun dari puncak ~52% (era penjualan tanah 2015-17) seiring bauran infrastruktur berulang.</li>'
+  +'<li><b>Margin kotor *</b> 39% (FY25), turun dari puncak ~52% (era penjualan tanah 2015-17) seiring bauran infrastruktur berulang.</li>'
   +'<li><b>Margin EBITDA</b> ~34% — laba infrastruktur berulang stabil.</li>'
   +'<li><b>Margin bersih</b> 16,6% dan <b>ROE</b> 11% pulih dari palung 2018-22 (~1%); <b>ROA</b> masih ~5,7% (aset lahan berat).</li>'
   +'<li><b>FCF</b> kuat: arus kas operasi 2.402 − capex 169 ≈ 2.233 miliar (~43% pendapatan).</li>'
@@ -673,7 +673,7 @@ zh: {
   seg_h:'分业务板块损益 (FY2024 vs FY2025)',
   seg_s:'来源：AR2025 附注 34。IDR bn。净利润为抵销前口径。',
 prof_note:'<ul style="margin:0;padding-left:18px;line-height:1.7">'
-  +'<li><b>毛利率</b> 39%（FY25），较 2015-17 售地时代 ~52% 高点回落（经常性基建占比上升）。</li>'
+  +'<li><b>毛利率 *</b> 39%（FY25），较 2015-17 售地时代 ~52% 高点回落（经常性基建占比上升）。</li>'
   +'<li><b>EBITDA 率</b> ~34% — 经常性基建盈利稳定。</li>'
   +'<li><b>净利率</b> 16.6%、<b>ROE</b> 11% 已从 2018-22 低谷（~1%）回升；<b>ROA</b> 仍约 5.7%（土地储备重资产）。</li>'
   +'<li><b>自由现金流</b> 强：经营现金流 2,402 − 资本开支 169 ≈ 2,233bn（约营收 43%）。</li>'
@@ -1372,21 +1372,31 @@ function decTableHtml(){
   return h;
 }
 
+function fmtInt(x){ return Math.round(x).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); }
 function segTableHtml(){
   if (typeof SEG === 'undefined' || !SEG) return '';
   var lbl = SEG.labels[LANG];
-  var h = '<div class="g-table-wrap"><table class="g-table"><colgroup><col style="width:32%"><col style="width:10%"><col style="width:11%"><col style="width:11%"><col style="width:10%"><col style="width:11%"><col style="width:11%"></colgroup>';
-  h += '<thead><tr><th>Segment (IDR bn)</th><th>Own</th><th>Rev 24</th><th>Rev 25</th><th>GPM 25</th><th>Net 24</th><th>Net 25</th></tr></thead><tbody>';
+  var h = '<div class="g-table-wrap"><table class="g-table"><colgroup><col style="width:32%"><col style="width:9%"><col style="width:12%"><col style="width:12%"><col style="width:10%"><col style="width:12%"><col style="width:13%"></colgroup>';
+  h += '<thead><tr><th>Segment (IDR bn)</th><th>Own</th><th>Rev 2024</th><th>Rev 2025</th><th>GPM 25 *</th><th>Net 2024</th><th>Net 2025</th></tr></thead><tbody>';
   for (var i=0;i<SEG.rows.length;i++){
     var r = SEG.rows[i];
     var nc = r.net[1] < 0 ? ' style="color:var(--clay);font-weight:600"' : '';
     h += '<tr><td class="b">' + (lbl[r.key]||r.key) + '</td>'
        + '<td class="p">' + r.ownpct + '%</td>'
-       + '<td class="p">' + r.rev[0].toFixed(1) + '</td>'
-       + '<td class="p">' + r.rev[1].toFixed(1) + '</td>'
+       + '<td class="p">' + fmtInt(r.rev[0]) + '</td>'
+       + '<td class="p">' + fmtInt(r.rev[1]) + '</td>'
        + '<td class="p">' + r.gpm[1].toFixed(1) + '%</td>'
-       + '<td class="p">' + (r.net[0]>=0?'+':'') + r.net[0].toFixed(1) + '</td>'
-       + '<td class="p"' + nc + '>' + (r.net[1]>=0?'+':'') + r.net[1].toFixed(1) + '</td></tr>';
+       + '<td class="p">' + (r.net[0]>=0?'+':'') + fmtInt(r.net[0]) + '</td>'
+       + '<td class="p"' + nc + '>' + (r.net[1]>=0?'+':'') + fmtInt(r.net[1]) + '</td></tr>';
+  }
+  if (SEG.total){
+    var t = SEG.total;
+    h += '<tr style="background:#EFF2EC;font-weight:700"><td>Total (pre-elimination)</td><td></td>'
+       + '<td class="p">' + fmtInt(t.rev[0]) + '</td>'
+       + '<td class="p">' + fmtInt(t.rev[1]) + '</td>'
+       + '<td class="p">' + t.gpm[1].toFixed(1) + '%</td>'
+       + '<td class="p">+' + fmtInt(t.net[0]) + '</td>'
+       + '<td class="p">+' + fmtInt(t.net[1]) + '</td></tr>';
   }
   h += '</tbody></table></div>';
   return h;
