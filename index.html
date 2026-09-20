@@ -1737,10 +1737,69 @@ function loadData(cb){
     setTimeout(fin, 5000);
   } catch (e) { fin(); }
 }
+function fetchLivePrice(cb){
+  try {
+    var x = new XMLHttpRequest();
+    x.open('GET', 'https://query1.finance.yahoo.com/v8/finance/chart/KIJA.JK?range=5d&interval=1d', true);
+    x.onreadystatechange = function(){
+      if (x.readyState === 4 && x.status === 200) {
+        try {
+          var j = JSON.parse(x.responseText);
+          var r = j.chart.result[0];
+          var closes = r.indicators.quote[0].close;
+          var ts = r.timestamp;
+          var lastClose = closes[closes.length - 1];
+          if (lastClose && lastClose > 0) {
+            lastClose = Math.round(lastClose);
+            var d = new Date(ts[ts.length-1] * 1000);
+            var ds = d.toISOString().slice(0,10);
+            FY.refPrice = lastClose;
+            VAL.close[VAL.close.length - 1] = lastClose;
+            VAL.kpi[0].v = lastClose;
+            VAL.kpi[0].l = 'Price (' + ds + ')';
+            VAL.kpi[0].d = 'live close from Yahoo Finance';
+            var prevClose = closes[closes.length - 2] || lastClose;
+            var chg = lastClose - prevClose;
+            var chgPct = prevClose ? (chg/prevClose*100) : 0;
+            VAL.kpi[0].d = (chg>=0?'+':'') + chg.toFixed(0) + ' (' + (chgPct>=0?'+':'') + chgPct.toFixed(1) + '%) live';
+            VAL.kpi[0].c = chg >= 0 ? 'up' : 'dn';
+            // Recalculate market cap, P/E, P/B, dividend yield
+            var shares = 20.59; // bn
+            var eps = 20.55;
+            var bvps = 304.1;
+            var dps = 2.03;
+            VAL.kpi[2].v = +(lastClose * shares / 1000).toFixed(1);
+            VAL.kpi[2].d = (lastClose * shares / 1000).toFixed(2) + 'T at ' + lastClose;
+            VAL.kpi[3].v = +(lastClose / bvps).toFixed(1);
+            VAL.kpi[3].d = (lastClose / bvps).toFixed(2) + 'x parent BVPS ' + bvps;
+            VAL.kpi[4].v = +(lastClose / eps).toFixed(1);
+            VAL.kpi[4].d = (lastClose / eps).toFixed(1) + 'x on FY25 EPS ' + eps;
+            VAL.kpi[5].v = +(dps / lastClose * 100).toFixed(1);
+            VAL.kpi[5].d = dps + ' DPS / ' + lastClose;
+            // Update stats table
+            for (var s=0; s<VAL.stats.length; s++) {
+              if (VAL.stats[s][0] === 'Price / date') { VAL.stats[s][1] = lastClose + '.0 IDR · ' + ds + ' (Yahoo Finance live)'; break; }
+            }
+          }
+        } catch(e) {}
+      }
+      if (cb) cb();
+    };
+    x.onerror = function(){ if (cb) cb(); };
+    x.send(null);
+    setTimeout(function(){ if (cb) cb(); }, 5000);
+  } catch(e) { if (cb) cb(); }
+}
 function boot(){
   renderStatics();
   showPage(currentPage());
-  loadECharts(function(){ renderPage(currentPage()); });
+  loadECharts(function(){
+    renderPage(currentPage());
+    fetchLivePrice(function(){
+      renderStatics();
+      renderPage(currentPage());
+    });
+  });
 }
 loadData(boot);
 </script>
