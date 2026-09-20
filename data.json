@@ -7568,11 +7568,27 @@
    }
   ],
   "labels": {
-   "real": "Real estate (Cikarang + Kendal)",
-   "power": "Power (Bekasi/United Power)",
-   "svc": "Estate services & maintenance",
-   "golf": "Golf",
-   "tour": "Tourism (Tanjung Lesung)"
+   "en": {
+    "real": "Real estate (Cikarang + Kendal)",
+    "power": "Power (Bekasi/United Power)",
+    "svc": "Estate services & maintenance",
+    "golf": "Golf",
+    "tour": "Tourism (Tanjung Lesung)"
+   },
+   "id": {
+    "real": "Real estat (Cikarang + Kendal)",
+    "power": "Pembangkit listrik (Bekasi/United Power)",
+    "svc": "Jasa & pemeliharaan kawasan",
+    "golf": "Golf",
+    "tour": "Pariwisata (Tanjung Lesung)"
+   },
+   "zh": {
+    "real": "房地产 (Cikarang + Kendal)",
+    "power": "电力 (Bekasi/United Power)",
+    "svc": "园区服务与维护",
+    "golf": "高尔夫",
+    "tour": "旅游 (Tanjung Lesung)"
+   }
   },
   "note25": "Cikarang/Kendal split: net split derived from NCI attribution (Kendal 49% NCI); revenue split estimated ~70/30 (marketing sales mix). GPM assumed similar.",
   "total": {
