@@ -727,6 +727,42 @@ zh: {
 }
 };
 </script>
+var DEC = {"en":{"hd":["Metric","1H2026","FY2025","FY2024","Read"],"rows":[
+["Revenue (IDR bn)","2,196","5,225","4,690","1H26 -11% y/y on land-recognition timing; FY25 +11%"],
+["Gross margin","34%","39%","42%","Compressed by higher power/water mix; watch stabilisation"],
+["Net profit attributable (IDR bn)","~180","423","481","1H26 hit by one-off refi cost ~460"],
+["Cash & equivalents (IDR bn)","3,200","3,619","2,049","Strong liquidity; covers short-term debt"],
+["Net debt (IDR bn)","1,663","988","2,450","Rose in 1H26 due to IDR Mandiri draw; net-debt/EBITDA 0.6x"],
+["Net debt / EBITDA","n/m (annualising)","0.6x","1.5x","Big deleveraging 2024-25"],
+["EBITDA / interest","n/m","4.4x","4.0x","Comfortable cover"],
+["Marketing sales progress","32% (H1 elapsed)","~1,960","~1,530","2H26 Kendal conversion is the key swing factor"],
+["Dividend paid (IDR bn)","—","42.3","0","Restored in FY25; policy 25-35% payout"],
+["FX / derivative loss (IDR bn)","0 (cleared)","120.9","205.7","USD debt fully repaid 2Q26; FX risk eliminated"]
+]},"id":{"hd":["Metrik","1H2026","FY2025","FY2024","Baca"],"rows":[
+["Pendapatan (miliar)","2,196","5,225","4,690","1H26 -11% y/y akibat timing lahan; FY25 +11%"],
+["Margin kotor","34%","39%","42%","Terkompresi oleh porsi listrik/air naik"],
+["Laba bersih induk (miliar)","~180","423","481","1H26 tertekan biaya refi sekali jalan ~460"],
+["Kas & setara kas (miliar)","3,200","3,619","2,049","Likuiditas kuat; menutup utang jangka pendek"],
+["Utang bersih (miliar)","1,663","988","2,450","Naik 1H26 karena tarikan Mandiri IDR; utang bersih/EBITDA 0,6x"],
+["Utang bersih / EBITDA","n/m","0,6x","1,5x","Deleveraging besar 2024-25"],
+["EBITDA / bunga","n/m","4,4x","4,0x","Cakupan nyaman"],
+["Progres penjualan pemasaran","32% (waktu H1)","~1,960","~1,530","Konversi Kendal 2H26 adalah kunci"],
+["Dividen dibayar (miliar)","—","42,3","0","Dipulihkan FY25; kebijakan payout 25-35%"],
+["Rugi kurs/derivatif (miliar)","0 (bersih)","120,9","205,7","Utang USD dilunasi 2Q26; risiko kurs hilang"]
+]},"zh":{"hd":["指标","1H2026","FY2025","FY2024","解读"],"rows":[
+["营业收入（十亿盾）","2,196","5,225","4,690","1H26 因土地确认时点 -11%；FY25 +11%"],
+["毛利率","34%","39%","42%","电力/水务占比上升压低；关注企稳"],
+["归母净利润（十亿盾）","~180","423","481","1H26 受一次性再融资成本约 460 拖累"],
+["现金及等价物（十亿盾）","3,200","3,619","2,049","流动性强；覆盖短期债务"],
+["净债务（十亿盾）","1,663","988","2,450","1H26 因本币 Mandiri 提款上升；净负债/EBITDA 0.6x"],
+["净负债/EBITDA","n/m","0.6x","1.5x","2024-25 大幅去杠杆"],
+["EBITDA/利息","n/m","4.4x","4.0x","覆盖充足"],
+["营销销售进度","32%（时过半）","~1,960","~1,530","2H26 Kendal 转化是关键变量"],
+["派息（十亿盾）","—","42.3","0","FY25 恢复派息；政策 payout 25-35%"],
+["汇兑/衍生品损失（十亿盾）","0（已出清）","120.9","205.7","2Q26 美元债已清偿；汇率风险消除"]
+]}};
+
+
 
 <script>
 /* ===== 内容数据（由 data.json 生成；在线时页面运行时拉取 data.json 覆盖，离线回退本内嵌副本） ===== */
@@ -1424,6 +1460,19 @@ function renderStatics(){
     });
     ho += '</div>';
     document.getElementById('opp').innerHTML = ho;
+
+  (function(){
+    var D = DEC[LANG]||DEC.en;
+    var h = '<table class="g-table"><colgroup>'
+      + '<col style="width:24%"><col style="width:13%"><col style="width:13%"><col style="width:13%"><col style="width:37%"></colgroup>'
+      + '<thead><tr><th>'+esc(D.hd[0])+'</th><th>'+esc(D.hd[1])+'</th><th>'+esc(D.hd[2])+'</th><th>'+esc(D.hd[3])+'</th><th>'+esc(D.hd[4])+'</th></tr></thead><tbody>';
+    D.rows.forEach(function(r){
+      h += '<tr><td class="b">'+esc(r[0])+'</td><td class="p">'+esc(r[1])+'</td><td class="p">'+esc(r[2])+'</td><td class="p">'+esc(r[3])+'</td><td>'+esc(r[4])+'</td></tr>';
+    });
+    h += '</tbody></table>';
+    document.getElementById('dec-tbl').innerHTML = h;
+  })();
+
   })();
   document.getElementById('dirs').innerHTML = dirsHtml();
   document.getElementById('tl').innerHTML = tlHtml();
