@@ -839,7 +839,10 @@ function buildOpt(id){
           smooth: false, symbolSize: 12, showSymbol: true,
           lineStyle: { width: 4, color: '#D9A53A', type: 'solid' },
           itemStyle: { color: '#D9A53A', borderColor: '#fff', borderWidth: 2 },
-          label: { show: true, position: 'top', interval: 0, fontSize: 10, fontWeight: 'bold', color: '#B8860B', formatter: function(p){ return p.value; } },
+          label: { show: true, interval: 0, fontSize: 10, fontWeight: 'bold', color: '#B8860B',
+            formatter: function(p){ return p.value; },
+            position: function(p){ return p.value < 0 ? 'bottom' : 'top'; }
+          },
           labelLayout: { hideOverlap: false }
         }
       ]
