@@ -823,7 +823,7 @@ function buildOpt(id){
     return {tooltip:tt2, legend:legendT(), grid:baseGrid(), xAxis:baseX(AN.years), yAxis:baseY(U),
       series:[
         {name:CT('cons'), type:'line', data:nc, smooth:true, symbolSize:6, lineStyle:{width:2.5, color:C.green}, itemStyle:{color:C.green}},
-        {name:CT('parent'), type:'line', data:np, smooth:true, symbolSize:6, lineStyle:{width:2, color:C.amber, type:'dashed'}, itemStyle:{color:C.amber}}]};
+        {name:CT('parent'), type:'line', data:np, smooth:true, symbolSize:10, lineStyle:{width:3.5, color:C.amber, type:'dashed'}, itemStyle:{color:C.amber}}]};
   }
   if (id === 'o3') {
     return {tooltip:baseTooltip(), legend:legendT(), grid:baseGrid(), xAxis:baseX(AN.years), yAxis:baseY('%'),
