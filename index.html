@@ -836,10 +836,10 @@ function buildOpt(id){
         },
         {
           name: CT('parent'), type: 'line', data: np,
-          smooth: false, symbolSize: 10,
-          lineStyle: { width: 3.5, color: '#D9A53A', type: 'dashed' },
-          itemStyle: { color: '#D9A53A', borderColor: '#fff', borderWidth: 1.5 },
-          label: { show: true, position: 'top', fontSize: 9, color: '#B8860B', formatter: function(p){ return p.value; } }
+          smooth: false, symbolSize: 12, showSymbol: true,
+          lineStyle: { width: 4, color: '#D9A53A', type: 'solid' },
+          itemStyle: { color: '#D9A53A', borderColor: '#fff', borderWidth: 2 },
+          label: { show: true, position: 'top', interval: 0, fontSize: 10, fontWeight: 'bold', color: '#B8860B', formatter: function(p){ return p.value; } }
         }
       ]
     };
