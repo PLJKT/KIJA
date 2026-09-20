@@ -6478,6 +6478,10 @@
  "GLOS": {
   "terms": [
    {
+    "p": "pre-elimination",
+    "x": "Segment totals before inter-segment elimination. When one segment sells goods/services to another (e.g. Real estate sells land to its own power plant), the profit on those internal sales is removed in consolidation. Segment totals are therefore larger than consolidated revenue/profit; the gap is inter-segment elimination."
+   },
+   {
     "p": "EV/EBITDA",
     "x": "Enterprise Value / EBITDA — a valuation multiple comparing the total value of a business (market cap + debt − cash) to its operating earnings; KIJA ~2.7x on FY25."
    },
