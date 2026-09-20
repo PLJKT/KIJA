@@ -1,4 +1,4 @@
-# KIJA Dashboard — Master Playbook
+# Financial Dashboard — Master Playbook
 
 > Purpose: hand this file to any AI, give it a listed company ticker (and optionally its official annual report PDFs), and it should produce a financial-operations dashboard that looks, feels, and behaves like the KIJA dashboard (https://pljkt.github.io/KIJA/).
 >
@@ -9,9 +9,10 @@
 ## 1. Deliverable shape
 
 - **One static site** hosted on **GitHub Pages** from the `main` branch, served at `https://<user>.github.io/<repo>/`.
-- **Single-page app (SPA)** with in-page hash routing between "pages" (sections). No server, no build step beyond a Python concatenation script.
-- **Offline-capable**: all data is embedded in `data.json` at build time; the page also tries to fetch `data.json` at runtime and falls back to the embedded copy.
-- **Three languages, strict**: English (default), Bahasa Indonesia, 中文. Language switcher in the header (EN / ID / 中文). Once a language is chosen, **every visible string must be in that language** — no mixed paragraphs, no mixed numbers units, no leftover English in a ZH view. If a string is missing for the selected language, fall back to English rather than leaving blank, but flag it.
+- **Single-file SPA** (`index.html`) with in-page hash routing between "pages" (sections). No server, no build step, no framework.
+- **Two files**: `index.html` (HTML + CSS + JS + inline data) and `data.json` (the single source of truth, loaded at runtime via XMLHttpRequest).
+- **Runtime data override**: on load, the page fetches `data.json?v=<timestamp>` and overwrites the inline `AN`, `VAL`, `FY`, `GLOS`, `CHT`, `KP`, `EV`, `RK`, `DEBT`, `LAND`, `TL`, `TOP3`, `OPP` objects in `index.html`. **This means every data change must be made in BOTH files** — or just in `data.json` if it overrides inline. Always update `data.json`; update `index.html` inline too for consistency.
+- **Three languages, strict**: English (default), Bahasa Indonesia, 中文. Language switcher in the header (EN / ID / 中文). Once a language is chosen, **every visible string must be in that language** — no mixed paragraphs, no mixed units, no leftover English in a ZH view.
 - Desktop-first, responsive down to mobile.
 
 ---
@@ -20,41 +21,51 @@
 
 ```
 <repo>/
-  index.html          # built artifact (committed, what GitHub Pages serves)
-  data.json           # single source of truth for all data + i18n strings
-  analysis_en.md      # long-form narrative report (linked from footer)
-  analysis_id.md
-  analysis_zh.md
+  index.html          # the entire dashboard (HTML + CSS + JS + inline data fallback)
+  data.json           # single source of truth (loaded at runtime, overrides inline)
   README.md
-  CHANGELOG.md        # internal only, NOT shown on page
+  CHANGELOG.md        # internal only, NOT shown on the public page
+  .github/
+    workflows/
+      update-price.yml  # GitHub Action: weekday auto-fetch latest close price
+    scripts/
+      update_price.py   # fetches Yahoo Finance, patches data.json, commits
   _shots/             # self-screenshots from shot.py (gitignore optional)
-  _kija_build/        # build sources (or rename to _build/)
-    build.py
-    head.html
-    body.html
-    js_a.html         # i18n dictionary (3 language blocks)
-    js_b.html         # render logic, chart options, DOM wiring
 ```
 
-Rename `_kija_build/` to `_build/` when starting a new project; the pipeline is identical.
+No build step, no bundler. Edit `index.html` and `data.json` directly, commit, push.
 
 ---
 
-## 3. Build pipeline (build.py)
+## 3. Architecture (critical)
 
-`build.py` **concatenates, it does not bundle**. Order:
+### How data flows
 
 ```
-head.html  +  body.html  +  js_a.html  +  data_block()  +  js_b.html
+Browser loads index.html
+  → renders with inline <script> objects (AN, KP, EV, ...)
+  → fires XMLHttpRequest for data.json?v=Date.now()
+  → on success: deep-merges/overwrites inline objects
+  → calls applyLang() and renderAll()
 ```
 
-- `data_block()` reads `data.json` and emits one `<script>` block:
-  `var KP = {...}; var EV = {...}; ...` for every key listed in `DATA_KEYS`.
-- **Critical pitfall**: there is no `js_c.html`. If you edit a file that is not in this list, the change never reaches `index.html`. All data must go through `data.json`; all render logic through `js_b.html`.
-- Run full build: `python build.py` → writes `../<repo>/index.html`.
-- Run single page test: `python build.py <page_name>` → writes `_build/_test_<page>.html` (page name must be in the hardcoded allowlist).
-- `build.py` also runs an HTML tag-balance check; it exits non-zero on mismatch.
-- On Windows, always run from PowerShell. Avoid `&&`, `$()`, heredocs; put multi-line logic in a `.py` file and run `python xxx.py`. The Edit tool on Windows frequently reports "File has not been read" even right after Read; batch edits are more reliable as a Python script that does string replacement and writes back.
+**Implications:**
+- If you change a number only in `index.html` inline but `data.json` has the old value, the user will see the old value. **Always update `data.json`.**
+- If you add a new chart function but forget its data key in `data.json`, the chart renders blank or shows the raw key (e.g. `revL`, `infraPie`).
+- The `?v=Date.now()` cache-buster means `data.json` never needs manual cache-clear. But `index.html` itself IS cached by GitHub Pages CDN — tell the user to **hard-refresh (Ctrl+F5)** when changes don't appear.
+
+### Git commit discipline
+
+- One logical change = one commit, message starts with `R<nn>:` short description.
+- After committing, push immediately: `git push origin main`.
+- GitHub Pages redeploys in ~60–90 seconds.
+
+### Windows / PowerShell environment
+
+- The agent runs on Windows. **Do not use Bash syntax** (`&&`, heredocs, `$()`, `ls -la`).
+- For multi-line or quote-heavy edits, **write a `.py` file and run `python xxx.py`** rather than PowerShell here-strings.
+- PowerShell `Set-Content` changes encoding silently; use Python `open(path, 'w', encoding='utf-8')` for all file writes.
+- Use `assert`-based exact string matching in Python replace scripts (e.g. `assert old in c, "pattern not found"`) so a silent miss fails loudly.
 
 ---
 
@@ -64,37 +75,46 @@ Top-level keys (add or remove per company, but keep names stable once shipped):
 
 | Key | Purpose |
 |---|---|
-| `KP` | KPI cards per page, per language: `KP.overview.en/id/zh`, `KP.debt`, `KP.prof`, `KP.val`, `KP.lb` etc. Each card: `{l, v, u, d, c}` where c ∈ up/dn/flat |
-| `EV` | Headline EV/EBITDA comps |
-| `RK` | Risk indicator rows `{n, v, lv}` where lv 0=green, 1=amber, 2=red |
-| `DIR` | Direction / strategy blocks |
-| `TL` | Timeline entries `[year, text]` per language |
-| `OWN`, `SUBS`, `BIZ`, `VIA` | Holding structure, subsidiaries, business pillars |
-| `PILLAR`, `PILLAR_MAP`, `ORG` | Pillar revenue split, org chart data |
-| `DEBT` | Lenders, maturity ladder, cash/debt series, debt instruments table, ratings, refinancing history, risk rows |
-| `WC` | Working capital: receivables, payables, DSO/DPO series |
-| `LAND` | Land bank per project (ha, book value, market comparison) |
-| `VAL`, `VALI`, `LIQ`, `LBV` | Valuation methods (P/E, P/B, DCF), valuation illustration table, liquidation value, landbank value per share at 100/75/50/25% |
-| `DTXT`, `LTXT`, `VTXT`, `NXT` | Page narrative text per language |
-| `KEYP` | Key people / boards |
-| `AN` | Annual series 2015–latest: `AN.years[]` + parallel arrays (revenue, niCons, niParent, ebitda, cfo, capex, landAcq, fcfCons, grossMargin, etc.). **Every array must be same length as years**; build.py validates this. |
-| `CHT` | Chart data series referenced by render code |
-| `FY` | Per-year annual-report page blocks (k24/k25/k26 etc.) |
-| `GLOS` | Hover glossary: maps term → `{en, id, zh}` short explanations. Used by the `?` superscript tooltip. |
-| `TOP3`, `OPP` | Top-3 improvement actions and market opportunities (Risk & Direction page) |
 | `meta` | Page title, subtitle, as-of date, units |
+| `KP` | KPI cards per page, per language |
+| `AN` | Annual series (parallel arrays): `years[]`, `revenue`, `niCons`, `niParent`, `ebitda`, `gpm`, `npm`, `roe`, `roa`, `de`, `assets`, `liab`, `equity`, `cfo`, `capex`, `landAcq`, `fcf`, `fcfCons`, `fcfMargin`, `fcfConsMargin`, `ebitdaMargin`, `msales`, `segRe`, `segInfra`. **Every array same length as `years`.** |
+| `EV` | Event timeline per year page (ev24/ev25/ev26), each with `en/id/zh` arrays of `[date, text]` |
+| `RK` | Risk indicator rows per page (rk24/rk25/rk26/rk-all), each `en/id/zh` arrays of `[name, value, level(0/1/2), maxScore, note]` |
+| `TL` | Company history timeline, `[year, heading, key_metric]` per language |
+| `DEBT` | Lenders, maturity ladder, cash/debt series, debt instruments table, ratings, refinancing history, risk rows, KPI cards |
+| `WC` | Working capital: `years[]`, `ar`, `arLT`, `ap`, `deposits`, `revenue` arrays |
+| `LAND` | Per-project land bank rows: `p`, `loc`, `st`, `ha`, `dev`, `book`, `m2`, `mLo`, `mHi`, `uplift`; plus KPI cards and `total` |
+| `VAL` | Valuation: KPI cards, monthly price/close/events/stats, peer comparison, analyst targets, volume array, price range array |
+| `VALI` | Valuation illustration: method comparison table (P/E, P/B, DCF, liquidation) |
+| `LIQ` | Liquidation value calculation |
+| `LBV` | Landbank value per share at 100/75/50/25% factor |
+| `FY` | Per-year deep-dive page data: segment pies, P&L snapshot, balance sheet, cash bridge, revenue breakdown, one-off costs |
+| `CHT` | Chart axis/label strings (overridden by data.json; must match keys used in render functions) |
+| `GLOS` | Hover glossary: maps term → `{en, id, zh}` short explanations |
+| `TOP3` | Top-3 improvement actions per language: `{h, sub, items: [[title, description]]}` |
+| `OPP` | Market opportunities per language: same structure as TOP3 |
+| `DIR` | Directors / boards |
+| `OWN`, `SUBS`, `BIZ`, `VIA`, `PILLAR`, `PILLAR_MAP`, `ORG` | Holding structure, subsidiaries, business pillars, org chart |
+| `DTXT`, `LTXT`, `VTXT`, `NXT`, `DEC` | Page narrative text and table headers per language |
+| `SOURCES` | Footer source list: `[[name, url], ...]` |
+| `SEG` | Segment profitability table (top-N business lines with margins) |
 
-**Number rules**
-- All numbers in IDR billion (or millions for share counts). State unit explicitly in every chart axis, table header, and KPI card (`u` field).
-- Display rounding: **one decimal place, round half up**. No raw integers for financials.
-- Negative numbers: prefix with `−` (U+2212), not hyphen.
+**Number rules (NON-NEGOTIABLE):**
+- All financial figures in **IDR billion** (or local-currency bn). State the unit explicitly in every chart axis, table header, KPI card `u` field, **and every narrative note/subtitle**.
+- **Every number in descriptive text must carry its unit.** Bare numbers like "≈ 460" or "FX loss 205.7" are bugs. Examples:
+  - EN: `≈ IDR 460bn`, `FX 280.7bn`, `~3,780bn`
+  - ID: `≈ Rp460 miliar`, `kurs 280,7 miliar`
+  - ZH: `约 460 十亿盾`, `汇兑 280.7 十亿盾`
+- Display rounding: **one decimal place, round half up**. Table values with thousands separators round to whole numbers (no decimal).
+- Negative numbers: prefix with `−` (U+2212), not hyphen. No `+` sign on positive numbers.
 - Percentages: store as number (e.g. `39`), format with `%` at render.
+- The unit language must match the page language: EN uses "IDR bn", ID uses "Rp miliar", ZH uses "十亿盾". Do NOT mix "亿" with "十亿盾" within ZH text — be consistent.
 
 ---
 
 ## 5. Design system
 
-### Colors (CSS variables in head.html)
+### Colors (CSS variables)
 
 ```
 --green: #1F5E40      (primary brand, headers, up-trend)
@@ -103,13 +123,13 @@ Top-level keys (add or remove per company, but keep names stable once shipped):
 --amber:  #C07A2D     (warning)
 --clay:   #B04A2E
 --soft:   #C7D0C8     (background panel)
---blue:   #2E6FB0     (secondary series, infrastructure)
+--blue:   #2E6FB0     (secondary series)
 --purple: #7A5BA6
 --red:    #C0392B     (down / risk)
 --gold:   #D9A53A
 ```
 
-- Use **visually distinct hues** for different series on the same chart — never two green lines on one chart.
+- Use **visually distinct hues** for different series on the same chart — never two green lines or two similar blues on one chart. The user explicitly flagged "don't use the same color family for different indicators."
 - Risk colors: green #2E7D32 (low), amber #C07A2D (elevated), red #C0392B (high).
 - Background: off-white #F7F6F2; panels white; text near-black #1A1A1A.
 
@@ -117,204 +137,187 @@ Top-level keys (add or remove per company, but keep names stable once shipped):
 
 - Sans-serif system stack; **bold weight for top-nav tabs** (user requirement).
 - Hierarchy: page H2 ~22px, block H3 ~15px bold, body 13–14px, table 12–13px, footnote 11px.
-- Numbers right-aligned in tables; use tabular-nums where possible.
+- Numbers right-aligned in tables; use tabular-nums.
 - No emojis. Use inline SVG for icons only.
 
 ### Layout
 
-- Top dark-green hero bar: logo "K", company name, ticker, "Industrial Estate Developer · Financial & Operations Monitor", language switcher.
-- Below hero: horizontal nav tabs (one per page), bold when active.
+- Top dark-green hero bar: logo "K", company name, ticker, tagline, language switcher (EN / ID / 中文).
+- Below hero: horizontal nav tabs (one per page), **bold** when active.
 - Content: max-width ~1200px, centered, padding 24px.
-- KPI cards: grid of equal-width white cards (responsive 4/2/1 columns). Each card: small label, big number, unit, delta chip (up/down/flat colored).
-- Charts: white card with title + subtitle + ECharts canvas (~420px tall on desktop).
-- Tables: `table-layout: fixed`, every `<col>` has explicit width summing to 100%. Row zebra or hairline borders only.
-- Footer: small print, compact inline source links (one line, wrapped naturally), "This dashboard is for information only…" disclaimer. **Do not put version number or changelog on the public page.**
+- KPI cards: grid of equal-width white cards (responsive 4/2/1 columns). Each: small label, big number, unit, delta chip (up/down/flat colored).
+- Charts: white card with title + subtitle (`.sub`) + ECharts canvas (~420px tall).
+- Tables: `table-layout: fixed`, every `<col>` has explicit width summing to 100%. Numbers right-aligned. Thousands separators where integers.
+- Footer: compact inline source links (show source name, not URL), one-line disclaimer. **No version number, no changelog, no update date on the public page.** Keep `CHANGELOG.md` in the repo only.
 
 ### Chart rules (ECharts)
 
 - Default: `tooltip.trigger: 'axis'`, `axisPointer.type: 'shadow'` for bar, `'line'` for line.
-- Toolbox: a small **9px download PNG icon in the bottom-right corner** of each chart (half the previous size per user feedback). Don't make it big.
-- Dual-axis allowed only when absolutely necessary; label axes clearly.
+- Toolbox: a **tiny ~9px download PNG icon** in bottom-right of each chart. The user complained it was too large twice — keep it small.
+- **Horizontal bars preferred** for P&L snapshots and balance sheet snapshots (year pages). Vertical bars for cash bridge.
+- Dual-axis allowed only when two series are genuinely different units; label axes clearly.
 - Bar charts must start at zero axis.
-- Multi-series: use legend; colors from the palette above, distinct hues.
+- Multi-series: use legend; colors from distinct hues.
 - No 3D charts, no rainbow palettes.
-- No animation on load beyond a simple fade.
+- Chart subtitles (`.sub` div under each title) must carry units for every number mentioned.
 
 ---
 
 ## 6. i18n (three-language) rules
 
-- All UI strings live in `js_a.html` in three parallel blocks (EN / ID / ZH). Each key appears three times with same key name.
-- Every user-visible string goes through `data-i18n="key"` in HTML or a render call `I18N.key`.
-- **Strict separation**: when LANG = 'id', every word on the page (including chart subtitles, table headers, tooltips, footnotes) is Indonesian. No English sentences glued in. Same for ZH.
-- Financial abbreviations (EBITDA, ROE, P/B, DSO, FCF, NCI, SEZ, JV) may stay as Latin letters in all three languages, but the surrounding explanation must be in the active language.
-- Switching language re-renders the whole page (call `applyLang()` after setting LANG).
+- All UI strings in an inline `I18N` object with three parallel blocks: `en: {...}, id: {...}, zh: {...}`.
+- Every user-visible string goes through `data-i18n="key"` in HTML or `I18N.key` in JS.
+- **Strict separation**: when LANG = 'id', every word on the page (chart subtitles, table headers, tooltips, footnotes, narrative paragraphs) is Indonesian. No English sentences glued in. Same for ZH.
+- Financial abbreviations (EBITDA, ROE, P/B, DSO, FCF, NCI, SEZ, JV) may stay as Latin letters in all three languages.
+- **Number units must follow the language**: EN uses "IDR bn" / "bn"; ID uses "Rp miliar" / "miliar"; ZH uses "十亿盾" (not "亿", not "万亿" unless truly trillion-scale).
+- Switching language re-renders the whole page.
 
 ---
 
 ## 7. Hover glossary (the `?` superscript)
 
-- For every professional term / acronym, append a small `<sup class="glos" data-term="XXX">?</sup>`.
-- Hovering shows a tooltip with the definition. **Definition language matches the active page language.**
+- For every professional term / acronym, append `<sup class="glos" data-term="XXX">?</sup>`.
+- Hover shows tooltip with definition. **Definition language matches the active page language.**
 - **Only mark the FIRST occurrence of a term per page.** Subsequent identical terms on the same page must NOT get another `?`. (User requirement.)
-- Definitions come from GLOS in data.json; write them in plain English first, then translate. Keep each to 1–2 sentences.
+- Definitions from GLOS in data.json; 1–2 sentences each, based on professional finance/industry terminology.
 
 ---
 
 ## 8. Pages (nav order, left to right)
 
-Start with these; adapt names to the company:
-
-1. **Overview** — 6–8 KPI cards, revenue bar chart, net profit trend, margins & leverage, segment revenue, marketing sales, EBITDA trend.
-2. **Profitability** — gross / operating / net / EBITDA margin trend, ROE/ROA, FCF margin, FCF itself. Include annualized 1H figures where useful.
-3. **Debt & Solvency** — total debt, avg cost, net debt, EBITDA/interest, net debt/EBITDA, lender breakdown, maturity ladder, cash vs debt series, debt instruments table, credit ratings, refinancing history, working capital (receivables/payables/DSO/DPO).
-4. **Land Bank** (or the company's core asset class) — per-project table with ha, book value, market price comparison.
-5. **Valuation** — market cap, price, 52-week range, P/E, P/B, dividend yield, peer comps, analyst views, 12-month share price chart with volume bars below, turnover & price range snapshot.
-6. **Valuation Illustration** — methods table (P/E, P/B, DCF, liquidation value, landbank value per share at 100/75/50/25%), each with implied value vs current price, safety margin.
-7. **Risk & Direction** — risk rows colored by level, top-3 improvement actions, market opportunities (write with current macro context).
-8. **Holding Structure** — subsidiaries table: entity, activity, via, ownership, assets, status.
+1. **Overview** — KPI cards, revenue trend bar chart, net profit consolidated vs parent (solid vs dashed), margins & leverage, segment revenue (Real Estate vs Infrastructure), marketing sales, EBITDA trend. Chart subtitle: time range and units.
+2. **Profitability** — gross / EBITDA / net margin trend (2015–2025), ROE vs ROA, EBITDA vs net profit bars+line, revenue vs gross margin dual-axis, FCF and FCF margin. Add 1H26 annualized where useful.
+3. **Debt & Solvency** — KPI cards (total debt, avg cost, cash, net debt, EBITDA/interest, net debt/EBITDA), debt-by-lender chart, maturity ladder, solvency trend, cash vs debt, debt instruments table, credit ratings, refinancing recap, **working capital table** (AR, AR long-term, AP, customer deposits, DSO/DPO by year).
+4. **Land Bank** — KPI cards (total ha, dev ha, book value, implied uplift), per-project table with ha / dev ha / book value / book per sqm / market low / market high / uplift.
+5. **Valuation** — KPI cards (price, 52wk range, market cap, P/B, P/E, dividend yield), 12-month share price chart with volume bars below, price range per month, trading snapshot (volume, turnover, RSI, DMA), peer comparison, analyst targets.
+6. **Valuation Illustration** — method comparison table: P/E, P/B, DCF, liquidation value, landbank value per share at 100/75/50/25%. Each row: method, input, implied value per share, vs current price, safety margin. Landbank per-share in a **separate table**, not combined with other methods.
+7. **Risk & Direction** — data-derived risk rows (colored green/amber/red), **Top 3 improvement actions** (each tied to a measurable data gap), **Market opportunities** (current macro context, sourced).
+8. **Holding Structure** — subsidiaries table: entity, activity, via, ownership %, assets, status.
 9. **Organization** — corporate facts, boards, committees, key people.
-10. **FY2024 / FY2025 / 1H2026** annual deep-dive pages (most recent three, rightmost in nav).
+10. **FY20XX / FY20XX / 1H20XX** annual deep-dive pages (most recent three, rightmost in nav).
+
+### Year-page pattern (CRITICAL)
+
+Each annual deep-dive page uses a consistent 4-chart layout:
+1. **Revenue mix pie** (segment breakdown for that year)
+2. **P&L snapshot** (horizontal bars: Revenue, EBITDA, NP consolidated, NP parent — with unit in subtitle)
+3. **Balance sheet snapshot** (horizontal bars: Assets, Liabilities, Equity)
+4. **Cash bridge** (vertical bars: opening cash + net change = closing cash)
+
+Below charts: event timeline panel + risk indicators panel + narrative paragraph.
+
+- **Period-appropriate data only**: FY2024 page must NOT show 2025 data. FY2025 page must NOT show 2026 data. 1H2026 page shows 1H26 vs 1H25 comparison.
+- Cash bridge labels are year-specific: "Opening cash (end-2023)" / "Consolidated surplus 2024" / "Closing cash (end-2024)" for FY2024; "Opening cash (end-2024)" / "Consolidated surplus 2025" / "Closing cash (end-2025)" for FY2025.
+- Chart axis labels and legend keys must be clean words (e.g. "Infrastructure", "Real estate"), NOT raw variable names (e.g. "infraPie", "revL").
 
 ---
 
 ## 9. Data integrity rules
 
-- **Audit the numbers from official annual reports** (company IR website + IDX). For a 10-year history, use the most recent AR's 5-year summary and earlier ARs for the rest.
-- When a metric can't be derived from disclosed line items (e.g. EBITDA pre-2019 when D&A not broken out), **compute conservatively** and note the assumption; do not leave the chart with a missing point if a reasonable estimate exists.
-- Cross-check: revenue, net profit, EBITDA, operating cash flow, capex, total debt, cash — these must tie across the income statement, balance sheet, and cash flow statement.
-- Mark unaudited / interim data clearly ("1H26, unaudited").
-- **Sources**: footer lists every annual report by name (clickable to PDF), the latest interim report, investor presentation, IDX, and 1–2 third-party market references (CBRE/JLL/Moody's). Don't show raw URLs as text — show the name, link it.
+- **Audit numbers from official annual reports** (company IR website + IDX). For 10-year history, use the latest AR's 5-year summary + earlier ARs for older years. The 2016 AR contains full audited 2015 comparatives.
+- When a metric can't be derived from disclosed line items (e.g. EBITDA early years when D&A not broken out), **compute conservatively** and note the assumption. Don't leave a chart point blank if a reasonable estimate exists.
+- Cross-check: revenue, net profit, EBITDA, CFO, capex, total debt, cash must tie across income statement, balance sheet, and cash flow.
+- Mark unaudited/interim data clearly.
+- **Every number in narrative text, chart subtitle, event description, and risk note must carry its unit.** See section 4 number rules.
+- **Sources**: footer lists every annual report by name (clickable to PDF), latest interim, investor presentation, IDX, and 1–2 third-party references. Show the name, link it — don't show raw URLs.
 
 ---
 
-## 10. Deployment & verification
+## 10. Auto-updating stock price (GitHub Action)
 
-- After every change:
-  1. `python build.py`
-  2. `python build.py <page>` to test the changed page
-  3. Screenshot: `python "<skills>/html/scripts/shot.py" _test_<page>.html --only desktop`
-  4. Read the screenshot, check layout, no overlap, no mixed languages, numbers one decimal.
-  5. `git add -A && git commit -m "Rnn: short description" && git push origin main`
-- GitHub Pages takes ~60–90s to deploy. Verify live with a cache-buster query (`?v=2`) if the user reports "still old".
-- The shot.py script also reports `consoleErrors`; must be `[]` before shipping.
+- `.github/workflows/update-price.yml` runs weekdays ~09:30 UTC.
+- `.github/scripts/update_price.py` fetches from Yahoo Finance `query1.finance.yahoo.com/v8/finance/chart/<TICKER>.<exchange>`, extracts latest close, updates `VAL.close[last]` and KPI cards in `data.json`, commits and pushes.
+- Note: Yahoo Finance API does NOT send CORS headers, so this must run server-side (GitHub Action), not in the browser.
 
 ---
 
-## 11. Recurring gotchas (learned the hard way)
+## 11. Verification before pushing
 
-1. **build.py does not include js_c.html or any ad-hoc file.** If you edit a file and nothing changes, check whether it's in the concatenation list.
-2. **KP cards read from `data.json → KP.<page>`**, not from `DEBT.kpi26` or similar. If a KPI card isn't updating, grep both places.
-3. **Regex `replace('a','b')` over an i18n block**: if you call it three times for three languages but the pattern matches the same first occurrence each time, you'll overwrite the EN string with the ID, then ZH. Better to replace by line number or anchor on the language block marker.
-4. **GitHub Pages CDN cache**: if user says "no change", check `git rev-parse HEAD` matches `origin/main`, wait 90s, then re-fetch with cache-buster.
-5. **PowerShell quoting**: use a `.py` file for anything with quotes, `$`, or loops.
-6. **Don't show changelog or version on the public page.** Keep `CHANGELOG.md` in the repo only.
-7. **Don't add a separate "Sources" page if the user wants it inline** — footer compact list is preferred.
-8. **Don't use dual-axis charts by default**; only when two series are genuinely different units.
-9. **Don't add hover glossary to repeated terms** on the same page; first occurrence only.
-10. **Numbers must tie to their units**: every written statement like "revenue grew 12%" must correspond to a card/chart with the same unit (IDR bn) and same period.
+1. Run `python "<skills>/html/scripts/shot.py" index.html --only desktop` to screenshot.
+2. Read the screenshot. Check:
+   - No blank charts
+   - No raw variable names in chart labels (e.g. `revL`, `infraPie`)
+   - No mixed languages
+   - Numbers have units
+   - Layout is clean, no overlapping elements
+3. Check `consoleErrors` in shot.py report is `[]`.
+4. Commit and push.
+5. Tell user to hard-refresh (Ctrl+F5).
 
 ---
 
-## 12. How to bootstrap a new company
+## 12. Recurring gotchas (learned the hard way)
 
-1. Create repo `<TICKER>-dashboard` on GitHub, enable Pages from `main`.
-2. Copy this folder's `_build/` structure (head.html, body.html, js_a.html, js_b.html, build.py) as a template.
-3. Collect 10 years of annual report PDFs from the company IR site + exchange.
-4. Extract income statement / balance sheet / cash flow into `data.json → AN` arrays (years 2015–latest).
-5. Fill KP, DEBT, LAND (or asset class), VAL blocks from the latest annual report and interim.
+1. **data.json overrides inline JS at runtime.** If you edit index.html but not data.json, the user sees old data. Always update both.
+2. **Missing CHT keys = blank charts or raw labels.** If a chart shows "infraPie" instead of "Infrastructure", the label key is missing from CHT in data.json.
+3. **GitHub Pages CDN cache.** If user says "no change", verify `git log --oneline -1` matches what you pushed, wait 90s, tell them to Ctrl+F5.
+4. **PowerShell here-strings fail silently** on multi-line JS replacement. Use Python scripts with `assert old in content` for exact matching.
+5. **Don't show changelog/version/update-date on the public page.** Keep it in CHANGELOG.md locally.
+6. **Don't add hover glossary to repeated terms** on the same page; first occurrence only.
+7. **Don't use dual-axis charts by default.**
+8. **Numbers must tie to units.** Every written number needs its unit. This is the most-violated rule across iterations.
+9. **Don't mix unit languages.** ZH must not use "亿" when meaning "十亿盾". "万亿盾" is wrong for IDR bn figures (should be "十亿盾").
+10. **Year pages must be period-appropriate.** FY2024 page must not show 2025 data.
+11. **Chart download icons must be small.** ~9px. The user complained twice.
+12. **Distinct colors for different series.** Never two green lines on one chart.
+13. **Horizontal bars for P&L/BS snapshots**, vertical bars for cash bridge.
+14. **Positive numbers get no "+" sign.**
+15. **Tables: explicit column widths** summing to 100%, numbers right-aligned, thousands separators.
+
+---
+
+## 13. How to bootstrap a new company
+
+1. Create repo on GitHub, enable Pages from `main`.
+2. Copy this project's `index.html` and `data.json` as templates. Strip company-specific data but keep structure.
+3. Collect 10 years of annual report PDFs from company IR site + exchange.
+4. Extract income statement / balance sheet / cash flow into `data.json → AN` arrays.
+5. Fill KP, DEBT, LAND (or core asset class), VAL, FY blocks from latest AR + interim.
 6. Translate all UI strings into EN/ID/ZH.
-7. Run `python build.py`, screenshot each page, fix layout, push.
-8. Ship the URL.
-
----
-
-## 13. When the user asks for changes
-
-- One request = one commit with a short message starting `Rnn:`.
-- Always verify visually (shot.py) before saying done.
-- If a request is ambiguous, ask one clarifying question before coding.
-- Keep responses short; the dashboard is the deliverable, not the chat.
+7. Set up the GitHub Action for price auto-update (edit ticker in `update_price.py`).
+8. Screenshot each page, fix layout, commit, push.
+9. Ship the URL.
 
 ---
 
 ## 14. Annual-report extraction checklist
 
-For each year (2015 through latest), pull these line items from the audited financial statements. Units: IDR billion (or local currency bn). Use the **5-year comparative summary table** in the latest annual report for years N-4..N, and earlier annual reports for older years. Cross-check every number across the three statements.
+For each year (2015 through latest), pull these line items. Units: local currency bn. Use the 5-year comparative summary in the latest AR for N-4..N; earlier ARs for older years. Cross-check across three statements.
 
 ### Income statement
-- Revenue / sales (`revenue`)
-- Cost of revenue -> gross profit (`grossProfit`, derive gross margin)
-- Operating profit / EBIT
-- Interest expense (`interest`)
-- Income tax expense (`tax`)
-- Net profit (consolidated) (`niCons`)
-- Net profit attributable to parent (`niParent`)
-- Non-controlling interest (NCI)
-- Depreciation & amortization (`da`) -- often in cash flow statement
-- **EBITDA** = niCons + tax + interest + D&A (or operating profit + D&A). If D&A not disclosed for early years, estimate conservatively and note it.
+- Revenue, cost of revenue, gross profit (→ gross margin)
+- Operating profit / EBIT, interest expense, tax
+- Net profit consolidated / attributable to parent / NCI
+- D&A (from cash flow statement) → EBITDA = niCons + tax + interest + D&A
+- If D&A not disclosed early years: estimate conservatively, no note needed for very old years
 
 ### Balance sheet (year-end)
-- Cash & equivalents (`cash`)
-- Total debt (short-term + long-term borrowings, net of unamortized issuance cost) (`debt`)
-- Accounts receivable, net (`ar`)
-- Inventory / land held for development / land bank (`landBank`)
-- Total assets (`assets`)
-- Total equity (consolidated) and equity attributable to parent (`equity`, `equityParent`)
-- Accounts payable (`ap`)
-- Customer deposits / advances (`custDep`)
+- Cash, total debt (net of unamortized issuance cost), AR, AR long-term, inventory/land bank
+- Total assets, total equity (consolidated + parent), AP, customer deposits
 
 ### Cash flow statement
-- Cash flow from operations (`cfo`)
-- Capital expenditures / purchase of PP&E (`capex`)
-- Purchase of land / land acquisition (`landAcq`)
-- Free cash flow (conservative) = `cfo - capex - landAcq` (`fcfCons`)
+- CFO, capex, land acquisition, FCF conservative = CFO - capex - land acquisition
 
-### Operating metrics (from MD&A / operating review)
-- Segment revenue (real estate, infrastructure, hospitality etc.) -- split per pillar
-- Marketing sales / pre-sales (for property developers)
-- Land bank in ha by project
-- Employees count (for per-capita metrics)
+### Operating metrics (MD&A)
+- Segment revenue split, marketing sales/pre-sales, land bank by project (ha), employee count
 
 ### Ratios to compute
-- Gross margin = grossProfit / revenue
-- EBITDA margin = EBITDA / revenue
-- Net margin = niCons / revenue
-- ROE = niCons / avg total equity
-- ROA = niCons / avg total assets
-- FCF margin = fcfCons / revenue
-- DSO = AR / revenue x 365
-- DPO = AP / COGS x 365
-- Net debt / EBITDA = (debt - cash) / EBITDA
-- EBITDA / interest coverage = EBITDA / interest expense
-- Liabilities / equity
+- Gross margin, EBITDA margin, net margin, ROE, ROA, FCF margin
+- DSO = AR / revenue × 365; DPO = AP / COGS × 365
+- Net debt / EBITDA, EBITDA / interest, Liabilities / equity
 
 ### Market data (latest)
-- Share price, market cap, 52-week range
-- P/E, P/B, dividend yield
-- 12-month daily close price + volume (for price chart)
-- Credit ratings (Fitch / Moody's / S&P)
+- Share price, market cap, 52-week range, P/E, P/B, dividend yield
+- 12-month monthly close + volume + price range
+- Credit ratings
 
 ### Debt details (latest balance sheet date)
-- Each lender / bond: principal, rate, maturity, collateral, status (current / repaid)
-- Maturity ladder by year
-- Refinancing events (one-off costs, FX losses, derivative termination)
-- Average cost of debt
+- Each lender: principal, rate, maturity, collateral, status
+- Maturity ladder by year, refinancing events (one-off costs broken down), average cost
 
 ### Holding structure & org (latest AR)
-- List of subsidiaries: name, activity, ownership %, via (intermediate holding), assets, status
-- Board of commissioners / directors / audit committee names
-- Employees count, year founded, listed date
+- Subsidiaries: name, activity, ownership %, via, assets, status
+- Boards, committees, key people
 
-### Sources to cite (footer)
-- Every annual report PDF (2015-latest) by name, linked
-- Latest interim report (Q2 / 1H)
-- Latest investor presentation
-- Exchange announcements page
-- 1-3 third-party references (rating agency, market research)
-
----
-
-## 15. Template location
-
-A stripped copy of the build pipeline lives in `_template/` next to this file. Copy it as `_build/` for a new project; see `_template/README.md` for bootstrap steps.
+### Sources (footer)
+- Every AR PDF (by name, linked), latest interim, investor presentation, exchange, 1–3 third-party refs
