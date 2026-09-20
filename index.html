@@ -437,7 +437,7 @@ en: {
   wc_h:'Working capital & receivables quality',
   c_wc1_t:'Trade receivables & DSO',
   c_wc1_s:'Net trade receivables bars vs DSO (days, right axis). Receivables down 33% while revenue up 12%.',
-  wch_item:'Item (IDR bn)', wch_25:'FY2025', wch_24:'FY2024',
+  wch_item:'Item (IDR bn)', wch_26:'1H2026', wch_25:'FY2025', wch_24:'FY2024',
   wcr_gross:'Trade receivables, gross (3rd party)', wcr_net:'Trade receivables, net (current)',
   wcr_allow:'Allowance for impairment', wcr_duen:'Not yet due', wcr_over6:'Over 6 months',
   wcr_dso:'Receivables days (DSO)', wcr_ap:'Trade payables', wcr_dep:'Customer security deposits',
@@ -531,7 +531,7 @@ id: {
   wc_h:'Modal kerja & kualitas piutang',
   c_wc1_t:'Piutang usaha & DSO',
   c_wc1_s:'Batang piutang usaha bersih vs DSO (hari, sumbu kanan). Piutang turun 33% sementara pendapatan naik 12%.',
-  wch_item:'Pos (Rp miliar)', wch_25:'2025', wch_24:'2024',
+  wch_item:'Pos (Rp miliar)', wch_26:'1H2026', wch_25:'2025', wch_24:'2024',
   wcr_gross:'Piutang usaha, kotor (pihak ketiga)', wcr_net:'Piutang usaha, bersih (lancar)',
   wcr_allow:'Cadangan penurunan nilai', wcr_duen:'Belum jatuh tempo', wcr_over6:'Lebih dari 6 bulan',
   wcr_dso:'Hari piutang (DSO)', wcr_ap:'Utang usaha', wcr_dep:'Uang jaminan pelanggan',
@@ -625,7 +625,7 @@ zh: {
   wc_h:'营运资本与应收账款质量',
   c_wc1_t:'应收账款与周转天数',
   c_wc1_s:'净应收账款柱 vs DSO（天，右轴）。应收账款降 33% 而营收增 12%。',
-  wch_item:'项目（IDR 亿）', wch_25:'FY2025', wch_24:'FY2024',
+  wch_item:'项目（IDR 亿）', wch_26:'1H2026', wch_25:'FY2025', wch_24:'FY2024',
   wcr_gross:'应收账款总额（第三方）', wcr_net:'应收账款净额（流动）',
   wcr_allow:'坏账准备', wcr_duen:'未到期', wcr_over6:'逾期超 6 个月',
   wcr_dso:'应收周转天数 (DSO)', wcr_ap:'应付账款', wcr_dep:'客户保证金',
@@ -1296,17 +1296,17 @@ function kvTable(title, rows, widths, headers){
 }
 function wcTableHtml(){
   var rows = [
-    [T('wcr_gross'), '548.8', '883.1'],
-    [T('wcr_net'), '521.2', '775.1'],
-    [T('wcr_allow'), '16.3', '14.4'],
-    [T('wcr_duen'), '468.5', '652.7'],
-    [T('wcr_over6'), '20.9', '29.9'],
-    [T('wcr_dso'), '37 d', '62 d'],
-    [T('wcr_ap'), '151.7', '143.4'],
-    [T('wcr_dep'), '316.2', '230.0'],
-    [T('wcr_woff'), '0.0', '0.3']
+    [T('wcr_gross'), '746.6', '548.8'],
+    [T('wcr_net'), '721.7', '521.2'],
+    [T('wcr_allow'), '16.3', '16.3'],
+    [T('wcr_duen'), 'n/a', '468.5'],
+    [T('wcr_over6'), '28.9', '20.9'],
+    [T('wcr_dso'), '54 d', '37 d'],
+    [T('wcr_ap'), '133.0', '151.7'],
+    [T('wcr_dep'), '317.0', '316.2'],
+    [T('wcr_woff'), '0.0', '0.0']
   ];
-  var h = '<div class="g-table-wrap"><table class="g-table"><colgroup><col style="width:52%"><col style="width:24%"><col style="width:24%"></colgroup><thead><tr><th>'+T('wch_item')+'</th><th>'+T('wch_25')+'</th><th>'+T('wch_24')+'</th></tr></thead><tbody>';
+  var h = '<div class="g-table-wrap"><table class="g-table"><colgroup><col style="width:52%"><col style="width:24%"><col style="width:24%"></colgroup><thead><tr><th>'+T('wch_item')+'</th><th>'+T('wch_26')+'</th><th>'+T('wch_25')+'</th></tr></thead><tbody>';
   for(var i=0;i<rows.length;i++){ h += '<tr><td class="b">'+rows[i][0]+'</td><td>'+rows[i][1]+'</td><td>'+rows[i][2]+'</td></tr>'; }
   h += '</tbody></table></div><div class="risk-note">'+T('wc_note')+'</div>';
   return h;
