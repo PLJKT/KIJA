@@ -1737,7 +1737,7 @@
      "FX & derivatives",
      1,
      60,
-     "205.7 (2024) → 120.9 (2025) → cleared 1H26"
+     "205.7bn (2024) → 120.9bn (2025) → cleared 1H26"
     ],
     [
      "Leverage & debt service",
@@ -1809,7 +1809,7 @@
      "Kurs & derivatif",
      1,
      60,
-     "205.7 (2024) → 120.9 (2025) → bersih 1H26"
+     "205,7 miliar (2024) → 120,9 miliar (2025) → bersih 1H26"
     ],
     [
      "Leverage & pelayanan utang",
@@ -3176,7 +3176,7 @@
     "l": "Total debt (30 Jun 26)",
     "v": 4863,
     "u": "IDR bn",
-    "d": "excl. lease 4.7",
+    "d": "excl. lease 4.7bn",
     "c": "flat"
    },
    {
@@ -3348,7 +3348,7 @@
     "st": "current"
    }
   ],
-  "tableNote": "31 Dec 2025 balance-sheet total 4,606.5 (net of unamortized issuance cost 31.8); table shows principal. Total at 30 Jun 2026: 4,863 (excl. lease 4.8).",
+  "tableNote": "31 Dec 2025 balance-sheet total IDR 4,606.5bn (net of unamortized issuance cost IDR 31.8bn); table shows principal. Total at 30 Jun 2026: IDR 4,863bn (excl. lease IDR 4.8bn).",
   "ratings": [
    [
     "Fitch",
@@ -3380,7 +3380,7 @@
    ],
    [
     "1H26",
-    "One-off costs ≈ 460: FX loss 280.7 · derivative termination 154.6 · accelerated amortization 24.9"
+    "One-off costs ≈ IDR 460bn: FX loss 280.7bn · derivative termination 154.6bn · accelerated amortization 24.9bn"
    ],
    [
     "Result",
@@ -3388,7 +3388,7 @@
    ],
    [
     "30 Jun 26",
-    "Total debt 4,863; average cost 7.16%"
+    "Total debt IDR 4,863bn; average cost 7.16%"
    ]
   ],
   "riskRows": [
@@ -3414,7 +3414,7 @@
    },
    {
     "n": "Back-loaded Mandiri amortisation",
-    "v": "~3,780 due 2031–2041",
+    "v": "~~IDR 3,780bn due 2031–2041",
     "lv": 1
    },
    {
@@ -3692,8 +3692,8 @@
     ],
     [
      "1H26 net profit",
-     "-6.4 (one-off 460)",
-     "+175% → 1.19T"
+     "-6.4bn (one-off 460bn)",
+     "+175% → 1.19tn"
     ],
     [
      "YTD 2026 price",
@@ -3860,7 +3860,7 @@
     "—",
     "—"
    ],
-   "note": "31 Dec 2025 balance-sheet total 4,606.5 (net of unamortized issuance cost 31.8); table shows principal. Total at 30 Jun 2026: 4,863 (excl. lease 4.8).",
+   "note": "31 Dec 2025 balance-sheet total IDR 4,606.5bn (net of unamortized issuance cost IDR 31.8bn); table shows principal. Total at 30 Jun 2026: IDR 4,863bn (excl. lease IDR 4.8bn).",
    "ratings": [
     [
      "Agency",
@@ -4158,7 +4158,7 @@
     "—",
     "—"
    ],
-   "note": "2025-12-31 资产负债表口径 4,606.5（扣除未摊销发行成本 31.8）；本表列示本金。2026-06-30 合计 4,863（不含租赁 4.8）。",
+   "note": "2025-12-31 资产负债表口径 IDR 4,606.5bn（扣除未摊销发行成本 IDR 31.8bn）；本表列示本金。2026-06-30 合计 IDR 4,863bn（不含租赁 4.8）。",
    "ratings": [
     [
      "机构",
@@ -7270,7 +7270,7 @@
     ],
     [
      "Produk baru & permintaan sendiri",
-     "Jababeka Bizpark fase-I diserahkan (unit mulai Rp1,65miliar, menangkan Indonesia Property Award 2026); 1,2 juta penduduk lokal dan dry port di lokasi menambah permintaan B2C/B2B captive."
+     "Jababeka Bizpark fase-I diserahkan (unit mulai Rp1,65 miliar, menangkan Indonesia Property Award 2026); 1,2 juta penduduk lokal dan dry port di lokasi menambah permintaan B2C/B2B captive."
     ],
     [
      "Neraca mendekati net cash",
