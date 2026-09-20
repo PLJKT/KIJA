@@ -7194,5 +7194,286 @@
     ]
    ]
   }
+ },
+ "SOURCES": {
+  "en": {
+   "h": "Data sources",
+   "sub": "Official audited financial reports and other reliable references used in this dashboard.",
+   "groups": [
+    [
+     "Audited annual reports",
+     [
+      [
+       "FY2015 audited financial statements",
+       "https://www.jababeka.com/wp-content/uploads/2018/12/2015-KIJA-Audited-Financial-Statements.pdf"
+      ],
+      [
+       "FY2016 audited report (Investor Relations)",
+       "https://www.jababeka.com/id/hubungan-investor-tata-kelola/"
+      ],
+      [
+       "FY2017 audited report (Investor Relations)",
+       "https://www.jababeka.com/id/hubungan-investor-tata-kelola/"
+      ],
+      [
+       "FY2018 Annual Report (bilingual)",
+       "https://www.jababeka.com/wp-content/uploads/2019/05/2018-Annual-Report-Bilingual-Version.pdf"
+      ],
+      [
+       "FY2019 Annual Report",
+       "https://www.jababeka.com/wp-content/uploads/2020/09/KIJA_Annual-Report-2019.pdf"
+      ],
+      [
+       "FY2020 Annual Report (Investor Relations)",
+       "https://www.jababeka.com/id/hubungan-investor-tata-kelola/"
+      ],
+      [
+       "FY2021 Annual & Sustainability Report",
+       "https://www.jababeka.com/wp-content/uploads/2022/06/Laporan-Tahunan-dan-Berkelanjutan-2021-KIJA.pdf"
+      ],
+      [
+       "FY2022 Annual Report",
+       "https://www.jababeka.com/wp-content/uploads/2023/05/KIJA-ASR-2022.pdf"
+      ],
+      [
+       "FY2023 Annual & Sustainability Report",
+       "https://www.jababeka.com/wp-content/uploads/2024/04/AR-SR-2023-KIJA.pdf"
+      ],
+      [
+       "FY2024 Annual Report (Investor Relations)",
+       "https://www.jababeka.com/id/hubungan-investor-tata-kelola/"
+      ],
+      [
+       "FY2025 Annual & Sustainability Report",
+       "https://www.jababeka.com/wp-content/uploads/2026/05/KIJA-AR-2025.pdf"
+      ]
+     ]
+    ],
+    [
+     "Interim & investor materials",
+     [
+      [
+       "1H2026 (Q2) interim financial statements — IDX",
+       "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202607/20260731205845-62989-0/FinancialStatement-2026-II-KIJA.pdf"
+      ],
+      [
+       "Investor presentation, Aug 2026 (1H26 financials)",
+       "https://www.jababeka.com/wp-content/uploads/2025/02/KIJA-Presentation-Material-Augustus-2026-Final.pdf"
+      ],
+      [
+       "IDX company announcements (KIJA)",
+       "https://www.idx.co.id"
+      ]
+     ]
+    ],
+    [
+     "External references",
+     [
+      [
+       "CBRE — Greater Jakarta Industrial Market Outlook Q2 2026",
+       "https://mktgdocs.cbre.com"
+      ],
+      [
+       "Kendal Industrial Park — SEZ updates",
+       "https://www.kendalindustrialpark.co.id"
+      ],
+      [
+       "Moody's Investors Service — KIJA rating",
+       "https://www.moodys.com"
+      ],
+      [
+       "S&P Global Ratings — KIJA",
+       "https://www.spglobal.com"
+      ]
+     ]
+    ]
+   ]
+  },
+  "id": {
+   "h": "Sumber data",
+   "sub": "Laporan keuangan audit resmi dan referensi andal lain yang dipakai dalam dashboard ini.",
+   "groups": [
+    [
+     "Laporan tahunan audit",
+     [
+      [
+       "Laporan keuangan audit FY2015",
+       "https://www.jababeka.com/wp-content/uploads/2018/12/2015-KIJA-Audited-Financial-Statements.pdf"
+      ],
+      [
+       "Laporan audit FY2016 (Hubungan Investor)",
+       "https://www.jababeka.com/id/hubungan-investor-tata-kelola/"
+      ],
+      [
+       "Laporan audit FY2017 (Hubungan Investor)",
+       "https://www.jababeka.com/id/hubungan-investor-tata-kelola/"
+      ],
+      [
+       "Laporan Tahunan FY2018 (dwibahasa)",
+       "https://www.jababeka.com/wp-content/uploads/2019/05/2018-Annual-Report-Bilingual-Version.pdf"
+      ],
+      [
+       "Laporan Tahunan FY2019",
+       "https://www.jababeka.com/wp-content/uploads/2020/09/KIJA_Annual-Report-2019.pdf"
+      ],
+      [
+       "Laporan Tahunan FY2020 (Hubungan Investor)",
+       "https://www.jababeka.com/id/hubungan-investor-tata-kelola/"
+      ],
+      [
+       "Laporan Tahunan & Keberlanjutan FY2021",
+       "https://www.jababeka.com/wp-content/uploads/2022/06/Laporan-Tahunan-dan-Berkelanjutan-2021-KIJA.pdf"
+      ],
+      [
+       "Laporan Tahunan FY2022",
+       "https://www.jababeka.com/wp-content/uploads/2023/05/KIJA-ASR-2022.pdf"
+      ],
+      [
+       "Laporan Tahunan & Keberlanjutan FY2023",
+       "https://www.jababeka.com/wp-content/uploads/2024/04/AR-SR-2023-KIJA.pdf"
+      ],
+      [
+       "Laporan Tahunan FY2024 (Hubungan Investor)",
+       "https://www.jababeka.com/id/hubungan-investor-tata-kelola/"
+      ],
+      [
+       "Laporan Tahunan & Keberlanjutan FY2025",
+       "https://www.jababeka.com/wp-content/uploads/2026/05/KIJA-AR-2025.pdf"
+      ]
+     ]
+    ],
+    [
+     "Interim & materi investor",
+     [
+      [
+       "Laporan keuangan interim 1H2026 (Q2) — IDX",
+       "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202607/20260731205845-62989-0/FinancialStatement-2026-II-KIJA.pdf"
+      ],
+      [
+       "Presentasi investor, Agu 2026 (laporan 1H26)",
+       "https://www.jababeka.com/wp-content/uploads/2025/02/KIJA-Presentation-Material-Augustus-2026-Final.pdf"
+      ],
+      [
+       "Pengumuman emiten IDX (KIJA)",
+       "https://www.idx.co.id"
+      ]
+     ]
+    ],
+    [
+     "Referensi eksternal",
+     [
+      [
+       "CBRE — Prospek Pasar Industri Jabodetabek Q2 2026",
+       "https://mktgdocs.cbre.com"
+      ],
+      [
+       "Kendal Industrial Park — Pembaruan KEK",
+       "https://www.kendalindustrialpark.co.id"
+      ],
+      [
+       "Moody's Investors Service — Pemeringkatan KIJA",
+       "https://www.moodys.com"
+      ],
+      [
+       "S&P Global Ratings — KIJA",
+       "https://www.spglobal.com"
+      ]
+     ]
+    ]
+   ]
+  },
+  "zh": {
+   "h": "数据来源",
+   "sub": "本看板使用的官方审计财报及其他可靠参考。",
+   "groups": [
+    [
+     "审计年报",
+     [
+      [
+       "FY2015 审计财务报表",
+       "https://www.jababeka.com/wp-content/uploads/2018/12/2015-KIJA-Audited-Financial-Statements.pdf"
+      ],
+      [
+       "FY2016 审计报告（投资者关系页）",
+       "https://www.jababeka.com/id/hubungan-investor-tata-kelola/"
+      ],
+      [
+       "FY2017 审计报告（投资者关系页）",
+       "https://www.jababeka.com/id/hubungan-investor-tata-kelola/"
+      ],
+      [
+       "FY2018 年报（双语）",
+       "https://www.jababeka.com/wp-content/uploads/2019/05/2018-Annual-Report-Bilingual-Version.pdf"
+      ],
+      [
+       "FY2019 年报",
+       "https://www.jababeka.com/wp-content/uploads/2020/09/KIJA_Annual-Report-2019.pdf"
+      ],
+      [
+       "FY2020 年报（投资者关系页）",
+       "https://www.jababeka.com/id/hubungan-investor-tata-kelola/"
+      ],
+      [
+       "FY2021 年度及可持续报告",
+       "https://www.jababeka.com/wp-content/uploads/2022/06/Laporan-Tahunan-dan-Berkelanjutan-2021-KIJA.pdf"
+      ],
+      [
+       "FY2022 年报",
+       "https://www.jababeka.com/wp-content/uploads/2023/05/KIJA-ASR-2022.pdf"
+      ],
+      [
+       "FY2023 年度及可持续报告",
+       "https://www.jababeka.com/wp-content/uploads/2024/04/AR-SR-2023-KIJA.pdf"
+      ],
+      [
+       "FY2024 年报（投资者关系页）",
+       "https://www.jababeka.com/id/hubungan-investor-tata-kelola/"
+      ],
+      [
+       "FY2025 年度及可持续报告",
+       "https://www.jababeka.com/wp-content/uploads/2026/05/KIJA-AR-2025.pdf"
+      ]
+     ]
+    ],
+    [
+     "中期与投资者材料",
+     [
+      [
+       "1H2026（二季度）中期财报 — IDX",
+       "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202607/20260731205845-62989-0/FinancialStatement-2026-II-KIJA.pdf"
+      ],
+      [
+       "2026 年 8 月投资者演示（含 1H26 数据）",
+       "https://www.jababeka.com/wp-content/uploads/2025/02/KIJA-Presentation-Material-Augustus-2026-Final.pdf"
+      ],
+      [
+       "IDX 上市公司公告（KIJA）",
+       "https://www.idx.co.id"
+      ]
+     ]
+    ],
+    [
+     "外部参考",
+     [
+      [
+       "CBRE — 2026 年二季度大雅加达工业地产展望",
+       "https://mktgdocs.cbre.com"
+      ],
+      [
+       "Kendal 工业园 — 经济特区动态",
+       "https://www.kendalindustrialpark.co.id"
+      ],
+      [
+       "穆迪投资者服务 — KIJA 评级",
+       "https://www.moodys.com"
+      ],
+      [
+       "标普全球评级 — KIJA",
+       "https://www.spglobal.com"
+      ]
+     ]
+    ]
+   ]
+  }
  }
 }
