@@ -221,6 +221,28 @@ Below charts: event timeline panel + risk indicators panel + narrative paragraph
 - **Every number in narrative text, chart subtitle, event description, and risk note must carry its unit.** See section 4 number rules.
 - **Sources**: footer lists every annual report by name (clickable to PDF), latest interim, investor presentation, IDX, and 1–2 third-party references. Show the name, link it — don't show raw URLs.
 
+### Derived metrics — compute from source arrays, never copy from narrative
+
+When writing narrative text (TOP3, OPP, RK, g24/g25/g26, DEC table), **do not hand-type derived numbers**. Pull them from the structured arrays:
+
+| Metric | Formula | Source arrays |
+|---|---|---|
+| Net debt | `total interest-bearing debt − cash` | `DEBT.cashDebt.debt − DEBT.cashDebt.cash` |
+| Net debt / EBITDA | `netDebt / AN.ebitda[yr]` | must match `DEBT.cov.nd` |
+| DSO | `AR / revenue × 365` | `WC.ar / WC.revenue` |
+| GPM peak year | `argmax(AN.gpm)` | `AN.gpm` vs `AN.years` |
+| Marketing sales per quarter | sum of EV event entries | `EV.ev26` text |
+
+**Critical distinction: total liabilities ≠ total debt.** Total liabilities (`AN.liab`) includes trade payables, customer deposits, tax, accrued expenses — NOT just interest-bearing borrowings. The g25 narrative once wrote "gross debt 6,904bn" when the actual interest-bearing debt was 4,607bn; 6,904 was total liabilities. Net debt uses interest-bearing debt only.
+
+### Cross-page consistency audit (run before shipping)
+
+Every number in the Risk & Direction page, annual-page narrative, and comparison table must reconcile to the structured data:
+- TOP3/OPP claims → verify against `AN`, `WC`, `EV` arrays
+- DEC table columns are `[1H26, FY<latest>, FY<previous>]` — do not shift values between years
+- Risk rows (`RK`) → verify level scores and notes match the KPI cards on their respective pages
+- Narrative text period references (e.g. "FY2025 cash 3.6tn") must match the correct year's data
+
 ---
 
 ## 10. Auto-updating stock price (GitHub Action)
@@ -263,6 +285,10 @@ Below charts: event timeline panel + risk indicators panel + narrative paragraph
 13. **Horizontal bars for P&L/BS snapshots**, vertical bars for cash bridge.
 14. **Positive numbers get no "+" sign.**
 15. **Tables: explicit column widths** summing to 100%, numbers right-aligned, thousands separators.
+16. **Total liabilities ≠ total debt.** Interest-bearing debt excludes trade payables, customer deposits, tax, accruals. Net debt = interest-bearing debt − cash. Verify from `DEBT.cashDebt`, not from balance-sheet total liabilities.
+17. **Narrative numbers must tie to structured arrays.** If you write "GPM peaked at 52%", check `AN.gpm` to find WHICH year — don't assume it was the land-sale era. If you write "1Q26 sales were X", check the EV timeline. A wrong year label is worse than no label.
+18. **DEC comparison table columns are ordered** `[1H26, FY<latest>, FY<previous>]`. Don't mix FY2023 numbers into the FY2024 column.
+19. **fmtN() already handles number formatting** — integers strip trailing `.0`, non-integers show 1 decimal, thousands separators auto-added. Don't hand-format numbers in narrative text; use the function for chart labels.
 
 ---
 
