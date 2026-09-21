@@ -514,8 +514,8 @@ en: {
   c_lb1_t:'Land bank by project (ha)', c_lb1_s:'30 Jun 2026: Cikarang 1,296 · Kendal 427 · Tanjung Lesung 1,481 · Morotai 1,885 · total 5,089 ha',
   c_lb2_t:'Book value vs market asking price (000 IDR/m²)', c_lb2_s:'Log scale; book = land for development at cost (AR2025); market = third-party asking prices (Rumah123 / 99.co / Brighton / CBRE / MM2100 listings)',
   lb_table_h:'Land bank detail & price comparison', lb_note_h:'Notes & sources', lb_note:'Book value is cost (lower of cost/NRV) of land for development per AR2025 note 7 — not a per-project appraisal; the company discloses no official land appraisal. Market figures are asking prices from third-party listings (Jul–Sep 2026: Rumah123, 99.co, Brighton, CBRE Q1-2026 Greater Jakarta Industrial Outlook, MM2100 BFIE); asking prices are not transactions. Implied uplift = market mid/low ÷ book, illustrative only. Morotai: no reliable public market price found (book cost only ~3.9 thousand IDR/m²).',
-  val_h:'Valuation & share price', val_d:'Valuation metrics as of 17–18 Sep 2026 (S&P Global MI via StockAnalysis, Digrin, Pluang, IDX); share price history: monthly closes (Digrin). Market data delayed.',
-  c_v1_t:'Share price — last 12 months (IDR)', c_v1_s:'Monthly close Sep-2025 → Sep-2026; 52-week range 105–364 (intraday, S&P); current 176 (21 Sep 2026); spikes: Jan-2026 (+62% in a week) and 18 Aug 2026 (+35% to 166)',
+  val_h:'Valuation & share price', val_d:'Valuation metrics as of 21 Sep 2026 (S&P Global MI via StockAnalysis, Digrin, Pluang, IDX); share price history: monthly closes (Digrin). Market data delayed.',
+  c_v1_t:'Share price — last 12 months (IDR)', c_v1_s:'Monthly close Sep-2025 → Sep-2026; 52-week range 105–364 (intraday, S&P)',
   c_v2_t:'Price-to-book & price-to-sales: KIJA vs DMAS', c_v2_s:'KIJA 0.46x / 0.75x vs Cikarang peer DMAS 1.35x / 3.78x (Morningstar, Sep 2026)',
   val_stats_t:'Valuation & trading snapshot', val_peers_t:'Peer comparison: DMAS (Kota Deltamas)', val_peers_note:'DMAS: Sinar Mas Land + Sojitz Cikarang industrial developer; 1H26 net profit +175% to IDR 1.19tn on data-center land sales; +56.6% YTD-2026. KIJA 1H26 net loss reflects ~IDR 460bn one-off refinancing costs.',
   val_analysts_t:'Analyst views & ratings', val_events_t:'Price & trading milestones (12 months)',
@@ -1087,7 +1087,7 @@ function buildOpt(id){
              {type:'value', gridIndex:1, name:'M sh', nameTextStyle:{color:AX.color, fontSize:10}, axisLabel:{color:AX.color, fontSize:10}, splitLine:{show:false}}],
       series:[
         {name:'KIJA', type:'line', xAxisIndex:0, yAxisIndex:0, data:VAL.close, smooth:true, symbolSize:6, lineStyle:{width:2, color:C.green}, itemStyle:{color:C.green},
-          markLine:{silent:true, symbol:'none', lineStyle:{color:C.red, type:'dashed', width:1.5}, data:[{yAxis:FY.refPrice, label:{formatter:fmtN(FY.refPrice) + ' (18 Sep)', fontSize:10, color:C.red, position:'insideEndTop'}}]},
+          markLine:{silent:true, symbol:'none', lineStyle:{color:C.red, type:'dashed', width:1.5}, data:[{yAxis:FY.refPrice, label:{formatter:fmtN(FY.refPrice) + ' (21 Sep)', fontSize:10, color:C.red, position:'insideEndTop'}}]},
           markPoint:{symbol:'circle', symbolSize:9, label:{fontSize:10, color:'#fff', position:'top'}, data:[
             {coord:[FY.vjan.m, FY.vjan.c], value:String(FY.vjan.hi), itemStyle:{color:C.amber}},
             {coord:[FY.vjun.m, FY.vjun.c], value:String(FY.vjun.hi), itemStyle:{color:C.clay}}
