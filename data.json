@@ -3524,10 +3524,10 @@
  "VAL": {
   "kpi": [
    {
-    "l": "Price (2026-09-18)",
-    "v": 180,
+    "l": "Price (2026-09-21)",
+    "v": 176,
     "u": "IDR",
-    "d": "-1 (-0.6%) on day",
+    "d": "-4 (-2.2%) on day",
     "c": "dn"
    },
    {
@@ -3539,30 +3539,30 @@
    },
    {
     "l": "Market cap",
-    "v": 3.7,
+    "v": 3.6,
     "u": "IDR tn",
-    "d": "3.71T at 180",
+    "d": "3.62T at 176",
     "c": "flat"
    },
    {
     "l": "P/B",
     "v": 0.6,
     "u": "x",
-    "d": "0.59x parent BVPS 304.1",
+    "d": "0.58x parent BVPS 304.1",
     "c": "flat"
    },
    {
     "l": "P/E (FY25 EPS 20.55)",
-    "v": 8.8,
+    "v": 8.6,
     "u": "x",
-    "d": "8.8x on FY25 EPS 20.55",
+    "d": "8.6x on FY25 EPS 20.55",
     "c": "flat"
    },
    {
     "l": "Dividend yield",
-    "v": 1.1,
+    "v": 1.2,
     "u": "%",
-    "d": "2.03 DPS / 180",
+    "d": "2.03 DPS / 176",
     "c": "flat"
    }
   ],
@@ -3594,7 +3594,7 @@
    112,
    130,
    216,
-   180
+   176
   ],
   "events": [
    [
@@ -3625,7 +3625,7 @@
   "stats": [
    [
     "Price / date",
-    "180.0 IDR · 2026-09-18 (Yahoo Finance)"
+    "176.0 IDR · 2026-09-21 (Yahoo Finance)"
    ],
    [
     "Shares outstanding",
@@ -6378,7 +6378,7 @@
   "sched5y": 1013.5,
   "totD26": 4863.0,
   "cash26": 3200,
-  "refPrice": 180,
+  "refPrice": 176,
   "vjan": {
    "m": "Jan-26",
    "c": 228,
