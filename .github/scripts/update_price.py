@@ -42,40 +42,49 @@ def main():
     else:
         dj["refPrice"] = price
 
-    # Update valuation KPIs
+    # Update valuation KPIs in KP.val[LANG] (this is what the page renders)
+    if "KP" in dj and "val" in dj["KP"]:
+        kpv = dj["KP"]["val"]
+        chg = price - prev_price
+        chg_pct = (chg / prev_price * 100) if prev_price else 0
+        mcap = price * SHARES_BN / 1000
+        pb = price / BVPS
+        pe = price / EPS
+        dy = DPS / price * 100
+        labels = {
+            "en": {"price": "Price", "mc": "at", "pb": "parent BVPS", "pe": "on FY25 EPS", "dy": "DPS"},
+            "id": {"price": "Harga", "mc": "di", "pb": "BVPS induk", "pe": "EPS FY25", "dy": "DPS"},
+            "zh": {"price": "股价", "mc": "@", "pb": "母公司 BVPS", "pe": "FY25 EPS", "dy": "每股"},
+        }
+        for lang in ["en", "id", "zh"]:
+            if lang not in kpv or len(kpv[lang]) < 6:
+                continue
+            cards = kpv[lang]
+            L = labels[lang]
+            # [0] Market cap
+            cards[0]["v"] = round(mcap, 1)
+            cards[0]["d"] = f"{mcap:.2f}T {L['mc']} {price}"
+            # [1] Price
+            cards[1]["v"] = price
+            cards[1]["l"] = f"{L['price']} ({date_str})"
+            cards[1]["d"] = f"{chg:+.0f} ({chg_pct:+.1f}%)"
+            cards[1]["c"] = "up" if chg >= 0 else "dn"
+            # [3] P/B
+            cards[3]["v"] = round(pb, 1)
+            cards[3]["d"] = f"{pb:.2f}x {L['pb']} {BVPS}"
+            # [4] P/E
+            cards[4]["v"] = round(pe, 1)
+            cards[4]["d"] = f"{pe:.1f}x {L['pe']} {EPS}"
+            # [5] Dividend yield
+            cards[5]["v"] = round(dy, 1)
+            cards[5]["d"] = f"{L['dy']} {DPS} / {price}"
+
+    # Update last monthly close and stats in VAL
     if "VAL" in dj:
-        val = dj["VAL"]
-        if "kpi" in val and len(val["kpi"]) >= 6:
-            val["kpi"][0]["v"] = price
-            val["kpi"][0]["l"] = f"Price ({date_str})"
-            chg = price - prev_price
-            chg_pct = (chg / prev_price * 100) if prev_price else 0
-            val["kpi"][0]["d"] = f"{chg:+.0f} ({chg_pct:+.1f}%) on day"
-            val["kpi"][0]["c"] = "up" if chg >= 0 else "dn"
-            # Market cap
-            mcap = price * SHARES_BN / 1000
-            val["kpi"][2]["v"] = round(mcap, 1)
-            val["kpi"][2]["d"] = f"{mcap:.2f}T at {price}"
-            # P/B
-            pb = price / BVPS
-            val["kpi"][3]["v"] = round(pb, 1)
-            val["kpi"][3]["d"] = f"{pb:.2f}x parent BVPS {BVPS}"
-            # P/E
-            pe = price / EPS
-            val["kpi"][4]["v"] = round(pe, 1)
-            val["kpi"][4]["d"] = f"{pe:.1f}x on FY25 EPS {EPS}"
-            # Dividend yield
-            dy = DPS / price * 100
-            val["kpi"][5]["v"] = round(dy, 1)
-            val["kpi"][5]["d"] = f"{DPS} DPS / {price}"
-
-        # Update last monthly close
-        if "close" in val and len(val["close"]) > 0:
-            val["close"][-1] = price
-
-        # Update stats table
-        if "stats" in val:
-            for row in val["stats"]:
+        if "close" in dj["VAL"] and len(dj["VAL"]["close"]) > 0:
+            dj["VAL"]["close"][-1] = price
+        if "stats" in dj["VAL"]:
+            for row in dj["VAL"]["stats"]:
                 if row[0] == "Price / date":
                     row[1] = f"{price}.0 IDR · {date_str} (Yahoo Finance)"
                     break
