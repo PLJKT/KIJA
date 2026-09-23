@@ -891,9 +891,10 @@ function buildOpt(id){
         {name:CT('cons'), type:'line', data:AN.niCons, smooth:true, symbolSize:5, lineStyle:{width:2.5,color:C.clay}, itemStyle:{color:C.clay}}]};
   }
   if (id === 'p-4') {
-    var yr=[], rev=[], gpmL=[];
-    for(var pi=0; pi<AN.years.length; pi++){ yr.push(AN.years[pi]); }
-    return {tooltip:baseTooltip(), legend:legendT(), grid:baseGrid(), xAxis:baseX(AN.years), yAxis:[baseY(U), baseY('%')],
+    return {tooltip:baseTooltip(), legend:{top:2, right:10, textStyle:{color:AX.color, fontSize:11}, itemWidth:14}, grid:{left:52, right:52, top:38, bottom:32}, xAxis:baseX(AN.years), yAxis:[
+      {type:'value', name:U, nameTextStyle:{color:AX.color, fontSize:11}, axisLabel:{color:AX.color, fontSize:11}, splitLine:SPLIT, max:6000},
+      {type:'value', name:'%', nameTextStyle:{color:AX.color, fontSize:11}, axisLabel:{color:AX.color, fontSize:11, formatter:'{value}%'}, splitLine:false, min:0, max:60}
+    ],
       series:[
         {name:'Revenue', type:'bar', data:AN.revenue, itemStyle:{color:C.soft}, barMaxWidth:26},
         {name:CT('gM'), type:'line', yAxisIndex:1, data:AN.gpm, smooth:true, symbolSize:5, lineStyle:{width:2.5,color:C.green}, itemStyle:{color:C.green}}]};
