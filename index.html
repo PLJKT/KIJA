@@ -1494,7 +1494,7 @@ function renderStatics(){
   var VI = JSON.parse(JSON.stringify(VALI[LANG]));
   var _px = FY.refPrice || 180;
   var _pxDate = (KP.val[LANG][1].l || '').replace(/Price \(/,'').replace(/Harga \(/,'').replace(/股价（/,'').replace(/[)）]/g,'');
-  var _mcapB = _px * 20.59;  // IDR bn
+  var _mcapB = _px * 20.59;
   var _pe = _px / 20.55;
   var _pbP = _px / 304.1;
   var _pbT = _px / 395.6;
@@ -1511,7 +1511,16 @@ function renderStatics(){
     .replace(/~2\.7x/g, '~'+_evE.toFixed(1)+'x'); }
   function _arr(a){ if(Array.isArray(a)){ for(var i=0;i<a.length;i++){ if(Array.isArray(a[i])){ _arr(a[i]); } else { a[i]=_sp(a[i]); } } } return a; }
   for(var _k in VI){ if(VI.hasOwnProperty(_k)){ VI[_k]=_sp(VI[_k]); } }
-  _arr(VI.inputs); _arr(VI.methods); _arr(VI.comp); _arr(VI.implied); _arr(VI.key);
+  _arr(VI.inputs); _arr(VI.methods); _arr(VI.implied); _arr(VI.key);
+  // Recalculate comp table: [method, base, vs_px, safety, reading]
+  VI.comp = VI.comp.map(function(row){
+    var fv = parseFloat(row[1]);
+    var vsPct = (fv / _px - 1) * 100;
+    var sm = fv > _px ? (fv - _px) / fv * 100 : 0;
+    row[2] = (vsPct >= 0 ? '+' : '') + vsPct.toFixed(1) + '%';
+    row[3] = fv > _px ? sm.toFixed(1) + '%' : 'n/a';
+    return row;
+  });
   var _vll = VLL[LANG].map(function(x){ if(typeof x==='string'){ return x.replace(/180/g, _px); } if(Array.isArray(x)){ return x.map(function(y){ return typeof y==='string' ? y.replace(/180/g, _px) : y; }); } return x; });
   document.getElementById('vali-sub').innerHTML = esc(VI.sub);
   document.getElementById('vali-disc').innerHTML = esc(VI.disc);
@@ -1521,11 +1530,46 @@ function renderStatics(){
   document.getElementById('vali-methods').innerHTML = kvTable(VI.methodH, VI.methods, ['21%','30%','15%','16%','18%'], _vll[3]);
   document.getElementById('vali-comp').innerHTML = kvTable(VI.compH, VI.comp, ['17%','15%','14%','15%','39%'], _vll[4]);
   document.getElementById('vali-implied').innerHTML = kvTable(VI.impliedH, VI.implied, ['56%','44%'], _vll[5]);
-  var VLQ = LIQ[LANG];
+  var VLQ = JSON.parse(JSON.stringify(LIQ[LANG]));
+  VLQ.hd[5] = _vll[4][2]; // 'vs price X'
+  VLQ.rows = VLQ.rows.map(function(row){
+    var ps = parseFloat(row[4]);
+    var vsPct = (ps / _px - 1) * 100;
+    row[5] = (vsPct >= 0 ? '+' : '') + vsPct.toFixed(1) + '%';
+    row[6] = ps > _px ? (ps - _px) / ps * 100 : 0;
+    row[6] = ps > _px ? row[6].toFixed(1) + '%' : 'n/a';
+    return row;
+  });
+  VLQ.sub = _sp(VLQ.sub); VLQ.disc = _sp(VLQ.disc); VLQ.note = _sp(VLQ.note);
   document.getElementById('vali-liq').innerHTML = '<p class="page-d">' + esc(VLQ.sub) + '</p>' + kvTable(VLQ.h, VLQ.rows, ['22%','14%','12%','16%','11%','9%','16%'], VLQ.hd) + '<div class="risk-note">' + esc(VLQ.disc) + '</div><div class="risk-note">' + esc(VLQ.note) + '</div>';
-  var VLB = LBV[LANG];
+  var VLB = JSON.parse(JSON.stringify(LBV[LANG]));
+  VLB.hd[3] = _vll[4][2];
+  VLB.rows = VLB.rows.map(function(row){
+    var ps = parseFloat(row[2]);
+    var vsPct = (ps / _px - 1) * 100;
+    row[3] = (vsPct >= 0 ? '+' : '') + vsPct.toFixed(1) + '%';
+    row[4] = ps > _px ? ((ps - _px) / ps * 100).toFixed(1) + '%' : 'n/a';
+    return row;
+  });
+  VLB.sub = _sp(VLB.sub); VLB.disc = _sp(VLB.disc); VLB.note = _sp(VLB.note);
   document.getElementById('vali-lbv').innerHTML = '<p class="page-d">' + esc(VLB.sub) + '</p>' + kvTable(VLB.h, VLB.rows, ['16%','22%','18%','22%','22%'], VLB.hd) + '<div class="risk-note">' + esc(VLB.disc) + '</div><div class="risk-note">' + esc(VLB.note) + '</div>';
-  var VKP = KEYP[LANG];
+  var VKP = JSON.parse(JSON.stringify(KEYP[LANG]));
+  VKP.sub = _sp(VKP.sub);
+  VKP.rows = VKP.rows.map(function(row){
+    row[1] = _sp(row[1]); row[2] = _sp(row[2]);
+    // Recalculate price-derived rows
+    var label = row[0];
+    if(label.indexOf('Delayed price') >= 0 || label.indexOf('Harga tertunda') >= 0 || label.indexOf('延迟股价') >= 0){
+      row[1] = _px.toFixed(1) + ' IDR';
+    }
+    if(label.indexOf('Market capital') >= 0 || label.indexOf('Kapitalisasi') >= 0 || label.indexOf('市值') >= 0){
+      row[1] = (_mcapB/1000).toFixed(2) + ' tn IDR @ ' + _px;
+    }
+    if(label.indexOf('P/E (FY25') >= 0 || label.indexOf('P/E (FY25') >= 0){
+      row[1] = _pe.toFixed(1) + 'x';
+    }
+    return row;
+  });
   document.getElementById('vali-keyp').innerHTML = '<p class="page-d">' + esc(VKP.sub) + '</p>' + kvTable(VKP.h, VKP.rows, ['26%','38%','36%'], VKP.hd);
   var vk = '<ul class="events">';
   for (var vki = 0; vki < VI.key.length; vki++) { vk += '<li>' + esc(VI.key[vki]) + '</li>'; }
