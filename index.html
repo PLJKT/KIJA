@@ -1512,14 +1512,15 @@ function renderStatics(){
   function _arr(a){ if(Array.isArray(a)){ for(var i=0;i<a.length;i++){ if(Array.isArray(a[i])){ _arr(a[i]); } else { a[i]=_sp(a[i]); } } } return a; }
   for(var _k in VI){ if(VI.hasOwnProperty(_k)){ VI[_k]=_sp(VI[_k]); } }
   _arr(VI.inputs); _arr(VI.methods); _arr(VI.comp); _arr(VI.implied); _arr(VI.key);
+  var _vll = VLL[LANG].map(function(x){ if(typeof x==='string'){ return x.replace(/180/g, _px); } if(Array.isArray(x)){ return x.map(function(y){ return typeof y==='string' ? y.replace(/180/g, _px) : y; }); } return x; });
   document.getElementById('vali-sub').innerHTML = esc(VI.sub);
   document.getElementById('vali-disc').innerHTML = esc(VI.disc);
   document.getElementById('vali-chart-h').innerHTML = esc(VI.methodH);
   document.getElementById('vali-chart-s').innerHTML = esc(VI.weightNote);
-  document.getElementById('vali-inputs').innerHTML = kvTable(VI.inputsH, VI.inputs, ['42%','58%'], VLL[LANG][5]);
-  document.getElementById('vali-methods').innerHTML = kvTable(VI.methodH, VI.methods, ['21%','30%','15%','16%','18%'], VLL[LANG][3]);
-  document.getElementById('vali-comp').innerHTML = kvTable(VI.compH, VI.comp, ['17%','15%','14%','15%','39%'], VLL[LANG][4]);
-  document.getElementById('vali-implied').innerHTML = kvTable(VI.impliedH, VI.implied, ['56%','44%'], VLL[LANG][5]);
+  document.getElementById('vali-inputs').innerHTML = kvTable(VI.inputsH, VI.inputs, ['42%','58%'], _vll[5]);
+  document.getElementById('vali-methods').innerHTML = kvTable(VI.methodH, VI.methods, ['21%','30%','15%','16%','18%'], _vll[3]);
+  document.getElementById('vali-comp').innerHTML = kvTable(VI.compH, VI.comp, ['17%','15%','14%','15%','39%'], _vll[4]);
+  document.getElementById('vali-implied').innerHTML = kvTable(VI.impliedH, VI.implied, ['56%','44%'], _vll[5]);
   var VLQ = LIQ[LANG];
   document.getElementById('vali-liq').innerHTML = '<p class="page-d">' + esc(VLQ.sub) + '</p>' + kvTable(VLQ.h, VLQ.rows, ['22%','14%','12%','16%','11%','9%','16%'], VLQ.hd) + '<div class="risk-note">' + esc(VLQ.disc) + '</div><div class="risk-note">' + esc(VLQ.note) + '</div>';
   var VLB = LBV[LANG];
