@@ -1491,7 +1491,27 @@ function renderStatics(){
   document.getElementById('val-peers').innerHTML = valPeersHtml();
   document.getElementById('val-analysts').innerHTML = valAnalystsHtml();
   document.getElementById('val-events').innerHTML = eventsHtml(VTXT[LANG].events);
-  var VI = VALI[LANG];
+  var VI = JSON.parse(JSON.stringify(VALI[LANG]));
+  var _px = FY.refPrice || 180;
+  var _pxDate = (KP.val[LANG][1].l || '').replace(/Price \(/,'').replace(/Harga \(/,'').replace(/股价（/,'').replace(/[)）]/g,'');
+  var _mcapB = _px * 20.59;  // IDR bn
+  var _pe = _px / 20.55;
+  var _pbP = _px / 304.1;
+  var _pbT = _px / 395.6;
+  var _ev = _mcapB + 988;
+  var _evE = _ev / 1735.5;
+  function _sp(s){ if(typeof s!=='string') return s; return s
+    .replace(/18\s*Sep\s*2026/g, _pxDate)
+    .replace(/180\.0/g, _px.toFixed(1))
+    .replace(/180/g, _px)
+    .replace(/3,706/g, Math.round(_mcapB).toLocaleString('en-US'))
+    .replace(/8\.8x/g, _pe.toFixed(1)+'x')
+    .replace(/0\.59x/g, _pbP.toFixed(2)+'x')
+    .replace(/0\.46x/g, _pbT.toFixed(2)+'x')
+    .replace(/~2\.7x/g, '~'+_evE.toFixed(1)+'x'); }
+  function _arr(a){ if(Array.isArray(a)){ for(var i=0;i<a.length;i++){ if(Array.isArray(a[i])){ _arr(a[i]); } else { a[i]=_sp(a[i]); } } } return a; }
+  for(var _k in VI){ if(VI.hasOwnProperty(_k)){ VI[_k]=_sp(VI[_k]); } }
+  _arr(VI.inputs); _arr(VI.methods); _arr(VI.comp); _arr(VI.implied); _arr(VI.key);
   document.getElementById('vali-sub').innerHTML = esc(VI.sub);
   document.getElementById('vali-disc').innerHTML = esc(VI.disc);
   document.getElementById('vali-chart-h').innerHTML = esc(VI.methodH);
