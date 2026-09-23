@@ -1116,7 +1116,7 @@ function buildOpt(id){
         {name:VLL[LANG][1], type:'bar', data:ba, itemStyle:{color:C.green}, barMaxWidth:13},
         {name:VLL[LANG][2], type:'bar', data:hi, itemStyle:{color:C.blue}, barMaxWidth:13,
           label:{show:true, position:'right', fontSize:10, color:'#5C6B61', formatter:lblFmt()}},
-        {name:VLL[LANG][6], type:'line', data:[FY.refPrice,FY.refPrice,FY.refPrice,FY.refPrice], symbol:'none', lineStyle:{width:2, color:C.red, type:'dashed'}, tooltip:{show:false}, label:{show:false}}]};
+        {name:'Price ' + FY.refPrice, type:'line', data:[FY.refPrice,FY.refPrice,FY.refPrice,FY.refPrice], symbol:'none', lineStyle:{width:2, color:C.red, type:'dashed'}, tooltip:{show:false}, label:{show:false, formatter:String(FY.refPrice), position:'end', color:C.red, fontSize:10}}]};
   }
   return {};
 }
