@@ -133,8 +133,8 @@ def main():
                 peers = v["peers"]
                 dec = "," if lang == "id" else "."
                 # KIJA column (col 1)
-                # P/B range (total equity -> parent)
-                peers[0][1] = _f(price / 395.6, 2, dec) + "–" + _f(price / BVPS, 2, dec)
+                # P/B (parent BVPS, consistent with chart)
+                peers[0][1] = _f(price / BVPS, 2, dec)
                 # P/E (FY25 EPS)
                 peers[1][1] = _f(price / EPS, 1, dec)
                 # P/S (FY25 revenue)
