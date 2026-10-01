@@ -36,9 +36,10 @@ def main():
     with open(DATA_FILE, "r", encoding="utf-8") as f:
         dj = json.load(f)
 
-    # Update refPrice in FY section
+    # Update refPrice + price-derived peer-chart data in FY section
     if "FY" in dj:
         dj["FY"]["refPrice"] = price
+        dj["FY"]["kijaPBPS"] = [round(price / BVPS, 2), round(price * SHARES_BN / 5149.4, 2)]
     else:
         dj["refPrice"] = price
 
@@ -88,6 +89,39 @@ def main():
                 if row[0] == "Price / date":
                     row[1] = f"{price}.0 IDR · {date_str} (Yahoo Finance)"
                     break
+
+    # Keep the rendered stats/peers tables (VTXT, all languages) in sync
+    if "VTXT" in dj:
+        stats_labels = {"en": "Price / date", "id": "Harga / tanggal", "zh": "股价 / 日期"}
+        for lang in ["en", "id", "zh"]:
+            v = dj["VTXT"].get(lang)
+            if not v:
+                continue
+            if "stats" in v:
+                for row in v["stats"]:
+                    if row[0] == stats_labels[lang]:
+                        dec = "," if lang == "id" else "."
+                        unit = "盾" if lang == "zh" else "IDR"
+                        row[1] = f"{price}{dec}0 {unit} · {date_str} (Yahoo Finance)"
+                        break
+            if "peers" in v and len(v["peers"]) >= 6:
+                def _f(x, d, dec):
+                    s = f"{x:.{d}f}".replace(".", dec)
+                    return s
+                peers = v["peers"]
+                dec = "," if lang == "id" else "."
+                # P/B range (total equity -> parent)
+                peers[0][1] = _f(price / 395.6, 2, dec) + "–" + _f(price / BVPS, 2, dec)
+                # P/E (FY25 EPS)
+                peers[1][1] = _f(price / EPS, 1, dec)
+                # P/S (FY25 revenue)
+                peers[2][1] = _f(price * SHARES_BN / 5149.4, 2, dec)
+                # Dividend yield
+                dy = _f(DPS / price * 100, 1, dec)
+                peers[3][1] = ("约 " if lang == "zh" else "~") + dy + "%"
+                # YTD 2026 (base 210, end-2025 close)
+                ytd = round((price - 210) / 210 * 100)
+                peers[5][1] = f"{ytd}% (210 → {price})" if lang != "zh" else f"{ytd}%（210 → {price}）"
 
     with open(DATA_FILE, "w", encoding="utf-8") as f:
         json.dump(dj, f, ensure_ascii=False, indent=1)
