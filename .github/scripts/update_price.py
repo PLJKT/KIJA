@@ -7,13 +7,21 @@ from datetime import datetime, timezone
 
 DATA_FILE = "data.json"
 TICKER = "KIJA.JK"
+DMAS_TICKER = "DMAS.JK"
 SHARES_BN = 20.59  # weighted avg shares (bn)
 EPS = 20.55        # FY25 audited EPS (IDR)
 BVPS = 304.1       # parent BVPS (IDR)
 DPS = 2.03         # FY25 dividend per share (IDR)
+# DMAS (PT Puradelta Lestari) audited FY2025 (AR2025, IDX)
+DMAS_SHARES_BN = 48.198   # issued & paid-up shares (bn)
+DMAS_REV_BN = 1309.1      # FY25 audited revenue (bn)
+DMAS_EPS = 16.60          # FY25 audited attributable EPS (800.3/48.198)
+DMAS_BVPS = 137.14        # FY25 audited parent BVPS (6,609.8/48.198)
+DMAS_DPS = 16.5           # FY25 dividend per share (paid Jul 2026)
+DMAS_BASE = 129           # end-2025 close (YTD base)
 
-def fetch_price():
-    url = f"https://query1.finance.yahoo.com/v8/finance/chart/{TICKER}?range=5d&interval=1d"
+def fetch_price(ticker):
+    url = f"https://query1.finance.yahoo.com/v8/finance/chart/{ticker}?range=5d&interval=1d"
     req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
     with urllib.request.urlopen(req, timeout=15) as resp:
         data = json.loads(resp.read())
@@ -29,9 +37,12 @@ def fetch_price():
     return round(last_close), round(prev_close), last_ts
 
 def main():
-    price, prev_price, ts = fetch_price()
+    price, prev_price, ts = fetch_price(TICKER)
+    dprice, _, dts = fetch_price(DMAS_TICKER)
     dt = datetime.fromtimestamp(ts, tz=timezone.utc)
     date_str = dt.strftime("%Y-%m-%d")
+    ddt = datetime.fromtimestamp(dts, tz=timezone.utc)
+    ddate_str = ddt.strftime("%Y-%m-%d")
 
     with open(DATA_FILE, "r", encoding="utf-8") as f:
         dj = json.load(f)
@@ -40,6 +51,17 @@ def main():
     if "FY" in dj:
         dj["FY"]["refPrice"] = price
         dj["FY"]["kijaPBPS"] = [round(price / BVPS, 2), round(price * SHARES_BN / 5149.4, 2)]
+        dj["FY"]["dmasPBPS"] = [round(dprice / DMAS_BVPS, 2), round(dprice * DMAS_SHARES_BN / DMAS_REV_BN, 2)]
+        dj["FY"]["dmas"] = {
+            "price": dprice,
+            "date": ddate_str,
+            "base": DMAS_BASE,
+            "bvps": DMAS_BVPS,
+            "eps": DMAS_EPS,
+            "rev": DMAS_REV_BN,
+            "shares": DMAS_SHARES_BN,
+            "dps": DMAS_DPS
+        }
     else:
         dj["refPrice"] = price
 
@@ -110,6 +132,7 @@ def main():
                     return s
                 peers = v["peers"]
                 dec = "," if lang == "id" else "."
+                # KIJA column (col 1)
                 # P/B range (total equity -> parent)
                 peers[0][1] = _f(price / 395.6, 2, dec) + "–" + _f(price / BVPS, 2, dec)
                 # P/E (FY25 EPS)
@@ -122,6 +145,20 @@ def main():
                 # YTD 2026 (base 210, end-2025 close)
                 ytd = round((price - 210) / 210 * 100)
                 peers[5][1] = f"{ytd}% (210 → {price})" if lang != "zh" else f"{ytd}%（210 → {price}）"
+                # DMAS column (col 2), live price-derived
+                # P/B (parent BVPS)
+                peers[0][2] = _f(dprice / DMAS_BVPS, 2, dec)
+                # P/E (FY25 audited EPS)
+                peers[1][2] = _f(dprice / DMAS_EPS, 1, dec)
+                # P/S (FY25 audited revenue)
+                peers[2][2] = _f(dprice * DMAS_SHARES_BN / DMAS_REV_BN, 2, dec)
+                # Dividend yield (FY25 DPS 16.5)
+                ddy = _f(DMAS_DPS / dprice * 100, 1, dec)
+                peers[3][2] = ("约 " if lang == "zh" else "~") + ddy + "%"
+                # YTD 2026 (base = end-2025 close)
+                dytd = round((dprice - DMAS_BASE) / DMAS_BASE * 100)
+                dytd_s = f"{dytd}% ({DMAS_BASE} → {dprice})" if lang != "zh" else f"{dytd}%（{DMAS_BASE} → {dprice}）"
+                peers[5][2] = dytd_s
 
     with open(DATA_FILE, "w", encoding="utf-8") as f:
         json.dump(dj, f, ensure_ascii=False, indent=1)
