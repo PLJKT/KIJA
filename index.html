@@ -1149,11 +1149,10 @@ function buildOpt(id){
         {name:_lg0[0], type:'bar', stack:'r', data:[rg[0],rg[1],rg[2],rg[3],0], itemStyle:{color:C.green}, barMaxWidth:14,
           label:{show:true, position:'right', fontSize:10, color:'#1F5E40', formatter:function(p){ var k = p.dataIndex; if (k > 3) { return ''; } return rg[k] > 0.05 ? fmtN(hi[k]) : ''; }}},
         {name:_lg0[0], type:'bar', stack:'r', data:[null,null,null,hi[3],null], itemStyle:{color:'#C7D0C8'}, barMaxWidth:14, tooltip:{show:false}, label:{show:false}},
-        {name:_lg0[2], type:'bar', stack:'r', data:[null,null,null,null,_pv], itemStyle:{color:C.red}, barMaxWidth:14,
+        {name:_lg0[2], type:'bar', stack:'p', data:[null,null,null,null,_pv], itemStyle:{color:C.red}, barMaxWidth:14,
           label:{show:true, position:'right', fontSize:10, color:C.red, formatter:function(p){ return p.dataIndex === 4 ? fmtN(_pv) : ''; }}},
         {name:_lg0[1], type:'scatter', data:ba.map(function(b,i){ return [b, _yi[i]]; }), symbol:'circle', symbolSize:7, itemStyle:{color:'#16241C'},
-          label:{show:true, position:'top', fontSize:10, color:'#16241C', formatter:function(p){ return fmtN(p.value[0]); }}},
-        {name:_lg0[2], type:'line', data:[_pv,_pv,_pv,_pv,_pv], symbol:'none', lineStyle:{width:2, color:C.red, type:'dashed'}, tooltip:{show:false}, label:{show:false}}]};
+          label:{show:true, position:'top', fontSize:10, color:'#16241C', formatter:function(p){ return fmtN(p.value[0]); }}}]};
   }
   return {};
 }
