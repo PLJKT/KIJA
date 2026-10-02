@@ -1129,25 +1129,31 @@ function buildOpt(id){
     var _pv = FY.refPrice || 180;
     var _lgs = {en:['Range (low–high)','Base','Price'], id:['Kisaran (rendah–tinggi)','Dasar','Harga'], zh:['区间（低–高）','基准','现价']};
     var _lg0 = _lgs[LANG] || _lgs.en;
+    var _cpn = {en:'Current Price', id:'Harga Saat Ini', zh:'现价'};
+    var _cp = _cpn[LANG] || _cpn.en;
     var _vtl = {en:['Low','Base','High'], id:['Rendah','Dasar','Tinggi'], zh:['低','基准','高']};
+    var cat5 = [cat[0], cat[1], cat[2], cat[3], _cp];
+    var _yi = [0,1,2,3];
     return {tooltip:{trigger:'axis', confine:true, formatter:function(ps){
         if (!ps || !ps.length) { return ''; }
         var i = ps[0].dataIndex; var L = _vtl[LANG] || _vtl.en;
-        return cat[i] + '<br/>' + L[0] + ': ' + fmtN(num(vm[i][2])) + '<br/>' + L[1] + ': ' + fmtN(num(vm[i][3])) + '<br/>' + L[2] + ': ' + fmtN(num(vm[i][4])) + '<br/>' + _lg0[2] + ': ' + fmtN(_pv);
+        if (i === 4) { return _cp + '<br/>' + _lg0[2] + ': ' + fmtN(_pv); }
+        return cat5[i] + '<br/>' + L[0] + ': ' + fmtN(num(vm[i][2])) + '<br/>' + L[1] + ': ' + fmtN(num(vm[i][3])) + '<br/>' + L[2] + ': ' + fmtN(num(vm[i][4])) + '<br/>' + _lg0[2] + ': ' + fmtN(_pv);
       }},
       legend:{top:2, right:6, textStyle:{color:AX.color, fontSize:11}, itemWidth:14},
-      grid:{left:64, right:78, top:34, bottom:26},
+      grid:{left:92, right:78, top:34, bottom:26},
       xAxis:{type:'value', axisLabel:{color:AX.color, fontSize:11}, splitLine:SPLIT},
-      yAxis:{type:'category', data:cat, axisLabel:{color:'#16241C', fontSize:11}},
+      yAxis:{type:'category', data:cat5, axisLabel:{color:'#16241C', fontSize:11}},
       series:[
-        {name:_lg0[0], type:'bar', stack:'r', data:lo, itemStyle:{color:'rgba(0,0,0,0)'}, barMaxWidth:14, tooltip:{show:false}},
-        {name:_lg0[0], type:'bar', stack:'r', data:rg, itemStyle:{color:C.green}, barMaxWidth:14,
-          label:{show:true, position:'right', fontSize:10, color:'#1F5E40', formatter:function(p){ return rg[p.dataIndex] > 0.05 ? fmtN(hi[p.dataIndex]) : ''; }}},
-        {name:_lg0[0], type:'bar', stack:'r', data:[null,null,null,hi[3]], itemStyle:{color:'#C7D0C8'}, barMaxWidth:14, tooltip:{show:false}, label:{show:false}},
-        {name:_lg0[1], type:'scatter', data:ba.map(function(b,i){ return [b, i]; }), symbol:'circle', symbolSize:7, itemStyle:{color:'#16241C'},
+        {name:_lg0[0], type:'bar', stack:'r', data:[lo[0],lo[1],lo[2],lo[3],0], itemStyle:{color:'rgba(0,0,0,0)'}, barMaxWidth:14, tooltip:{show:false}},
+        {name:_lg0[0], type:'bar', stack:'r', data:[rg[0],rg[1],rg[2],rg[3],0], itemStyle:{color:C.green}, barMaxWidth:14,
+          label:{show:true, position:'right', fontSize:10, color:'#1F5E40', formatter:function(p){ var k = p.dataIndex; if (k > 3) { return ''; } return rg[k] > 0.05 ? fmtN(hi[k]) : ''; }}},
+        {name:_lg0[0], type:'bar', stack:'r', data:[null,null,null,hi[3],null], itemStyle:{color:'#C7D0C8'}, barMaxWidth:14, tooltip:{show:false}, label:{show:false}},
+        {name:_lg0[2], type:'bar', stack:'r', data:[null,null,null,null,_pv], itemStyle:{color:C.red}, barMaxWidth:14,
+          label:{show:true, position:'right', fontSize:10, color:C.red, formatter:function(p){ return p.dataIndex === 4 ? fmtN(_pv) : ''; }}},
+        {name:_lg0[1], type:'scatter', data:ba.map(function(b,i){ return [b, _yi[i]]; }), symbol:'circle', symbolSize:7, itemStyle:{color:'#16241C'},
           label:{show:true, position:'top', fontSize:10, color:'#16241C', formatter:function(p){ return fmtN(p.value[0]); }}},
-        {name:_lg0[2], type:'line', data:[_pv,_pv,_pv,_pv], symbol:'none', lineStyle:{width:2, color:C.red, type:'dashed'},
-          label:{show:true, formatter:String(_pv), position:'end', color:C.red, fontSize:10}}]};
+        {name:_lg0[2], type:'line', data:[_pv,_pv,_pv,_pv,_pv], symbol:'none', lineStyle:{width:2, color:C.red, type:'dashed'}, tooltip:{show:false}, label:{show:false}}]};
   }
   return {};
 }
