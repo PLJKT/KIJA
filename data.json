@@ -811,16 +811,16 @@
    "en": [
     {
      "l": "Market cap",
-     "v": 3.3,
+     "v": 3.1,
      "u": "IDR tn",
-     "d": "3.25T at 158",
+     "d": "3.11T at 151",
      "c": "flat"
     },
     {
-     "l": "Price (2026-10-01)",
-     "v": 158,
+     "l": "Price (2026-10-02)",
+     "v": 151,
      "u": "IDR",
-     "d": "-1 (-0.6%)",
+     "d": "-7 (-4.4%)",
      "c": "dn"
     },
     {
@@ -834,37 +834,37 @@
      "l": "P/B",
      "v": 0.5,
      "u": "x",
-     "d": "0.52x parent BVPS 304.1",
+     "d": "0.50x parent BVPS 304.1",
      "c": "flat"
     },
     {
      "l": "P/E (FY25 EPS 20.55)",
-     "v": 7.7,
+     "v": 7.3,
      "u": "x",
-     "d": "7.7x on FY25 EPS 20.55",
+     "d": "7.3x on FY25 EPS 20.55",
      "c": "flat"
     },
     {
      "l": "Dividend yield",
      "v": 1.3,
      "u": "%",
-     "d": "DPS 2.03 / 158",
+     "d": "DPS 2.03 / 151",
      "c": "flat"
     }
    ],
    "id": [
     {
      "l": "Kapitalisasi pasar",
-     "v": 3.3,
+     "v": 3.1,
      "u": "Rp tn",
-     "d": "3.25T di 158",
+     "d": "3.11T di 151",
      "c": "flat"
     },
     {
-     "l": "Harga (2026-10-01)",
-     "v": 158,
+     "l": "Harga (2026-10-02)",
+     "v": 151,
      "u": "IDR",
-     "d": "-1 (-0.6%)",
+     "d": "-7 (-4.4%)",
      "c": "dn"
     },
     {
@@ -878,37 +878,37 @@
      "l": "P/B",
      "v": 0.5,
      "u": "x",
-     "d": "0.52x BVPS induk 304.1",
+     "d": "0.50x BVPS induk 304.1",
      "c": "flat"
     },
     {
      "l": "P/E (EPS FY25 20.55)",
-     "v": 7.7,
+     "v": 7.3,
      "u": "x",
-     "d": "7.7x EPS FY25 20.55",
+     "d": "7.3x EPS FY25 20.55",
      "c": "flat"
     },
     {
      "l": "Imbal hasil dividen",
      "v": 1.3,
      "u": "%",
-     "d": "DPS 2.03 / 158",
+     "d": "DPS 2.03 / 151",
      "c": "flat"
     }
    ],
    "zh": [
     {
      "l": "市值",
-     "v": 3.3,
+     "v": 3.1,
      "u": "万亿盾",
-     "d": "3.25T @ 158",
+     "d": "3.11T @ 151",
      "c": "flat"
     },
     {
-     "l": "股价 (2026-10-01)",
-     "v": 158,
+     "l": "股价 (2026-10-02)",
+     "v": 151,
      "u": "盾",
-     "d": "-1 (-0.6%)",
+     "d": "-7 (-4.4%)",
      "c": "dn"
     },
     {
@@ -922,21 +922,21 @@
      "l": "市净率",
      "v": 0.5,
      "u": "x",
-     "d": "0.52x 母公司 BVPS 304.1",
+     "d": "0.50x 母公司 BVPS 304.1",
      "c": "flat"
     },
     {
      "l": "市盈率（FY25 EPS 20.55）",
-     "v": 7.7,
+     "v": 7.3,
      "u": "x",
-     "d": "7.7x FY25 EPS 20.55",
+     "d": "7.3x FY25 EPS 20.55",
      "c": "flat"
     },
     {
      "l": "股息率",
      "v": 1.3,
      "u": "%",
-     "d": "每股 2.03 / 158",
+     "d": "每股 2.03 / 151",
      "c": "flat"
     }
    ]
@@ -3524,45 +3524,45 @@
  "VAL": {
   "kpi": [
    {
-    "l": "Price (2026-09-21)",
-    "v": 176,
+    "l": "Price (2026-10-02)",
+    "v": 151,
     "u": "IDR",
-    "d": "-4 (-2.2%) on day",
-    "c": "dn"
+    "d": "151.0 IDR close",
+    "c": "flat"
    },
    {
     "l": "52-week range",
     "v": 105,
-    "u": "— 364 IDR",
+    "u": "- 364 IDR",
     "d": "intraday (S&P); monthly low 111 (Digrin)",
     "c": "dn"
    },
    {
     "l": "Market cap",
-    "v": 3.6,
+    "v": 3.1,
     "u": "IDR tn",
-    "d": "3.62T at 176",
+    "d": "3.11T at 151",
     "c": "flat"
    },
    {
     "l": "P/B",
-    "v": 0.6,
+    "v": 0.5,
     "u": "x",
-    "d": "0.58x parent BVPS 304.1",
+    "d": "0.50x parent BVPS 304.1",
     "c": "flat"
    },
    {
     "l": "P/E (FY25 EPS 20.55)",
-    "v": 8.6,
+    "v": 7.3,
     "u": "x",
-    "d": "8.6x on FY25 EPS 20.55",
+    "d": "7.3x on FY25 EPS 20.55",
     "c": "flat"
    },
    {
     "l": "Dividend yield",
-    "v": 1.2,
+    "v": 1.3,
     "u": "%",
-    "d": "2.03 DPS / 176",
+    "d": "2.03 DPS / 151",
     "c": "flat"
    }
   ],
@@ -3594,7 +3594,7 @@
    130,
    216,
    158,
-   158
+   151
   ],
   "events": [
    [
@@ -3625,7 +3625,7 @@
   "stats": [
    [
     "Price / date",
-    "158.0 IDR · 2026-10-01 (Yahoo Finance)"
+    "151.0 IDR · 2026-10-02 (Yahoo Finance)"
    ],
    [
     "Shares outstanding",
@@ -3645,19 +3645,19 @@
    ],
    [
     "Beta (5Y) / RSI",
-    "0.25 / 38.6"
+    "0.25 / 35.5"
    ],
    [
     "50-DMA / 200-DMA",
-    "167.5 / 179.7"
+    "167.8 / 179.6"
    ],
    [
     "Avg daily volume (20d)",
-    "270.7M shares"
+    "266.1M shares"
    ],
    [
     "Daily turnover (17 Sep)",
-    "≈ 25.7B IDR · 162.9M shares (2026-10-01, Yahoo)"
+    "≈ 20.4B IDR · 135.3M shares (2026-10-02, Yahoo)"
    ],
    [
     "Next earnings",
@@ -4346,7 +4346,7 @@
    "stats": [
     [
      "Price / date",
-     "158.0 IDR · 2026-10-01 (Yahoo Finance)"
+     "151.0 IDR · 2026-10-02 (Yahoo Finance)"
     ],
     [
      "Shares outstanding",
@@ -4366,19 +4366,19 @@
     ],
     [
      "Beta (5Y) / RSI",
-     "0.25 / 38.6"
+     "0.25 / 35.5"
     ],
     [
      "50-DMA / 200-DMA",
-     "167.5 / 179.7"
+     "167.8 / 179.6"
     ],
     [
      "Avg daily volume (20d)",
-     "270.7M shares"
+     "266.1M shares"
     ],
     [
-     "Daily turnover (10/01)",
-     "≈ 25.7B IDR · 162.9M shares (2026-10-01, Yahoo)"
+     "Daily turnover (10/02)",
+     "≈ 20.4B IDR · 135.3M shares (2026-10-02, Yahoo)"
     ],
     [
      "Next earnings",
@@ -4399,29 +4399,29 @@
    "peers": [
     [
      "P/B (x)",
-     "0.52",
-     "1.32",
+     "0.50",
+     "1.31",
      "0.26",
      "0.39"
     ],
     [
      "P/E (FY25 audited)",
-     "7.7",
-     "10.9",
-     "38.8",
+     "7.3",
+     "10.8",
+     "38.5",
      "10.6"
     ],
     [
      "P/S (x)",
-     "0.63",
-     "6.66",
-     "2.73",
+     "0.60",
+     "6.63",
+     "2.71",
      "0.58"
     ],
     [
      "Dividend yield",
      "~1.3%",
-     "~9.1%",
+     "~9.2%",
      "0%",
      "0%"
     ],
@@ -4434,9 +4434,9 @@
     ],
     [
      "YTD 2026 price",
-     "-25% (210 → 158)",
-     "40% (129 → 181)",
-     "9% (111 → 121)",
+     "-28% (210 → 151)",
+     "40% (129 → 180)",
+     "8% (111 → 120)",
      "-11% (575 → 510)"
     ]
    ],
@@ -4512,7 +4512,7 @@
    "stats": [
     [
      "Harga / tanggal",
-     "158,0 IDR · 2026-10-01 (Yahoo Finance)"
+     "151,0 IDR · 2026-10-02 (Yahoo Finance)"
     ],
     [
      "Saham beredar",
@@ -4532,19 +4532,19 @@
     ],
     [
      "Beta (5Y) / RSI",
-     "0,25 / 38,6"
+     "0,25 / 35,5"
     ],
     [
      "50-DMA / 200-DMA",
-     "167,5 / 179,7"
+     "167,8 / 179,6"
     ],
     [
      "Volume harian rata-rata (20d)",
-     "270,7 juta saham"
+     "266,1 juta saham"
     ],
     [
-     "Nilai transaksi (10/01)",
-     "≈ 25,7B IDR · 162,9 juta saham (2026-10-01, Yahoo)"
+     "Nilai transaksi (10/02)",
+     "≈ 20,4B IDR · 135,3 juta saham (2026-10-02, Yahoo)"
     ],
     [
      "Laporan keuangan berikutnya",
@@ -4565,29 +4565,29 @@
    "peers": [
     [
      "P/B (x)",
-     "0,52",
-     "1,32",
+     "0,50",
+     "1,31",
      "0,26",
      "0,39"
     ],
     [
      "P/E (FY25 audit)",
-     "7,7",
-     "10,9",
-     "38,8",
+     "7,3",
+     "10,8",
+     "38,5",
      "10,6"
     ],
     [
      "P/S (x)",
-     "0,63",
-     "6,66",
-     "2,73",
+     "0,60",
+     "6,63",
+     "2,71",
      "0,58"
     ],
     [
      "Imbal hasil dividen",
      "~1,3%",
-     "~9,1%",
+     "~9,2%",
      "0%",
      "0%"
     ],
@@ -4600,9 +4600,9 @@
     ],
     [
      "Perubahan harga YTD 2026",
-     "-25% (210 → 158)",
-     "40% (129 → 181)",
-     "9% (111 → 121)",
+     "-28% (210 → 151)",
+     "40% (129 → 180)",
+     "8% (111 → 120)",
      "-11% (575 → 510)"
     ]
    ],
@@ -4678,7 +4678,7 @@
    "stats": [
     [
      "股价 / 日期",
-     "158.0 盾 · 2026-10-01 (Yahoo Finance)"
+     "151.0 盾 · 2026-10-02 (Yahoo Finance)"
     ],
     [
      "总股本",
@@ -4698,19 +4698,19 @@
     ],
     [
      "Beta（5Y）/ RSI",
-     "0.25 / 38.6"
+     "0.25 / 35.5"
     ],
     [
      "50 日均线 / 200 日均线",
-     "167.5 / 179.7"
+     "167.8 / 179.6"
     ],
     [
      "20 日均成交量",
-     "2.707 亿股"
+     "2.661 亿股"
     ],
     [
-     "单日成交额（10-01）",
-     "约 25.7B 盾 · 1.63 亿股（2026-10-01，Yahoo）"
+     "单日成交额（10-02）",
+     "约 20.4B 盾 · 1.35 亿股（2026-10-02，Yahoo）"
     ],
     [
      "下一财报日",
@@ -4731,29 +4731,29 @@
    "peers": [
     [
      "市净率（x）",
-     "0.52",
-     "1.32",
+     "0.50",
+     "1.31",
      "0.26",
      "0.39"
     ],
     [
      "市盈率（FY25 审计）",
-     "7.7",
-     "10.9",
-     "38.8",
+     "7.3",
+     "10.8",
+     "38.5",
      "10.6"
     ],
     [
      "市销率（x）",
-     "0.63",
-     "6.66",
-     "2.73",
+     "0.60",
+     "6.63",
+     "2.71",
      "0.58"
     ],
     [
      "股息率",
      "约 1.3%",
-     "约 9.1%",
+     "约 9.2%",
      "0%",
      "0%"
     ],
@@ -4766,9 +4766,9 @@
     ],
     [
      "2026 年至今股价",
-     "-25%（210 → 158）",
-     "40%（129 → 181）",
-     "9%（111 → 121）",
+     "-28%（210 → 151）",
+     "40%（129 → 180）",
+     "8%（111 → 120）",
      "-11%（575 → 510）"
     ]
    ],
@@ -5085,35 +5085,35 @@
      "164.4",
      "-8.7%",
      "-9.5%",
-     "Market slightly above multiple"
+     "Pasar sedikit di atas kelipatan"
     ],
     [
      "P/B (base 0.6x)",
      "182.5",
      "+1.4%",
      "1.4%",
-     "Trades near book value"
+     "Diperdagangkan mendekati nilai buku"
     ],
     [
      "DCF (base)",
      "452.4",
      "+151.3%",
      "60.2%",
-     "Land bank upside largely unpriced"
+     "Potensi land bank sebagian besar belum terharga"
     ],
     [
      "SOTP (Sucor)",
      "250.0",
      "+38.9%",
      "28.0%",
-     "Broker buy target"
+     "Target beli broker"
     ],
     [
      "Weighted (base)",
      "263.9",
      "+46.6%",
      "31.8%",
-     "Illustrative fair value"
+     "Nilai wajar ilustratif"
     ]
    ],
    "impliedH": "Kelipatan tersirat pada 180,0",
@@ -5124,14 +5124,14 @@
     ],
     [
      "P/B tersirat (BVPS induk 304,1)",
-     "0,60x"
+     "0,59x"
     ],
     [
      "P/B tersirat (BVPS ekuitas total 395,6)",
      "0,46x"
     ],
     [
-     "EV/EBITDA (FY25): (3.727 + 988) / 1.735,5",
+     "EV/EBITDA (FY25): (3.706 + 988) / 1.735,5",
      "sekitar 2,7x"
     ]
    ],
@@ -5217,35 +5217,35 @@
      "164.4",
      "-8.7%",
      "-9.5%",
-     "Market slightly above multiple"
+     "股价略高于倍数"
     ],
     [
      "P/B (base 0.6x)",
      "182.5",
      "+1.4%",
      "1.4%",
-     "Trades near book value"
+     "接近账面价值交易"
     ],
     [
      "DCF (base)",
      "452.4",
      "+151.3%",
      "60.2%",
-     "Land bank upside largely unpriced"
+     "土地储备上行空间大多未被定价"
     ],
     [
      "SOTP (Sucor)",
      "250.0",
      "+38.9%",
      "28.0%",
-     "Broker buy target"
+     "券商买入目标"
     ],
     [
      "Weighted (base)",
      "263.9",
      "+46.6%",
      "31.8%",
-     "Illustrative fair value"
+     "示例公允价值"
     ]
    ],
    "impliedH": "180.0 处隐含倍数",
@@ -5256,14 +5256,14 @@
     ],
     [
      "隐含市净率（母公司 304.1）",
-     "0.60x"
+     "0.59x"
     ],
     [
      "隐含市净率（总权益 395.6）",
      "0.46x"
     ],
     [
-     "EV/EBITDA（FY25）：（3,727 + 988）/ 1,735.5",
+     "EV/EBITDA（FY25）：（3,706 + 988）/ 1,735.5",
      "约 2.7x"
     ]
    ],
@@ -5467,7 +5467,7 @@
  "KEYP": {
   "en": {
    "h": "Key parameters (Bloomberg-standard fields)",
-   "sub": "Delayed public market data as of 18 Sep 2026; TTM includes 1H26 one-off costs — audited FY25 shown where materially different",
+   "sub": "Delayed public market data; price-derived rows recalculated at the latest close; other parameters delayed snapshot as of 18 September 2026; TTM includes 1H26 one-off costs — audited FY25 shown where materially different",
    "hd": [
     "Parameter",
     "Value",
@@ -5583,7 +5583,7 @@
   },
   "id": {
    "h": "Parameter Kunci (bidang standar Bloomberg)",
-   "sub": "Data pasar publik tertunda per 18 Sep 2026; TTM termasuk biaya one-off 1H26 — FY25 audit ditampilkan bila berbeda material",
+   "sub": "Data pasar publik tertunda; baris turunan harga dihitung ulang pada penutupan terbaru; parameter lain cuplikan tertunda per 18 September 2026; TTM termasuk biaya one-off 1H26 — FY25 audit ditampilkan bila berbeda material",
    "hd": [
     "Parameter",
     "Nilai",
@@ -5699,7 +5699,7 @@
   },
   "zh": {
    "h": "关键参数（Bloomberg 标准字段）",
-   "sub": "公开延迟行情，截至 18 Sep 2026；TTM 含 1H26 一次性成本 —— 与审计 FY25 差异显著时并列列示",
+   "sub": "公开延迟行情；价格派生行按最新收盘重算；其他参数为 2026 年 9 月 18 日延迟快照；TTM 含 1H26 一次性成本 —— 与审计 FY25 差异显著时并列列示",
    "hd": [
     "参数",
     "数值",
@@ -6420,7 +6420,7 @@
   "sched5y": 1013.5,
   "totD26": 4863.0,
   "cash26": 3200,
-  "refPrice": 158,
+  "refPrice": 151,
   "vjan": {
    "m": "Jan-26",
    "c": 228,
@@ -6432,12 +6432,12 @@
    "hi": 112
   },
   "kijaPBPS": [
-   0.52,
-   0.63
+   0.5,
+   0.6
   ],
   "dmasPBPS": [
-   1.32,
-   6.66
+   1.31,
+   6.63
   ],
   "seg24b": [
    [
@@ -6492,8 +6492,8 @@
    "close": 2048.5
   },
   "dmas": {
-   "price": 181,
-   "date": "2026-10-01",
+   "price": 180,
+   "date": "2026-10-02",
    "base": 129,
    "bvps": 137.14,
    "eps": 16.6,
@@ -6502,8 +6502,8 @@
    "dps": 16.5
   },
   "best": {
-   "price": 121,
-   "date": "2026-10-01",
+   "price": 120,
+   "date": "2026-10-02",
    "base": 111,
    "bvps": 461.8,
    "eps": 3.12,
@@ -6513,7 +6513,7 @@
   },
   "lpck": {
    "price": 510,
-   "date": "2026-10-01",
+   "date": "2026-10-02",
    "base": 575,
    "bvps": 1302.2,
    "eps": 48,
@@ -6523,7 +6523,7 @@
   },
   "bestPBPS": [
    0.26,
-   2.73
+   2.71
   ],
   "lpckPBPS": [
    0.39,
