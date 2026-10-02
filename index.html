@@ -1120,17 +1120,29 @@ function buildOpt(id){
   /* ---- 估值测算页 ---- */
   if (id === 'vi-1') {
     var vm = VALI[LANG].methods, cat = ['P/E','P/B','DCF','SOTP'];
-    var lo = [], ba = [], hi = [];
-    for (var vj = 0; vj < vm.length; vj++) { lo.push(num(vm[vj][2])); ba.push(num(vm[vj][3])); hi.push(num(vm[vj][4])); }
-    return {tooltip:baseTooltip(), legend:legendT(), grid:{left:64, right:70, top:34, bottom:26},
+    var lo = [], ba = [], hi = [], rg = [];
+    for (var vj = 0; vj < vm.length; vj++) { lo.push(num(vm[vj][2])); ba.push(num(vm[vj][3])); hi.push(num(vm[vj][4])); rg.push(num(vm[vj][4]) - num(vm[vj][2])); }
+    var _pv = FY.refPrice || 180;
+    var _lgs = {en:['Range (low–high)','Base','Price'], id:['Kisaran (rendah–tinggi)','Dasar','Harga'], zh:['区间（低–高）','基准','现价']};
+    var _lg0 = _lgs[LANG] || _lgs.en;
+    var _vtl = {en:['Low','Base','High'], id:['Rendah','Dasar','Tinggi'], zh:['低','基准','高']};
+    return {tooltip:{trigger:'axis', confine:true, formatter:function(ps){
+        if (!ps || !ps.length) { return ''; }
+        var i = ps[0].dataIndex; var L = _vtl[LANG] || _vtl.en;
+        return cat[i] + '<br/>' + L[0] + ': ' + fmtN(lo[i]) + '<br/>' + L[1] + ': ' + fmtN(ba[i]) + '<br/>' + L[2] + ': ' + fmtN(hi[i]) + '<br/>' + _lg0[2] + ': ' + fmtN(_pv);
+      }},
+      legend:{top:2, right:6, textStyle:{color:AX.color, fontSize:11}, itemWidth:14},
+      grid:{left:64, right:78, top:34, bottom:26},
       xAxis:{type:'value', axisLabel:{color:AX.color, fontSize:11}, splitLine:SPLIT},
       yAxis:{type:'category', data:cat, axisLabel:{color:'#16241C', fontSize:11}},
       series:[
-        {name:VLL[LANG][0], type:'bar', data:lo, itemStyle:{color:C.soft}, barMaxWidth:13},
-        {name:VLL[LANG][1], type:'bar', data:ba, itemStyle:{color:C.green}, barMaxWidth:13},
-        {name:VLL[LANG][2], type:'bar', data:hi, itemStyle:{color:C.blue}, barMaxWidth:13,
-          label:{show:true, position:'right', fontSize:10, color:'#5C6B61', formatter:lblFmt()}},
-        {name:'Price ' + FY.refPrice, type:'line', data:[FY.refPrice,FY.refPrice,FY.refPrice,FY.refPrice], symbol:'none', lineStyle:{width:2, color:C.red, type:'dashed'}, tooltip:{show:false}, label:{show:false, formatter:String(FY.refPrice), position:'end', color:C.red, fontSize:10}}]};
+        {name:_lg0[0], type:'bar', stack:'r', data:lo, itemStyle:{color:'rgba(199,208,200,0.35)'}, barMaxWidth:14, tooltip:{show:false}},
+        {name:_lg0[0], type:'bar', stack:'r', data:rg, itemStyle:{color:C.green}, barMaxWidth:14,
+          label:{show:true, position:'right', fontSize:10, color:'#1F5E40', formatter:function(p){ return fmtN(hi[p.dataIndex]); }}},
+        {name:_lg0[1], type:'scatter', data:ba.map(function(b,i){ return [b, i]; }), symbol:'circle', symbolSize:8, itemStyle:{color:'#16241C'},
+          label:{show:true, position:'right', fontSize:10, color:'#16241C', formatter:function(p){ return fmtN(p.value[0]); }}},
+        {name:_lg0[2], type:'line', data:[_pv,_pv,_pv,_pv], symbol:'none', lineStyle:{width:2, color:C.red, type:'dashed'},
+          label:{show:true, formatter:String(_pv), position:'end', color:C.red, fontSize:10}}]};
   }
   return {};
 }
@@ -1610,7 +1622,7 @@ function renderStatics(){
   var _vll = VLL[LANG].map(function(x){ if(typeof x==='string'){ return x.replace(/180/g, _px); } if(Array.isArray(x)){ return x.map(function(y){ return typeof y==='string' ? y.replace(/180/g, _px) : y; }); } return x; });
   document.getElementById('vali-sub').innerHTML = esc(VI.sub);
   document.getElementById('vali-disc').innerHTML = esc(VI.disc);
-  document.getElementById('vali-chart-h').innerHTML = esc(VI.methodH);
+  document.getElementById('vali-chart-h').innerHTML = esc(VI.chartH || VI.methodH);
   document.getElementById('vali-chart-s').innerHTML = esc(VI.weightNote);
   document.getElementById('vali-inputs').innerHTML = kvTable(VI.inputsH, VI.inputs, ['42%','58%'], _vll[5]);
   document.getElementById('vali-methods').innerHTML = kvTable(VI.methodH, VI.methods, ['21%','30%','15%','16%','18%'], _vll[3]);

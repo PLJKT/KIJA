@@ -5009,7 +5009,8 @@
     "Infrastructure mix compresses gross margin; power profitability depends on gas price and PLN dispatch.",
     "After refinancing, interest cost rose to ~7.2%; DCF uses a 10% WACC and 55% parent share of FCF.",
     "Fair-value range is an illustration, not a recommendation; credit rating remains speculative grade (B- / B3)."
-   ]
+   ],
+   "chartH": "Per-share value range by method (low / base / high)"
   },
   "id": {
    "h": "Ilustrasi Valuasi",
@@ -5141,7 +5142,8 @@
     "Komposisi infrastruktur menekan margin kotor; profitabilitas listrik bergantung pada harga gas dan dispatch PLN.",
     "Setelah refinancing, beban bunga naik ke sekitar 7,2%; DCF memakai WACC 10% dan porsi induk 55% dari FCF.",
     "Rentang nilai wajar adalah ilustrasi, bukan rekomendasi; peringkat kredit tetap grade spekulatif (B- / B3)."
-   ]
+   ],
+   "chartH": "Kisaran nilai per saham per metode (rendah / dasar / tinggi)"
   },
   "zh": {
    "h": "估值测算",
@@ -5273,7 +5275,8 @@
     "基建占比上升压缩毛利率；电力盈利取决于气价与 PLN 调度。",
     "再融资后利息成本升至约 7.2%；DCF 采用 10% WACC、归母自由现金流占比 55%。",
     "公允价值区间仅为示意、非推荐；信用评级仍为投机级（B- / B3）。"
-   ]
+   ],
+   "chartH": "分方法每股价值区间（低 / 基准 / 高）"
   }
  },
  "LIQ": {
