@@ -36,6 +36,42 @@ def fetch_price(ticker):
     prev_close = valid[-2][1] if len(valid) >= 2 else last_close
     return round(last_close), round(prev_close), last_ts
 
+def fetch_technicals(ticker):
+    """Fetch ~1y daily closes + volumes; return (rows, rsi14, dma50, dma200, avgvol20, last_turnover_bn, last_date)."""
+    url = f"https://query1.finance.yahoo.com/v8/finance/chart/{ticker}?range=1y&interval=1d"
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+    with urllib.request.urlopen(req, timeout=15) as resp:
+        data = json.loads(resp.read())
+    result = data["chart"]["result"][0]
+    q = result["indicators"]["quote"][0]
+    closes, vols, ts = q["close"], q["volume"], result["timestamp"]
+    rows = [(t, c, v) for t, c, v in zip(ts, closes, vols) if c is not None and v is not None]
+    if len(rows) < 30:
+        raise ValueError("Not enough daily data for technicals")
+    cs = [r[1] for r in rows]
+    vs = [r[2] for r in rows]
+    n = len(cs)
+    def avg(a, k):
+        return sum(a[-k:]) / k
+    dma50 = avg(cs, 50)
+    dma200 = avg(cs, min(200, n))
+    avgvol20 = avg(vs, 20) / 1e6
+    last = rows[-1]
+    last_turnover_bn = last[1] * last[2] / 1e9
+    last_vol_m = last[2] / 1e6
+    last_date = datetime.fromtimestamp(last[0], tz=timezone.utc).strftime("%Y-%m-%d")
+    # Wilder RSI-14
+    gains, losses = [], []
+    for i in range(1, n):
+        ch = cs[i] - cs[i - 1]
+        gains.append(max(ch, 0)); losses.append(max(-ch, 0))
+    ag = sum(gains[:14]) / 14; al = sum(losses[:14]) / 14
+    for i in range(14, len(gains)):
+        ag = (ag * 13 + gains[i]) / 14
+        al = (al * 13 + losses[i]) / 14
+    rsi = 100 - 100 / (1 + ag / al) if al > 0 else 100
+    return rsi, dma50, dma200, avgvol20, last_turnover_bn, last_vol_m, last_date
+
 def main():
     price, prev_price, ts = fetch_price(TICKER)
     dprice, _, dts = fetch_price(DMAS_TICKER)
@@ -43,6 +79,8 @@ def main():
     date_str = dt.strftime("%Y-%m-%d")
     ddt = datetime.fromtimestamp(dts, tz=timezone.utc)
     ddate_str = ddt.strftime("%Y-%m-%d")
+    # time-sensitive technical rows (KIJA only)
+    rsi, dma50, dma200, avgvol20, turn_bn, last_vol_m, tech_date = fetch_technicals(TICKER)
 
     with open(DATA_FILE, "r", encoding="utf-8") as f:
         dj = json.load(f)
@@ -110,11 +148,23 @@ def main():
             for row in dj["VAL"]["stats"]:
                 if row[0] == "Price / date":
                     row[1] = f"{price}.0 IDR · {date_str} (Yahoo Finance)"
-                    break
+                elif row[0].startswith("Beta"):
+                    row[1] = f"0.25 / {rsi:.1f}"
+                elif row[0].startswith("50-DMA"):
+                    row[1] = f"{dma50:.1f} / {dma200:.1f}"
+                elif row[0].startswith("Avg daily volume"):
+                    row[1] = f"{avgvol20:.1f}M shares"
+                elif row[0].startswith("Daily turnover"):
+                    row[1] = f"≈ {turn_bn:.1f}B IDR · {last_vol_m:.1f}M shares ({tech_date}, Yahoo)"
 
     # Keep the rendered stats/peers tables (VTXT, all languages) in sync
     if "VTXT" in dj:
         stats_labels = {"en": "Price / date", "id": "Harga / tanggal", "zh": "股价 / 日期"}
+        tech_row_keys = {  # match by row label prefix; update the time-sensitive rows
+            "en": {"rsi": "Beta (5Y) / RSI", "dma": "50-DMA / 200-DMA", "vol": "Avg daily volume (20d)", "turn": "Daily turnover"},
+            "id": {"rsi": "Beta (5Y) / RSI", "dma": "50-DMA / 200-DMA", "vol": "Volume harian rata-rata (20d)", "turn": "Nilai transaksi"},
+            "zh": {"rsi": "Beta（5Y）/ RSI", "dma": "50 日均线 / 200 日均线", "vol": "20 日均成交量", "turn": "单日成交额"},
+        }
         for lang in ["en", "id", "zh"]:
             v = dj["VTXT"].get(lang)
             if not v:
@@ -126,6 +176,32 @@ def main():
                         unit = "盾" if lang == "zh" else "IDR"
                         row[1] = f"{price}{dec}0 {unit} · {date_str} (Yahoo Finance)"
                         break
+                # technical rows
+                keys = tech_row_keys.get(lang, {})
+                dec = "," if lang == "id" else "."
+                for row in v["stats"]:
+                    if keys.get("rsi") and row[0] == keys["rsi"]:
+                        row[1] = f"0.25 / {rsi:.1f}".replace(".", dec)
+                    elif keys.get("dma") and row[0] == keys["dma"]:
+                        row[1] = f"{dma50:.1f} / {dma200:.1f}".replace(".", dec)
+                    elif keys.get("vol") and row[0] == keys["vol"]:
+                        if lang == "zh":
+                            row[1] = f"{avgvol20/100:.3f} 亿股"
+                        elif lang == "id":
+                            row[1] = f"{avgvol20:.1f}".replace(".", ",") + " juta saham"
+                        else:
+                            row[1] = f"{avgvol20:.1f}M shares"
+                    elif keys.get("turn") and row[0].startswith(keys["turn"]):
+                        td = tech_date[5:].replace("-", "/") if lang in ("en", "id") else tech_date[5:].replace("-", "-")
+                        if lang == "zh":
+                            row[0] = "单日成交额（" + tech_date[5:] + "）"
+                            row[1] = f"约 {turn_bn:.1f}B 盾 · {last_vol_m/100:.2f} 亿股（{tech_date}，Yahoo）"
+                        elif lang == "id":
+                            row[0] = "Nilai transaksi (" + td + ")"
+                            row[1] = f"≈ {turn_bn:.1f}".replace(".", ",") + f"B IDR · {last_vol_m:.1f}".replace(".", ",") + f" juta saham ({tech_date}, Yahoo)"
+                        else:
+                            row[0] = "Daily turnover (" + td + ")"
+                            row[1] = f"≈ {turn_bn:.1f}B IDR · {last_vol_m:.1f}M shares ({tech_date}, Yahoo)"
             if "peers" in v and len(v["peers"]) >= 6:
                 def _f(x, d, dec):
                     s = f"{x:.{d}f}".replace(".", dec)
