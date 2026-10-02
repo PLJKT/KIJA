@@ -1564,7 +1564,7 @@ function renderStatics(){
   document.getElementById('val-events').innerHTML = eventsHtml(VTXT[LANG].events);
   var VI = JSON.parse(JSON.stringify(VALI[LANG]));
   var _px = FY.refPrice || 180;
-  var _pxDate = (KP.val[LANG][1].l || '').replace(/Price \(/,'').replace(/Harga \(/,'').replace(/股价（/,'').replace(/[)）]/g,'');
+  var _pxDate = (KP.val[LANG][1].l || '').replace(/^[^)）]*[（(]\s*/,'').replace(/[)）]\s*$/,'');
   var _mcapB = _px * 20.59;
   var _pe = _px / 20.55;
   var _pbP = _px / 304.1;
@@ -1573,6 +1573,11 @@ function renderStatics(){
   var _evE = _ev / 1735.5;
   function _sp(s){ if(typeof s!=='string') return s; return s
     .replace(/18\s*Sep\s*2026/g, _pxDate)
+    .replace(/17[-\s]*Sep\s*2026/g, _pxDate)
+    .replace(/2026-09-18/g, _pxDate)
+    .replace(/9\s*月\s*18\s*日/g, _pxDate)
+    .replace(/17[-\s]*Sep\b/g, _pxDate)
+    .replace(/18[-\s]*Sep\b/g, _pxDate)
     .replace(/180\.0/g, _px.toFixed(1))
     .replace(/180/g, _px)
     .replace(/3,706/g, Math.round(_mcapB).toLocaleString('en-US'))

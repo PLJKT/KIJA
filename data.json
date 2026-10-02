@@ -3598,7 +3598,7 @@
   ],
   "events": [
    [
-    "Sep–Dec 2025",
+    "Oct-Dec 2025",
     "Range 180–210; Dec-25 closes 210, market cap ~4.37tn (FY25 annual report)"
    ],
    [
@@ -3614,12 +3614,12 @@
     "+34.96% to 166 after Sucor reiterated Buy (TP 250, SOTP)"
    ],
    [
-    "Jul–Sep 2026",
-    "Rebound: 130 → 216 (Aug) → 180 (18 Sep close); avg volume (20d) 859.5M shares"
+    "Jul-Sep 2026",
+    "Rebound: 130 -> 216 (Aug) -> 158 (Oct-01 close); 52-wk high 364 (Jan-26 intraday)"
    ],
    [
-    "17 Sep 2026",
-    "Daily turnover ≈ 48.8B / 269M shares (Pluang); RSI 47.4; 200-DMA 180.9"
+    "01 Oct 2026",
+    "Latest close 158; RSI 38.6; 50-DMA 167.5; 200-DMA 179.7; 20d avg vol 270.7M shares; daily turnover ~25.7B IDR"
    ]
   ],
   "stats": [
@@ -5146,11 +5146,11 @@
   "zh": {
    "h": "估值测算",
    "sub": "DCF · P/E · P/B · SOTP 与现价对比 —— 仅作说明性估算，不构成投资建议",
-   "disc": "基于 FY2025 审计业绩与 2026-09-18 收盘价 180.0 盾。加权股本 20.59B；母公司每股净资产 304.1；EPS 20.55；EBITDA 1,735.5B；净负债（1H26）1,663B（债务 4,863 − 现金 3,200）。DCF 采用更保守的 1H26 净负债口径。",
+   "disc": "基于 FY2025 审计业绩与 18 Sep 2026 收盘价 180.0 盾。加权股本 20.59B；母公司每股净资产 304.1；EPS 20.55；EBITDA 1,735.5B；净负债（1H26）1,663B（债务 4,863 − 现金 3,200）。DCF 采用更保守的 1H26 净负债口径。",
    "inputsH": "输入（FY2025 审计口径，另有注明除外）",
    "inputs": [
     [
-     "现价（2026-09-18）",
+     "现价（18 Sep 2026）",
      "180.0 盾"
     ],
     [
@@ -5337,7 +5337,7 @@
      "96.5%"
     ]
    ],
-   "note": "Caveats: asking prices are third-party listings (Jul–Sep 2026), not transactions; no haircut on receivables, PP&E or other assets; land sales are the core going-concern business, so a liquidation shortcut understates (or, at high asking prices, overstates) the operating franchise; comparison uses the 17-Sep close of 180.0."
+   "note": "Caveats: asking prices are third-party listings (Jul–Sep 2026), not transactions; no haircut on receivables, PP&E or other assets; land sales are the core going-concern business, so a liquidation shortcut understates (or, at high asking prices, overstates) the operating franchise; comparison uses the 18 Sep 2026 close of 180.0."
   },
   "id": {
    "h": "Nilai Likuidasi (pemeriksaan aset-penopang)",
@@ -5399,7 +5399,7 @@
      "96,4%"
     ]
    ],
-   "note": "Catatan: harga penawaran adalah listing pihak ketiga (Jul–Sep 2026), bukan transaksi; tanpa pemangkasan pada piutang, aset tetap, atau aset lain; penjualan lahan adalah bisnis inti going-concern, sehingga pintasan likuidasi meremehkan (atau, pada penawaran tinggi, melebih-lebihkan) waralaba operasional; perbandingan memakai penutupan 18 Sep sebesar 180,0."
+   "note": "Catatan: harga penawaran adalah listing pihak ketiga (Jul–Sep 2026), bukan transaksi; tanpa pemangkasan pada piutang, aset tetap, atau aset lain; penjualan lahan adalah bisnis inti going-concern, sehingga pintasan likuidasi meremehkan (atau, pada penawaran tinggi, melebih-lebihkan) waralaba operasional; perbandingan memakai penutupan 18 Sep 2026 sebesar 180,0."
   },
   "zh": {
    "h": "清算价值（资产托底视角）",
@@ -5461,7 +5461,7 @@
      "96.4%"
     ]
    ],
-   "note": "提示：挂牌价为第三方报价（2026-07 至 09），非成交价；未对应收、厂房设备及其他资产打折；土地销售是持续经营核心业务，清算式速算会低估（高位挂牌情形下高估）经营价值；对比基准为 9 月 18 日收盘 180.0。"
+   "note": "提示：挂牌价为第三方报价（2026-07 至 09），非成交价；未对应收、厂房设备及其他资产打折；土地销售是持续经营核心业务，清算式速算会低估（高位挂牌情形下高估）经营价值；对比基准为 18 Sep 2026 收盘 180.0。"
   }
  },
  "KEYP": {
@@ -5477,7 +5477,7 @@
     [
      "Delayed price",
      "180.0 IDR (-0.5%); prev close 181.0",
-     "IDX close 18 Sep; stockanalysis"
+     "IDX close 18 Sep 2026; stockanalysis"
     ],
     [
      "Market capitalization",
@@ -5593,7 +5593,7 @@
     [
      "Harga tertunda",
      "180,0 IDR (-0,5%); penutupan sebelumnya 181,0",
-     "IDX tutup 18 Sep; stockanalysis"
+     "IDX tutup 18 Sep 2026; stockanalysis"
     ],
     [
      "Kapitalisasi pasar",
@@ -5699,7 +5699,7 @@
   },
   "zh": {
    "h": "关键参数（Bloomberg 标准字段）",
-   "sub": "公开延迟行情，截至 2026-09-18；TTM 含 1H26 一次性成本 —— 与审计 FY25 差异显著时并列列示",
+   "sub": "公开延迟行情，截至 18 Sep 2026；TTM 含 1H26 一次性成本 —— 与审计 FY25 差异显著时并列列示",
    "hd": [
     "参数",
     "数值",
@@ -5709,7 +5709,7 @@
     [
      "延迟价",
      "180.0 盾（-0.5%）；昨收 181.0",
-     "IDX 9月18日收盘；stockanalysis"
+     "IDX 18 Sep 2026 收盘；stockanalysis"
     ],
     [
      "市值",
