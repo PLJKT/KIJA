@@ -1136,11 +1136,11 @@ function buildOpt(id){
       xAxis:{type:'value', axisLabel:{color:AX.color, fontSize:11}, splitLine:SPLIT},
       yAxis:{type:'category', data:cat, axisLabel:{color:'#16241C', fontSize:11}},
       series:[
-        {name:_lg0[0], type:'bar', stack:'r', data:lo, itemStyle:{color:'rgba(199,208,200,0.35)'}, barMaxWidth:14, tooltip:{show:false}},
+        {name:_lg0[0], type:'bar', stack:'r', data:lo, itemStyle:{color:'rgba(0,0,0,0)'}, barMaxWidth:14, tooltip:{show:false}},
         {name:_lg0[0], type:'bar', stack:'r', data:rg, itemStyle:{color:C.green}, barMaxWidth:14,
-          label:{show:true, position:'right', fontSize:10, color:'#1F5E40', formatter:function(p){ return fmtN(hi[p.dataIndex]); }}},
-        {name:_lg0[1], type:'scatter', data:ba.map(function(b,i){ return [b, i]; }), symbol:'circle', symbolSize:8, itemStyle:{color:'#16241C'},
-          label:{show:true, position:'right', fontSize:10, color:'#16241C', formatter:function(p){ return fmtN(p.value[0]); }}},
+          label:{show:true, position:'right', fontSize:10, color:'#1F5E40', formatter:function(p){ return rg[p.dataIndex] > 0.05 ? fmtN(hi[p.dataIndex]) : ''; }}},
+        {name:_lg0[1], type:'scatter', data:ba.map(function(b,i){ return [b, i]; }), symbol:'circle', symbolSize:7, itemStyle:{color:'#16241C'},
+          label:{show:true, position:'top', fontSize:10, color:'#16241C', formatter:function(p){ return fmtN(p.value[0]); }}},
         {name:_lg0[2], type:'line', data:[_pv,_pv,_pv,_pv], symbol:'none', lineStyle:{width:2, color:C.red, type:'dashed'},
           label:{show:true, formatter:String(_pv), position:'end', color:C.red, fontSize:10}}]};
   }
