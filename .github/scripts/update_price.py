@@ -8,6 +8,8 @@ from datetime import datetime, timezone
 DATA_FILE = "data.json"
 TICKER = "KIJA.JK"
 DMAS_TICKER = "DMAS.JK"
+BEST_TICKER = "BEST.JK"
+LPCK_TICKER = "LPCK.JK"
 SHARES_BN = 20.59  # weighted avg shares (bn)
 EPS = 20.55        # FY25 audited EPS (IDR)
 BVPS = 304.1       # parent BVPS (IDR)
@@ -19,6 +21,20 @@ DMAS_EPS = 16.60          # FY25 audited attributable EPS (800.3/48.198)
 DMAS_BVPS = 137.14        # FY25 audited parent BVPS (6,609.8/48.198)
 DMAS_DPS = 16.5           # FY25 dividend per share (paid Jul 2026)
 DMAS_BASE = 129           # end-2025 close (YTD base)
+# BEST (PT Bekasi Fajar Industrial Estate Tbk) audited FY2025 (AR2025)
+BEST_SHARES_BN = 9.6473   # issued shares (bn)
+BEST_REV_BN = 427.1       # FY25 audited revenue (bn)
+BEST_EPS = 3.12           # FY25 audited attributable EPS (30.1/9.6473)
+BEST_BVPS = 461.8         # FY25 audited parent BVPS (4,455.5/9.6473)
+BEST_DPS = 0              # no cash dividend since FY2018
+BEST_BASE = 111           # end-2025 close (YTD base)
+# LPCK (PT Lippo Cikarang Tbk) audited FY2025 (AR2025)
+LPCK_SHARES_BN = 5.1347   # issued & paid-up shares after 2025 rights issue (bn)
+LPCK_REV_BN = 4519.2      # FY25 audited revenue (bn)
+LPCK_EPS = 48             # FY25 audited basic EPS (Rp, full)
+LPCK_BVPS = 1302.2        # FY25 audited parent BVPS (6,686.6/5.1347)
+LPCK_DPS = 0              # no FY2025 cash dividend
+LPCK_BASE = 575           # end-2025 close (YTD base)
 
 def fetch_price(ticker):
     url = f"https://query1.finance.yahoo.com/v8/finance/chart/{ticker}?range=5d&interval=1d"
@@ -75,10 +91,16 @@ def fetch_technicals(ticker):
 def main():
     price, prev_price, ts = fetch_price(TICKER)
     dprice, _, dts = fetch_price(DMAS_TICKER)
+    bprice, _, bts = fetch_price(BEST_TICKER)
+    lprice, _, lts = fetch_price(LPCK_TICKER)
     dt = datetime.fromtimestamp(ts, tz=timezone.utc)
     date_str = dt.strftime("%Y-%m-%d")
     ddt = datetime.fromtimestamp(dts, tz=timezone.utc)
     ddate_str = ddt.strftime("%Y-%m-%d")
+    bdt = datetime.fromtimestamp(bts, tz=timezone.utc)
+    bdate_str = bdt.strftime("%Y-%m-%d")
+    ldt = datetime.fromtimestamp(lts, tz=timezone.utc)
+    ldate_str = ldt.strftime("%Y-%m-%d")
     # time-sensitive technical rows (KIJA only)
     rsi, dma50, dma200, avgvol20, turn_bn, last_vol_m, tech_date = fetch_technicals(TICKER)
 
@@ -99,6 +121,28 @@ def main():
             "rev": DMAS_REV_BN,
             "shares": DMAS_SHARES_BN,
             "dps": DMAS_DPS
+        }
+        dj["FY"]["bestPBPS"] = [round(bprice / BEST_BVPS, 2), round(bprice * BEST_SHARES_BN / BEST_REV_BN, 2)]
+        dj["FY"]["lpckPBPS"] = [round(lprice / LPCK_BVPS, 2), round(lprice * LPCK_SHARES_BN / LPCK_REV_BN, 2)]
+        dj["FY"]["best"] = {
+            "price": bprice,
+            "date": bdate_str,
+            "base": BEST_BASE,
+            "bvps": BEST_BVPS,
+            "eps": BEST_EPS,
+            "rev": BEST_REV_BN,
+            "shares": BEST_SHARES_BN,
+            "dps": BEST_DPS
+        }
+        dj["FY"]["lpck"] = {
+            "price": lprice,
+            "date": ldate_str,
+            "base": LPCK_BASE,
+            "bvps": LPCK_BVPS,
+            "eps": LPCK_EPS,
+            "rev": LPCK_REV_BN,
+            "shares": LPCK_SHARES_BN,
+            "dps": LPCK_DPS
         }
     else:
         dj["refPrice"] = price
@@ -235,11 +279,27 @@ def main():
                 dytd = round((dprice - DMAS_BASE) / DMAS_BASE * 100)
                 dytd_s = f"{dytd}% ({DMAS_BASE} → {dprice})" if lang != "zh" else f"{dytd}%（{DMAS_BASE} → {dprice}）"
                 peers[5][2] = dytd_s
+                # BEST column (col 3), live price-derived
+                peers[0][3] = _f(bprice / BEST_BVPS, 2, dec)
+                peers[1][3] = _f(bprice / BEST_EPS, 1, dec)
+                peers[2][3] = _f(bprice * BEST_SHARES_BN / BEST_REV_BN, 2, dec)
+                peers[3][3] = "0%"
+                bytd = round((bprice - BEST_BASE) / BEST_BASE * 100)
+                bytd_s = f"{bytd}% ({BEST_BASE} → {bprice})" if lang != "zh" else f"{bytd}%（{BEST_BASE} → {bprice}）"
+                peers[5][3] = bytd_s
+                # LPCK column (col 4), live price-derived
+                peers[0][4] = _f(lprice / LPCK_BVPS, 2, dec)
+                peers[1][4] = _f(lprice / LPCK_EPS, 1, dec)
+                peers[2][4] = _f(lprice * LPCK_SHARES_BN / LPCK_REV_BN, 2, dec)
+                peers[3][4] = "0%"
+                lytd = round((lprice - LPCK_BASE) / LPCK_BASE * 100)
+                lytd_s = f"{lytd}% ({LPCK_BASE} → {lprice})" if lang != "zh" else f"{lytd}%（{LPCK_BASE} → {lprice}）"
+                peers[5][4] = lytd_s
 
     with open(DATA_FILE, "w", encoding="utf-8") as f:
         json.dump(dj, f, ensure_ascii=False, indent=1)
 
-    print(f"Updated price: {price} (prev: {prev_price}, date: {date_str})")
+    print(f"Updated price: {price} (prev: {prev_price}, date: {date_str}); DMAS {dprice}, BEST {bprice}, LPCK {lprice}")
 
 if __name__ == "__main__":
     main()
