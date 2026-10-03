@@ -858,10 +858,22 @@ function buildOpt(id){
         {name:CT('de'), type:'line', data:AN.de, smooth:true, symbolSize:5, lineStyle:{width:2, color:C.red}, itemStyle:{color:C.red}}]};
   }
   if (id === 'o4') {
-    return {tooltip:baseTooltip(), legend:legendT(), grid:baseGrid(), xAxis:baseX(AN.years.slice(-5)), yAxis:baseY(U),
+    var ss = FY.segStack, yrs4 = AN.years.slice(-5);
+    var tt4 = {trigger:'axis', confine:true, formatter:function(ps){
+      var i = ps[0].dataIndex, s = '<b>' + yrs4[i] + '</b>';
+      var tot = (ss.infra[i]||0) + (ss.re[i]||0);
+      for (var q=0; q<ps.length; q++){
+        var v = ps[q].value||0;
+        var pct = tot>0 ? (v/tot*100) : 0;
+        s += '<br/>' + ps[q].marker + ps[q].seriesName + ': ' + fmtN(v) + ' ' + U + ' (' + pct.toFixed(1) + '%)';
+      }
+      s += '<br/>' + CT('totR') + ': ' + fmtN(tot) + ' ' + U;
+      return s;
+    }};
+    return {tooltip:tt4, legend:legendT(), grid:baseGrid(), xAxis:baseX(yrs4), yAxis:baseY(U),
       series:[
-        {name:CT('infSeg'), type:'bar', stack:'s', data:FY.segStack.infra, itemStyle:{color:C.blue}, barMaxWidth:40},
-        {name:CT('reSeg'), type:'bar', stack:'s', data:FY.segStack.re, itemStyle:{color:C.green}, barMaxWidth:40}]};
+        {name:CT('infSeg'), type:'bar', stack:'s', data:ss.infra, itemStyle:{color:C.blue}, barMaxWidth:40},
+        {name:CT('reSeg'), type:'bar', stack:'s', data:ss.re, itemStyle:{color:C.green}, barMaxWidth:40}]};
   }
   if (id === 'o5') {
     var d2 = FY.msales, lb2 = [];
