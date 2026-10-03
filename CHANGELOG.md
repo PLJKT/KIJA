@@ -1,5 +1,9 @@
 # KIJA Dashboard — Changelog (internal, not shown on page)
 
+## v1.13.1 – 2026-10-03
+- Fix: "h26note" literal key leaked into o1 tooltip ("h26note; vs 1H25: -11%") — key was defined in I18N but CT() reads CHT; added h26note to CHT en/id/zh in both index.html and data.json
+- Data re-verified for o1 Revenue chart vs official audited statements: 2015-18 from 2018 AR highlights (3,140/2,931/2,995/2,712), 2019-20 from 2020 AR text (2,254/2,396), 2021 from 2022 FS Note 27 (2,490.3), 2022 from 2023 FS Note 27 restated comparative (2,747.2; 2022 FS shows 2,720.3 under older line-item split — system uses 2023 AR comparative, consistent with prior restatement basis), 2023-25 audited (3,291.9/4,602.6/5,149.4), 1H26 2,436.5 (Q2 2026 interim). "vs 1H25: -11%" recomputed = 2,436.5/2,726.4-1 = -10.6% ≈ -11% ✓
+
 ## v1.13.0 – 2026-10-02
 - Cross-check fixes from third-party AI review (9.5/10): real estate ownership in segment table filled "51–100" (100% wholly-owned Cikarang + 51% Kendal JV)
 - Land Bank note strengthened in en/id/zh: asking prices are listing prices, not transaction prices; negotiated deals can close well below advertised; implied uplift is a theoretical upper bound, not a realisable value (10–20% discount figure from review deliberately NOT adopted — no source)
@@ -40,3 +44,8 @@
 - Corrected monthly traded volume (Yahoo 1mo interval mislabeled months)
 - Market cap card placed before Price on Valuation page
 - SOTP illustration added
+
+## 2026-10-03 — Data verification: parent net profit
+- Fixed AN.niParent 2016: 426.1 → 436.6 (audited FS 2016: parent 436,615,675,735; NCI -10,073,353,230)
+- Fixed AN.niParent 2018: 112.5 → 41.0 (audited FS 2018/2019: parent 40,971,008,075; NCI +26,129,394,868; EPS 1.97)
+- Cross-checked all years 2015-2025 vs official audited FS (2016, 2018, 2019, 2020 AR, 2022, 2023, 2024, 2025): only 2016 & 2018 were wrong
