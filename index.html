@@ -479,7 +479,7 @@ en: {
   ov_tag:'FY2025 (audited)',
   h26note:'1H26 = 6 months, not annualized',
   c_o1_t:'Revenue (2015–2025 & 1H26)', c_o1_s:'Consolidated revenue, IDR bn; 1H26 = 6 months, not annualized',
-  c_o2_t:'Net profit: consolidated vs parent (2015–2025 & 1H26)', c_o2_s:'1H26 = 6 months, not annualized',
+  c_o2_t:'Net profit: consolidated vs parent (2015–2025)', c_o2_s:'Net margin (% of revenue) and YoY shown on hover',
   c_o3_t:'Margins & leverage trend (2015–2025 & 1H26)', c_o3_s:'Gross margin / net margin / ROE / Debt-to-equity; 1H26 = 6 months, not annualized',
   c_o4_t:'Segment revenue: Real Estate vs Infrastructure (2021–2025 & 1H26)', c_o4_s:'2021–2025 & 1H26, IDR bn; 1H26 = 6 months, not annualized; infrastructure includes power, water & dry port',
   c_o5_t:'Marketing Sales (2022–2025 & 1H26)', c_o5_s:'Land & property pre-sales contracts, a leading indicator; 1H26 = 6 months, not annualized',
@@ -579,7 +579,7 @@ id: {
   ov_tag:'FY2025 (diaudit)',
   h26note:'1H26 = 6 bulan, tidak tahunan',
   c_o1_t:'Pendapatan (2015–2025 & 1H26)', c_o1_s:'Pendapatan konsolidasi, Rp miliar; 1H26 = 6 bulan, tidak tahunan',
-  c_o2_t:'Laba bersih: konsolidasi vs entitas induk (2015–2025 & 1H26)', c_o2_s:'1H26 = 6 bulan, tidak tahunan',
+  c_o2_t:'Laba bersih: konsolidasi vs entitas induk (2015–2025)', c_o2_s:'Margin bersih (% dari pendapatan) dan YoY ditampilkan saat hover',
   c_o3_t:'Tren margin & leverage (2015–2025 & 1H26)', c_o3_s:'Margin kotor / margin bersih / ROE / Utang÷Ekuitas; 1H26 = 6 bulan, tidak tahunan',
   c_o4_t:'Pendapatan segmen: Properti vs Infrastruktur (2021–2025 & 1H26)', c_o4_s:'2021–2025 & 1H26, Rp miliar; 1H26 = 6 bulan, tidak tahunan; infrastruktur mencakup listrik, air & pelabuhan darat',
   c_o5_t:'Penjualan Pemasaran (2022–2025 & 1H26)', c_o5_s:'Kontrak pra-penjualan lahan & properti, indikator utama; 1H26 = 6 bulan, tidak tahunan',
@@ -679,7 +679,7 @@ zh: {
   ov_tag:'FY2025（已审计）',
   h26note:'1H26 为半年数据，非年化',
   c_o1_t:'营收（2015–2025 & 1H26）', c_o1_s:'合并收入，十亿盾；1H26 为半年数据，非年化',
-  c_o2_t:'净利润：合并 vs 归母（2015–2025 & 1H26）', c_o2_s:'1H26 为半年数据，非年化',
+  c_o2_t:'净利润：合并 vs 归母（2015–2025）', c_o2_s:'悬停显示净利率（占营收%）与同比',
   c_o3_t:'利润率与杠杆趋势（2015–2025 & 1H26）', c_o3_s:'毛利率 / 净利率 / ROE / 负债÷权益；1H26 为半年数据，非年化',
   c_o4_t:'分部收入：地产 vs 基建（2021–2025 & 1H26）', c_o4_s:'2021–2025 & 1H26，十亿盾；1H26 为半年数据，非年化；基建含电力、水务与干港',
   c_o5_t:'营销销售（2022–2025 & 1H26）', c_o5_s:'土地与物业预售合同额，领先指标；1H26 为半年数据，非年化',
@@ -835,9 +835,12 @@ function buildOpt(id){
     var nc = AN.niCons, np = AN.niParent;
     var tt2 = {trigger:'axis', confine:true, formatter:function(ps){
       var i = ps[0].dataIndex, s = '<b>' + AN.years[i] + '</b>';
+      var rev = AN.revenue[i] || 0;
       for (var q=0; q<ps.length; q++){
-        var ser = ps[q].seriesIndex === 0 ? nc : np, prev = ser[i-1];
-        s += '<br/>' + ps[q].marker + ps[q].seriesName + ': ' + fmtN(ps[q].value) + ' ' + U;
+        var ser = ps[q].seriesIndex === 0 ? nc : np, prev = ser[i-1], v = ps[q].value;
+        s += '<br/>' + ps[q].marker + ps[q].seriesName + ': ' + fmtN(v) + ' ' + U;
+        if (rev) { s += ' (' + (v/rev*100).toFixed(1) + '% of rev)'; }
+        if (prev) { var y = (v/prev-1)*100; s += '<br/>YoY: ' + (y>=0?'+':'') + y.toFixed(1) + '%'; }
       }
       return s;
     }};
@@ -845,19 +848,17 @@ function buildOpt(id){
       tooltip: tt2,
       legend: legendT(),
       grid: baseGrid(),
-      xAxis: baseX(AN.years.concat(['1H26'])),
+      xAxis: baseX(AN.years),
       yAxis: baseY(U),
       series: [
         {
-          name: CT('cons'), type: 'line', data: nc.concat([null]),
+          name: CT('cons'), type: 'line', data: nc,
           smooth: true, symbolSize: 7,
           lineStyle: { width: 2.5, color: C.green },
-          itemStyle: { color: C.green },
-          markPoint:{symbol:'diamond', symbolSize:10, itemStyle:{color:C.green}, label:{fontSize:10, color:'#1F5E40', formatter:function(p){return fmtN(p.data.value);}},
-            data:[{name:'1H26', coord:['1H26', H26.niCons], value:H26.niCons}]}
+          itemStyle: { color: C.green }
         },
         {
-          name: CT('parent'), type: 'line', data: np.concat([null]),
+          name: CT('parent'), type: 'line', data: np,
           smooth: false, symbolSize: 12, showSymbol: true,
           lineStyle: { width: 4, color: '#D9A53A', type: 'solid' },
           itemStyle: { color: '#D9A53A', borderColor: '#fff', borderWidth: 2 },
@@ -865,9 +866,7 @@ function buildOpt(id){
             formatter: function(p){ return p.value; },
             position: function(p){ return p.value < 0 ? 'bottom' : 'top'; }
           },
-          labelLayout: { hideOverlap: false },
-          markPoint:{symbol:'diamond', symbolSize:11, itemStyle:{color:'#D9A53A'}, label:{fontSize:10, fontWeight:'bold', color:'#B8860B', formatter:function(p){return fmtN(p.data.value);}},
-            data:[{name:'1H26', coord:['1H26', H26.niParent], value:H26.niParent}]}
+          labelLayout: { hideOverlap: false }
         }
       ]
     };
