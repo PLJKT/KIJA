@@ -44,6 +44,10 @@ main{max-width:1180px;margin:0 auto;padding:18px 22px 34px}
 .chip{font-size:12px;color:var(--muted);border:1px solid var(--line);background:#fff;border-radius:14px;padding:3px 12px}
 .chip b{color:var(--green)}
 .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:11px;margin-bottom:18px}
+.kpi-band{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.band-tag{font-size:12px;font-weight:700;color:var(--green);background:rgba(31,94,64,.08);border:1px solid var(--line);border-radius:6px;padding:8px 10px;white-space:nowrap;align-self:stretch;display:flex;align-items:center}
+.band-tag.alt{color:#7A5BA6;background:rgba(122,91,166,.10)}
+.kpi-band .kpis{flex:1;margin-bottom:0}
 .kpis:has(> :nth-child(4):last-child){grid-template-columns:repeat(4,minmax(0,1fr))}
 .kpis:has(> :nth-child(6):last-child){grid-template-columns:repeat(6,minmax(0,1fr))}
 .kpis:has(> :nth-child(8):last-child){grid-template-columns:repeat(8,minmax(0,1fr))}
@@ -226,7 +230,8 @@ footer a{color:var(--green)}
 <!-- ===== 视图：总览 ===== -->
 <section class="page active" id="overview">
   <div class="phase" id="phases"></div>
-  <div class="kpis" id="ov-kpis"></div>
+  <div class="kpi-band"><div class="band-tag" data-i18n="ov26_tag"></div><div class="kpis" id="ov-kpis26"></div></div>
+  <div class="kpi-band"><div class="band-tag alt" data-i18n="ov_tag"></div><div class="kpis" id="ov-kpis"></div></div>
   <div class="charts">
     <div class="chart-card"><h3 data-i18n="c_o1_t"></h3><div class="sub" data-i18n="c_o1_s"></div><div class="chart" id="o1"></div></div>
     <div class="chart-card">
@@ -470,12 +475,15 @@ en: {
   ph2:'Phase <b>2017–2022 trough</b>: property downturn + pandemic + FX losses',
   ph3:'Phase <b>2023–2025 surge</b>: Kendal land sales + infrastructure double engine',
   ph4:'Phase <b>2026 shift</b>: USD debt cleared, recurring revenue 57%',
-  c_o1_t:'Revenue (2015–2025)', c_o1_s:'Consolidated revenue, IDR bn',
-  c_o2_t:'Net profit: consolidated vs parent', c_o2_s:'',
-  c_o3_t:'Margins & leverage trend', c_o3_s:'Gross margin / net margin / ROE / Debt-to-equity',
-  c_o4_t:'Segment revenue: Real Estate vs Infrastructure', c_o4_s:'2021–2025, IDR bn; infrastructure includes power, water & dry port',
-  c_o5_t:'Marketing Sales', c_o5_s:'Land & property pre-sales contracts, a leading indicator',
-  c_o6_t:'EBITDA (2015–2025)', c_o6_s:'EBITDA margin ~38% (2015) → ~34% (2025)',
+  ov26_tag:'1H2026 (interim, unaudited)',
+  ov_tag:'FY2025 (audited)',
+  h26note:'1H26 = 6 months, not annualized',
+  c_o1_t:'Revenue (2015–2025 & 1H26)', c_o1_s:'Consolidated revenue, IDR bn; 1H26 = 6 months, not annualized',
+  c_o2_t:'Net profit: consolidated vs parent (2015–2025 & 1H26)', c_o2_s:'1H26 = 6 months, not annualized',
+  c_o3_t:'Margins & leverage trend (2015–2025 & 1H26)', c_o3_s:'Gross margin / net margin / ROE / Debt-to-equity; 1H26 = 6 months, not annualized',
+  c_o4_t:'Segment revenue: Real Estate vs Infrastructure (2021–2025 & 1H26)', c_o4_s:'2021–2025 & 1H26, IDR bn; 1H26 = 6 months, not annualized; infrastructure includes power, water & dry port',
+  c_o5_t:'Marketing Sales (2022–2025 & 1H26)', c_o5_s:'Land & property pre-sales contracts, a leading indicator; 1H26 = 6 months, not annualized',
+  c_o6_t:'EBITDA (2015–2025 & 1H26)', c_o6_s:'EBITDA margin ~38% (2015) → ~34% (2025); 1H26 = 6 months, not annualized',
   c_f24_1_t:'Revenue mix (FY2024)', c_f24_1_s:'Real estate 58.5% · Infrastructure 41.5% (power/water/dry port)',
   c_f24_2_t:'P&L snapshot (FY2024)', c_f24_2_s:'Revenue 4,602.6 · EBITDA 1,616.8 · NP cons. 770.1 · NP parent 363.3 (IDR bn)',
   c_f24_3_t:'Balance sheet (31 Dec 2024)', c_f24_3_s:'Assets 14,017.4 · Liabilities 6,478.5 · Equity 7,538.9 (IDR bn)',
@@ -567,12 +575,15 @@ id: {
   ph2:'Fase <b>palung 2017–2022</b>: penurunan properti + pandemi + rugi selisih kurs',
   ph3:'Fase <b>lonjakan 2023–2025</b>: penjualan lahan Kendal + infrastruktur',
   ph4:'Fase <b>transisi 2026</b>: utang USD dilunasi, pendapatan berulang 57%',
-  c_o1_t:'Pendapatan (2015–2025)', c_o1_s:'Pendapatan konsolidasi, Rp miliar',
-  c_o2_t:'Laba bersih: konsolidasi vs entitas induk', c_o2_s:'',
-  c_o3_t:'Tren margin & leverage', c_o3_s:'Margin kotor / margin bersih / ROE / Utang÷Ekuitas',
-  c_o4_t:'Pendapatan segmen: Properti vs Infrastruktur', c_o4_s:'2021–2025, Rp miliar; infrastruktur mencakup listrik, air & pelabuhan darat',
-  c_o5_t:'Penjualan Pemasaran', c_o5_s:'Kontrak pra-penjualan lahan & properti, indikator utama',
-  c_o6_t:'EBITDA (2015–2025)', c_o6_s:'Margin EBITDA ~38% (2015) → ~34% (2025)',
+  ov26_tag:'1H2026 (interim, belum diaudit)',
+  ov_tag:'FY2025 (diaudit)',
+  h26note:'1H26 = 6 bulan, tidak tahunan',
+  c_o1_t:'Pendapatan (2015–2025 & 1H26)', c_o1_s:'Pendapatan konsolidasi, Rp miliar; 1H26 = 6 bulan, tidak tahunan',
+  c_o2_t:'Laba bersih: konsolidasi vs entitas induk (2015–2025 & 1H26)', c_o2_s:'1H26 = 6 bulan, tidak tahunan',
+  c_o3_t:'Tren margin & leverage (2015–2025 & 1H26)', c_o3_s:'Margin kotor / margin bersih / ROE / Utang÷Ekuitas; 1H26 = 6 bulan, tidak tahunan',
+  c_o4_t:'Pendapatan segmen: Properti vs Infrastruktur (2021–2025 & 1H26)', c_o4_s:'2021–2025 & 1H26, Rp miliar; 1H26 = 6 bulan, tidak tahunan; infrastruktur mencakup listrik, air & pelabuhan darat',
+  c_o5_t:'Penjualan Pemasaran (2022–2025 & 1H26)', c_o5_s:'Kontrak pra-penjualan lahan & properti, indikator utama; 1H26 = 6 bulan, tidak tahunan',
+  c_o6_t:'EBITDA (2015–2025 & 1H26)', c_o6_s:'Margin EBITDA ~38% (2015) → ~34% (2025); 1H26 = 6 bulan, tidak tahunan',
   c_f24_1_t:'Komposisi pendapatan (FY2024)', c_f24_1_s:'Properti 58,5% · Infrastruktur 41,5% (listrik/air/dry port)',
   c_f24_2_t:'Ringkasan L/R (FY2024)', c_f24_2_s:'Pendapatan 4.602,6 · EBITDA 1.616,8 · Laba kons. 770,1 · Laba induk 363,3 (Rp miliar)',
   c_f24_3_t:'Neraca (31 Des 2024)', c_f24_3_s:'Aset 14.017,4 · Liabilitas 6.478,5 · Ekuitas 7.538,9 (Rp miliar)',
@@ -664,12 +675,15 @@ zh: {
   ph2:'阶段 <b>2017–2022 低谷</b>：地产下行 + 疫情 + 汇兑损失',
   ph3:'阶段 <b>2023–2025 爆发</b>：Kendal 售地 + 基建收入双轮驱动',
   ph4:'阶段 <b>2026 换挡</b>：美元债出清、经常性收入占比 57%',
-  c_o1_t:'营收（2015–2025）', c_o1_s:'合并收入，十亿盾',
-  c_o2_t:'净利润：合并 vs 归母', c_o2_s:'',
-  c_o3_t:'利润率与杠杆趋势', c_o3_s:'毛利率 / 净利率 / ROE / 负债÷权益',
-  c_o4_t:'分部收入：地产 vs 基建', c_o4_s:'2021–2025，十亿盾；基建含电力、水务与干港',
-  c_o5_t:'营销销售（Marketing Sales）', c_o5_s:'土地与物业预售合同额，领先指标',
-  c_o6_t:'EBITDA（2015–2025）', c_o6_s:'EBITDA 利润率 ~38%（2015）→ ~34%（2025）',
+  ov26_tag:'1H2026（中期，未经审计）',
+  ov_tag:'FY2025（已审计）',
+  h26note:'1H26 为半年数据，非年化',
+  c_o1_t:'营收（2015–2025 & 1H26）', c_o1_s:'合并收入，十亿盾；1H26 为半年数据，非年化',
+  c_o2_t:'净利润：合并 vs 归母（2015–2025 & 1H26）', c_o2_s:'1H26 为半年数据，非年化',
+  c_o3_t:'利润率与杠杆趋势（2015–2025 & 1H26）', c_o3_s:'毛利率 / 净利率 / ROE / 负债÷权益；1H26 为半年数据，非年化',
+  c_o4_t:'分部收入：地产 vs 基建（2021–2025 & 1H26）', c_o4_s:'2021–2025 & 1H26，十亿盾；1H26 为半年数据，非年化；基建含电力、水务与干港',
+  c_o5_t:'营销销售（2022–2025 & 1H26）', c_o5_s:'土地与物业预售合同额，领先指标；1H26 为半年数据，非年化',
+  c_o6_t:'EBITDA（2015–2025 & 1H26）', c_o6_s:'EBITDA 利润率 ~38%（2015）→ ~34%（2025）；1H26 为半年数据，非年化',
   c_f24_1_t:'收入构成（FY2024）', c_f24_1_s:'地产 58.5% · 基建 41.5%（电力/水务/干港）',
   c_f24_2_t:'损益概览（FY2024）', c_f24_2_s:'营收 4,602.6 · EBITDA 1,616.8 · 合并净利 770.1 · 归母净利 363.3（十亿盾）',
   c_f24_3_t:'资产负债表（2024-12-31）', c_f24_3_s:'总资产 14,017.4 · 总负债 6,478.5 · 总权益 7,538.9（十亿盾）',
@@ -782,7 +796,8 @@ function fmtN(v){
   parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   return parts.join('.');
 }
-var C = {green:'#1F5E40', green2:'#4A8B66', teal:'#3E7D6B', amber:'#C07A2D', clay:'#B04A2E', soft:'#C7D0C8', blue:'#2E6FB0', purple:'#7A5BA6', red:'#C0392B', gold:'#D9A53A'};
+var C = {green:'#1F5E40', green2:'#4A8B66', teal:'#3E7D6B', amber:'#C07A2D', clay:'#B04A2E', soft:'#C7D0C8', blue:'#2E6FB0', purple:'#7A5BA6', red:'#C0392B', gold:'#D9A53A', h26:'#8A9B92'};
+var H26 = {rev:2436.5, niCons:-6.4, niParent:-177.9, gpm:34.5, npm:-0.3, roe:-0.1, de:92.0, infra:1398.2, re:1037.9, ms:1187.6, ebitda:747.7, tot:2436.5};
 var AX = {color:'#5C6B61', fontSize:11};
 var SPLIT = {lineStyle:{color:'#E3E8E1'}};
 
@@ -802,15 +817,19 @@ function num(s){ var n = Number(String(s).replace(/,/g, '.')); return isNaN(n) ?
 function buildOpt(id){
   var U = CT('unit');
   if (id === 'o1') {
-    var d = AN.revenue;
+    var c1 = AN.years.concat(['1H26']);
+    var d1 = [];
+    for (var m1 = 0; m1 < AN.revenue.length; m1++) { d1.push({value: AN.revenue[m1]}); }
+    d1.push({value: H26.rev, itemStyle:{color:C.h26}});
     var tt = {trigger:'axis', confine:true, formatter:function(ps){
-      var i = ps[0].dataIndex, s = '<b>' + AN.years[i] + '</b><br/>';
-      s += CT('rev') + ': ' + fmtN(d[i]) + ' ' + U;
-      if (i > 0 && d[i-1]) { var y = (d[i]/d[i-1]-1)*100; s += '<br/>YoY: ' + (y>=0?'+':'') + y.toFixed(1) + '%'; }
+      var i = ps[0].dataIndex, s = '<b>' + c1[i] + '</b><br/>';
+      s += CT('rev') + ': ' + fmtN(ps[0].value) + ' ' + U;
+      if (i === AN.years.length) { s += '<br/>' + CT('h26note') + '; vs 1H25: -11%'; }
+      else if (i > 0 && AN.revenue[i-1]) { var y = (AN.revenue[i]/AN.revenue[i-1]-1)*100; s += '<br/>YoY: ' + (y>=0?'+':'') + y.toFixed(1) + '%'; }
       return s;
     }};
-    return {tooltip:tt, grid:baseGrid(), xAxis:baseX(AN.years), yAxis:baseY(U),
-      series:[{type:'bar', data:d, itemStyle:{color:C.green, borderRadius:[3,3,0,0]}, label:{show:true, position:'top', fontSize:10, color:'#5C6B61', formatter:lblFmt()}, barMaxWidth:26}]};
+    return {tooltip:tt, grid:baseGrid(), xAxis:baseX(c1), yAxis:baseY(U),
+      series:[{type:'bar', data:d1, itemStyle:{color:C.green, borderRadius:[3,3,0,0]}, label:{show:true, position:'top', fontSize:10, color:'#5C6B61', formatter:lblFmt()}, barMaxWidth:24}]};
   }
   if (id === 'o2') {
     var nc = AN.niCons, np = AN.niParent;
@@ -826,17 +845,19 @@ function buildOpt(id){
       tooltip: tt2,
       legend: legendT(),
       grid: baseGrid(),
-      xAxis: baseX(AN.years),
+      xAxis: baseX(AN.years.concat(['1H26'])),
       yAxis: baseY(U),
       series: [
         {
-          name: CT('cons'), type: 'line', data: nc,
+          name: CT('cons'), type: 'line', data: nc.concat([null]),
           smooth: true, symbolSize: 7,
           lineStyle: { width: 2.5, color: C.green },
-          itemStyle: { color: C.green }
+          itemStyle: { color: C.green },
+          markPoint:{symbol:'diamond', symbolSize:10, itemStyle:{color:C.green}, label:{fontSize:10, color:'#1F5E40', formatter:function(p){return fmtN(p.data.value);}},
+            data:[{name:'1H26', coord:['1H26', H26.niCons], value:H26.niCons}]}
         },
         {
-          name: CT('parent'), type: 'line', data: np,
+          name: CT('parent'), type: 'line', data: np.concat([null]),
           smooth: false, symbolSize: 12, showSymbol: true,
           lineStyle: { width: 4, color: '#D9A53A', type: 'solid' },
           itemStyle: { color: '#D9A53A', borderColor: '#fff', borderWidth: 2 },
@@ -844,48 +865,70 @@ function buildOpt(id){
             formatter: function(p){ return p.value; },
             position: function(p){ return p.value < 0 ? 'bottom' : 'top'; }
           },
-          labelLayout: { hideOverlap: false }
+          labelLayout: { hideOverlap: false },
+          markPoint:{symbol:'diamond', symbolSize:11, itemStyle:{color:'#D9A53A'}, label:{fontSize:10, fontWeight:'bold', color:'#B8860B', formatter:function(p){return fmtN(p.data.value);}},
+            data:[{name:'1H26', coord:['1H26', H26.niParent], value:H26.niParent}]}
         }
       ]
     };
   }
   if (id === 'o3') {
-    return {tooltip:baseTooltip(), legend:legendT(), grid:baseGrid(), xAxis:baseX(AN.years), yAxis:baseY('%'),
+    return {tooltip:baseTooltip(), legend:legendT(), grid:baseGrid(), xAxis:baseX(AN.years.concat(['1H26'])), yAxis:baseY('%'),
       series:[
-        {name:CT('gM'), type:'line', data:AN.gpm, smooth:true, symbolSize:5, lineStyle:{width:2, color:C.green}, itemStyle:{color:C.green}},
-        {name:CT('nM'), type:'line', data:AN.npm, smooth:true, symbolSize:5, lineStyle:{width:2, color:C.blue}, itemStyle:{color:C.blue}},
-        {name:CT('roe'), type:'line', data:AN.roe, smooth:true, symbolSize:5, lineStyle:{width:2, color:C.amber}, itemStyle:{color:C.amber}},
-        {name:CT('de'), type:'line', data:AN.de, smooth:true, symbolSize:5, lineStyle:{width:2, color:C.red}, itemStyle:{color:C.red}}]};
+        {name:CT('gM'), type:'line', data:AN.gpm.concat([null]), smooth:true, symbolSize:5, lineStyle:{width:2, color:C.green}, itemStyle:{color:C.green},
+          markPoint:{symbol:'diamond', symbolSize:8, itemStyle:{color:C.green}, label:{fontSize:9, color:'#1F5E40', formatter:function(p){return p.data.value;}}, data:[{coord:['1H26', H26.gpm], value:H26.gpm}]}},
+        {name:CT('nM'), type:'line', data:AN.npm.concat([null]), smooth:true, symbolSize:5, lineStyle:{width:2, color:C.blue}, itemStyle:{color:C.blue},
+          markPoint:{symbol:'diamond', symbolSize:8, itemStyle:{color:C.blue}, label:{fontSize:9, color:'#2E6FB0', position:[0,14], formatter:function(p){return p.data.value;}}, data:[{coord:['1H26', H26.npm], value:H26.npm}]}},
+        {name:CT('roe'), type:'line', data:AN.roe.concat([null]), smooth:true, symbolSize:5, lineStyle:{width:2, color:C.amber}, itemStyle:{color:C.amber},
+          markPoint:{symbol:'diamond', symbolSize:8, itemStyle:{color:C.amber}, label:{fontSize:9, color:'#C07A2D', position:[0,-14], formatter:function(p){return p.data.value;}}, data:[{coord:['1H26', H26.roe], value:H26.roe}]}},
+        {name:CT('de'), type:'line', data:AN.de.concat([null]), smooth:true, symbolSize:5, lineStyle:{width:2, color:C.red}, itemStyle:{color:C.red},
+          markPoint:{symbol:'diamond', symbolSize:9, itemStyle:{color:C.red}, label:{fontSize:9, color:'#C0392B', formatter:function(p){return p.data.value;}}, data:[{coord:['1H26', H26.de], value:H26.de}]}}]};
   }
   if (id === 'o4') {
-    var ss = FY.segStack, yrs4 = AN.years.slice(-5);
+    var ss = FY.segStack, yrs4 = AN.years.slice(-5).concat(['1H26']);
+    var infraD = ss.infra.concat([{value:H26.infra, itemStyle:{color:C.h26}}]);
+    var reD = ss.re.concat([{value:H26.re, itemStyle:{color:C.h26}}]);
     var tt4 = {trigger:'axis', confine:true, formatter:function(ps){
       var i = ps[0].dataIndex, s = '<b>' + yrs4[i] + '</b>';
-      var tot = (ss.infra[i]||0) + (ss.re[i]||0);
+      var tot = i === ss.infra.length ? H26.tot : ((ss.infra[i]||0) + (ss.re[i]||0));
       for (var q=0; q<ps.length; q++){
         var v = ps[q].value||0;
         var pct = tot>0 ? (v/tot*100) : 0;
         s += '<br/>' + ps[q].marker + ps[q].seriesName + ': ' + fmtN(v) + ' ' + U + ' (' + pct.toFixed(1) + '%)';
       }
       s += '<br/>' + CT('totR') + ': ' + fmtN(tot) + ' ' + U;
+      if (i === ss.infra.length) { s += '<br/>' + CT('h26note'); }
       return s;
     }};
     return {tooltip:tt4, legend:legendT(), grid:baseGrid(), xAxis:baseX(yrs4), yAxis:baseY(U),
       series:[
-        {name:CT('infSeg'), type:'bar', stack:'s', data:ss.infra, itemStyle:{color:C.blue}, barMaxWidth:40},
-        {name:CT('reSeg'), type:'bar', stack:'s', data:ss.re, itemStyle:{color:C.green}, barMaxWidth:40}]};
+        {name:CT('infSeg'), type:'bar', stack:'s', data:infraD, itemStyle:{color:C.blue}, barMaxWidth:40},
+        {name:CT('reSeg'), type:'bar', stack:'s', data:reD, itemStyle:{color:C.green}, barMaxWidth:40}]};
   }
   if (id === 'o5') {
-    var d2 = FY.msales, lb2 = [];
-    for (var j = 0; j < d2.length; j++) { lb2.push(fmtN(d2[j])); }
-    return {tooltip:baseTooltip(), grid:baseGrid(), xAxis:baseX(['2022','2023','2024','2025']), yAxis:baseY(U),
+    var d2 = FY.msales.concat([{value:H26.ms, itemStyle:{color:C.h26}}]), lb2 = [];
+    for (var j = 0; j < d2.length; j++) { lb2.push(fmtN(typeof d2[j] === 'object' ? d2[j].value : d2[j])); }
+    var tt5 = {trigger:'axis', confine:true, formatter:function(ps){
+      var i = ps[0].dataIndex, v = typeof d2[i] === 'object' ? d2[i].value : d2[i];
+      var s = '<b>' + (i === 4 ? '1H26' : ['2022','2023','2024','2025'][i]) + '</b><br/>' + CT('msalesL') + ': ' + fmtN(v) + ' ' + U;
+      if (i === 4) { s += '<br/>' + CT('done') + '; ' + CT('h26note'); }
+      return s;
+    }};
+    return {tooltip:tt5, grid:baseGrid(), xAxis:baseX(['2022','2023','2024','2025','1H26']), yAxis:baseY(U),
       series:[{type:'bar', data:d2, itemStyle:{color:C.green, borderRadius:[3,3,0,0]}, label:{show:true, position:'top', fontSize:11, color:'#1F5E40', fontWeight:600, formatter:lblFmt()}, barMaxWidth:52}]};
   }
   if (id === 'o6') {
-    var cats = [], vals = [], d3 = AN.ebitda;
-    for (var k = 0; k < d3.length; k++) { if (d3[k] !== null) { cats.push(AN.years[k]); vals.push(d3[k]); } }
-    return {tooltip:baseTooltip(), grid:baseGrid(), xAxis:baseX(cats), yAxis:baseY(U),
-      series:[{type:'bar', data:vals, itemStyle:{color:C.green2, borderRadius:[3,3,0,0]}, label:{show:true, position:'top', fontSize:10, color:'#5C6B61', formatter:lblFmt()}, barMaxWidth:40}]};
+    var cats6 = [], vals6 = [], d3 = AN.ebitda;
+    for (var k = 0; k < d3.length; k++) { if (d3[k] !== null) { cats6.push(AN.years[k]); vals6.push({value:d3[k]}); } }
+    cats6.push('1H26'); vals6.push({value:H26.ebitda, itemStyle:{color:C.h26}});
+    var tt6 = {trigger:'axis', confine:true, formatter:function(ps){
+      var i = ps[0].dataIndex, v = typeof vals6[i] === 'object' ? vals6[i].value : vals6[i];
+      var s = '<b>' + cats6[i] + '</b><br/>' + CT('ebitdaL') + ': ' + fmtN(v) + ' ' + U;
+      if (i === cats6.length - 1) { s += '<br/>' + CT('h26note'); }
+      return s;
+    }};
+    return {tooltip:tt6, grid:baseGrid(), xAxis:baseX(cats6), yAxis:baseY(U),
+      series:[{type:'bar', data:vals6, itemStyle:{color:C.green2, borderRadius:[3,3,0,0]}, label:{show:true, position:'top', fontSize:10, color:'#5C6B61', formatter:lblFmt()}, barMaxWidth:40}]};
   }
   if (id === 'p-1') {
     return {tooltip:baseTooltip(), legend:legendT(), grid:baseGrid(), xAxis:baseX(AN.years), yAxis:baseY('%'),
@@ -1554,6 +1597,7 @@ function renderStatics(){
   var _v2sub = document.querySelector('[data-i18n="c_v2_s"]');
   if (_v2sub) { _v2sub.textContent = v2Caption(); }
   renderPhases();
+  document.getElementById('ov-kpis26').innerHTML = kpiHtml(KP.k26[LANG]);
   document.getElementById('ov-kpis').innerHTML = kpiHtml(KP.ov[LANG]);
   document.getElementById('k24').innerHTML = kpiHtml(KP.k24[LANG]);
   document.getElementById('k25').innerHTML = kpiHtml(KP.k25[LANG]);
