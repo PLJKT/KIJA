@@ -161,6 +161,17 @@ Top-level keys (add or remove per company, but keep names stable once shipped):
 - No 3D charts, no rainbow palettes.
 - Chart subtitles (`.sub` div under each title) must carry units for every number mentioned.
 
+### Valuation-method range chart (vi-1) — settled design
+
+For a per-share value comparison across methods (P/E, P/B, DCF, SOTP) vs current price:
+
+- **Floating range bars**: per method one row with transparent placeholder + colored range (low–high) + a base-value dot. Label: base value **above** the dot (position 'top'); high value at the range right end (only if `high − low > 0.05`, else hide to avoid "2550" overlaps).
+- **SOTP single target**: render as its own grey bar (placeholder row 0 + one bar series with data only at SOTP row), tooltip reads original `[low, base, high]` values.
+- **Current Price row**: a red bar from 0 to the exact live price, on an **independent stack** (`stack: 'p'`, NOT merged into the range stack) so its length matches the price scale precisely; place it above SOTP; widen `grid.left` (~92px) so long row labels like "Current Price 151" are not truncated. Do NOT draw a vertical dashed price line across the chart (user rejected it).
+- **Per-method distinct colors** (never same hue): e.g. P/E blue `#2E7FB8/#1D5E8F`, P/B purple `#8E5AA8/#6A3F8F`, DCF orange `#D98E2B/#B06E1B`, SOTP grey-blue `#7A8A99/#5C6B7A`, Current Price red `#C0392B`.
+- **Slim legend**: only `Price` and `Base` entries; series with empty names don't appear in the legend.
+- Trilingual heading via `VALI[lang].chartH`.
+
 ---
 
 ## 6. i18n (three-language) rules
@@ -248,8 +259,10 @@ Every number in the Risk & Direction page, annual-page narrative, and comparison
 ## 10. Auto-updating stock price (GitHub Action)
 
 - `.github/workflows/update-price.yml` runs weekdays ~09:30 UTC.
-- `.github/scripts/update_price.py` fetches from Yahoo Finance `query1.finance.yahoo.com/v8/finance/chart/<TICKER>.<exchange>`, extracts latest close, updates `VAL.close[last]` and KPI cards in `data.json`, commits and pushes.
-- Note: Yahoo Finance API does NOT send CORS headers, so this must run server-side (GitHub Action), not in the browser.
+- `.github/scripts/update_price.py` fetches from Yahoo Finance `query1.finance.yahoo.com/v8/finance/chart/<TICKER>.<exchange>`, extracts latest close, updates `VAL.close[last]`, KPI cards, and **all derived rows (market cap, P/E, P/B, dividend, YTD, EV/EBITDA, peer comparison)** in `data.json`, commits and pushes.
+- **Live tickers**: KIJA + peers (e.g. DMAS, BEST, LPCK). Peers' audited fundamentals (EPS, BVPS, revenue) are constants from their latest annual/interim reports; only prices are live.
+- Note: Yahoo Finance API does NOT send CORS headers, so this must run server-side (GitHub Action), not in the browser. Verified dead ends (do not retry): Yahoo `quoteSummary /v10` and `quote /v7` both return 401; only `/v8/finance/chart/` works.
+- All live-derived numbers must auto-recompute when `refPrice` changes — user will verify with "are all related numbers auto-updated?"
 
 ---
 
@@ -289,6 +302,9 @@ Every number in the Risk & Direction page, annual-page narrative, and comparison
 17. **Narrative numbers must tie to structured arrays.** If you write "GPM peaked at 52%", check `AN.gpm` to find WHICH year — don't assume it was the land-sale era. If you write "1Q26 sales were X", check the EV timeline. A wrong year label is worse than no label.
 18. **DEC comparison table columns are ordered** `[1H26, FY<latest>, FY<previous>]`. Don't mix FY2023 numbers into the FY2024 column.
 19. **fmtN() already handles number formatting** — integers strip trailing `.0`, non-integers show 1 decimal, thousands separators auto-added. Don't hand-format numbers in narrative text; use the function for chart labels.
+20. **Live data single source**: when share price is live, every price-derived number (market cap, P/E, P/B, YTD, EV/EBITDA, safety margin, valuation rows) must derive from ONE `refPrice` value at render time — never hard-code stale prices in narrative text or headings. Headings like "current 176 (21 Sep 2026)" go stale; keep wording data-agnostic ("latest close").
+21. **External-AI-review triage**: when another AI audits the site, evaluate each point against the actual data before applying — adopt only fixes that are true and sourced. Specifically: (a) fill blank cells (e.g. segment "Own %"); (b) reject unsourced numeric claims (e.g. an unverifiable "10–20% transaction discount") — state your own conservative wording instead; (c) reject changes that break established conventions (uniform FY labels + glossary already explain them); (d) if the system already satisfies a point, say so rather than churning.
+22. **Hash-tab count in README must match `data-page` attributes**: if the nav gains or loses a page, update README's page list in the same commit.
 
 ---
 
