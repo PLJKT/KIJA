@@ -480,7 +480,7 @@ en: {
   h26note:'1H26 = 6 months, not annualized',
   c_o1_t:'Revenue (2015–2025 & 1H26)', c_o1_s:'Consolidated revenue, IDR bn; 1H26 = 6 months, not annualized',
   c_o2_t:'Net profit: consolidated vs parent (2015–2025)', c_o2_s:'Parent share of consolidated (%) and YoY shown on hover',
-  c_o3_t:'Margins & leverage trend (2015–2025 & 1H26)', c_o3_s:'Gross margin / net margin / ROE / Debt-to-equity; 1H26 = 6 months, not annualized',
+  c_o3_t:'Margins & leverage trend (2015–2025)', c_o3_s:'Gross margin / net margin / ROE / Debt-to-equity',
   c_o4_t:'Segment revenue: Real Estate vs Infrastructure (2021–2025 & 1H26)', c_o4_s:'2021–2025 & 1H26, IDR bn; 1H26 = 6 months, not annualized; infrastructure includes power, water & dry port',
   c_o5_t:'Marketing Sales (2022–2025 & 1H26)', c_o5_s:'Land & property pre-sales contracts, a leading indicator; 1H26 = 6 months, not annualized',
   c_o6_t:'EBITDA (2015–2025 & 1H26)', c_o6_s:'EBITDA margin ~38% (2015) → ~34% (2025); 1H26 = 6 months, not annualized',
@@ -580,7 +580,7 @@ id: {
   h26note:'1H26 = 6 bulan, tidak tahunan',
   c_o1_t:'Pendapatan (2015–2025 & 1H26)', c_o1_s:'Pendapatan konsolidasi, Rp miliar; 1H26 = 6 bulan, tidak tahunan',
   c_o2_t:'Laba bersih: konsolidasi vs entitas induk (2015–2025)', c_o2_s:'Porsi entitas induk atas konsolidasi (%) dan YoY ditampilkan saat hover',
-  c_o3_t:'Tren margin & leverage (2015–2025 & 1H26)', c_o3_s:'Margin kotor / margin bersih / ROE / Utang÷Ekuitas; 1H26 = 6 bulan, tidak tahunan',
+  c_o3_t:'Tren margin & leverage (2015–2025)', c_o3_s:'Margin kotor / margin bersih / ROE / Utang÷Ekuitas',
   c_o4_t:'Pendapatan segmen: Properti vs Infrastruktur (2021–2025 & 1H26)', c_o4_s:'2021–2025 & 1H26, Rp miliar; 1H26 = 6 bulan, tidak tahunan; infrastruktur mencakup listrik, air & pelabuhan darat',
   c_o5_t:'Penjualan Pemasaran (2022–2025 & 1H26)', c_o5_s:'Kontrak pra-penjualan lahan & properti, indikator utama; 1H26 = 6 bulan, tidak tahunan',
   c_o6_t:'EBITDA (2015–2025 & 1H26)', c_o6_s:'Margin EBITDA ~38% (2015) → ~34% (2025); 1H26 = 6 bulan, tidak tahunan',
@@ -680,7 +680,7 @@ zh: {
   h26note:'1H26 为半年数据，非年化',
   c_o1_t:'营收（2015–2025 & 1H26）', c_o1_s:'合并收入，十亿盾；1H26 为半年数据，非年化',
   c_o2_t:'净利润：合并 vs 归母（2015–2025）', c_o2_s:'悬停显示归母占合并比例（%）与同比',
-  c_o3_t:'利润率与杠杆趋势（2015–2025 & 1H26）', c_o3_s:'毛利率 / 净利率 / ROE / 负债÷权益；1H26 为半年数据，非年化',
+  c_o3_t:'利润率与杠杆趋势（2015–2025）', c_o3_s:'毛利率 / 净利率 / ROE / 负债÷权益',
   c_o4_t:'分部收入：地产 vs 基建（2021–2025 & 1H26）', c_o4_s:'2021–2025 & 1H26，十亿盾；1H26 为半年数据，非年化；基建含电力、水务与干港',
   c_o5_t:'营销销售（2022–2025 & 1H26）', c_o5_s:'土地与物业预售合同额，领先指标；1H26 为半年数据，非年化',
   c_o6_t:'EBITDA（2015–2025 & 1H26）', c_o6_s:'EBITDA 利润率 ~38%（2015）→ ~34%（2025）；1H26 为半年数据，非年化',
@@ -873,16 +873,12 @@ function buildOpt(id){
     };
   }
   if (id === 'o3') {
-    return {tooltip:baseTooltip(), legend:legendT(), grid:baseGrid(), xAxis:baseX(AN.years.concat(['1H26'])), yAxis:baseY('%'),
+    return {tooltip:baseTooltip(), legend:legendT(), grid:baseGrid(), xAxis:baseX(AN.years), yAxis:baseY('%'),
       series:[
-        {name:CT('gM'), type:'line', data:AN.gpm.concat([null]), smooth:true, symbolSize:5, lineStyle:{width:2, color:C.green}, itemStyle:{color:C.green},
-          markPoint:{symbol:'diamond', symbolSize:8, itemStyle:{color:C.green}, label:{fontSize:9, color:'#1F5E40', formatter:function(p){return p.data.value;}}, data:[{coord:['1H26', H26.gpm], value:H26.gpm}]}},
-        {name:CT('nM'), type:'line', data:AN.npm.concat([null]), smooth:true, symbolSize:5, lineStyle:{width:2, color:C.blue}, itemStyle:{color:C.blue},
-          markPoint:{symbol:'diamond', symbolSize:8, itemStyle:{color:C.blue}, label:{fontSize:9, color:'#2E6FB0', position:[0,14], formatter:function(p){return p.data.value;}}, data:[{coord:['1H26', H26.npm], value:H26.npm}]}},
-        {name:CT('roe'), type:'line', data:AN.roe.concat([null]), smooth:true, symbolSize:5, lineStyle:{width:2, color:C.amber}, itemStyle:{color:C.amber},
-          markPoint:{symbol:'diamond', symbolSize:8, itemStyle:{color:C.amber}, label:{fontSize:9, color:'#C07A2D', position:[0,-14], formatter:function(p){return p.data.value;}}, data:[{coord:['1H26', H26.roe], value:H26.roe}]}},
-        {name:CT('de'), type:'line', data:AN.de.concat([null]), smooth:true, symbolSize:5, lineStyle:{width:2, color:C.red}, itemStyle:{color:C.red},
-          markPoint:{symbol:'diamond', symbolSize:9, itemStyle:{color:C.red}, label:{fontSize:9, color:'#C0392B', formatter:function(p){return p.data.value;}}, data:[{coord:['1H26', H26.de], value:H26.de}]}}]};
+        {name:CT('gM'), type:'line', data:AN.gpm, smooth:true, symbolSize:5, lineStyle:{width:2, color:C.green}, itemStyle:{color:C.green}},
+        {name:CT('nM'), type:'line', data:AN.npm, smooth:true, symbolSize:5, lineStyle:{width:2, color:C.blue}, itemStyle:{color:C.blue}},
+        {name:CT('roe'), type:'line', data:AN.roe, smooth:true, symbolSize:5, lineStyle:{width:2, color:C.amber}, itemStyle:{color:C.amber}},
+        {name:CT('de'), type:'line', data:AN.de, smooth:true, symbolSize:5, lineStyle:{width:2, color:C.red}, itemStyle:{color:C.red}}]};
   }
   if (id === 'o4') {
     var ss = FY.segStack, yrs4 = AN.years.slice(-5).concat(['1H26']);

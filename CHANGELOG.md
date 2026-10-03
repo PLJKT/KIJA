@@ -1,5 +1,9 @@
 # KIJA Dashboard — Changelog (internal, not shown on page)
 
+## v1.13.2 – 2026-10-03
+- o3 chart (Margins & leverage trend): removed 1H26 data point, markPoint and x-axis category; title/subtitle now "(2015–2025)" in en/id/zh (half-year figure not comparable with annual margins/leverage series)
+- o3 data re-verified vs audited financial statements (all 11 years): GPM [44.2,42,38,43,37,43,44,52,46,43,39] ✓ (2015 GP 1,388.5bn/2016 1,243.2bn/2017 1,136.9bn/2018 1,179.0bn/2019 843.5bn/2020 1,018.4bn/2021 1,092.6bn/2022 1,427.2bn(2023 AR restated)/2023 1,530.3bn/2024 1,967.2bn/2025 2,033.0bn); NPM/ROE/D-E recomputed from official revenue/niCons/equity/liab series — all consistent
+
 ## v1.13.1 – 2026-10-03
 - Fix: "h26note" literal key leaked into o1 tooltip ("h26note; vs 1H25: -11%") — key was defined in I18N but CT() reads CHT; added h26note to CHT en/id/zh in both index.html and data.json
 - Data re-verified for o1 Revenue chart vs official audited statements: 2015-18 from 2018 AR highlights (3,140/2,931/2,995/2,712), 2019-20 from 2020 AR text (2,254/2,396), 2021 from 2022 FS Note 27 (2,490.3), 2022 from 2023 FS Note 27 restated comparative (2,747.2; 2022 FS shows 2,720.3 under older line-item split — system uses 2023 AR comparative, consistent with prior restatement basis), 2023-25 audited (3,291.9/4,602.6/5,149.4), 1H26 2,436.5 (Q2 2026 interim). "vs 1H25: -11%" recomputed = 2,436.5/2,726.4-1 = -10.6% ≈ -11% ✓
