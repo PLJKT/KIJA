@@ -1,5 +1,10 @@
 # KIJA Dashboard — Changelog (internal, not shown on page)
 
+## v1.15.0 – 2026-10-03
+- Repository cleanup: removed 115 redundant one-off audit/extract/fix scripts (`_*.py`), text/JSON extraction dumps (`_*.txt`/`_*.json`), downloaded reference PDFs, and `.github/update-price.yml.bak`; kept `_backup/` (2 latest pre-change copies), `_shots/`, `_template/` (reusable build pipeline), `_analysis_cikarang_vs_kendal.md`, and all deliverables
+- MASTER_PLAYBOOK.md upgraded: §3 embedded-blocks rebuild rule (rebuild ALL touched inline blocks; fix functions must recurse into nested arrays), §9 audit protocol (BS closure, P&L exacts, 口径-difference documentation, dual-file machine verification incl. bare-number residual scan, KPI-card check), §11 layered verification (data layer + shot.py + live browser check with cache-buster), §12 gotchas #23–30 (stale KP cards, nested-array fixes, bare-number scans, IR vs AR bases, half-year exclusion, repo hygiene, cache), §13 bootstrap now references `_template/`, new §15 repository hygiene
+- git commit for cleanup: 115 files removed; working tree contains only deliverables + `_template/` + `_backup/` + `_shots/`
+
 ## v1.14.0 – 2026-10-03
 - Full-system data re-audit vs official audited ARs (2016–2025 PDFs on jababeka.com + IDX filings) and unaudited 1H26 interim FS; applied one-decimal precision throughout (data.json + index.html embedded AN/DEBT/FY/VALI rebuilt in sync)
 - P&L corrected to audited exacts: revenue 2015 3,139.9 (was 3,140) / 2019 2,253.9 (was 2,254) / 2020 2,396.1 (was 2,396); niCons 2015 331.4 / 2016 426.5 (was 427) / 2017 149.8 (was 150) / 2019 141.1 / 2020 45.2; TL captions updated

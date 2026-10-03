@@ -56,9 +56,22 @@ Browser loads index.html
 
 ### Git commit discipline
 
-- One logical change = one commit, message starts with `R<nn>:` short description.
+- One logical change = one commit, message starts with `v1.x.x: <short description>` (versioned, mirrors CHANGELOG.md) or `R<nn>:` short description.
 - After committing, push immediately: `git push origin main`.
-- GitHub Pages redeploys in ~60–90 seconds.
+- GitHub Pages redeploys in ~60–90 seconds. Verify with `git log --oneline -1` when the user reports "no change".
+
+### Embedded inline copies — rebuild rule
+
+`index.html` ships inline copies of the canonical blocks (`var AN / DEBT / FY / KP / VALI / DTXT / ...`). At runtime `data.json` overrides them (data.json is authoritative), but the inline copies are the `file://` fallback AND the object the consistency check parses — so **after every data.json edit, rebuild every affected inline block** with a deterministic script:
+
+```python
+m = re.search(r'var %s = \{.*?\};' % name, html, re.S)   # non-greedy stops at the block's '};'
+html = html[:m.start()] + 'var %s = ' % name + json.dumps(obj, ensure_ascii=False, separators=(',', ':')) + ';' + html[m.end():]
+```
+
+- Rebuild ALL touched blocks. One forgotten block = one stale page region (happened: `KP` KPI cards and `FY.bs24/bs25` stayed stale after AN/DEBT were fixed — both are exactly the kind of spot a visual check misses).
+- **Fix functions must recurse into nested arrays.** `VALI.inputs` / `VALI.methods` are `[[label, value], ...]`; a string-only `.replace()` returns them untouched. Handle `list` by mapping the fix over elements, then strings.
+- Verify with `json.loads(re.search(r'var %s = (\{.*?\});', html, re.S).group(1)) == data_json[<BLOCK>]` for every block you touched.
 
 ### Windows / PowerShell environment
 
@@ -246,6 +259,16 @@ When writing narrative text (TOP3, OPP, RK, g24/g25/g26, DEC table), **do not ha
 
 **Critical distinction: total liabilities ≠ total debt.** Total liabilities (`AN.liab`) includes trade payables, customer deposits, tax, accrued expenses — NOT just interest-bearing borrowings. The g25 narrative once wrote "gross debt 6,904bn" when the actual interest-bearing debt was 4,607bn; 6,904 was total liabilities. Net debt uses interest-bearing debt only.
 
+### Audit protocol (run whenever data is updated or doubted)
+
+1. **Pull the official audited AR PDFs** (company IR website + IDX). Scanned pages: use `pdfplumber`; spaced-capital big numbers need same-line y-proximity matching. If P&L pages are scanned images (no text layer), cross-check via Public Expose / IR presentation PDFs, which reprint key figures.
+2. **Balance sheet must CLOSE** — assets = liabilities + equity per audited figures, to one decimal. Fix any drift (e.g. 2023 liabilities 6,016.06 → 6,016.1, not 6,015.6).
+3. **P&L exacts**: revenue / consolidated net profit / parent net profit per audited statements; older years from the 5-year summary inside later ARs (the 2016 AR carries full audited 2015 comparatives). Do not use IR-deck round numbers (2,253.9 not 2,254; 426.5 not 427).
+4. **Recompute EVERY ratio from the corrected arrays** (GPM/NPM/ROE/D-E/EBITDA margin). Never copy a ratio from IR material — IR "Adjusted EBITDA" can differ from the AR formula (KIJA 2023: AR 1,253 vs IR 1,276).
+5. **Document known 口径 differences as a list** — do not force one basis into every chart. KIJA examples: revenue 2023 = 3,291.9 (AR2023 segment basis, system AN) vs 3,299.6 (AR2024 comparative) vs 3,300 (IR deck); segment stack uses IR "Real Estate & Others / Recurring" basis while audited segment table (segRe/segInfra) uses AR basis; 2022 revenue uses the AR2023 restated comparative (2,747.2).
+6. **Machine-verify dual-file sync**: parse each `var <BLOCK>` in index.html with `json.loads` and assert it equals `data.json[<BLOCK>]` (sort_keys both sides). Scan BOTH files for every superseded value — **in bare-number form too** (`3200` vs `"3,200"`, `1663` vs `"1,663"`) because JSON stores numbers unformatted.
+7. **Check KPI cards separately** (`KP.<page>.<lang>`): they are frequently the last stale spot after a fix (cash 3,200 → 3,205.2, net debt 1,663 → 1,657.9 were found only via DOM render, not via file scans).
+
 ### Cross-page consistency audit (run before shipping)
 
 Every number in the Risk & Direction page, annual-page narrative, and comparison table must reconcile to the structured data:
@@ -266,18 +289,18 @@ Every number in the Risk & Direction page, annual-page narrative, and comparison
 
 ---
 
-## 11. Verification before pushing
+## 11. Verification before pushing (layered)
 
-1. Run `python "<skills>/html/scripts/shot.py" index.html --only desktop` to screenshot.
-2. Read the screenshot. Check:
+1. **Data layer (deterministic, fast)**: run the dual-file sync assertions + residual scan from §9 (parse each embedded block, assert equality with data.json, scan both files for every superseded value incl. bare-number form). Zero hits required.
+2. **Static render check**: `python "<skills>/html/scripts/shot.py" index.html --only desktop`. Read the screenshot. Check:
    - No blank charts
    - No raw variable names in chart labels (e.g. `revL`, `infraPie`)
    - No mixed languages
    - Numbers have units
    - Layout is clean, no overlapping elements
-3. Check `consoleErrors` in shot.py report is `[]`.
-4. Commit and push.
-5. Tell user to hard-refresh (Ctrl+F5).
+   - `consoleErrors` in shot.py report is `[]`
+3. **Live render check (catches HTTP-cache staleness)**: serve locally `python -m http.server 8765 --directory <repo>`, open via browser automation with a **fresh cache-buster query** (`index.html?t=<timestamp>#<page>`) and assert the corrected figures appear in the rendered DOM text (e.g. `3,205.2`, `1,657.9`, `65.9%`). The page fetches `data.json` WITHOUT a cache-buster, so a stale browser cache can still render old numbers — navigate with a new `?t=` (or fetch `data.json` with `cache:'reload'`), then re-read the DOM.
+4. Commit, push, tell the user to hard-refresh (Ctrl+F5) because GitHub Pages CDN caches index.html/data.json.
 
 ---
 
@@ -305,15 +328,23 @@ Every number in the Risk & Direction page, annual-page narrative, and comparison
 20. **Live data single source**: when share price is live, every price-derived number (market cap, P/E, P/B, YTD, EV/EBITDA, safety margin, valuation rows) must derive from ONE `refPrice` value at render time — never hard-code stale prices in narrative text or headings. Headings like "current 176 (21 Sep 2026)" go stale; keep wording data-agnostic ("latest close").
 21. **External-AI-review triage**: when another AI audits the site, evaluate each point against the actual data before applying — adopt only fixes that are true and sourced. Specifically: (a) fill blank cells (e.g. segment "Own %"); (b) reject unsourced numeric claims (e.g. an unverifiable "10–20% transaction discount") — state your own conservative wording instead; (c) reject changes that break established conventions (uniform FY labels + glossary already explain them); (d) if the system already satisfies a point, say so rather than churning.
 22. **Hash-tab count in README must match `data-page` attributes**: if the nav gains or loses a page, update README's page list in the same commit.
+23. **All embedded blocks must be rebuilt, not just the ones you "fixed".** After editing data.json, rebuild EVERY affected inline block (AN/DEBT/FY/KP/VALI/DTXT/GLOS...). A forgotten block (e.g. `KP` KPI cards or `FY.bs24/bs25`) silently shows stale numbers in one page region.
+24. **Fix functions must recurse into nested arrays.** `VALI.inputs`/`VALI.methods` are `[[label, value], ...]`; a string-only replace returns them untouched. Map the fix over lists, then apply to strings.
+25. **Scan residuals in bare-number form too.** JSON stores numbers unformatted: `"v":3200` won't match a search for `"3,200"`. Scan both `3200` and `3,200`, `1663` and `1,663`.
+26. **IR materials vs audited AR can disagree.** "Adjusted EBITDA", segment revenue, restated comparatives — pick ONE audited basis per metric, document the difference (see §9 audit protocol), don't mix bases across charts.
+27. **Half-year figures do not belong in annual series charts.** 1H26 margin/leverage points were removed from 2015–2025 charts; show interim separately with its own caption and note "unaudited".
+28. **KPI cards (KP) are the last stale spot.** They live in `KP.<page>.<lang>` — after a data fix, check every KPI card value, not just tables/charts (cash 3,200 and net debt 1,663 were found stale only through a DOM render check).
+29. **Keep the repo clean.** After an audit, delete one-off `_*.py`/`_*.txt`/downloaded PDFs; keep `_backup/` (last 1–2 pre-change copies), `_template/` (reusable build pipeline), and any historical analysis docs the user may reference. Never commit extraction artifacts.
+30. **Cache the browser check.** After a big data fix, verify with a browser session using a fresh `?t=` param; a plain reload may reuse the cached `data.json` and show old numbers.
 
 ---
 
 ## 13. How to bootstrap a new company
 
 1. Create repo on GitHub, enable Pages from `main`.
-2. Copy this project's `index.html` and `data.json` as templates. Strip company-specific data but keep structure.
+2. Copy this project's `_template/` as the generic build pipeline and follow `_template/README.md` (build.py → head.html → body.html → js_a.html → js_b.html → data.json.skeleton). Use `index.html`/`data.json` here as structural reference; do NOT copy the KIJA data.
 3. Collect 10 years of annual report PDFs from company IR site + exchange.
-4. Extract income statement / balance sheet / cash flow into `data.json → AN` arrays.
+4. Extract income statement / balance sheet / cash flow into `data.json → AN` arrays (see §14 checklist + §9 audit protocol).
 5. Fill KP, DEBT, LAND (or core asset class), VAL, FY blocks from latest AR + interim.
 6. Translate all UI strings into EN/ID/ZH.
 7. Set up the GitHub Action for price auto-update (edit ticker in `update_price.py`).
@@ -363,3 +394,13 @@ For each year (2015 through latest), pull these line items. Units: local currenc
 
 ### Sources (footer)
 - Every AR PDF (by name, linked), latest interim, investor presentation, exchange, 1–3 third-party refs
+
+---
+
+## 15. Repository hygiene
+
+- **Core tracked files**: `index.html`, `data.json`, `README.md`, `CHANGELOG.md` (internal only, never shown on page), `MASTER_PLAYBOOK.md`, `analysis_<lang>.md` (written reports if the user asked for them), `.github/` (price-update Action + script), `_template/` (reusable build pipeline for new companies).
+- **Never commit**: one-off audit/extract/fix scripts (`_*.py`), extracted text/JSON dumps (`_*.txt`, `_*.json`), downloaded PDFs, `_shots/` (gitignore it).
+- **Keep `_backup/`** with the last 1–2 pre-change copies of `index.html`/`data.json`, named `data.json.vYYYYMMDD` / `index.html.vYYYYMMDD`.
+- **When cleaning**: list the deletion set first, exclude `_backup/`, `_shots/`, `_template/`, and `_analysis_*.md` (historical analysis docs may still be referenced). Remove `.bak` files (e.g. `.github/update-price.yml.bak`).
+- Deleting tracked files: `git add -A` records the deletions; the commit message should say "chore: cleanup redundant audit scripts" or similar.
