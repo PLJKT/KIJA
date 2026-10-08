@@ -59,6 +59,12 @@ Browser loads index.html
 - One logical change = one commit, message starts with `v1.x.x: <short description>` (versioned, mirrors CHANGELOG.md) or `R<nn>:` short description.
 - After committing, push immediately: `git push origin main`.
 - GitHub Pages redeploys in ~60–90 seconds. Verify with `git log --oneline -1` when the user reports "no change".
+- **Remote auto-update conflicts (learned v1.15.2)**: the price GitHub Action commits to `main` daily. If you commit locally then `git push` is rejected ("tip behind remote"), **do NOT rebase** — `git pull --rebase` will collide on `data.json` (both you and the Action touched it). Correct flow:
+  1. `git fetch origin main`
+  2. `git checkout origin/main -- data.json index.html` (take remote as base; your local commit stays in history)
+  3. Re-run your modification scripts on this base (they are deterministic), re-verify dual-file sync
+  4. `git add data.json index.html; git commit -m "v1.x.x: ..."; git push origin main`
+  - If mid-rebase already, `git rebase --abort` first, then follow the above.
 
 ### Embedded inline copies — rebuild rule
 
@@ -214,7 +220,7 @@ For a per-share value comparison across methods (P/E, P/B, DCF, SOTP) vs current
 3. **Debt & Solvency** — KPI cards (total debt, avg cost, cash, net debt, EBITDA/interest, net debt/EBITDA), debt-by-lender chart, maturity ladder, solvency trend, cash vs debt, debt instruments table, credit ratings, refinancing recap, **working capital table** (AR, AR long-term, AP, customer deposits, DSO/DPO by year).
 4. **Land Bank** — KPI cards (total ha, dev ha, book value, implied uplift), per-project table with ha / dev ha / book value / book per sqm / market low / market high / uplift.
 5. **Valuation** — KPI cards (price, 52wk range, market cap, P/B, P/E, dividend yield), 12-month share price chart with volume bars below, price range per month, trading snapshot (volume, turnover, RSI, DMA), peer comparison, analyst targets.
-6. **Valuation Illustration** — method comparison table: P/E, P/B, DCF, liquidation value, landbank value per share at 100/75/50/25%. Each row: method, input, implied value per share, vs current price, safety margin. Landbank per-share in a **separate table**, not combined with other methods.
+6. **Valuation Illustration** — method comparison table: P/E, P/B, DCF, liquidation value, landbank value per share at 100/75/50/25%. Each row: method, input, implied value per share, vs current price, safety margin. Landbank per-share in a **separate table**, not combined with other methods. **Safety margin is ALWAYS computed and shown for every row** — formula `(per-share value − price) ÷ per-share value`, displayed even when negative (a negative margin means the price already exceeds the asset-backed value). Never render `n/a` for safety margin (user requirement, v1.16.0).
 7. **Risk & Direction** — data-derived risk rows (colored green/amber/red), **Top 3 improvement actions** (each tied to a measurable data gap), **Market opportunities** (current macro context, sourced).
 8. **Holding Structure** — subsidiaries table: entity, activity, via, ownership %, assets, status.
 9. **Organization** — corporate facts, boards, committees, key people.
@@ -286,6 +292,8 @@ Every number in the Risk & Direction page, annual-page narrative, and comparison
 - **Live tickers**: KIJA + peers (e.g. DMAS, BEST, LPCK). Peers' audited fundamentals (EPS, BVPS, revenue) are constants from their latest annual/interim reports; only prices are live.
 - Note: Yahoo Finance API does NOT send CORS headers, so this must run server-side (GitHub Action), not in the browser. Verified dead ends (do not retry): Yahoo `quoteSummary /v10` and `quote /v7` both return 401; only `/v8/finance/chart/` works.
 - All live-derived numbers must auto-recompute when `refPrice` changes — user will verify with "are all related numbers auto-updated?"
+- **The Action patches `data.json` ONLY — it does NOT touch the inline blocks in `index.html`.** Every price update therefore leaves `index.html`'s embedded `KP.val` / `FY.refPrice` stale (online the fetched `data.json` overrides them, so the live site looks right; but `file://` and offline open show the old price). After any price refresh, or whenever a user reports "tag still shows old price", rebuild the embedded `KP` / `FY` blocks from `data.json` (same rebuild rule as §3) and commit both files.
+- **Live-price textual staleness**: headings/narratives must not hard-code a dated price ("current 176 (21 Sep 2026)"). Use data-agnostic wording ("latest close") and let render-time substitution (e.g. the `_sp()`/`_vll` `.replace(/180/g, refPrice)` pattern) fill in the live value. Stale dated numbers in headings were a repeated user complaint.
 
 ---
 
@@ -336,6 +344,9 @@ Every number in the Risk & Direction page, annual-page narrative, and comparison
 28. **KPI cards (KP) are the last stale spot.** They live in `KP.<page>.<lang>` — after a data fix, check every KPI card value, not just tables/charts (cash 3,200 and net debt 1,663 were found stale only through a DOM render check).
 29. **Keep the repo clean.** After an audit, delete one-off `_*.py`/`_*.txt`/downloaded PDFs; keep `_backup/` (last 1–2 pre-change copies), `_template/` (reusable build pipeline), and any historical analysis docs the user may reference. Never commit extraction artifacts.
 30. **Cache the browser check.** After a big data fix, verify with a browser session using a fresh `?t=` param; a plain reload may reuse the cached `data.json` and show old numbers.
+31. **Safety margin must always render** in LIQ/LBV tables (v1.16.0). It is `(per-share value − price) ÷ per-share value`, computed for every scenario/factor row — negatives are meaningful ("price above asset backing"), never `n/a`. The old `ps > price ? margin : 'n/a'` guard was removed; the row-level note explains the negative-margin meaning in all three languages.
+32. **Remote auto-update conflicts are normal** (daily price Action). Never resolve via `git pull --rebase`; use `git fetch` + `git checkout origin/main -- data.json index.html` + re-apply modifications + commit + push (§3).
+33. **Inline price blocks go stale after every price refresh** — the Action writes `data.json` only. When a user reports an old price on `file://`, rebuild embedded `KP.val` and `FY.refPrice` from `data.json` (§10).
 
 ---
 

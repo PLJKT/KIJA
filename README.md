@@ -30,7 +30,7 @@ PT Kawasan Industri Jababeka Tbk（印尼证券交易所代码：**KIJA**）财�
 
 **语言与数据口径**：页面右上角可切换 English（默认）/ Bahasa Indonesia / 中文，切换后全部内容（含图表标题、图例、tooltip、KPI 增量、脚注、叙述段落）严格使用所选语言，不混排；数字统一最多保留 1 位小数（四舍五入），带千位分隔符的整数不留小数位。股权结构与治理/组织页依据 FY2025 年报（AR2025）：38 家子公司/合资公司（持股、主营业务、2025 合并资产）、股东结构（Mu'min Ali Gunawan 21.1% / IsDB 11.5% / 库存股 0.1% / 公众 67.3%）、监事/董事/审计委员会与组织结构。
 
-**实时股价（live price）**：Valuation 与 Valuation Illustration 两页的价格、市值、P/E、P/B、YTD、EV/EBITDA 等由 GitHub Action 每个工作日自动抓取 Yahoo Finance 最新收盘价并全站联动计算；4 标的为 KIJA、DMAS、BEST（Bekasi Fajar）、LPCK（Lippo Cikarang）。当前快照（2026-10-02）：KIJA 151 / DMAS 180 / BEST 120 / LPCK 510（IDR）。**同业对比中，BEST/LPCK 的 P&L 与每股数据均取各自最新 1H26 或 FY25 审计口径，与 KIJA 展示口径一致（apple-to-apple）。**
+**实时股价（live price）**：Valuation 与 Valuation Illustration 两页的价格、市值、P/E、P/B、YTD、EV/EBITDA 等由 GitHub Action 每个工作日自动抓取 Yahoo Finance 最新收盘价并全站联动计算；4 标的为 KIJA、DMAS、BEST（Bekasi Fajar）、LPCK（Lippo Cikarang）。当前快照（2026-10-07）：KIJA 160 / DMAS 188 / BEST 122 / LPCK 530（IDR）。**同业对比中，BEST/LPCK 的 P&L 与每股数据均取各自最新 1H26 或 FY25 审计口径，与 KIJA 展示口径一致（apple-to-apple）。**
 
 ## 页面（12 个视图，导航从左到右）
 
@@ -39,7 +39,7 @@ PT Kawasan Industri Jababeka Tbk（印尼证券交易所代码：**KIJA**）财�
 3. **Debt & Solvency 债务与偿债** — 债务 KPI（总有息负债 / 平均成本 / 现金 / 净负债 / EBITDA 利息覆盖 / 净负债 EBITDA）、按债权人明细（高级票据 / Bank Mandiri / Bank INA Perdana / CCB / OCBC / 租赁）、期限结构、偿债趋势、现金 vs 债务、债务工具表、信用评级（Fitch B- / Moody's B3）、2026 再融资回顾（1.859 亿美元票据提前 18 个月清偿、一次性成本约 460 十亿盾）、**营运资金表（应收账款 / 长期应收 / 应付 / 客户定金 / DSO / DPO）**。
 4. **Land Bank 土地储备** — 4 个项目（Cikarang / Kendal / Tanjung Lesung / Morotai）土地储备（2026-06-30 合计 5,089 ha）、AR2025 附注 7 账面价值与单价、与第三方市场挂牌要价对比（Cikarang 约 2,200–5,200 千盾/m²、Kendal 900–2,600、Tanjung Lesung 250–2,300；Morotai 无可靠公开市场价）。市场价为挂牌要价（非官方评估、非成交价——已在注释中强化此警示）。
 5. **Valuation 估值分析** — 实时估值快照（市值 / 现价 / P/E / P/B / P/S / 股息率 / 52 周区间，全部随 live price 联动）、过去 12 个月股价与成交量双栏图（月收盘 / 区间 / 成交量 / 换手额 / 换手率）、同业对比（KIJA vs DMAS vs BEST vs LPCK：P/B、P/E、P/S、YTD 全 live）、分析师目标价（Sucor Sekuritas 250，买入）。
-6. **Valuation Illustration 估值测算** — P/E、P/B、DCF（两阶段）、SOTP 四种方法低/基准/高区间，**每方法独立配色**的区间条形图（基准点 + 区间 + 现价红条，现价长度与实时价格精确一致）；方法对比表（输入 / 每股隐含值 / vs 现价 / 安全边际）；清算价值（五情景，从 2025-12-31 审计资产负债表起步）；**每股土地价值独立表**（总土地账面 5,783.5 十亿盾 × 100% / 75% / 50% / 25% ÷ 20.59B 股）；权重与 WACC 等参数注明。
+6. **Valuation Illustration 估值测算** — P/E、P/B、DCF（两阶段）、SOTP 四种方法低/基准/高区间，**每方法独立配色**的区间条形图（基准点 + 区间 + 现价红条，现价长度与实时价格精确一致）；方法对比表（输入 / 每股隐含值 / vs 现价 / 安全边际）；清算价值（五情景，从 2025-12-31 审计资产负债表起步）；**每股土地价值独立表**（总土地账面 5,783.5 十亿盾 × 100% / 75% / 50% / 25% ÷ 20.59B 股）；**安全边际每一行都计算显示**（含负值——负值表示股价已高于资产托底价值）；权重与 WACC 等参数注明。
 7. **Risk & Direction 风险与方向** — 数据推导的风险指标行（绿/黄/红）、Top 3 改进行动（每条绑定可测量的数据缺口）、市场机会（结合当前宏观背景，有来源）。
 8. **Holding Structure 股权结构** — 38 家子公司/合资公司表：实体、业务、持股路径（via）、持股比例、2025 合并资产、状态（AR2025）。
 9. **Organization 治理与组织** — 公司事实、董事会/监事会/审计委员会、关键人物、组织结构。
@@ -50,6 +50,8 @@ PT Kawasan Industri Jababeka Tbk（印尼证券交易所代码：**KIJA**）财�
 > 期间页规则：每个年报页只显示该报告期对应的数据（FY2024 页绝不出现 2025 数据，现金桥标签按年份命名如 "Opening cash (end-2023)" / "Consolidated surplus 2024" / "Closing cash (end-2024)"）；图表轴与图例用完整词（"Infrastructure"），绝不出现原始变量名（"infraPie" / "revL"）。
 
 ## 更新历史
+
+**第 15 轮（2026-10-08）——Safety margin 全行可算 + 开发文档同步**：Land bank value per share 与 Liquidation value 两表的 Safety margin 改为**每一行都计算显示**（公式 =（每股价值 − 现价）÷ 每股价值，负值也显示，表示股价已高于资产托底价值；50% 系数行 -14.0%、25% 系数行 -127.9%），不再出现 n/a；LBV 备注（三语）同步改写；MASTER_PLAYBOOK / CHANGELOG 更新（新增远端冲突处理、内嵌价格块同步规则）。commit `2f3886f`。
 
 **第 14 轮（2026-10-03）——开发文档同步**：README / CHANGELOG / MASTER_PLAYBOOK 三份文档更新至当前状态。
 

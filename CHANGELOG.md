@@ -1,5 +1,16 @@
 # KIJA Dashboard — Changelog (internal, not shown on page)
 
+## v1.16.0 – 2026-10-08
+- Safety margin now ALWAYS computed and shown in "Land bank value per share" and "Liquidation value" tables (both files, all three languages): formula `(per-share value − price) ÷ per-share value`, displayed even when negative (negative = market price already above asset-backed value). Removed the `ps > price ? margin : 'n/a'` guard; LBV note rewritten (en/id/zh) to explain the negative-margin meaning
+- Verified live: file:// and GitHub Pages both render 50% → -14.0%, 25% → -127.9% safety margin rows
+
+## v1.15.2 – 2026-10-08
+- Synced embedded price blocks (KP.val / FY.refPrice) to 160 @ 2026-10-07 after remote auto-update; re-applied Xurve valid points on the remote base (KP.debt 7th KPI, DSO 54d, refi ≠ deleveraging, S&P note) — remote price Action had diverged from local edits
+- Resolved push conflict via `git fetch` + `git checkout origin/main -- data.json index.html` + re-apply + commit (rebased path collided on data.json)
+
+## v1.15.1 – 2026-10-08
+- Debt & Solvency KPI band: added 7th card "Profit before tax / interest (FY25) 2.3x" (conservative pre-tax interest cover, FY24 2.2x; EBITDA basis 4.4x); Net debt card description updated to "debt − cash; +670bn vs FY25 (refi ≠ deleveraging)" in all three languages (data.json + embedded KP)
+
 ## v1.15.0 – 2026-10-03
 - Repository cleanup: removed 115 redundant one-off audit/extract/fix scripts (`_*.py`), text/JSON extraction dumps (`_*.txt`/`_*.json`), downloaded reference PDFs, and `.github/update-price.yml.bak`; kept `_backup/` (2 latest pre-change copies), `_shots/`, `_template/` (reusable build pipeline), `_analysis_cikarang_vs_kendal.md`, and all deliverables
 - MASTER_PLAYBOOK.md upgraded: §3 embedded-blocks rebuild rule (rebuild ALL touched inline blocks; fix functions must recurse into nested arrays), §9 audit protocol (BS closure, P&L exacts, 口径-difference documentation, dual-file machine verification incl. bare-number residual scan, KPI-card check), §11 layered verification (data layer + shot.py + live browser check with cache-buster), §12 gotchas #23–30 (stale KP cards, nested-array fixes, bare-number scans, IR vs AR bases, half-year exclusion, repo hygiene, cache), §13 bootstrap now references `_template/`, new §15 repository hygiene
