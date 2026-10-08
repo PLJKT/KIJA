@@ -608,7 +608,7 @@
      "l": "Net debt",
      "v": 1657.9,
      "u": "IDR bn",
-     "d": "debt − cash",
+     "d": "debt − cash; +670bn vs FY25 (refi ≠ deleveraging)",
      "c": "flat"
     },
     {
@@ -617,6 +617,13 @@
      "u": "x",
      "d": "FY2024: ~4.0x",
      "c": "up"
+    },
+    {
+     "l": "Profit before tax / interest (FY25)",
+     "v": 2.3,
+     "u": "x",
+     "d": "FY24: 2.2x · conservative pre-tax basis",
+     "c": "flat"
     },
     {
      "l": "Net debt / EBITDA (FY25)",
@@ -652,7 +659,7 @@
      "l": "Utang bersih",
      "v": 1657.9,
      "u": "Rp miliar",
-     "d": "FY2024: 1.5x",
+     "d": "utang − kas; +670 vs FY25 (refi ≠ deleveraging)",
      "c": "flat"
     },
     {
@@ -661,6 +668,13 @@
      "u": "x",
      "d": "FY2024: ~4.0x",
      "c": "up"
+    },
+    {
+     "l": "Laba sebelum pajak / bunga (FY25)",
+     "v": 2.3,
+     "u": "x",
+     "d": "FY24: 2,2x · basis pra-pajak konservatif",
+     "c": "flat"
     },
     {
      "l": "Utang bersih / EBITDA (FY25)",
@@ -696,7 +710,7 @@
      "l": "净负债",
      "v": 1657.9,
      "u": "十亿盾",
-     "d": "FY2024: 1.5x",
+     "d": "债务 − 现金；较 FY25 +670（再融资 ≠ 去杠杆）",
      "c": "flat"
     },
     {
@@ -705,6 +719,13 @@
      "u": "x",
      "d": "FY2024: ~4.0x",
      "c": "up"
+    },
+    {
+     "l": "税前利润 / 利息（FY25）",
+     "v": 2.3,
+     "u": "x",
+     "d": "FY24: 2.2x · 保守税前口径",
+     "c": "flat"
     },
     {
      "l": "净负债 / EBITDA（FY25）",
@@ -1933,7 +1954,7 @@
    [
     "01",
     "Recurring revenue share rising",
-    "Infrastructure revenue share 45% → 50% → 57% (power, water, dry port), improving revenue stability and cash-flow visibility."
+    "Infrastructure revenue share 45% (FY23) → 50% (FY25) → 57% (1H26) — power, water, dry port; improving revenue stability and cash-flow visibility."
    ],
    [
     "02",
@@ -1965,7 +1986,7 @@
    [
     "01",
     "Porsi pendapatan berulang naik",
-    "Porsi pendapatan infrastruktur 45% → 50% → 57% (listrik, air, pelabuhan darat), meningkatkan stabilitas pendapatan dan visibilitas arus kas."
+    "Porsi pendapatan infrastruktur 45% (FY23) → 50% (FY25) → 57% (1H26) — listrik, air, pelabuhan darat; meningkatkan stabilitas pendapatan dan visibilitas arus kas."
    ],
    [
     "02",
@@ -1997,7 +2018,7 @@
    [
     "01",
     "经常性收入占比提升",
-    "基建收入占比 45% → 50% → 57%（电力、水务、干港），收入稳定性与现金可见度增强。"
+    "基建收入占比 45%（FY23）→ 50%（FY25）→ 57%（1H26）——电力、水务、干港；收入稳定性与现金可见度增强。"
    ],
    [
     "02",
@@ -3208,6 +3229,13 @@
     "c": "up"
    },
    {
+    "l": "Profit before tax / interest (FY25)",
+    "v": 2.3,
+    "u": "x",
+    "d": "FY24: 2.2x · conservative pre-tax basis (EBITDA basis 4.4x)",
+    "c": "flat"
+   },
+   {
     "l": "Net debt / EBITDA (FY25)",
     "v": 0.6,
     "u": "x",
@@ -3297,7 +3325,7 @@
     "n": "Guaranteed Senior Notes 2027",
     "d25": 3119,
     "d26": 0,
-    "r": "7.0–9.0% fixed",
+    "r": "7.0–9.0% fixed coupon",
     "m": "Dec 2027 · prepaid 2Q26",
     "c": "6 SHGB BWJ Pandeglang (301.7 ha) + Cikarang land; repaid with IDR Mandiri loan",
     "st": "repaid"
@@ -3348,7 +3376,7 @@
     "st": "current"
    }
   ],
-  "tableNote": "31 Dec 2025 balance-sheet total IDR 4,606.5bn (net of unamortized issuance cost IDR 31.8bn); table shows principal. Total at 30 Jun 2026: IDR 4,863bn (excl. lease IDR 4.8bn).",
+  "tableNote": "31 Dec 2025 balance-sheet total IDR 4,606.5bn (net of unamortized issuance cost IDR 31.8bn); table shows principal. Total at 30 Jun 2026: IDR 4,863bn (excl. lease IDR 4.8bn). Coupon vs effective cost: notes 7.0–9.0% coupon; hedged effective USD cost was 5.5–6.0% (per risk table).",
   "ratings": [
    [
     "Fitch",
@@ -3366,7 +3394,7 @@
     "S&P Global",
     "Withdrawn",
     "—",
-    "22 Jan 2026 · at company request"
+    "22 Jan 2026 · at company request (not an upgrade)"
    ]
   ],
   "refi": [
@@ -3389,6 +3417,10 @@
    [
     "30 Jun 26",
     "Total debt IDR 4,863bn; average cost 7.16%"
+   ],
+   [
+    "1H26",
+    "Net debt rose 987.7→1,657.9 (+670bn); cash -414bn; total debt +256bn — refinancing ≠ deleveraging"
    ]
   ],
   "riskRows": [
@@ -3409,7 +3441,7 @@
    },
    {
     "n": "Interest cost (new IDR debt)",
-    "v": "7.0–7.5% vs old USD 5.5–6.0%",
+    "v": "new 7.0–7.5% vs old 5.5–6.0% effective (notes coupon 7–9%)",
     "lv": 1
    },
    {
@@ -3431,6 +3463,16 @@
     "n": "USD exposure",
     "v": "eliminated (100% IDR)",
     "lv": 0
+   },
+   {
+    "n": "1H26 receivables (DSO)",
+    "v": "AR 521→722bn; DSO 37→54d",
+    "lv": 1
+   },
+   {
+    "n": "1H26 free cash flow",
+    "v": "≈ -21bn (OCF 300.3 − capex ~321.5)",
+    "lv": 1
    }
   ]
  },
@@ -3860,7 +3902,7 @@
     "—",
     "—"
    ],
-   "note": "31 Dec 2025 balance-sheet total IDR 4,606.5bn (net of unamortized issuance cost IDR 31.8bn); table shows principal. Total at 30 Jun 2026: IDR 4,863bn (excl. lease IDR 4.8bn).",
+   "note": "31 Dec 2025 balance-sheet total IDR 4,606.5bn (net of unamortized issuance cost IDR 31.8bn); table shows principal. Total at 30 Jun 2026: IDR 4,863bn (excl. lease IDR 4.8bn). Coupon vs effective cost: notes 7.0–9.0% coupon; hedged effective USD cost was 5.5–6.0% (per risk table).",
    "ratings": [
     [
      "Agency",
@@ -3884,7 +3926,7 @@
      "S&P Global",
      "Withdrawn",
      "—",
-     "22 Jan 2026 · at company request"
+     "22 Jan 2026 · at company request (not an upgrade)"
     ]
    ],
    "refi": [
@@ -3898,7 +3940,11 @@
     ],
     [
      "1H26",
-     "One-off costs ≈ 460: FX loss 280.7 · derivative termination 154.6 · accelerated amortization 24.9"
+     "One-off costs ≈ IDR 460bn: FX loss 280.7bn · derivative termination 154.6bn · accelerated amortization 24.9bn"
+    ],
+    [
+     "1H26",
+     "Net debt rose 987.7→1,657.9 (+670bn); cash -414bn; total debt +256bn — refinancing ≠ deleveraging"
     ],
     [
      "Result",
@@ -3927,7 +3973,7 @@
     ],
     [
      "Interest cost (new IDR debt)",
-     "7.0–7.5% vs old USD 5.5–6.0%",
+     "new 7.0–7.5% vs old 5.5–6.0% effective (notes coupon 7–9%)",
      1
     ],
     [
@@ -3949,6 +3995,16 @@
      "USD exposure",
      "eliminated (100% IDR)",
      0
+    ],
+    [
+     "1H26 receivables (DSO)",
+     "AR 521→722bn; DSO 37→54d",
+     1
+    ],
+    [
+     "1H26 free cash flow",
+     "≈ -21bn (OCF 300.3 − capex ~321.5)",
+     1
     ]
    ]
   },
@@ -4009,7 +4065,7 @@
     "—",
     "—"
    ],
-   "note": "Total neraca 31 Des 2025 4.606,5 (neto biaya penerbitan belum diamortisasi 31,8); tabel menampilkan pokok. Total 30 Jun 2026: 4.863 (di luar sewa 4,8).",
+   "note": "Total neraca 31 Des 2025 4.606,5 (neto biaya penerbitan belum diamortisasi 31,8); tabel menampilkan pokok. Total 30 Jun 2026: 4.863 (di luar sewa 4,8). Kupon vs biaya efektif: kupon notes 7,0–9,0%; biaya efektif USD terkunci 5,5–6,0% (lihat tabel risiko).",
    "ratings": [
     [
      "Lembaga",
@@ -4033,7 +4089,7 @@
      "S&P Global",
      "Dicabut",
      "—",
-     "22 Jan 2026 · atas permintaan perusahaan"
+     "22 Jan 2026 · atas permintaan perusahaan (bukan peningkatan)"
     ]
    ],
    "refi": [
@@ -4047,7 +4103,11 @@
     ],
     [
      "1H26",
-     "Biaya satu kali ≈ 460: rugi kurs 280,7 · penghentian derivatif 154,6 · amortisasi dipercepat 24,9"
+     "Biaya satu kali ≈ Rp 460 miliar: rugi kurs 280,7 miliar · penghentian derivatif 154,6 miliar · amortisasi dipercepat 24,9 miliar"
+    ],
+    [
+     "1H26",
+     "Utang bersih naik 987,7→1.657,9 (+670); kas -414; total utang +256 — refinancing ≠ deleveraging"
     ],
     [
      "Hasil",
@@ -4076,7 +4136,7 @@
     ],
     [
      "Biaya utang IDR baru",
-     "7,0–7,5% vs USD lama 5,5–6,0%",
+     "baru 7,0–7,5% vs lama 5,5–6,0% efektif (kupon notes 7–9%)",
      1
     ],
     [
@@ -4098,6 +4158,16 @@
      "Eksposur USD",
      "hilang (100% IDR)",
      0
+    ],
+    [
+     "Piutang 1H26 (DSO)",
+     "AR 521→722; DSO 37→54 hari",
+     1
+    ],
+    [
+     "Arus kas bebas 1H26",
+     "≈ -21 (OCF 300,3 − capex ~321,5)",
+     1
     ]
    ]
   },
@@ -4158,7 +4228,7 @@
     "—",
     "—"
    ],
-   "note": "2025-12-31 资产负债表口径 IDR 4,606.5bn（扣除未摊销发行成本 IDR 31.8bn）；本表列示本金。2026-06-30 合计 IDR 4,863bn（不含租赁 4.8）。",
+   "note": "2025-12-31 资产负债表口径 IDR 4,606.5bn（扣除未摊销发行成本 IDR 31.8bn）；本表列示本金。2026-06-30 合计 IDR 4,863bn（不含租赁 4.8）。 票息与有效成本口径：票据票息 7.0–9.0%；旧美元债对冲后有效成本 5.5–6.0%（见风险表）。",
    "ratings": [
     [
      "机构",
@@ -4182,7 +4252,7 @@
      "S&P Global",
      "撤销",
      "—",
-     "2026-01-22 应公司要求"
+     "2026-01-22 应公司要求（非评级上调）"
     ]
    ],
    "refi": [
@@ -4196,7 +4266,11 @@
     ],
     [
      "2026H1",
-     "一次性成本约 460：汇兑损失 280.7 · 衍生品终止 154.6 · 加速摊销 24.9"
+     "一次性成本约 460 十亿盾：汇兑损失 280.7 · 衍生品终止 154.6 · 加速摊销 24.9"
+    ],
+    [
+     "2026H1",
+     "净负债由 987.7 升至 1,657.9（+670）；现金 -414；总债务 +256 —— 再融资 ≠ 去杠杆"
     ],
     [
      "结果",
@@ -4225,7 +4299,7 @@
     ],
     [
      "新印尼盾债务利率",
-     "7.0–7.5% vs 旧美元债 5.5–6.0%",
+     "新 7.0–7.5% vs 旧 5.5–6.0% 有效成本（票据票息 7–9%）",
      1
     ],
     [
@@ -4247,6 +4321,16 @@
      "美元敞口",
      "已消除（100% 印尼盾）",
      0
+    ],
+    [
+     "1H26 应收（DSO）",
+     "应收账款 521→722；DSO 37→54 天",
+     1
+    ],
+    [
+     "1H26 自由现金流",
+     "≈ -21（经营现金流 300.3 − 资本开支约 321.5）",
+     1
     ]
    ]
   }
@@ -7184,6 +7268,10 @@
    {
     "p": "cash conversion",
     "x": "How much accounting profit turns into actual cash; CFO divided by net profit over a period."
+   },
+   {
+    "p": "DSO",
+    "x": "Days Sales Outstanding — accounts receivable ÷ (annual revenue ÷ 365); how many days of sales sit uncollected. 1H26: 721.7 ÷ (2,436.5 × 2) × 365 ≈ 54 days vs 37 days at FY25; rising DSO means slower cash collection."
    }
   ]
  },
@@ -7823,17 +7911,17 @@
    ],
    [
     "EBITDA (IDR bn)",
-    "n/a",
+    "747.7",
     "1,735.5",
     "1,616.8",
-    "Steady; ~34% margin"
+    "1H26 interim; steady margin"
    ],
    [
     "Cash from ops (IDR bn)",
-    "n/a",
+    "300.3",
     "2,402.4",
     "1,870.0",
-    "Strong cash conversion"
+    "1H26 OCF 300.3bn; FCF ≈ -21bn (capex ~321.5)"
    ],
    [
     "Cash (IDR bn)",
@@ -7865,10 +7953,10 @@
    ],
    [
     "Receivables days (DSO)",
-    "n/a",
+    "54d",
     "37d",
     "61d",
-    "Collection improved"
+    "1H26 AR surged to 722bn (521→722); DSO 37d→54d"
    ],
    [
     "What to watch in 2H26",
@@ -7902,17 +7990,17 @@
    ],
    [
     "EBITDA (Rp miliar)",
-    "n/a",
+    "747.7",
     "1.735,5",
     "1.616,8",
-    "Stabil; margin ~34%"
+    "interim 1H26; margin stabil"
    ],
    [
     "Arus kas operasi (Rp miliar)",
-    "n/a",
+    "300.3",
     "2.402,4",
     "1.870,0",
-    "Konversi kas kuat"
+    "OCF 1H26 300,3 miliar; FCF ≈ -21 miliar (capex ~321,5)"
    ],
    [
     "Kas (Rp miliar)",
@@ -7944,10 +8032,10 @@
    ],
    [
     "Hari piutang (DSO)",
-    "n/a",
+    "54d",
     "37 hari",
     "61 hari",
-    "Penagihan membaik"
+    "Piutang 1H26 melonjak ke 722 miliar (521→722); DSO 37→54 hari"
    ],
    [
     "Yang ditonton di 2H26",
@@ -7981,17 +8069,17 @@
    ],
    [
     "EBITDA（十亿盾）",
-    "n/a",
+    "747.7",
     "1,735.5",
     "1,616.8",
-    "稳定；约 34%"
+    "1H26 中期数据；利润率稳定"
    ],
    [
     "经营现金流（十亿盾）",
-    "n/a",
+    "300.3",
     "2,402.4",
     "1,870.0",
-    "现金转化强"
+    "1H26 经营现金流 300.3 十亿盾；自由现金流 ≈ -21 十亿盾（资本开支约 321.5）"
    ],
    [
     "现金（十亿盾）",
@@ -8023,10 +8111,10 @@
    ],
    [
     "应收周转天数 DSO",
-    "n/a",
+    "54d",
     "37 天",
     "61 天",
-    "回款改善"
+    "1H26 应收账款升至 722 十亿盾（521→722）；DSO 37→54 天"
    ],
    [
     "2H26 关注点",
