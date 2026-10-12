@@ -1254,7 +1254,7 @@
     ],
     [
      "Apr 2026",
-     "1Q26 marketing sales 518bn (Cikarang 139 / Kendal 379)"
+     "1Q26 marketing sales 540.8bn (Cikarang & others 203.6 / Kendal 337.3)"
     ],
     [
      "5 Jun 2026",
@@ -1280,7 +1280,7 @@
     ],
     [
      "Apr 2026",
-     "Penjualan pemasaran 1Q26 518 miliar (Cikarang 139 / Kendal 379)"
+     "Penjualan pemasaran 1Q26 540,8 miliar (Cikarang & lainnya 203,6 / Kendal 337,3)"
     ],
     [
      "5 Jun 2026",
@@ -1306,7 +1306,7 @@
     ],
     [
      "2026-04",
-     "1Q26 营销销售 518B（Cikarang 139 / Kendal 379）"
+     "1Q26 营销销售 540.8B（Cikarang 及其他 203.6 / Kendal 337.3）"
     ],
     [
      "2026-06-05",
@@ -6271,7 +6271,11 @@
    "closeC24": "Closing cash (end-2024)",
    "openC25": "Opening cash (end-2024)",
    "consS25": "Consolidated surplus 2025",
-   "closeC25": "Closing cash (end-2025)"
+   "closeC25": "Closing cash (end-2025)",
+   "msCik": "Cikarang & others",
+   "msKendal": "Kendal (51% JV)",
+   "ofAchv": "of 1H26 achieved",
+   "ofTgt": "of FY26 target"
   },
   "id": {
    "unit": "Rp miliar",
@@ -6328,7 +6332,11 @@
    "closeC24": "Kas akhir (akhir 2024)",
    "openC25": "Kas awal (akhir 2024)",
    "consS25": "Surplus konsolidasi 2025",
-   "closeC25": "Kas akhir (akhir 2025)"
+   "closeC25": "Kas akhir (akhir 2025)",
+   "msCik": "Cikarang & lainnya",
+   "msKendal": "Kendal (JV 51%)",
+   "ofAchv": "dari realisasi 1H26",
+   "ofTgt": "dari target FY26"
   },
   "zh": {
    "unit": "十亿盾",
@@ -6385,7 +6393,11 @@
    "closeC24": "期末现金（2024 末）",
    "openC25": "期初现金（2024 末）",
    "consS25": "合并盈余 2025",
-   "closeC25": "期末现金（2025 末）"
+   "closeC25": "期末现金（2025 末）",
+   "msCik": "Cikarang 及其他",
+   "msKendal": "Kendal（51% 合资）",
+   "ofAchv": "占 1H26 已实现",
+   "ofTgt": "占 FY26 目标"
   }
  },
  "FY": {
@@ -6618,7 +6630,9 @@
   "lpckPBPS": [
    0.4,
    0.6
-  ]
+  ],
+  "msCik": 340.0,
+  "msKendal": 847.6
  },
  "LBV": {
   "en": {
