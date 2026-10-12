@@ -1070,17 +1070,18 @@ function buildOpt(id){
         var actTot = kA + cA, tgtTot = kT + cT;
         var isAct = ps[0].dataIndex === 0;
         var tot = isAct ? actTot : tgtTot;
-        var s = ps[0].name + '\n' + CT('total') + ': ' + fmtN(tot) + ' ' + U;
-        if (isAct) s += ' (' + pctOf(tot, tgtTot) + '% ' + CT('ofTgt') + ')';
+        var line1 = CT('total') + ': ' + fmtN(tot) + ' ' + U;
+        if (isAct) line1 += ' (' + pctOf(tot, tgtTot) + '% ' + CT('ofTgt') + ')';
+        var parts = [];
         for (var i = 0; i < ps.length; i++) {
           var p = ps[i];
           if (!p || p.value === undefined || p.value === 0) continue;
-          s += '\n' + p.marker + p.seriesName + ': ' + fmtN(p.value) + ' ' + U + ' (' + pctOf(p.value, tot) + '%)';
+          parts.push(p.marker + p.seriesName + ' ' + fmtN(p.value) + ' (' + pctOf(p.value, tot) + '%)');
         }
-        return s;
+        return line1 + '\n' + parts.join('  ·  ');
       }},
       legend:{bottom:0, textStyle:{color:AX.color, fontSize:11}, itemWidth:12, itemHeight:8, itemGap:24},
-      grid:{left:10, right:20, top:56, bottom:46, containLabel:true},
+      grid:{left:10, right:10, top:56, bottom:46, containLabel:true},
       xAxis:baseX([CT('done'), CT('target')]),
       yAxis:{type:'value', name:U, nameTextStyle:{color:AX.color, fontSize:11}, axisLabel:{color:AX.color, fontSize:11}, splitLine:SPLIT},
       series:[
