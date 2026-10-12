@@ -1065,6 +1065,7 @@ function buildOpt(id){
   if (id === 'f26-2') {
     var kA = FY.msKendal, cA = FY.msCik, kT = FY.msKendalT, cT = FY.msCikT;
     function pctOf(v, base){ return Math.round(v / base * 1000) / 10; }
+    var noLbl = {show:false};
     return {tooltip:{trigger:'axis', confine:true, formatter:function(ps){
         var actTot = kA + cA, tgtTot = kT + cT;
         var bases = [actTot, tgtTot];
@@ -1080,12 +1081,14 @@ function buildOpt(id){
       grid:baseGrid(), xAxis:baseX([CT('done'), CT('target')]),
       yAxis:{type:'value', max:4200, name:U, nameTextStyle:{color:AX.color, fontSize:11}, axisLabel:{color:AX.color, fontSize:11}, splitLine:SPLIT},
       series:[
-        {name:CT('msKendal'), type:'bar', stack:'a', data:[kA, 0], itemStyle:{color:C.green}, barMaxWidth:72},
-        {name:CT('msCik'), type:'bar', stack:'a', data:[cA, 0], itemStyle:{color:C.blue},
-          label:{show:true, position:'top', fontSize:12, fontWeight:600, color:'#1F5E40', formatter:function(){ return fmtN(kA + cA); }}, barMaxWidth:72},
-        {name:CT('msKendalT'), type:'bar', stack:'b', data:[0, kT], itemStyle:{color:'rgba(46,125,91,0.35)'}, barMaxWidth:72},
-        {name:CT('msCikT'), type:'bar', stack:'b', data:[0, cT], itemStyle:{color:'rgba(37,99,235,0.35)'},
-          label:{show:true, position:'top', fontSize:12, fontWeight:600, color:'#555', formatter:function(){ return fmtN(kT + cT); }}, barMaxWidth:72}
+        {name:CT('msKendal'), type:'bar', stack:'a', itemStyle:{color:C.green}, barMaxWidth:72,
+          data:[{value:kA, label:{show:true, position:'inside', fontSize:10, color:'#fff', fontWeight:600, formatter:function(){ return fmtN(kA) + ' (' + pctOf(kA, kA + cA) + '%)'; }}}, {value:0, label:noLbl}]},
+        {name:CT('msCik'), type:'bar', stack:'a', itemStyle:{color:C.blue}, barMaxWidth:72,
+          data:[{value:cA, label:{show:true, position:'top', fontSize:12, fontWeight:600, color:'#1F5E40', formatter:function(){ return fmtN(kA + cA) + ' · ' + pctOf(kA + cA, kT + cT) + '% ' + CT('ofTgt'); }}}, {value:0, label:noLbl}]},
+        {name:CT('msKendalT'), type:'bar', stack:'b', itemStyle:{color:'rgba(46,125,91,0.35)'}, barMaxWidth:72,
+          data:[{value:0, label:noLbl}, {value:kT, label:{show:true, position:'inside', fontSize:10, color:'#fff', fontWeight:600, formatter:function(){ return fmtN(kT) + ' (' + pctOf(kT, kT + cT) + '%)'; }}}]},
+        {name:CT('msCikT'), type:'bar', stack:'b', itemStyle:{color:'rgba(37,99,235,0.35)'}, barMaxWidth:72,
+          data:[{value:0, label:noLbl}, {value:cT, label:{show:true, position:'top', fontSize:12, fontWeight:600, color:'#555', formatter:function(){ return fmtN(kT + cT) + ' (' + Math.round(kT / (kT + cT) * 100) + '/' + Math.round(cT / (kT + cT) * 100) + ')'; }}}]}
       ]};
   }
   if (id === 'f26-3') {
