@@ -6275,7 +6275,9 @@
    "msCik": "Cikarang & others",
    "msKendal": "Kendal (51% JV)",
    "ofAchv": "of 1H26 achieved",
-   "ofTgt": "of FY26 target"
+   "ofTgt": "of FY26 target",
+   "msKendalT": "Kendal (target)",
+   "msCikT": "Cikarang & others (target)"
   },
   "id": {
    "unit": "Rp miliar",
@@ -6336,7 +6338,9 @@
    "msCik": "Cikarang & lainnya",
    "msKendal": "Kendal (JV 51%)",
    "ofAchv": "dari realisasi 1H26",
-   "ofTgt": "dari target FY26"
+   "ofTgt": "dari target FY26",
+   "msKendalT": "Kendal (target)",
+   "msCikT": "Cikarang & lainnya (target)"
   },
   "zh": {
    "unit": "十亿盾",
@@ -6397,7 +6401,9 @@
    "msCik": "Cikarang 及其他",
    "msKendal": "Kendal（51% 合资）",
    "ofAchv": "占 1H26 已实现",
-   "ofTgt": "占 FY26 目标"
+   "ofTgt": "占 FY26 目标",
+   "msKendalT": "Kendal（目标）",
+   "msCikT": "Cikarang 及其他（目标）"
   }
  },
  "FY": {
@@ -6632,7 +6638,9 @@
    0.6
   ],
   "msCik": 340.0,
-  "msKendal": 847.6
+  "msKendal": 847.6,
+  "msKendalT": 2500,
+  "msCikT": 1250
  },
  "LBV": {
   "en": {
