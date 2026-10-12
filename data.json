@@ -6273,11 +6273,12 @@
    "consS25": "Consolidated surplus 2025",
    "closeC25": "Closing cash (end-2025)",
    "msCik": "Cikarang & others",
-   "msKendal": "Kendal (51% JV)",
+   "msKendal": "Kendal",
    "ofAchv": "of 1H26 achieved",
    "ofTgt": "of FY26 target",
    "msKendalT": "Kendal (target)",
-   "msCikT": "Cikarang & others (target)"
+   "msCikT": "Cikarang & others (target)",
+   "total": "Total"
   },
   "id": {
    "unit": "Rp miliar",
@@ -6336,11 +6337,12 @@
    "consS25": "Surplus konsolidasi 2025",
    "closeC25": "Kas akhir (akhir 2025)",
    "msCik": "Cikarang & lainnya",
-   "msKendal": "Kendal (JV 51%)",
+   "msKendal": "Kendal",
    "ofAchv": "dari realisasi 1H26",
    "ofTgt": "dari target FY26",
    "msKendalT": "Kendal (target)",
-   "msCikT": "Cikarang & lainnya (target)"
+   "msCikT": "Cikarang & lainnya (target)",
+   "total": "Total"
   },
   "zh": {
    "unit": "十亿盾",
@@ -6399,11 +6401,12 @@
    "consS25": "合并盈余 2025",
    "closeC25": "期末现金（2025 末）",
    "msCik": "Cikarang 及其他",
-   "msKendal": "Kendal（51% 合资）",
+   "msKendal": "Kendal",
    "ofAchv": "占 1H26 已实现",
    "ofTgt": "占 FY26 目标",
    "msKendalT": "Kendal（目标）",
-   "msCikT": "Cikarang 及其他（目标）"
+   "msCikT": "Cikarang 及其他（目标）",
+   "total": "合计"
   }
  },
  "FY": {
