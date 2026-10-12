@@ -191,6 +191,19 @@ For a per-share value comparison across methods (P/E, P/B, DCF, SOTP) vs current
 - **Slim legend**: only `Price` and `Base` entries; series with empty names don't appear in the legend.
 - Trilingual heading via `VALI[lang].chartH`.
 
+### Stacked actual-vs-target bar chart — settled design (v1.17.x)
+
+Use when comparing one period's achievement to its full-year target, split by segment/region:
+
+- **Two bars, two stacks**: x-axis categories = `[CT('done'), CT('target')]`; actual bar = `stack:'a'` (dark hues), target bar = `stack:'b'` (translucent lighter hues of the SAME region colors).
+- **Per-data-point labels, NEVER series-level** (see gotcha #34). Only the top segment of each stack carries a clean total number at `position:'top'`; all other data points get `label:{show:false}`.
+- **No in-segment numeric labels by default** (user preference): values appear only in hover tooltip. If segment labels are truly needed, keep them short and white on dark fills.
+- **Two-line tooltip**: line 1 = bar total (with achievement % vs target for the actual bar); line 2 = segment breakdown joined by `"  ·  "`.
+- **Legend collapse via shared names**: name the actual and target series of the same region identically (`Kendal`, `Cikarang & others`) — ECharts groups them into ONE legend entry each; the x-axis category already distinguishes actual vs target. This kills a 4-item legend.
+- **Symmetric grid** (`left:10, right:10, containLabel:true`) centers each bar under its x-axis category; give `bottom:46` so x labels and the bottom legend never overlap.
+- **No forced y-axis max** unless the target scale is meaningful; let the axis auto-scale.
+- **Marketing sales ≠ revenue**: "sales/marketing sales" = new-contract/pipeline bookings; "revenue" = recognized income. Never title a bookings chart "Revenue Achievement" (misleading), and never fabricate full-year targets for segments that publish none (e.g. infrastructure/leisure have no public target — only land sales do).
+
 ---
 
 ## 6. i18n (three-language) rules
@@ -347,6 +360,9 @@ Every number in the Risk & Direction page, annual-page narrative, and comparison
 31. **Safety margin must always render** in LIQ/LBV tables (v1.16.0). It is `(per-share value − price) ÷ per-share value`, computed for every scenario/factor row — negatives are meaningful ("price above asset backing"), never `n/a`. The old `ps > price ? margin : 'n/a'` guard was removed; the row-level note explains the negative-margin meaning in all three languages.
 32. **Remote auto-update conflicts are normal** (daily price Action). Never resolve via `git pull --rebase`; use `git fetch` + `git checkout origin/main -- data.json index.html` + re-apply modifications + commit + push (§3).
 33. **Inline price blocks go stale after every price refresh** — the Action writes `data.json` only. When a user reports an old price on `file://`, rebuild embedded `KP.val` and `FY.refPrice` from `data.json` (§10).
+34. **ECharts series-level labels render on EVERY data point — including zeros.** A stacked bar's `label:{formatter:...}` shows up at the opposite bar's baseline too (phantom "1,187.6" under the target bar). Fix: per-data labels — `data:[{value:kA, label:{show:true,...}}, {value:0, label:{show:false}}]`. When iterating stacked-bar tweaks, always browser-verify both bars.
+35. **Same-named ECharts series collapse into one legend entry.** Use identical names for actual/target series of the same region when the x-axis categories already distinguish them — turns a 4-item legend into 2.
+36. **Chart subtitle multi-line**: put `\n` in the subtext string; a single long wrapped subtitle line looks cramped. Split at logical groups (actual vs target, or year vs note).
 
 ---
 
