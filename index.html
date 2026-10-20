@@ -1588,7 +1588,7 @@ function fmtInt(x){ return Math.round(x).toString().replace(/\B(?=(\d{3})+(?!\d)
 function segTableHtml(){
   if (typeof SEG === 'undefined' || !SEG) return '';
   var lbl = SEG.labels[LANG];
-  var h = '<div class="g-table-wrap"><table class="g-table"><colgroup><col style="width:26%"><col style="width:7%"><col style="width:11%"><col style="width:11%"><col style="width:9%"><col style="width:11%"><col style="width:11%"><col style="width:9%"></colgroup>';
+  var h = '<div class="g-table-wrap"><table class="g-table"><colgroup><col style="width:22%"><col style="width:13%"><col style="width:10%"><col style="width:10%"><col style="width:8%"><col style="width:10%"><col style="width:10%"><col style="width:8%"></colgroup>';
   h += '<thead><tr><th>Segment</th><th>Own %</th>'
      + '<th>Net Profit 2025 (IDR bn)</th><th>Revenue 2025 (IDR bn)</th><th>GPM 2025 (%)</th>'
      + '<th>Net Profit 2024 (IDR bn)</th><th>Revenue 2024 (IDR bn)</th><th>GPM 2024</th></tr></thead><tbody>';
@@ -1596,7 +1596,7 @@ function segTableHtml(){
     var r = SEG.rows[i];
     var nc = r.net[1] < 0 ? ' style="color:var(--clay);font-weight:600"' : '';
     h += '<tr><td class="b">' + (lbl[r.key]||r.key) + '</td>'
-       + '<td class="p">' + r.ownpct + '%</td>'
+       + '<td class="p" style="font-size:10px;line-height:1.3">' + (r.ownpct.indexOf('%') >= 0 ? r.ownpct : r.ownpct + '%') + '</td>'
        + '<td class="p"' + nc + '>' + fmtInt(r.net[1]) + '</td>'
        + '<td class="p">' + fmtInt(r.rev[1]) + '</td>'
        + '<td class="p">' + r.gpm[1].toFixed(1) + '%</td>'
