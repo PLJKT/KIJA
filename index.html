@@ -1722,6 +1722,39 @@ function renderStatics(){
   function _arr(a){ if(Array.isArray(a)){ for(var i=0;i<a.length;i++){ if(Array.isArray(a[i])){ _arr(a[i]); } else { a[i]=_sp(a[i]); } } } return a; }
   for(var _k in VI){ if(VI.hasOwnProperty(_k)){ VI[_k]=_sp(VI[_k]); } }
   _arr(VI.inputs); _arr(VI.methods); _arr(VI.implied); _arr(VI.key);
+  /* ---- Live-price description pattern ----------------------------------------
+     Every price-derived number/phrase on this page is generated below from _px
+     (live close) — VALI strings carry stable labels only, never stale price text.
+     Qualitative readings are band-derived from vsPct = FV/price - 1, so they always
+     match the computed columns. Adjust bands here, not in the data strings. */
+  function _bandReading(v){
+    var en = v >= 30 ? 'large upside — value largely unpriced'
+           : v >= 10 ? 'moderate upside vs method value'
+           : v > -10 ? 'trades near method value'
+           : v > -30 ? 'trades above method value'
+                     : 'well above method value';
+    var id = v >= 30 ? 'upside besar — nilai belum tercermin'
+           : v >= 10 ? 'sedikit di bawah nilai metode'
+           : v > -10 ? 'harga mendekati nilai metode'
+           : v > -30 ? 'harga sedikit di atas nilai metode'
+                     : 'harga jauh di atas nilai metode';
+    var zh = v >= 30 ? '上行空间大——价值尚未充分反映'
+           : v >= 10 ? '较方法值有一定折价'
+           : v > -10 ? '股价接近方法估值'
+           : v > -30 ? '股价略高于方法值'
+                     : '股价显著高于方法值';
+    return LANG === 'id' ? id : (LANG === 'zh' ? zh : en);
+  }
+  // P/B methods note: replace stale "0.6x matches current level" with live implied P/B
+  VI.methods = VI.methods.map(function(row){
+    if(String(row[0]).indexOf('P/B') >= 0){
+      var note = LANG === 'zh' ? '；当前隐含 P/B ' + _d2(_pbP) + 'x'
+               : (LANG === 'id' ? '; P/B tersirat saat ini ' + _d2(_pbP) + 'x'
+               : '; current implied P/B ' + _d2(_pbP) + 'x');
+      row[1] = String(row[1]).replace(/;\s*0[.,]6x[^;]*$/, note);
+    }
+    return row;
+  });
   // Recalculate comp table: [method, base, vs_px, safety, reading]
   VI.comp = VI.comp.map(function(row){
     var fv = parseFloat(row[1]);
@@ -1730,6 +1763,8 @@ function renderStatics(){
     row[1] = _d1(fv);
     row[2] = (vsPct >= 0 ? '+' : '') + _d1(vsPct) + '%';
     row[3] = fv > _px ? _d1(sm) + '%' : 'n/a';
+    var _lbl = String(row[0]);
+    if(_lbl.indexOf('SOTP') < 0 && _lbl.indexOf('Weighted') < 0){ row[4] = _bandReading(vsPct); }
     return row;
   });
   var _vll = VLL[LANG].map(function(x){ if(typeof x==='string'){ return x.replace(/180/g, _px); } if(Array.isArray(x)){ return x.map(function(y){ return typeof y==='string' ? y.replace(/180/g, _px) : y; }); } return x; });
