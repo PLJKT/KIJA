@@ -448,135 +448,135 @@
    "en": [
     {
      "l": "Revenue",
-     "v": 2436.5,
+     "v": 4254.9,
      "u": "IDR bn",
-     "d": "1H26 · -11% YoY",
-     "c": "dn"
+     "d": "9M26 · +15.8% YoY",
+     "c": "up"
     },
     {
      "l": "Consolidated net profit",
-     "v": -6.4,
+     "v": 391.7,
      "u": "IDR bn",
-     "d": "1H26; one-off refi cost",
+     "d": "9M26 · -38.3% YoY",
      "c": "dn"
     },
     {
      "l": "Attributable to parent",
-     "v": -177.9,
+     "v": 60.5,
      "u": "IDR bn",
-     "d": "parent bears one-off; NCI +171.4",
+     "d": "-78.2% YoY; NCI took 84.5%",
      "c": "dn"
     },
     {
-     "l": "EBITDA",
-     "v": 747.7,
+     "l": "Operating profit",
+     "v": 1025.5,
      "u": "IDR bn",
-     "d": "-25% YoY",
+     "d": "9M26 · -2.8% YoY",
      "c": "dn"
     },
     {
      "l": "Marketing sales",
      "v": 1187.6,
      "u": "IDR bn",
-     "d": "32% of 3,750 target",
+     "d": "1H26 · 32% of 3,750 target",
      "c": "flat"
     },
     {
      "l": "Cash & equivalents",
-     "v": 3205.2,
+     "v": 3153.7,
      "u": "IDR bn",
-     "d": "as of 30 Jun 2026",
-     "c": "up",
+     "d": "as of 30 Sep 2026",
+     "c": "flat",
      "p": "~"
     }
    ],
    "id": [
     {
      "l": "Pendapatan",
-     "v": 2436.5,
+     "v": 4254.9,
      "u": "Rp miliar",
-     "d": "1H26 · -11% YoY",
-     "c": "dn"
+     "d": "9M26 · +15,8% YoY",
+     "c": "up"
     },
     {
      "l": "Laba bersih konsolidasi",
-     "v": -6.4,
+     "v": 391.7,
      "u": "Rp miliar",
-     "d": "1H26; biaya refi satu kali",
+     "d": "9M26 · -38,3% YoY",
      "c": "dn"
     },
     {
      "l": "Laba entitas induk",
-     "v": -177.9,
+     "v": 60.5,
      "u": "Rp miliar",
-     "d": "induk menanggung one-off; NCI +171.4",
+     "d": "-78,2% YoY; KNP menyerap 84,5%",
      "c": "dn"
     },
     {
-     "l": "EBITDA",
-     "v": 747.7,
+     "l": "Laba operasi",
+     "v": 1025.5,
      "u": "Rp miliar",
-     "d": "-25% YoY",
+     "d": "9M26 · -2,8% YoY",
      "c": "dn"
     },
     {
      "l": "Penjualan pemasaran",
      "v": 1187.6,
      "u": "Rp miliar",
-     "d": "32% dari target 3,750",
+     "d": "1H26 · 32% dari target 3.750",
      "c": "flat"
     },
     {
      "l": "Kas & setara kas",
-     "v": 3205.2,
+     "v": 3153.7,
      "u": "Rp miliar",
-     "d": "per 30 Jun 2026",
-     "c": "up",
+     "d": "per 30 Sep 2026",
+     "c": "flat",
      "p": "~"
     }
    ],
    "zh": [
     {
      "l": "营业收入",
-     "v": 2436.5,
+     "v": 4254.9,
      "u": "十亿盾",
-     "d": "1H26 · -11% 同比",
-     "c": "dn"
+     "d": "9M26 · +15.8% 同比",
+     "c": "up"
     },
     {
      "l": "合并净利",
-     "v": -6.4,
+     "v": 391.7,
      "u": "十亿盾",
-     "d": "1H26；一次性再融资成本",
+     "d": "9M26；-38.3% 同比",
      "c": "dn"
     },
     {
      "l": "归母净利",
-     "v": -177.9,
+     "v": 60.5,
      "u": "十亿盾",
-     "d": "母公司承担一次性；少数股东 +171.4",
+     "d": "-78.2% 同比；少数股东占 84.5%",
      "c": "dn"
     },
     {
-     "l": "EBITDA",
-     "v": 747.7,
+     "l": "营业利润",
+     "v": 1025.5,
      "u": "十亿盾",
-     "d": "-25% 同比",
+     "d": "9M26 · -2.8% 同比",
      "c": "dn"
     },
     {
      "l": "营销销售",
      "v": 1187.6,
      "u": "十亿盾",
-     "d": "全年目标 3,750 的 32%",
+     "d": "1H26 · 全年目标 3,750 的 32%",
      "c": "flat"
     },
     {
      "l": "现金及等价物",
-     "v": 3205.2,
+     "v": 3153.7,
      "u": "十亿盾",
-     "d": "2026-06-30",
-     "c": "up",
+     "d": "2026-09-30",
+     "c": "flat",
      "p": "~"
     }
    ]
@@ -584,31 +584,31 @@
   "debt": {
    "en": [
     {
-     "l": "Total debt (30 Jun 26)",
-     "v": 4863,
+     "l": "Total debt (30 Sep 26)",
+     "v": 4863.8,
      "u": "IDR bn",
-     "d": "excl. lease 4.8",
+     "d": "incl. short-term 22.9bn · excl. lease 4.9",
      "c": "flat"
     },
     {
      "l": "Avg cost of debt",
      "v": 7.16,
      "u": "%",
-     "d": "30 Jun 2026",
+     "d": "30 Sep 2026 · new IDR facilities 7.0–7.75%",
      "c": "flat"
     },
     {
      "l": "Cash & equivalents",
-     "v": 3205.2,
+     "v": 3153.7,
      "u": "IDR bn",
-     "d": "30 Jun 2026",
-     "c": "up"
+     "d": "30 Sep 2026",
+     "c": "flat"
     },
     {
      "l": "Net debt",
-     "v": 1657.9,
+     "v": 1710.1,
      "u": "IDR bn",
-     "d": "debt − cash; +670bn vs FY25 (refi ≠ deleveraging)",
+     "d": "debt − cash; +722bn vs FY25 (refi ≠ deleveraging)",
      "c": "flat"
     },
     {
@@ -635,31 +635,31 @@
    ],
    "id": [
     {
-     "l": "Total utang (30 Jun 26)",
-     "v": 4863,
+     "l": "Total utang (30 Sep 26)",
+     "v": 4863.8,
      "u": "Rp miliar",
-     "d": "di luar sewa 4.8",
+     "d": "termasuk pinjaman jangka pendek 22,9 · di luar sewa 4,9",
      "c": "flat"
     },
     {
      "l": "Biaya utang rata-rata",
      "v": 7.16,
      "u": "%",
-     "d": "30 Jun 2026",
+     "d": "30 Sep 2026 · fasilitas IDR baru 7,0–7,75%",
      "c": "flat"
     },
     {
      "l": "Kas & setara kas",
-     "v": 3205.2,
+     "v": 3153.7,
      "u": "Rp miliar",
-     "d": "30 Jun 2026",
-     "c": "up"
+     "d": "30 Sep 2026",
+     "c": "flat"
     },
     {
      "l": "Utang bersih",
-     "v": 1657.9,
+     "v": 1710.1,
      "u": "Rp miliar",
-     "d": "utang − kas; +670 vs FY25 (refi ≠ deleveraging)",
+     "d": "utang − kas; +722 vs FY25 (refi ≠ deleveraging)",
      "c": "flat"
     },
     {
@@ -686,31 +686,31 @@
    ],
    "zh": [
     {
-     "l": "总债务（2026-06-30）",
-     "v": 4863,
+     "l": "总债务（2026-09-30）",
+     "v": 4863.8,
      "u": "十亿盾",
-     "d": "不含租赁 4.8",
+     "d": "含短期 22.9 · 不含租赁 4.9",
      "c": "flat"
     },
     {
      "l": "平均资金成本",
      "v": 7.16,
      "u": "%",
-     "d": "2026-06-30",
+     "d": "2026-09-30 · 新本币设施 7.0–7.75%",
      "c": "flat"
     },
     {
      "l": "现金及等价物",
-     "v": 3205.2,
+     "v": 3153.7,
      "u": "十亿盾",
-     "d": "2026-06-30",
-     "c": "up"
+     "d": "2026-09-30",
+     "c": "flat"
     },
     {
      "l": "净负债",
-     "v": 1657.9,
+     "v": 1710.1,
      "u": "十亿盾",
-     "d": "债务 − 现金；较 FY25 +670（再融资 ≠ 去杠杆）",
+     "d": "债务 − 现金；较 FY25 +722（再融资 ≠ 去杠杆）",
      "c": "flat"
     },
     {
@@ -1271,6 +1271,10 @@
     [
      "Aug 2026",
      "Kendal JV declared a dividend of 615bn (51% attributable to KIJA)"
+    ],
+    [
+     "30 Oct 2026",
+     "Q3 2026 (9M26) results: revenue 4,254.9bn (+15.8%); parent NP 60.5bn (-78.2%) — Q3 quarter alone +238.3bn; power GPM 5.9%; Senior Notes fully redeemed; cash 3,153.7bn"
     ]
    ],
    "id": [
@@ -1297,6 +1301,10 @@
     [
      "Agu 2026",
      "JV Kendal mengumumkan dividen 615 miliar (51% diatribusikan ke KIJA)"
+    ],
+    [
+     "30 Okt 2026",
+     "Hasil Q3 2026 (9M26): pendapatan 4.254,9 miliar (+15,8%); laba induk 60,5 miliar (-78,2%) — Q3 saja +238,3 miliar; GPM listrik 5,9%; Senior Notes lunas; kas 3.153,7 miliar"
     ]
    ],
    "zh": [
@@ -1323,6 +1331,10 @@
     [
      "2026-08",
      "Kendal JV 宣布派息 615B（51% 归 KIJA）"
+    ],
+    [
+     "2026-10-30",
+     "Q3 2026（9M26）业绩：收入 4,254.9B（+15.8%）；归母 60.5B（-78.2%）——Q3 单季 +238.3B；电力毛利率 5.9%；高级票据已全部赎回；现金 3,153.7B"
     ]
    ]
   }
@@ -1600,24 +1612,24 @@
    "en": [
     [
      "Revenue growth",
-     "-11% (1H)",
-     2,
-     75,
-     "land recognition timing drives swings"
+     "+15.8% (9M)",
+     0,
+     25,
+     "land deliveries rebounded in Q3"
     ],
     [
      "Gross margin",
-     "34% (1H)",
-     2,
-     65,
-     "structural compression from infrastructure mix"
+     "37.1% (9M)",
+     1,
+     45,
+     "up from 1H 34.5% on land-rich mix; power GPM 5.9%"
     ],
     [
      "One-off refinancing cost",
-     "~460bn",
+     "~444bn (9M)",
      1,
      60,
-     "one-off, will not recur"
+     "FX 264.1 + derivative 154.6 + amort. 24.9"
     ],
     [
      "Marketing sales progress",
@@ -1628,7 +1640,7 @@
     ],
     [
      "Cash buffer",
-     "~3.2tn",
+     "~3.15tn (30 Sep)",
      0,
      21,
      "covers short-term debt & dividends"
@@ -1644,24 +1656,24 @@
    "id": [
     [
      "Pertumbuhan pendapatan",
-     "-11% (1H)",
-     2,
-     75,
-     "timing pengakuan lahan menyebabkan fluktuasi"
+     "+15,8% (9M)",
+     0,
+     25,
+     "pengiriman lahan pulih di Q3"
     ],
     [
      "Margin kotor",
-     "34% (1H)",
-     2,
-     65,
-     "kompresi struktural dari komposisi infrastruktur"
+     "37,1% (9M)",
+     1,
+     45,
+     "naik dari 1H 34,5% karena bauran lahan; GPM listrik 5,9%"
     ],
     [
      "Biaya refinancing satu kali",
-     "~460 miliar",
+     "~444 miliar (9M)",
      1,
      60,
-     "satu kali, tidak berulang"
+     "kurs 264,1 + derivatif 154,6 + amortisasi 24,9"
     ],
     [
      "Progres penjualan pemasaran",
@@ -1672,7 +1684,7 @@
     ],
     [
      "Bantalan kas",
-     "sekitar 3.2tn",
+     "sekitar 3,15tn (30 Sep)",
      0,
      21,
      "menutup utang jangka pendek & dividen"
@@ -1688,24 +1700,24 @@
    "zh": [
     [
      "收入增速",
-     "-11%（H1）",
-     2,
-     75,
-     "土地确认时点主导波动"
+     "+15.8%（9M）",
+     0,
+     25,
+     "Q3 土地交付放量"
     ],
     [
      "毛利率",
-     "34%（H1）",
-     2,
-     65,
-     "基建占比上升的结构性压低"
+     "37.1%（9M）",
+     1,
+     45,
+     "较 1H 34.5% 回升（土地占比上升）；电力毛利 5.9%"
     ],
     [
      "一次性再融资成本",
-     "约 460B",
+     "约 444B（9M）",
      1,
      60,
-     "一次性，出清后不再有"
+     "汇兑 264.1 + 衍生品 154.6 + 摊销 24.9"
     ],
     [
      "营销销售进度",
@@ -1716,7 +1728,7 @@
     ],
     [
      "现金缓冲",
-     "~3.2T",
+     "~3.15T（9月末）",
      0,
      21,
      "覆盖短期负债与派息"
@@ -3194,29 +3206,29 @@
  "DEBT": {
   "kpi26": [
    {
-    "l": "Total debt (30 Jun 26)",
-    "v": 4863,
+    "l": "Total debt (30 Sep 26)",
+    "v": 4863.8,
     "u": "IDR bn",
-    "d": "excl. lease 4.7bn",
+    "d": "incl. short-term 22.9bn · excl. lease 4.9bn",
     "c": "flat"
    },
    {
     "l": "Avg cost of debt",
     "v": 7.16,
     "u": "%",
-    "d": "30 Jun 2026",
+    "d": "30 Sep 2026 · new IDR facilities 7.0–7.75%",
     "c": "flat"
    },
    {
     "l": "Cash & equivalents",
-    "v": 3205.2,
+    "v": 3153.7,
     "u": "IDR bn",
-    "d": "30 Jun 2026",
-    "c": "up"
+    "d": "30 Sep 2026",
+    "c": "flat"
    },
    {
     "l": "Net debt",
-    "v": 1657.9,
+    "v": 1710.1,
     "u": "IDR bn",
     "d": "debt − cash",
     "c": "flat"
@@ -3246,22 +3258,27 @@
   "lenders26": [
    {
     "n": "Bank Mandiri",
-    "v": 4634,
+    "v": 4655.6,
     "c": 1
    },
    {
     "n": "Bank INA Perdana",
-    "v": 191,
+    "v": 148.4,
     "c": 2
    },
    {
     "n": "Bank OCBC NISP",
-    "v": 33,
+    "v": 32.0,
     "c": 3
    },
    {
+    "n": "Short-term bank loans",
+    "v": 22.9,
+    "c": 5
+   },
+   {
     "n": "Lease liabilities",
-    "v": 4.8,
+    "v": 4.9,
     "c": 4
    }
   ],
@@ -3305,19 +3322,22 @@
     "FY2023",
     "FY2024",
     "FY2025",
-    "1H26"
+    "1H26",
+    "9M26"
    ],
    "cash": [
     1094.7,
     2048.5,
     3618.8,
-    3205.2
+    3205.2,
+    3153.7
    ],
    "debt": [
     4477.7,
     4498.2,
     4606.5,
-    4863
+    4863,
+    4863.8
    ]
   },
   "table": [
@@ -3333,8 +3353,8 @@
    {
     "n": "Bank Mandiri (IDR term loans)",
     "d25": 1335.5,
-    "d26": 4634,
-    "r": "7.0–7.5%",
+    "d26": 4655.6,
+    "r": "7.0–7.75%",
     "m": "15-yr · to ~2041",
     "c": "Cikarang & Pandeglang land for development + land inventories",
     "st": "current"
@@ -3342,7 +3362,7 @@
    {
     "n": "Bank INA Perdana",
     "d25": null,
-    "d26": 191,
+    "d26": 148.4,
     "r": "7.75%",
     "m": "Project & demand loan + SBLC",
     "c": "Mini LNG plant (JV)",
@@ -3360,7 +3380,7 @@
    {
     "n": "Bank OCBC NISP",
     "d25": 35.4,
-    "d26": 33,
+    "d26": 32.0,
     "r": "7.75%",
     "m": "Term loan",
     "c": "WWTP revitalization",
@@ -3369,14 +3389,23 @@
    {
     "n": "Lease liabilities",
     "d25": 4.8,
-    "d26": 4.8,
+    "d26": 4.9,
     "r": "n/a",
     "m": "2–10 yr leases",
     "c": "Operating leases",
     "st": "current"
+   },
+   {
+    "n": "Short-term bank loans",
+    "d25": null,
+    "d26": 22.9,
+    "r": "7.0–7.75%",
+    "m": "< 1 yr",
+    "c": "Working capital facilities",
+    "st": "current"
    }
   ],
-  "tableNote": "31 Dec 2025 balance-sheet total IDR 4,606.5bn (net of unamortized issuance cost IDR 31.8bn); table shows principal. Total at 30 Jun 2026: IDR 4,863bn (excl. lease IDR 4.8bn). Coupon vs effective cost: notes 7.0–9.0% coupon; hedged effective USD cost was 5.5–6.0% (per risk table).",
+  "tableNote": "31 Dec 2025 balance-sheet total IDR 4,606.5bn (net of unamortized issuance cost IDR 31.8bn); table shows principal. Total at 30 Jun 2026: IDR 4,863bn (excl. lease IDR 4.8bn). Coupon vs effective cost: notes 7.0–9.0% coupon; hedged effective USD cost was 5.5–6.0% (per risk table). Total at 30 Sep 2026: IDR 4,863.8bn (incl. short-term 22.9bn, excl. lease 4.9bn).",
   "ratings": [
    [
     "Fitch",
@@ -3421,6 +3450,10 @@
    [
     "1H26",
     "Net debt rose 987.7→1,657.9 (+670bn); cash -414bn; total debt +256bn — refinancing ≠ deleveraging"
+   ],
+   [
+    "30 Sep 26",
+    "9M26 results: revenue 4,254.9bn (+15.8% y/y); parent NP 60.5bn (vs 277.3bn); Q3 quarter alone parent +238.3bn; power GPM 5.9% on USD-priced gas"
    ]
   ],
   "riskRows": [
@@ -3436,7 +3469,7 @@
    },
    {
     "n": "Cash / total debt",
-    "v": "65.9% (1H26)",
+    "v": "64.8% (9M26)",
     "lv": 0
    },
    {
@@ -3465,14 +3498,14 @@
     "lv": 0
    },
    {
-    "n": "1H26 receivables (DSO)",
-    "v": "AR 521→722bn; DSO 37→54d",
+    "n": "9M26 receivables (DSO)",
+    "v": "AR 722→980bn; DSO 54→63d (annualised)",
     "lv": 1
    },
    {
-    "n": "1H26 free cash flow",
-    "v": "≈ -21bn (OCF 300.3 − capex ~321.5)",
-    "lv": 1
+    "n": "9M26 free cash flow",
+    "v": "≈ +355bn (OCF 568.7 − capex 214.1)",
+    "lv": 0
    }
   ]
  },
@@ -4933,7 +4966,8 @@
    "dmas": "DMAS (peer)",
    "mandiri": "Bank Mandiri",
    "ina": "Bank INA Perdana",
-   "ocbc": "Bank OCBC NISP"
+   "ocbc": "Bank OCBC NISP",
+   "stBank": "Short-term bank loans"
   },
   "id": {
    "book": "Nilai buku",
@@ -4946,7 +4980,8 @@
    "dmas": "DMAS (peer)",
    "mandiri": "Bank Mandiri",
    "ina": "Bank INA Perdana",
-   "ocbc": "Bank OCBC NISP"
+   "ocbc": "Bank OCBC NISP",
+   "stBank": "Pinjaman bank jangka pendek"
   },
   "zh": {
    "book": "账面价值",
@@ -4959,7 +4994,8 @@
    "dmas": "DMAS（同业）",
    "mandiri": "Bank Mandiri",
    "ina": "Bank INA Perdana",
-   "ocbc": "Bank OCBC NISP"
+   "ocbc": "Bank OCBC NISP",
+   "stBank": "短期银行借款"
   }
  },
  "VALI": {
@@ -6529,8 +6565,8 @@
    24.9
   ],
   "sched5y": 1013.5,
-  "totD26": 4863.0,
-  "cash26": 3205.2,
+  "totD26": 4863.8,
+  "cash26": 3153.7,
   "refPrice": 130,
   "vjan": {
    "m": "Jan-26",
@@ -6643,7 +6679,47 @@
   "msCik": 340.0,
   "msKendal": 847.6,
   "msKendalT": 2500,
-  "msCikT": 1250
+  "msCikT": 1250,
+  "m26rev": {
+   "m25": [
+    3674.7,
+    1960.3,
+    1612.9,
+    101.5
+   ],
+   "m26": [
+    4254.9,
+    2231.5,
+    1915.7,
+    107.7
+   ]
+  },
+  "m26pie": [
+   [
+    "rePie",
+    2023.4
+   ],
+   [
+    "infraPie",
+    2231.5
+   ]
+  ],
+  "bsQ3": {
+   "cash": 3153.7,
+   "debt": 4863.8,
+   "netDebt": 1710.1
+  },
+  "oneoff9m": [
+   264.1,
+   154.6,
+   24.9
+  ],
+  "cf9m": {
+   "ocf": 568.7,
+   "icf": -537.8,
+   "fcf": -497.9,
+   "close": 3153.7
+  }
  },
  "LBV": {
   "en": {
@@ -7305,15 +7381,16 @@
   "ticker": "IDX: KIJA",
   "business": "工业园区开发商（Cikarang / Kendal 经济特区），兼营电力、水务、干港等基建",
   "currency": "IDR billion",
-  "updated": "2026-09-18",
-  "disclaimer": "2026 年为 1H26 未经审计数据；部分历史数字随年报追溯调整。本数据仅作记录与参考，不构成投资建议。"
+  "updated": "2026-10-30",
+  "disclaimer": "2026 年为 9M26 未经审计数据；部分历史数字随年报追溯调整。本数据仅作记录与参考，不构成投资建议。"
  },
  "sources": [
   "https://www.jababeka.com/wp-content/uploads/2026/05/KIJA-AR-2025.pdf",
   "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202607/20260731205845-62989-0/FinancialStatement-2026-II-KIJA.pdf",
   "https://www.jababeka.com/wp-content/uploads/2023/05/KIJA-ASR-2022.pdf",
   "https://www.jababeka.com/wp-content/uploads/2025/02/KIJA-Presentation-Material-Augustus-2026-Final.pdf",
-  "https://www.idx.co.id"
+  "https://www.idx.co.id",
+  "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202610/20261030155735-64852-0/FinancialStatement-2026-III-KIJA.pdf"
  ],
  "WC": {
   "years": [

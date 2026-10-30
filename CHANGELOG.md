@@ -1,6 +1,13 @@
 # KIJA Dashboard — Changelog (internal, not shown on page)
 
-## v1.16.0 – 2026-10-08
+## v1.19.0 – 2026-10-30
+- Q3 2026 (9M26) update from official 9M26 interim financial statements (IDX, published 30 Oct 2026 15:18; files: FinancialStatement-2026-III-KIJA.pdf, FS KIJA Q3 2026.pdf, XBRL xlsx) — verified against 1H26 official filings and historical series before writing
+- KP cards (data.json + embedded KP, en/id/zh): Revenue 4,254.9bn +15.8% · Cons NP 391.7bn -38.3% · Parent 60.5bn -78.2% (NCI 84.5%) · Operating profit 1,025.5bn -2.8% · Marketing sales 1,187.6bn (1H26, 32% of 3,750 target) · Cash 3,153.7bn (30 Sep 2026)
+- Debt & Solvency (30 Sep 2026): total debt 4,863.8bn (incl. short-term 22.9, excl. lease 4.9); avg cost 7.16% (new IDR facilities 7.0–7.75%); cash 3,153.7bn; net debt 1,710.1bn; lenders table + Short-term bank loans row; risk rows updated (Cash/total debt 64.8% 9M26; 9M26 receivables AR 722→980bn DSO 54→63d; 9M26 FCF ≈ +355bn OCF 568.7 − capex 214.1; back-loaded Mandiri ~3,780bn due 2031–2041)
+- FY block: m26rev/m26pie (9M26 vs 9M25 category revenue), bsQ3 (30 Sep balance sheet), cf9m (OCF 568.7 / ICF -537.8 / FCF -497.9 / closing cash 3,153.7), oneoff9m (264.1 / 154.6 / 24.9); f26-1 chart now has 4 series (1H25/1H26/9M25/9M26), f26-0 uses m26pie, f26-3 uses bsQ3
+- i18n (en/id/zh): f26-0/1/3 captions, new g9m26 highlight panel on 2026 Interim page, ev26_t to Oct, 30 Oct 2026 event appended, note26 rewritten, debt captions (c_d1_t/s, c_d4_s), debt_note cash 3,153.7, ft_src + 9M2026 interim link, ft_note 1H26/9M26
+- Correction note: 1H26 parent net profit restated to -177,880mn (EPS -8.64) per official 1H26 FS — Q3-26 quarter alone = 60,451 − (-177,880) = +238,331mn (parent)
+- Verified: static checks 26/26 PASS (embedded vars == data.json; i18n in place; chart code references new sources); local http.server render — overview/fy2026/debt pages TITLE correct, CONSOLE ERRORS 0, KPI cards/captions/panels show 9M26 figures
 - Safety margin now ALWAYS computed and shown in "Land bank value per share" and "Liquidation value" tables (both files, all three languages): formula `(per-share value − price) ÷ per-share value`, displayed even when negative (negative = market price already above asset-backed value). Removed the `ps > price ? margin : 'n/a'` guard; LBV note rewritten (en/id/zh) to explain the negative-margin meaning
 - Verified live: file:// and GitHub Pages both render 50% → -14.0%, 25% → -127.9% safety margin rows
 
