@@ -4,6 +4,7 @@
 - EBITDA chart (o6) now 9M26: new 9M26 bar 1,183.0 alongside 1H26 747.7 (grey, for reference); title → "EBITDA (2015–2025, 1H26 & 9M26)" (en/id/zh); caption updated — 9M26 EBITDA 1,183.0 = op. profit 1,025.5 + D&A 157.5 (segment disclosure Exhibit E/90, Note 35; margin 27.8%); 9M25 1,192.2; YoY ≈ -0.8%. Old "9M26 EBITDA not published / D&A not disclosed" note removed
 - Q26.ebitda added (1,183.0); DEC rows 9M26 (en/id/zh): EBITDA n/a → 1,183.0; Net debt/EBITDA n/a → 1.45x (9M26 net debt 1,710.1 / EBITDA 1,183.0; FY25 0.6x)
 - Regression fix: Decision-metrics table (dec-tbl) on Risk page was dropped by R53 compact-tables refactor — restored container + fill call (i18n labels & data were intact); table renders 11 rows with 9M2026 column
+- EBITDA chart (o6): 1H26 bar, tooltip note and caption refs removed per user request — chart now shows 2015–2025 + 9M26 only (12 bars, 9M26 = 1,183.0); title → "EBITDA (2015–2025 & 9M26)" and caption (en/id/zh) without "1H26 747.7" reference; DEC EBITDA-row notes (en/id/zh) likewise trimmed
 - Verified: local 8899 + live GitHub Pages (commit b570c8f, built) — o6 13 bars (2015–2025, 1H26 747.7, 9M26 1,183.0), new caption present & "not published" gone, DEC table 11 rows (1,183.0 / 1.45x), console 0 errors, en/id/zh captions & rows correct
 
 ## v1.19.1 – 2026-10-31
