@@ -1432,10 +1432,10 @@ function debtTableHtml(){
   return h;
 }
 function debtRateHtml(){
-  var rows = DTXT[LANG].ratings, h = '<table class="g-table"><colgroup><col style="width:26%"><col style="width:18%"><col style="width:16%"><col style="width:40%"></colgroup><thead><tr>';
+  var rows = DTXT[LANG].ratings, h = '<table class="g-table"><colgroup><col style="width:20%"><col style="width:11%"><col style="width:11%"><col style="width:30%"><col style="width:28%"></colgroup><thead><tr>';
   for (var i = 0; i < rows[0].length; i++) { h += th(esc(rows[0][i])); }
   h += '</tr></thead><tbody>';
-  for (var r = 1; r < rows.length; r++) { h += '<tr>' + td(esc(rows[r][0]), 'b') + td(esc(rows[r][1])) + td(esc(rows[r][2])) + td(esc(rows[r][3])) + '</tr>'; }
+  for (var r = 1; r < rows.length; r++) { h += '<tr>' + td(esc(rows[r][0]), 'b') + td(esc(rows[r][1])) + td(esc(rows[r][2])) + td(esc(rows[r][3])) + td(esc(rows[r][4])) + '</tr>'; }
   h += '</tbody></table>';
   return h;
 }

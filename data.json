@@ -3918,25 +3918,29 @@
           "Agency",
           "Rating",
           "Outlook",
-          "Date"
+          "Date",
+          "Indonesia Country Rating"
         ],
         [
           "Fitch",
           "B-",
           "Stable",
-          "Oct 2025 affirmed"
+          "Oct 2025 affirmed",
+          "BBB (Negative)"
         ],
         [
           "Moody’s",
           "B3",
           "Stable",
-          "12 Jan 2026 · first rating"
+          "12 Jan 2026 · first rating",
+          "Baa2 (Negative)"
         ],
         [
           "S&P Global",
           "Withdrawn",
           "—",
-          "22 Jan 2026 · at company request (not an upgrade)"
+          "22 Jan 2026 · at company request (not an upgrade)",
+          "BBB (Stable)"
         ]
       ],
       "refi": [
@@ -4087,25 +4091,29 @@
           "Lembaga",
           "Peringkat",
           "Prospek",
-          "Tanggal"
+          "Tanggal",
+          "Peringkat negara Indonesia"
         ],
         [
           "Fitch",
           "B-",
           "Stabil",
-          "Okt 2025 ditegaskan"
+          "Okt 2025 ditegaskan",
+          "BBB (Negative)"
         ],
         [
           "Moody’s",
           "B3",
           "Stabil",
-          "12 Jan 2026 · peringkat awal"
+          "12 Jan 2026 · peringkat awal",
+          "Baa2 (Negative)"
         ],
         [
           "S&P Global",
           "Dicabut",
           "—",
-          "22 Jan 2026 · atas permintaan perusahaan (bukan peningkatan)"
+          "22 Jan 2026 · atas permintaan perusahaan (bukan peningkatan)",
+          "BBB (Stable)"
         ]
       ],
       "refi": [
@@ -4256,25 +4264,29 @@
           "机构",
           "评级",
           "展望",
-          "日期"
+          "日期",
+          "印尼主权评级"
         ],
         [
           "Fitch",
           "B-",
           "稳定",
-          "2025-10 确认"
+          "2025-10 确认",
+          "BBB (Negative)"
         ],
         [
           "Moody’s",
           "B3",
           "稳定",
-          "2026-01-12 首评"
+          "2026-01-12 首评",
+          "Baa2 (Negative)"
         ],
         [
           "S&P Global",
           "撤销",
           "—",
-          "2026-01-22 应公司要求（非评级上调）"
+          "2026-01-22 应公司要求（非评级上调）",
+          "BBB (Stable)"
         ]
       ],
       "refi": [
