@@ -474,8 +474,8 @@ en: {
   c_p3_s:'EBITDA bars and consolidated net profit line, IDR bn. 9M26 in green.',
   c_p4_t:'Revenue vs gross margin (2015–2025 & 9M26)',
   c_p4_s:'Revenue bars with gross-margin overlay (dual axis). 9M26 in green.',
-  seg_h:'Segment P&L by business (FY2024 vs FY2025)',
-  seg_note:'<span style="color:#666;font-size:12px">Note: Real estate net profit includes large inter-segment other income (~IDR 1.4tn in 2025, ~1.2tn in 2024, mainly dividends from Power/Services subsidiaries and inter-company gains; 100% eliminated in consolidation). Operating net is materially lower. Ownership: real estate includes the 51%-owned Kendal JV with Sembcorp; other segments are wholly owned.</span>',
+  seg_h:'Segment P&L by business (FY2024 vs FY2025, + 9M26)',
+  seg_note:'<span style="color:#666;font-size:12px">9M26 = nine months ended 30 Sep 2026 (unaudited; Note 35, interim FS). Net profit is segment total (incl. NCI); consolidated total 391.7bn after eliminations. Note: Real estate net profit includes large inter-segment other income (~IDR 1.4tn in 2025, ~1.2tn in 2024, mainly dividends from Power/Services subsidiaries and inter-company gains; 100% eliminated in consolidation). Operating net is materially lower. Ownership: real estate includes the 51%-owned Kendal JV with Sembcorp; other segments are wholly owned.</span>',
   seg_s:'',
   ph1:'Phase <b>2016 peak</b>: net profit IDR427bn',
   ph2:'Phase <b>2017–2022 trough</b>: property downturn + pandemic + FX losses',
@@ -575,8 +575,8 @@ id: {
   c_p3_s:'Batang EBITDA dan garis laba bersih, Rp miliar. 9M26 hijau.',
   c_p4_t:'Pendapatan vs margin kotor (2015–2025 & 9M26)',
   c_p4_s:'Batang pendapatan dengan overlay margin kotor (sumbu ganda). 9M26 hijau.',
-  seg_h:'Laba-rugi per segmen usaha (FY2024 vs FY2025)',
-  seg_note:'<span style="color:#666;font-size:12px">Catatan: Laba bersih real estat mencakup pendapatan lain antar segmen yang besar (~Rp 1,4 triliun di 2025, ~1,2 triliun di 2024, terutama dividen dari anak usaha Power/Services dan laba transaksi antar perusahaan; 100% dieliminasi dalam konsolidasi). Laba operasional bersih jauh lebih rendah. Kepemilikan: real estat mencakup JV Kendal 51% dengan Sembcorp; segmen lain dimiliki penuh.</span>',
+  seg_h:'Laba-rugi per segmen usaha (FY2024 vs FY2025, + 9M26)',
+  seg_note:'<span style="color:#666;font-size:12px">9M26 = sembilan bulan hingga 30 Sep 2026 (tidak diaudit; Catatan 35, LK interim). Laba bersih adalah total segmen (termasuk NCI); total konsolidasi 391,7 miliar setelah eliminasi. Catatan: Laba bersih real estat mencakup pendapatan lain antar segmen yang besar (~Rp 1,4 triliun di 2025, ~1,2 triliun di 2024, terutama dividen dari anak usaha Power/Services dan laba transaksi antar perusahaan; 100% dieliminasi dalam konsolidasi). Laba operasional bersih jauh lebih rendah. Kepemilikan: real estat mencakup JV Kendal 51% dengan Sembcorp; segmen lain dimiliki penuh.</span>',
   seg_s:'',
   ph1:'Fase <b>puncak 2016</b>: laba bersih Rp426,5 miliar',
   ph2:'Fase <b>palung 2017–2022</b>: penurunan properti + pandemi + rugi selisih kurs',
@@ -676,8 +676,8 @@ zh: {
   c_p3_s:'EBITDA 柱与合并净利润线，十亿盾。9M26 绿色。',
   c_p4_t:'营收与毛利率（2015–2025 与 9M26）',
   c_p4_s:'营收柱叠加毛利率（双轴）。9M26 绿色。',
-  seg_h:'分业务板块损益 (FY2024 vs FY2025)',
-  seg_note:'<span style="color:#666;font-size:12px">注：房地产板块净利润含大额板块间其他收益（2025 约 1.4 万亿、2024 约 1.2 万亿印尼盾，主要为 Power/Services 子公司股利及内部交易利润；合并时 100% 抵销）；经营性净利润显著更低。持股：房地产含与 Sembcorp 合资的 Kendal 51%；其余板块均为全资。</span>',
+  seg_h:'分业务板块损益（FY2024 vs FY2025，+ 9M26）',
+  seg_note:'<span style="color:#666;font-size:12px">9M26 = 截至 2026-09-30 的九个月（未经审计；中期报表附注 35）。净利为板块合计（含少数股东权益）；抵销后合并合计 391.7。注：房地产板块净利润含大额板块间其他收益（2025 约 1.4 万亿、2024 约 1.2 万亿印尼盾，主要为 Power/Services 子公司股利及内部交易利润；合并时 100% 抵销）；经营性净利润显著更低。持股：房地产含与 Sembcorp 合资的 Kendal 51%；其余板块均为全资。</span>',
   seg_s:'',
   ph1:'阶段 <b>2016 高点</b>：净利 426.5B',
   ph2:'阶段 <b>2017–2022 低谷</b>：地产下行 + 疫情 + 汇兑损失',
@@ -1602,15 +1602,20 @@ function fmtInt(x){ return Math.round(x).toString().replace(/\B(?=(\d{3})+(?!\d)
 function segTableHtml(){
   if (typeof SEG === 'undefined' || !SEG) return '';
   var lbl = SEG.labels[LANG];
-  var h = '<div class="g-table-wrap"><table class="g-table"><colgroup><col style="width:22%"><col style="width:13%"><col style="width:10%"><col style="width:10%"><col style="width:8%"><col style="width:10%"><col style="width:10%"><col style="width:8%"></colgroup>';
+  var h = '<div class="g-table-wrap"><table class="g-table" style="min-width:1080px"><colgroup><col style="width:18%"><col style="width:12%"><col style="width:7%"><col style="width:7%"><col style="width:6%"><col style="width:7%"><col style="width:7%"><col style="width:6%"><col style="width:7%"><col style="width:7%"><col style="width:6%"></colgroup>';
   h += '<thead><tr><th>Segment</th><th>Own %</th>'
+     + '<th>Net Profit 9M26 (IDR bn)</th><th>Revenue 9M26 (IDR bn)</th><th>GPM 9M26 (%)</th>'
      + '<th>Net Profit 2025 (IDR bn)</th><th>Revenue 2025 (IDR bn)</th><th>GPM 2025 (%)</th>'
      + '<th>Net Profit 2024 (IDR bn)</th><th>Revenue 2024 (IDR bn)</th><th>GPM 2024 (%)</th></tr></thead><tbody>';
   for (var i=0;i<SEG.rows.length;i++){
     var r = SEG.rows[i];
     var nc = r.net[1] < 0 ? ' style="color:var(--clay);font-weight:600"' : '';
+    var nc26 = r.net[2] < 0 ? ' style="color:var(--clay);font-weight:600"' : '';
     h += '<tr><td class="b">' + (lbl[r.key]||r.key) + '</td>'
        + '<td class="p" style="font-size:10px;line-height:1.3">' + (r.ownpct.indexOf('%') >= 0 ? r.ownpct : r.ownpct + '%') + '</td>'
+       + '<td class="p"' + nc26 + '>' + fmtInt(r.net[2]) + '</td>'
+       + '<td class="p">' + fmtInt(r.rev[2]) + '</td>'
+       + '<td class="p">' + r.gpm[2].toFixed(1) + '%</td>'
        + '<td class="p"' + nc + '>' + fmtInt(r.net[1]) + '</td>'
        + '<td class="p">' + fmtInt(r.rev[1]) + '</td>'
        + '<td class="p">' + r.gpm[1].toFixed(1) + '%</td>'
@@ -1621,6 +1626,7 @@ function segTableHtml(){
   if (SEG.total){
     var t = SEG.total;
     h += '<tr style="background:#EFF2EC;font-weight:700"><td>Segment total (pre-elimination)</td><td></td>'
+       + '<td class="p">' + fmtInt(t.net[2]) + '</td><td class="p">' + fmtInt(t.rev[2]) + '</td><td class="p">' + t.gpm[2].toFixed(1) + '%</td>'
        + '<td class="p">' + fmtInt(t.net[1]) + '</td><td class="p">' + fmtInt(t.rev[1]) + '</td><td class="p">' + t.gpm[1].toFixed(1) + '%</td>'
        + '<td class="p">' + fmtInt(t.net[0]) + '</td><td class="p">' + fmtInt(t.rev[0]) + '</td><td class="p">' + t.gpm[0].toFixed(1) + '%</td></tr>';
   }
