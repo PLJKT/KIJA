@@ -1,5 +1,11 @@
 # KIJA Dashboard — Changelog (internal, not shown on page)
 
+## v1.19.2 – 2026-11-01
+- EBITDA chart (o6) now 9M26: new 9M26 bar 1,183.0 alongside 1H26 747.7 (grey, for reference); title → "EBITDA (2015–2025, 1H26 & 9M26)" (en/id/zh); caption updated — 9M26 EBITDA 1,183.0 = op. profit 1,025.5 + D&A 157.5 (segment disclosure Exhibit E/90, Note 35; margin 27.8%); 9M25 1,192.2; YoY ≈ -0.8%. Old "9M26 EBITDA not published / D&A not disclosed" note removed
+- Q26.ebitda added (1,183.0); DEC rows 9M26 (en/id/zh): EBITDA n/a → 1,183.0; Net debt/EBITDA n/a → 1.45x (9M26 net debt 1,710.1 / EBITDA 1,183.0; FY25 0.6x)
+- Regression fix: Decision-metrics table (dec-tbl) on Risk page was dropped by R53 compact-tables refactor — restored container + fill call (i18n labels & data were intact); table renders 11 rows with 9M2026 column
+- Verified: local 8899 + live GitHub Pages (commit b570c8f, built) — o6 13 bars (2015–2025, 1H26 747.7, 9M26 1,183.0), new caption present & "not published" gone, DEC table 11 rows (1,183.0 / 1.45x), console 0 errors, en/id/zh captions & rows correct
+
 ## v1.19.1 – 2026-10-31
 - Overview snapshot/period labels moved 1H2026 → 9M2026 (ov26_tag en/id/zh "9M2026 (interim, unaudited)"; dec_h → 9M26 vs FY2025 vs FY2024; wch_26 + `<th>` ×2 → 9M2026)
 - Marketing sales progress chart + KPI card: kept official 1H26 figures (1,187.6bn = Kendal 847.6 + Cikarang 340.0; 32% of 3,750 target) with explicit "9M26 not yet published" notes — user-approved convention (9M26 cumulative marketing sales not disclosed in any official public channel: IDX 202610 filings batch, company newsroom 2026-10-23, investor deck; 9M25 precedent exists but no 9M26 version found)
