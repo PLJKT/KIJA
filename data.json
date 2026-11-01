@@ -962,164 +962,135 @@
         }
       ]
     },
-    "prof": {
-      "en": [
+    "prof": {      "en": [
         {
-          "l": "Gross margin (FY25)",
-          "v": 39,
+          "l": "Gross margin (9M26)",
+          "v": 37.1,
           "u": "%",
-          "d": "down from 52% peak (2022); land-mix pressure",
+          "d": "up from 1H 34.5%; FY25 39%",
+          "c": "up"
+        },
+        {
+          "l": "EBITDA margin (9M26)",
+          "v": 27.8,
+          "u": "%",
+          "d": "EBITDA 1,183.0 / revenue 4,254.9; FY25 33.7%",
           "c": "dn"
         },
         {
-          "l": "EBITDA margin (FY25)",
-          "v": 33.7,
+          "l": "Net margin (9M26)",
+          "v": 9.2,
           "u": "%",
-          "d": "EBITDA 1,735.5bn / revenue 5,149bn",
-          "c": "flat"
-        },
-        {
-          "l": "Net margin (FY25)",
-          "v": 16.6,
-          "u": "%",
-          "d": "consolidated net profit / revenue",
-          "c": "up"
-        },
-        {
-          "l": "ROE (FY25)",
-          "v": 11,
-          "u": "%",
-          "d": "avg ~1% in 2018-22 trough; recovering",
-          "c": "up"
-        },
-        {
-          "l": "ROA (FY25)",
-          "v": 5.7,
-          "u": "%",
-          "d": "net profit / total assets",
-          "c": "up"
-        },
-        {
-          "l": "FCF margin (FY25)",
-          "v": 33.7,
-          "u": "%",
-          "d": "conservative: CFO 2,402 - capex 169 - land 496 = 1,738",
-          "c": "up"
-        }
-      ],
-      "id": [
-        {
-          "l": "Margin kotor (FY25)",
-          "v": 39,
-          "u": "%",
-          "d": "turun dari puncak 52% (2022)",
+          "d": "consolidated NP 391.7 / revenue 4,254.9; FY25 16.6%",
           "c": "dn"
         },
         {
-          "l": "Margin EBITDA (FY25)",
-          "v": 33.7,
+          "l": "Operating margin (9M26)",
+          "v": 24.1,
           "u": "%",
-          "d": "EBITDA 1.735,5miliar / pendapatan 5.149miliar",
-          "c": "flat"
-        },
-        {
-          "l": "Margin bersih (FY25)",
-          "v": 16.6,
-          "u": "%",
-          "d": "laba bersih konsolidasi / pendapatan",
+          "d": "op. profit 1,025.5 / revenue 4,254.9; up from 1H ~21.5%",
           "c": "up"
         },
         {
-          "l": "ROE (FY25)",
-          "v": 11,
+          "l": "ROE (9M26)",
+          "v": 1.0,
           "u": "%",
-          "d": "rata-rata ~1% saat trough 2018-22",
-          "c": "up"
-        },
-        {
-          "l": "ROA (FY25)",
-          "v": 5.7,
-          "u": "%",
-          "d": "laba bersih / total aset",
-          "c": "up"
-        },
-        {
-          "l": "Margin FCF (FY25)",
-          "v": 33.7,
-          "u": "%",
-          "d": "konservatif: AKO 2.402 - capex 169 - tanah 496 = 1.738",
-          "c": "up"
-        }
-      ],
-      "zh": [
-        {
-          "l": "毛利率 (FY25)",
-          "v": 39,
-          "u": "%",
-          "d": "较 2022 峰值 52% 回落；土地结构压力",
+          "d": "parent NP 60.5 / parent equity 6,295.1; one-offs drag",
           "c": "dn"
         },
         {
-          "l": "EBITDA 率 (FY25)",
-          "v": 33.7,
+          "l": "ROA (9M26)",
+          "v": 2.6,
           "u": "%",
-          "d": "EBITDA 1,735.5 亿 / 营收 5,149 亿",
-          "c": "flat"
-        },
-        {
-          "l": "净利率 (FY25)",
-          "v": 16.6,
-          "u": "%",
-          "d": "合并净利润 / 营收",
-          "c": "up"
-        },
-        {
-          "l": "ROE (FY25)",
-          "v": 11,
-          "u": "%",
-          "d": "2018-22 低谷约 1%，持续回升",
-          "c": "up"
-        },
-        {
-          "l": "ROA (FY25)",
-          "v": 5.7,
-          "u": "%",
-          "d": "净利润 / 总资产",
-          "c": "up"
-        },
-        {
-          "l": "FCF 率 (FY25)",
-          "v": 33.7,
-          "u": "%",
-          "d": "保守口径：经营现金流 2,402 - 资本开支 169 - 购地 496 = 1,738",
-          "c": "up"
+          "d": "consolidated NP 391.7 / total assets 15,151.1",
+          "c": "dn"
         }
-      ]
-    }
-  },
-  "EV": {
-    "ev24": {
-      "en": [
-        [
-          "2024",
-          "Marketing sales hit a record 3,188bn (+44%, 28% above target); Cikarang 33% / Kendal 67%"
-        ],
-        [
-          "2024 H1",
-          "Founder SD Darmono retook the helm and reset strategy"
-        ],
-        [
-          "2024",
-          "Kendal JV (KIK) paid dividends of 322.9bn (KIJA holds 51%)"
-        ],
-        [
-          "FY2024",
-          "FX loss of 205.7bn weighed on net profit"
-        ],
-        [
-          "Dec 2024",
-          "Share price closed at 186 IDR; market cap ~3.9tn; FY24 P/E ~11x"
-        ]
+      ],      "id": [
+        {
+          "l": "Margin kotor (9M26)",
+          "v": 37.1,
+          "u": "%",
+          "d": "naik dari 1H 34,5%; FY25 39%",
+          "c": "up"
+        },
+        {
+          "l": "Margin EBITDA (9M26)",
+          "v": 27.8,
+          "u": "%",
+          "d": "EBITDA 1.183,0 / pendapatan 4.254,9; FY25 33,7%",
+          "c": "dn"
+        },
+        {
+          "l": "Margin bersih (9M26)",
+          "v": 9.2,
+          "u": "%",
+          "d": "laba bersih konsolidasi 391,7 / pendapatan 4.254,9; FY25 16,6%",
+          "c": "dn"
+        },
+        {
+          "l": "Margin operasi (9M26)",
+          "v": 24.1,
+          "u": "%",
+          "d": "laba usaha 1.025,5 / pendapatan 4.254,9; naik dari 1H ~21,5%",
+          "c": "up"
+        },
+        {
+          "l": "ROE (9M26)",
+          "v": 1.0,
+          "u": "%",
+          "d": "laba induk 60,5 / ekuitas induk 6.295,1; beban satu kali",
+          "c": "dn"
+        },
+        {
+          "l": "ROA (9M26)",
+          "v": 2.6,
+          "u": "%",
+          "d": "laba bersih konsolidasi 391,7 / total aset 15.151,1",
+          "c": "dn"
+        }
+      ],      "zh": [
+        {
+          "l": "毛利率（9M26）",
+          "v": 37.1,
+          "u": "%",
+          "d": "较 1H 34.5% 回升；FY25 39%",
+          "c": "up"
+        },
+        {
+          "l": "EBITDA 率（9M26）",
+          "v": 27.8,
+          "u": "%",
+          "d": "EBITDA 1,183.0 / 营收 4,254.9；FY25 33.7%",
+          "c": "dn"
+        },
+        {
+          "l": "净利率（9M26）",
+          "v": 9.2,
+          "u": "%",
+          "d": "合并净利 391.7 / 营收 4,254.9；FY25 16.6%",
+          "c": "dn"
+        },
+        {
+          "l": "营业利润率（9M26）",
+          "v": 24.1,
+          "u": "%",
+          "d": "经营利润 1,025.5 / 营收 4,254.9；较 1H ~21.5% 回升",
+          "c": "up"
+        },
+        {
+          "l": "ROE（9M26）",
+          "v": 1.0,
+          "u": "%",
+          "d": "归母净利 60.5 / 归母权益 6,295.1；一次性费用拖累",
+          "c": "dn"
+        },
+        {
+          "l": "ROA（9M26）",
+          "v": 2.6,
+          "u": "%",
+          "d": "合并净利 391.7 / 总资产 15,151.1",
+          "c": "dn"
+        }
       ],
       "id": [
         [
