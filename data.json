@@ -742,21 +742,21 @@
           "l": "Land bank (30 Jun 26)",
           "v": 5089,
           "u": "ha",
-          "d": "4 projects",
+          "d": "4 projects · 30 Jun 2026 (1H26 company)",
           "c": "up"
         },
         {
           "l": "Land for development (book)",
-          "v": 4443,
+          "v": 4473,
           "u": "ha",
-          "d": "31 Dec 2025 (AR2025 n.7)",
+          "d": "30 Sep 2026 (Q3 FS n.7, unaudited)",
           "c": "flat"
         },
         {
           "l": "Book value (land for dev)",
-          "v": 5783.5,
+          "v": 5470.9,
           "u": "IDR bn",
-          "d": "at cost, 31 Dec 2025",
+          "d": "at cost, 30 Sep 2026",
           "c": "flat"
         },
         {
@@ -772,21 +772,21 @@
           "l": "Land bank (30 Jun 26)",
           "v": 5089,
           "u": "ha",
-          "d": "4 proyek",
+          "d": "4 proyek · 30 Jun 2026 (perusahaan, 1H26)",
           "c": "up"
         },
         {
           "l": "Tanah pengembangan (buku)",
-          "v": 4443,
+          "v": 4473,
           "u": "ha",
-          "d": "31 Des 2025 (n.7 AR2025)",
+          "d": "30 Sep 2026 (n.7 FS Q3, tidak diaudit)",
           "c": "flat"
         },
         {
           "l": "Nilai buku (tanah pengemb.)",
-          "v": 5783.5,
+          "v": 5470.9,
           "u": "Rp miliar",
-          "d": "biaya perolehan, 31 Des 2025",
+          "d": "biaya perolehan, 30 Sep 2026",
           "c": "flat"
         },
         {
@@ -802,21 +802,21 @@
           "l": "土地储备（2026-06-30）",
           "v": 5089,
           "u": "公顷",
-          "d": "4 个项目",
+          "d": "4 个项目 · 2026-06-30（1H26 公司披露）",
           "c": "up"
         },
         {
           "l": "土地开发（账面）",
-          "v": 4443,
+          "v": 4473,
           "u": "公顷",
-          "d": "2025-12-31（年报附注 7）",
+          "d": "2026-09-30（Q3 报表附注 7，未审计）",
           "c": "flat"
         },
         {
           "l": "土地开发账面价值",
-          "v": 5783.5,
+          "v": 5470.9,
           "u": "十亿盾",
-          "d": "按成本计，2025-12-31",
+          "d": "按成本计，2026-09-30",
           "c": "flat"
         },
         {
@@ -3486,21 +3486,21 @@
         "l": "Land bank (30 Jun 26)",
         "v": 5089,
         "u": "ha",
-        "d": "4 projects",
+        "d": "4 projects · 30 Jun 2026 (1H26 company)",
         "c": "up"
       },
       {
         "l": "Land for development (book)",
-        "v": 4443,
+        "v": 4473,
         "u": "ha",
-        "d": "31 Dec 2025 (AR2025 n.7)",
+        "d": "30 Sep 2026 (Q3 FS n.7, unaudited)",
         "c": "flat"
       },
       {
         "l": "Book value (land for dev)",
-        "v": 5783.5,
+        "v": 5470.9,
         "u": "IDR bn",
-        "d": "at cost, 31 Dec 2025",
+        "d": "at cost, 30 Sep 2026",
         "c": "flat"
       },
       {
@@ -3563,8 +3563,21 @@
     ],
     "total": {
       "ha": 5089,
-      "dev": 4443,
-      "book": 5783.5
+      "dev": 4473,
+      "book": 5470.9
+    },
+    "series": {
+      "y": ["2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025","9M26"],
+      "area": [3148,3144,3186,3197,4446,4441,4451,4526,4516,4452,4443,4473],
+      "book": [4436.5,4650.9,5078.7,5263.2,5530.1,5527.3,5666.9,5852.6,6126.5,5887.1,5783.5,5470.9]
+    },
+    "comp": {
+      "y": ["2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025","9M26"],
+      "land": [4436.5,4650.9,5078.7,5263.2,5530.1,5527.3,5666.9,5852.6,6126.5,5887.1,5783.5,5470.9],
+      "inv": [688.0,1008.6,1101.8,1281.9,1398.7,1513.2,1507.9,1437.5,1473.0,1408.7,1415.5,1653.4],
+      "ppe": [2192.5,2307.1,2369.8,2247.4,2140.9,2033.8,1948.4,2062.3,2046.2,2057.7,2232.1,2513.5],
+      "other": [2423.7,2766.9,2716.0,2991.3,3114.9,3125.9,3168.9,3758.1,3301.7,4663.9,5625.1,5513.3],
+      "total": [9740.7,10733.5,11266.3,11783.8,12184.6,12200.2,12292.1,13110.5,12947.4,14017.4,15056.2,15151.1]
     }
   },
   "VAL": {
@@ -4391,9 +4404,9 @@
         "Total",
         "4 projects",
         "5,089",
-        "4,443",
-        "5,783.5",
-        "130.2",
+        "4,473",
+        "5,470.9",
+        "122.3",
         "—",
         "—"
       ]
@@ -4419,9 +4432,9 @@
         "Total",
         "4 proyek",
         "5.089",
-        "4.443",
-        "5.783,5",
-        "130,2",
+        "4.473",
+        "5.470,9",
+        "122,3",
         "—",
         "—"
       ]
@@ -4447,9 +4460,9 @@
         "合计",
         "4 个项目",
         "5,089",
-        "4,443",
-        "5,783.5",
-        "130.2",
+        "4,473",
+        "5,470.9",
+        "122.3",
         "—",
         "—"
       ]
@@ -4968,7 +4981,13 @@
       "mandiri": "Bank Mandiri",
       "ina": "Bank INA Perdana",
       "ocbc": "Bank OCBC NISP",
-      "stBank": "Short-term bank loans"
+      "stBank": "Short-term bank loans",
+      "area": "Area (Ha)",
+      "lbLand": "Land for development",
+      "lbInv": "Inventories",
+      "lbPpe": "PP&E",
+      "lbOther": "Other assets",
+      "lbTot": "Total assets"
     },
     "id": {
       "book": "Nilai buku",
@@ -4982,7 +5001,13 @@
       "mandiri": "Bank Mandiri",
       "ina": "Bank INA Perdana",
       "ocbc": "Bank OCBC NISP",
-      "stBank": "Pinjaman bank jangka pendek"
+      "stBank": "Pinjaman bank jangka pendek",
+      "area": "Luas (Ha)",
+      "lbLand": "Tanah pengembangan",
+      "lbInv": "Persediaan",
+      "lbPpe": "Aset tetap",
+      "lbOther": "Aset lainnya",
+      "lbTot": "Total aset"
     },
     "zh": {
       "book": "账面价值",
@@ -4996,7 +5021,13 @@
       "mandiri": "Bank Mandiri",
       "ina": "Bank INA Perdana",
       "ocbc": "Bank OCBC NISP",
-      "stBank": "短期银行借款"
+      "stBank": "短期银行借款",
+      "area": "面积（公顷）",
+      "lbLand": "土地开发",
+      "lbInv": "存货",
+      "lbPpe": "不动产、厂房及设备",
+      "lbOther": "其他资产",
+      "lbTot": "总资产"
     }
   },
   "VALI": {
