@@ -1,6 +1,7 @@
 # KIJA Dashboard — Changelog (internal, not shown on page)
 
 ## v1.20.0 – 2026-11-02
+- Fix (post-release, same version): lb-3 dual-axis chart top-right text overlap — right y-axis name "IDR bn" (default axis-end position) collided with the centred legend; removed the right axis name and moved the unit into the legend item ("Book value (IDR bn)"), so the legend row now holds both units (Area (Ha) / Book value (IDR bn)) with nothing overlapping
 - Land Bank page: full 9M26 alignment + two new charts (user request: "把这两个新做的图表放在 Land Bank page + 把该页其它数据查一遍")
 - New chart lb-3 "Land for development: area vs book value 2015–9M2026": official FS note 7 area (Ha, unaudited, "Luas tanah (Ha) (Tidak diaudit)") bar + book value (IDR bn) line, dual y-axis; 12 time points 2015→9M26: area [3148,3144,3186,3197,4446,4441,4451,4526,4516,4452,4443,4473], book [4436.5,4650.9,5078.7,5263.2,5530.1,5527.3,5666.9,5852.6,6126.5,5887.1,5783.5,5470.9] (current+non-current, per official FS); captions note the 2019 jump = disclosure-basis change (by location → by title status), not land purchases
 - New chart lb-4 "Total asset composition 2015–9M2026 (IDR bn)": stacked bar (land for development / inventories / PP&E / other assets) + total-assets line; totals [9740.7,10733.5,11266.3,11783.8,12184.6,12200.2,12292.1,13110.5,12947.4,14017.4,15056.2,15151.1] close exactly per official Exhibit A (9M26 = IDX figure 15,151,124mn); LAND.series/comp added to data.json + embedded block; NXT gains area/lbLand/lbInv/lbPpe/lbOther/lbTot keys (en/id/zh)

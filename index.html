@@ -1183,13 +1183,13 @@ function buildOpt(id){
     return {tooltip: baseTooltip(), legend: legendT(), grid: baseGrid(),
       xAxis: baseX(ls.y),
       yAxis: [
-        {type: 'value', name: 'Ha', nameTextStyle: {color: AX.color, fontSize: 11}, axisLabel: {color: AX.color, fontSize: 11}, splitLine: SPLIT},
-        {type: 'value', name: 'IDR bn', nameTextStyle: {color: AX.color, fontSize: 11}, axisLabel: {color: AX.color, fontSize: 11}, splitLine: {show: false}}
+        {type: 'value', axisLabel: {color: AX.color, fontSize: 11}, splitLine: SPLIT},
+        {type: 'value', axisLabel: {color: AX.color, fontSize: 11}, splitLine: {show: false}}
       ],
       series: [
         {name: N('area'), type: 'bar', data: ls.area, barMaxWidth: 22, itemStyle: {color: C.green},
           label: {show: true, position: 'top', fontSize: 9, color: '#5C6B61', formatter: lblFmt()}},
-        {name: N('book'), type: 'line', yAxisIndex: 1, data: ls.book, smooth: true, symbolSize: 6,
+        {name: N('book') + ' (IDR bn)', type: 'line', yAxisIndex: 1, data: ls.book, smooth: true, symbolSize: 6,
           lineStyle: {width: 2, color: C.blue}, itemStyle: {color: C.blue}}
       ]};
   }
