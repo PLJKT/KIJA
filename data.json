@@ -5033,7 +5033,7 @@
   "VALI": {
     "en": {
       "h": "Valuation Illustration",
-      "sub": "DCF · P/E · P/B · SOTP vs. market price — illustrative only, not investment advice",
+      "sub": "DCF · P/E · P/B · SOTP · NAV vs. market price — illustrative only, not investment advice",
       "disc": "Based on audited FY2025 results and the 18 Sep 2026 close of 180.0 IDR. Weighted shares 20.59 bn; parent BVPS 304.1; EPS 20.55; EBITDA 1,735.5 bn; net debt (9M26) 1,710.1 bn (debt 4,863.8 − cash 3,153.7). DCF net-debt basis uses the 9M26 figure.",
       "inputsH": "Inputs (audited FY2025 unless noted)",
       "inputs": [
@@ -5095,6 +5095,13 @@
           "250.0",
           "250.0",
           "250.0"
+        ],
+        [
+          "NAV (1.0x / 1.5x / 2.0x)",
+          "Total-equity BVPS 395.6 + land for development revalued at 1.5x / 2.0x book (9M26 land 5,470.9 bn); low = book value only",
+          "395.6",
+          "528.5",
+          "661.3"
         ]
       ],
       "weightNote": "Weighted fair value = 35% P/E + 25% P/B + 30% DCF + 10% SOTP. Liquidation value is shown separately as an asset-backing reference.",
@@ -5127,6 +5134,13 @@
           "+38.9%",
           "28.0%",
           "Broker buy target"
+        ],
+        [
+          "NAV (base 1.5x)",
+          "528.5",
+          "+193.6%",
+          "65.9%",
+          "Land at 1.5x book — deep discount to revalued assets"
         ],
         [
           "Weighted (base)",
@@ -5166,7 +5180,7 @@
     },
     "id": {
       "h": "Ilustrasi Valuasi",
-      "sub": "DCF · P/E · P/B · SOTP dibanding harga pasar — hanya ilustrasi, bukan saran investasi",
+      "sub": "DCF · P/E · P/B · SOTP · NAV dibanding harga pasar — hanya ilustrasi, bukan saran investasi",
       "disc": "Berdasarkan hasil audit FY2025 dan harga penutupan 18 Sep 2026 sebesar 180,0 IDR. Saham tertimbang 20,59 miliar; BVPS induk 304,1; EPS 20,55; EBITDA 1.735,5 miliar; utang bersih (9M26) 1.710,1 miliar (utang 4.863,8 − kas 3.153,7). Basis utang bersih DCF memakai angka 9M26.",
       "inputsH": "Masukan (audit FY2025 kecuali disebut)",
       "inputs": [
@@ -5228,6 +5242,13 @@
           "250,0",
           "250,0",
           "250,0"
+        ],
+        [
+          "NAV (1,0x / 1,5x / 2,0x)",
+          "BVPS ekuitas total 395,6 + tanah pengembangan dinilai ulang 1,5x / 2,0x nilai buku (tanah 9M26 5.470,9 miliar); rendah = nilai buku saja",
+          "395,6",
+          "528,5",
+          "661,3"
         ]
       ],
       "weightNote": "Nilai wajar tertimbang = 35% P/E + 25% P/B + 30% DCF + 10% SOTP. Nilai likuidasi ditampilkan terpisah sebagai referensi aset-penopang.",
@@ -5260,6 +5281,13 @@
           "+38.9%",
           "28.0%",
           "Target beli broker"
+        ],
+        [
+          "NAV (base 1.5x)",
+          "528.5",
+          "+193.6%",
+          "65.9%",
+          "Tanah pada 1,5x nilai buku — diskon dalam terhadap aset revaluasi"
         ],
         [
           "Weighted (base)",
@@ -5299,7 +5327,7 @@
     },
     "zh": {
       "h": "估值测算",
-      "sub": "DCF · P/E · P/B · SOTP 与现价对比 —— 仅作说明性估算，不构成投资建议",
+      "sub": "DCF · P/E · P/B · SOTP · NAV 与现价对比 —— 仅作说明性估算，不构成投资建议",
       "disc": "基于 FY2025 审计业绩与 18 Sep 2026 收盘价 180.0 盾。加权股本 20.59B；母公司每股净资产 304.1；EPS 20.55；EBITDA 1,735.5B；净负债（9M26）1,710.1B（债务 4,863.8 − 现金 3,153.7）。DCF 采用 9M26 净负债口径。",
       "inputsH": "输入（FY2025 审计口径，另有注明除外）",
       "inputs": [
@@ -5361,6 +5389,13 @@
           "250.0",
           "250.0",
           "250.0"
+        ],
+        [
+          "NAV（1.0x / 1.5x / 2.0x）",
+          "总权益每股净资产 395.6 + 待开发土地按账面 1.5x / 2.0x 重估（9M26 土地 5,470.9B）；低档仅按账面",
+          "395.6",
+          "528.5",
+          "661.3"
         ]
       ],
       "weightNote": "加权公允价值 = 35% P/E + 25% P/B + 30% DCF + 10% SOTP。清算价值单列，作为资产托底参照。",
@@ -5393,6 +5428,13 @@
           "+38.9%",
           "28.0%",
           "券商买入目标"
+        ],
+        [
+          "NAV（基准 1.5x）",
+          "528.5",
+          "+193.6%",
+          "65.9%",
+          "土地按账面 1.5x 重估——相对重估后资产深度折价"
         ],
         [
           "Weighted (base)",
