@@ -1180,7 +1180,7 @@ function buildOpt(id){
   }
   if (id === 'lb-3') {
     var ls = LAND.series || {y: [], area: [], book: []};
-    return {tooltip: baseTooltip(), legend: legendT(), grid: baseGrid(),
+    return {tooltip: baseTooltip(), legend: legendT(), grid: {left:48, right:44, top:34, bottom:30},
       xAxis: baseX(ls.y),
       yAxis: [
         {type: 'value', axisLabel: {color: AX.color, fontSize: 11}, splitLine: SPLIT},
