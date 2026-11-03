@@ -84,6 +84,7 @@ html = html[:m.start()] + 'var %s = ' % name + json.dumps(obj, ensure_ascii=Fals
 - The agent runs on Windows. **Do not use Bash syntax** (`&&`, heredocs, `$()`, `ls -la`).
 - For multi-line or quote-heavy edits, **write a `.py` file and run `python xxx.py`** rather than PowerShell here-strings.
 - PowerShell `Set-Content` changes encoding silently; use Python `open(path, 'w', encoding='utf-8')` for all file writes.
+- **`data.json` is the one repo file that is UTF-8 with BOM (`utf-8-sig`)** (matches how the browser serves it and how the price Action writes it). Every local read/write of `data.json` must use `encoding="utf-8-sig"`; reading it as plain `utf-8` fails `json.load` with a BOM error, and writing it as plain `utf-8` strips the BOM and desyncs the price Action. Other files (`.md`, `.py`, `.yml`, `index.html`) are plain UTF-8.
 - Use `assert`-based exact string matching in Python replace scripts (e.g. `assert old in c, "pattern not found"`) so a silent miss fails loudly.
 
 ---
@@ -302,6 +303,7 @@ Every number in the Risk & Direction page, annual-page narrative, and comparison
 
 - `.github/workflows/update-price.yml` runs weekdays ~09:30 UTC.
 - `.github/scripts/update_price.py` fetches from Yahoo Finance `query1.finance.yahoo.com/v8/finance/chart/<TICKER>.<exchange>`, extracts latest close, updates `VAL.close[last]`, KPI cards, and **all derived rows (market cap, P/E, P/B, dividend, YTD, EV/EBITDA, peer comparison)** in `data.json`, commits and pushes.
+- **Encoding contract (learned 2026-11-02 failure, fixed in commit 512baec): `data.json` in the repo is UTF-8 **with BOM** (`utf-8-sig`) — every local patch script preserves the BOM. `update_price.py` MUST open it with `encoding="utf-8-sig"` on BOTH read and write. Reading with plain `utf-8` makes `json.load` throw `JSONDecodeError: Unexpected UTF-8 BOM (decode using utf-8-sig)` and kills the whole scheduled run ("All jobs have failed"); writing with plain `utf-8` strips the BOM and silently breaks the next local patch script. `utf-8-sig` read tolerates both BOM/no-BOM, and write preserves the BOM — use it on both ends, never plain `utf-8` for this file.
 - **Live tickers**: KIJA + peers (e.g. DMAS, BEST, LPCK). Peers' audited fundamentals (EPS, BVPS, revenue) are constants from their latest annual/interim reports; only prices are live.
 - Note: Yahoo Finance API does NOT send CORS headers, so this must run server-side (GitHub Action), not in the browser. Verified dead ends (do not retry): Yahoo `quoteSummary /v10` and `quote /v7` both return 401; only `/v8/finance/chart/` works.
 - All live-derived numbers must auto-recompute when `refPrice` changes — user will verify with "are all related numbers auto-updated?"
