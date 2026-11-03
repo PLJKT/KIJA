@@ -117,3 +117,6 @@
 - Fixed AN.niParent 2016: 426.1 → 436.6 (audited FS 2016: parent 436,615,675,735; NCI -10,073,353,230)
 - Fixed AN.niParent 2018: 112.5 → 41.0 (audited FS 2018/2019: parent 40,971,008,075; NCI +26,129,394,868; EPS 1.97)
 - Cross-checked all years 2015-2025 vs official audited FS (2016, 2018, 2019, 2020 AR, 2022, 2023, 2024, 2025): only 2016 & 2018 were wrong
+
+## v1.20.1 – 2026-11-03
+- Fix (ops): daily share-price GitHub Action failed (11-02) with "Unexpected UTF-8 BOM (decode using utf-8-sig)" — data.json is utf-8-sig (BOM) per repo convention, but update_price.py read/wrote it as plain utf-8; aligned both ends to utf-8-sig (read tolerates BOM/no-BOM, write preserves BOM). Verified locally (compile + utf-8-sig readback + BOM-preserving round-trip), pushed, workflow re-triggered manually.

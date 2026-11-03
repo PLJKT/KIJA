@@ -104,7 +104,7 @@ def main():
     # time-sensitive technical rows (KIJA only)
     rsi, dma50, dma200, avgvol20, turn_bn, last_vol_m, tech_date = fetch_technicals(TICKER)
 
-    with open(DATA_FILE, "r", encoding="utf-8") as f:
+    with open(DATA_FILE, "r", encoding="utf-8-sig") as f:
         dj = json.load(f)
 
     # Update refPrice + price-derived peer-chart data in FY section
@@ -296,7 +296,7 @@ def main():
                 lytd_s = f"{lytd}% ({LPCK_BASE} → {lprice})" if lang != "zh" else f"{lytd}%（{LPCK_BASE} → {lprice}）"
                 peers[5][4] = lytd_s
 
-    with open(DATA_FILE, "w", encoding="utf-8") as f:
+    with open(DATA_FILE, "w", encoding="utf-8-sig") as f:
         json.dump(dj, f, ensure_ascii=False, indent=1)
 
     print(f"Updated price: {price} (prev: {prev_price}, date: {date_str}); DMAS {dprice}, BEST {bprice}, LPCK {lprice}")
