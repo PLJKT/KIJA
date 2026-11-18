@@ -846,9 +846,9 @@
     },
     {
      "l": "52-week range",
-     "v": 105,
+     "v": 102,
      "u": "— 364 IDR",
-     "d": "intraday (S&P); monthly low 111 (Digrin)",
+     "d": "intraday (Yahoo); low 102 on 2026-11-04",
      "c": "dn"
     },
     {
@@ -890,9 +890,9 @@
     },
     {
      "l": "Kisaran 52 minggu",
-     "v": 105,
+     "v": 102,
      "u": "— 364 IDR",
-     "d": "intraday (S&P); terendah bulanan 111 (Digrin)",
+     "d": "intraday (Yahoo); terendah 102 pada 2026-11-04",
      "c": "dn"
     },
     {
@@ -934,9 +934,9 @@
     },
     {
      "l": "52 周区间",
-     "v": 105,
+     "v": 102,
      "u": "— 364 盾",
-     "d": "盘中（S&P）；月收盘低点 111（Digrin）",
+     "d": "盘中（Yahoo）；低点 102（2026-11-04）",
      "c": "dn"
     },
     {
@@ -3623,9 +3623,9 @@
    },
    {
     "l": "52-week range",
-    "v": 105,
+    "v": 102,
     "u": "- 364 IDR",
-    "d": "intraday (S&P); monthly low 111 (Digrin)",
+    "d": "intraday (Yahoo); low 102 on 2026-11-04",
     "c": "dn"
    },
    {
@@ -5775,13 +5775,13 @@
     ],
     [
      "52-week range",
-     "105–364 IDR",
+     "102–364 IDR",
      "Yahoo & S&P; all-time high 405.5"
     ],
     [
      "52-week change / YTD 2026",
-     "n/a / -14.3%",
-     "Yahoo; YTD = 210 → 180"
+     "-40.9% / -47.6%",
+     "Yahoo; YTD = 210 → 110"
     ],
     [
      "Avg daily volume",
@@ -5891,13 +5891,13 @@
     ],
     [
      "Kisaran 52 minggu",
-     "105–364 IDR",
+     "102–364 IDR",
      "Yahoo & S&P; tertinggi sepanjang masa 405,5"
     ],
     [
      "Perubahan 52-minggu / YTD 2026",
-     "n/a / -14,3%",
-     "Yahoo; YTD = 210 → 180"
+     "-40,9% / -47,6%",
+     "Yahoo; YTD = 210 → 110"
     ],
     [
      "Volume harian rata-rata",
@@ -6007,13 +6007,13 @@
     ],
     [
      "52 周区间",
-     "105–364 盾",
+     "102–364 盾",
      "Yahoo 与 S&P；历史最高 405.5"
     ],
     [
      "52周涨跌 / 2026 年内",
-     "n/a / -14.3%",
-     "Yahoo；YTD = 210 → 180"
+     "-40.9% / -47.6%",
+     "Yahoo；YTD = 210 → 110"
     ],
     [
      "日均成交量",

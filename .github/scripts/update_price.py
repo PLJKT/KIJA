@@ -53,19 +53,22 @@ def fetch_price(ticker):
     return round(last_close), round(prev_close), last_ts
 
 def fetch_technicals(ticker):
-    """Fetch ~1y daily closes + volumes; return (rows, rsi14, dma50, dma200, avgvol20, last_turnover_bn, last_date)."""
+    """Fetch ~1y daily bars; return rsi14, dma50, dma200, avgvol20, last_turnover_bn, last_vol_m,
+    last_date, hi52, lo52, lo_date, first_close."""
     url = f"https://query1.finance.yahoo.com/v8/finance/chart/{ticker}?range=1y&interval=1d"
     req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
     with urllib.request.urlopen(req, timeout=15) as resp:
         data = json.loads(resp.read())
     result = data["chart"]["result"][0]
     q = result["indicators"]["quote"][0]
-    closes, vols, ts = q["close"], q["volume"], result["timestamp"]
-    rows = [(t, c, v) for t, c, v in zip(ts, closes, vols) if c is not None and v is not None]
+    closes, highs, lows, vols, ts = q["close"], q["high"], q["low"], q["volume"], result["timestamp"]
+    rows = [(t, c, h, l, v) for t, c, h, l, v in zip(ts, closes, highs, lows, vols) if c is not None and v is not None]
     if len(rows) < 30:
         raise ValueError("Not enough daily data for technicals")
     cs = [r[1] for r in rows]
-    vs = [r[2] for r in rows]
+    hs = [r[2] for r in rows]
+    ls = [r[3] for r in rows]
+    vs = [r[4] for r in rows]
     n = len(cs)
     def avg(a, k):
         return sum(a[-k:]) / k
@@ -73,9 +76,14 @@ def fetch_technicals(ticker):
     dma200 = avg(cs, min(200, n))
     avgvol20 = avg(vs, 20) / 1e6
     last = rows[-1]
-    last_turnover_bn = last[1] * last[2] / 1e9
-    last_vol_m = last[2] / 1e6
+    last_turnover_bn = last[1] * last[4] / 1e9
+    last_vol_m = last[4] / 1e6
     last_date = datetime.fromtimestamp(last[0], tz=timezone.utc).strftime("%Y-%m-%d")
+    hi52 = round(max(hs))
+    lo_row = min(rows, key=lambda r: r[3])
+    lo52 = round(lo_row[3])
+    lo_date = datetime.fromtimestamp(lo_row[0], tz=timezone.utc).strftime("%Y-%m-%d")
+    first_close = cs[0]
     # Wilder RSI-14
     gains, losses = [], []
     for i in range(1, n):
@@ -86,7 +94,7 @@ def fetch_technicals(ticker):
         ag = (ag * 13 + gains[i]) / 14
         al = (al * 13 + losses[i]) / 14
     rsi = 100 - 100 / (1 + ag / al) if al > 0 else 100
-    return rsi, dma50, dma200, avgvol20, last_turnover_bn, last_vol_m, last_date
+    return rsi, dma50, dma200, avgvol20, last_turnover_bn, last_vol_m, last_date, hi52, lo52, lo_date, first_close
 
 def main():
     price, prev_price, ts = fetch_price(TICKER)
@@ -102,7 +110,7 @@ def main():
     ldt = datetime.fromtimestamp(lts, tz=timezone.utc)
     ldate_str = ldt.strftime("%Y-%m-%d")
     # time-sensitive technical rows (KIJA only)
-    rsi, dma50, dma200, avgvol20, turn_bn, last_vol_m, tech_date = fetch_technicals(TICKER)
+    rsi, dma50, dma200, avgvol20, turn_bn, last_vol_m, tech_date, hi52, lo52, lo_date, first_close = fetch_technicals(TICKER)
 
     with open(DATA_FILE, "r", encoding="utf-8-sig") as f:
         dj = json.load(f)
@@ -183,6 +191,40 @@ def main():
             # [5] Dividend yield
             cards[5]["v"] = round(dy, 1)
             cards[5]["d"] = f"{L['dy']} {DPS} / {price}"
+
+        # [2] 52-week range card (auto-computed from the 1y Yahoo series)
+        cards[2]["v"] = lo52
+        cards[2]["u"] = f"— {hi52} 盾" if lang == "zh" else f"— {hi52} IDR"
+        if lang == "zh":
+            cards[2]["d"] = f"盘中（Yahoo）；低点 {lo52}（{lo_date}）"
+        elif lang == "id":
+            cards[2]["d"] = f"intraday (Yahoo); terendah {lo52} pada {lo_date}"
+        else:
+            cards[2]["d"] = f"intraday (Yahoo); low {lo52} on {lo_date}"
+
+    # Keep KEYP range / 52w-change / YTD rows in sync (all languages)
+    chg52 = (price / first_close - 1) * 100 if first_close else 0.0
+    ytd = (price - 210) / 210 * 100
+    range_labels = {"en": "52-week range", "id": "Kisaran 52 minggu", "zh": "52 周区间"}
+    chg_labels = {"en": "52-week change / YTD 2026", "id": "Perubahan 52-minggu / YTD 2026", "zh": "52周涨跌 / 2026 年内"}
+    if "KEYP" in dj:
+        for lang in ["en", "id", "zh"]:
+            kp = dj["KEYP"].get(lang)
+            if not kp or "rows" not in kp:
+                continue
+            dec = "," if lang == "id" else "."
+            unit = "盾" if lang == "zh" else "IDR"
+            for row in kp["rows"]:
+                if row[0] == range_labels[lang]:
+                    row[1] = f"{lo52}–{hi52} {unit}"
+                elif row[0] == chg_labels[lang]:
+                    row[1] = f"{chg52:+.1f}% / {ytd:+.1f}%".replace(".", dec)
+                    row[2] = f"Yahoo；YTD = 210 → {price}" if lang == "zh" else f"Yahoo; YTD = 210 → {price}"
+    # Legacy VAL.kpi range panel (kept in sync; not rendered on the page)
+    if "VAL" in dj and "kpi" in dj["VAL"] and len(dj["VAL"]["kpi"]) > 1:
+        dj["VAL"]["kpi"][1]["v"] = lo52
+        dj["VAL"]["kpi"][1]["u"] = f"- {hi52} IDR"
+        dj["VAL"]["kpi"][1]["d"] = f"intraday (Yahoo); low {lo52} on {lo_date}"
 
     # Update last monthly close and stats in VAL
     if "VAL" in dj:
