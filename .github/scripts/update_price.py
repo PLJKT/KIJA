@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Fetch latest KIJA.JK closing price from Yahoo Finance and update data.json."""
 import json
+import re
 import sys
 import urllib.request
 from datetime import datetime, timezone
@@ -13,7 +14,12 @@ LPCK_TICKER = "LPCK.JK"
 SHARES_BN = 20.59  # weighted avg shares (bn)
 EPS = 20.55        # FY25 audited EPS (IDR)
 BVPS = 304.1       # parent BVPS (IDR)
+BVPS_TOTAL = 395.6 # total-equity BVPS (IDR)
 DPS = 2.03         # FY25 dividend per share (IDR)
+REV_BN = 5149.4    # FY25 audited revenue (bn)
+NET_DEBT_BN = 1710.1  # 9M26 net debt (bn): debt 4,863.8 - cash 3,153.7
+EBITDA_BN = 1735.5    # FY25 audited EBITDA (bn)
+TP = 250           # Sucor SOTP target price (IDR)
 # DMAS (PT Puradelta Lestari) audited FY2025 (AR2025, IDX)
 DMAS_SHARES_BN = 48.198   # issued & paid-up shares (bn)
 DMAS_REV_BN = 1309.1      # FY25 audited revenue (bn)
@@ -112,13 +118,27 @@ def main():
     # time-sensitive technical rows (KIJA only)
     rsi, dma50, dma200, avgvol20, turn_bn, last_vol_m, tech_date, hi52, lo52, lo_date, first_close = fetch_technicals(TICKER)
 
+    # price-derived valuation constants (recomputed every run)
+    mcap_b = price * SHARES_BN
+    mcap_tn = mcap_b / 1000
+    pe = price / EPS
+    pb_p = price / BVPS
+    pb_t = price / BVPS_TOTAL
+    ps = price * SHARES_BN / REV_BN
+    dy_pct = DPS / price * 100
+    payout = DPS / EPS * 100
+    ev_b = mcap_b + NET_DEBT_BN
+    ev_ebitda = ev_b / EBITDA_BN
+    upside = round((TP / price - 1) * 100)
+    chg_pct = (price - prev_price) / prev_price * 100 if prev_price else 0.0
+
     with open(DATA_FILE, "r", encoding="utf-8-sig") as f:
         dj = json.load(f)
 
     # Update refPrice + price-derived peer-chart data in FY section
     if "FY" in dj:
         dj["FY"]["refPrice"] = price
-        dj["FY"]["kijaPBPS"] = [round(price / BVPS, 2), round(price * SHARES_BN / 5149.4, 2)]
+        dj["FY"]["kijaPBPS"] = [round(price / BVPS, 2), round(price * SHARES_BN / REV_BN, 2)]
         dj["FY"]["dmasPBPS"] = [round(dprice / DMAS_BVPS, 2), round(dprice * DMAS_SHARES_BN / DMAS_REV_BN, 2)]
         dj["FY"]["dmas"] = {
             "price": dprice,
@@ -191,23 +211,54 @@ def main():
             # [5] Dividend yield
             cards[5]["v"] = round(dy, 1)
             cards[5]["d"] = f"{L['dy']} {DPS} / {price}"
+            # [2] 52-week range card (auto-computed from the 1y Yahoo series)
+            cards[2]["v"] = lo52
+            cards[2]["u"] = f"— {hi52} 盾" if lang == "zh" else f"— {hi52} IDR"
+            if lang == "zh":
+                cards[2]["d"] = f"盘中（Yahoo）；低点 {lo52}（{lo_date}）"
+            elif lang == "id":
+                cards[2]["d"] = f"intraday (Yahoo); terendah {lo52} pada {lo_date}"
+            else:
+                cards[2]["d"] = f"intraday (Yahoo); low {lo52} on {lo_date}"
 
-        # [2] 52-week range card (auto-computed from the 1y Yahoo series)
-        cards[2]["v"] = lo52
-        cards[2]["u"] = f"— {hi52} 盾" if lang == "zh" else f"— {hi52} IDR"
-        if lang == "zh":
-            cards[2]["d"] = f"盘中（Yahoo）；低点 {lo52}（{lo_date}）"
-        elif lang == "id":
-            cards[2]["d"] = f"intraday (Yahoo); terendah {lo52} pada {lo_date}"
-        else:
-            cards[2]["d"] = f"intraday (Yahoo); low {lo52} on {lo_date}"
-
-    # Keep KEYP range / 52w-change / YTD rows in sync (all languages)
+    # Keep KEYP rows in sync (all languages): range / 52w-change / YTD + price-derived rows
     chg52 = (price / first_close - 1) * 100 if first_close else 0.0
     ytd = (price - 210) / 210 * 100
     range_labels = {"en": "52-week range", "id": "Kisaran 52 minggu", "zh": "52 周区间"}
     chg_labels = {"en": "52-week change / YTD 2026", "id": "Perubahan 52-minggu / YTD 2026", "zh": "52周涨跌 / 2026 年内"}
     if "KEYP" in dj:
+        derived = {
+            "en": {
+                0:  ["Delayed price", f"{price}.0 IDR ({chg_pct:+.1f}%); prev close {prev_price}.0", f"IDX close {date_str}; Yahoo Finance"],
+                1:  ["Market capitalization", f"{mcap_tn:.2f} tn IDR @ {price}", "Recalculated at latest close; 20.59 bn weighted shares"],
+                7:  ["P/E (FY25 audited)", f"{pe:.1f}x", f"{price} / {EPS:.2f}; TTM n/a (loss)"],
+                8:  ["Price / book", f"{pb_p:.2f}x", f"Parent BVPS {BVPS} (audited); {pb_t:.2f}x total equity {BVPS_TOTAL}"],
+                9:  ["Price / sales", f"{ps:.2f}x", f"{price} × {SHARES_BN} / FY25 revenue {REV_BN:,.1f}".replace(",", ",")],
+                10: ["EV / EV-EBITDA (FY25)", f"≈ {ev_b/1000:.2f} tn / ~{ev_ebitda:.1f}x", f"EV = mcap {mcap_tn:.2f}tn + net debt 1.71tn (9M26); FY25 EBITDA {EBITDA_BN:,.1f}".replace(",", ",")],
+                11: ["Dividend", f"{DPS} IDR; yield {dy_pct:.1f}%; payout {payout:.1f}%", "Yahoo; ex-div 17 Jun 2026; payout = 2.03 / 20.55"],
+                16: ["Avg daily volume", f"{avgvol20:.1f}M (20d)", "Yahoo, 20-day average"],
+            },
+            "id": {
+                0:  ["Harga tertunda", f"{price},0 IDR ({chg_pct:+.1f}%); penutupan sebelumnya {prev_price},0", f"IDX tutup {date_str}; Yahoo Finance"],
+                1:  ["Kapitalisasi pasar", f"{mcap_tn:.2f} tn Rp @ {price}", "Dihitung ulang pada penutupan terbaru; 20,59 miliar saham tertimbang"],
+                7:  ["P/E (FY25 audit)", f"{pe:.1f}x".replace(".", ","), f"{price} / 20,55; TTM n/a (rugi)"],
+                8:  ["Harga / buku", f"{pb_p:.2f}x".replace(".", ","), f"BVPS induk {BVPS:.1f} (audit); {pb_t:.2f}x ekuitas total {BVPS_TOTAL}".replace(".", ",")],
+                9:  ["Harga / penjualan", f"{ps:.2f}x".replace(".", ","), f"{price} × {SHARES_BN} / pendapatan FY25 5.149,4"],
+                10: ["EV / EV-EBITDA (FY25)", f"≈ {ev_b/1000:.2f} triliun / ~{ev_ebitda:.1f}x".replace(".", ","), f"EV = kapitalisasi {mcap_tn:.2f}tn + utang bersih 1,71tn (9M26); EBITDA FY25 1.735,5"],
+                11: ["Dividen", f"2,03 IDR; imbal hasil {dy_pct:.1f}%; payout {payout:.1f}%".replace(".", ","), "Yahoo; ex-div 17 Jun 2026; payout = 2,03 / 20,55"],
+                16: ["Volume harian rata-rata", f"{avgvol20:.1f} juta (20h)".replace(".", ","), "Yahoo, rata-rata 20 hari"],
+            },
+            "zh": {
+                0:  ["延迟价", f"{price}.0 盾（{chg_pct:+.1f}%）；昨收 {prev_price}.0", f"IDX {date_str} 收盘；Yahoo Finance"],
+                1:  ["市值", f"{mcap_tn:.2f} 万亿盾 @{price}", "按最新收盘重算；加权股本 20.59B"],
+                7:  ["市盈率（FY25 审计）", f"{pe:.1f}x", f"{price} / 20.55；TTM 因亏损不适用"],
+                8:  ["市净率", f"{pb_p:.2f}x", f"母公司 BVPS {BVPS}（审计）；总权益 {BVPS_TOTAL} 对应 {pb_t:.2f}x"],
+                9:  ["市销率", f"{ps:.2f}x", f"{price} × {SHARES_BN} / FY25 营收 5,149.4"],
+                10: ["EV / EV-EBITDA（FY25）", f"≈ {ev_b/1000:.2f} 万亿 / ~{ev_ebitda:.1f}x", f"EV = 市值 {mcap_tn:.2f} 万亿 + 净负债 1.71 万亿（9M26）；FY25 EBITDA 1,735.5"],
+                11: ["股息", f"每股 {DPS} 盾；股息率 {dy_pct:.1f}%；派息率 {payout:.1f}%", "Yahoo；除息日 2026-06-17；派息率 = 2.03 / 20.55"],
+                16: ["日均成交量", f"{avgvol20/100:.3f} 亿股（20 日）", "Yahoo，20 日平均"],
+            },
+        }
         for lang in ["en", "id", "zh"]:
             kp = dj["KEYP"].get(lang)
             if not kp or "rows" not in kp:
@@ -220,28 +271,14 @@ def main():
                 elif row[0] == chg_labels[lang]:
                     row[1] = f"{chg52:+.1f}% / {ytd:+.1f}%".replace(".", dec)
                     row[2] = f"Yahoo；YTD = 210 → {price}" if lang == "zh" else f"Yahoo; YTD = 210 → {price}"
-    # Legacy VAL.kpi range panel (kept in sync; not rendered on the page)
-    if "VAL" in dj and "kpi" in dj["VAL"] and len(dj["VAL"]["kpi"]) > 1:
-        dj["VAL"]["kpi"][1]["v"] = lo52
-        dj["VAL"]["kpi"][1]["u"] = f"- {hi52} IDR"
-        dj["VAL"]["kpi"][1]["d"] = f"intraday (Yahoo); low {lo52} on {lo_date}"
+            for idx, row in derived[lang].items():
+                if idx < len(kp["rows"]):
+                    kp["rows"][idx] = row
 
-    # Update last monthly close and stats in VAL
+    # Update last monthly close in VAL (monthly window itself is rolled manually)
     if "VAL" in dj:
         if "close" in dj["VAL"] and len(dj["VAL"]["close"]) > 0:
             dj["VAL"]["close"][-1] = price
-        if "stats" in dj["VAL"]:
-            for row in dj["VAL"]["stats"]:
-                if row[0] == "Price / date":
-                    row[1] = f"{price}.0 IDR · {date_str} (Yahoo Finance)"
-                elif row[0].startswith("Beta"):
-                    row[1] = f"0.25 / {rsi:.1f}"
-                elif row[0].startswith("50-DMA"):
-                    row[1] = f"{dma50:.1f} / {dma200:.1f}"
-                elif row[0].startswith("Avg daily volume"):
-                    row[1] = f"{avgvol20:.1f}M shares"
-                elif row[0].startswith("Daily turnover"):
-                    row[1] = f"≈ {turn_bn:.1f}B IDR · {last_vol_m:.1f}M shares ({tech_date}, Yahoo)"
 
     # Keep the rendered stats/peers tables (VTXT, all languages) in sync
     if "VTXT" in dj:
@@ -300,7 +337,7 @@ def main():
                 # P/E (FY25 EPS)
                 peers[1][1] = _f(price / EPS, 1, dec)
                 # P/S (FY25 revenue)
-                peers[2][1] = _f(price * SHARES_BN / 5149.4, 2, dec)
+                peers[2][1] = _f(price * SHARES_BN / REV_BN, 2, dec)
                 # Dividend yield
                 dy = _f(DPS / price * 100, 1, dec)
                 peers[3][1] = ("约 " if lang == "zh" else "~") + dy + "%"
@@ -337,6 +374,28 @@ def main():
                 lytd = round((lprice - LPCK_BASE) / LPCK_BASE * 100)
                 lytd_s = f"{lytd}% ({LPCK_BASE} → {lprice})" if lang != "zh" else f"{lytd}%（{LPCK_BASE} → {lprice}）"
                 peers[5][4] = lytd_s
+            # Sucor target-price upside note vs live price
+            if "analysts" in v and len(v["analysts"]) > 0 and len(v["analysts"][0]) >= 5:
+                if lang == "zh":
+                    v["analysts"][0][4] = f"SOTP；较 {price} 有 +{upside}% 空间"
+                else:
+                    v["analysts"][0][4] = f"SOTP; +{upside}% vs {price}"
+
+    # Refresh GLOS worked-example multiples at the live price
+    if "GLOS" in dj and "terms" in dj["GLOS"]:
+        terms = dj["GLOS"]["terms"]
+
+        def _sub(idx, pat, repl):
+            if idx < len(terms):
+                terms[idx]["x"] = re.sub(pat, repl, terms[idx]["x"])
+
+        _sub(1, r"~[\d.]+x on FY25", f"~{ev_ebitda:.1f}x on FY25")
+        _sub(6, r"[\d.]+x at \d+ IDR", f"{pe:.1f}x at {price} IDR")
+        _sub(7, r"[\d.]+x at \d+ IDR", f"{pb_p:.2f}x at {price} IDR")
+        _sub(56, r"[\d.]+% at \d+ IDR", f"{dy_pct:.1f}% at {price} IDR")
+        _sub(57, r"[\d.]+% at \d+ IDR", f"{dy_pct:.1f}% at {price} IDR")
+        _sub(97, r"[\d,]+% pada \d+ IDR", f"{dy_pct:.1f}".replace(".", ",") + f"% pada {price} IDR")
+        _sub(115, r"[\d.]+%@\d+ 盾", f"{dy_pct:.1f}%@{price} 盾")
 
     with open(DATA_FILE, "w", encoding="utf-8-sig") as f:
         json.dump(dj, f, ensure_ascii=False, indent=1)
