@@ -1,5 +1,13 @@
 # KIJA Dashboard — Changelog (internal, not shown on page)
 
+## v1.21.0 - 2026-11-19
+- New chart p-5 "P&L trend (2015-9M2026)" on the Profitability page (user request): full-width card inserted between the 2x2 chart grid and the Segment P&L panel, so it sits directly above Segment P&L
+- Four lines, IDR bn, 12 points 2015 -> 9M26: total revenue (AN.revenue + Q26.rev 4,254.9); total expenses (revenue - niCons, i.e. COGS/SG&A/D&A/finance/tax); EBITDA (AN.ebitda + Q26.ebitda 1,183.0); net profit (AN.niCons + Q26.niCons 391.7). Expenses derived so revenue - expenses = net profit holds exactly
+- End-of-line value labels intentionally absent (user request "remove the rightmost values; show them on hover"): values only in the axis tooltip, which also shows EBITDA margin + net margin and, at 9M26, "nine months cumulative, not annualized"
+- 9M26 end-points drawn in grey (C.h26) to flag the non-annualized period; x-axis forced interval:0 so all 12 year labels render; net profit uses C.blue to stay distinct from revenue C.green
+- i18n en/id/zh complete: c_p5_t + c_p5_s in I18N (title/caption), plExp ("Total expenses" / "Total beban" / "总费用") and plEbm ("EBITDA margin" / "Margin EBITDA" / "EBITDA 利润率") added to CHT in BOTH the embedded block and data.json (runtime override would otherwise drop the keys); legend reuses existing totR / ebitdaL / npL / nM / q26note
+- Verified: local headless render in all three languages - chart draws with 4 series, legend and y-axis name do not overlap, no end labels, 12 x-labels visible, Segment P&L table still renders below, console clean
+
 ## v1.20.0 – 2026-11-02
 - Fix (post-release, same version): lb-4 stacked-bar chart top-left overlap — left y-axis name "IDR bn" (default axis-top position) collided with the first centred-legend item "Land for development"; removed the axis name (unit already in the three-language title "(IDR bn)"), same paradigm as the lb-3 fix; sweep of other legendT()+baseY charts (o1–o6 etc.) found no same collision (legends absent or short-named)
 - lb-4 chart moved from Land Bank page to Valuation Illustration page (user request): chart-card + PAGE_CHARTS updated in both files' runtime data; Land Bank page now shows lb-1/lb-2/lb-3 only
