@@ -35,7 +35,7 @@ PT Kawasan Industri Jababeka Tbk（印尼证券交易所代码：**KIJA**）财�
 ## 页面（12 个视图，导航从左到右）
 
 1. **Overview 总览** — 6 张 KPI 卡片（1H26 营收 / 合并净利 / 归母净利 / EBITDA / 营销销售 / 现金）、营收趋势、合并 vs 归母净利（实线 vs 虚线）、利润率与杠杆、分部营收（房地产 vs 基建）、营销销售、EBITDA 趋势。
-2. **Profitability 盈利能力** — 毛利率 / EBITDA 率 / 净利率趋势（2015–2025，含 2015 保守估算）、ROE vs ROA、EBITDA vs 净利、营收 vs 毛利率双轴、FCF 与 FCF 率、**五年分部盈利表（Segment P&L，按营收降序，含持股比例与 GPM/NPM）**。
+2. **Profitability 盈利能力** — 五张图：毛利率 / EBITDA 率 / 净利率趋势（2015–2025 与 9M26）、ROE vs ROA、EBITDA vs 净利、营收 vs 毛利率双轴、**损益趋势 2015–9M26（收入 / 总费用 / EBITDA / 净利四条折线；末端不标数值，数值悬停显示）**；其下为**分部盈利表（Segment P&L，按营收降序，含持股比例与 GPM/NPM）**。
 3. **Debt & Solvency 债务与偿债** — 债务 KPI（总有息负债 / 平均成本 / 现金 / 净负债 / EBITDA 利息覆盖 / 净负债 EBITDA）、按债权人明细（高级票据 / Bank Mandiri / Bank INA Perdana / CCB / OCBC / 租赁）、期限结构、偿债趋势、现金 vs 债务、债务工具表、信用评级（Fitch B- / Moody's B3）、2026 再融资回顾（1.859 亿美元票据提前 18 个月清偿、一次性成本约 460 十亿盾）、**营运资金表（应收账款 / 长期应收 / 应付 / 客户定金 / DSO / DPO）**。
 4. **Land Bank 土地储备** — 4 个项目（Cikarang / Kendal / Tanjung Lesung / Morotai）土地储备（2026-06-30 合计 5,089 ha）、AR2025 附注 7 账面价值与单价、与第三方市场挂牌要价对比（Cikarang 约 2,200–5,200 千盾/m²、Kendal 900–2,600、Tanjung Lesung 250–2,300；Morotai 无可靠公开市场价）。市场价为挂牌要价（非官方评估、非成交价——已在注释中强化此警示）。
 5. **Valuation 估值分析** — 实时估值快照（市值 / 现价 / P/E / P/B / P/S / 股息率 / 52 周区间，全部随 live price 联动）、过去 12 个月股价与成交量双栏图（月收盘 / 区间 / 成交量 / 换手额 / 换手率）、同业对比（KIJA vs DMAS vs BEST vs LPCK：P/B、P/E、P/S、YTD 全 live）、分析师目标价（Sucor Sekuritas 250，买入）。
@@ -43,13 +43,15 @@ PT Kawasan Industri Jababeka Tbk（印尼证券交易所代码：**KIJA**）财�
 7. **Risk & Direction 风险与方向** — 数据推导的风险指标行（绿/黄/红）、Top 3 改进行动（每条绑定可测量的数据缺口）、市场机会（结合当前宏观背景，有来源）。
 8. **Holding Structure 股权结构** — 38 家子公司/合资公司表：实体、业务、持股路径（via）、持股比例、2025 合并资产、状态（AR2025）。
 9. **Organization 治理与组织** — 公司事实、董事会/监事会/审计委员会、关键人物、组织结构。
-10. **2026 Interim 2026 中报** — 1H26 深度页：分部收入饼图、P&L 快照、资产负债表快照、现金桥（期初现金 (end-2025) → 合并盈余 2026 → 期末现金 (end-2026)）、事件时间线、风险指标、增长驱动与亮点（仅 1H26 数据，与年报期严格隔离）。
+10. **2026 Q3 2026 三季报** — 9M26 深度页：分部收入饼图、P&L 快照、资产负债表快照、现金桥、事件时间线、风险指标（仅 9M26 数据，与年报期严格隔离）。
 11. **FY2025 2025 年报** — FY2025 深度页（同上模式，仅 FY2025 vs FY2024 口径）。
 12. **FY2024 2024 年报** — FY2024 深度页（同上模式，仅 FY2024 vs FY2023 口径）。
 
 > 期间页规则：每个年报页只显示该报告期对应的数据（FY2024 页绝不出现 2025 数据，现金桥标签按年份命名如 "Opening cash (end-2023)" / "Consolidated surplus 2024" / "Closing cash (end-2024)"）；图表轴与图例用完整词（"Infrastructure"），绝不出现原始变量名（"infraPie" / "revL"）。
 
 ## 更新历史
+
+**第 16 轮（2026-11-19）——Profitability 新增损益趋势图 + 开发文档同步**：Profitability 页在 2×2 图表网格与 Segment P&L 之间新增全宽「P&L trend (2015–9M2026)」——收入 / 总费用 / EBITDA / 净利四条折线，总费用按 `收入 − 合并净利` 派生，保证三者严格勾稽；**末端不标数值，数值仅在悬停 tooltip 显示**（同时给出 EBITDA 率与净利率，9M26 标注「九个月累计、非年化」），9M26 端点用灰点区分。三语词条（`c_p5_t` / `c_p5_s` 入 `I18N`，`plExp` / `plEbm` 入 `CHT`）在 `index.html` 内嵌块与 `data.json` 双写。MASTER_PLAYBOOK 同步补充：p-5 图表设计规范、`I18N` 与 `CHT` 两套字典的归属与双写规则、图表三处注册点、JSON 拼接坑。commit `a452734`（CHANGELOG v1.21.0）。
 
 **第 15 轮（2026-10-08）——Safety margin 全行可算 + 开发文档同步**：Land bank value per share 与 Liquidation value 两表的 Safety margin 改为**每一行都计算显示**（公式 =（每股价值 − 现价）÷ 每股价值，负值也显示，表示股价已高于资产托底价值；50% 系数行 -14.0%、25% 系数行 -127.9%），不再出现 n/a；LBV 备注（三语）同步改写；MASTER_PLAYBOOK / CHANGELOG 更新（新增远端冲突处理、内嵌价格块同步规则）。commit `2f3886f`。
 

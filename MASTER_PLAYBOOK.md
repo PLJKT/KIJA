@@ -109,7 +109,7 @@ Top-level keys (add or remove per company, but keep names stable once shipped):
 | `LIQ` | Liquidation value calculation |
 | `LBV` | Landbank value per share at 100/75/50/25% factor |
 | `FY` | Per-year deep-dive page data: segment pies, P&L snapshot, balance sheet, cash bridge, revenue breakdown, one-off costs |
-| `CHT` | Chart axis/label strings (overridden by data.json; must match keys used in render functions) |
+| `CHT` | Chart-internal strings (series names, axis units, tooltip notes) consumed via `CT('key')`. Overridden by `data.json` at runtime — **a new key must be written to both the inline block and `data.json`, in all three languages** (§6). |
 | `GLOS` | Hover glossary: maps term → `{en, id, zh}` short explanations |
 | `TOP3` | Top-3 improvement actions per language: `{h, sub, items: [[title, description]]}` |
 | `OPP` | Market opportunities per language: same structure as TOP3 |
@@ -205,6 +205,18 @@ Use when comparing one period's achievement to its full-year target, split by se
 - **No forced y-axis max** unless the target scale is meaningful; let the axis auto-scale.
 - **Marketing sales ≠ revenue**: "sales/marketing sales" = new-contract/pipeline bookings; "revenue" = recognized income. Never title a bookings chart "Revenue Achievement" (misleading), and never fabricate full-year targets for segments that publish none (e.g. infrastructure/leisure have no public target — only land sales do).
 
+### P&L trend 4-line chart (p-5) — settled design (v1.21.0)
+
+Four lines on one axis across 12 points (`AN.years` + `9M26`), rendered as a full-width card:
+
+- **Series**: revenue (`AN.revenue` + `Q26.rev`), total expenses (**derived** as `revenue − niCons`, never a separate array), EBITDA (`AN.ebitda` + `Q26.ebitda`), net profit (`AN.niCons` + `Q26.niCons`). Deriving expenses is what guarantees `revenue − expenses = net profit` at every point — do not source it elsewhere.
+- **No end-of-line value labels** (user requirement, v1.21.0): `endLabel` must stay off. Every number lives in the `trigger:'axis'` tooltip, which also prints EBITDA margin and net margin, plus a "nine months cumulative, not annualized" line at 9M26.
+- **Four distinct hues**: revenue `C.green`, expenses `#8795A6`, EBITDA `C.amber`, net profit `C.blue`. Revenue green + net profit `C.teal` was rejected — two greens read as one series.
+- **9M26 end point** uses `C.h26` grey markers (`symbolSize:7`) to flag the non-annualized period; the line itself keeps its series colour.
+- **`xAxis.axisLabel.interval: 0`** — ECharts hides every other year label on a 12-point axis by default.
+- **Placement**: a `.chart-card chart-wide` **between** `.charts` and the Segment P&L `.panel`. It must NOT join the 2×2 `.charts` grid — a 5th grid cell leaves an orphan card and squeezes the chart. CSS: `#p-5{height:392px}`, `.chart-wide{margin-bottom:18px}`.
+- Register it in `PAGE_CHARTS.profit` as `'p-5'`, else the chart stays blank until a manual window resize (§12 gotcha 37).
+
 ---
 
 ## 6. i18n (three-language) rules
@@ -215,6 +227,9 @@ Use when comparing one period's achievement to its full-year target, split by se
 - Financial abbreviations (EBITDA, ROE, P/B, DSO, FCF, NCI, SEZ, JV) may stay as Latin letters in all three languages.
 - **Number units must follow the language**: EN uses "IDR bn" / "bn"; ID uses "Rp miliar" / "miliar"; ZH uses "十亿盾" (not "亿", not "万亿" unless truly trillion-scale).
 - Switching language re-renders the whole page.
+
+- **Two dictionaries, two owners.** Page-level strings (headings, captions, table headers, notes) live in `I18N` and reach the DOM through `data-i18n="c_p5_t"`. Chart-internal strings (series names, axis units, tooltip lines) live in `CHT` and are read through `CT('key')`. Never put chart text in `I18N` or page text in `CHT`.
+- **`CHT` keys must be written twice.** `data.json.CHT` overrides the inline `var CHT = {...}` at runtime, so a key added only to the inline block is silently dropped online and the chart falls back to the raw key (§12 gotcha 2). Add the same key in **all three languages** to both files, in the same commit.
 
 ---
 
@@ -230,7 +245,7 @@ Use when comparing one period's achievement to its full-year target, split by se
 ## 8. Pages (nav order, left to right)
 
 1. **Overview** — KPI cards, revenue trend bar chart, net profit consolidated vs parent (solid vs dashed), margins & leverage, segment revenue (Real Estate vs Infrastructure), marketing sales, EBITDA trend. Chart subtitle: time range and units.
-2. **Profitability** — gross / EBITDA / net margin trend (2015–2025), ROE vs ROA, EBITDA vs net profit bars+line, revenue vs gross margin dual-axis, FCF and FCF margin. Add 1H26 annualized where useful.
+2. **Profitability** — five charts: gross / EBITDA / net margin trend (2015–2025 & 9M26), ROE vs ROA, EBITDA vs net profit (bars + line), revenue vs gross margin (dual axis), and the full-width **P&L trend 2015–9M26** (revenue / expenses / EBITDA / net profit, no end labels — see §5). Below them the Segment P&L table.
 3. **Debt & Solvency** — KPI cards (total debt, avg cost, cash, net debt, EBITDA/interest, net debt/EBITDA), debt-by-lender chart, maturity ladder, solvency trend, cash vs debt, debt instruments table, credit ratings, refinancing recap, **working capital table** (AR, AR long-term, AP, customer deposits, DSO/DPO by year).
 4. **Land Bank** — KPI cards (total ha, dev ha, book value, implied uplift), per-project table with ha / dev ha / book value / book per sqm / market low / market high / uplift.
 5. **Valuation** — KPI cards (price, 52wk range, market cap, P/B, P/E, dividend yield), 12-month share price chart with volume bars below, price range per month, trading snapshot (volume, turnover, RSI, DMA), peer comparison, analyst targets.
@@ -238,7 +253,7 @@ Use when comparing one period's achievement to its full-year target, split by se
 7. **Risk & Direction** — data-derived risk rows (colored green/amber/red), **Top 3 improvement actions** (each tied to a measurable data gap), **Market opportunities** (current macro context, sourced).
 8. **Holding Structure** — subsidiaries table: entity, activity, via, ownership %, assets, status.
 9. **Organization** — corporate facts, boards, committees, key people.
-10. **FY20XX / FY20XX / 1H20XX** annual deep-dive pages (most recent three, rightmost in nav).
+10. **FY2024 / FY2025 / 2026 Q3** deep-dive pages (most recent three, rightmost in nav; the interim page covers 9M26 and is labelled `2026 Q3`).
 
 ### Year-page pattern (CRITICAL)
 
@@ -323,7 +338,8 @@ Every number in the Risk & Direction page, annual-page narrative, and comparison
    - Layout is clean, no overlapping elements
    - `consoleErrors` in shot.py report is `[]`
 3. **Live render check (catches HTTP-cache staleness)**: serve locally `python -m http.server 8765 --directory <repo>`, open via browser automation with a **fresh cache-buster query** (`index.html?t=<timestamp>#<page>`) and assert the corrected figures appear in the rendered DOM text (e.g. `3,205.2`, `1,657.9`, `65.9%`). The page fetches `data.json` WITHOUT a cache-buster, so a stale browser cache can still render old numbers — navigate with a new `?t=` (or fetch `data.json` with `cache:'reload'`), then re-read the DOM.
-4. Commit, push, tell the user to hard-refresh (Ctrl+F5) because GitHub Pages CDN caches index.html/data.json.
+4. **Trilingual sweep for any new chart**: shoot the page once per language and read each screenshot. Legend names, axis unit and tooltip text must switch together; a chart that is right in EN and still shows English in the ZH view is a fail.
+5. Commit, push, tell the user to hard-refresh (Ctrl+F5) because GitHub Pages CDN caches index.html/data.json.
 
 ---
 
@@ -365,6 +381,10 @@ Every number in the Risk & Direction page, annual-page narrative, and comparison
 34. **ECharts series-level labels render on EVERY data point — including zeros.** A stacked bar's `label:{formatter:...}` shows up at the opposite bar's baseline too (phantom "1,187.6" under the target bar). Fix: per-data labels — `data:[{value:kA, label:{show:true,...}}, {value:0, label:{show:false}}]`. When iterating stacked-bar tweaks, always browser-verify both bars.
 35. **Same-named ECharts series collapse into one legend entry.** Use identical names for actual/target series of the same region when the x-axis categories already distinguish them — turns a 4-item legend into 2.
 36. **Chart subtitle multi-line**: put `\n` in the subtext string; a single long wrapped subtitle line looks cramped. Split at logical groups (actual vs target, or year vs note).
+37. **A new chart needs three registrations, not one.** DOM card + `buildOpt` branch + `PAGE_CHARTS[page]`. Missing the last one leaves a blank canvas that only fills in after a window resize.
+38. **Chart text lives in `CHT`, not `I18N`** (§6). Adding `c_p5_t` to `I18N` covers the card heading only — series names, axis units and tooltip lines still need `CHT` keys.
+39. **Never build JSON by naive string concatenation.** Inserting a key right after one that already ends with `,` produced `"key": "value",,` and the whole file failed with `JSONDecodeError` (line 6073 of `data.json`). Append the fragment **without** a trailing comma, join with `,\n`, then `json.loads` the result before committing; on failure `git checkout -- data.json` and redo.
+40. **Verify series-colour separation visually, per language.** The first p-5 render paired revenue green with net profit teal; only the screenshot showed them reading as one line family. Fix the palette, then re-shoot EN/ID/ZH (§11 step 4).
 
 ---
 
