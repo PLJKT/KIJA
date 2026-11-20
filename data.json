@@ -832,16 +832,16 @@
    "en": [
     {
      "l": "Market cap",
-     "v": 2.3,
+     "v": 2.2,
      "u": "IDR tn",
-     "d": "2.26T at 110",
+     "d": "2.18T at 106",
      "c": "flat"
     },
     {
-     "l": "Price (2026-11-18)",
-     "v": 110,
+     "l": "Price (2026-11-19)",
+     "v": 106,
      "u": "IDR",
-     "d": "-2 (-1.8%)",
+     "d": "-4 (-3.6%)",
      "c": "dn"
     },
     {
@@ -853,39 +853,39 @@
     },
     {
      "l": "P/B",
-     "v": 0.4,
+     "v": 0.3,
      "u": "x",
-     "d": "0.36x parent BVPS 304.1",
+     "d": "0.35x parent BVPS 304.1",
      "c": "flat"
     },
     {
      "l": "P/E (FY25 EPS 20.55)",
-     "v": 5.4,
+     "v": 5.2,
      "u": "x",
-     "d": "5.4x on FY25 EPS 20.55",
+     "d": "5.2x on FY25 EPS 20.55",
      "c": "flat"
     },
     {
      "l": "Dividend yield",
-     "v": 1.8,
+     "v": 1.9,
      "u": "%",
-     "d": "DPS 2.03 / 110",
+     "d": "DPS 2.03 / 106",
      "c": "flat"
     }
    ],
    "id": [
     {
      "l": "Kapitalisasi pasar",
-     "v": 2.3,
+     "v": 2.2,
      "u": "Rp tn",
-     "d": "2.26T di 110",
+     "d": "2.18T di 106",
      "c": "flat"
     },
     {
-     "l": "Harga (2026-11-18)",
-     "v": 110,
+     "l": "Harga (2026-11-19)",
+     "v": 106,
      "u": "IDR",
-     "d": "-2 (-1.8%)",
+     "d": "-4 (-3.6%)",
      "c": "dn"
     },
     {
@@ -897,39 +897,39 @@
     },
     {
      "l": "P/B",
-     "v": 0.4,
+     "v": 0.3,
      "u": "x",
-     "d": "0.36x BVPS induk 304.1",
+     "d": "0.35x BVPS induk 304.1",
      "c": "flat"
     },
     {
      "l": "P/E (EPS FY25 20.55)",
-     "v": 5.4,
+     "v": 5.2,
      "u": "x",
-     "d": "5.4x EPS FY25 20.55",
+     "d": "5.2x EPS FY25 20.55",
      "c": "flat"
     },
     {
      "l": "Imbal hasil dividen",
-     "v": 1.8,
+     "v": 1.9,
      "u": "%",
-     "d": "DPS 2.03 / 110",
+     "d": "DPS 2.03 / 106",
      "c": "flat"
     }
    ],
    "zh": [
     {
      "l": "市值",
-     "v": 2.3,
+     "v": 2.2,
      "u": "万亿盾",
-     "d": "2.26T @ 110",
+     "d": "2.18T @ 106",
      "c": "flat"
     },
     {
-     "l": "股价 (2026-11-18)",
-     "v": 110,
+     "l": "股价 (2026-11-19)",
+     "v": 106,
      "u": "盾",
-     "d": "-2 (-1.8%)",
+     "d": "-4 (-3.6%)",
      "c": "dn"
     },
     {
@@ -941,23 +941,23 @@
     },
     {
      "l": "市净率",
-     "v": 0.4,
+     "v": 0.3,
      "u": "x",
-     "d": "0.36x 母公司 BVPS 304.1",
+     "d": "0.35x 母公司 BVPS 304.1",
      "c": "flat"
     },
     {
      "l": "市盈率（FY25 EPS 20.55）",
-     "v": 5.4,
+     "v": 5.2,
      "u": "x",
-     "d": "5.4x FY25 EPS 20.55",
+     "d": "5.2x FY25 EPS 20.55",
      "c": "flat"
     },
     {
      "l": "股息率",
-     "v": 1.8,
+     "v": 1.9,
      "u": "%",
-     "d": "每股 2.03 / 110",
+     "d": "每股 2.03 / 106",
      "c": "flat"
     }
    ]
@@ -3513,7 +3513,7 @@
    216,
    159,
    108,
-   110
+   106
   ],
   "vol": [
    139.8,
@@ -4201,7 +4201,7 @@
    "stats": [
     [
      "Price / date",
-     "110.0 IDR · 2026-11-18 (Yahoo Finance)"
+     "106.0 IDR · 2026-11-19 (Yahoo Finance)"
     ],
     [
      "Shares outstanding",
@@ -4221,19 +4221,19 @@
     ],
     [
      "Beta (5Y) / RSI",
-     "0.25 / 38.9"
+     "0.25 / 36.2"
     ],
     [
      "50-DMA / 200-DMA",
-     "142.7 / 163.1"
+     "141.0 / 162.3"
     ],
     [
      "Avg daily volume (20d)",
-     "125.9M shares"
+     "122.2M shares"
     ],
     [
-     "Daily turnover (11/18)",
-     "≈ 12.8B IDR · 116.5M shares (2026-11-18, Yahoo)"
+     "Daily turnover (11/19)",
+     "≈ 12.7B IDR · 119.8M shares (2026-11-19, Yahoo)"
     ],
     [
      "Next earnings",
@@ -4254,28 +4254,28 @@
    "peers": [
     [
      "P/B (x)",
-     "0.36",
-     "1.20",
+     "0.35",
+     "1.19",
      "0.22",
      "0.33"
     ],
     [
      "P/E (FY25 audited)",
-     "5.4",
-     "9.9",
-     "32.7",
-     "9.0"
+     "5.2",
+     "9.8",
+     "32.4",
+     "8.9"
     ],
     [
      "P/S (x)",
-     "0.44",
-     "6.04",
-     "2.30",
+     "0.42",
+     "6.00",
+     "2.28",
      "0.49"
     ],
     [
      "Dividend yield",
-     "~1.8%",
+     "~1.9%",
      "~10.1%",
      "0%",
      "0%"
@@ -4289,10 +4289,10 @@
     ],
     [
      "YTD 2026 price",
-     "-48% (210 → 110)",
-     "27% (129 → 164)",
-     "-8% (111 → 102)",
-     "-25% (575 → 434)"
+     "-50% (210 → 106)",
+     "26% (129 → 163)",
+     "-9% (111 → 101)",
+     "-26% (575 → 428)"
     ]
    ],
    "analystsH": [
@@ -4308,7 +4308,7 @@
      "Buy",
      "250",
      "18 Aug 2026",
-     "SOTP; +127% vs 110"
+     "SOTP; +136% vs 106"
     ],
     [
      "Sucor Sekuritas (earlier)",
@@ -4367,7 +4367,7 @@
    "stats": [
     [
      "Harga / tanggal",
-     "110,0 IDR · 2026-11-18 (Yahoo Finance)"
+     "106,0 IDR · 2026-11-19 (Yahoo Finance)"
     ],
     [
      "Saham beredar",
@@ -4387,19 +4387,19 @@
     ],
     [
      "Beta (5Y) / RSI",
-     "0,25 / 38,9"
+     "0,25 / 36,2"
     ],
     [
      "50-DMA / 200-DMA",
-     "142,7 / 163,1"
+     "141,0 / 162,3"
     ],
     [
      "Volume harian rata-rata (20d)",
-     "125,9 juta saham"
+     "122,2 juta saham"
     ],
     [
-     "Nilai transaksi (11/18)",
-     "≈ 12,8B IDR · 116,5 juta saham (2026-11-18, Yahoo)"
+     "Nilai transaksi (11/19)",
+     "≈ 12,7B IDR · 119,8 juta saham (2026-11-19, Yahoo)"
     ],
     [
      "Laporan keuangan berikutnya",
@@ -4420,28 +4420,28 @@
    "peers": [
     [
      "P/B (x)",
-     "0,36",
-     "1,20",
+     "0,35",
+     "1,19",
      "0,22",
      "0,33"
     ],
     [
      "P/E (FY25 audit)",
-     "5,4",
-     "9,9",
-     "32,7",
-     "9,0"
+     "5,2",
+     "9,8",
+     "32,4",
+     "8,9"
     ],
     [
      "P/S (x)",
-     "0,44",
-     "6,04",
-     "2,30",
+     "0,42",
+     "6,00",
+     "2,28",
      "0,49"
     ],
     [
      "Imbal hasil dividen",
-     "~1,8%",
+     "~1,9%",
      "~10,1%",
      "0%",
      "0%"
@@ -4455,10 +4455,10 @@
     ],
     [
      "Perubahan harga YTD 2026",
-     "-48% (210 → 110)",
-     "27% (129 → 164)",
-     "-8% (111 → 102)",
-     "-25% (575 → 434)"
+     "-50% (210 → 106)",
+     "26% (129 → 163)",
+     "-9% (111 → 101)",
+     "-26% (575 → 428)"
     ]
    ],
    "analystsH": [
@@ -4474,7 +4474,7 @@
      "Buy",
      "250",
      "18 Agu 2026",
-     "SOTP; +127% vs 110"
+     "SOTP; +136% vs 106"
     ],
     [
      "Sucor Sekuritas (lebih awal)",
@@ -4533,7 +4533,7 @@
    "stats": [
     [
      "股价 / 日期",
-     "110.0 盾 · 2026-11-18 (Yahoo Finance)"
+     "106.0 盾 · 2026-11-19 (Yahoo Finance)"
     ],
     [
      "总股本",
@@ -4553,19 +4553,19 @@
     ],
     [
      "Beta（5Y）/ RSI",
-     "0.25 / 38.9"
+     "0.25 / 36.2"
     ],
     [
      "50 日均线 / 200 日均线",
-     "142.7 / 163.1"
+     "141.0 / 162.3"
     ],
     [
      "20 日均成交量",
-     "1.259 亿股"
+     "1.222 亿股"
     ],
     [
-     "单日成交额（11-18）",
-     "约 12.8B 盾 · 1.16 亿股（2026-11-18，Yahoo）"
+     "单日成交额（11-19）",
+     "约 12.7B 盾 · 1.20 亿股（2026-11-19，Yahoo）"
     ],
     [
      "下一财报日",
@@ -4586,28 +4586,28 @@
    "peers": [
     [
      "市净率（x）",
-     "0.36",
-     "1.20",
+     "0.35",
+     "1.19",
      "0.22",
      "0.33"
     ],
     [
      "市盈率（FY25 审计）",
-     "5.4",
-     "9.9",
-     "32.7",
-     "9.0"
+     "5.2",
+     "9.8",
+     "32.4",
+     "8.9"
     ],
     [
      "市销率（x）",
-     "0.44",
-     "6.04",
-     "2.30",
+     "0.42",
+     "6.00",
+     "2.28",
      "0.49"
     ],
     [
      "股息率",
-     "约 1.8%",
+     "约 1.9%",
      "约 10.1%",
      "0%",
      "0%"
@@ -4621,10 +4621,10 @@
     ],
     [
      "2026 年至今股价",
-     "-48%（210 → 110）",
-     "27%（129 → 164）",
-     "-8%（111 → 102）",
-     "-25%（575 → 434）"
+     "-50%（210 → 106）",
+     "26%（129 → 163）",
+     "-9%（111 → 101）",
+     "-26%（575 → 428）"
     ]
    ],
    "analystsH": [
@@ -4640,7 +4640,7 @@
      "买入",
      "250",
      "2026-08-18",
-     "SOTP；较 110 有 +127% 空间"
+     "SOTP；较 106 有 +136% 空间"
     ],
     [
      "Sucor Sekuritas（早期）",
@@ -5397,12 +5397,12 @@
    "rows": [
     [
      "Delayed price",
-     "110.0 IDR (-1.8%); prev close 112.0",
-     "IDX close 2026-11-18; Yahoo Finance"
+     "106.0 IDR (-3.6%); prev close 110.0",
+     "IDX close 2026-11-19; Yahoo Finance"
     ],
     [
      "Market capitalization",
-     "2.26 tn IDR @ 110",
+     "2.18 tn IDR @ 106",
      "Recalculated at latest close; 20.59 bn weighted shares"
     ],
     [
@@ -5432,27 +5432,27 @@
     ],
     [
      "P/E (FY25 audited)",
-     "5.4x",
-     "110 / 20.55; TTM n/a (loss)"
+     "5.2x",
+     "106 / 20.55; TTM n/a (loss)"
     ],
     [
      "Price / book",
-     "0.36x",
-     "Parent BVPS 304.1 (audited); 0.28x total equity 395.6"
+     "0.35x",
+     "Parent BVPS 304.1 (audited); 0.27x total equity 395.6"
     ],
     [
      "Price / sales",
-     "0.44x",
-     "110 × 20.59 / FY25 revenue 5,149.4"
+     "0.42x",
+     "106 × 20.59 / FY25 revenue 5,149.4"
     ],
     [
      "EV / EV-EBITDA (FY25)",
-     "≈ 3.98 tn / ~2.3x",
-     "EV = mcap 2.26tn + net debt 1.71tn (9M26); FY25 EBITDA 1,735.5"
+     "≈ 3.89 tn / ~2.2x",
+     "EV = mcap 2.18tn + net debt 1.71tn (9M26); FY25 EBITDA 1,735.5"
     ],
     [
      "Dividend",
-     "2.03 IDR; yield 1.8%; payout 9.9%",
+     "2.03 IDR; yield 1.9%; payout 9.9%",
      "Yahoo; ex-div 17 Jun 2026; payout = 2.03 / 20.55"
     ],
     [
@@ -5472,12 +5472,12 @@
     ],
     [
      "52-week change / YTD 2026",
-     "-40.5% / -47.6%",
-     "Yahoo; YTD = 210 → 110"
+     "-42.4% / -49.5%",
+     "Yahoo; YTD = 210 → 106"
     ],
     [
      "Avg daily volume",
-     "125.9M (20d)",
+     "122.2M (20d)",
      "Yahoo, 20-day average"
     ],
     [
@@ -5513,12 +5513,12 @@
    "rows": [
     [
      "Harga tertunda",
-     "110,0 IDR (-1.8%); penutupan sebelumnya 112,0",
-     "IDX tutup 2026-11-18; Yahoo Finance"
+     "106,0 IDR (-3.6%); penutupan sebelumnya 110,0",
+     "IDX tutup 2026-11-19; Yahoo Finance"
     ],
     [
      "Kapitalisasi pasar",
-     "2.26 tn Rp @ 110",
+     "2.18 tn Rp @ 106",
      "Dihitung ulang pada penutupan terbaru; 20,59 miliar saham tertimbang"
     ],
     [
@@ -5548,27 +5548,27 @@
     ],
     [
      "P/E (FY25 audit)",
-     "5,4x",
-     "110 / 20,55; TTM n/a (rugi)"
+     "5,2x",
+     "106 / 20,55; TTM n/a (rugi)"
     ],
     [
      "Harga / buku",
-     "0,36x",
-     "BVPS induk 304,1 (audit); 0,28x ekuitas total 395,6"
+     "0,35x",
+     "BVPS induk 304,1 (audit); 0,27x ekuitas total 395,6"
     ],
     [
      "Harga / penjualan",
-     "0,44x",
-     "110 × 20.59 / pendapatan FY25 5.149,4"
+     "0,42x",
+     "106 × 20.59 / pendapatan FY25 5.149,4"
     ],
     [
      "EV / EV-EBITDA (FY25)",
-     "≈ 3,98 triliun / ~2,3x",
-     "EV = kapitalisasi 2.26tn + utang bersih 1,71tn (9M26); EBITDA FY25 1.735,5"
+     "≈ 3,89 triliun / ~2,2x",
+     "EV = kapitalisasi 2.18tn + utang bersih 1,71tn (9M26); EBITDA FY25 1.735,5"
     ],
     [
      "Dividen",
-     "2,03 IDR; imbal hasil 1,8%; payout 9,9%",
+     "2,03 IDR; imbal hasil 1,9%; payout 9,9%",
      "Yahoo; ex-div 17 Jun 2026; payout = 2,03 / 20,55"
     ],
     [
@@ -5588,12 +5588,12 @@
     ],
     [
      "Perubahan 52-minggu / YTD 2026",
-     "-40,5% / -47,6%",
-     "Yahoo; YTD = 210 → 110"
+     "-42,4% / -49,5%",
+     "Yahoo; YTD = 210 → 106"
     ],
     [
      "Volume harian rata-rata",
-     "125,9 juta (20h)",
+     "122,2 juta (20h)",
      "Yahoo, rata-rata 20 hari"
     ],
     [
@@ -5629,12 +5629,12 @@
    "rows": [
     [
      "延迟价",
-     "110.0 盾（-1.8%）；昨收 112.0",
-     "IDX 2026-11-18 收盘；Yahoo Finance"
+     "106.0 盾（-3.6%）；昨收 110.0",
+     "IDX 2026-11-19 收盘；Yahoo Finance"
     ],
     [
      "市值",
-     "2.26 万亿盾 @110",
+     "2.18 万亿盾 @106",
      "按最新收盘重算；加权股本 20.59B"
     ],
     [
@@ -5664,27 +5664,27 @@
     ],
     [
      "市盈率（FY25 审计）",
-     "5.4x",
-     "110 / 20.55；TTM 因亏损不适用"
+     "5.2x",
+     "106 / 20.55；TTM 因亏损不适用"
     ],
     [
      "市净率",
-     "0.36x",
-     "母公司 BVPS 304.1（审计）；总权益 395.6 对应 0.28x"
+     "0.35x",
+     "母公司 BVPS 304.1（审计）；总权益 395.6 对应 0.27x"
     ],
     [
      "市销率",
-     "0.44x",
-     "110 × 20.59 / FY25 营收 5,149.4"
+     "0.42x",
+     "106 × 20.59 / FY25 营收 5,149.4"
     ],
     [
      "EV / EV-EBITDA（FY25）",
-     "≈ 3.98 万亿 / ~2.3x",
-     "EV = 市值 2.26 万亿 + 净负债 1.71 万亿（9M26）；FY25 EBITDA 1,735.5"
+     "≈ 3.89 万亿 / ~2.2x",
+     "EV = 市值 2.18 万亿 + 净负债 1.71 万亿（9M26）；FY25 EBITDA 1,735.5"
     ],
     [
      "股息",
-     "每股 2.03 盾；股息率 1.8%；派息率 9.9%",
+     "每股 2.03 盾；股息率 1.9%；派息率 9.9%",
      "Yahoo；除息日 2026-06-17；派息率 = 2.03 / 20.55"
     ],
     [
@@ -5704,12 +5704,12 @@
     ],
     [
      "52周涨跌 / 2026 年内",
-     "-40.5% / -47.6%",
-     "Yahoo；YTD = 210 → 110"
+     "-42.4% / -49.5%",
+     "Yahoo；YTD = 210 → 106"
     ],
     [
      "日均成交量",
-     "1.259 亿股（20 日）",
+     "1.222 亿股（20 日）",
      "Yahoo，20 日平均"
     ],
     [
@@ -6374,7 +6374,7 @@
   "sched5y": 1013.5,
   "totD26": 4863.8,
   "cash26": 3153.7,
-  "refPrice": 110,
+  "refPrice": 106,
   "vjan": {
    "m": "Jan-26",
    "c": 228,
@@ -6386,12 +6386,12 @@
    "hi": 112
   },
   "kijaPBPS": [
-   0.36,
-   0.44
+   0.35,
+   0.42
   ],
   "dmasPBPS": [
-   1.2,
-   6.04
+   1.19,
+   6.0
   ],
   "seg24b": [
    [
@@ -6446,8 +6446,8 @@
    "close": 2048.5
   },
   "dmas": {
-   "price": 164,
-   "date": "2026-11-18",
+   "price": 163,
+   "date": "2026-11-19",
    "base": 129,
    "bvps": 137.14,
    "eps": 16.6,
@@ -6456,8 +6456,8 @@
    "dps": 16.5
   },
   "best": {
-   "price": 102,
-   "date": "2026-11-18",
+   "price": 101,
+   "date": "2026-11-19",
    "base": 111,
    "bvps": 461.8,
    "eps": 3.12,
@@ -6466,8 +6466,8 @@
    "dps": 0
   },
   "lpck": {
-   "price": 434,
-   "date": "2026-11-18",
+   "price": 428,
+   "date": "2026-11-19",
    "base": 575,
    "bvps": 1302.2,
    "eps": 48,
@@ -6477,7 +6477,7 @@
   },
   "bestPBPS": [
    0.22,
-   2.3
+   2.28
   ],
   "lpckPBPS": [
    0.33,
@@ -6667,7 +6667,7 @@
    },
    {
     "p": "EV/EBITDA",
-    "x": "Enterprise Value / EBITDA — a valuation multiple comparing the total value of a business (market cap + debt − cash) to its operating earnings; KIJA ~2.3x on FY25."
+    "x": "Enterprise Value / EBITDA — a valuation multiple comparing the total value of a business (market cap + debt − cash) to its operating earnings; KIJA ~2.2x on FY25."
    },
    {
     "p": "EBITDA",
@@ -6687,11 +6687,11 @@
    },
    {
     "p": "P/E",
-    "x": "Price-to-Earnings ratio — share price divided by earnings per share; how much the market pays per unit of earnings (5.4x at 110 IDR on FY25 EPS)."
+    "x": "Price-to-Earnings ratio — share price divided by earnings per share; how much the market pays per unit of earnings (5.2x at 106 IDR on FY25 EPS)."
    },
    {
     "p": "P/B",
-    "x": "Price-to-Book ratio — share price divided by book value per share; below 1 means the stock trades below its accounting net asset value (0.36x at 110 IDR)."
+    "x": "Price-to-Book ratio — share price divided by book value per share; below 1 means the stock trades below its accounting net asset value (0.35x at 106 IDR)."
    },
    {
     "p": "P/S",
@@ -6887,11 +6887,11 @@
    },
    {
     "p": "Dividend yield",
-    "x": "Dividend Yield — annual dividend per share ÷ share price; the income return from dividends (1.8% at 110 IDR)."
+    "x": "Dividend Yield — annual dividend per share ÷ share price; the income return from dividends (1.9% at 106 IDR)."
    },
    {
     "p": "dividend yield",
-    "x": "Dividend Yield — annual dividend per share ÷ share price; the income return from dividends (1.8% at 110 IDR)."
+    "x": "Dividend Yield — annual dividend per share ÷ share price; the income return from dividends (1.9% at 106 IDR)."
    },
    {
     "p": "net debt",
@@ -7051,7 +7051,7 @@
    },
    {
     "p": "Imbal hasil dividen",
-    "x": "Imbal hasil dividen = dividen per saham ÷ harga saham; imbal hasil dari dividen (1,8% pada 110 IDR)."
+    "x": "Imbal hasil dividen = dividen per saham ÷ harga saham; imbal hasil dari dividen (1,9% pada 106 IDR)."
    },
    {
     "p": "Dewan Komisaris",
@@ -7123,7 +7123,7 @@
    },
    {
     "p": "股息率",
-    "x": "股息率 = 每股股息 ÷ 股价；来自分红的收益回报（1.8%@110 盾）。"
+    "x": "股息率 = 每股股息 ÷ 股价；来自分红的收益回报（1.9%@106 盾）。"
    },
    {
     "p": "归母",
