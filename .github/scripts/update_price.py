@@ -13,8 +13,9 @@ BEST_TICKER = "BEST.JK"
 LPCK_TICKER = "LPCK.JK"
 SHARES_BN = 20.59  # weighted avg shares (bn)
 EPS = 20.55        # FY25 audited EPS (IDR)
-BVPS = 304.1       # parent BVPS (IDR)
-BVPS_TOTAL = 395.6 # total-equity BVPS (IDR)
+EPS_TTM = 9.96     # TTM EPS: FY25 20.55 − 9M25 13.50 + 9M26 2.91 (IDR)
+BVPS = 305.7       # 9M26 parent equity 6,295.1bn / 20.59bn shares (IDR)
+BVPS_TOTAL = 393.6 # 9M26 total equity 8,105.1bn / 20.59bn shares (IDR)
 DPS = 2.03         # FY25 dividend per share (IDR)
 REV_BN = 5149.4    # FY25 audited revenue (bn)
 NET_DEBT_BN = 1710.1  # 9M26 net debt (bn): debt 4,863.8 - cash 3,153.7
@@ -203,7 +204,8 @@ def main():
             cards[1]["d"] = f"{chg:+.0f} ({chg_pct:+.1f}%)"
             cards[1]["c"] = "up" if chg >= 0 else "dn"
             # [3] P/B
-            cards[3]["v"] = round(pb, 1)
+            cards[3]["v"] = f"{pb:.2f}x".replace(".", ",") if lang == "id" else f"{pb:.2f}x"
+            cards[3]["u"] = ""
             cards[3]["d"] = f"{pb:.2f}x {L['pb']} {BVPS}"
             # [4] P/E
             cards[4]["v"] = round(pe, 1)
@@ -231,8 +233,8 @@ def main():
             "en": {
                 0:  ["Delayed price", f"{price}.0 IDR ({chg_pct:+.1f}%); prev close {prev_price}.0", f"IDX close {date_str}; Yahoo Finance"],
                 1:  ["Market capitalization", f"{mcap_tn:.2f} tn IDR @ {price}", "Recalculated at latest close; 20.59 bn weighted shares"],
-                7:  ["P/E (FY25 audited)", f"{pe:.1f}x", f"{price} / {EPS:.2f}; TTM n/a (loss)"],
-                8:  ["Price / book", f"{pb_p:.2f}x", f"Parent BVPS {BVPS} (audited); {pb_t:.2f}x total equity {BVPS_TOTAL}"],
+                7:  ["P/E (FY25 audited)", f"{pe:.1f}x", f"{price} / {EPS:.2f} on FY25; TTM ≈{price/EPS_TTM:.1f}x on EPS {EPS_TTM:.2f}"],
+                8:  ["Price / book", f"{pb_p:.2f}x", f"Parent BVPS {BVPS} (9M26); {pb_t:.2f}x total equity {BVPS_TOTAL}"],
                 9:  ["Price / sales", f"{ps:.2f}x", f"{price} × {SHARES_BN} / FY25 revenue {REV_BN:,.1f}".replace(",", ",")],
                 10: ["EV / EV-EBITDA (FY25)", f"≈ {ev_b/1000:.2f} tn / ~{ev_ebitda:.1f}x", f"EV = mcap {mcap_tn:.2f}tn + net debt 1.71tn (9M26); FY25 EBITDA {EBITDA_BN:,.1f}".replace(",", ",")],
                 11: ["Dividend", f"{DPS} IDR; yield {dy_pct:.1f}%; payout {payout:.1f}%", "Yahoo; ex-div 17 Jun 2026; payout = 2.03 / 20.55"],
@@ -241,8 +243,8 @@ def main():
             "id": {
                 0:  ["Harga tertunda", f"{price},0 IDR ({chg_pct:+.1f}%); penutupan sebelumnya {prev_price},0", f"IDX tutup {date_str}; Yahoo Finance"],
                 1:  ["Kapitalisasi pasar", f"{mcap_tn:.2f} tn Rp @ {price}", "Dihitung ulang pada penutupan terbaru; 20,59 miliar saham tertimbang"],
-                7:  ["P/E (FY25 audit)", f"{pe:.1f}x".replace(".", ","), f"{price} / 20,55; TTM n/a (rugi)"],
-                8:  ["Harga / buku", f"{pb_p:.2f}x".replace(".", ","), f"BVPS induk {BVPS:.1f} (audit); {pb_t:.2f}x ekuitas total {BVPS_TOTAL}".replace(".", ",")],
+                7:  ["P/E (FY25 audit)", f"{pe:.1f}x".replace(".", ","), f"{price} / 20,55 (FY25); TTM ≈{(price/EPS_TTM):.1f}x pada EPS 9,96".replace(".", ",")],
+                8:  ["Harga / buku", f"{pb_p:.2f}x".replace(".", ","), f"BVPS induk {BVPS:.1f} (9M26); {pb_t:.2f}x ekuitas total {BVPS_TOTAL}".replace(".", ",")],
                 9:  ["Harga / penjualan", f"{ps:.2f}x".replace(".", ","), f"{price} × {SHARES_BN} / pendapatan FY25 5.149,4"],
                 10: ["EV / EV-EBITDA (FY25)", f"≈ {ev_b/1000:.2f} triliun / ~{ev_ebitda:.1f}x".replace(".", ","), f"EV = kapitalisasi {mcap_tn:.2f}tn + utang bersih 1,71tn (9M26); EBITDA FY25 1.735,5"],
                 11: ["Dividen", f"2,03 IDR; imbal hasil {dy_pct:.1f}%; payout {payout:.1f}%".replace(".", ","), "Yahoo; ex-div 17 Jun 2026; payout = 2,03 / 20,55"],
@@ -251,8 +253,8 @@ def main():
             "zh": {
                 0:  ["延迟价", f"{price}.0 盾（{chg_pct:+.1f}%）；昨收 {prev_price}.0", f"IDX {date_str} 收盘；Yahoo Finance"],
                 1:  ["市值", f"{mcap_tn:.2f} 万亿盾 @{price}", "按最新收盘重算；加权股本 20.59B"],
-                7:  ["市盈率（FY25 审计）", f"{pe:.1f}x", f"{price} / 20.55；TTM 因亏损不适用"],
-                8:  ["市净率", f"{pb_p:.2f}x", f"母公司 BVPS {BVPS}（审计）；总权益 {BVPS_TOTAL} 对应 {pb_t:.2f}x"],
+                7:  ["市盈率（FY25 审计）", f"{pe:.1f}x", f"{price} / 20.55（FY25）；TTM 市盈率约 {price/EPS_TTM:.1f}x（EPS 9.96）"],
+                8:  ["市净率", f"{pb_p:.2f}x", f"母公司 BVPS {BVPS}（9M26）；总权益 {BVPS_TOTAL} 对应 {pb_t:.2f}x"],
                 9:  ["市销率", f"{ps:.2f}x", f"{price} × {SHARES_BN} / FY25 营收 5,149.4"],
                 10: ["EV / EV-EBITDA（FY25）", f"≈ {ev_b/1000:.2f} 万亿 / ~{ev_ebitda:.1f}x", f"EV = 市值 {mcap_tn:.2f} 万亿 + 净负债 1.71 万亿（9M26）；FY25 EBITDA 1,735.5"],
                 11: ["股息", f"每股 {DPS} 盾；股息率 {dy_pct:.1f}%；派息率 {payout:.1f}%", "Yahoo；除息日 2026-06-17；派息率 = 2.03 / 20.55"],
