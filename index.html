@@ -943,7 +943,7 @@ function buildOpt(id){
     var tt5 = {trigger:'axis', confine:true, formatter:function(ps){
       var i = ps[0].dataIndex, v = typeof d2[i] === 'object' ? d2[i].value : d2[i];
       var s = '<b>' + (i === 4 ? '9M26' : ['2022','2023','2024','2025'][i]) + '</b><br/>' + CT('msalesL') + ': ' + fmtN(v) + ' ' + U;
-      if (i === 4) { s += '<br/>' + CT('done') + '; ' + CT('h26note'); }
+      if (i === 4) { s += '<br/>' + CT('q26note'); }
       return s;
     }};
     return {tooltip:tt5, grid:baseGrid(), xAxis:baseX(['2022','2023','2024','2025','9M26']), yAxis:baseY(U),
