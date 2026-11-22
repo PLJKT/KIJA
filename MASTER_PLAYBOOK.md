@@ -1,4 +1,4 @@
-# Financial Dashboard — Master Playbook
+﻿# Financial Dashboard — Master Playbook
 
 > Purpose: hand this file to any AI, give it a listed company ticker (and optionally its official annual report PDFs), and it should produce a financial-operations dashboard that looks, feels, and behaves like the KIJA dashboard (https://pljkt.github.io/KIJA/).
 >
@@ -180,6 +180,7 @@ Top-level keys (add or remove per company, but keep names stable once shipped):
 - Multi-series: use legend; colors from distinct hues.
 - No 3D charts, no rainbow palettes.
 - Chart subtitles (`.sub` div under each title) must carry units for every number mentioned.
+- **Period labels must follow the data.** The last x-axis category, tooltip header and tooltip note must all match the series period: a 9M26 bar must not sit under a hard-coded `1H26` label. Use `q26note` for 9M26 and `h26note` only for a genuine 1H26 series; when a period rolls over, change axis + note + subtitle in the same patch. A marketing-sales chart is pre-sales (contracts), not revenue - say so in the caption.
 
 ### Valuation-method range chart (vi-1) — settled design
 
@@ -294,6 +295,10 @@ When writing narrative text (TOP3, OPP, RK, g24/g25/g26, DEC table), **do not ha
 
 **Critical distinction: total liabilities ≠ total debt.** Total liabilities (`AN.liab`) includes trade payables, customer deposits, tax, accrued expenses — NOT just interest-bearing borrowings. The g25 narrative once wrote "gross debt 6,904bn" when the actual interest-bearing debt was 4,607bn; 6,904 was total liabilities. Net debt uses interest-bearing debt only.
 
+### Marketing sales vs recognised revenue (v1.22.0)
+
+Marketing sales (`KP.k26`, `FY.ms*`, o5) are new pre-sale contracts signed in the period — a leading indicator. Revenue is recognised only when control transfers (handover / legal completion), usually 6–24 months later, and includes rent, golf, tourism and infrastructure (power / water / dry port) that never appear in marketing sales. KIJA 9M26: sales 1,524.4 vs Land Development & Property revenue 1,914.8 (1.26x); 3Q26 sales 336.7 vs 3Q26 property revenue 939.9 (2.79x), because Q3 deliveries came from the H1 backlog (1H26 revenue 974.9 was only 0.82x of 1H26 sales 1,187.6). Never "fix" this by forcing sales = revenue — document the timing. Compare sales only to the PE "Land Development & Property" line, not the FS segment line that also contains golf (2,025.3).
+
 ### Audit protocol (run whenever data is updated or doubted)
 
 1. **Pull the official audited AR PDFs** (company IR website + IDX). Scanned pages: use `pdfplumber`; spaced-capital big numbers need same-line y-proximity matching. If P&L pages are scanned images (no text layer), cross-check via Public Expose / IR presentation PDFs, which reprint key figures.
@@ -324,6 +329,7 @@ Every number in the Risk & Direction page, annual-page narrative, and comparison
 - All live-derived numbers must auto-recompute when `refPrice` changes — user will verify with "are all related numbers auto-updated?"
 - **The Action patches `data.json` ONLY — it does NOT touch the inline blocks in `index.html`.** Every price update therefore leaves `index.html`'s embedded `KP.val` / `FY.refPrice` stale (online the fetched `data.json` overrides them, so the live site looks right; but `file://` and offline open show the old price). After any price refresh, or whenever a user reports "tag still shows old price", rebuild the embedded `KP` / `FY` blocks from `data.json` (same rebuild rule as §3) and commit both files.
 - **Live-price textual staleness**: headings/narratives must not hard-code a dated price ("current 176 (21 Sep 2026)"). Use data-agnostic wording ("latest close") and let render-time substitution (e.g. the `_sp()`/`_vll` `.replace(/180/g, refPrice)` pattern) fill in the live value. Stale dated numbers in headings were a repeated user complaint.
+- **update_price.py derived-metric contracts (v1.22.0)**: EPS_TTM = 9.96, BVPS parent = 305.7 (total equity 393.6). The P/B KPI card is written as a string (`"0.35x"`) with an empty unit so `fmtN` cannot round it to 0.4x; the P/E detail reads `TTM ≈10.7x on EPS 9.96` in all three languages. Verify the chain with `gh workflow run update-price.yml`: the bot commit must move P/B consistently with the price (run 44966017725 -> commit 1a2dbd3).
 
 ---
 
@@ -384,7 +390,14 @@ Every number in the Risk & Direction page, annual-page narrative, and comparison
 37. **A new chart needs three registrations, not one.** DOM card + `buildOpt` branch + `PAGE_CHARTS[page]`. Missing the last one leaves a blank canvas that only fills in after a window resize.
 38. **Chart text lives in `CHT`, not `I18N`** (§6). Adding `c_p5_t` to `I18N` covers the card heading only — series names, axis units and tooltip lines still need `CHT` keys.
 39. **Never build JSON by naive string concatenation.** Inserting a key right after one that already ends with `,` produced `"key": "value",,` and the whole file failed with `JSONDecodeError` (line 6073 of `data.json`). Append the fragment **without** a trailing comma, join with `,\n`, then `json.loads` the result before committing; on failure `git checkout -- data.json` and redo.
-40. **Verify series-colour separation visually, per language.** The first p-5 render paired revenue green with net profit teal; only the screenshot showed them reading as one line family. Fix the palette, then re-shoot EN/ID/ZH (§11 step 4).
+40. **Period labels drift silently.** o5 kept `1H26` as the last x-axis category while its bars, labels and subtitle were already 9M26 - axis, tooltip header and note (`h26note` -> `q26note`) must be switched together.
+41. **Verify series-colour separation visually, per language.** The first p-5 render paired revenue green with net profit teal; only the screenshot showed them reading as one line family. Fix the palette, then re-shoot EN/ID/ZH (§11 step 4).
+
+42. **Footer source index is part of the deliverable.** Add the newest official documents actually used (Q3 2026 FS via IDX, Q3 2026 Public Expose deck) and label FS by period (1H2026 FS / Q3 2026 FS); the user checks the bottom index after every data update.
+43. **Timeline blocks must be edited in both files.** A new period entry goes into `TL` in `data.json` and the embedded `var TL`, same `[period, headline, sub]` shape, placed immediately after the prior period block.
+44. **PE and FS calibers conflict - disclose, never average.** KIJA Q3-2026: PE p13/14 segment split sums to 4,157.3 vs 4,254.9 total (use FS note 35); PE's INA Perdana 171bn is a facility limit incl. SBLC (drawn 148.4); PE's 7.3% blended cost differs from the 8.3% implied by interest / average debt.
+45. **One "latest" marketing-sales figure replaces, never appends.** When 9M26 sales arrived, KP.k26, FY.msCik/msKendal/msDone, CHT labels and the o5 series all had to move together; leaving the old 1,187.6 anywhere creates two truths.
+46. **Docs ship with the code.** After data/UI changes, update CHANGELOG (new version), the README round entry and this Playbook's new gotchas in the same push; otherwise the next session repeats the mistake.
 
 ---
 

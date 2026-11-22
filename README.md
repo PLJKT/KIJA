@@ -1,15 +1,15 @@
-# KIJA — Financial Research & Analysis
+﻿# KIJA — Financial Research & Analysis
 
 PT Kawasan Industri Jababeka Tbk（印尼证券交易所代码：**KIJA**）财务研究与分析项目。
 
-本项目收录 KIJA 过去 10 年（2015–2025）的财务数据与深度分析报告，覆盖营收、利润、资产负债、利润率、杠杆、分部经营（房地产 / 基础设施 / 服务 / 高尔夫 / 旅游）、营销销售、EBITDA 与市场估值，并总结主要变化、风险与机会。**2026 年更新**：已加入 1H26（2026 年上半年）未经审计财务数据、2016–2026 结合财务数据的发展时间线，以及 2026 年下半年起 4 只同业股票的实时（live）行情联动。
+本项目收录 KIJA 过去 10 年（2015–2025）的财务数据与深度分析报告，覆盖营收、利润、资产负债、利润率、杠杆、分部经营（房地产 / 基础设施 / 服务 / 高尔夫 / 旅游）、营销销售、EBITDA 与市场估值，并总结主要变化、风险与机会。**2026 年更新**：已加入 Q3 2026（9M26，截至 2026-09-30）未经审计财务数据与 2026-11-22 Public Expose 运营数据（营销销售、土地储备、干港/电力/租户指标），2016–2026 发展时间线，以及 4 只同业股票的实时（live）行情联动。
 
 ## 目录
 
 | 文件 | 说明 |
 | --- | --- |
 | [`index.html`](index.html) | **财务与经营 Dashboard**：三语（EN 默认 / ID / 中文）切换；12 个视图（见下「页面」节）；图表可下载 PNG，表格可导出 CSV |
-| [`data.json`](data.json) | **Dashboard 的在线数据层（自助更新入口）**：全部展示数据（年度序列、各页 KPI、债务、土地、估值、清算价值、每股土地价值、关键参数、同业、股权/组织、时间线、术语词汇表等 27 个数据块）集中于此；在线打开 Dashboard 时页面自动拉取本文件并覆盖渲染 |
+| [`data.json`](data.json) | **Dashboard 的在线数据层（自助更新入口）**：全部展示数据（年度序列、各页 KPI、债务、土地、估值、清算价值、每股土地价值、关键参数、同业、股权/组织、时间线、术语词汇表等 31 个数据块（含 OPS26））集中于此；在线打开 Dashboard 时页面自动拉取本文件并覆盖渲染 |
 | [`MASTER_PLAYBOOK.md`](MASTER_PLAYBOOK.md) | **方法论复刻手册**：把本系统交付给任何 AI 后，仅凭一个上市公司代码即可生成高度相似的新系统（结构、三语、数字口径、图表、验证流程等硬约束） |
 | [`CHANGELOG.md`](CHANGELOG.md) | 内部更新日志（页面不公开） |
 | [`KIJA_财务分析报告_2015-2025.md`](KIJA_财务分析报告_2015-2025.md) | 十年财务与经营分析报告（含风险与机会） |
@@ -30,26 +30,28 @@ PT Kawasan Industri Jababeka Tbk（印尼证券交易所代码：**KIJA**）财�
 
 **语言与数据口径**：页面右上角可切换 English（默认）/ Bahasa Indonesia / 中文，切换后全部内容（含图表标题、图例、tooltip、KPI 增量、脚注、叙述段落）严格使用所选语言，不混排；数字统一最多保留 1 位小数（四舍五入），带千位分隔符的整数不留小数位。股权结构与治理/组织页依据 FY2025 年报（AR2025）：38 家子公司/合资公司（持股、主营业务、2025 合并资产）、股东结构（Mu'min Ali Gunawan 21.1% / IsDB 11.5% / 库存股 0.1% / 公众 67.3%）、监事/董事/审计委员会与组织结构。
 
-**实时股价（live price）**：Valuation 与 Valuation Illustration 两页的价格、市值、P/E、P/B、YTD、EV/EBITDA 等由 GitHub Action 每个工作日自动抓取 Yahoo Finance 最新收盘价并全站联动计算；4 标的为 KIJA、DMAS、BEST（Bekasi Fajar）、LPCK（Lippo Cikarang）。当前快照（2026-10-07）：KIJA 160 / DMAS 188 / BEST 122 / LPCK 530（IDR）。**同业对比中，BEST/LPCK 的 P&L 与每股数据均取各自最新 1H26 或 FY25 审计口径，与 KIJA 展示口径一致（apple-to-apple）。**
+**实时股价（live price）**：Valuation 与 Valuation Illustration 两页的价格、市值、P/E、P/B、YTD、EV/EBITDA 等由 GitHub Action 每个工作日自动抓取 Yahoo Finance 最新收盘价并全站联动计算；4 标的为 KIJA、DMAS、BEST（Bekasi Fajar）、LPCK（Lippo Cikarang）。价格每个工作日由 Action 刷新、页面实时显示；文档不再固化某日快照，避免过期。**同业对比中，BEST/LPCK 的 P&L 与每股数据均取各自最新 1H26 或 FY25 审计口径，与 KIJA 展示口径一致（apple-to-apple）。**
 
 ## 页面（12 个视图，导航从左到右）
 
-1. **Overview 总览** — 6 张 KPI 卡片（1H26 营收 / 合并净利 / 归母净利 / EBITDA / 营销销售 / 现金）、营收趋势、合并 vs 归母净利（实线 vs 虚线）、利润率与杠杆、分部营收（房地产 vs 基建）、营销销售、EBITDA 趋势。
+1. **Overview 总览** — 6 张 KPI 卡片（9M26 营收 / 合并净利 / 归母净利 / EBITDA / 营销销售 / 现金）、营收趋势、合并 vs 归母净利（实线 vs 虚线）、利润率与杠杆、分部营收（房地产 vs 基建）、营销销售、EBITDA 趋势。
 2. **Profitability 盈利能力** — 五张图：毛利率 / EBITDA 率 / 净利率趋势（2015–2025 与 9M26）、ROE vs ROA、EBITDA vs 净利、营收 vs 毛利率双轴、**损益趋势 2015–9M26（收入 / 总费用 / EBITDA / 净利四条折线；末端不标数值，数值悬停显示）**；其下为**分部盈利表（Segment P&L，按营收降序，含持股比例与 GPM/NPM）**。
 3. **Debt & Solvency 债务与偿债** — 债务 KPI（总有息负债 / 平均成本 / 现金 / 净负债 / EBITDA 利息覆盖 / 净负债 EBITDA）、按债权人明细（高级票据 / Bank Mandiri / Bank INA Perdana / CCB / OCBC / 租赁）、期限结构、偿债趋势、现金 vs 债务、债务工具表、信用评级（Fitch B- / Moody's B3）、2026 再融资回顾（1.859 亿美元票据提前 18 个月清偿、一次性成本约 460 十亿盾）、**营运资金表（应收账款 / 长期应收 / 应付 / 客户定金 / DSO / DPO）**。
-4. **Land Bank 土地储备** — 4 个项目（Cikarang / Kendal / Tanjung Lesung / Morotai）土地储备（2026-06-30 合计 5,089 ha）、AR2025 附注 7 账面价值与单价、与第三方市场挂牌要价对比（Cikarang 约 2,200–5,200 千盾/m²、Kendal 900–2,600、Tanjung Lesung 250–2,300；Morotai 无可靠公开市场价）。市场价为挂牌要价（非官方评估、非成交价——已在注释中强化此警示）。
+4. **Land Bank 土地储备** — 4 个项目（Cikarang / Kendal / Tanjung Lesung / Morotai）土地储备（2026-09-30 合计 5,089 ha：Cikarang 1,288 / Kendal 427 / Tanjung Lesung 1,481 / Morotai 1,893）、AR2025 附注 7 账面价值与单价、与第三方市场挂牌要价对比（Cikarang 约 2,200–5,200 千盾/m²、Kendal 900–2,600、Tanjung Lesung 250–2,300；Morotai 无可靠公开市场价）。市场价为挂牌要价（非官方评估、非成交价——已在注释中强化此警示）。
 5. **Valuation 估值分析** — 实时估值快照（市值 / 现价 / P/E / P/B / P/S / 股息率 / 52 周区间，全部随 live price 联动）、过去 12 个月股价与成交量双栏图（月收盘 / 区间 / 成交量 / 换手额 / 换手率）、同业对比（KIJA vs DMAS vs BEST vs LPCK：P/B、P/E、P/S、YTD 全 live）、分析师目标价（Sucor Sekuritas 250，买入）。
 6. **Valuation Illustration 估值测算** — P/E、P/B、DCF（两阶段）、SOTP 四种方法低/基准/高区间，**每方法独立配色**的区间条形图（基准点 + 区间 + 现价红条，现价长度与实时价格精确一致）；方法对比表（输入 / 每股隐含值 / vs 现价 / 安全边际）；清算价值（五情景，从 2025-12-31 审计资产负债表起步）；**每股土地价值独立表**（总土地账面 5,783.5 十亿盾 × 100% / 75% / 50% / 25% ÷ 20.59B 股）；**安全边际每一行都计算显示**（含负值——负值表示股价已高于资产托底价值）；权重与 WACC 等参数注明。
 7. **Risk & Direction 风险与方向** — 数据推导的风险指标行（绿/黄/红）、Top 3 改进行动（每条绑定可测量的数据缺口）、市场机会（结合当前宏观背景，有来源）。
 8. **Holding Structure 股权结构** — 38 家子公司/合资公司表：实体、业务、持股路径（via）、持股比例、2025 合并资产、状态（AR2025）。
 9. **Organization 治理与组织** — 公司事实、董事会/监事会/审计委员会、关键人物、组织结构。
-10. **2026 Q3 2026 三季报** — 9M26 深度页：分部收入饼图、P&L 快照、资产负债表快照、现金桥、事件时间线、风险指标（仅 9M26 数据，与年报期严格隔离）。
+10. **2026 Q3 三季报** — 9M26 深度页：分部收入饼图、P&L 快照、资产负债表快照、现金桥、事件时间线、风险指标（仅 9M26 数据，与年报期严格隔离）。
 11. **FY2025 2025 年报** — FY2025 深度页（同上模式，仅 FY2025 vs FY2024 口径）。
 12. **FY2024 2024 年报** — FY2024 深度页（同上模式，仅 FY2024 vs FY2023 口径）。
 
 > 期间页规则：每个年报页只显示该报告期对应的数据（FY2024 页绝不出现 2025 数据，现金桥标签按年份命名如 "Opening cash (end-2023)" / "Consolidated surplus 2024" / "Closing cash (end-2024)"）；图表轴与图例用完整词（"Infrastructure"），绝不出现原始变量名（"infraPie" / "revL"）。
 
 ## 更新历史
+
+**第 17 轮（2026-11-22）——Q3 2026 Public Expose 全量并入 + 财报逐项校验**：以 44 页《KIJA Public Expose Q3 2026》为主、114 页 Q3 FS（IDX 2026-10-30）为裁判，新增 OPS26 运营块（干港吞吐/收入、Bekasi Power 130MW、Kendal 144 租户、Seafer）、9M26 营销销售 1,524.4B（40.7% 目标）与 8×6 分产品表、2026-09-30 土地 5,089 ha、债务 4,863.8B（INA Perdana 148.4 为提款余额而非 171 额度）与 7.3% 平均成本、Adj. EBITDA 1,362.4（并列报告口径 1,175.6）；修正 EPS TTM 9.96、BVPS 305.7、ROE/ROA、流动/速动比率等；o5 横轴与悬停由 1H26 改为 9M26，时间线新增 2026 (Q3)，页脚引用索引加入 Q3 财报与 Public Expose；`update_price.py` 增加 EPS_TTM/BVPS 常量并修正 P/B 取整。commit `fd378d6` / `09f7a23` / `bf676a7` / `911f45b`（CHANGELOG v1.22.0，Playbook 同步）。
 
 **第 16 轮（2026-11-19）——Profitability 新增损益趋势图 + 开发文档同步**：Profitability 页在 2×2 图表网格与 Segment P&L 之间新增全宽「P&L trend (2015–9M2026)」——收入 / 总费用 / EBITDA / 净利四条折线，总费用按 `收入 − 合并净利` 派生，保证三者严格勾稽；**末端不标数值，数值仅在悬停 tooltip 显示**（同时给出 EBITDA 率与净利率，9M26 标注「九个月累计、非年化」），9M26 端点用灰点区分。三语词条（`c_p5_t` / `c_p5_s` 入 `I18N`，`plExp` / `plEbm` 入 `CHT`）在 `index.html` 内嵌块与 `data.json` 双写。MASTER_PLAYBOOK 同步补充：p-5 图表设计规范、`I18N` 与 `CHT` 两套字典的归属与双写规则、图表三处注册点、JSON 拼接坑。commit `a452734`（CHANGELOG v1.21.0）。
 
@@ -73,12 +75,12 @@ PT Kawasan Industri Jababeka Tbk（印尼证券交易所代码：**KIJA**）财�
 - 全站关键专业名词与字母缩写（EBITDA、EPS、BVPS、P/E、P/B、P/S、EV、EV/EBITDA、DCF、WACC、SOTP、ROE、ROA、NCI、TTM、YoY、D/E、ICR、OCF、FCF、SEZ、JV、KEK、RUPS、SHGB、SBLC、PROPER、PLN、IDX、PP&E、LNG、FX、RSI、DPS、MOU、FDI、AGM、GMS、Beta、YTD、B3/B-、PT/Tbk、FY/AR/1H/Q/KPI 及净债务、毛利率、市值、土地储备、归母、少数股东、清算价值、安全边际、加权股本等约 117 条）添加「?」悬停提示：鼠标移到问号上即弹出解释（长词条自动换行；点击可固定/取消，移动端点击切换）。
 - 解释内容以联网查证的英文专业定义为准（Fidelity / CFA Institute / Wall Street Prep / NYU Stern / Moody's / NISM / GuruFocus / CFI 等），**解释语言与被解释词完全一致**：英文缩写→英文释义、印尼文词（Margin kotor、Utang bersih、RUPS 等）→印尼文释义、中文词（毛利率、净利率等）→中文释义，三语界面互不混排。
 - **同一页内同一词只标注第一个出现处**，后续相同词不再加「?」（用户要求）。
-- 词表集中在 `data.json` 的 `GLOS` 数据块（第 27 个数据块），更新解释只改该块即可，无需动页面结构。
+- 词表集中在 `data.json` 的 `GLOS` 数据块（第 31 个数据块），更新解释只改该块即可，无需动页面结构。
 
 **第 9 轮——Land bank value per share**：在 Valuation Illustration 页新增独立表格「Land bank value per share」——土地总账面价值 5,783.5 十亿盾（AR2025 附注 7，成本法）× 100% / 75% / 50% / 25% ÷ 20.59B 加权股本，得到每股 280.9 / 210.7 / 140.4 / 70.2 盾，附与现价对比、安全边际及数据来源说明；独立成表，未与其他估值方法合并。
 
 **第 8 轮（数据层迁移，自助更新）**：
-- **`data.json` 成为单一在线数据层**：把原先分散在构建源码里的全部 27 个数据块（KP / EV / RK / DIR / TL / OWN / SUBS / BIZ / VIA / PILLAR / PILLAR_MAP / ORG / DEBT / LAND / VAL / DTXT / LTXT / VTXT / NXT / VALI / LIQ / LBV / KEYP / AN / CHT / FY / GLOS）集中到 `data.json`；`index.html` 的构建脚本改为从 `data.json` 生成内嵌离线副本。
+- **`data.json` 成为单一在线数据层**：把原先分散在构建源码里的全部 31 个数据块（KP / EV / RK / DIR / TL / OWN / SUBS / BIZ / VIA / PILLAR / PILLAR_MAP / ORG / DEBT / LAND / VAL / DTXT / LTXT / VTXT / NXT / VALI / LIQ / LBV / KEYP / AN / CHT / FY / GLOS）集中到 `data.json`；`index.html` 的构建脚本改为从 `data.json` 生成内嵌离线副本。
 - **运行时拉取**：在线打开 Dashboard 时，页面先拉取同目录 `data.json`（GitHub Pages 同源，HTTP(S) 下启用）覆盖内嵌数据后再渲染；本地 file:// 打开自动回退内嵌副本（无网络也可看，数据为最近一次构建时的版本）。
 - **新增 `FY` 块**：各期间页图表专用数据（分部堆叠、营销销售、FY24 分部饼图、近三年净利、FY25 债务/现金/偿债/现金流、1H26 收入/目标/结构/一次性成本、5 年本金计划、债务页参考价与股价标注点、同业倍数等）全部数据化，用户改 `data.json` 即可联动图表。
 - **自助更新流程**：见上方「自助更新数据」小节——只需编辑 `data.json` 中对应数值并提交，无需改动任何结构。
