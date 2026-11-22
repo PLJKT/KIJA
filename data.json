@@ -46,9 +46,9 @@
     },
     {
      "l": "Gross margin",
-     "v": 39,
+     "v": 39.5,
      "u": "%",
-     "d": "-4pct (peak 52% in 2022)",
+     "d": "-3pct (peak 52% in 2022)",
      "c": "dn"
     },
     {
@@ -104,9 +104,9 @@
     },
     {
      "l": "Margin kotor",
-     "v": 39,
+     "v": 39.5,
      "u": "%",
-     "d": "-4pct (puncak 52% tahun 2022)",
+     "d": "-3pct (puncak 52% tahun 2022)",
      "c": "dn"
     },
     {
@@ -162,9 +162,9 @@
     },
     {
      "l": "毛利率",
-     "v": 39,
+     "v": 39.5,
      "u": "%",
-     "d": "-4pct（2022 峰值 52%）",
+     "d": "-3pct（2022 峰值 52%）",
      "c": "dn"
     },
     {
@@ -968,7 +968,7 @@
      "l": "Gross margin (9M26)",
      "v": 37.1,
      "u": "%",
-     "d": "up from 1H 34.5%; FY25 39%",
+     "d": "up from 1H 34.5%; FY25 39.5%",
      "c": "up"
     },
     {
@@ -994,9 +994,9 @@
     },
     {
      "l": "ROE (9M26)",
-     "v": 1.0,
+     "v": 4.8,
      "u": "%",
-     "d": "parent NP 60.5 / parent equity 6,295.1; one-offs drag",
+     "d": "consolidated NP 391.7 / total equity 8,105.1; 9M25 8.1%",
      "c": "dn"
     },
     {
@@ -1012,7 +1012,7 @@
      "l": "Margin kotor (9M26)",
      "v": 37.1,
      "u": "%",
-     "d": "naik dari 1H 34,5%; FY25 39%",
+     "d": "naik dari 1H 34,5%; FY25 39.5%",
      "c": "up"
     },
     {
@@ -1038,9 +1038,9 @@
     },
     {
      "l": "ROE (9M26)",
-     "v": 1.0,
+     "v": 4.8,
      "u": "%",
-     "d": "laba induk 60,5 / ekuitas induk 6.295,1; beban satu kali",
+     "d": "laba konsolidasi 391,7 / ekuitas total 8.105,1; 9M25 8,1%",
      "c": "dn"
     },
     {
@@ -1056,7 +1056,7 @@
      "l": "毛利率（9M26）",
      "v": 37.1,
      "u": "%",
-     "d": "较 1H 34.5% 回升；FY25 39%",
+     "d": "较 1H 34.5% 回升；FY25 39.5%",
      "c": "up"
     },
     {
@@ -1082,9 +1082,9 @@
     },
     {
      "l": "ROE（9M26）",
-     "v": 1.0,
+     "v": 4.8,
      "u": "%",
-     "d": "归母净利 60.5 / 母公司权益 6,295.1；一次性成本拖累",
+     "d": "合并净利 391.7 / 总权益 8,105.1；9M25 8.1%",
      "c": "dn"
     },
     {
@@ -1094,6 +1094,260 @@
      "d": "合并净利 391.7 / 总资产 15,151.1",
      "c": "dn"
     }
+   ]
+  }
+ },
+ "EV": {
+  "ev24": {
+   "en": [
+    [
+     "2024",
+     "Marketing sales hit a record 3,188bn (+44%, 28% above target); Cikarang 33% / Kendal 67%"
+    ],
+    [
+     "2024 H1",
+     "Founder SD Darmono retook the helm and reset strategy"
+    ],
+    [
+     "2024",
+     "Kendal JV (KIK) paid dividends of 322.9bn (KIJA holds 51%)"
+    ],
+    [
+     "FY2024",
+     "FX loss of 205.7bn weighed on net profit"
+    ],
+    [
+     "Dec 2024",
+     "Share price closed at 186 IDR; market cap ~3.9tn; FY24 P/E ~11x"
+    ]
+   ],
+   "id": [
+    [
+     "2024",
+     "Penjualan pemasaran mencetak rekor 3.188 miliar (+44%, 28% di atas target); Cikarang 33% / Kendal 67%"
+    ],
+    [
+     "2024 H1",
+     "Pendiri SD Darmono kembali memimpin dan menyusun ulang strategi"
+    ],
+    [
+     "2024",
+     "JV Kendal (KIK) membagikan dividen 322,9 miliar (KIJA memegang 51%)"
+    ],
+    [
+     "FY2024",
+     "Rugi selisih kurs 205,7 miliar menekan laba bersih"
+    ],
+    [
+     "Des 2024",
+     "Harga saham ditutup 186 IDR; kapitalisasi pasar sekitar 3.9tn; P/E FY24 sekitar 11x"
+    ]
+   ],
+   "zh": [
+    [
+     "2024 全年",
+     "营销销售 3,188B 创纪录（+44%，超原目标 28%）；Cikarang 33% / Kendal 67%"
+    ],
+    [
+     "2024 上半年",
+     "创始人 SD Darmono 重新执掌公司，重振战略方向"
+    ],
+    [
+     "2024",
+     "Kendal 合资公司 KIK 派息 322.9B（KIJA 持股 51%）"
+    ],
+    [
+     "2024 全年",
+     "汇兑损失 205.7B 拖累净利"
+    ],
+    [
+     "2024-12",
+     "股价收于 186 盾，市值约 3.9T；FY24 P/E 约 11x"
+    ]
+   ]
+  },
+  "ev25": {
+   "en": [
+    [
+     "Feb 2025",
+     "Marketing sales 3,601bn, record again (+13%, 103% of target); Kendal ~70%"
+    ],
+    [
+     "May 2025",
+     "Jababeka Bizpark smart industrial estate broke ground"
+    ],
+    [
+     "Aug 2025",
+     "PT Sitoy Group (US$50m investment) opened its plant in Kendal"
+    ],
+    [
+     "Oct 2025 / Jan 2026",
+     "Fitch affirmed B- (stable); Moody’s initiated B3 (stable); S&P withdrew at company request"
+    ],
+    [
+     "FY2025",
+     "FX loss down to 120.9bn; EBITDA/interest 4.4x, net debt/EBITDA 0.6x; consolidated cash surplus 1,570bn"
+    ],
+    [
+     "Dec 2025",
+     "Share price closed at 210 IDR; market cap ~4.37tn"
+    ]
+   ],
+   "id": [
+    [
+     "Feb 2025",
+     "Penjualan pemasaran 3.601 miliar, rekor lagi (+13%, 103% target); Kendal sekitar 70%"
+    ],
+    [
+     "Mei 2025",
+     "Jababeka Bizpark kawasan industri pintar mulai dibangun"
+    ],
+    [
+     "Agu 2025",
+     "PT Sitoy Group (investasi US$50 juta) membuka pabrik di Kendal"
+    ],
+    [
+     "Okt 2025 / Jan 2026",
+     "Fitch menegaskan B- (stabil); Moody’s memberi peringkat awal B3 (stabil); S&P mencabut atas permintaan perusahaan"
+    ],
+    [
+     "FY2025",
+     "Rugi kurs turun ke 120,9 miliar; EBITDA/bunga 4,4x, utang bersih/EBITDA 0,6x; surplus kas konsolidasi 1.570 miliar"
+    ],
+    [
+     "Des 2025",
+     "Harga saham ditutup 210 IDR; kapitalisasi pasar sekitar 4.37tn"
+    ]
+   ],
+   "zh": [
+    [
+     "2025-02",
+     "营销销售 3,601B 再创纪录（+13%，达标 103%）；Kendal 约 70%"
+    ],
+    [
+     "2025-05",
+     "Jababeka Bizpark 智慧工业园区动工"
+    ],
+    [
+     "2025-08",
+     "PT Sitoy Group（投资 5,000 万美元）在 Kendal 开厂"
+    ],
+    [
+     "2025-10 / 2026-01",
+     "Fitch 确认 B-（稳定）；Moody’s 首予 B3（稳定）；S&P 应公司要求撤销评级"
+    ],
+    [
+     "2025 全年",
+     "汇兑损失降至 120.9B；EBITDA/利息 4.4x、净负债/EBITDA 0.6x；合并现金盈余 1,570B"
+    ],
+    [
+     "2025-12",
+     "股价收于 210 盾，市值约 4.37T"
+    ]
+   ]
+  },
+  "ev26": {
+   "en": [
+    [
+     "Feb 2026",
+     "PIER (Pasuruan) Mini LNG plant commissioned to serve eastern industrial energy transition"
+    ],
+    [
+     "Apr 2026",
+     "1Q26 marketing sales 540.8bn (Cikarang & others 203.6 / Kendal 337.3)"
+    ],
+    [
+     "5 Jun 2026",
+     "AGM approved FY2025 dividend of IDR2.03/share (42.3bn total), paid 9 Jul"
+    ],
+    [
+     "Jul 2026",
+     "Refinancing completed: 15-year IDR4.6tn Mandiri facility repaid the 2027 USD notes (185.9m) and hedges were terminated"
+    ],
+    [
+     "Aug 2026",
+     "1H26 results: net loss 6.4bn (one-off ~460bn); infrastructure share of revenue rose to 57%"
+    ],
+    [
+     "Aug 2026",
+     "Kendal JV declared a dividend of 615bn (51% attributable to KIJA)"
+    ],
+    [
+     "30 Oct 2026",
+     "Q3 2026 (9M26) results: revenue 4,254.9bn (+15.8%); parent NP 60.5bn (-78.2%) — Q3 quarter alone +238.3bn; power GPM 5.9%; Senior Notes fully redeemed; cash 3,153.7bn"
+    ],
+    [
+     "22 Nov 2026",
+     "Public Expose Q3 2026: 9M26 marketing sales 1,524.4bn (40.7% of target); land bank 5,089 ha at 30 Sep 2026; average debt cost 7.3%"
+    ]
+   ],
+   "id": [
+    [
+     "Feb 2026",
+     "Pabrik Mini LNG PIER (Pasuruan) diresmikan untuk transisi energi industri di timur"
+    ],
+    [
+     "Apr 2026",
+     "Penjualan pemasaran 1Q26 540,8 miliar (Cikarang & lainnya 203,6 / Kendal 337,3)"
+    ],
+    [
+     "5 Jun 2026",
+     "RUPS menyetujui dividen FY2025 Rp2,03/saham (total 42,3 miliar), dibayar 9 Jul"
+    ],
+    [
+     "Jul 2026",
+     "Refinancing selesai: fasilitas Mandiri 15 tahun Rp4.6tn melunasi notes USD 2027 (185.9 juta) dan lindung nilai dihentikan"
+    ],
+    [
+     "Agu 2026",
+     "Hasil 1H26: rugi bersih 6,4 miliar (satu kali ~460 miliar); porsi infrastruktur pendapatan naik ke 57%"
+    ],
+    [
+     "Agu 2026",
+     "JV Kendal mengumumkan dividen 615 miliar (51% diatribusikan ke KIJA)"
+    ],
+    [
+     "30 Okt 2026",
+     "Hasil Q3 2026 (9M26): pendapatan 4.254,9 miliar (+15,8%); laba induk 60,5 miliar (-78,2%) — Q3 saja +238,3 miliar; GPM listrik 5,9%; Senior Notes lunas; kas 3.153,7 miliar"
+    ],
+    [
+     "22 Nov 2026",
+     "Public Expose Q3 2026: penjualan pemasaran 9M26 1.524,4 miliar (40,7% target); land bank 5.089 ha per 30 Sep 2026; biaya utang rata-rata 7,3%"
+    ]
+   ],
+   "zh": [
+    [
+     "2026-02",
+     "PIER（Pasuruan）Mini LNG 工厂启用，服务东部工业能源转型"
+    ],
+    [
+     "2026-04",
+     "1Q26 营销销售 540.8B（Cikarang 及其他 203.6 / Kendal 337.3）"
+    ],
+    [
+     "2026-06-05",
+     "股东大会通过 FY2025 派息每股 2.03 盾（合计 42.3B），7 月 9 日支付"
+    ],
+    [
+     "2026-07",
+     "以 15 年期 IDR 4.6T Mandiri 贷款清偿 2027 美元票据（185.9M）并终止对冲，完成再融资"
+    ],
+    [
+     "2026-08",
+     "1H26 中报：净亏 6.4B（一次性成本约 460B）；基建收入占比升至 57%"
+    ],
+    [
+     "2026-08",
+     "Kendal JV 宣布派息 615B（51% 归 KIJA）"
+    ],
+    [
+     "2026-10-30",
+     "Q3 2026（9M26）业绩：收入 4,254.9B（+15.8%）；归母 60.5B（-78.2%）——Q3 单季 +238.3B；电力毛利率 5.9%；高级票据已全部赎回；现金 3,153.7B"
+    ],
+    [
+     "2026-11-22",
+     "Q3 2026 Public Expose：9M26 营销销售 1,524.4B（目标完成 40.7%）；2026-09-30 土地储备 5,089 公顷；平均资金成本 7.3%"
+    ]
    ]
   }
  },
@@ -1236,7 +1490,7 @@
    "en": [
     [
      "Gross margin",
-     "39% (-4pct)",
+     "39.5% (-3pct)",
      2,
      75,
      "land margin down + infrastructure mix up"
@@ -1280,7 +1534,7 @@
    "id": [
     [
      "Margin kotor",
-     "39% (-4pct)",
+     "39.5% (-3pct)",
      2,
      75,
      "margin lahan turun + komposisi infrastruktur naik"
@@ -1324,7 +1578,7 @@
    "zh": [
     [
      "毛利率",
-     "39%（-4pct）",
+     "39.5%（-3pct）",
      2,
      75,
      "土地毛利下滑 + 基建占比上升"
@@ -1504,7 +1758,7 @@
    "en": [
     [
      "Gross margin trend",
-     "39% (9M26 37.1%)",
+     "39.5% (9M26 37.1%)",
      2,
      75,
      "land margin down plus higher power/water share"
@@ -1576,7 +1830,7 @@
    "id": [
     [
      "Tren margin kotor",
-     "39% (9M26 37.1%)",
+     "39.5% (9M26 37.1%)",
      2,
      75,
      "margin lahan turun + porsi listrik/air naik"
@@ -1648,7 +1902,7 @@
    "zh": [
     [
      "毛利率水平与趋势",
-     "39%（9M26 37.1%）",
+     "39.5%（9M26 37.1%）",
      2,
      75,
      "土地毛利率下滑叠加电力/水务占比上升"
@@ -1724,7 +1978,7 @@
    [
     "01",
     "Recurring revenue share rising",
-    "Infrastructure revenue share 45% (FY23) → 50% (FY25) → 57% (1H26) → 52.4% (9M26, land-heavy Q3 mix) — power, water, dry port; improving revenue stability and cash-flow visibility."
+    "Infrastructure revenue share 45% (FY23) → 50% (FY25) → 57% (1H26) → 52.7% (9M26, land-heavy Q3 mix) — power, water, dry port; improving revenue stability and cash-flow visibility."
    ],
    [
     "02",
@@ -1739,24 +1993,24 @@
    [
     "04",
     "Net leverage down sharply",
-    "Net debt/EBITDA 2.7x (2023) to 0.6x (2025); FY2025 cash 3.6tn, net debt ~1.0tn."
+    "Net debt/EBITDA 2.7x (2023) → 0.6x (2025) → 0.96x (9M26); cash 3.15tn, net debt 1.7tn."
    ],
    [
     "05",
     "New growth initiatives",
-    "PIER Mini LNG operating; dry port throughput +13%; Jababeka Bizpark under construction; land bank 5,089 ha."
+    "PIER Mini LNG operating; dry port throughput +15%; Jababeka Bizpark phase-I handed over; land bank 5,089 ha."
    ],
    [
     "06",
     "Shareholder returns restored",
-    "FY2025 dividend IDR2.03/share (42.3; policy 25–35% of net profit); KIK/Kendal continue to pay dividends."
+    "FY2025 dividend IDR2.03/share (IDR42.3bn; 10.0% payout, below the 25–35% policy); KIK/Kendal continue to pay dividends."
    ]
   ],
   "id": [
    [
     "01",
     "Porsi pendapatan berulang naik",
-    "Porsi pendapatan infrastruktur 45% (FY23) → 50% (FY25) → 57% (1H26) → 52,4% (9M26, komposisi Q3 didominasi lahan) — listrik, air, pelabuhan darat; meningkatkan stabilitas pendapatan dan visibilitas arus kas."
+    "Porsi pendapatan infrastruktur 45% (FY23) → 50% (FY25) → 57% (1H26) → 52,7% (9M26, komposisi Q3 didominasi lahan) — listrik, air, pelabuhan darat; meningkatkan stabilitas pendapatan dan visibilitas arus kas."
    ],
    [
     "02",
@@ -1771,24 +2025,24 @@
    [
     "04",
     "Leverage bersih turun tajam",
-    "Utang bersih/EBITDA 2.7x (2023) ke 0,6x (2025); kas FY2025 3,6tn, utang bersih ~1,0tn."
+    "Utang bersih/EBITDA 2,7x (2023) → 0,6x (2025) → 0,96x (9M26); kas 3,15tn, utang bersih 1,7tn."
    ],
    [
     "05",
     "Inisiatif pertumbuhan baru",
-    "Mini LNG PIER beroperasi; throughput pelabuhan darat +13%; Jababeka Bizpark dibangun; cadangan lahan 5,089 ha."
+    "Mini LNG PIER beroperasi; throughput pelabuhan darat +15%; fase-I Jababeka Bizpark diserahkan; cadangan lahan 5,089 ha."
    ],
    [
     "06",
     "Imbal hasil pemegang saham pulih",
-    "Dividen FY2025 Rp2.03/saham (42.3; kebijakan 25–35% laba bersih); KIK/Kendal terus membagikan dividen."
+    "Dividen FY2025 Rp2,03/saham (Rp42,3 miliar; payout 10,0%, di bawah kebijakan 25–35%); KIK/Kendal terus membagikan dividen."
    ]
   ],
   "zh": [
    [
     "01",
     "经常性收入占比提升",
-    "基建收入占比 45%（FY23）→ 50%（FY25）→ 57%（1H26）→ 52.4%（9M26，Q3 土地占比回升）——电力、水务、干港；收入稳定性与现金可见度增强。"
+    "基建收入占比 45%（FY23）→ 50%（FY25）→ 57%（1H26）→ 52.7%（9M26，Q3 土地占比回升）——电力、水务、干港；收入稳定性与现金可见度增强。"
    ],
    [
     "02",
@@ -1803,17 +2057,17 @@
    [
     "04",
     "净杠杆大幅下降",
-    "净负债/EBITDA 自 2.7x（2023）降至 0.6x（2025）；FY2025 现金 3.6T，净负债约 1.0T。"
+    "净负债/EBITDA 自 2.7x（2023）→ 0.6x（2025）→ 0.96x（9M26）；现金 3.15T，净负债 1.7T。"
    ],
    [
     "05",
     "新增长点布局",
-    "PIER Mini LNG 工厂投运；干港吞吐 +13%；Jababeka Bizpark 动工；土地储备 5,089 公顷。"
+    "PIER Mini LNG 投运；干港吞吐 +15%；Jababeka Bizpark 一期交付；土地储备 5,089 公顷。"
    ],
    [
     "06",
     "股东回报恢复",
-    "FY2025 恢复派息每股 2.03 盾（合计 42.3B，政策为净利 25–35%）；KIK/Kendal 持续派息。"
+    "FY2025 恢复派息每股 2.03 盾（合计 42.3B，派息率 10.0%，低于 25–35% 政策）；KIK/Kendal 持续派息。"
    ]
   ]
  },
@@ -2982,7 +3236,7 @@
     "l": "Total debt (30 Sep 26)",
     "v": 4863.8,
     "u": "IDR bn",
-    "d": "incl. short-term 22.9bn · excl. lease 4.9bn",
+    "d": "incl. short-term 22.9bn · incl. lease 4.9bn",
     "c": "flat"
    },
    {
@@ -3178,7 +3432,7 @@
     "st": "current"
    }
   ],
-  "tableNote": "31 Dec 2025 balance-sheet total IDR 4,606.5bn (net of unamortized issuance cost IDR 31.8bn); table shows principal. Total at 30 Jun 2026: IDR 4,863bn (excl. lease IDR 4.8bn). Coupon vs effective cost: notes 7.0–9.0% coupon; hedged effective USD cost was 5.5–6.0% (per risk table). Total at 30 Sep 2026: IDR 4,863.8bn (incl. short-term 22.9bn, excl. lease 4.9bn). Bank INA Perdana facility size IDR 171bn (incl. SBLC for the Mini LNG JV); drawn balance IDR 148.4bn at 30 Sep 2026.",
+  "tableNote": "31 Dec 2025 balance-sheet total IDR 4,606.5bn (net of unamortized issuance cost IDR 31.8bn); table shows principal. 30 Jun 2026 bank borrowings IDR 4,863bn (excl. lease IDR 4.8bn). 30 Sep 2026 total debt IDR 4,863.8bn (incl. short-term 22.9bn and lease 4.9bn). Bank INA Perdana facility size IDR 171bn (incl. SBLC for the Mini LNG JV); drawn balance IDR 148.4bn at 30 Sep 2026.",
   "ratings": [
    [
     "Fitch",
@@ -3232,12 +3486,12 @@
   "riskRows": [
    {
     "n": "EBITDA / interest",
-    "v": "4.4x (FY25)",
+    "v": "4.4x (FY25) · 4.5x (9M26 LTM)",
     "lv": 0
    },
    {
     "n": "Net debt / EBITDA",
-    "v": "0.6x (FY25)",
+    "v": "0.6x (FY25) · 0.96x (9M26)",
     "lv": 0
    },
    {
@@ -3252,7 +3506,7 @@
    },
    {
     "n": "Back-loaded Mandiri amortisation",
-    "v": "~~IDR 3,780bn due 2031–2041",
+    "v": "~IDR 3,780bn due 2031–2041",
     "lv": 1
    },
    {
@@ -3277,7 +3531,7 @@
    },
    {
     "n": "9M26 free cash flow",
-    "v": "≈ +355bn (OCF 568.7 − capex 214.1)",
+    "v": "≈ +355bn before land (OCF 568.7 − capex 214.1); ≈ +33bn after land 302.2 + advances 19.1",
     "lv": 0
    }
   ]
@@ -3664,7 +3918,7 @@
     "—",
     "—"
    ],
-   "note": "31 Dec 2025 balance-sheet total IDR 4,606.5bn (net of unamortized issuance cost IDR 31.8bn); table shows principal. Total at 30 Sep 2026: IDR 4,863.8bn (incl. short-term 22.9bn, excl. lease 4.9bn). Coupon vs effective cost: notes 7.0–9.0% coupon; hedged effective USD cost was 5.5–6.0% (per risk table).",
+   "note": "31 Dec 2025 balance-sheet total IDR 4,606.5bn (net of unamortized issuance cost IDR 31.8bn); table shows principal. 30 Sep 2026 total debt IDR 4,863.8bn (incl. short-term 22.9bn and lease 4.9bn). Coupon vs effective cost: notes 7.0–9.0% coupon; hedged effective USD cost was 5.5–6.0% (per risk table).",
    "ratings": [
     [
      "Agency",
@@ -3724,12 +3978,12 @@
    "risk": [
     [
      "EBITDA / interest",
-     "4.4x (FY25)",
+     "4.4x (FY25) · 4.5x (9M26 LTM)",
      0
     ],
     [
      "Net debt / EBITDA",
-     "0.6x (FY25)",
+     "0.6x (FY25) · 0.96x (9M26)",
      0
     ],
     [
@@ -3769,7 +4023,7 @@
     ],
     [
      "9M26 free cash flow",
-     "≈ +355bn (OCF 568.7 − capex 214.1)",
+     "≈ +355bn before land; ≈ +33bn after land & advances",
      1
     ]
    ]
@@ -3837,7 +4091,7 @@
     "—",
     "—"
    ],
-   "note": "Total neraca 31 Des 2025 4.606,5 (neto biaya penerbitan belum diamortisasi 31,8); tabel menampilkan pokok. Total 30 Sep 2026: 4.863,8 (termasuk jangka pendek 22,9; di luar sewa 4,9). Kupon vs biaya efektif: kupon notes 7,0–9,0%; biaya efektif USD terkunci 5,5–6,0% (lihat tabel risiko).",
+   "note": "Total neraca 31 Des 2025 Rp4.606,5 miliar (setelah biaya penerbitan belum diamortisasi Rp31,8 miliar); tabel menunjukkan pokok. Total 30 Sep 2026 Rp4.863,8 miliar (termasuk jangka pendek 22,9 dan sewa 4,9). Kupon vs biaya efektif: kupon notes 7,0–9,0%; biaya USD efektif setelah lindung nilai 5,5–6,0% (tabel risiko).",
    "ratings": [
     [
      "Lembaga",
@@ -3897,12 +4151,12 @@
    "risk": [
     [
      "EBITDA / bunga",
-     "4,4x (FY25)",
+     "4,4x (FY25) · 4,5x (LTM 9M26)",
      0
     ],
     [
      "Utang bersih / EBITDA",
-     "0,6x (FY25)",
+     "0,6x (FY25) · 0,96x (9M26)",
      0
     ],
     [
@@ -3942,7 +4196,7 @@
     ],
     [
      "Arus kas bebas 9M26",
-     "≈ +355 (OCF 568,7 − capex 214,1)",
+     "≈ +355 miliar sebelum tanah; ≈ +33 miliar setelah tanah & uang muka",
      1
     ]
    ]
@@ -4010,7 +4264,7 @@
     "—",
     "—"
    ],
-   "note": "2025-12-31 资产负债表口径 IDR 4,606.5bn（扣除未摊销发行成本 IDR 31.8bn）；本表列示本金。2026-09-30 合计 IDR 4,863.8bn（含短期 22.9；不含租赁 4.9）。 票息与有效成本口径：票据票息 7.0–9.0%；旧美元债对冲后有效成本 5.5–6.0%（见风险表）。",
+   "note": "2025-12-31 资产负债表总额 4,606.5 十亿盾（扣除未摊销发行成本 31.8 十亿盾）；表中为本金。2026-09-30 总债务 4,863.8 十亿盾（含短期 22.9 与租赁 4.9）。票息与实际成本：票据票息 7.0–9.0%；对冲后美元实际成本 5.5–6.0%（见风险表）。",
    "ratings": [
     [
      "机构",
@@ -4075,7 +4329,7 @@
     ],
     [
      "净负债 / EBITDA",
-     "0.6x（FY25）",
+     "0.6x（FY25）· 0.96x（9M26）",
      0
     ],
     [
@@ -4115,7 +4369,7 @@
     ],
     [
      "9M26 自由现金流",
-     "≈ +355（经营现金流 568.7 − 资本开支 214.1）",
+     "购地前 ≈ +355B；计入购地与预付后 ≈ +33B",
      1
     ]
    ]
@@ -4128,7 +4382,7 @@
     "Location & status",
     "Land bank (ha)",
     "Land for dev. (ha)",
-    "Book value (IDR bn)",
+    "Book value (IDR bn, FY25)",
     "Book (000/m²)",
     "Market asking (000/m²)",
     "Implied uplift"
@@ -4140,7 +4394,7 @@
     "Morotai, North Maluku · SEZ Tourism & logistics, future hub"
    ],
    "total": [
-    "Total",
+    "Total (30 Sep 26 mix)",
     "4 projects",
     "5,089",
     "4,473",
@@ -4156,7 +4410,7 @@
     "Lokasi & status",
     "Land bank (ha)",
     "Tanah pengemb. (ha)",
-    "Nilai buku (Rp miliar)",
+    "Nilai buku (Rp miliar, FY25)",
     "Buku (000/m²)",
     "Tawaran pasar (000/m²)",
     "Potensi apresiasi"
@@ -4168,7 +4422,7 @@
     "Morotai, Maluku Utara · KEK Pariwisata & logistik, hub masa depan"
    ],
    "total": [
-    "Total",
+    "Total (campuran 30 Sep 26)",
     "4 proyek",
     "5.089",
     "4.473",
@@ -4184,7 +4438,7 @@
     "位置与状态",
     "土地储备（公顷）",
     "开发土地（公顷）",
-    "账面价值（十亿盾）",
+    "账面价值（十亿盾，FY25）",
     "账面（千盾/m²）",
     "市场挂牌（千盾/m²）",
     "隐含增值"
@@ -4196,7 +4450,7 @@
     "Morotai，北马鲁古 · 旅游与物流 SEZ，未来枢纽"
    ],
    "total": [
-    "合计",
+    "合计（2026-09-30 混合口径）",
     "4 个项目",
     "5,089",
     "4,473",
@@ -4296,8 +4550,8 @@
      "0%"
     ],
     [
-     "Net profit (IDR bn)",
-     "391.7",
+     "Net profit (FY25, IDR bn)",
+     "857.1",
      "1,190",
      "144.3",
      "228.4"
@@ -4358,7 +4612,7 @@
     ],
     [
      "Mar–Jun 2026",
-     "Retrace: 174 → 112 (Jun) as 1H26 refinancing one-offs became known; low 111"
+     "Retrace: 174 → 112 (Jun) as 1H26 refinancing one-offs became known; low 105"
     ],
     [
      "18 Aug 2026",
@@ -4369,8 +4623,8 @@
      "Rebound: 130 → 216 (Aug) → 159 (30 Sep close)"
     ],
     [
-     "18 Nov 2026",
-     "Close 110; 52-wk low 102 on 04 Nov; 20d avg vol 125.9M shares; daily turnover ≈ 12.8B IDR"
+     "20 Nov 2026",
+     "Close 107 (+0.9%); 52-wk low 102 on 04 Nov; 20d avg vol 114.3M shares; daily turnover ≈ 5.7B IDR"
     ]
    ]
   },
@@ -4462,8 +4716,8 @@
      "0%"
     ],
     [
-     "Laba bersih (IDR bn)",
-     "391,7",
+     "Laba bersih (FY25, IDR bn)",
+     "857,1",
      "1.190",
      "144,3",
      "228,4"
@@ -4524,7 +4778,7 @@
     ],
     [
      "Mar–Jun 2026",
-     "Koreksi: 174 → 112 (Jun) setelah biaya satu kali refinancing 1H26 diketahui; terendah 111"
+     "Koreksi: 174 → 112 (Jun) setelah biaya satu kali refinancing 1H26 diketahui; terendah 105"
     ],
     [
      "18 Agu 2026",
@@ -4535,8 +4789,8 @@
      "Pemulihan: 130 → 216 (Agu) → 159 (tutup 30 Sep)"
     ],
     [
-     "18 Nov 2026",
-     "Tutup 110; terendah 52 minggu 102 pada 04 Nov; vol rata-rata 20h 125,9 juta saham; nilai transaksi ≈ 12,8B IDR"
+     "20 Nov 2026",
+     "Tutup 107 (+0,9%); terendah 52 minggu 102 pada 04 Nov; vol rata-rata 20h 114,3 juta saham; nilai transaksi ≈ 5,7B IDR"
     ]
    ]
   },
@@ -4628,8 +4882,8 @@
      "0%"
     ],
     [
-     "净利润（十亿盾）",
-     "391.7",
+     "净利润（FY25，十亿盾）",
+     "857.1",
      "1,190",
      "144.3",
      "228.4"
@@ -4690,7 +4944,7 @@
     ],
     [
      "2026-03 至 06 月",
-     "回调：174 → 112（6 月），1H26 一次性再融资成本披露后走低；低点 111"
+     "回调：174 → 112（6 月），1H26 一次性再融资成本披露后走低；低点 105"
     ],
     [
      "2026-08-18",
@@ -4701,8 +4955,8 @@
      "反弹：130 → 216（8 月）→ 159（9-30 收盘）"
     ],
     [
-     "2026-11-18",
-     "收盘 110；52 周低点 102（11-04）；20 日均量 1.259 亿股；单日成交约 12.8B 盾"
+     "2026-11-20",
+     "收盘 107（+0.9%）；52 周低点 102（11-04）；20 日均量 1.143 亿股；单日成交约 5.7B 盾"
     ]
    ]
   }
@@ -4773,12 +5027,12 @@
   "en": {
    "h": "Valuation Illustration",
    "sub": "DCF · P/E · P/B · SOTP · NAV vs. market price — illustrative only, not investment advice",
-   "disc": "Based on audited FY2025 results and the 18 Sep 2026 close of 180.0 IDR. Weighted shares 20.59 bn; parent BVPS 304.1; EPS 20.55; EBITDA 1,735.5 bn; net debt (9M26) 1,710.1 bn (debt 4,863.8 − cash 3,153.7). DCF net-debt basis uses the 9M26 figure.",
+   "disc": "Based on audited FY2025 results and the 20 Nov 2026 close of 107.0 IDR. Weighted shares 20.59 bn; parent BVPS 304.1; EPS 20.55; EBITDA 1,735.5 bn; net debt (9M26) 1,710.1 bn (debt 4,863.8 − cash 3,153.7). DCF net-debt basis uses the 9M26 figure.",
    "inputsH": "Inputs (audited FY2025 unless noted)",
    "inputs": [
     [
-     "Price (18 Sep 2026)",
-     "180.0 IDR"
+     "Price (20 Nov 2026)",
+     "107.0 IDR"
     ],
     [
      "Shares (weighted avg)",
@@ -4801,8 +5055,8 @@
      "1,710.1 bn"
     ],
     [
-     "Market cap @ 180",
-     "≈ 3,706B"
+     "Market cap @ 107",
+     "≈ 2,203B"
     ]
    ],
    "methodH": "Methods & assumptions (low / base / high)",
@@ -4816,7 +5070,7 @@
     ],
     [
      "P/B (0.5x / 0.6x / 0.8x)",
-     "Audited parent BVPS 304.1; 0.6x matches current level",
+     "Audited parent BVPS 304.1; 0.6x = ~1.7x current P/B (0.35x)",
      "152.1",
      "182.5",
      "243.3"
@@ -4837,82 +5091,82 @@
     ],
     [
      "NAV (1.0x / 1.5x / 2.0x)",
-     "Total-equity BVPS 395.6 + land for development revalued at 1.5x / 2.0x book (9M26 land 5,470.9 bn); low = book value only",
-     "395.6",
-     "528.5",
-     "661.3"
+     "Total-equity BVPS 393.6 + land for development revalued at 1.5x / 2.0x book (9M26 land 5,470.9 bn); low = book value only",
+     "393.6",
+     "526.6",
+     "659.4"
     ]
    ],
    "weightNote": "Weighted fair value = 35% P/E + 25% P/B + 30% DCF + 10% SOTP. Liquidation value is shown separately as an asset-backing reference.",
-   "compH": "Comparison with market price (180.0)",
+   "compH": "Comparison with market price (107.0)",
    "comp": [
     [
      "P/E (base 8x)",
      "164.4",
-     "-8.7%",
-     "-9.5%",
-     "Market slightly above multiple"
+     "+53.6%",
+     "+34.9%",
+     "Market below 8x multiple"
     ],
     [
      "P/B (base 0.6x)",
      "182.5",
-     "+1.4%",
-     "1.4%",
-     "Trades near book value"
+     "+70.6%",
+     "+41.4%",
+     "Market at 0.35x book, below 0.6x assumption"
     ],
     [
      "DCF (base)",
      "449.9",
-     "+149.9%",
-     "60.0%",
+     "+320.5%",
+     "+76.2%",
      "Land bank upside largely unpriced"
     ],
     [
      "SOTP (Sucor)",
      "250.0",
-     "+38.9%",
-     "28.0%",
+     "+133.6%",
+     "+57.2%",
      "Broker buy target"
     ],
     [
      "NAV (base 1.5x)",
-     "528.5",
-     "+193.6%",
-     "65.9%",
+     "526.6",
+     "+392.1%",
+     "+79.7%",
      "Land at 1.5x book — deep discount to revalued assets"
     ],
     [
      "Weighted (base)",
      "263.1",
-     "+46.2%",
-     "31.6%",
+     "+145.9%",
+     "+59.3%",
      "Illustrative fair value"
     ]
    ],
-   "impliedH": "Implied multiples at 180.0",
+   "impliedH": "Implied multiples at 107.0",
    "implied": [
     [
      "Implied P/E (FY25 EPS 20.55)",
-     "8.8x"
+     "5.2x"
     ],
     [
      "Implied P/B (parent BVPS 304.1)",
-     "0.59x"
+     "0.35x"
     ],
     [
-     "Implied P/B (total equity BVPS 395.6)",
-     "0.46x"
+     "Implied P/B (total equity BVPS 393.6)",
+     "0.27x"
     ],
     [
-     "EV/EBITDA (FY25): (3,706 + 1,710.1) / 1,735.5",
-     "~2.7x"
+     "EV/EBITDA (FY25): (2,203 + 1,710.1) / 1,735.5",
+     "~2.3x"
     ]
    ],
    "keyH": "Key sensitivities & caveats",
    "key": [
-    "Land sale timing drives revenue recognition and EPS volatility (1H26 -11%; 9M26 +15.8% on Q3 catch-up).",
+    "Land sale timing drives revenue recognition and EPS volatility (1H26 revenue -11%; 9M26 +15.8% on Q3 catch-up).",
     "Infrastructure mix compresses gross margin; power profitability depends on gas price and PLN dispatch.",
-    "After refinancing, interest cost rose to ~7.2%; DCF uses a 10% WACC and 55% parent share of FCF.",
+    "After refinancing, interest cost rose to ~7.3%; DCF uses a 10% WACC and 55% parent share of FCF.",
     "Fair-value range is an illustration, not a recommendation; credit rating remains speculative grade (B- / B3)."
    ],
    "chartH": "Per-share value range by method (low / base / high)"
@@ -4920,12 +5174,12 @@
   "id": {
    "h": "Ilustrasi Valuasi",
    "sub": "DCF · P/E · P/B · SOTP · NAV dibanding harga pasar — hanya ilustrasi, bukan saran investasi",
-   "disc": "Berdasarkan hasil audit FY2025 dan harga penutupan 18 Sep 2026 sebesar 180,0 IDR. Saham tertimbang 20,59 miliar; BVPS induk 304,1; EPS 20,55; EBITDA 1.735,5 miliar; utang bersih (9M26) 1.710,1 miliar (utang 4.863,8 − kas 3.153,7). Basis utang bersih DCF memakai angka 9M26.",
+   "disc": "Berdasarkan hasil audit FY2025 dan harga penutupan 20 Nov 2026 sebesar 107,0 IDR. Saham tertimbang 20,59 miliar; BVPS induk 304,1; EPS 20,55; EBITDA 1.735,5 miliar; utang bersih (9M26) 1.710,1 miliar (utang 4.863,8 − kas 3.153,7). Basis utang bersih DCF memakai angka 9M26.",
    "inputsH": "Masukan (audit FY2025 kecuali disebut)",
    "inputs": [
     [
-     "Harga (18 Sep 2026)",
-     "180,0 IDR"
+     "Harga (20 Nov 2026)",
+     "107,0 IDR"
     ],
     [
      "Saham (rata-rata tertimbang)",
@@ -4948,8 +5202,8 @@
      "1.710,1 miliar"
     ],
     [
-     "Kapitalisasi pasar @ 180",
-     "≈ 3.706 miliar"
+     "Kapitalisasi pasar @ 107",
+     "≈ 2.203 miliar"
     ]
    ],
    "methodH": "Metode & asumsi (rendah / dasar / tinggi)",
@@ -4963,7 +5217,7 @@
     ],
     [
      "P/B (0,5x / 0,6x / 0,8x)",
-     "BVPS induk audit 304,1; 0,6x sesuai level saat ini",
+     "BVPS induk audit 304,1; 0,6x = ~1,7x P/B saat ini (0,35x)",
      "152,1",
      "182,5",
      "243,3"
@@ -4984,82 +5238,82 @@
     ],
     [
      "NAV (1,0x / 1,5x / 2,0x)",
-     "BVPS ekuitas total 395,6 + tanah pengembangan dinilai ulang 1,5x / 2,0x nilai buku (tanah 9M26 5.470,9 miliar); rendah = nilai buku saja",
-     "395,6",
-     "528,5",
-     "661,3"
+     "BVPS ekuitas total 393,6 + tanah pengembangan dinilai ulang 1,5x / 2,0x nilai buku (tanah 9M26 5.470,9 miliar); rendah = nilai buku saja",
+     "393,6",
+     "526,6",
+     "659,4"
     ]
    ],
    "weightNote": "Nilai wajar tertimbang = 35% P/E + 25% P/B + 30% DCF + 10% SOTP. Nilai likuidasi ditampilkan terpisah sebagai referensi aset-penopang.",
-   "compH": "Perbandingan dengan harga pasar (180,0)",
+   "compH": "Perbandingan dengan harga pasar (107,0)",
    "comp": [
     [
      "P/E (base 8x)",
-     "164.4",
-     "-8.7%",
-     "-9.5%",
-     "Pasar sedikit di atas kelipatan"
+     "164,4",
+     "+53,6%",
+     "+34,9%",
+     "Pasar di bawah kelipatan 8x"
     ],
     [
      "P/B (base 0.6x)",
-     "182.5",
-     "+1.4%",
-     "1.4%",
-     "Diperdagangkan mendekati nilai buku"
+     "182,5",
+     "+70,6%",
+     "+41,4%",
+     "Pasar di 0,35x buku, di bawah asumsi 0,6x"
     ],
     [
      "DCF (base)",
-     "449.9",
-     "+149.9%",
-     "60.0%",
+     "449,9",
+     "+320,5%",
+     "+76,2%",
      "Potensi land bank sebagian besar belum terharga"
     ],
     [
      "SOTP (Sucor)",
-     "250.0",
-     "+38.9%",
-     "28.0%",
+     "250,0",
+     "+133,6%",
+     "+57,2%",
      "Target beli broker"
     ],
     [
      "NAV (base 1.5x)",
-     "528.5",
-     "+193.6%",
-     "65.9%",
+     "526,6",
+     "+392,1%",
+     "+79,7%",
      "Tanah pada 1,5x nilai buku — diskon dalam terhadap aset revaluasi"
     ],
     [
      "Weighted (base)",
-     "263.1",
-     "+46.2%",
-     "31.6%",
+     "263,1",
+     "+145,9%",
+     "+59,3%",
      "Nilai wajar ilustratif"
     ]
    ],
-   "impliedH": "Kelipatan tersirat pada 180,0",
+   "impliedH": "Kelipatan tersirat pada 107,0",
    "implied": [
     [
      "P/E tersirat (EPS FY25 20,55)",
-     "8,8x"
+     "5,2x"
     ],
     [
      "P/B tersirat (BVPS induk 304,1)",
-     "0,59x"
+     "0,35x"
     ],
     [
-     "P/B tersirat (BVPS ekuitas total 395,6)",
-     "0,46x"
+     "P/B tersirat (BVPS ekuitas total 393,6)",
+     "0,27x"
     ],
     [
-     "EV/EBITDA (FY25): (3.706 + 1,710.1) / 1.735,5",
-     "sekitar 2,7x"
+     "EV/EBITDA (FY25): (2.203 + 1.710,1) / 1.735,5",
+     "~2,3x"
     ]
    ],
    "keyH": "Sensitivitas & catatan utama",
    "key": [
-    "Timing penjualan lahan menggerakkan pengakuan pendapatan dan volatilitas EPS (1H26 -11%; 9M26 +15,8% catch-up Q3).",
+    "Timing penjualan lahan menggerakkan pengakuan pendapatan dan volatilitas EPS (pendapatan 1H26 -11%; 9M26 +15,8% catch-up Q3).",
     "Komposisi infrastruktur menekan margin kotor; profitabilitas listrik bergantung pada harga gas dan dispatch PLN.",
-    "Setelah refinancing, beban bunga naik ke sekitar 7,2%; DCF memakai WACC 10% dan porsi induk 55% dari FCF.",
+    "Setelah refinancing, beban bunga naik ke sekitar 7,3%; DCF memakai WACC 10% dan porsi induk 55% dari FCF.",
     "Rentang nilai wajar adalah ilustrasi, bukan rekomendasi; peringkat kredit tetap grade spekulatif (B- / B3)."
    ],
    "chartH": "Kisaran nilai per saham per metode (rendah / dasar / tinggi)"
@@ -5067,12 +5321,12 @@
   "zh": {
    "h": "估值测算",
    "sub": "DCF · P/E · P/B · SOTP · NAV 与现价对比 —— 仅作说明性估算，不构成投资建议",
-   "disc": "基于 FY2025 审计业绩与 18 Sep 2026 收盘价 180.0 盾。加权股本 20.59B；母公司每股净资产 304.1；EPS 20.55；EBITDA 1,735.5B；净负债（9M26）1,710.1B（债务 4,863.8 − 现金 3,153.7）。DCF 采用 9M26 净负债口径。",
+   "disc": "基于 FY2025 审计结果与 2026-11-20 收盘价 107.0 盾。加权股本 20.59B；母公司 BVPS 304.1；EPS 20.55；EBITDA 1,735.5B；净负债（9M26）1,710.1B（债务 4,863.8 − 现金 3,153.7）。DCF 净负债口径采用 9M26 数字。",
    "inputsH": "输入（FY2025 审计口径，另有注明除外）",
    "inputs": [
     [
-     "现价（18 Sep 2026）",
-     "180.0 盾"
+     "现价（2026-11-20）",
+     "107.0 盾"
     ],
     [
      "加权股本",
@@ -5095,8 +5349,8 @@
      "1,710.1B"
     ],
     [
-     "市值 @180",
-     "≈ 3,706B"
+     "市值 @107",
+     "≈ 2,203B"
     ]
    ],
    "methodH": "方法与假设（低 / 基准 / 高）",
@@ -5110,7 +5364,7 @@
     ],
     [
      "P/B（0.5x / 0.6x / 0.8x）",
-     "审计母公司每股净资产 304.1；0.6x 与现水平一致",
+     "审计母公司每股净资产 304.1；0.6x ≈ 当前 P/B（0.35x）的 1.7 倍",
      "152.1",
      "182.5",
      "243.3"
@@ -5131,82 +5385,82 @@
     ],
     [
      "NAV（1.0x / 1.5x / 2.0x）",
-     "总权益每股净资产 395.6 + 待开发土地按账面 1.5x / 2.0x 重估（9M26 土地 5,470.9B）；低档仅按账面",
-     "395.6",
-     "528.5",
-     "661.3"
+     "总权益每股净资产 393.6 + 待开发土地按账面 1.5x / 2.0x 重估（9M26 土地 5,470.9B）；低档仅按账面",
+     "393.6",
+     "526.6",
+     "659.4"
     ]
    ],
    "weightNote": "加权公允价值 = 35% P/E + 25% P/B + 30% DCF + 10% SOTP。清算价值单列，作为资产托底参照。",
-   "compH": "与现价（180.0）对比",
+   "compH": "与市价对比（107.0）",
    "comp": [
     [
      "P/E (base 8x)",
      "164.4",
-     "-8.7%",
-     "-9.5%",
-     "股价略高于倍数"
+     "+53.6%",
+     "+34.9%",
+     "股价低于 8x 倍数"
     ],
     [
      "P/B (base 0.6x)",
      "182.5",
-     "+1.4%",
-     "1.4%",
-     "接近账面价值交易"
+     "+70.6%",
+     "+41.4%",
+     "市价 0.35x 账面，低于 0.6x 假设"
     ],
     [
      "DCF (base)",
      "449.9",
-     "+149.9%",
-     "60.0%",
+     "+320.5%",
+     "+76.2%",
      "土地储备上行空间大多未被定价"
     ],
     [
      "SOTP (Sucor)",
      "250.0",
-     "+38.9%",
-     "28.0%",
+     "+133.6%",
+     "+57.2%",
      "券商买入目标"
     ],
     [
      "NAV（基准 1.5x）",
-     "528.5",
-     "+193.6%",
-     "65.9%",
+     "526.6",
+     "+392.1%",
+     "+79.7%",
      "土地按账面 1.5x 重估——相对重估后资产深度折价"
     ],
     [
      "Weighted (base)",
      "263.1",
-     "+46.2%",
-     "31.6%",
+     "+145.9%",
+     "+59.3%",
      "示例公允价值"
     ]
    ],
-   "impliedH": "180.0 处隐含倍数",
+   "impliedH": "按 107.0 反推的倍数",
    "implied": [
     [
      "隐含市盈率（FY25 EPS 20.55）",
-     "8.8x"
+     "5.2x"
     ],
     [
      "隐含市净率（母公司 304.1）",
-     "0.59x"
+     "0.35x"
     ],
     [
-     "隐含市净率（总权益 395.6）",
-     "0.46x"
+     "隐含市净率（总权益 393.6）",
+     "0.27x"
     ],
     [
-     "EV/EBITDA（FY25）：（3,706 + 1,710.1）/ 1,735.5",
-     "约 2.7x"
+     "EV/EBITDA（FY25）：(2,203 + 1,710.1) / 1,735.5",
+     "~2.3x"
     ]
    ],
    "keyH": "关键敏感性与提示",
    "key": [
-    "土地销售时点主导收入确认与 EPS 波动（1H26 -11%；9M26 +15.8%，Q3 集中确认）。",
+    "土地销售时点主导收入确认与 EPS 波动（1H26 营收 -11%；9M26 +15.8%，Q3 集中确认）。",
     "基建占比上升压缩毛利率；电力盈利取决于气价与 PLN 调度。",
-    "再融资后利息成本升至约 7.2%；DCF 采用 10% WACC、归母自由现金流占比 55%。",
+    "再融资后利息成本升至约 7.3%；DCF 采用 10% WACC、归母自由现金流占比 55%。",
     "公允价值区间仅为示意、非推荐；信用评级仍为投机级（B- / B3）。"
    ],
    "chartH": "分方法每股价值区间（低 / 基准 / 高）"
@@ -5223,7 +5477,7 @@
     "Liabilities (bn)",
     "Parent liq. value (bn)",
     "Per share (IDR)",
-    "vs 180.0",
+    "vs 107.0",
     "Safety margin"
    ],
    "rows": [
@@ -5233,8 +5487,8 @@
      "6,911.9",
      "6,263.6",
      "304.1",
-     "+68.9%",
-     "40.8%"
+     "+184.2%",
+     "+64.8%"
     ],
     [
      "Land @ market — low asking",
@@ -5242,8 +5496,8 @@
      "6,911.9",
      "33,211.4",
      "1,612.7",
-     "+795.9%",
-     "88.8%"
+     "+1407.2%",
+     "+93.4%"
     ],
     [
      "Low after 20% forced-sale discount",
@@ -5251,8 +5505,8 @@
      "6,911.9",
      "27,821.8",
      "1,351.0",
-     "+650.6%",
-     "86.7%"
+     "+1162.6%",
+     "+92.1%"
     ],
     [
      "Land @ market — mid asking",
@@ -5260,8 +5514,8 @@
      "6,911.9",
      "68,878.7",
      "3,344.6",
-     "+1758.1%",
-     "94.6%"
+     "+3025.8%",
+     "+96.8%"
     ],
     [
      "Land @ market — high asking",
@@ -5269,11 +5523,11 @@
      "6,911.9",
      "104,545.9",
      "5,076.5",
-     "+2720.3%",
-     "96.5%"
+     "+4644.4%",
+     "+97.9%"
     ]
    ],
-   "note": "Caveats: asking prices are third-party listings (Jul–Sep 2026), not transactions; no haircut on receivables, PP&E or other assets; land sales are the core going-concern business, so a liquidation shortcut understates (or, at high asking prices, overstates) the operating franchise; comparison uses the 18 Sep 2026 close of 180.0."
+   "note": "Caveats: asking prices are third-party listings (Jul–Sep 2026), not transactions; no haircut on receivables, PP&E or other assets; land sales are the core going-concern business, so a liquidation shortcut understates (or, at high asking prices, overstates) the operating franchise; comparison uses the 20 Nov 2026 close of 107.0."
   },
   "id": {
    "h": "Nilai Likuidasi (pemeriksaan aset-penopang)",
@@ -5285,7 +5539,7 @@
     "Liabilitas (miliar)",
     "Nilai likuidasi induk (miliar)",
     "Per saham (IDR)",
-    "vs 180,0",
+    "vs 107,0",
     "Margin aman"
    ],
    "rows": [
@@ -5295,8 +5549,8 @@
      "6.911,9",
      "6.263,6",
      "304,1",
-     "+68,0%",
-     "40,5%"
+     "+184,2%",
+     "+64,8%"
     ],
     [
      "Lahan @ pasar — penawaran rendah",
@@ -5304,8 +5558,8 @@
      "6.911,9",
      "33.211,4",
      "1.612,7",
-     "+791,0%",
-     "88,8%"
+     "+1407,2%",
+     "+93,4%"
     ],
     [
      "Rendah setelah diskon jual paksa 20%",
@@ -5313,8 +5567,8 @@
      "6.911,9",
      "27.821,8",
      "1.351,0",
-     "+646,4%",
-     "86,6%"
+     "+1162,6%",
+     "+92,1%"
     ],
     [
      "Lahan @ pasar — penawaran menengah",
@@ -5322,8 +5576,8 @@
      "6.911,9",
      "68.878,7",
      "3.344,6",
-     "+1.747,9%",
-     "94,6%"
+     "+3025,8%",
+     "+96,8%"
     ],
     [
      "Lahan @ pasar — penawaran tinggi",
@@ -5331,11 +5585,11 @@
      "6.911,9",
      "104.545,9",
      "5.076,5",
-     "+2.704,7%",
-     "96,4%"
+     "+4644,4%",
+     "+97,9%"
     ]
    ],
-   "note": "Catatan: harga penawaran adalah listing pihak ketiga (Jul–Sep 2026), bukan transaksi; tanpa pemangkasan pada piutang, aset tetap, atau aset lain; penjualan lahan adalah bisnis inti going-concern, sehingga pintasan likuidasi meremehkan (atau, pada penawaran tinggi, melebih-lebihkan) waralaba operasional; perbandingan memakai penutupan 18 Sep 2026 sebesar 180,0."
+   "note": "Catatan: harga penawaran adalah listing pihak ketiga (Jul–Sep 2026), bukan transaksi; tanpa pemangkasan pada piutang, aset tetap, atau aset lain; penjualan lahan adalah bisnis inti going-concern, sehingga pintasan likuidasi meremehkan (atau, pada penawaran tinggi, melebih-lebihkan) waralaba operasional; perbandingan memakai penutupan 20 Nov 2026 sebesar 107,0."
   },
   "zh": {
    "h": "清算价值（资产托底视角）",
@@ -5347,7 +5601,7 @@
     "负债（十亿盾）",
     "母公司清算价值（十亿盾）",
     "每股（盾）",
-    "较 180.0",
+    "较 107.0",
     "安全边际"
    ],
    "rows": [
@@ -5357,8 +5611,8 @@
      "6,911.9",
      "6,263.6",
      "304.1",
-     "+68.0%",
-     "40.5%"
+     "+184.2%",
+     "+64.8%"
     ],
     [
      "土地按市场——低位挂牌",
@@ -5366,8 +5620,8 @@
      "6,911.9",
      "33,211.4",
      "1,612.7",
-     "+791.0%",
-     "88.8%"
+     "+1407.2%",
+     "+93.4%"
     ],
     [
      "低位再扣 20% 强制变现折价",
@@ -5375,8 +5629,8 @@
      "6,911.9",
      "27,821.8",
      "1,351.0",
-     "+646.4%",
-     "86.6%"
+     "+1162.6%",
+     "+92.1%"
     ],
     [
      "土地按市场——中位挂牌",
@@ -5384,8 +5638,8 @@
      "6,911.9",
      "68,878.7",
      "3,344.6",
-     "+1,747.9%",
-     "94.6%"
+     "+3025.8%",
+     "+96.8%"
     ],
     [
      "土地按市场——高位挂牌",
@@ -5393,17 +5647,17 @@
      "6,911.9",
      "104,545.9",
      "5,076.5",
-     "+2,704.7%",
-     "96.4%"
+     "+4644.4%",
+     "+97.9%"
     ]
    ],
-   "note": "提示：挂牌价为第三方报价（2026-07 至 09），非成交价；未对应收、厂房设备及其他资产打折；土地销售是持续经营核心业务，清算式速算会低估（高位挂牌情形下高估）经营价值；对比基准为 18 Sep 2026 收盘 180.0。"
+   "note": "提示：挂牌价为第三方报价（2026-07 至 09），非成交价；未对应收、厂房设备及其他资产打折；土地销售是持续经营核心业务，清算式速算会低估（高位挂牌情形下高估）经营价值；对比基准为 20 Nov 2026 收盘 107.0。"
   }
  },
  "KEYP": {
   "en": {
    "h": "Key parameters (Bloomberg-standard fields)",
-   "sub": "Delayed public market data; price-derived rows recalculated at the 18 Nov 2026 close; other parameters are 9M26 (30 Sep 2026) snapshots — audited FY25 shown where materially different",
+   "sub": "Delayed public market data; price-derived rows recalculated at the 20 Nov 2026 close; other parameters are 9M26 (30 Sep 2026) snapshots — audited FY25 shown where materially different",
    "hd": [
     "Parameter",
     "Value",
@@ -5467,13 +5721,13 @@
     ],
     [
      "Dividend",
-     "2.03 IDR; yield 1.9%; payout 9.9%",
-     "Yahoo; ex-div 17 Jun 2026; payout = 2.03 / 20.55"
+     "2.03 IDR; yield 1.9%; payout 10.0%",
+     "Yahoo; ex-div 17 Jun 2026; payout = 42.3 / parent NP 423.2 = 10.0%"
     ],
     [
      "ROE / ROA (TTM)",
-     "3.3% / 4.1%",
-     "TTM parent NP 206.4 / parent equity 6,295.1; cons NP 614.2 / assets 15,151.1"
+     "7.6% / 4.1%",
+     "TTM cons NP 614.2 / total equity 8,105.1; cons NP 614.2 / assets 15,151.1"
     ],
     [
      "Profit / gross margin (TTM)",
@@ -5503,7 +5757,7 @@
     [
      "Cash / total debt (9M26)",
      "3.15 tn / 4.86 tn",
-     "9M26 FS; incl. lease 4.8"
+     "9M26 FS; incl. lease 4.9"
     ],
     [
      "Interest-bearing D/E",
@@ -5519,7 +5773,7 @@
   },
   "id": {
    "h": "Parameter Kunci (bidang standar Bloomberg)",
-   "sub": "Data pasar publik tertunda; baris turunan harga dihitung ulang pada penutupan 18 Nov 2026; parameter lain cuplikan 9M26 (30 Sep 2026) — FY25 audit ditampilkan bila berbeda material",
+   "sub": "Data pasar publik tertunda; baris turunan harga dihitung ulang pada penutupan 20 Nov 2026; parameter lain cuplikan 9M26 (30 Sep 2026) — FY25 audit ditampilkan bila berbeda material",
    "hd": [
     "Parameter",
     "Nilai",
@@ -5583,13 +5837,13 @@
     ],
     [
      "Dividen",
-     "2,03 IDR; imbal hasil 1,9%; payout 9,9%",
-     "Yahoo; ex-div 17 Jun 2026; payout = 2,03 / 20,55"
+     "2,03 IDR; imbal hasil 1,9%; payout 10,0%",
+     "Yahoo; ex-div 17 Jun 2026; payout = 42,3 / laba induk 423,2 = 10,0%"
     ],
     [
      "ROE / ROA (TTM)",
-     "3,3% / 4,1%",
-     "LTM laba induk 206,4 / ekuitas induk 6.295,1; laba konsolidasi 614,2 / aset 15.151,1"
+     "7,6% / 4,1%",
+     "LTM laba konsolidasi 614,2 / ekuitas total 8.105,1; laba konsolidasi 614,2 / aset 15.151,1"
     ],
     [
      "Margin laba / kotor (TTM)",
@@ -5619,7 +5873,7 @@
     [
      "Kas / total utang (9M26)",
      "3,15 triliun / 4,86 triliun",
-     "FS 9M26; termasuk sewa 4,8"
+     "FS 9M26; termasuk sewa 4,9"
     ],
     [
      "Utang berbunga / ekuitas",
@@ -5635,7 +5889,7 @@
   },
   "zh": {
    "h": "关键参数（Bloomberg 标准字段）",
-   "sub": "公开延迟行情；行情派生行按 2026-11-18 收盘重算；其余参数为 9M26（2026-09-30）快照——与审计 FY25 差异显著时并列列示",
+   "sub": "公开延迟行情；行情派生行按 2026-11-20 收盘重算；其余参数为 9M26（2026-09-30）快照——与审计 FY25 差异显著时并列列示",
    "hd": [
     "参数",
     "数值",
@@ -5699,13 +5953,13 @@
     ],
     [
      "股息",
-     "每股 2.03 盾；股息率 1.9%；派息率 9.9%",
-     "Yahoo；除息日 2026-06-17；派息率 = 2.03 / 20.55"
+     "每股 2.03 盾；股息率 1.9%；派息率 10.0%",
+     "Yahoo；除息日 2026-06-17；派息率 = 42.3 / 归母净利 423.2 = 10.0%"
     ],
     [
      "ROE / ROA（TTM）",
-     "3.3% / 4.1%",
-     "TTM 归母 206.4 / 母公司权益 6,295.1；合并 614.2 / 资产 15,151.1"
+     "7.6% / 4.1%",
+     "TTM 合并净利 614.2 / 总权益 8,105.1；合并净利 614.2 / 资产 15,151.1"
     ],
     [
      "净利率 / 毛利率（TTM）",
@@ -5735,7 +5989,7 @@
     [
      "现金 / 总债务（9M26）",
      "3.15 万亿 / 4.86 万亿",
-     "9M26 财报；含租赁 4.8"
+     "9M26 财报；含租赁 4.9"
     ],
     [
      "有息负债 / 权益",
@@ -6076,7 +6330,7 @@
    "roe": "ROE",
    "de": "Debt/Equity",
    "infSeg": "Infrastructure (power/water/dry port)",
-   "reSeg": "Real estate & property",
+   "reSeg": "Land Development & Property",
    "cash": "Cash & equivalents",
    "other": "Other assets",
    "ebitdaI": "EBITDA / interest",
@@ -6086,8 +6340,8 @@
    "closeC": "Closing cash",
    "totR": "Total revenue",
    "infra": "Infrastructure",
-   "land": "Land & property",
-   "leis": "Leisure & hotel",
+   "land": "Land",
+   "leis": "Golf, tourism & other",
    "done": "9M26 achieved",
    "target": "FY2026 target",
    "recurr": "Recurring (infrastructure)",
@@ -6095,7 +6349,7 @@
    "deriv": "Derivative termination",
    "amort": "Accelerated amortization",
    "sn": "Senior Notes 2027",
-   "rePie": "Real estate",
+   "rePie": "Land Development & Property",
    "powPie": "Power",
    "watPie": "Water/Estate",
    "dryPie": "Dry port",
@@ -6143,7 +6397,7 @@
    "roe": "ROE",
    "de": "Utang/Ekuitas",
    "infSeg": "Infrastruktur (listrik/air/pelabuhan darat)",
-   "reSeg": "Properti",
+   "reSeg": "Pengembangan Lahan & Properti",
    "cash": "Kas & setara kas",
    "other": "Aset lainnya",
    "ebitdaI": "EBITDA / bunga",
@@ -6153,8 +6407,8 @@
    "closeC": "Kas akhir",
    "totR": "Total pendapatan",
    "infra": "Infrastruktur",
-   "land": "Tanah & properti",
-   "leis": "Rekreasi & hotel",
+   "land": "Tanah",
+   "leis": "Golf, pariwisata & lainnya",
    "done": "9M26 terealisasi",
    "target": "Target FY2026",
    "recurr": "Pendapatan berulang (infrastruktur)",
@@ -6162,7 +6416,7 @@
    "deriv": "Penghentian derivatif",
    "amort": "Amortisasi dipercepat",
    "sn": "Senior Notes 2027",
-   "rePie": "Properti",
+   "rePie": "Pengembangan Lahan & Properti",
    "powPie": "Kelistrikan",
    "watPie": "Air/Layanan kawasan",
    "dryPie": "Pelabuhan darat",
@@ -6210,7 +6464,7 @@
    "roe": "ROE",
    "de": "负债/权益",
    "infSeg": "基建（电力/水务/干港）",
-   "reSeg": "地产与物业",
+   "reSeg": "土地开发与物业",
    "cash": "现金及等价物",
    "other": "其他资产",
    "ebitdaI": "EBITDA / 利息",
@@ -6220,8 +6474,8 @@
    "closeC": "期末现金",
    "totR": "总收入",
    "infra": "基建",
-   "land": "土地与物业",
-   "leis": "休闲酒店",
+   "land": "土地",
+   "leis": "高尔夫、旅游及其他",
    "done": "9M26 已实现",
    "target": "2026 目标",
    "recurr": "基建（经常性收入）",
@@ -6229,7 +6483,7 @@
    "deriv": "衍生品终止",
    "amort": "加速摊销",
    "sn": "2027 高级票据",
-   "rePie": "地产",
+   "rePie": "土地开发与物业",
    "powPie": "电力",
    "watPie": "水务/园区",
    "dryPie": "干港",
@@ -6340,8 +6594,8 @@
   },
   "cov": {
    "icr": [
-    3.4,
-    4.5,
+    3.3,
+    4.9,
     4.4
    ],
    "nd": [
@@ -6366,7 +6620,7 @@
     2436.5,
     1398.2,
     974.9,
-    63
+    63.4
    ]
   },
   "msDone": 1524.4,
@@ -6504,26 +6758,26 @@
   "msCikT": 1250,
   "m26rev": {
    "m25": [
-    3674.7,
-    1960.3,
+    3675.0,
+    1951.0,
     1612.9,
-    101.5
+    111.1
    ],
    "m26": [
     4254.9,
-    2231.5,
-    1915.7,
-    107.7
+    2242.5,
+    1914.8,
+    97.6
    ]
   },
   "m26pie": [
    [
     "rePie",
-    2023.4
+    2012.0
    ],
    [
     "infraPie",
-    2231.5
+    2242.9
    ]
   ],
   "bsQ3": {
@@ -6551,7 +6805,7 @@
     "Value factor",
     "Land value (IDR bn)",
     "Per share (IDR)",
-    "vs 180.0",
+    "vs 107.0",
     "Safety margin"
    ],
    "rows": [
@@ -6559,33 +6813,33 @@
      "100%",
      "5,783.5",
      "280.9",
-     "+56.1%",
-     "35.9%"
+     "+162.5%",
+     "+61.9%"
     ],
     [
      "75%",
      "4,337.6",
      "210.7",
-     "+17.1%",
-     "14.6%"
+     "+96.9%",
+     "+49.2%"
     ],
     [
      "50%",
      "2,891.8",
      "140.4",
-     "-22.0%",
-     "n/a"
+     "+31.2%",
+     "+23.8%"
     ],
     [
      "25%",
      "1,445.9",
      "70.2",
-     "-61.0%",
-     "n/a"
+     "-34.4%",
+     "-52.4%"
     ]
    ],
-   "disc": "Method & data source: total land bank book value = 5,783.5 IDR bn, the audited 31-Dec-2025 carrying value (at cost) of land for development (AR2025 note 7: Cikarang 3,482.0 + Kendal 746.6 + Tanjung Lesung 1,499.7 + Morotai 55.2). Per share = book value × factor ÷ 20.59 bn weighted shares (AR2025); comparison price = 180.0 IDR (18-Sep-2026 close). Gross asset view: liabilities and net debt are NOT deducted here (total liabilities 6,911.9; 9M26 net debt 1,710.1), so per-share figures are land value only, not an equity value.",
-   "note": "Safety margin = upside of the asset value vs the price paid = (per-share land value − market price) ÷ market price, shown for every factor row (a negative margin means the share price already exceeds the land-backed value). Book value is at cost, not market: market asking prices per project range from 2.4x to 22.4x of book (Land Bank page). The 75% / 50% / 25% factors illustrate book-value haircuts; actual recoverable value depends on sale timing, parcel mix and compulsory-sale discounts."
+   "disc": "Method & data source: total land bank book value = 5,783.5 IDR bn, the audited 31-Dec-2025 carrying value (at cost) of land for development (AR2025 note 7: Cikarang 3,482.0 + Kendal 746.6 + Tanjung Lesung 1,499.7 + Morotai 55.2). Per share = book value × factor ÷ 20.59 bn weighted shares (AR2025); comparison price = 107.0 IDR (2026-11-20 close). Gross asset view: liabilities and net debt are NOT deducted here (total liabilities 6,911.9; 9M26 net debt 1,710.1), so per-share figures are land value only, not an equity value.",
+   "note": "Safety margin = upside of the asset value vs the price paid = (per-share land value − market price) ÷ per-share land value, shown for every factor row (a negative margin means the share price already exceeds the land-backed value). Book value is at cost, not market: market asking prices per project range from 2.4x to 22.4x of book (Land Bank page). The 75% / 50% / 25% factors illustrate book-value haircuts; actual recoverable value depends on sale timing, parcel mix and compulsory-sale discounts."
   },
   "id": {
    "h": "Nilai lahan per saham",
@@ -6594,7 +6848,7 @@
     "Faktor nilai",
     "Nilai lahan (Rp miliar)",
     "Per saham (IDR)",
-    "vs 180,0",
+    "vs 107,0",
     "Margin aman"
    ],
    "rows": [
@@ -6602,33 +6856,33 @@
      "100%",
      "5.783,5",
      "280,9",
-     "+55,2%",
-     "35,6%"
+     "+162,5%",
+     "+61,9%"
     ],
     [
      "75%",
      "4.337,6",
      "210,7",
-     "+16,4%",
-     "14,1%"
+     "+96,9%",
+     "+49,2%"
     ],
     [
      "50%",
      "2.891,8",
      "140,4",
-     "-22,4%",
-     "n/a"
+     "+31,2%",
+     "+23,8%"
     ],
     [
      "25%",
      "1.445,9",
      "70,2",
-     "-61,2%",
-     "n/a"
+     "-34,4%",
+     "-52,4%"
     ]
    ],
-   "disc": "Metode & sumber data: total nilai buku lahan = 5.783,5 Rp miliar, nilai tercatat (biaya perolehan) audit 31 Des 2025 untuk lahan pengembangan (catatan 7 AR2025: Cikarang 3.482,0 + Kendal 746,6 + Tanjung Lesung 1.499,7 + Morotai 55,2). Per saham = nilai buku × faktor ÷ 20,59 miliar saham tertimbang (AR2025); harga pembanding = 180,0 IDR (penutupan 18 Sep 2026). Pandangan aset bruto: liabilitas dan utang bersih TIDAK dikurangkan di sini (total liabilitas 6.911,9; utang bersih 9M26 1.710,1), sehingga angka per saham hanyalah nilai lahan, bukan nilai ekuitas.",
-   "note": "Margin aman = upside nilai aset terhadap harga beli = (nilai lahan per saham − harga pasar) ÷ harga pasar, ditampilkan untuk setiap baris faktor (margin negatif berarti harga saham sudah melebihi nilai berpenopang lahan). Nilai buku adalah biaya perolehan, bukan pasar: harga penawaran per proyek berkisar 2,4x–22,4x dari buku (halaman Land Bank). Faktor 75% / 50% / 25% mengilustrasikan pemangkasan nilai buku; nilai yang dapat dipulihkan aktual bergantung pada waktu penjualan, campuran bidang tanah, dan diskon jual paksa."
+   "disc": "Metode & sumber data: total nilai buku lahan = 5.783,5 Rp miliar, nilai tercatat (biaya perolehan) audit 31 Des 2025 untuk lahan pengembangan (catatan 7 AR2025: Cikarang 3.482,0 + Kendal 746,6 + Tanjung Lesung 1.499,7 + Morotai 55,2). Per saham = nilai buku × faktor ÷ 20,59 miliar saham tertimbang (AR2025); harga pembanding = 107,0 IDR (penutupan 20 Nov 2026). Pandangan aset bruto: liabilitas dan utang bersih TIDAK dikurangkan di sini (total liabilitas 6.911,9; utang bersih 9M26 1.710,1), sehingga angka per saham hanyalah nilai lahan, bukan nilai ekuitas.",
+   "note": "Margin aman = upside nilai aset terhadap harga beli = (nilai lahan per saham − harga pasar) ÷ nilai lahan per saham, ditampilkan untuk setiap baris faktor (margin negatif berarti harga saham sudah melebihi nilai berpenopang lahan). Nilai buku adalah biaya perolehan, bukan pasar: harga penawaran per proyek berkisar 2,4x–22,4x dari buku (halaman Land Bank). Faktor 75% / 50% / 25% mengilustrasikan pemangkasan nilai buku; nilai yang dapat dipulihkan aktual bergantung pada waktu penjualan, campuran bidang tanah, dan diskon jual paksa."
   },
   "zh": {
    "h": "每股土地价值",
@@ -6637,7 +6891,7 @@
     "价值系数",
     "土地价值（十亿盾）",
     "每股（盾）",
-    "对比 180.0",
+    "对比 107.0",
     "安全边际"
    ],
    "rows": [
@@ -6645,33 +6899,33 @@
      "100%",
      "5,783.5",
      "280.9",
-     "+55.2%",
-     "35.6%"
+     "+162.5%",
+     "+61.9%"
     ],
     [
      "75%",
      "4,337.6",
      "210.7",
-     "+16.4%",
-     "14.1%"
+     "+96.9%",
+     "+49.2%"
     ],
     [
      "50%",
      "2,891.8",
      "140.4",
-     "-22.4%",
-     "n/a"
+     "+31.2%",
+     "+23.8%"
     ],
     [
      "25%",
      "1,445.9",
      "70.2",
-     "-61.2%",
-     "n/a"
+     "-34.4%",
+     "-52.4%"
     ]
    ],
-   "disc": "方法与数据来源：土地总账面价值 = 5,783.5 十亿盾，为 2025-12-31 审计的（成本法）开发土地账面价值（AR2025 附注 7：Cikarang 3,482.0 + Kendal 746.6 + Tanjung Lesung 1,499.7 + Morotai 55.2）。每股 = 账面价值 × 系数 ÷ 205.9 亿加权股本（AR2025）；对比价为 180.0 盾（2026-09-18 收盘）。此为总资产视角：此处未扣除负债与净债务（总负债 6,911.9；9M26 净债务 1,710.1），故每股数值仅为土地价值，并非股权价值。",
-   "note": "安全边际 =（每股土地价值 − 市价）÷ 市价，即相对买入价的上行空间，每个系数行均显示（负值表示股价已高于土地托底价值）。账面价值为成本口径而非市价：各项目市场挂牌价为账面 2.4x–22.4x（见 Land Bank 页）。75% / 50% / 25% 系数用于说明账面价值折价；实际可回收价值取决于出售时点、地块组合与强制出售折扣。"
+   "disc": "方法与数据来源：土地总账面价值 = 5,783.5 十亿盾，为 2025-12-31 审计的（成本法）开发土地账面价值（AR2025 附注 7：Cikarang 3,482.0 + Kendal 746.6 + Tanjung Lesung 1,499.7 + Morotai 55.2）。每股 = 账面价值 × 系数 ÷ 205.9 亿加权股本（AR2025）；对比价为 107.0 盾（2026-11-20 收盘）。此为总资产视角：此处未扣除负债与净债务（总负债 6,911.9；9M26 净债务 1,710.1），故每股数值仅为土地价值，并非股权价值。",
+   "note": "安全边际 =（每股土地价值 − 市价）÷ 每股土地价值，即相对买入价的上行空间，每个系数行均显示（负值表示股价已高于土地托底价值）。账面价值为成本口径而非市价：各项目市场挂牌价为账面 2.4x–22.4x（见 Land Bank 页）。75% / 50% / 25% 系数用于说明账面价值折价；实际可回收价值取决于出售时点、地块组合与强制出售折扣。"
   }
  },
  "GLOS": {
@@ -6878,7 +7132,7 @@
    },
    {
     "p": "Safety margin",
-    "x": "Safety margin — (estimated value − market price) ÷ estimated value; the discount to intrinsic value, shown only when value exceeds price."
+    "x": "Safety margin — (estimated value − market price) ÷ estimated value; the discount to intrinsic value, shown for every row, including negatives."
    },
    {
     "p": "Fair value",
@@ -6918,11 +7172,11 @@
    },
    {
     "p": "Gross margin",
-    "x": "Gross Margin — (revenue − cost of goods sold) ÷ revenue; the share of sales left after direct production costs (FY25: 39%)."
+    "x": "Gross Margin — (revenue − cost of goods sold) ÷ revenue; the share of sales left after direct production costs (FY25: 39.5%)."
    },
    {
     "p": "gross margin",
-    "x": "Gross Margin — (revenue − cost of goods sold) ÷ revenue; the share of sales left after direct production costs (FY25: 39%)."
+    "x": "Gross Margin — (revenue − cost of goods sold) ÷ revenue; the share of sales left after direct production costs (FY25: 39.5%)."
    },
    {
     "p": "Net margin",
@@ -7030,7 +7284,7 @@
    },
    {
     "p": "Margin kotor",
-    "x": "Margin kotor = (pendapatan − beban pokok penjualan) ÷ pendapatan; bagian penjualan yang tersisa setelah biaya produksi langsung (FY2025: 39%)."
+    "x": "Margin kotor = (pendapatan − beban pokok penjualan) ÷ pendapatan; bagian penjualan yang tersisa setelah biaya produksi langsung (FY2025: 39.5%)."
    },
    {
     "p": "Margin bersih",
@@ -7038,7 +7292,7 @@
    },
    {
     "p": "Margin aman",
-    "x": "Margin aman = (nilai estimasi − harga pasar) ÷ nilai estimasi; diskon terhadap nilai intrinsik, hanya ditampilkan bila nilai melebihi harga."
+    "x": "Margin aman = (nilai estimasi − harga pasar) ÷ nilai estimasi; diskon terhadap nilai intrinsik, ditampilkan untuk setiap baris, termasuk nilai negatif."
    },
    {
     "p": "Utang bersih",
@@ -7094,7 +7348,7 @@
    },
    {
     "p": "毛利率",
-    "x": "毛利率 =（营业收入 − 营业成本）÷ 营业收入；扣除直接生产成本后剩余的销售占比（FY2025：39%）。"
+    "x": "毛利率 =（营业收入 − 营业成本）÷ 营业收入；扣除直接生产成本后剩余的销售占比（FY2025：39.5%）。"
    },
    {
     "p": "净利率",
@@ -7118,7 +7372,7 @@
    },
    {
     "p": "安全边际",
-    "x": "安全边际 =（估算价值 − 现价）÷ 估算价值；衡量现价相对内在价值的折让空间，仅当价值高于价格时显示。"
+    "x": "安全边际 =（估算价值 − 现价）÷ 估算价值；衡量现价相对内在价值的折让空间，每一行均显示，包括负值（负值表示现价高于估值）。"
    },
    {
     "p": "股东大会",
@@ -7210,12 +7464,12 @@
     ],
     [
      "2. Shift mix to recurring infrastructure",
-     "Blended gross margin slipped from ~52% (2022) to 39% (2025) as lower-margin infrastructure volumes grew as a share of revenue - by design, trading cyclical land-sale peaks for recurring, annuity-like cash flow.",
+     "Blended gross margin slipped from ~52% (2022) to 39.5% (2025) as lower-margin infrastructure volumes grew as a share of revenue - by design, trading cyclical land-sale peaks for recurring, annuity-like cash flow.",
      "Services GPM ~46% (water, dry port, warehousing) is the high-quality recurring stream; Power is PLN-tariff regulated (~18% GPM) - a volume/utilisation play with stable cash but limited margin upside. A larger recurring share smooths quarterly earnings and supports a higher, REIT-like valuation multiple: that is the value lever, not a GPM rebound."
     ],
     [
      "3. De-risk land-sale timing",
-     "9M26 revenue +15.8% y/y, reversing 1H26 -11% (land recognition timing); quarterly swings ±20%. DSO 37d (FY25) → 63d (9M26) on Q3 land deliveries; deposits 360.0bn.",
+     "9M26 revenue +15.8% y/y, reversing a 1H26 revenue decline of 11% (land recognition timing); quarterly swings ±20%. DSO 37d (FY25) → 63d (9M26) on Q3 land deliveries; deposits 360.0bn.",
      "Converting more sales to take-or-pay / recurring service contracts and growing the pre-sales backlog would smooth revenue, reduce working-capital volatility and raise cash-conversion certainty."
     ]
    ]
@@ -7231,12 +7485,12 @@
     ],
     [
      "2. Geser bauran ke infrastruktur rutin",
-     "Margin kotor gabungan turun dari ~52% (2022) ke 39% (2025) seiring volume infrastruktur bermargin lebih rendah tumbuh sebagai porsi pendapatan — sesuai desain, menukar puncak penjualan tanah yang siklikal dengan arus kas rutin seperti anuitas.",
+     "Margin kotor gabungan turun dari ~52% (2022) ke 39.5% (2025) seiring volume infrastruktur bermargin lebih rendah tumbuh sebagai porsi pendapatan — sesuai desain, menukar puncak penjualan tanah yang siklikal dengan arus kas rutin seperti anuitas.",
      "GPM jasa kawasan ~46% (air, dry port, pergudangan) adalah aliran rutin berkualitas; listrik diatur tarif PLN (~18% GPM) - permainan volume/utilisasi dengan kas stabil namun ruang margin terbatas. Porsi rutin yang lebih besar memperhalus laba triwulanan dan mendukung multiple valuasi tipe REIT yang lebih tinggi: itu tuas nilai sebenarnya, bukan rebound GPM."
     ],
     [
      "3. Kurangi risiko timing penjualan tanah",
-     "Pendapatan 9M26 +15,8% y/y, membalik penurunan 1H26 -11% (timing pengakuan lahan); fluktuasi kuartalan ±20%. DSO 37 hari (FY25) → 63 hari (9M26) akibat pengiriman lahan Q3; uang jaminan 360,0 miliar.",
+     "Pendapatan 9M26 +15,8% y/y, membalik penurunan pendapatan 1H26 -11% (timing pengakuan lahan); fluktuasi kuartalan ±20%. DSO 37 hari (FY25) → 63 hari (9M26) akibat pengiriman lahan Q3; uang jaminan 360,0 miliar.",
      "Mengubah sebagian penjualan menjadi kontrak take-or-pay / layanan rutin serta memperbesar backlog pre-sale akan memperhalus pendapatan dan meningkatkan kepastian konversi kas."
     ]
    ]
@@ -7252,12 +7506,12 @@
     ],
     [
      "2. 结构转向经常性基建",
-     "综合毛利率从 2022 年 52% 降至 2025 年 39%——低毛利基建收入占比上升所致，这是主动选择：以周期性的土地销售高峰换取年金式的经常性现金流。",
+     "综合毛利率从 2022 年 52% 降至 2025 年 39.5%——低毛利基建收入占比上升所致，这是主动选择：以周期性的土地销售高峰换取年金式的经常性现金流。",
      "园区服务毛利率约 46%（水务、干港、仓储）是高质量经常性收入；电力受 PLN 电价管制（毛利率仅 18%）——靠电量与利用率的稳定现金流生意，毛利上行空间有限。经常性占比提升可平滑季度盈利并支撑更高的类 REITs 估值倍数：这才是价值杠杆，而非毛利率反弹。"
     ],
     [
      "3. 降低土地确认时点波动",
-     "9M26 收入同比 +15.8%，扭转 1H26 -11%（土地确认时点）；季度波动 ±20%。DSO 自 FY25 37 天升至 9M26 63 天（Q3 土地交付）；客户保证金 360.0 十亿盾。",
+     "9M26 收入同比 +15.8%，扭转 1H26 营收 -11%（土地确认时点）；季度波动 ±20%。DSO 自 FY25 37 天升至 9M26 63 天（Q3 土地交付）；客户保证金 360.0 十亿盾。",
      "把更多销售转为 take-or-pay / 经常性服务合同并扩大预售订单，可平滑收入、降低营运资本波动、提高现金转化确定性。"
     ]
    ]
@@ -7300,11 +7554,11 @@
     ],
     [
      "Momentum Kendal SEZ",
-     "Tiga MoU investor baru ditandatangani Sept 2026 (kulit sintetis, garmen, perhotelan); 144 tenant per September 2026; biaya tenaga kerja rendah Jawa Tengah cocok untuk industri padat karya."
+     "Tiga MoU investor baru ditandatangani Sept 2026 (kulit sintetis, garmen, perhotelan); 144 tenant per Agustus 2026; biaya tenaga kerja rendah Jawa Tengah cocok untuk industri padat karya."
     ],
     [
      "Target penjualan 2026: 3.750",
-     "Perusahaan menargetkan penjualan pemasaran Rp3.750 miliar (Kendal 2.500 / Cikarang 1.250); 1Q26 terealisasi 540,8 miliar. Backlog pre-sale mendukung tesis infrastruktur rutin."
+     "Perusahaan menargetkan penjualan pemasaran Rp3.750 miliar (Kendal 2.500 / Cikarang 1.250); 9M26 terealisasi 1.524,4 miliar (40,7% target). Backlog pre-sale mendukung tesis infrastruktur rutin."
     ],
     [
      "Produk baru & permintaan sendiri",
@@ -7312,7 +7566,7 @@
     ],
     [
      "Neraca lebih kuat pasca-refinancing",
-     "Kas FY2025 3,6tn vs total utang 4,6tn (utang bersih ~1,0tn); setelah surat utang USD direfinancing menjadi pendanaan IDR 15 thn 7,0-7,5%, utang bersih 9M26 di 1,7tn dengan risiko kurs bersih — ruang tetap membiayai pengembangan lahan, rollout Bizpark, dan dividen tanpa ekuitas baru."
+     "Kas FY2025 3,6tn vs total utang 4,6tn (utang bersih ~1,0tn); setelah surat utang USD direfinancing menjadi pendanaan IDR 15 thn 7,0-7,5%, utang bersih 9M26 di 1,7tn dengan risiko kurs hilang — ruang tetap membiayai pengembangan lahan, rollout Bizpark, dan dividen tanpa ekuitas baru."
     ]
    ]
   },
@@ -7326,7 +7580,7 @@
     ],
     [
      "Kendal 经济特区势头",
-     "2026 年 9 月新签三份投资备忘录（合成革、服装、酒店）；截至 2026 年 9 月共 144 家租户；中爪哇低人工成本适合劳动密集型制造。"
+     "2026 年 9 月新签三份投资备忘录（合成革、服装、酒店）；截至 2026 年 8 月共 144 家租户；中爪哇低人工成本适合劳动密集型制造。"
     ],
     [
      "2026 销售目标 3,750",
@@ -7340,6 +7594,268 @@
      "再融资后资产负债表更稳健",
      "FY2025 现金 3.6 万亿 vs 总有息债 4.6 万亿（净负债约 1.0 万亿）；美元票据已置换为 15 年期 7.0–7.5% 盾币融资，9M26 净负债 1.7 万亿、汇率风险出清——仍有空间支持土地开发、Bizpark 推广与分红，无需增发股权。"
     ]
+   ]
+  }
+ },
+ "DEC": {
+  "en": [
+   [
+    "Revenue (IDR bn)",
+    "4,254.9",
+    "5,149.4",
+    "4,602.6",
+    "9M26 +15.8% y/y; FY25 record; land deliveries rebounded in Q3"
+   ],
+   [
+    "Gross margin",
+    "37.1%",
+    "39.5%",
+    "43%",
+    "9M26 37.1% (GP 1,577.8 / Rev 4,254.9); infra mix grows"
+   ],
+   [
+    "Net profit (IDR bn)",
+    "391.7",
+    "857.1",
+    "770.1",
+    "9M26 consolidated; parent 60.5bn (NCI 84.6%) · Q3 alone parent +238.3bn"
+   ],
+   [
+    "EBITDA (IDR bn)",
+    "1,362.4",
+    "1,735.5",
+    "1,616.8",
+    "9M26 company-adj. EBITDA (32.0% margin); reported op. profit 1,025.5 + D&A 150.1 = 1,175.6"
+   ],
+   [
+    "Cash from ops (IDR bn)",
+    "568.7",
+    "2,402.4",
+    "1,870.0",
+    "9M26 OCF 568.7bn; FCF ≈ +355bn before land purchases (OCF − PPE capex 214.1); ≈ +33bn after land 302.2 + advances 19.1"
+   ],
+   [
+    "Cash (IDR bn)",
+    "3,153.7",
+    "3,618.8",
+    "2,048.5",
+    "30 Sep 2026; net debt ~1,710bn"
+   ],
+   [
+    "Total debt (IDR bn)",
+    "4,863.8",
+    "4,606.5",
+    "4,498.2",
+    "incl. short-term 22.9 & lease 4.9; all IDR since 2Q26; FY25 net of issuance cost"
+   ],
+   [
+    "Net debt / EBITDA",
+    "0.96x",
+    "0.57x",
+    "1.50x",
+    "9M26 LTM adj. EBITDA ≈1,790; net debt 1,710.1; on reported 9M26 EBITDA ≈1.45x"
+   ],
+   [
+    "Marketing sales (IDR bn)",
+    "1,524.4",
+    "3,601",
+    "3,188",
+    "9M26 40.7% of 3,750 target; Q3 336.7 (−47.9% q/q); 638,010 m² sold"
+   ],
+   [
+    "Receivables days (DSO)",
+    "63d",
+    "37d",
+    "61d",
+    "9M26 AR 722→980bn; DSO 54→63d (9M25→9M26); FY25 37d"
+   ],
+   [
+    "What to watch in Q4",
+    "land pace + GPM",
+    "recurring infra mix",
+    "—",
+    "Q4 Kendal sales pace, power GPM recovery & receivables decide FY26"
+   ]
+  ],
+  "id": [
+   [
+    "Pendapatan (Rp miliar)",
+    "4.254,9",
+    "5.149,4",
+    "4.602,6",
+    "9M26 +15,8% y/y; rekor FY25; pengiriman lahan pulih di Q3"
+   ],
+   [
+    "Margin kotor",
+    "37,1%",
+    "39.5%",
+    "43%",
+    "9M26 37,1% (LP 1.577,8 / Pendapatan 4.254,9); porsi infrastruktur naik"
+   ],
+   [
+    "Laba bersih (Rp miliar)",
+    "391,7",
+    "857,1",
+    "770,1",
+    "9M26 konsolidasi; induk 60,5 miliar (KNP 84,6%) · Q3 induk +238,3 miliar"
+   ],
+   [
+    "EBITDA (Rp miliar)",
+    "1.362,4",
+    "1.735,5",
+    "1.616,8",
+    "EBITDA adj. perusahaan 9M26 (margin 32,0%); laba usaha 1.025,5 + D&A 150,1 = 1.175,6"
+   ],
+   [
+    "Arus kas operasi (Rp miliar)",
+    "568,7",
+    "2.402,4",
+    "1.870,0",
+    "OCF 9M26 568,7 miliar; FCF ≈ +355 miliar sebelum pembelian tanah (OCF − capex 214,1); ≈ +33 miliar setelah tanah 302,2 + uang muka 19,1"
+   ],
+   [
+    "Kas (Rp miliar)",
+    "3.153,7",
+    "3.618,8",
+    "2.048,5",
+    "30 Sep 2026; utang bersih ~1.710 miliar"
+   ],
+   [
+    "Total utang (Rp miliar)",
+    "4.863,8",
+    "4.606,5",
+    "4.498,2",
+    "termasuk jangka pendek 22,9 & sewa 4,9; seluruhnya IDR sejak 2Q26; FY25 setelah biaya penerbitan"
+   ],
+   [
+    "Utang bersih / EBITDA",
+    "0,96x",
+    "0,57x",
+    "1,50x",
+    "LTM 9M26 EBITDA adj. ≈1.790; utang bersih 1.710,1; basis EBITDA 9M26 ≈1,45x"
+   ],
+   [
+    "Penjualan pemasaran (Rp miliar)",
+    "1.524,4",
+    "3.601",
+    "3.188",
+    "9M26 40,7% dari target 3.750; Q3 336,7 (−47,9% q/q); 638.010 m² terjual"
+   ],
+   [
+    "Piutang (hari / DSO)",
+    "63h",
+    "37h",
+    "61h",
+    "9M26 piutang 722→980 miliar; DSO 54→63 hari (9M25→9M26); FY25 37 hari"
+   ],
+   [
+    "Yang perlu dipantau di Q4",
+    "laju lahan + margin",
+    "porsi infrastruktur berulang",
+    "—",
+    "Laju penjualan Kendal Q4, pemulihan margin listrik & piutang menentukan FY26"
+   ]
+  ],
+  "zh": [
+   [
+    "收入（十亿盾）",
+    "4,254.9",
+    "5,149.4",
+    "4,602.6",
+    "9M26 同比 +15.8%；FY25 创纪录；Q3 土地交付放量"
+   ],
+   [
+    "毛利率",
+    "37.1%",
+    "39.5%",
+    "43%",
+    "9M26 37.1%（毛利 1,577.8 / 收入 4,254.9）；基建占比上升"
+   ],
+   [
+    "净利润（十亿盾）",
+    "391.7",
+    "857.1",
+    "770.1",
+    "9M26 合并口径；归母 60.5（少数股东占 84.6%）· Q3 单季归母 +238.3"
+   ],
+   [
+    "EBITDA（十亿盾）",
+    "1,362.4",
+    "1,735.5",
+    "1,616.8",
+    "9M26 公司调整后 EBITDA（利润率 32.0%）；经营利润 1,025.5 + 折旧摊销 150.1 = 1,175.6"
+   ],
+   [
+    "经营现金流（十亿盾）",
+    "568.7",
+    "2,402.4",
+    "1,870.0",
+    "9M26 OCF 568.7；购地前 FCF ≈ +355（OCF − PPE 资本开支 214.1）；计入购地 302.2 与预付 19.1 后 ≈ +33"
+   ],
+   [
+    "现金（十亿盾）",
+    "3,153.7",
+    "3,618.8",
+    "2,048.5",
+    "2026-09-30；净债务约 1,710"
+   ],
+   [
+    "总债务（十亿盾）",
+    "4,863.8",
+    "4,606.5",
+    "4,498.2",
+    "含短期 22.9 与租赁 4.9；2Q26 起全部为盾币；FY25 为扣除发行成本后"
+   ],
+   [
+    "净债务 / EBITDA",
+    "0.96x",
+    "0.57x",
+    "1.50x",
+    "9M26 LTM 调整后 EBITDA ≈1,790；净债务 1,710.1；按 9M26 报告 EBITDA 约 1.45x"
+   ],
+   [
+    "营销销售（十亿盾）",
+    "1,524.4",
+    "3,601",
+    "3,188",
+    "9M26 为 3,750 目标的 40.7%；Q3 336.7（环比 −47.9%）；售出 638,010 m²"
+   ],
+   [
+    "应收天数（DSO）",
+    "63 天",
+    "37 天",
+    "61 天",
+    "9M26 应收 722→980 十亿盾；DSO 54→63 天（9M25→9M26）；FY25 37 天"
+   ],
+   [
+    "Q4 关注点",
+    "土地节奏 + 毛利率",
+    "基建经常性占比",
+    "—",
+    "Q4 Kendal 销售节奏、电力毛利率修复与应收决定 FY26"
+   ]
+  ],
+  "h": {
+   "en": [
+    "Metric",
+    "9M2026",
+    "FY2025",
+    "FY2024",
+    "What it tells you"
+   ],
+   "id": [
+    "Metrik",
+    "9M2026",
+    "FY2025",
+    "FY2024",
+    "Apa artinya"
+   ],
+   "zh": [
+    "指标",
+    "9M2026",
+    "FY2025",
+    "FY2024",
+    "说明"
    ]
   }
  },
@@ -7486,245 +8002,6 @@
     1708.0
    ]
   }
- },
- "DEC": {
-  "en": [
-   [
-    "Revenue (IDR bn)",
-    "4,254.9",
-    "5,149.4",
-    "4,602.6",
-    "9M26 +15.8% y/y; FY25 record; land deliveries rebounded in Q3"
-   ],
-   [
-    "Gross margin",
-    "37%",
-    "39%",
-    "43%",
-    "9M26 37.1% (GP 1,577.8 / Rev 4,254.9); infra mix grows"
-   ],
-   [
-    "Net profit (IDR bn)",
-    "391.7",
-    "857.1",
-    "770.1",
-    "9M26 consolidated; parent 60.5bn (NCI 84.6%) · Q3 alone parent +238.3bn"
-   ],
-   [
-    "EBITDA (IDR bn)",
-    "1,362.4",
-    "1,735.5",
-    "1,616.8",
-    "9M26 company-adj. EBITDA (32.0% margin); reported op. profit 1,025.5 + D&A 150.1 = 1,175.6"
-   ],
-   [
-    "Cash from ops (IDR bn)",
-    "568.7",
-    "2,402.4",
-    "1,870.0",
-    "9M26 OCF 568.7bn; FCF ≈ +355bn before land purchases (OCF − PPE capex 214.1); ≈ +33bn after land 302.2 + advances 19.1"
-   ],
-   [
-    "Cash (IDR bn)",
-    "3,153.7",
-    "3,618.8",
-    "2,048.5",
-    "30 Sep 2026; net debt ~1,710bn"
-   ],
-   [
-    "Total debt (IDR bn)",
-    "4,863.8",
-    "4,606.5",
-    "4,498.2",
-    "incl. short-term 22.9bn; all IDR since 2Q26"
-   ],
-   [
-    "Net debt / EBITDA",
-    "0.96x",
-    "0.57x",
-    "1.50x",
-    "9M26 LTM adj. EBITDA ≈1,790; net debt 1,710.1; on reported 9M26 EBITDA ≈1.45x"
-   ],
-   [
-    "Marketing sales (IDR bn)",
-    "1,524.4",
-    "3,601",
-    "3,188",
-    "9M26 40.7% of 3,750 target; Q3 336.7 (−47.9% q/q); 638,010 m² sold"
-   ],
-   [
-    "Receivables days (DSO)",
-    "63d",
-    "37d",
-    "61d",
-    "9M26 AR 722→980bn; DSO 54→63d (annualised)"
-   ],
-   [
-    "What to watch in Q4",
-    "land pace + GPM",
-    "recurring infra mix",
-    "—",
-    "Q4 Kendal sales pace, power GPM recovery & receivables decide FY26"
-   ]
-  ],
-  "id": [
-   [
-    "Pendapatan (Rp miliar)",
-    "4.254,9",
-    "5.149,4",
-    "4.602,6",
-    "9M26 +15,8% y/y; rekor FY25; pengiriman lahan pulih di Q3"
-   ],
-   [
-    "Margin kotor",
-    "37%",
-    "39%",
-    "43%",
-    "9M26 37,1% (LP 1.577,8 / Pendapatan 4.254,9); porsi infrastruktur naik"
-   ],
-   [
-    "Laba bersih (Rp miliar)",
-    "391,7",
-    "857,1",
-    "770,1",
-    "9M26 konsolidasi; induk 60,5 miliar (KNP 84,6%) · Q3 induk +238,3 miliar"
-   ],
-   [
-    "EBITDA (Rp miliar)",
-    "1.362,4",
-    "1.735,5",
-    "1.616,8",
-    "EBITDA adj. perusahaan 9M26 (margin 32,0%); laba usaha 1.025,5 + D&A 150,1 = 1.175,6"
-   ],
-   [
-    "Arus kas operasi (Rp miliar)",
-    "568,7",
-    "2.402,4",
-    "1.870,0",
-    "OCF 9M26 568,7 miliar; FCF ≈ +355 miliar sebelum pembelian tanah (OCF − capex 214,1); ≈ +33 miliar setelah tanah 302,2 + uang muka 19,1"
-   ],
-   [
-    "Kas (Rp miliar)",
-    "3.153,7",
-    "3.618,8",
-    "2.048,5",
-    "30 Sep 2026; utang bersih ~1.710 miliar"
-   ],
-   [
-    "Total utang (Rp miliar)",
-    "4.863,8",
-    "4.606,5",
-    "4.498,2",
-    "termasuk jangka pendek 22,9; seluruhnya IDR sejak 2Q26"
-   ],
-   [
-    "Utang bersih / EBITDA",
-    "0,96x",
-    "0,57x",
-    "1,50x",
-    "LTM 9M26 EBITDA adj. ≈1.790; utang bersih 1.710,1; basis EBITDA 9M26 ≈1,45x"
-   ],
-   [
-    "Penjualan pemasaran (Rp miliar)",
-    "1.524,4",
-    "3.601",
-    "3.188",
-    "9M26 40,7% dari target 3.750; Q3 336,7 (−47,9% q/q); 638.010 m² terjual"
-   ],
-   [
-    "Piutang (hari / DSO)",
-    "63h",
-    "37h",
-    "61h",
-    "9M26 piutang 722→980 miliar; DSO 54→63 hari (tahunan)"
-   ],
-   [
-    "Yang perlu dipantau di Q4",
-    "laju lahan + margin",
-    "porsi infrastruktur berulang",
-    "—",
-    "Laju penjualan Kendal Q4, pemulihan margin listrik & piutang menentukan FY26"
-   ]
-  ],
-  "zh": [
-   [
-    "收入（十亿盾）",
-    "4,254.9",
-    "5,149.4",
-    "4,602.6",
-    "9M26 同比 +15.8%；FY25 创纪录；Q3 土地交付放量"
-   ],
-   [
-    "毛利率",
-    "37%",
-    "39%",
-    "43%",
-    "9M26 37.1%（毛利 1,577.8 / 收入 4,254.9）；基建占比上升"
-   ],
-   [
-    "净利润（十亿盾）",
-    "391.7",
-    "857.1",
-    "770.1",
-    "9M26 合并口径；归母 60.5（少数股东占 84.6%）· Q3 单季归母 +238.3"
-   ],
-   [
-    "EBITDA（十亿盾）",
-    "1,362.4",
-    "1,735.5",
-    "1,616.8",
-    "9M26 公司调整后 EBITDA（利润率 32.0%）；经营利润 1,025.5 + 折旧摊销 150.1 = 1,175.6"
-   ],
-   [
-    "经营现金流（十亿盾）",
-    "568.7",
-    "2,402.4",
-    "1,870.0",
-    "9M26 OCF 568.7；购地前 FCF ≈ +355（OCF − PPE 资本开支 214.1）；计入购地 302.2 与预付 19.1 后 ≈ +33"
-   ],
-   [
-    "现金（十亿盾）",
-    "3,153.7",
-    "3,618.8",
-    "2,048.5",
-    "2026-09-30；净债务约 1,710"
-   ],
-   [
-    "总债务（十亿盾）",
-    "4,863.8",
-    "4,606.5",
-    "4,498.2",
-    "含短期 22.9；2Q26 起全部为盾币"
-   ],
-   [
-    "净债务 / EBITDA",
-    "0.96x",
-    "0.57x",
-    "1.50x",
-    "9M26 LTM 调整后 EBITDA ≈1,790；净债务 1,710.1；按 9M26 报告 EBITDA 约 1.45x"
-   ],
-   [
-    "营销销售（十亿盾）",
-    "1,524.4",
-    "3,601",
-    "3,188",
-    "9M26 为 3,750 目标的 40.7%；Q3 336.7（环比 −47.9%）；售出 638,010 m²"
-   ],
-   [
-    "应收天数（DSO）",
-    "63 天",
-    "37 天",
-    "61 天",
-    "9M26 应收 722→980 十亿盾；DSO 54→63 天（年化）"
-   ],
-   [
-    "Q4 关注点",
-    "土地节奏 + 毛利率",
-    "基建经常性占比",
-    "—",
-    "Q4 Kendal 销售节奏、电力毛利率修复与应收决定 FY26"
-   ]
-  ]
  },
  "OPS26": {
   "kpi": {
@@ -7992,5 +8269,34 @@
     "zh": "来源：KIJA Public Expose Q3 2026 第 19 页。合计按披露原值；季度分项因源表四舍五入可能相差 ±1。单位百万盾，面积 m²。"
    }
   }
+ },
+ "Q26": {
+  "rev": 4254.9,
+  "niCons": 391.7,
+  "niParent": 60.5,
+  "gpm": 37.1,
+  "infra": 2242.9,
+  "re": 2012.0,
+  "tot": 4254.9,
+  "ebitda": 1362.4,
+  "ebitdaMargin": 32.0,
+  "npm": 9.2,
+  "roe": 4.8,
+  "roa": 2.6,
+  "opMargin": 24.1
+ },
+ "H26": {
+  "rev": 2436.5,
+  "niCons": -6.4,
+  "niParent": -177.9,
+  "gpm": 34.5,
+  "npm": -0.3,
+  "roe": -0.1,
+  "de": 92.0,
+  "infra": 1398.2,
+  "re": 1038.3,
+  "ms": 1187.7,
+  "ebitda": 747.7,
+  "tot": 2436.5
  }
 }

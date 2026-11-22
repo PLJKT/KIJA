@@ -399,6 +399,14 @@ Every number in the Risk & Direction page, annual-page narrative, and comparison
 45. **One "latest" marketing-sales figure replaces, never appends.** When 9M26 sales arrived, KP.k26, FY.msCik/msKendal/msDone, CHT labels and the o5 series all had to move together; leaving the old 1,187.6 anywhere creates two truths.
 46. **Docs ship with the code.** After data/UI changes, update CHANGELOG (new version), the README round entry and this Playbook's new gotchas in the same push; otherwise the next session repeats the mistake.
 
+47. **Four-category revenue must tie to the total; do not force it into two categories.** PE p12 gives a two-way split (Infrastructure 2,242.9 / Land 2,012.0 = 4,254.9). PE p13 gives four lines (Infrastructure 2,242.5 / Land 1,914.8 / other 97.6 / total 4,254.9). Both add up, but they are different taxonomies. The earlier "1,914.8 + 2,242.5 != 4,254.9" note was a missing 97.6, not a source error. Keep `Q26` two-way and `FY.m26rev` four-way, each self-consistent, and label the basis in the tooltip or footnote.
+
+48. **A render-time column assignment can silently overwrite a computed column.** `VALI.comp`, `LIQ` and `LBV` calculated Safety margin in Python, then the JS re-rendered the last cell with "vs price". Both columns looked plausible, so only a DOM check caught it. Whenever a table has two derived columns, assert each column after render, not just the source values. Negative Safety margin must render as a negative percentage (e.g. LBV 25% `-34.4%`), never `n/a` — v1.16.0 requirement.
+
+49. **`DATA_KEYS` membership is not the same as an inline fallback.** A key listed in `DATA_KEYS` but missing its `var KEY = {...}` block renders fine online (data.json overrides) and blank on `file://`. After adding a top-level block, run a parity check over all keys: inline `var` exists, JSON parses, and the values equal `data.json`. Current count is 34.
+
+50. **ROE must use one definition everywhere.** Consolidated ROE = consolidated net profit / total equity (391.7 / 8,105.1 = 4.8). Parent NP / parent equity (60.5 / 6,295.1 = 0.96) is a different metric and must not be labelled ROE. When H26 shows -0.1 and Q3 shows 4.8, the jump is real (Q3 profit vs 1H loss), not a data error; check the denominator and numerator together. TTM ROE is 7.6% (614.2 / 8,105.1), not the parent-basis 3.3%.
+
 ---
 
 ## 13. How to bootstrap a new company
