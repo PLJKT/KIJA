@@ -1,5 +1,9 @@
 ﻿# KIJA Dashboard — Changelog (internal, not shown on page)
 
+## v1.23.2 - 2026-11-23
+- Removed the `(FY25 audited)` qualifier from the P/E row label in all three languages; it now reads `P/E (x)` alongside `P/B (x)` and `P/S (x)`. The denominator basis remains disclosed in the peer note (`Table metrics use FY25 audited net profit attributable to parent and 2026-11-20 closing prices`), so no information is lost. Values unchanged: 5.2 / 9.8 / 32.4 / 9.9.
+- Footer bumped to `v1.23.2`; local render checked in EN/ID/ZH.
+
 ## v1.23.1 - 2026-11-23
 - Valuation peer table: the `Net profit (FY25, IDR bn)` row was internally inconsistent - KIJA carried the FY25 *consolidated* figure (857.1) while DMAS/BEST/LPCK carried their **1H26** attributable figures (1,190 / 144.3 / 228.4), even though the column header said FY25 and the P/E row above was computed from FY25 earnings. Replaced with one basis, FY25 audited attributable net profit: KIJA 423.2 (857.1 consolidated, NCI 433.9), DMAS 800.3, BEST 30.1, LPCK 215.8. Header now reads `Net profit (FY25, attributable to parent, IDR bn)` in en/id/zh.
 - LPCK P/E corrected 8.7 -> 9.9. The old value used reported FY25 EPS of 48 IDR, which is struck on the 4.52bn weighted-average shares before the Apr-2025 rights issue, against a market cap on the current 5.13bn shares. LPCK's P/E (and all four) is now derived as market cap / attributable net profit: 5.2 / 9.8 / 32.4 / 9.9.
