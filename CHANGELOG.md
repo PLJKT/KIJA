@@ -1,5 +1,11 @@
 ﻿# KIJA Dashboard — Changelog (internal, not shown on page)
 
+## v1.23.3 - 2026-11-23
+- The `DCF (two-stage)` row was not a DCF. Its base output of 449.9 IDR × 20.59bn shares + 1,710.1bn net debt = 10,973.5bn EV, exactly 6.32x FY25 EBITDA; low/high likewise resolve to 4.24x / 10.44x. No forecast horizon, WACC path, FCF build or terminal value was disclosed, and the row name contradicted its own note (`two-stage` vs `single-stage, implied zero-growth perpetuity`). Renamed to `EBITDA multiple (4.24x / 6.32x / 10.44x)` in en/id/zh, with the replicable formula stated in the method note.
+- The stated `55% parent share` was never actually applied: 449.9 IDR per share already equals 100% of EV less net debt over 20.59bn shares. Applying 55% would give ~246 IDR, not 449.9. The row now states `Consolidated basis — no NCI haircut` instead of carrying an assumption that was not used.
+- Weight label changed from `30% DCF` to `30% EV/EBITDA` in `weightNote`; comparison row `DCF (base)` -> `EV/EBITDA (base 6.32x)`; chart axis `DCF` -> `EBITDA`; the WACC/FCF caveat replaced with the actual multiple and net-debt inputs. Outputs unchanged: 274.7 / 449.9 / 797.0.
+- Footer bumped to `v1.23.3`; local render checked in EN/ID/ZH.
+
 ## v1.23.2 - 2026-11-23
 - Removed the `(FY25 audited)` qualifier from the P/E row label in all three languages; it now reads `P/E (x)` alongside `P/B (x)` and `P/S (x)`. The denominator basis remains disclosed in the peer note (`Table metrics use FY25 audited net profit attributable to parent and 2026-11-20 closing prices`), so no information is lost. Values unchanged: 5.2 / 9.8 / 32.4 / 9.9.
 - Footer bumped to `v1.23.2`; local render checked in EN/ID/ZH.

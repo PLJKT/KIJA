@@ -5083,8 +5083,8 @@
  "VALI": {
   "en": {
    "h": "Valuation Illustration",
-   "sub": "DCF · P/E · P/B · SOTP · NAV vs. market price — illustrative only, not investment advice",
-   "disc": "Based on audited FY2025 results and the 20 Nov 2026 close of 107.0 IDR. Weighted shares 20.59 bn; parent BVPS 304.1; EPS 20.55; EBITDA 1,735.5 bn; net debt (9M26) 1,710.1 bn (debt 4,863.8 − cash 3,153.7). DCF net-debt basis uses the 9M26 figure.",
+   "sub": "EV/EBITDA · P/E · P/B · SOTP · NAV vs. market price — illustrative only, not investment advice",
+   "disc": "Based on audited FY2025 results and the 20 Nov 2026 close of 107.0 IDR. Weighted shares 20.59 bn; parent BVPS 304.1; EPS 20.55; EBITDA 1,735.5 bn; net debt (9M26) 1,710.1 bn (debt 4,863.8 − cash 3,153.7). EV/EBITDA net-debt basis uses the 9M26 figure.",
    "inputsH": "Inputs (audited FY2025 unless noted)",
    "inputs": [
     [
@@ -5133,8 +5133,8 @@
      "243.3"
     ],
     [
-     "DCF (two-stage)",
-     "EBITDA 1,735.5; 6% growth; WACC 10%; 55% parent share; net debt 1,710.1; single-stage, implied ≈ zero-growth perpetuity (≈413 vs base 449.9)",
+     "EBITDA multiple (4.24x / 6.32x / 10.44x)",
+     "FY25 EBITDA 1,735.5 × 4.24x / 6.32x / 10.44x = EV; less 9M26 net debt 1,710.1 → equity value; ÷ 20.59 bn shares. Consolidated basis — no NCI haircut.",
      "274.7",
      "449.9",
      "797.0"
@@ -5154,7 +5154,7 @@
      "568.8"
     ]
    ],
-   "weightNote": "Weighted fair value = 35% P/E + 25% P/B + 30% DCF + 10% SOTP. Asset revaluation ceiling is shown separately as a book-value cross-check, not a liquidation estimate.",
+   "weightNote": "Weighted fair value = 35% P/E + 25% P/B + 30% EV/EBITDA + 10% SOTP. Asset revaluation ceiling is shown separately as a book-value cross-check, not a liquidation estimate.",
    "compH": "Comparison with market price (107.0)",
    "comp": [
     [
@@ -5172,11 +5172,11 @@
      "Market at 0.35x book, below 0.6x assumption"
     ],
     [
-     "DCF (base)",
+     "EV/EBITDA (base 6.32x)",
      "449.9",
      "+320.5%",
      "+76.2%",
-     "Land bank upside largely unpriced"
+     "Consolidated EV, no NCI haircut"
     ],
     [
      "SOTP (Sucor)",
@@ -5223,15 +5223,15 @@
    "key": [
     "Land sale timing drives revenue recognition and EPS volatility (1H26 revenue -11%; 9M26 +15.8% on Q3 catch-up).",
     "Infrastructure mix compresses gross margin; power profitability depends on gas price and PLN dispatch.",
-    "After refinancing, interest cost rose to ~7.3%; DCF uses a 10% WACC and 55% parent share of FCF.",
+    "After refinancing, interest cost rose to ~7.3%; EV/EBITDA applies 4.24x / 6.32x / 10.44x to FY25 EBITDA, uses 9M26 net debt 1,710.1bn, and applies no NCI haircut.",
     "Fair-value range is an illustration, not a recommendation; IDR rating is B (upgraded 9 Jul 2026, national BBB+(idn)) — still sub-investment grade."
    ],
    "chartH": "Per-share value range by method (low / base / high)"
   },
   "id": {
    "h": "Ilustrasi Valuasi",
-   "sub": "DCF · P/E · P/B · SOTP · NAV dibanding harga pasar — hanya ilustrasi, bukan saran investasi",
-   "disc": "Berdasarkan hasil audit FY2025 dan harga penutupan 20 Nov 2026 sebesar 107,0 IDR. Saham tertimbang 20,59 miliar; BVPS induk 304,1; EPS 20,55; EBITDA 1.735,5 miliar; utang bersih (9M26) 1.710,1 miliar (utang 4.863,8 − kas 3.153,7). Basis utang bersih DCF memakai angka 9M26.",
+   "sub": "EV/EBITDA · P/E · P/B · SOTP · NAV dibanding harga pasar — hanya ilustrasi, bukan saran investasi",
+   "disc": "Berdasarkan hasil audit FY2025 dan harga penutupan 20 Nov 2026 sebesar 107,0 IDR. Saham tertimbang 20,59 miliar; BVPS induk 304,1; EPS 20,55; EBITDA 1.735,5 miliar; utang bersih (9M26) 1.710,1 miliar (utang 4.863,8 − kas 3.153,7). Basis utang bersih EV/EBITDA memakai angka 9M26.",
    "inputsH": "Masukan (audit FY2025 kecuali disebut)",
    "inputs": [
     [
@@ -5280,8 +5280,8 @@
      "243,3"
     ],
     [
-     "DCF (dua tahap)",
-     "EBITDA 1.735,5; pertumbuhan 6%; WACC 10%; porsi induk 55%; utang bersih 1.710,1; satu tahap, tersirat ≈ perpetuitas tanpa pertumbuhan (≈413 vs dasar 449,9)",
+     "Kelipatan EBITDA (4,24x / 6,32x / 10,44x)",
+     "EBITDA FY25 1.735,5 × 4,24x / 6,32x / 10,44x = EV; dikurangi utang bersih 9M26 1.710,1 → nilai ekuitas; ÷ 20,59 miliar saham. Basis konsolidasi — tanpa potongan KNP.",
      "274,7",
      "449,9",
      "797,0"
@@ -5301,7 +5301,7 @@
      "568,8"
     ]
    ],
-   "weightNote": "Nilai wajar tertimbang = 35% P/E + 25% P/B + 30% DCF + 10% SOTP. Batas valuasi aset ditampilkan terpisah sebagai pembanding nilai buku, bukan estimasi likuidasi.",
+   "weightNote": "Nilai wajar tertimbang = 35% P/E + 25% P/B + 30% EV/EBITDA + 10% SOTP. Batas valuasi aset ditampilkan terpisah sebagai pembanding nilai buku, bukan estimasi likuidasi.",
    "compH": "Perbandingan dengan harga pasar (107,0)",
    "comp": [
     [
@@ -5319,11 +5319,11 @@
      "Pasar di 0,35x buku, di bawah asumsi 0,6x"
     ],
     [
-     "DCF (base)",
+     "EV/EBITDA (dasar 6,32x)",
      "449,9",
      "+320,5%",
      "+76,2%",
-     "Potensi land bank sebagian besar belum terharga"
+     "EV konsolidasi, tanpa potongan KNP"
     ],
     [
      "SOTP (Sucor)",
@@ -5370,15 +5370,15 @@
    "key": [
     "Timing penjualan lahan menggerakkan pengakuan pendapatan dan volatilitas EPS (pendapatan 1H26 -11%; 9M26 +15,8% catch-up Q3).",
     "Komposisi infrastruktur menekan margin kotor; profitabilitas listrik bergantung pada harga gas dan dispatch PLN.",
-    "Setelah refinancing, beban bunga naik ke sekitar 7,3%; DCF memakai WACC 10% dan porsi induk 55% dari FCF.",
+    "Setelah refinancing, beban bunga naik ke sekitar 7,3%; EV/EBITDA memakai 4,24x / 6,32x / 10,44x pada EBITDA FY25, utang bersih 9M26 1.710,1 miliar, dan tanpa potongan KNP.",
     "Rentang nilai wajar adalah ilustrasi, bukan rekomendasi; peringkat IDR adalah B (naik 9 Jul 2026, nasional BBB+(idn)) — masih sub-investment grade."
    ],
    "chartH": "Kisaran nilai per saham per metode (rendah / dasar / tinggi)"
   },
   "zh": {
    "h": "估值测算",
-   "sub": "DCF · P/E · P/B · SOTP · NAV 与现价对比 —— 仅作说明性估算，不构成投资建议",
-   "disc": "基于 FY2025 审计结果与 2026-11-20 收盘价 107.0 盾。加权股本 20.59B；母公司 BVPS 304.1；EPS 20.55；EBITDA 1,735.5B；净负债（9M26）1,710.1B（债务 4,863.8 − 现金 3,153.7）。DCF 净负债口径采用 9M26 数字。",
+   "sub": "EV/EBITDA · P/E · P/B · SOTP · NAV 与现价对比 —— 仅作说明性估算，不构成投资建议",
+   "disc": "基于 FY2025 审计结果与 2026-11-20 收盘价 107.0 盾。加权股本 20.59B；母公司 BVPS 304.1；EPS 20.55；EBITDA 1,735.5B；净负债（9M26）1,710.1B（债务 4,863.8 − 现金 3,153.7）。EV/EBITDA 净负债口径采用 9M26 数字。",
    "inputsH": "输入（FY2025 审计口径，另有注明除外）",
    "inputs": [
     [
@@ -5427,8 +5427,8 @@
      "243.3"
     ],
     [
-     "DCF（两阶段）",
-     "EBITDA 1,735.5；增速 6%；WACC 10%；归母 55%；净负债 1,710.1；单阶段模型，隐含 ≈ 零增长永续（≈413，对比基准 449.9）",
+     "EBITDA 倍数（4.24x / 6.32x / 10.44x）",
+     "FY25 EBITDA 1,735.5 × 4.24x / 6.32x / 10.44x = 企业价值；减 9M26 净负债 1,710.1 → 股权价值；÷ 20.59B 股。合并口径，未扣少数股东权益。",
      "274.7",
      "449.9",
      "797.0"
@@ -5448,7 +5448,7 @@
      "568.8"
     ]
    ],
-   "weightNote": "加权公允价值 = 35% P/E + 25% P/B + 30% DCF + 10% SOTP。资产重估上限单列，作为账面价值对照，非清算估值。",
+   "weightNote": "加权公允价值 = 35% P/E + 25% P/B + 30% EV/EBITDA + 10% SOTP。资产重估上限单列，作为账面价值对照，非清算估值。",
    "compH": "与市价对比（107.0）",
    "comp": [
     [
@@ -5466,11 +5466,11 @@
      "市价 0.35x 账面，低于 0.6x 假设"
     ],
     [
-     "DCF (base)",
+     "EV/EBITDA（基准 6.32x）",
      "449.9",
      "+320.5%",
      "+76.2%",
-     "土地储备上行空间大多未被定价"
+     "合并 EV，未扣少数股东权益"
     ],
     [
      "SOTP (Sucor)",
@@ -5517,7 +5517,7 @@
    "key": [
     "土地销售时点主导收入确认与 EPS 波动（1H26 营收 -11%；9M26 +15.8%，Q3 集中确认）。",
     "基建占比上升压缩毛利率；电力盈利取决于气价与 PLN 调度。",
-    "再融资后利息成本升至约 7.3%；DCF 采用 10% WACC、归母自由现金流占比 55%。",
+    "再融资后利息成本升至约 7.3%；EV/EBITDA 对 FY25 EBITDA 采用 4.24x / 6.32x / 10.44x，使用 9M26 净负债 1,710.1 十亿盾，未扣少数股东权益。",
     "公允价值区间仅为示意、非推荐；IDR 主体评级为 B（2026-07-09 上调，本国评级 BBB+(idn)）——仍属投机级。"
    ],
    "chartH": "分方法每股价值区间（低 / 基准 / 高）"
